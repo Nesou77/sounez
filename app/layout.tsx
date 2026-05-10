@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
+import { GoogleTagManager } from "@/components/GoogleTagManager";
+import { getSiteUrl } from "@/lib/site-url";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,6 +21,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: "Sounez — Free Online Tools for Creators, Designers & Productivity",
     template: "%s | Sounez",
@@ -47,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`}>
       <body>
+        <GoogleTagManager />
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>

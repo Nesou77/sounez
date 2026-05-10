@@ -1,8 +1,13 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Mail, Send, MessageCircle, CheckCircle2, Loader2 } from "lucide-react";
+
+const ReCAPTCHA = dynamic(async () => (await import("react-google-recaptcha")).default, { ssr: false });
+
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY?.trim() ?? "";
 
 const TOPICS = ["Feedback", "Bug report", "Tool request", "Partnership", "Other"] as const;
 type Topic = (typeof TOPICS)[number];
@@ -58,6 +63,8 @@ export function ContactClient() {
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [recaptchaMount, setRecaptchaMount] = useState(0);
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) => {
     setForm((p) => ({ ...p, [k]: v }));
@@ -72,12 +79,58 @@ export function ContactClient() {
       toast.error("Please fix the highlighted fields.");
       return;
     }
+    if (RECAPTCHA_SITE_KEY && !captchaToken) {
+      toast.error("Please complete the captcha.");
+      return;
+    }
+
+    const pageUrl = typeof window !== "undefined" ? window.location.href : "";
+    let parsedPageUrl: string;
+    try {
+      parsedPageUrl = pageUrl === "" ? "http://localhost:3000/contact" : new URL(pageUrl).toString();
+    } catch {
+      toast.error("Could not determine the page URL. Please reload and try again.");
+      return;
+    }
+
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 700));
-    setSubmitting(false);
-    setSent(true);
-    toast.success("Message sent", { description: "We'll reply within 24 hours." });
-    setForm({ name: "", email: "", topic: "Feedback", message: "" });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.trim(),
+          topic: form.topic,
+          message: form.message.trim(),
+          pageUrl: parsedPageUrl,
+          captchaToken: captchaToken ?? undefined,
+        }),
+      });
+
+      let data: { ok?: boolean; error?: string } = {};
+      try {
+        data = await res.json();
+      } catch {
+        // non-JSON error body
+      }
+
+      if (!res.ok || !data.ok) {
+        const msg = typeof data.error === "string" ? data.error : "Something went wrong. Please try again.";
+        toast.error("Could not send message", { description: msg });
+        return;
+      }
+
+      setSent(true);
+      toast.success("Message sent", { description: "We'll reply within 24 hours." });
+      setForm({ name: "", email: "", topic: "Feedback", message: "" });
+      setCaptchaToken(null);
+      setRecaptchaMount((k) => k + 1);
+    } catch {
+      toast.error("Network error", { description: "Check your connection and try again." });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const msgLeft = 2000 - form.message.length;
@@ -180,6 +233,17 @@ export function ContactClient() {
             {msgLeft} characters left
           </div>
         </Field>
+
+        {RECAPTCHA_SITE_KEY ? (
+          <div className="flex justify-center sm:justify-start">
+            <ReCAPTCHA
+              key={recaptchaMount}
+              sitekey={RECAPTCHA_SITE_KEY}
+              onChange={(tok) => setCaptchaToken(tok)}
+              onExpired={() => setCaptchaToken(null)}
+            />
+          </div>
+        ) : null}
 
         <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-muted-foreground">
