@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
+import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
 import { Calendar, Clock, ArrowLeft, ArrowRight, Sparkles, Wrench } from "lucide-react";
 import { AdSlot } from "./AdSlot";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SmartLink as Link } from "@/components/smart-link";
 import { Github, Twitter, Mail } from "lucide-react";
 import { TOOLS, CATEGORIES } from "@/data/tools";
 import { BrandLogo } from "@/components/BrandLogo";
@@ -15,13 +15,18 @@ export function Footer() {
           </p>
           <div className="mt-5 flex items-center gap-2">
             {[
-              { Icon: Twitter, label: "Twitter", href: "#" },
-              { Icon: Github, label: "GitHub", href: "#" },
-              { Icon: Mail, label: "Email", href: "/contact" },
+              { Icon: Twitter, label: "Sounez on X (Twitter)", href: "https://x.com/sounez" },
+              { Icon: Github, label: "Sounez on GitHub", href: "https://github.com/sounez" },
+              { Icon: Mail, label: "Contact via email", href: "/contact" },
             ].map(({ Icon, label, href }) => (
-              <a key={label} href={href} aria-label={label} className="grid h-9 w-9 place-items-center rounded-lg border border-border bg-background text-muted-foreground transition hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary">
-                <Icon className="h-4 w-4" />
-              </a>
+              <Link
+                key={label}
+                href={href}
+                aria-label={label}
+                className="grid h-9 w-9 place-items-center rounded-lg border border-border bg-background text-muted-foreground transition hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary min-h-[2.75rem] min-w-[2.75rem]"
+              >
+                <Icon className="h-4 w-4" aria-hidden />
+              </Link>
             ))}
           </div>
         </div>

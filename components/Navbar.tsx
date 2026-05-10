@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { SmartLink as Link } from "@/components/smart-link";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { TOOLS, CATEGORIES } from "@/data/tools";
@@ -120,13 +120,20 @@ export function Navbar() {
           </Link>
         </div>
 
-        <button className="md:hidden" onClick={() => setMobile(!mobile)} aria-label="Menu">
-          {mobile ? <X /> : <Menu />}
+        <button
+          type="button"
+          className="md:hidden rounded-md p-2 outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          onClick={() => setMobile(!mobile)}
+          aria-label={mobile ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobile}
+          aria-controls="mobile-navigation"
+        >
+          {mobile ? <X aria-hidden /> : <Menu aria-hidden />}
         </button>
       </div>
 
       {mobile && (
-        <div className="border-t border-border bg-background md:hidden">
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="border-t border-border bg-background md:hidden">
           <div className="space-y-1 px-4 py-3">
             {[
               { href: "/", label: "Home" },
@@ -141,7 +148,7 @@ export function Navbar() {
               </Link>
             ))}
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );

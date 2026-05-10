@@ -1,7 +1,7 @@
 import type { Tool } from "@/data/tools";
 import { ArrowRight } from "lucide-react";
 import { getToolIcon } from "@/lib/tool-icons";
-import Link from "next/link";
+import { SmartLink as Link } from "@/components/smart-link";
 
 export function ToolCard({ tool }: { tool: Tool }) {
   const Icon = getToolIcon(tool.slug);

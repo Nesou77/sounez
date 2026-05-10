@@ -1,7 +1,7 @@
 import { CATEGORIES, toolsByCategory } from "@/data/tools";
 import { ToolCard } from "@/components/ToolCard";
 import { AdSlot } from "@/components/AdSlot";
-import Link from "next/link";
+import { SmartLink as Link } from "@/components/smart-link";
 import { getCategoryIcon } from "@/lib/tool-icons";
 
 const INTROS: Record<string, string> = {

@@ -22,6 +22,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
+  robots: { index: true, follow: true },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     shortcut: "/favicon.svg",
@@ -39,10 +40,14 @@ export const metadata: Metadata = {
       "Free, fast and friendly online tools for creators, designers and everyday productivity.",
     type: "website",
     siteName: "Sounez",
+    locale: "en_US",
+    url: "./",
+    images: [{ url: "/logo.webp", width: 560, height: 140, alt: "Sounez", type: "image/webp" }],
   },
   twitter: {
     card: "summary_large_image",
     site: "@sounez",
+    images: [{ url: "/logo.webp", alt: "Sounez" }],
   },
 };
 
@@ -55,9 +60,17 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`}>
       <body>
         <GoogleTagManager />
+        <a
+          href="#main-content"
+          className="skip-link"
+        >
+          Skip to main content
+        </a>
         <div className="flex min-h-screen flex-col">
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" tabIndex={-1} className="flex-1 outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-inset">
+            {children}
+          </main>
           <Footer />
         </div>
         <Toaster

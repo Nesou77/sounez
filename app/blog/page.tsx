@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
 import { BLOG_POSTS } from "@/data/tools";
 

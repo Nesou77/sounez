@@ -13,7 +13,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   return (
     <>
-      <Script id="google-tag-manager" strategy="afterInteractive">
+      {/* lazyOnload: after first paint — cuts main-thread contention vs LCP (afterInteractive). */}
+      <Script id="google-tag-manager" strategy="lazyOnload">
         {init}
       </Script>
       <noscript>

@@ -77,6 +77,30 @@
 }
 
 @layer utilities {
+  /* Keyboard / screen readers: Jump past header without changing layout flow */
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-card);
+    color: var(--color-foreground);
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-220%);
+    transition: transform 0.2s ease, outline-offset 0.2s ease;
+    outline: none;
+    border: 1px solid var(--color-border);
+  }
+  .skip-link:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
   .bg-gradient-brand { background-image: var(--gradient-brand); }
   .bg-gradient-soft { background-image: var(--gradient-soft); }
   .bg-grid {

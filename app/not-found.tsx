@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SmartLink as Link } from "@/components/smart-link";
 
 export default function NotFound() {
   return (

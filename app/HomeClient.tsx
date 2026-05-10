@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { Search, ArrowRight, Sparkles, Zap, Shield, Heart, Plus } from "lucide-react";

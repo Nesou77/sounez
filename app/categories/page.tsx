@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { SmartLink as Link } from "@/components/smart-link";
 import { CATEGORIES, toolsByCategory } from "@/data/tools";
 import { ArrowRight } from "lucide-react";
 import { getCategoryIcon } from "@/lib/tool-icons";

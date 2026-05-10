@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
 
 type BrandLogoProps = {
@@ -22,16 +22,20 @@ export function BrandLogo({ variant = "navbar" }: BrandLogoProps) {
       <Image
         src="/logo.webp"
         alt="Sounez"
-        width={isNav ? 320 : 560}
-        height={isNav ? 80 : 140}
+        width={isNav ? 216 : 560}
+        height={isNav ? 54 : 140}
         className={imgClass}
         sizes={
           isNav
-            ? "(max-width: 639px) 48vw, (max-width: 1023px) 184px, 208px"
-            : "(max-width: 639px) 88vw, (max-width: 1023px) 300px, min(380px, 90vw)"
+            ? /* Match max rendered width + room for DPR (avoids oversized 384w on phones) */
+              "(max-width: 639px) 168px, (max-width: 1023px) 184px, 208px"
+            : "(max-width: 639px) min(280px, 88vw), (max-width: 1023px) min(300px, 92vw), min(380px, 72vw)"
         }
-        quality={isNav ? 88 : 92}
+        quality={isNav ? 82 : 90}
         priority={isNav}
+        fetchPriority={isNav ? "high" : "low"}
+        decoding="async"
+        loading={isNav ? "eager" : "lazy"}
       />
     </Link>
   );

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { TOOLS, BLOG_POSTS, type Tool } from "@/data/tools";
 import { ToolCard } from "./ToolCard";
 import { AdSlot } from "./AdSlot";
-import Link from "next/link";
+import { SmartLink as Link } from "@/components/smart-link";
 import { getToolIcon } from "@/lib/tool-icons";
 import { ArrowRight, Lightbulb, Sparkles, BookOpen, Layers } from "lucide-react";
 import { EngagementBar } from "./EngagementBar";
