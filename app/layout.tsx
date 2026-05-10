@@ -22,6 +22,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg",
+  },
   title: {
     default: "Sounez — Free Online Tools for Creators, Designers & Productivity",
     template: "%s | Sounez",

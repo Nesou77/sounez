@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { TOOLS, CATEGORIES } from "@/data/tools";
 import { getToolIcon, getCategoryIcon } from "@/lib/tool-icons";
+import { BrandLogo } from "@/components/BrandLogo";
 
 const grouped = {
   "Creator Tools": TOOLS.filter((t) => t.category === "creator-tools"),
@@ -25,12 +26,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2 font-display text-xl font-bold">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-brand text-primary-foreground shadow-pop">
-            <Sparkles className="h-4 w-4" />
-          </span>
-          <span>Sounez</span>
-        </Link>
+        <BrandLogo variant="navbar" />
 
         <nav className="hidden items-center gap-1 md:flex" onMouseLeave={() => setOpen(null)}>
           <Link href="/" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted">

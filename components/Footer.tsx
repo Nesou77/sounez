@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Sparkles, Github, Twitter, Mail } from "lucide-react";
+import { Github, Twitter, Mail } from "lucide-react";
 import { TOOLS, CATEGORIES } from "@/data/tools";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function Footer() {
   const popular = TOOLS.slice(0, 6);
@@ -8,12 +9,7 @@ export function Footer() {
     <footer className="mt-24 border-t border-border bg-gradient-to-b from-background to-muted/40">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Link href="/" className="flex items-center gap-2 font-display text-xl font-bold">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-brand text-primary-foreground shadow-pop">
-              <Sparkles className="h-4 w-4" />
-            </span>
-            Sounez
-          </Link>
+          <BrandLogo variant="footer" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Simple Tools. Powerful Results. A growing collection of free, fast and beautifully simple tools — built for everyone.
           </p>
