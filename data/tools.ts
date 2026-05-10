@@ -27,11 +27,11 @@ export const CATEGORIES = [
 ] as const;
 
 export const BLOG_POSTS = [
-  { slug: "best-free-tools-for-creators", title: "10 Best Free Online Tools for Creators in 2025", excerpt: "Discover the must-have free tools every creator should use to save time and grow faster.", date: "2025-04-12", readTime: "6 min", image: "/blog/best-free-tools-for-creators.jpg" },
-  { slug: "how-to-grow-on-tiktok", title: "How to Grow on TikTok in 2025: A Creator's Playbook", excerpt: "A practical, no-fluff guide to growing a real TikTok audience this year.", date: "2025-04-08", readTime: "8 min", image: "/blog/how-to-grow-on-tiktok.jpg" },
-  { slug: "how-to-compress-images", title: "How to Compress Images Without Losing Quality", excerpt: "Smaller files, faster sites. Here's exactly how to compress images the right way.", date: "2025-03-30", readTime: "5 min", image: "/blog/how-to-compress-images.jpg" },
-  { slug: "best-color-palettes-for-design", title: "The Best Color Palettes for Modern Design", excerpt: "Curated palettes and the principles behind them — for landing pages, apps, and brands.", date: "2025-03-22", readTime: "7 min", image: "/blog/best-color-palettes-for-design.jpg" },
-  { slug: "how-to-create-a-strong-password", title: "How to Create a Strong Password You'll Actually Remember", excerpt: "Stop reusing passwords. Here's a simple system for strong, memorable credentials.", date: "2025-03-15", readTime: "4 min", image: "/blog/how-to-create-a-strong-password.jpg" },
+  { slug: "best-free-tools-for-creators", title: "10 Best Free Online Tools for Creators in 2026", excerpt: "Discover the must-have free tools every creator should use to save time and grow faster.", date: "2026-05-10", readTime: "6 min", image: "/blog/best-free-tools-for-creators.jpg" },
+  { slug: "how-to-grow-on-tiktok", title: "How to Grow on TikTok in 2026: A Creator's Playbook", excerpt: "A practical, no-fluff guide to growing a real TikTok audience this year.", date: "2026-05-10", readTime: "8 min", image: "/blog/how-to-grow-on-tiktok.jpg" },
+  { slug: "how-to-compress-images", title: "How to Compress Images Without Losing Quality", excerpt: "Smaller files, faster sites. Here's exactly how to compress images the right way.", date: "2026-05-10", readTime: "5 min", image: "/blog/how-to-compress-images.jpg" },
+  { slug: "best-color-palettes-for-design", title: "The Best Color Palettes for Modern Design", excerpt: "Curated palettes and the principles behind them — for landing pages, apps, and brands.", date: "2026-05-10", readTime: "7 min", image: "/blog/best-color-palettes-for-design.jpg" },
+  { slug: "how-to-create-a-strong-password", title: "How to Create a Strong Password You'll Actually Remember", excerpt: "Stop reusing passwords. Here's a simple system for strong, memorable credentials.", date: "2026-05-10", readTime: "4 min", image: "/blog/how-to-create-a-strong-password.jpg" },
 ];
 
 export function toolBySlug(slug: string) {

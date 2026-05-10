@@ -3,8 +3,8 @@ import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 
 export const metadata: Metadata = {
-  title: "How to Compress Images Without Losing Quality (2025 Guide) | Sounez",
-  description: "A complete 2025 guide to compressing images without losing quality. JPG vs PNG vs WebP, the right size for the web, and the safest free tool to use.",
+  title: "How to Compress Images Without Losing Quality (2026 Guide) | Sounez",
+  description: "A complete 2026 guide to compressing images without losing quality. JPG vs PNG vs WebP, the right size for the web, and the safest free tool to use.",
   openGraph: {
     title: "How to Compress Images Without Losing Quality",
     description: "Smaller files, faster sites, better SEO — the right way to compress images.",
@@ -26,7 +26,7 @@ export default function Post() {
         once you know what you&apos;re doing.
       </p>
       <p>
-        This guide covers the formats that matter in 2025, the right dimensions for the web, and how
+        This guide covers the formats that matter in 2026, the right dimensions for the web, and how
         to compress safely without uploading your files to sketchy third-party servers.
       </p>
 

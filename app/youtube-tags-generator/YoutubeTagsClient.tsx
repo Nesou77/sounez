@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import { toolBySlug } from "@/data/tools";
 const tool = toolBySlug("youtube-tags-generator")!;
-const MODS = ["best", "top", "2025", "tutorial", "guide", "tips", "free", "review", "how to", "for beginners", "explained", "ideas", "examples", "shorts", "fast"];
+const MODS = ["best", "top", "2026", "tutorial", "guide", "tips", "free", "review", "how to", "for beginners", "explained", "ideas", "examples", "shorts", "fast"];
 export function YoutubeTagsClient() {
   const [seed, setSeed] = useState("");
   const [tags, setTags] = useState<string[]>([]);
@@ -24,7 +24,7 @@ export function YoutubeTagsClient() {
       ]}
       howTo={["Enter your video's main keyword.", "Click Generate.", "Copy and paste tags into YouTube Studio."]}
       faqs={[
-        { q: "Do tags still work in 2025?", a: "Yes — they help YouTube understand context, even if titles and thumbnails matter more." },
+        { q: "Do tags still work in 2026?", a: "Yes — they help YouTube understand context, even if titles and thumbnails matter more." },
         { q: "How many tags should I use?", a: "10–20 relevant tags works best. Quality over quantity." },
       ]}>
       <div className="flex gap-2">

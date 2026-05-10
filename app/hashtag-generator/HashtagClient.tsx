@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import { toolBySlug } from "@/data/tools";
 const tool = toolBySlug("hashtag-generator")!;
-const MODS = ["", "tips", "daily", "love", "official", "lover", "community", "ofinstagram", "oftheday", "addict", "life", "world", "vibes", "gram", "post", "pro", "2025", "viral", "trending"];
+const MODS = ["", "tips", "daily", "love", "official", "lover", "community", "ofinstagram", "oftheday", "addict", "life", "world", "vibes", "gram", "post", "pro", "2026", "viral", "trending"];
 export function HashtagClient() {
   const [seed, setSeed] = useState("");
   const [tags, setTags] = useState<string[]>([]);

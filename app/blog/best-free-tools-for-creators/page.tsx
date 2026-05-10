@@ -3,10 +3,10 @@ import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 
 export const metadata: Metadata = {
-  title: "10 Best Free Online Tools for Creators in 2025 | Sounez",
-  description: "The 10 best free online tools every creator needs in 2025 — for YouTube, TikTok, blogs and design. No signup, runs in your browser.",
+  title: "10 Best Free Online Tools for Creators in 2026 | Sounez",
+  description: "The 10 best free online tools every creator needs in 2026 — for YouTube, TikTok, blogs and design. No signup, runs in your browser.",
   openGraph: {
-    title: "10 Best Free Online Tools for Creators in 2025",
+    title: "10 Best Free Online Tools for Creators in 2026",
     description: "The free toolkit every modern creator needs — fast, focused, browser-based.",
   },
 };
@@ -16,11 +16,11 @@ export default function Post() {
     <BlogPostShell
       slug="best-free-tools-for-creators"
       ctaTools={["youtube-tags-generator", "hashtag-generator", "color-palette-generator"]}
-      title="10 Best Free Online Tools for Creators in 2025"
-      excerpt="Discover the must-have free tools every creator should use in 2025 to save time, ship faster, and grow an audience without paying for bloated software."
+      title="10 Best Free Online Tools for Creators in 2026"
+      excerpt="Discover the must-have free tools every creator should use in 2026 to save time, ship faster, and grow an audience without paying for bloated software."
     >
       <p>
-        If you create content in 2025 — videos, posts, blogs, designs — your toolkit matters as much as
+        If you create content in 2026 — videos, posts, blogs, designs — your toolkit matters as much as
         your ideas. The right free tool can save hours every week. The wrong one can quietly drain
         your energy and your bandwidth. After testing dozens, here are the ten we keep coming back to.
       </p>
@@ -33,7 +33,7 @@ export default function Post() {
 
       <BlogImage src="/blog/inline-creator-toolbox.jpg" alt="A neatly organized creator toolbox of app icons" caption="A focused toolkit beats a bloated one — every time." />
 
-      <h2>Why free tools beat paid bloat in 2025</h2>
+      <h2>Why free tools beat paid bloat in 2026</h2>
       <p>
         Most creators don&apos;t need a 12-app subscription stack. You need fast, focused, single-purpose
         tools that get out of the way. The big editors keep adding features you&apos;ll never touch — and

@@ -3,7 +3,7 @@ import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 
 export const metadata: Metadata = {
-  title: "The Best Color Palettes for Modern Design (2025) | Sounez",
+  title: "The Best Color Palettes for Modern Design (2026) | Sounez",
   description: "The principles behind color palettes that just work — for landing pages, apps and brands. Plus the free tools to build your own.",
   openGraph: {
     title: "Best Color Palettes for Modern Design",
@@ -62,7 +62,7 @@ export default function Post() {
         fails, darken or lighten it by one step.
       </p>
 
-      <h2>Five palette directions that work in 2025</h2>
+      <h2>Five palette directions that work in 2026</h2>
       <ul>
         <li><strong>Monochrome + one accent</strong> — Linear, Vercel. Calm and confident.</li>
         <li><strong>Warm neutrals</strong> — Notion, Stripe. Trustworthy and editorial.</li>

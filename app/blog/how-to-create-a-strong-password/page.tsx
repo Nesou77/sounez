@@ -3,7 +3,7 @@ import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 
 export const metadata: Metadata = {
-  title: "How to Create a Strong Password You'll Actually Remember (2025) | Sounez",
+  title: "How to Create a Strong Password You'll Actually Remember (2026) | Sounez",
   description: "Stop reusing passwords. A simple, modern system for strong, memorable credentials — plus 2FA, password managers and the best free generator.",
   openGraph: {
     title: "How to Create a Strong Password",
