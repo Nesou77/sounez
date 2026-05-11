@@ -5,6 +5,7 @@ import { Calendar, Clock, ArrowLeft, ArrowRight, Sparkles, Wrench } from "lucide
 import { AdSlot } from "./AdSlot";
 import { BlogEngagement } from "./BlogEngagement";
 import { EngagementBar } from "./EngagementBar";
+import { AuthorCard } from "./AuthorCard";
 import { BLOG_POSTS, TOOLS } from "@/data/tools";
 import { getToolIcon } from "@/lib/tool-icons";
 
@@ -56,7 +57,10 @@ export function BlogPostShell({
             <p className="animate-slide-up delay-75 mt-5 text-lg leading-relaxed text-muted-foreground">
               {excerpt}
             </p>
-            <EngagementBar slug={slug} title={title} className="mt-6" />
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+              <AuthorCard compact />
+              <EngagementBar slug={slug} title={title} />
+            </div>
           </header>
 
           <figure className="group relative my-10 overflow-hidden rounded-3xl border border-border bg-card shadow-pop">
@@ -113,6 +117,11 @@ export function BlogPostShell({
           <AdSlot className="my-12" label="Sponsored" />
 
           <BlogEngagement slug={slug} />
+
+          <div className="my-8">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Written by</p>
+            <AuthorCard />
+          </div>
 
           {primaryTools[0] && (
             <section className="my-12 overflow-hidden rounded-3xl border border-border bg-gradient-brand p-8 text-primary-foreground shadow-pop">

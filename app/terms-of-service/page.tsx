@@ -1,0 +1,305 @@
+import type { Metadata } from "next";
+import { SmartLink as Link } from "@/components/smart-link";
+import { FileText, Mail } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Terms of Service — Sounez",
+  description:
+    "Read the Terms of Service for Sounez. By using our free online tools you agree to these terms.",
+  alternates: { canonical: "/terms-of-service" },
+  openGraph: {
+    title: "Terms of Service — Sounez",
+    description: "The terms that govern your use of Sounez and its free online tools.",
+    url: "/terms-of-service",
+  },
+};
+
+const LAST_UPDATED = "May 11, 2026";
+
+export default function TermsOfServicePage() {
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+      {/* Header */}
+      <header className="mb-12 text-center">
+        <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-brand text-primary-foreground shadow-pop">
+          <FileText className="h-6 w-6" />
+        </div>
+        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Terms of Service</h1>
+        <p className="mt-4 text-muted-foreground">
+          Last updated: <time dateTime="2026-05-11">{LAST_UPDATED}</time>
+        </p>
+        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+          Please read these terms carefully before using Sounez. By accessing or using our website
+          and tools, you agree to be bound by these terms.
+        </p>
+      </header>
+
+      {/* Content */}
+      <div className="space-y-10 rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-10">
+
+        {/* 1 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">1. Acceptance of Terms</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              By accessing or using Sounez (&quot;the website&quot;, &quot;the service&quot;) at{" "}
+              <a
+                href="https://sounez.com"
+                className="font-medium text-primary hover:underline"
+              >
+                sounez.com
+              </a>
+              , you agree to comply with and be bound by these Terms of Service and our{" "}
+              <Link href="/privacy-policy" className="font-medium text-primary hover:underline">
+                Privacy Policy
+              </Link>
+              .
+            </p>
+            <p>
+              If you do not agree to these terms, please do not use the website. We reserve the
+              right to update these terms at any time. Continued use of the website after changes
+              are posted constitutes your acceptance of the revised terms.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 2 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">2. Use of the Website</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              Sounez grants you a limited, non-exclusive, non-transferable, revocable licence to
+              access and use the website for personal, non-commercial purposes.
+            </p>
+            <p>You agree not to:</p>
+            <ul className="ml-5 list-disc space-y-1.5">
+              <li>Use the website for any unlawful purpose or in violation of any applicable laws.</li>
+              <li>
+                Attempt to gain unauthorised access to any part of the website or its related
+                systems.
+              </li>
+              <li>
+                Use automated tools (bots, scrapers, crawlers) to access or extract content from the
+                website without prior written permission.
+              </li>
+              <li>
+                Interfere with or disrupt the integrity or performance of the website or its
+                infrastructure.
+              </li>
+              <li>
+                Reproduce, duplicate, copy, sell, or exploit any portion of the website for
+                commercial purposes without express written consent.
+              </li>
+              <li>
+                Transmit any harmful, offensive, or disruptive content through any feature of the
+                website.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 3 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">3. Tool Usage &amp; Limitations</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              All tools on Sounez are provided free of charge for personal and general use. While we
+              strive to ensure accuracy and reliability, the tools are provided on an &quot;as
+              is&quot; basis.
+            </p>
+            <p>
+              You are solely responsible for how you use the output generated by our tools. Sounez
+              does not guarantee that results are accurate, complete, or suitable for any specific
+              purpose. Always verify important outputs independently before relying on them.
+            </p>
+            <p>
+              We reserve the right to modify, suspend, or discontinue any tool at any time without
+              notice.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 4 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">4. Intellectual Property</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              All content on Sounez — including but not limited to text, graphics, logos, icons,
+              tool designs, and code — is the property of Sounez or its content suppliers and is
+              protected by applicable intellectual property laws.
+            </p>
+            <p>
+              You may not reproduce, distribute, modify, or create derivative works from any content
+              on this website without our express written permission.
+            </p>
+            <p>
+              Output generated by Sounez tools (such as passwords, QR codes, or colour palettes) is
+              yours to use freely. We make no claim of ownership over content you create using our
+              tools.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 5 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">5. Disclaimer of Warranties</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              Sounez is provided &quot;as is&quot; and &quot;as available&quot; without any
+              warranties of any kind, either express or implied, including but not limited to
+              implied warranties of merchantability, fitness for a particular purpose, or
+              non-infringement.
+            </p>
+            <p>
+              We do not warrant that the website will be uninterrupted, error-free, or free of
+              viruses or other harmful components. We do not warrant the accuracy, completeness, or
+              usefulness of any information on the website.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 6 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">6. Limitation of Liability</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              To the fullest extent permitted by applicable law, Sounez and its operators shall not
+              be liable for any indirect, incidental, special, consequential, or punitive damages
+              arising from your use of, or inability to use, the website or its tools.
+            </p>
+            <p>
+              This includes, without limitation, damages for loss of profits, data, goodwill, or
+              other intangible losses, even if we have been advised of the possibility of such
+              damages.
+            </p>
+            <p>
+              Our total liability to you for any claim arising from your use of the website shall
+              not exceed the amount you paid to use the service (which, as the service is free, is
+              zero).
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 7 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">7. Third-Party Links</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              Sounez may contain links to third-party websites or services. These links are provided
+              for your convenience only. We have no control over the content, privacy practices, or
+              availability of those sites.
+            </p>
+            <p>
+              The inclusion of any link does not imply endorsement by Sounez. We are not responsible
+              for any loss or damage that may arise from your use of third-party websites.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 8 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">8. Advertising</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              Sounez displays advertisements served by Google AdSense and potentially other
+              third-party advertising networks. These ads help us keep the service free for
+              everyone.
+            </p>
+            <p>
+              We are not responsible for the content of advertisements displayed on the website.
+              Clicking on an advertisement is at your own risk. Please review the advertiser&apos;s
+              terms and privacy policy before engaging with any ad.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 9 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">9. Changes to These Terms</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              We reserve the right to modify these Terms of Service at any time. Changes will be
+              effective immediately upon posting to this page, with an updated &quot;Last
+              updated&quot; date.
+            </p>
+            <p>
+              It is your responsibility to review these terms periodically. Your continued use of
+              Sounez after any changes constitutes your acceptance of the new terms.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 10 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">10. Governing Law</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              These terms shall be governed by and construed in accordance with applicable laws.
+              Any disputes arising from these terms or your use of the website shall be resolved
+              through good-faith negotiation in the first instance.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 11 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">11. Contact Us</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              If you have any questions about these Terms of Service, please contact us:
+            </p>
+            <a
+              href="mailto:hello@sounez.com"
+              className="inline-flex items-center gap-2 font-medium text-primary hover:underline"
+            >
+              <Mail className="h-4 w-4" />
+              hello@sounez.com
+            </a>
+            <p>
+              Or use our{" "}
+              <Link href="/contact" className="font-medium text-primary hover:underline">
+                contact form
+              </Link>
+              .
+            </p>
+          </div>
+        </section>
+      </div>
+
+      {/* Footer nav */}
+      <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+        <Link href="/privacy-policy" className="hover:text-foreground hover:underline">
+          Privacy Policy
+        </Link>
+        <span aria-hidden>·</span>
+        <Link href="/contact" className="hover:text-foreground hover:underline">
+          Contact
+        </Link>
+        <span aria-hidden>·</span>
+        <Link href="/" className="hover:text-foreground hover:underline">
+          Home
+        </Link>
+      </div>
+    </div>
+  );
+}

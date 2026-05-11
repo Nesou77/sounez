@@ -4,7 +4,8 @@ import { Sparkles, Zap, Heart, Wand2, Rocket, Brush, Wrench, CheckCircle2, Arrow
 
 export const metadata: Metadata = {
   title: "About Sounez — Free Online Tools for Everyone",
-  description: "Sounez is a growing collection of free online tools for creators, designers, students and productivity lovers. Simple, fast and built to help.",
+  description:
+    "Sounez is a growing collection of free online tools for creators, designers, students and productivity lovers. Built by Nesou — simple, fast and built to help.",
   openGraph: {
     title: "About Sounez",
     description: "Why we built Sounez and what we believe in.",
@@ -49,6 +50,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Mission */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6">
         <div className="ring-gradient rounded-3xl border border-border bg-card p-8 shadow-soft sm:p-12">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">Our mission</span>
@@ -59,6 +61,52 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Who built this */}
+      <section className="mx-auto max-w-4xl px-4 pt-16 sm:px-6">
+        <div className="flex flex-col gap-6 rounded-3xl border border-border bg-card p-8 shadow-soft sm:flex-row sm:items-start sm:p-10">
+          <div
+            aria-hidden
+            className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-gradient-brand text-xl font-bold text-primary-foreground shadow-pop"
+          >
+            N
+          </div>
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary">The person behind Sounez</span>
+            <h2 className="mt-1.5 text-2xl font-bold tracking-tight">Hi, I&apos;m Nesou.</h2>
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+              I built Sounez because I kept running into the same problem: needing a simple tool,
+              finding only bloated apps that required sign-ups, subscriptions or installs. So I
+              started building the tools I actually wanted to use — fast, focused, free, and
+              browser-based.
+            </p>
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+              I&apos;m a creator and developer who cares about practical tools that respect your time.
+              Sounez is an actively maintained project — I ship new tools regularly and genuinely
+              read every message sent through the{" "}
+              <Link href="/contact" className="font-medium text-primary hover:underline">
+                contact form
+              </Link>
+              .
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-primary/40"
+              >
+                Read the blog <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-primary/40"
+              >
+                Say hello
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What we offer */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">What we offer</span>
@@ -85,6 +133,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Values */}
       <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <div className="text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">What we believe</span>
@@ -103,6 +152,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Trust CTA */}
       <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6">
         <div className="overflow-hidden rounded-3xl bg-gradient-brand p-8 text-primary-foreground shadow-pop sm:p-12">
           <div className="grid gap-8 md:grid-cols-2 md:items-center">
