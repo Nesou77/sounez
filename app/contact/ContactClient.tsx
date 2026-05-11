@@ -1,11 +1,9 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Mail, Send, MessageCircle, CheckCircle2, Loader2 } from "lucide-react";
-
-const ReCAPTCHA = dynamic(async () => (await import("react-google-recaptcha")).default, { ssr: false });
+import { executeContactRecaptchaV3 } from "@/lib/recaptcha-v3-browser";
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY?.trim() ?? "";
 
@@ -63,8 +61,6 @@ export function ContactClient() {
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  const [recaptchaMount, setRecaptchaMount] = useState(0);
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) => {
     setForm((p) => ({ ...p, [k]: v }));
@@ -79,9 +75,17 @@ export function ContactClient() {
       toast.error("Please fix the highlighted fields.");
       return;
     }
-    if (RECAPTCHA_SITE_KEY && !captchaToken) {
-      toast.error("Please complete the captcha.");
-      return;
+
+    let captchaToken: string | undefined;
+    if (RECAPTCHA_SITE_KEY) {
+      try {
+        captchaToken = await executeContactRecaptchaV3(RECAPTCHA_SITE_KEY);
+      } catch {
+        toast.error("Security check unavailable", {
+          description: "Please wait a moment, refresh the page, and try again.",
+        });
+        return;
+      }
     }
 
     const pageUrl = typeof window !== "undefined" ? window.location.href : "";
@@ -104,7 +108,7 @@ export function ContactClient() {
           topic: form.topic,
           message: form.message.trim(),
           pageUrl: parsedPageUrl,
-          captchaToken: captchaToken ?? undefined,
+          captchaToken,
         }),
       });
 
@@ -124,8 +128,6 @@ export function ContactClient() {
       setSent(true);
       toast.success("Message sent", { description: "We'll reply within 24 hours." });
       setForm({ name: "", email: "", topic: "Feedback", message: "" });
-      setCaptchaToken(null);
-      setRecaptchaMount((k) => k + 1);
     } catch {
       toast.error("Network error", { description: "Check your connection and try again." });
     } finally {
@@ -234,20 +236,10 @@ export function ContactClient() {
           </div>
         </Field>
 
-        {RECAPTCHA_SITE_KEY ? (
-          <div className="flex justify-center sm:justify-start">
-            <ReCAPTCHA
-              key={recaptchaMount}
-              sitekey={RECAPTCHA_SITE_KEY}
-              onChange={(tok) => setCaptchaToken(tok)}
-              onExpired={() => setCaptchaToken(null)}
-            />
-          </div>
-        ) : null}
-
         <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-muted-foreground">
             By sending this message, you agree to our friendly use of your email to reply.
+            {RECAPTCHA_SITE_KEY ? <> This site is protected by Google reCAPTCHA.</> : null}
           </p>
           <button
             type="submit"

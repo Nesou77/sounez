@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { parseRecipientEmails } from "@/lib/email/validate-email";
 import { sendContactEmail } from "@/lib/email/send-contact";
-import { verifyRecaptchaToken } from "@/lib/recaptcha";
+import { verifyContactRecaptchaV3 } from "@/lib/recaptcha";
 
 const BODY_SCHEMA = z.object({
   name: z.string().trim().min(1).max(100),
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
 
   const captchaRequired = !!process.env.RECAPTCHA_SECRET_KEY?.trim();
   if (captchaRequired) {
-    const captcha = await verifyRecaptchaToken(parsed.data.captchaToken);
+    const captcha = await verifyContactRecaptchaV3(parsed.data.captchaToken);
     if (!captcha.ok) {
       return NextResponse.json(
         { ok: false, error: captcha.error ?? "Captcha verification failed." },
