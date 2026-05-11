@@ -5,10 +5,10 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 
 export const metadata: Metadata = {
   title: "The Best Color Palettes for Modern Design (2026) | Sounez",
-  description: "The principles behind color palettes that just work. for landing pages, apps and brands. Plus the free tools to build your own.",
+  description: "The principles behind color palettes that just work — for landing pages, apps and brands. Plus the free tools to build your own.",
   openGraph: {
     title: "Best Color Palettes for Modern Design",
-    description: "Palettes that just work. and the principles behind them.",
+    description: "Palettes that just work, and the principles behind them.",
   },
 };
 
@@ -24,7 +24,7 @@ export default function Post() {
       <BlogJsonLd
         slug="best-color-palettes-for-design"
         title="The Best Color Palettes for Modern Design"
-        description="The principles behind color palettes that just work. for landing pages, apps and brands. Plus the free tools to build your own."
+        description="The principles behind color palettes that just work — for landing pages, apps and brands. Plus the free tools to build your own."
         articleSection="Design Tools"
         faqs={FAQS}
       />
@@ -37,7 +37,7 @@ export default function Post() {
         <p>
           Color is the first thing a visitor sees and the last thing they remember. Get it right and
           your product feels confident, modern, considered. Get it wrong and even great copy and
-          layout fall flat. Most designers don&apos;t lack taste. they lack a system. This article gives
+          layout fall flat. Most designers don&apos;t lack taste — they lack a system. This article gives
           you one.
         </p>
 
@@ -45,12 +45,12 @@ export default function Post() {
 
         <h2>The 60-30-10 rule (and why it works)</h2>
         <ul>
-          <li><strong>60%</strong>. neutral background and surfaces</li>
-          <li><strong>30%</strong>. secondary color (text, borders, supporting UI)</li>
-          <li><strong>10%</strong>. your bold accent (buttons, links, highlights)</li>
+          <li><strong>60%</strong>: neutral background and surfaces</li>
+          <li><strong>30%</strong>: secondary color (text, borders, supporting UI)</li>
+          <li><strong>10%</strong>: your bold accent (buttons, links, highlights)</li>
         </ul>
         <p>
-          This proportion gives the eye a place to rest. Designs that fail usually invert it .
+          This proportion gives the eye a place to rest. Designs that fail usually invert it:
           accent everywhere, no quiet space. Build a palette that respects these ratios with the{" "}
           <a href="/color-palette-generator">Color Palette Generator</a>.
         </p>
@@ -63,12 +63,12 @@ export default function Post() {
         </p>
         <PullQuote>Two colors used with intent will always beat seven used by accident.</PullQuote>
 
-        <h2>Use gradients sparingly. make them count</h2>
+        <h2>Use gradients sparingly — make them count</h2>
         <p>
           One signature gradient on your hero section beats a rainbow everywhere. Modern gradients
           work best when they stay close in hue (e.g. blue → violet) rather than jumping across the
           wheel. Build yours with the <a href="/css-gradient-generator">CSS Gradient Generator</a> and
-          save them as design tokens. never re-invent the gradient on every page.
+          save them as design tokens — never re-invent the gradient on every page.
         </p>
 
         <h2>Test contrast (this is non-negotiable)</h2>
@@ -83,16 +83,16 @@ export default function Post() {
 
         <h2>Five palette directions that work in 2026</h2>
         <ul>
-          <li><strong>Monochrome + one accent</strong>. Linear, Vercel. Calm and confident.</li>
-          <li><strong>Warm neutrals</strong>. Notion, Stripe. Trustworthy and editorial.</li>
-          <li><strong>Dark mode first</strong>. Raycast, GitHub. Premium and developer-friendly.</li>
-          <li><strong>Pastel + bold accent</strong>. Figma, Framer. Playful but professional.</li>
-          <li><strong>High-contrast brutalism</strong>. Vercel hero pages. Confident and modern.</li>
+          <li><strong>Monochrome + one accent</strong>: Linear, Vercel. Calm and confident.</li>
+          <li><strong>Warm neutrals</strong>: Notion, Stripe. Trustworthy and editorial.</li>
+          <li><strong>Dark mode first</strong>: Raycast, GitHub. Premium and developer-friendly.</li>
+          <li><strong>Pastel + bold accent</strong>: Figma, Framer. Playful but professional.</li>
+          <li><strong>High-contrast brutalism</strong>: Vercel hero pages. Confident and modern.</li>
         </ul>
 
         <h2>The pre-launch color checklist</h2>
         <ol>
-          <li>Pick one hero color. the rest follows</li>
+          <li>Pick one hero color — the rest follows</li>
           <li>Build tints and shades with the <a href="/color-palette-generator">Palette Generator</a></li>
           <li>Test every text/background combination for WCAG AA</li>
           <li>Define semantic tokens (no raw hex in components)</li>
@@ -112,7 +112,7 @@ export default function Post() {
         <p>
           Pick fewer colors and use them with intent. Build a system, not a mood board. Open the{" "}
           <a href="/color-palette-generator">Color Palette Generator</a> and start with one hero color
-          right now. the rest of your design system will fall into place.
+          right now — the rest of your design system will fall into place.
         </p>
       </BlogPostShell>
     </>

@@ -9,13 +9,13 @@ export const metadata: Metadata = {
     "Work from anywhere without paying for a bloated app stack. The best free browser-based productivity tools for remote workers in 2026.",
   openGraph: {
     title: "Best Free Productivity Tools for Remote Workers in 2026",
-    description: "Free tools that cover everything a remote worker needs. no subscriptions.",
+    description: "Free tools that cover everything a remote worker needs. No subscriptions.",
   },
 };
 
 const FAQS = [
   { question: "What's the single most important free tool for remote workers?", answer: "A password manager (Bitwarden is free and excellent) paired with the Password Generator. Security is the foundation everything else sits on." },
-  { question: "Are browser-based tools safe for work use?", answer: "Yes, for single-purpose utilities. Tools like the Image Compressor and Word Counter process everything locally. nothing is sent to a server." },
+  { question: "Are browser-based tools safe for work use?", answer: "Yes, for single-purpose utilities. Tools like the Image Compressor and Word Counter process everything locally — nothing is sent to a server." },
   { question: "How do I avoid tool overload?", answer: "Audit your tools every quarter. If you haven't opened something in 30 days, cancel it. Replace paid single-purpose tools with free browser alternatives wherever possible." },
 ];
 
@@ -33,7 +33,7 @@ export default function Post() {
         slug="best-productivity-tools-for-remote-workers"
         ctaTools={["word-counter", "password-generator", "text-case-converter"]}
         title="The Best Free Productivity Tools for Remote Workers in 2026"
-        excerpt="Work from anywhere without paying for a bloated app stack. These free, browser-based tools cover writing, security, design and communication. no subscriptions required."
+        excerpt="Work from anywhere without paying for a bloated app stack. These free, browser-based tools cover writing, security, design and communication — no subscriptions required."
       >
         <p>
           Remote work has normalized a dangerous habit: subscribing to every tool that promises to
@@ -50,7 +50,7 @@ export default function Post() {
 
         <h3>Writing and editing</h3>
         <p>
-          Before you publish anything. a Slack message, a client proposal, a blog post. run it
+          Before you publish anything (a Slack message, a client proposal, a blog post), run it
           through the <a href="/word-counter">Word Counter</a>. It shows word count, character count,
           reading time and sentence count at a glance. Knowing your reading time before you send a
           long email is a small thing that makes a big impression.
@@ -63,7 +63,7 @@ export default function Post() {
 
         <h3>Security</h3>
         <p>
-          Remote workers are a prime target for credential attacks. you&apos;re logging into company
+          Remote workers are a prime target for credential attacks. You&apos;re logging into company
           systems from home networks, coffee shops and co-working spaces. Every account needs a
           unique, strong password. Generate them with the{" "}
           <a href="/password-generator">Password Generator</a> and store them in a manager like
@@ -74,8 +74,8 @@ export default function Post() {
 
         <h3>Design and visual communication</h3>
         <p>
-          Remote workers communicate visually more than office workers. decks, async video
-          thumbnails, Notion covers, social posts. The{" "}
+          Remote workers communicate visually more than office workers (decks, async video
+          thumbnails, Notion covers, social posts). The{" "}
           <a href="/color-palette-generator">Color Palette Generator</a> and{" "}
           <a href="/css-gradient-generator">CSS Gradient Generator</a> give you professional-looking
           visuals without opening Figma or Photoshop. Read{" "}
@@ -93,7 +93,7 @@ export default function Post() {
         </p>
 
         <PullQuote>
-          The best remote stack isn&apos;t the biggest one. it&apos;s the one you actually open every day.
+          The best remote stack isn&apos;t the biggest one — it&apos;s the one you actually open every day.
         </PullQuote>
 
         <h2>The lean remote stack: what to pay for vs. what to keep free</h2>
@@ -115,7 +115,7 @@ export default function Post() {
         <ul>
           <li>
             Write shorter messages. Use the <a href="/word-counter">Word Counter</a> to keep Slack
-            messages under 100 words. long messages get skimmed or ignored.
+            messages under 100 words — long messages get skimmed or ignored.
           </li>
           <li>
             Use Loom for anything that would take more than 3 back-and-forth messages to explain.
@@ -125,7 +125,7 @@ export default function Post() {
             works when expectations are clear.
           </li>
           <li>
-            Compress images before sharing in docs or Notion. heavy images slow down shared
+            Compress images before sharing in docs or Notion. Heavy images slow down shared
             workspaces. Use the <a href="/image-compressor">Image Compressor</a>.
           </li>
         </ul>
@@ -139,7 +139,7 @@ export default function Post() {
           recommends using a VPN on any network you don&apos;t control. Beyond that: enable 2FA on every
           work account, and never reuse passwords across work and personal accounts. The{" "}
           <a href="/password-generator">Password Generator</a> makes unique passwords trivial to
-          create. there&apos;s no excuse for reuse.
+          create — there&apos;s no excuse for reuse.
         </p>
 
         <h2>Frequently Asked Questions</h2>
@@ -153,7 +153,7 @@ export default function Post() {
         <p>
           Yes, for single-purpose utilities. Tools like the{" "}
           <a href="/image-compressor">Image Compressor</a> and{" "}
-          <a href="/word-counter">Word Counter</a> process everything locally. nothing is sent to a
+          <a href="/word-counter">Word Counter</a> process everything locally — nothing is sent to a
           server.
         </p>
         <h3>How do I avoid tool overload?</h3>
@@ -164,7 +164,7 @@ export default function Post() {
 
         <h2>Conclusion: lean beats loaded</h2>
         <p>
-          The most productive remote workers aren&apos;t the ones with the most tools. they&apos;re the ones
+          The most productive remote workers aren&apos;t the ones with the most tools — they&apos;re the ones
           who&apos;ve cut the noise down to a focused few. Start with the{" "}
           <a href="/word-counter">Word Counter</a>, the{" "}
           <a href="/password-generator">Password Generator</a>, and the{" "}

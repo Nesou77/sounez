@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   description: "A complete 2026 guide to compressing images without losing quality. JPG vs PNG vs WebP, the right size for the web, and the safest free tool to use.",
   openGraph: {
     title: "How to Compress Images Without Losing Quality",
-    description: "Smaller files, faster sites, better SEO. the right way to compress images.",
+    description: "Smaller files, faster sites, better SEO. The right way to compress images.",
   },
 };
 
 const FAQS = [
-  { question: "Will compression ruin image quality?", answer: "Modern compressors are smart. At 70–80% JPG quality, the loss is invisible to the human eye. but the file is often 5–10x smaller." },
+  { question: "Will compression ruin image quality?", answer: "Modern compressors are smart. At 70–80% JPG quality, the loss is invisible to the human eye, but the file is often 5–10x smaller." },
   { question: "Is browser-based compression safe?", answer: "Yes. The Sounez Image Compressor processes everything locally in your browser. Nothing is uploaded, logged or stored." },
   { question: "Should I use WebP everywhere?", answer: "Yes. WebP works in every modern browser and is 25–35% smaller than JPG at the same quality. Keep a JPG fallback only if you serve very old browsers." },
   { question: "Does image compression really help SEO?", answer: "Hugely. Google ranks page speed as part of Core Web Vitals, and images are usually the heaviest assets on a page. Compressing them is the fastest performance win you can ship." },
@@ -33,7 +33,7 @@ export default function Post() {
         slug="how-to-compress-images"
         ctaTools={["image-compressor", "qr-code-generator", "word-counter"]}
         title="How to Compress Images Without Losing Quality"
-        excerpt="Heavy images are the #1 reason websites feel slow. Here's exactly how to compress them the right way. without sacrificing quality, SEO, or your sanity."
+        excerpt="Heavy images are the #1 reason websites feel slow. Here's exactly how to compress them the right way, without sacrificing quality, SEO, or your sanity."
       >
         <p>
           If your blog, portfolio or landing page feels sluggish, images are almost certainly the
@@ -46,7 +46,7 @@ export default function Post() {
           to compress safely without uploading your files to sketchy third-party servers.
         </p>
 
-        <BlogImage src="/blog/inline-compression-comparison.jpg" alt="Before and after image compression comparison" caption="Same image, ten times smaller. visually identical." />
+        <BlogImage src="/blog/inline-compression-comparison.jpg" alt="Before and after image compression comparison" caption="Same image, ten times smaller — visually identical." />
 
         <h2>Why image compression matters more than ever</h2>
         <p>
@@ -56,17 +56,16 @@ export default function Post() {
           </a>{" "}
           heavily penalize slow-loading pages, and the largest image on the screen (your &quot;LCP
           element&quot;) is usually what makes or breaks your score. Mobile users on 4G will bounce after
-          3 seconds. Compressing your images is the single highest-leverage SEO fix you can do today
-         . bigger than rewriting any meta tag.
+          3 seconds. Compressing your images is the single highest-leverage SEO fix you can do today,
+          bigger than rewriting any meta tag.
         </p>
-        <PullQuote>A 200 KB image looks identical to a 2 MB one. and loads ten times faster.</PullQuote>
-
-        <h2>JPG vs PNG vs WebP. which format should you use?</h2>
+        <PullQuote>A 200 KB image looks identical to a 2 MB one and loads ten times faster.</PullQuote>
+        <h2>JPG vs PNG vs WebP: which format should you use?</h2>
         <ul>
-          <li><strong>JPG</strong>. best for photos and any image with smooth gradients. Tiny file sizes at 70–80% quality.</li>
-          <li><strong>PNG</strong>. use only when you need transparency (logos, icons, UI elements). Otherwise it&apos;s just a heavier JPG.</li>
-          <li><strong>WebP</strong>. the modern winner. 25–35% smaller than JPG at the same quality. Supported in every browser since 2020.</li>
-          <li><strong>AVIF</strong>. even smaller than WebP, but support is still spotty. Use as a fallback, not your main format.</li>
+          <li><strong>JPG</strong>: best for photos and any image with smooth gradients. Tiny file sizes at 70–80% quality.</li>
+          <li><strong>PNG</strong>: use only when you need transparency (logos, icons, UI elements). Otherwise it&apos;s just a heavier JPG.</li>
+          <li><strong>WebP</strong>: the modern winner. 25–35% smaller than JPG at the same quality. Supported in every browser since 2020.</li>
+          <li><strong>AVIF</strong>: even smaller than WebP, but support is still spotty. Use as a fallback, not your main format.</li>
         </ul>
 
         <h2>The right dimensions: stop uploading 4000-pixel images</h2>
@@ -80,8 +79,8 @@ export default function Post() {
         <h2>Use a browser-based compressor (and never upload to random sites)</h2>
         <p>
           Most free image compressors upload your files to their servers. That&apos;s a privacy risk for
-          anything sensitive. product mockups, client work, unreleased designs. Use the{" "}
-          <a href="/image-compressor">Sounez Image Compressor</a> instead. it runs entirely in your
+          anything sensitive (product mockups, client work, unreleased designs). Use the{" "}
+          <a href="/image-compressor">Sounez Image Compressor</a> instead. It runs entirely in your
           browser, so your files never leave your device. No accounts, no upload, no tracking.
         </p>
 
@@ -104,7 +103,7 @@ export default function Post() {
 
         <h2>Frequently Asked Questions</h2>
         <h3>Will compression ruin image quality?</h3>
-        <p>Modern compressors are smart. At 70–80% JPG quality, the loss is invisible to the human eye. but the file is often 5–10x smaller.</p>
+        <p>Modern compressors are smart. At 70–80% JPG quality, the loss is invisible to the human eye, but the file is often 5–10x smaller.</p>
         <h3>Is browser-based compression safe?</h3>
         <p>Yes. The <a href="/image-compressor">Sounez Image Compressor</a> processes everything locally in your browser. Nothing is uploaded, logged or stored.</p>
         <h3>Should I use WebP everywhere?</h3>
@@ -115,8 +114,8 @@ export default function Post() {
         <h2>Conclusion: compress every image before you publish</h2>
         <p>
           Make compression a non-negotiable step in your publishing workflow. Open the{" "}
-          <a href="/image-compressor">Image Compressor</a> now and run your next image through it .
-          you&apos;ll be surprised how much smaller it gets.
+          <a href="/image-compressor">Image Compressor</a> now and run your next image through it.
+          You&apos;ll be surprised how much smaller it gets.
         </p>
       </BlogPostShell>
     </>
