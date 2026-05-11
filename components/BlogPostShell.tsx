@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
-import { Calendar, Clock, ArrowLeft, ArrowRight, Sparkles, Wrench } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ArrowRight, Sparkles, Wrench, User } from "lucide-react";
 import { AdSlot } from "./AdSlot";
 import { BlogEngagement } from "./BlogEngagement";
 import { EngagementBar } from "./EngagementBar";
@@ -49,6 +49,9 @@ export function BlogPostShell({
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5" /> {post.readTime} read
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <User className="h-3.5 w-3.5" /> by Nesou
               </span>
             </div>
             <h1 className="animate-slide-up mt-3 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
