@@ -21,7 +21,7 @@ function validate(f: FormState): Errors {
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim())) e.email = "That email doesn't look right.";
   else if (f.email.trim().length > 255) e.email = "Email is too long.";
   if (!f.message.trim()) e.message = "Please write a short message.";
-  else if (f.message.trim().length < 10) e.message = "Message is a bit short — add a few more details.";
+  else if (f.message.trim().length < 10) e.message = "Message is a bit short. Add a few more details.";
   else if (f.message.trim().length > 2000) e.message = "Message must be under 2000 characters.";
   return e;
 }
@@ -142,7 +142,7 @@ export function ContactClient() {
       <header className="text-center">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Get in touch</h1>
         <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-          Feedback, bugs, tool requests or partnership ideas — we read every message.
+          Feedback, bugs, tool requests or partnership ideas. We read every message.
         </p>
       </header>
 
@@ -262,7 +262,7 @@ export function ContactClient() {
           <div className="animate-fade-in flex items-start gap-3 rounded-2xl border border-primary/30 bg-primary-soft/60 p-4 text-sm">
             <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
             <div>
-              <div className="font-semibold">Thanks — your message is on its way.</div>
+              <div className="font-semibold">Thanks. Your message is on its way.</div>
               <div className="text-muted-foreground">We&apos;ll get back to you within 24 hours.</div>
             </div>
           </div>

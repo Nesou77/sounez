@@ -5,7 +5,7 @@ import { toolBySlug } from "@/data/tools";
 const tool = toolBySlug("password-generator")!;
 
 export const metadata: Metadata = {
-  title: `${tool.name} — Free Strong Password Maker | Sounez`,
+  title: `${tool.name} | Free Strong Password Maker | Sounez`,
   description: tool.description,
   openGraph: { title: tool.name, description: tool.description },
 };

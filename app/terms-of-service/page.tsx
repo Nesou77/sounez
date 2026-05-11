@@ -3,12 +3,12 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { FileText, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Sounez",
+  title: "Terms of Service | Sounez",
   description:
     "Read the Terms of Service for Sounez. By using our free online tools you agree to these terms.",
   alternates: { canonical: "/terms-of-service" },
   openGraph: {
-    title: "Terms of Service — Sounez",
+    title: "Terms of Service | Sounez",
     description: "The terms that govern your use of Sounez and its free online tools.",
     url: "/terms-of-service",
   },
@@ -130,8 +130,8 @@ export default function TermsOfServicePage() {
           <h2 className="text-xl font-bold tracking-tight">4. Intellectual Property</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
-              All content on Sounez — including but not limited to text, graphics, logos, icons,
-              tool designs, and code — is the property of Sounez or its content suppliers and is
+              All content on Sounez, including but not limited to text, graphics, logos, icons,
+              tool designs, and code, is the property of Sounez or its content suppliers and is
               protected by applicable intellectual property laws.
             </p>
             <p>

@@ -131,7 +131,7 @@ export function BlogPostShell({
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h2 className="text-2xl font-bold">Ready to put this into action?</h2>
-                  <p className="mt-1 text-sm opacity-90">Open {primaryTools[0].name} and try it now — free, no signup.</p>
+                  <p className="mt-1 text-sm opacity-90">Open {primaryTools[0].name} and try it now. Free, no signup.</p>
                 </div>
                 <Link
                   href={`/${primaryTools[0].slug}`}

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -6,17 +6,17 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 export const metadata: Metadata = {
   title: "Image SEO: The Complete Guide to Ranking Your Images on Google (2026) | Sounez",
   description:
-    "Alt text, file names, compression, structured data — everything that makes images rank in Google Image Search and improve your page's Core Web Vitals.",
+    "Alt text, file names, compression, structured data. Everything that makes images rank in Google Image Search and improve your page's Core Web Vitals.",
   openGraph: {
     title: "Image SEO: The Complete Guide (2026)",
-    description: "Alt text, file names, compression — everything that makes images rank on Google.",
+    description: "Alt text, file names, compression. Everything that makes images rank on Google.",
   },
 };
 
 const FAQS = [
-  { question: "How long does it take for images to rank in Google Image Search?", answer: "Typically 2–8 weeks after Google crawls the page. New sites may take longer. Ensure your page is indexed first — images on non-indexed pages won't rank." },
+  { question: "How long does it take for images to rank in Google Image Search?", answer: "Typically 2 to 8 weeks after Google crawls the page. New sites may take longer. Make sure your page is indexed first. Images on non-indexed pages won't rank." },
   { question: "Does image file size affect SEO?", answer: "Yes, indirectly. Large images slow page load, which hurts Core Web Vitals, which is a direct ranking factor. Compress every image before publishing." },
-  { question: "Should I use stock photos or original images?", answer: "Original images rank better — Google can't rank the same stock photo twice. Even a simple original graphic or screenshot outperforms a generic stock image for SEO." },
+  { question: "Should I use stock photos or original images?", answer: "Original images rank better. Google can't rank the same stock photo twice. Even a simple original graphic or screenshot outperforms a generic stock image for SEO." },
   { question: "What's the most important image SEO factor?", answer: "Alt text and compression are the two highest-leverage factors for most sites. Start there before worrying about structured data." },
 ];
 
@@ -26,7 +26,7 @@ export default function Post() {
       <BlogJsonLd
         slug="image-seo-guide"
         title="Image SEO: The Complete Guide to Ranking Your Images on Google"
-        description="Alt text, file names, compression, structured data — everything that makes images rank in Google Image Search and improve your page's Core Web Vitals."
+        description="Alt text, file names, compression, structured data. Everything that makes images rank in Google Image Search and improve your page's Core Web Vitals."
         articleSection="Productivity"
         faqs={FAQS}
       />
@@ -39,7 +39,7 @@ export default function Post() {
         <p>
           Google Image Search drives billions of visits every month. For blogs, e-commerce sites and
           portfolios, it&apos;s a significant traffic source that most creators completely ignore. Getting
-          your images to rank isn&apos;t complicated — but it requires doing several small things right,
+          your images to rank isn&apos;t complicated. but it requires doing several small things right,
           consistently.
         </p>
         <p>
@@ -59,7 +59,7 @@ export default function Post() {
           <li>Google Lens results (visual search)</li>
         </ul>
         <p>
-          Each of these is a free traffic channel that requires zero additional content — just
+          Each of these is a free traffic channel that requires zero additional content. just
           properly optimized images you&apos;re already publishing.
         </p>
 
@@ -77,8 +77,8 @@ export default function Post() {
         <ul>
           <li>Use lowercase letters and hyphens (not underscores or spaces)</li>
           <li>Include your primary keyword naturally</li>
-          <li>Keep it under 5 words — descriptive, not stuffed</li>
-          <li>Rename before uploading — you can&apos;t change it after without breaking links</li>
+          <li>Keep it under 5 words. descriptive, not stuffed</li>
+          <li>Rename before uploading. you can&apos;t change it after without breaking links</li>
         </ul>
 
         <h2>2. Alt text: accessibility and SEO in one</h2>
@@ -100,7 +100,7 @@ export default function Post() {
             <strong>Bad</strong>: <code>alt=&quot;image&quot;</code> or <code>alt=&quot;color palette generator color palette generator free&quot;</code>
           </li>
           <li>Keep it under 125 characters</li>
-          <li>Include your keyword naturally — don&apos;t force it</li>
+          <li>Include your keyword naturally. don&apos;t force it</li>
           <li>Decorative images (dividers, backgrounds) should have empty alt: <code>alt=&quot;&quot;</code></li>
         </ul>
 
@@ -114,7 +114,7 @@ export default function Post() {
           highest-leverage SEO improvement most sites can make.
         </p>
         <p>
-          Use the <a href="/image-compressor">Sounez Image Compressor</a> — it runs entirely in your
+          Use the <a href="/image-compressor">Sounez Image Compressor</a>. it runs entirely in your
           browser, so files never leave your device. Aim for under 200 KB per image. Read the full
           guide on{" "}
           <a href="/blog/how-to-compress-images">compressing images without losing quality</a> for the
@@ -136,7 +136,7 @@ export default function Post() {
         <h2>5. Modern formats: WebP and AVIF</h2>
         <p>
           WebP is 25–35% smaller than JPG at the same quality and is supported in every modern
-          browser. AVIF is even smaller but has patchier support. Use WebP as your default in 2026 —
+          browser. AVIF is even smaller but has patchier support. Use WebP as your default in 2026 .
           the file size savings directly improve your Core Web Vitals score.
         </p>
 
@@ -144,7 +144,7 @@ export default function Post() {
         <p>
           Add <code>loading=&quot;lazy&quot;</code> to every image below the fold. This defers loading until
           the user scrolls near the image, dramatically improving initial page load time. Your hero
-          image should always have <code>loading=&quot;eager&quot;</code> (or no loading attribute) — it&apos;s
+          image should always have <code>loading=&quot;eager&quot;</code> (or no loading attribute). it&apos;s
           your LCP element.
         </p>
 
@@ -157,7 +157,7 @@ export default function Post() {
 
         <h2>8. Captions: underrated SEO signal</h2>
         <p>
-          Image captions are read more than body text — people scan pages and captions catch the eye.
+          Image captions are read more than body text. people scan pages and captions catch the eye.
           They&apos;re also indexed by Google. Write descriptive captions that include your keyword
           naturally. Keep them under 20 words using the{" "}
           <a href="/word-counter">Word Counter</a>.
@@ -179,7 +179,7 @@ export default function Post() {
         <h3>How long does it take for images to rank in Google Image Search?</h3>
         <p>
           Typically 2–8 weeks after Google crawls the page. New sites may take longer. Ensure your
-          page is indexed first — images on non-indexed pages won&apos;t rank.
+          page is indexed first. images on non-indexed pages won&apos;t rank.
         </p>
         <h3>Does image file size affect SEO?</h3>
         <p>
@@ -188,7 +188,7 @@ export default function Post() {
         </p>
         <h3>Should I use stock photos or original images?</h3>
         <p>
-          Original images rank better — Google can&apos;t rank the same stock photo twice. Even a simple
+          Original images rank better. Google can&apos;t rank the same stock photo twice. Even a simple
           original graphic or screenshot outperforms a generic stock image for SEO.
         </p>
         <h3>What&apos;s the most important image SEO factor?</h3>

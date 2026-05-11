@@ -3,7 +3,7 @@ import { WordCounterClient } from "./WordCounterClient";
 import { toolBySlug } from "@/data/tools";
 const tool = toolBySlug("word-counter")!;
 export const metadata: Metadata = {
-  title: `${tool.name} — Free Word & Character Counter | Sounez`,
+  title: `${tool.name} | Free Word and Character Counter | Sounez`,
   description: tool.description,
   openGraph: { title: tool.name, description: tool.description },
 };

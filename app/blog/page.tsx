@@ -4,7 +4,7 @@ import Image from "next/image";
 import { BLOG_POSTS } from "@/data/tools";
 
 export const metadata: Metadata = {
-  title: "Sounez Blog — Tips & Guides for Creators",
+  title: "Sounez Blog | Tips and Guides for Creators",
   description: "Guides, playbooks and tips on growing as a creator, designer and productivity pro.",
   openGraph: {
     title: "Sounez Blog",

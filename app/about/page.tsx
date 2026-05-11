@@ -3,9 +3,9 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { Sparkles, Zap, Heart, Wand2, Rocket, Brush, Wrench, CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Sounez — Free Online Tools for Everyone",
+  title: "About Sounez | Free Online Tools for Everyone",
   description:
-    "Sounez is a growing collection of free online tools for creators, designers, students and productivity lovers. Built by Nesou — simple, fast and built to help.",
+    "Sounez is a growing collection of free online tools for creators, designers, students and productivity lovers. Built by Nesou. Simple, fast and built to help.",
   openGraph: {
     title: "About Sounez",
     description: "Why we built Sounez and what we believe in.",
@@ -28,7 +28,7 @@ const values = [
 const trust = [
   "100% free, forever",
   "No account required",
-  "Runs in your browser — your data stays with you",
+  "Runs in your browser. Your data stays with you",
   "New tools added regularly",
 ];
 

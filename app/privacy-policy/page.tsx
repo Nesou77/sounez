@@ -3,12 +3,12 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { Shield, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Sounez",
+  title: "Privacy Policy | Sounez",
   description:
     "Learn how Sounez collects, uses and protects your information. We use cookies, Google AdSense and analytics to improve your experience.",
   alternates: { canonical: "/privacy-policy" },
   openGraph: {
-    title: "Privacy Policy — Sounez",
+    title: "Privacy Policy | Sounez",
     description: "How Sounez handles your data, cookies and advertising.",
     url: "/privacy-policy",
   },
@@ -48,19 +48,19 @@ export default function PrivacyPolicyPage() {
             <p>We may collect the following types of information automatically:</p>
             <ul className="ml-5 list-disc space-y-1.5">
               <li>
-                <strong className="text-foreground">Usage data</strong> — pages visited, tools used,
+                <strong className="text-foreground">Usage data.</strong> Pages visited, tools used,
                 time spent on pages, and referring URLs.
               </li>
               <li>
-                <strong className="text-foreground">Device and browser data</strong> — browser type,
+                <strong className="text-foreground">Device and browser data.</strong> Browser type,
                 operating system, screen resolution, and language preferences.
               </li>
               <li>
-                <strong className="text-foreground">IP address</strong> — used to determine
+                <strong className="text-foreground">IP address.</strong> Used to determine
                 approximate geographic location (country/region level) for analytics purposes.
               </li>
               <li>
-                <strong className="text-foreground">Contact form data</strong> — if you reach out via
+                <strong className="text-foreground">Contact form data.</strong> If you reach out via
                 our contact form, we collect your name, email address, and message content solely to
                 respond to your inquiry.
               </li>

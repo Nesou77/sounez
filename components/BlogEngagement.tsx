@@ -180,7 +180,7 @@ export function BlogEngagement({ slug }: { slug: string }) {
           </div>
           <div className="mt-3 flex items-center justify-between">
             <span className="text-xs text-muted-foreground">
-              {text.length}/1000 — no signup required
+              {text.length}/1000. No signup required.
             </span>
             <button
               type="submit"

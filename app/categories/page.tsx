@@ -5,10 +5,10 @@ import { ArrowRight } from "lucide-react";
 import { getCategoryIcon } from "@/lib/tool-icons";
 
 export const metadata: Metadata = {
-  title: "Tool Categories — Sounez",
+  title: "Tool Categories | Sounez",
   description: "Browse Sounez tools by category: Creator Tools, Design Tools and Utility Tools.",
   openGraph: {
-    title: "Tool Categories — Sounez",
+    title: "Tool Categories | Sounez",
     description: "Find the right tool for the job, organized by category.",
   },
 };

@@ -6,7 +6,7 @@ export type FaqItem = { question: string; answer: string };
 /**
  * Renders JSON-LD structured data for a blog post.
  * Supports BlogPosting + optional FAQPage schema.
- * Place this inside the page component (server component) — Next.js hoists
+ * Place this inside the page component (server component). Next.js hoists
  * <script> tags in the <head> automatically when rendered server-side.
  */
 export function BlogJsonLd({

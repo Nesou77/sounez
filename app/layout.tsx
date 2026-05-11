@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
   },
   title: {
-    default: "Sounez — Free Online Tools for Creators, Designers & Productivity",
+    default: "Sounez | Free Online Tools for Creators, Designers and Productivity",
     template: "%s | Sounez",
   },
   description:
     "Sounez offers free online tools for creators, designers and everyday productivity. QR codes, passwords, image compression, color palettes and more.",
   authors: [{ name: "Sounez" }],
   openGraph: {
-    title: "Sounez — Simple Tools. Powerful Results.",
+    title: "Sounez | Free Online Tools",
     description:
       "Free, fast and friendly online tools for creators, designers and everyday productivity.",
     type: "website",
