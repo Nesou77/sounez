@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 import { getSiteUrl } from "@/lib/site-url";
+import { getResendFromAddress } from "@/lib/email/resend-from";
 
 export type ContactPayload = {
   name: string;
@@ -10,8 +11,6 @@ export type ContactPayload = {
   pageUrl: string;
 };
 
-const DEFAULT_FROM = "Sounez <onboarding@resend.dev>";
-
 /** Send contact notification to all recipients via Resend (server-only). */
 export async function sendContactEmail(to: string[], payload: ContactPayload): Promise<{ id: string }> {
   const apiKey = process.env.RESEND_API_KEY?.trim();
@@ -21,7 +20,7 @@ export async function sendContactEmail(to: string[], payload: ContactPayload): P
 
   const resend = new Resend(apiKey);
   const base = getSiteUrl();
-  const from = DEFAULT_FROM;
+  const from = getResendFromAddress();
 
   const text = [
     `New contact message from Sounez`,
