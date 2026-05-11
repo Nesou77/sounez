@@ -38,16 +38,16 @@ export function ImageCompressorClient() {
   return (
     <ToolPageShell
       tool={tool}
-      intro="Compress JPG and PNG images directly in your browser. Files never leave your device."
+      intro="Compress JPG and PNG images right in your browser. Your files never leave your device and nothing gets uploaded."
       features={[
-        { title: "100% private", desc: "Compression happens locally — no uploads." },
-        { title: "Quality slider", desc: "Pick the size/quality trade-off you want." },
-        { title: "Instant download", desc: "Save the compressed file in one click." },
+        { title: "Fully private", desc: "Compression runs locally in your browser. No server, no upload." },
+        { title: "Quality slider", desc: "Drag the slider to find the right balance between file size and quality." },
+        { title: "Instant download", desc: "Save the compressed file with one click." },
       ]}
-      howTo={["Click Upload Image to open the panel.", "Drag & drop or pick a file.", "Adjust quality and click Compress, then Download."]}
+      howTo={["Click Upload Image to open the panel.", "Drag and drop your file or click Choose File.", "Adjust the quality slider, click Compress, then Download."]}
       faqs={[
         { q: "What formats are supported?", a: "JPG, PNG and WebP." },
-        { q: "Is there a file size limit?", a: "Browser memory permitting — works well up to ~25 MB per image." },
+        { q: "Is there a file size limit?", a: "It depends on your browser's available memory. It works well for most images up to around 25 MB." },
       ]}
     >
       <button onClick={() => setOpen(!open)} className="flex w-full items-center justify-between rounded-xl border border-border bg-muted/30 px-4 py-3 text-sm font-semibold">

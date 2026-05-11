@@ -30,16 +30,16 @@ export function PasswordGeneratorClient() {
   return (
     <ToolPageShell
       tool={tool}
-      intro="Generate strong, secure, random passwords with custom length and character rules. Runs entirely in your browser."
+      intro="Create a strong random password with the length and character types you choose. Everything runs in your browser and nothing is stored."
       features={[
-        { title: "Cryptographically secure", desc: "Uses the browser's secure random API." },
-        { title: "Fully customizable", desc: "Choose length and character types." },
-        { title: "100% private", desc: "Passwords never leave your device." },
+        { title: "Cryptographically secure", desc: "Uses your browser's built-in secure random number generator." },
+        { title: "Fully customizable", desc: "Set the length and choose which character types to include." },
+        { title: "100% private", desc: "Passwords are generated locally and never sent anywhere." },
       ]}
-      howTo={["Pick a length (12+ recommended).", "Toggle character types you want included.", "Click regenerate, then copy your password."]}
+      howTo={["Set your preferred password length with the slider.", "Toggle the character types you want included.", "Click Generate, then copy your password."]}
       faqs={[
-        { q: "How long should my password be?", a: "16+ characters with mixed case, numbers and symbols is excellent." },
-        { q: "Are passwords stored?", a: "Never. They're generated locally and discarded when you leave the page." },
+        { q: "How long should my password be?", a: "16 or more characters with a mix of uppercase, lowercase, numbers and symbols is a solid choice." },
+        { q: "Are passwords stored anywhere?", a: "No. They are generated in your browser and discarded the moment you leave the page." },
       ]}
     >
       <div className="flex items-center gap-2 rounded-xl border border-border bg-background p-3">

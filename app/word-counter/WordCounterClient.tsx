@@ -15,16 +15,16 @@ export function WordCounterClient() {
   }, [text]);
   return (
     <ToolPageShell tool={tool}
-      intro="Count words, characters, sentences and reading time for any text. Perfect for blog posts, captions and essays."
+      intro="Paste your text and see word count, character count, sentence count and reading time update as you type."
       features={[
-        { title: "Live stats", desc: "Numbers update as you type." },
-        { title: "Reading time", desc: "Estimated at 200 wpm — great for blog posts." },
-        { title: "Private", desc: "Your text stays on your device." },
+        { title: "Live stats", desc: "Every number updates the moment you type or paste." },
+        { title: "Reading time", desc: "Calculated at 200 words per minute. Useful for blog posts and social captions." },
+        { title: "Private", desc: "Your text stays on your device and is never sent anywhere." },
       ]}
-      howTo={["Paste your text in the editor.", "See live word, character and sentence counts.", "Use the reading time to fit blog or social formats."]}
+      howTo={["Paste or type your text in the editor.", "Word count, characters, sentences and reading time all update live.", "Use the reading time to check if your content fits the format you are writing for."]}
       faqs={[
-        { q: "Is there a character limit?", a: "No — paste as much as you'd like." },
-        { q: "How is reading time calculated?", a: "Based on the average adult reading speed of 200 words per minute." },
+        { q: "Is there a character limit?", a: "No. Paste as much text as you want." },
+        { q: "How is reading time calculated?", a: "It uses the average adult reading speed of 200 words per minute." },
       ]}>
       <textarea value={text} onChange={(e) => setText(e.target.value)} rows={10} placeholder="Start typing or paste text…"
         className="w-full rounded-xl border border-border bg-background p-4 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />

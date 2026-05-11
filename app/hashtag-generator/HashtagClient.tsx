@@ -16,16 +16,16 @@ export function HashtagClient() {
   };
   return (
     <ToolPageShell tool={tool}
-      intro="Generate trending hashtags for Instagram, TikTok and YouTube in seconds. One keyword in, ready-to-paste hashtags out."
+      intro="Type a topic and get a ready-to-copy set of hashtags for Instagram, TikTok and YouTube. No research needed."
       features={[
-        { title: "Instant", desc: "Get 19 hashtags in a click." },
-        { title: "Cross-platform", desc: "Works for Instagram, TikTok and Shorts." },
+        { title: "Instant results", desc: "Get 19 hashtags with one click." },
+        { title: "Works everywhere", desc: "Covers Instagram, TikTok and YouTube Shorts." },
         { title: "Free", desc: "No signup, no limits." },
       ]}
-      howTo={["Type your topic keyword.", "Click Generate.", "Copy and paste into your post."]}
+      howTo={["Type your topic keyword in the box.", "Click Generate.", "Copy all hashtags and paste them into your post."]}
       faqs={[
-        { q: "How many hashtags should I use?", a: "On TikTok, 3–5 sharp tags. On Instagram, 10–15 mixed-volume tags." },
-        { q: "Do hashtags still matter?", a: "Yes — they help platforms categorize your content." },
+        { q: "How many hashtags should I use?", a: "On TikTok, 3 to 5 focused tags work best. On Instagram, 10 to 15 mixed-volume tags is a good range." },
+        { q: "Do hashtags still matter?", a: "Yes. They help platforms understand what your content is about and show it to the right people." },
       ]}>
       <div className="flex gap-2">
         <input value={seed} onChange={(e) => setSeed(e.target.value)} placeholder="e.g. fitness"

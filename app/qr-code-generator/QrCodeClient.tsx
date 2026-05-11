@@ -30,16 +30,16 @@ export function QrCodeClient() {
   return (
     <ToolPageShell
       tool={tool}
-      intro="Generate a high-quality QR code for any URL, text or message — instantly, free and no signup required."
+      intro="Paste a URL or any text and get a high-resolution QR code you can download and use anywhere. Free, no account needed."
       features={[
-        { title: "Instant generation", desc: "Type and watch your QR code update in real time." },
-        { title: "High resolution", desc: "Download a crisp 256×256 PNG ready to print or share." },
-        { title: "Private", desc: "Everything runs in your browser — nothing is uploaded." },
+        { title: "Updates in real time", desc: "Type and watch the QR code change as you go." },
+        { title: "High resolution", desc: "Downloads as a crisp 256x256 PNG that prints cleanly." },
+        { title: "Private", desc: "Everything runs in your browser. Nothing is uploaded." },
       ]}
-      howTo={["Type or paste your URL/text in the input.", "Preview your QR code on the right.", "Click Download PNG to save it."]}
+      howTo={["Type or paste your URL or text into the input.", "Your QR code appears instantly on the right.", "Click Download PNG to save it."]}
       faqs={[
-        { q: "Is the QR code free to use commercially?", a: "Yes — use it anywhere, including print and ads." },
-        { q: "Does it work for Wi-Fi or vCards?", a: "Currently optimized for URLs and text. More formats coming soon." },
+        { q: "Is the QR code free to use commercially?", a: "Yes. Use it anywhere you like, including print materials and ads." },
+        { q: "Does it work for Wi-Fi or vCards?", a: "Right now it is optimized for URLs and plain text. More formats are coming." },
       ]}
     >
       <div className="grid gap-6 sm:grid-cols-2 items-center">

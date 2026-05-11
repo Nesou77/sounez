@@ -19,7 +19,7 @@ export default function CategoriesPage() {
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-bold sm:text-5xl">Tool Categories</h1>
         <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-          Pick a category to explore the right set of tools for what you&apos;re working on.
+          Not sure which tool you need? Browse by category and find the right one for the job.
         </p>
       </header>
 

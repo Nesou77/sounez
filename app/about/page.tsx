@@ -13,23 +13,23 @@ export const metadata: Metadata = {
 };
 
 const offers = [
-  { Icon: Rocket, title: "For creators", text: "Hashtags, video tags, earnings calculators and more — built to save hours every week.", href: "/categories/creator-tools", cta: "Explore creator tools" },
-  { Icon: Brush, title: "For designers", text: "Color palettes, gradients and visual helpers that turn ideas into pixels in seconds.", href: "/categories/design-tools", cta: "Explore design tools" },
-  { Icon: Wrench, title: "For everyone", text: "Everyday utilities like QR codes, password generators and word counters — just one click away.", href: "/categories/utility-tools", cta: "Explore utility tools" },
+  { Icon: Rocket, title: "For creators", text: "Hashtag generators, YouTube tag tools, earnings calculators. Built for people who publish content and want to spend less time on the boring parts.", href: "/categories/creator-tools", cta: "Explore creator tools" },
+  { Icon: Brush, title: "For designers", text: "Color palettes, CSS gradients and visual helpers. Open one, get what you need, and get back to designing.", href: "/categories/design-tools", cta: "Explore design tools" },
+  { Icon: Wrench, title: "For everyone", text: "QR codes, password generators, word counters, image compressors. The kind of tools you need once a week and always forget to bookmark.", href: "/categories/utility-tools", cta: "Explore utility tools" },
 ];
 
 const values = [
-  { Icon: Wand2, title: "Simplicity", text: "One job, done well. No clutter, no popups, no nonsense." },
-  { Icon: Zap, title: "Speed", text: "Tools open instantly and respond in real time, right in your browser." },
-  { Icon: Heart, title: "Accessibility", text: "Everything is free. No signup, no paywalls, no limits." },
-  { Icon: Sparkles, title: "Usefulness", text: "We only ship tools we'd actually use ourselves." },
+  { Icon: Wand2, title: "Simplicity", text: "Each tool does one thing. No settings you'll never use, no menus to dig through." },
+  { Icon: Zap, title: "Speed", text: "Tools open instantly and update in real time. No loading screens, no waiting." },
+  { Icon: Heart, title: "Free", text: "Everything is free. No signup, no paywall, no premium tier." },
+  { Icon: Sparkles, title: "Honest", text: "We only build tools we'd actually use. If it's not useful, it doesn't ship." },
 ];
 
 const trust = [
   "100% free, forever",
-  "No signup required",
-  "Runs in your browser — privacy first",
-  "New tools shipped regularly",
+  "No account required",
+  "Runs in your browser — your data stays with you",
+  "New tools added regularly",
 ];
 
 export default function AboutPage() {
@@ -39,13 +39,13 @@ export default function AboutPage() {
         <div className="absolute -top-32 left-1/2 -z-10 h-72 w-[60rem] -translate-x-1/2 rounded-full bg-gradient-brand opacity-20 blur-3xl" />
         <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-28">
           <span className="animate-fade-in inline-flex items-center gap-1.5 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-xs font-medium text-foreground/80 shadow-soft backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 text-primary" /> Our story
+            <Sparkles className="h-3.5 w-3.5 text-primary" /> How it started
           </span>
           <h1 className="animate-slide-up mt-5 text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
             Tools that <span className="text-gradient-brand">just work</span>.
           </h1>
           <p className="animate-slide-up delay-75 mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Sounez is a growing collection of free online tools designed to make everyday tasks faster and friendlier — for creators, designers, students and anyone who values their time.
+            Sounez is a collection of free browser-based tools built for creators, designers, students and anyone who needs to get something done without signing up for yet another app.
           </p>
         </div>
       </section>
@@ -53,10 +53,10 @@ export default function AboutPage() {
       {/* Mission */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6">
         <div className="ring-gradient rounded-3xl border border-border bg-card p-8 shadow-soft sm:p-12">
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary">Our mission</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary">Why Sounez exists</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight">Save people time with tools that feel effortless.</h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            We believe great tools should be invisible. Open, click, done. No accounts, no friction, no ads in your face. Sounez exists to take the small annoying tasks off your plate so you can focus on the work that actually matters.
+            The best tool is the one you barely notice. You open it, do the thing, and move on. No account to create, no tutorial to watch, no upgrade prompt. That&apos;s what every tool on Sounez is built to be.
           </p>
         </div>
       </section>
@@ -74,15 +74,14 @@ export default function AboutPage() {
             <span className="text-xs font-semibold uppercase tracking-wider text-primary">The person behind Sounez</span>
             <h2 className="mt-1.5 text-2xl font-bold tracking-tight">Hi, I&apos;m Nesou.</h2>
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              I built Sounez because I kept running into the same problem: needing a simple tool,
-              finding only bloated apps that required sign-ups, subscriptions or installs. So I
-              started building the tools I actually wanted to use — fast, focused, free, and
-              browser-based.
+              I built Sounez because I kept running into the same frustration: needing a simple tool
+              and finding only bloated apps that wanted my email address, a subscription, or a
+              download. So I started building the tools I actually wanted to use.
             </p>
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              I&apos;m a creator and developer who cares about practical tools that respect your time.
-              Sounez is an actively maintained project — I ship new tools regularly and genuinely
-              read every message sent through the{" "}
+              I&apos;m a developer and creator. I care about tools that respect your time and don&apos;t get
+              in your way. Sounez is something I actively work on. I ship new tools regularly and I
+              read every message that comes through the{" "}
               <Link href="/contact" className="font-medium text-primary hover:underline">
                 contact form
               </Link>
@@ -110,7 +109,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">What we offer</span>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">A toolkit for every kind of maker</h2>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Something useful for every kind of maker</h2>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {offers.map(({ Icon, title, text, href, cta }) => (
@@ -137,7 +136,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <div className="text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">What we believe</span>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">The values behind every tool</h2>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">What goes into every tool</h2>
         </div>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {values.map(({ Icon, title, text }) => (
@@ -157,10 +156,10 @@ export default function AboutPage() {
         <div className="overflow-hidden rounded-3xl bg-gradient-brand p-8 text-primary-foreground shadow-pop sm:p-12">
           <div className="grid gap-8 md:grid-cols-2 md:items-center">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-wider opacity-90">Why people trust Sounez</span>
-              <h2 className="mt-2 text-3xl font-bold tracking-tight">Built with care, shipped with love.</h2>
+              <span className="text-xs font-semibold uppercase tracking-wider opacity-90">Why people use Sounez</span>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight">Built to be useful. Kept free on purpose.</h2>
               <p className="mt-3 text-sm leading-relaxed opacity-90">
-                Every tool on Sounez is designed to be safe, fast and genuinely helpful — and to stay that way as we grow.
+                Every tool on Sounez is built to be fast, private and genuinely helpful. That won&apos;t change.
               </p>
             </div>
             <ul className="space-y-3">

@@ -5,22 +5,22 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { getCategoryIcon } from "@/lib/tool-icons";
 
 const INTROS: Record<string, string> = {
-  "creator-tools": "Sounez Creator Tools help YouTubers, TikTok creators and Instagram pros grow faster. Generate optimized tags, calculate earnings and find trending hashtags — all free, all instant.",
-  "design-tools": "Sounez Design Tools give designers and developers a faster way to ship beautiful work. Build color palettes, craft CSS gradients and copy production-ready code in seconds.",
-  "utility-tools": "Sounez Utility Tools are everyday productivity helpers — QR codes, word counters, password generators, image compressors and more. Free, fast and private.",
+  "creator-tools": "Tools for YouTubers, TikTokers and Instagram creators who want to spend less time on the repetitive stuff. Generate tags, estimate earnings and find the right hashtags. All free, all instant.",
+  "design-tools": "Color palettes, CSS gradients and visual helpers for designers and developers. Pick a color, build a gradient, copy the code and get back to work.",
+  "utility-tools": "Practical everyday tools that just get things done. QR codes, word counters, password generators, image compressors. Free, fast and nothing gets uploaded.",
 };
 
 const FAQS: Record<string, { q: string; a: string }[]> = {
   "creator-tools": [
-    { q: "Are Sounez creator tools free?", a: "Yes. Every creator tool on Sounez is free, with no signup or watermark." },
-    { q: "Do these tools work on mobile?", a: "Yes — Sounez is mobile-first and works smoothly on any phone or tablet." },
+    { q: "Are these creator tools free?", a: "Yes. Every tool on Sounez is free with no account required and no watermarks." },
+    { q: "Do they work on mobile?", a: "Yes. Sounez works on any phone or tablet, no app needed." },
   ],
   "design-tools": [
-    { q: "Can I use the generated colors and gradients in commercial projects?", a: "Yes, anything you generate is yours to use freely." },
-    { q: "Do you save my work?", a: "No data is stored. Save or copy what you need before leaving the page." },
+    { q: "Can I use the colors and gradients in commercial projects?", a: "Yes. Anything you generate is yours to use however you like." },
+    { q: "Is my work saved anywhere?", a: "No. Nothing is stored. Copy or save what you need before you close the tab." },
   ],
   "utility-tools": [
-    { q: "Are utility tools safe to use?", a: "Yes — tools like the password generator and image compressor run fully in your browser. Nothing is uploaded." },
+    { q: "Are these tools safe to use?", a: "Yes. Tools like the password generator and image compressor run entirely in your browser. Nothing is uploaded to any server." },
     { q: "Is there a usage limit?", a: "No. Use them as much as you want." },
   ],
 };
@@ -67,8 +67,7 @@ export function CategoryPage({ slug }: { slug: string }) {
       </section>
 
       <section className="my-12">
-        <h2 className="text-2xl font-bold">More categories</h2>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        <h2 className="text-2xl font-bold">More categories</h2>        <div className="mt-5 grid gap-4 sm:grid-cols-2">
           {others.map((c) => {
             const OtherIcon = getCategoryIcon(c.slug);
             return (

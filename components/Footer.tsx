@@ -11,7 +11,7 @@ export function Footer() {
         <div className="md:col-span-4">
           <BrandLogo variant="footer" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Simple Tools. Powerful Results. A growing collection of free, fast and beautifully simple tools — built for everyone.
+            Free tools that actually work. No signup, no installs, no clutter. Just open one and use it.
           </p>
           <div className="mt-5 flex items-center gap-2">
             {[
@@ -62,7 +62,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border py-6 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Sounez. Crafted with care for makers everywhere.
+        © {new Date().getFullYear()} Sounez. Built by Nesou for makers everywhere.
       </div>
     </footer>
   );

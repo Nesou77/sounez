@@ -9,16 +9,16 @@ export function ColorPaletteClient() {
   const [cols, setCols] = useState<string[]>(() => Array.from({ length: 5 }, rand));
   return (
     <ToolPageShell tool={tool}
-      intro="Generate beautiful, harmonious color palettes for your next design project. Click any swatch to copy its hex value."
+      intro="Generate a fresh color palette in one click. Tap any swatch to copy the hex code and use it anywhere."
       features={[
-        { title: "One-click generation", desc: "Spin a fresh palette in a single click." },
-        { title: "Copy hex instantly", desc: "Tap a swatch to copy its value." },
-        { title: "Free forever", desc: "No signup, no watermarks." },
+        { title: "One-click generation", desc: "Hit the button and get five new colors instantly." },
+        { title: "Copy hex instantly", desc: "Tap any swatch and the hex code goes to your clipboard." },
+        { title: "Free forever", desc: "No signup, no watermarks, no limits." },
       ]}
-      howTo={["Click Generate to create a new palette.", "Tap any swatch to copy its hex code.", "Use it in Figma, CSS or your brand."]}
+      howTo={["Click Generate to create a new palette.", "Tap any swatch to copy its hex code.", "Use the colors in Figma, CSS or your brand guidelines."]}
       faqs={[
-        { q: "Are colors random?", a: "Yes — each click generates fresh swatches. Save the ones you love." },
-        { q: "Can I use them commercially?", a: "Absolutely. Colors are free to use in any project." },
+        { q: "Are the colors random?", a: "Yes. Each click generates a fresh set of swatches. Save the ones you like before generating again." },
+        { q: "Can I use them in commercial projects?", a: "Yes. The colors are yours to use in any project, personal or commercial." },
       ]}>
       <div className="grid grid-cols-5 gap-3">
         {cols.map((c, i) => (

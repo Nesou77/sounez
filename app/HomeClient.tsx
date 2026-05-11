@@ -10,10 +10,10 @@ import { AdSlot } from "@/components/AdSlot";
 import { getCategoryIcon, getToolIcon } from "@/lib/tool-icons";
 
 const FAQS = [
-  { q: "Is Sounez free to use?", a: "Yes. Every tool on Sounez is 100% free, with no signup required." },
-  { q: "Do my files get uploaded to a server?", a: "No. Tools like the Image Compressor and Password Generator run entirely in your browser. Your data never leaves your device." },
-  { q: "Can I use Sounez tools for commercial work?", a: "Absolutely. Output from Sounez tools can be used for personal, educational and commercial projects." },
-  { q: "Will more tools be added?", a: "Yes — Sounez is built to scale to 100+ tools. New ones are added regularly." },
+  { q: "Is Sounez free to use?", a: "Yes. Every tool on Sounez is completely free. No account, no trial period, no catch." },
+  { q: "Do my files get uploaded to a server?", a: "No. Tools like the Image Compressor and Password Generator run entirely in your browser. Nothing leaves your device." },
+  { q: "Can I use Sounez tools for commercial work?", a: "Yes. You can use the output from any Sounez tool in personal, educational and commercial projects." },
+  { q: "Will more tools be added?", a: "Yes. New tools are added regularly. Bookmark the tools page or check the blog to stay updated." },
 ];
 
 export function HomeClient() {
@@ -32,7 +32,7 @@ export function HomeClient() {
         <div className="absolute -top-40 left-1/2 -z-10 h-[28rem] w-[70rem] -translate-x-1/2 rounded-full bg-gradient-brand opacity-25 blur-3xl" />
         <div className="mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 sm:py-32">
           <span className="animate-fade-in inline-flex items-center gap-1.5 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-xs font-medium text-foreground/80 shadow-soft backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 text-primary" /> Simple Tools. Powerful Results.
+            <Sparkles className="h-3.5 w-3.5 text-primary" /> Free tools that actually work.
           </span>
           <h1 className="animate-slide-up mt-6 text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
             Free online tools for{" "}
@@ -40,7 +40,7 @@ export function HomeClient() {
             &amp; everyday productivity
           </h1>
           <p className="animate-slide-up delay-75 mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Fast, free and beautifully simple. No signup, no clutter — just tools that work in your browser, instantly.
+            No signup. No installs. Just open a tool and use it. Everything runs in your browser and it&apos;s all free.
           </p>
 
           <div className="animate-slide-up delay-150 mt-9 flex flex-wrap items-center justify-center gap-3">
@@ -97,9 +97,9 @@ export function HomeClient() {
       <section id="popular" className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <div className="mb-10 flex items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">Most loved</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary">Most used</span>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Popular tools</h2>
-            <p className="mt-2 text-muted-foreground">Hand-picked favorites used every day.</p>
+            <p className="mt-2 text-muted-foreground">The tools people open most. Good place to start.</p>
           </div>
           <Link href="/tools" className="hidden text-sm font-medium text-primary hover:underline sm:inline">View all →</Link>
         </div>
@@ -115,7 +115,7 @@ export function HomeClient() {
         <div className="mb-10">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">Browse</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Browse by category</h2>
-          <p className="mt-2 text-muted-foreground">Find the right tool for the job.</p>
+          <p className="mt-2 text-muted-foreground">Not sure where to start? Pick a category and go from there.</p>
         </div>
         <div className="grid gap-5 md:grid-cols-3">
           {CATEGORIES.map((c) => {
@@ -145,9 +145,9 @@ export function HomeClient() {
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <div className="mb-10 flex items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">Insights</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary">From the blog</span>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Latest from the blog</h2>
-            <p className="mt-2 text-muted-foreground">Guides, playbooks and tips for creators.</p>
+            <p className="mt-2 text-muted-foreground">Practical guides for creators, designers and anyone who wants to work smarter.</p>
           </div>
           <Link href="/blog" className="hidden text-sm font-medium text-primary hover:underline sm:inline">All posts →</Link>
         </div>
@@ -178,7 +178,7 @@ export function HomeClient() {
       <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
         <div className="text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">FAQ</span>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Frequently asked questions</h2>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Common questions</h2>
         </div>
         <div className="mt-10 space-y-3">
           {FAQS.map((f) => (

@@ -17,16 +17,16 @@ export function TextCaseClient() {
   const [text, setText] = useState("Hello world from Sounez!");
   return (
     <ToolPageShell tool={tool}
-      intro="Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, kebab-case and snake_case."
+      intro="Paste your text and convert it to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, kebab-case or snake_case in one click."
       features={[
-        { title: "7 cases", desc: "Cover every common formatting need." },
-        { title: "One-click copy", desc: "Each result has its own copy button." },
-        { title: "Free", desc: "No limits or signup." },
+        { title: "7 formats", desc: "Covers every common text formatting need in one place." },
+        { title: "One-click copy", desc: "Each result has its own copy button so you grab exactly what you need." },
+        { title: "Free", desc: "No limits, no signup." },
       ]}
-      howTo={["Paste your text.", "See all conversions instantly.", "Copy the one you need."]}
+      howTo={["Paste your text into the box.", "All seven conversions appear instantly below.", "Click Copy next to the format you want."]}
       faqs={[
-        { q: "Does it work with non-English text?", a: "Mostly — upper/lowercase work for any Unicode text." },
-        { q: "Can I convert long text?", a: "Yes, no character limit." },
+        { q: "Does it work with non-English text?", a: "Mostly yes. Uppercase and lowercase conversions work for any Unicode text." },
+        { q: "Is there a character limit?", a: "No. Paste as much text as you need." },
       ]}>
       <textarea value={text} onChange={(e) => setText(e.target.value)} rows={4}
         className="w-full rounded-xl border border-border bg-background p-4 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />

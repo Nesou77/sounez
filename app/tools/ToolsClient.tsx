@@ -22,7 +22,7 @@ export function ToolsClient() {
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-bold sm:text-5xl">All Tools</h1>
         <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-          Every Sounez tool in one place. Free, fast and made for getting things done.
+          Every tool on Sounez in one place. Search by name or filter by category.
         </p>
       </header>
 
@@ -49,7 +49,7 @@ export function ToolsClient() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((t) => <ToolCard key={t.slug} tool={t} />)}
       </div>
-      {filtered.length === 0 && <p className="py-16 text-center text-muted-foreground">No tools match your filters.</p>}
+      {filtered.length === 0 && <p className="py-16 text-center text-muted-foreground">No tools match your search. Try a different keyword.</p>}
 
       <AdSlot className="mt-12" />
     </div>

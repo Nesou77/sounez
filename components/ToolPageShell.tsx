@@ -11,17 +11,17 @@ import Image from "next/image";
 type FAQ = { q: string; a: string };
 
 const DEFAULT_USE_CASES = [
-  { title: "Content creators", desc: "Speed up daily publishing with one-click results." },
-  { title: "Students", desc: "Free, no-signup tools for assignments and study notes." },
-  { title: "Marketers", desc: "Ship campaign assets without opening heavy software." },
-  { title: "Developers", desc: "Lightweight utilities that fit naturally into any workflow." },
+  { title: "Content creators", desc: "Get results in one click and spend more time actually creating." },
+  { title: "Students", desc: "Free tools with no account needed. Good for assignments and study notes." },
+  { title: "Marketers", desc: "Build campaign assets without opening heavy software." },
+  { title: "Developers", desc: "Lightweight utilities that fit into any workflow without getting in the way." },
 ];
 
 const DEFAULT_PRO_TIPS = [
-  "Bookmark this page — you'll come back to it more than you think.",
+  "Bookmark this page. You will come back to it more than you think.",
   "Combine this tool with another Sounez tool for a faster workflow.",
   "Share the result with a teammate to get feedback in seconds.",
-  "Open the tool on mobile — it works the same as on desktop.",
+  "Open the tool on mobile. It works exactly the same as on desktop.",
 ];
 
 export function ToolPageShell({
@@ -147,7 +147,7 @@ export function ToolPageShell({
 
       <section className="my-12">
         <h2 className="text-2xl font-bold">Related tools</h2>
-        <p className="mt-1 text-sm text-muted-foreground">Hand-picked tools that pair well with {tool.name}.</p>
+        <p className="mt-1 text-sm text-muted-foreground">Other tools that work well alongside {tool.name}.</p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((t) => <ToolCard key={t.slug} tool={t} />)}
         </div>
@@ -157,7 +157,7 @@ export function ToolPageShell({
         <h2 className="flex items-center gap-2 text-2xl font-bold">
           <BookOpen className="h-6 w-6 text-primary" /> Read next on the blog
         </h2>
-        <p className="mt-1 text-sm text-muted-foreground">Guides, playbooks and how-tos from the Sounez team.</p>
+        <p className="mt-1 text-sm text-muted-foreground">Practical guides and how-tos from the Sounez blog.</p>
         <div className="mt-5 grid gap-4 sm:grid-cols-3">
           {featuredPosts.map((p) => (
             <Link

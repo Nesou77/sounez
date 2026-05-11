@@ -16,16 +16,16 @@ export function YoutubeTagsClient() {
   };
   return (
     <ToolPageShell tool={tool}
-      intro="Generate optimized YouTube tags from a single keyword to boost video discoverability and rankings."
+      intro="Type your video's main keyword and get 25 YouTube tags ready to paste into YouTube Studio. Takes about five seconds."
       features={[
-        { title: "Instant suggestions", desc: "Get 25 SEO-friendly tags in one click." },
-        { title: "Copy with one tap", desc: "Copy the comma-separated list." },
+        { title: "25 tags instantly", desc: "One keyword generates a full set of SEO-friendly tags." },
+        { title: "Copy with one tap", desc: "Copies the full comma-separated list to your clipboard." },
         { title: "Free", desc: "No signup, no limits." },
       ]}
-      howTo={["Enter your video's main keyword.", "Click Generate.", "Copy and paste tags into YouTube Studio."]}
+      howTo={["Enter your video's main keyword in the box.", "Click Generate.", "Copy all tags and paste them into YouTube Studio."]}
       faqs={[
-        { q: "Do tags still work in 2026?", a: "Yes — they help YouTube understand context, even if titles and thumbnails matter more." },
-        { q: "How many tags should I use?", a: "10–20 relevant tags works best. Quality over quantity." },
+        { q: "Do YouTube tags still work in 2026?", a: "Yes. They help YouTube understand the context of your video, even if titles and thumbnails carry more weight." },
+        { q: "How many tags should I use?", a: "Between 10 and 20 relevant tags is a good range. Focus on quality over quantity." },
       ]}>
       <div className="flex gap-2">
         <input value={seed} onChange={(e) => setSeed(e.target.value)} placeholder="e.g. productivity tips"

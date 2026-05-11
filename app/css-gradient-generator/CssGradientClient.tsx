@@ -11,16 +11,16 @@ export function CssGradientClient() {
   const css = `background: linear-gradient(${angle}deg, ${a}, ${b});`;
   return (
     <ToolPageShell tool={tool}
-      intro="Build smooth CSS gradients with a live preview, then copy the production-ready code."
+      intro="Pick two colors, set an angle, and get the CSS gradient code ready to paste into your project."
       features={[
-        { title: "Live preview", desc: "Tweak colors and angle, see results instantly." },
-        { title: "Copy-ready CSS", desc: "Paste straight into your stylesheet." },
+        { title: "Live preview", desc: "Change colors or angle and see the result update immediately." },
+        { title: "Copy-ready CSS", desc: "One click copies the code straight to your clipboard." },
         { title: "Free forever", desc: "No signup, no limits." },
       ]}
-      howTo={["Pick two colors.", "Adjust the angle.", "Copy the CSS."]}
+      howTo={["Pick your two colors.", "Drag the angle slider to rotate the gradient.", "Copy the CSS and paste it into your stylesheet."]}
       faqs={[
-        { q: "Can I use more than two colors?", a: "Currently two — multi-stop coming soon." },
-        { q: "Does this support Tailwind?", a: "Yes — paste the CSS in arbitrary class syntax or use the raw colors." },
+        { q: "Can I use more than two colors?", a: "Right now it supports two color stops. Multi-stop gradients are coming soon." },
+        { q: "Does this work with Tailwind?", a: "Yes. Paste the CSS value inside an arbitrary class or use the raw hex colors directly." },
       ]}>
       <div className="rounded-2xl" style={{ background: `linear-gradient(${angle}deg, ${a}, ${b})`, height: 220 }} />
       <div className="mt-5 grid gap-3 sm:grid-cols-3">
