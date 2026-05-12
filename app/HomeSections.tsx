@@ -24,11 +24,12 @@ export function HomeSections() {
       <section id="popular" className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <div className="mb-10 flex items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">Most used</span>
+            {/* text-primary-label is darker than text-primary, passes WCAG AA for small uppercase text */}
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Most used</span>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Popular tools</h2>
             <p className="mt-2 text-muted-foreground">The tools people open most. Good place to start.</p>
           </div>
-          <Link href="/tools" className="hidden text-sm font-medium text-primary hover:underline sm:inline">
+          <Link href="/tools" className="hidden text-sm font-medium text-primary-label hover:underline sm:inline">
             View all →
           </Link>
         </div>
@@ -42,7 +43,7 @@ export function HomeSections() {
       {/* Categories */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <div className="mb-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary">Browse</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Browse</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Browse by category</h2>
           <p className="mt-2 text-muted-foreground">Not sure where to start? Pick a category and go from there.</p>
         </div>
@@ -74,13 +75,13 @@ export function HomeSections() {
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <div className="mb-10 flex items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">From the blog</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">From the blog</span>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Latest from the blog</h2>
             <p className="mt-2 text-muted-foreground">
               Practical guides for creators, designers and anyone who wants to work smarter.
             </p>
           </div>
-          <Link href="/blog" className="hidden text-sm font-medium text-primary hover:underline sm:inline">
+          <Link href="/blog" className="hidden text-sm font-medium text-primary-label hover:underline sm:inline">
             All posts →
           </Link>
         </div>
@@ -118,7 +119,7 @@ export function HomeSections() {
       {/* FAQ */}
       <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
         <div className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary">FAQ</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">FAQ</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Common questions</h2>
         </div>
         <div className="mt-10 space-y-3">

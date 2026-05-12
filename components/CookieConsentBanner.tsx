@@ -27,32 +27,50 @@ function updateConsent(granted: boolean) {
 }
 
 export function CookieConsentBanner() {
-  // Start hidden — only reveal after a short delay so the banner never
-  // competes with the hero content for LCP.
-  const [visible, setVisible] = useState(false);
+  /**
+   * Three-state machine:
+   *   "pending"  — not yet checked localStorage (SSR + first client tick)
+   *   "hidden"   — user already decided, or we're waiting for LCP to finish
+   *   "visible"  — show the banner
+   *
+   * We never render any DOM until state === "visible" so the banner text
+   * can never become the LCP element.
+   */
+  const [state, setState] = useState<"pending" | "hidden" | "visible">("pending");
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
     try {
       const stored = localStorage.getItem(CONSENT_KEY);
       if (stored === "accepted") {
-        // Re-apply consent immediately (no banner needed)
         updateConsent(true);
+        setState("hidden");
         return;
       }
       if (stored === "rejected") {
-        // Already decided — nothing to show
+        setState("hidden");
         return;
       }
-      // First visit: wait ~1 s after hydration so the real LCP element
-      // (hero heading) has already been painted before the banner appears.
-      timer = setTimeout(() => setVisible(true), 1000);
+      // First visit: defer until well after LCP has been painted.
+      // requestIdleCallback (with setTimeout fallback) ensures we don't
+      // block the main thread during initial render.
+      const show = () => {
+        timer = setTimeout(() => setState("visible"), 1500);
+      };
+      if (typeof window.requestIdleCallback === "function") {
+        window.requestIdleCallback(show, { timeout: 3000 });
+      } else {
+        show();
+      }
     } catch {
-      // localStorage may be unavailable
-      timer = setTimeout(() => setVisible(true), 1000);
+      timer = setTimeout(() => setState("visible"), 1500);
     }
     return () => clearTimeout(timer);
   }, []);
+
+  // Render nothing until we're sure the banner should be shown.
+  // This prevents the banner text from ever being the LCP candidate.
+  if (state !== "visible") return null;
 
   const accept = () => {
     try {
@@ -61,7 +79,7 @@ export function CookieConsentBanner() {
       // ignore
     }
     updateConsent(true);
-    setVisible(false);
+    setState("hidden");
   };
 
   const reject = () => {
@@ -71,16 +89,14 @@ export function CookieConsentBanner() {
       // ignore
     }
     updateConsent(false);
-    setVisible(false);
+    setState("hidden");
   };
-
-  if (!visible) return null;
 
   return (
     <div
       role="dialog"
       aria-label="Cookie consent"
-      aria-live="polite"
+      aria-modal="false"
       className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-card/95 px-4 py-4 shadow-pop backdrop-blur-md sm:bottom-4 sm:left-4 sm:right-auto sm:max-w-sm sm:rounded-2xl sm:border"
     >
       <p className="text-sm leading-relaxed text-foreground">
