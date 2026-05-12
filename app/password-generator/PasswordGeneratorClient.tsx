@@ -4,9 +4,7 @@ import { useState } from "react";
 import { Copy, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("password-generator")!;
+import type { Tool } from "@/data/tools";
 
 function gen(len: number, opts: { upper: boolean; lower: boolean; nums: boolean; sym: boolean }) {
   let chars = "";
@@ -20,7 +18,7 @@ function gen(len: number, opts: { upper: boolean; lower: boolean; nums: boolean;
   return Array.from(a, (n) => chars[n % chars.length]).join("");
 }
 
-export function PasswordGeneratorClient() {
+export function PasswordGeneratorClient({ tool }: { tool: Tool }) {
   const [len, setLen] = useState(16);
   const [opts, setOpts] = useState({ upper: true, lower: true, nums: true, sym: true });
   const [pwd, setPwd] = useState(() => gen(16, { upper: true, lower: true, nums: true, sym: true }));

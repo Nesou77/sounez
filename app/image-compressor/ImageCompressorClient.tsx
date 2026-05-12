@@ -5,15 +5,13 @@ import imageCompression from "browser-image-compression";
 import { Upload, Download, ChevronDown, X } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("image-compressor")!;
+import type { Tool } from "@/data/tools";
 
 function fmt(b: number) {
   return b > 1024 * 1024 ? `${(b / 1024 / 1024).toFixed(2)} MB` : `${(b / 1024).toFixed(0)} KB`;
 }
 
-export function ImageCompressorClient() {
+export function ImageCompressorClient({ tool }: { tool: Tool }) {
   const [open, setOpen] = useState(true);
   const [file, setFile] = useState<File | null>(null);
   const [out, setOut] = useState<{ url: string; size: number; name: string } | null>(null);

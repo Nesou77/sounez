@@ -6,6 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { GoogleTagManager } from "@/components/GoogleTagManager";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { getSiteUrl } from "@/lib/site-url";
 
 const inter = Inter({
@@ -21,8 +22,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
-  metadataBase: new URL(getSiteUrl()),
+  metadataBase: new URL(siteUrl),
   robots: { index: true, follow: true },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
@@ -35,6 +38,7 @@ export const metadata: Metadata = {
   description:
     "Sounez offers free online tools for creators, designers and everyday productivity. QR codes, passwords, image compression, color palettes and more.",
   authors: [{ name: "Sounez" }],
+  alternates: { canonical: siteUrl },
   openGraph: {
     title: "Sounez | Free Online Tools",
     description:
@@ -42,13 +46,13 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Sounez",
     locale: "en_US",
-    url: "./",
-    images: [{ url: "/logo.webp", width: 560, height: 140, alt: "Sounez", type: "image/webp" }],
+    url: siteUrl,
+    images: [{ url: `${siteUrl}/logo.webp`, width: 560, height: 140, alt: "Sounez", type: "image/webp" }],
   },
   twitter: {
     card: "summary_large_image",
     site: "@sounez",
-    images: [{ url: "/logo.webp", alt: "Sounez" }],
+    images: [{ url: `${siteUrl}/logo.webp`, alt: "Sounez" }],
   },
 };
 
@@ -59,6 +63,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Google Consent Mode v2 — defaults to denied until user accepts */}
+        <Script id="consent-defaults" strategy="beforeInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            ad_storage: 'denied',
+            analytics_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied'
+          });
+        `}</Script>
+      </head>
       <body>
         <GoogleTagManager />
         {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID && (
@@ -69,19 +86,21 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         )}
-        <a
-          href="#main-content"
-          className="skip-link"
-        >
+        <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
         <div className="flex min-h-screen flex-col">
           <Navbar />
-          <main id="main-content" tabIndex={-1} className="flex-1 outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-inset">
+          <main
+            id="main-content"
+            tabIndex={-1}
+            className="flex-1 outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-inset"
+          >
             {children}
           </main>
           <Footer />
         </div>
+        <CookieConsentBanner />
         <Toaster
           position="bottom-right"
           richColors

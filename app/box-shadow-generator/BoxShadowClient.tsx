@@ -4,9 +4,7 @@ import { useState } from "react";
 import { Copy, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("box-shadow-generator")!;
+import type { Tool } from "@/data/tools";
 
 type Preset = { label: string; h: number; v: number; blur: number; spread: number; opacity: number; inset: boolean };
 
@@ -25,7 +23,7 @@ function hexToRgb(hex: string) {
   return { r, g, b };
 }
 
-export function BoxShadowClient() {
+export function BoxShadowClient({ tool }: { tool: Tool }) {
   const [h, setH] = useState(0);
   const [v, setV] = useState(8);
   const [blur, setBlur] = useState(24);

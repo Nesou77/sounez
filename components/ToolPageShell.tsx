@@ -3,6 +3,7 @@ import { TOOLS, type Tool } from "@/data/tools";
 import { blogPostsForTool } from "@/data/blog";
 import { ToolCard } from "./ToolCard";
 import { AdSlot } from "./AdSlot";
+import { ADSENSE_SLOTS } from "@/lib/adsense";
 import { SmartLink as Link } from "@/components/smart-link";
 import { getToolIcon } from "@/lib/tool-icons";
 import { ArrowRight, Lightbulb, Sparkles, BookOpen, Layers } from "lucide-react";
@@ -74,7 +75,7 @@ export function ToolPageShell({
         {children}
       </section>
 
-      <AdSlot className="my-10" label="Sponsored" />
+      <AdSlot className="my-10" label="Sponsored" slot={ADSENSE_SLOTS.toolAfterWidget} />
 
       <section className="my-12">
         <h2 className="text-2xl font-bold">Features</h2>
@@ -114,7 +115,7 @@ export function ToolPageShell({
         </div>
       </section>
 
-      <AdSlot className="my-10" label="Sponsored" />
+      <AdSlot className="my-10" label="Sponsored" slot={ADSENSE_SLOTS.toolAfterWidget} />
 
       <section className="my-12">
         <h2 className="flex items-center gap-2 text-2xl font-bold">
@@ -144,7 +145,7 @@ export function ToolPageShell({
         </div>
       </section>
 
-      <AdSlot className="my-10" label="Sponsored" />
+      <AdSlot className="my-10" label="Sponsored" slot={ADSENSE_SLOTS.toolBottom} />
 
       <section className="my-12">
         <h2 className="text-2xl font-bold">Related tools</h2>

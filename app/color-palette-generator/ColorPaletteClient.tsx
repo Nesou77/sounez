@@ -2,10 +2,9 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("color-palette-generator")!;
+import type { Tool } from "@/data/tools";
 function rand() { return "#" + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, "0"); }
-export function ColorPaletteClient() {
+export function ColorPaletteClient({ tool }: { tool: Tool }) {
   const [cols, setCols] = useState<string[]>(() => Array.from({ length: 5 }, rand));
   return (
     <ToolPageShell tool={tool}

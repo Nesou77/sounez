@@ -4,9 +4,7 @@ import { useCallback, useRef, useState } from "react";
 import { Download, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("png-to-jpg-converter")!;
+import type { Tool } from "@/data/tools";
 
 function fmt(bytes: number) {
   return bytes > 1024 * 1024
@@ -16,7 +14,7 @@ function fmt(bytes: number) {
 
 type Result = { url: string; size: number; filename: string };
 
-export function PngToJpgClient() {
+export function PngToJpgClient({ tool }: { tool: Tool }) {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [quality, setQuality] = useState(90);

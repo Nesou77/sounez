@@ -4,11 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import QRCode from "qrcode";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
+import type { Tool } from "@/data/tools";
 
-const tool = toolBySlug("qr-code-generator")!;
-
-export function QrCodeClient() {
+export function QrCodeClient({ tool }: { tool: Tool }) {
   const [text, setText] = useState("https://sounez.com");
   const canvas = useRef<HTMLCanvasElement>(null);
 

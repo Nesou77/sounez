@@ -1,9 +1,8 @@
 "use client";
 import { useState } from "react";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("tiktok-money-calculator")!;
-export function TiktokMoneyClient() {
+import type { Tool } from "@/data/tools";
+export function TiktokMoneyClient({ tool }: { tool: Tool }) {
   const [followers, setFollowers] = useState(50000);
   const [er, setEr] = useState(5);
   const min = Math.round(followers * (er / 100) * 0.01);

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { TextCaseClient } from "./TextCaseClient";
 import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("text-case-converter")!;
-export const metadata: Metadata = {
-  title: `${tool.name} | UPPER, lower, Title, camelCase | Sounez`,
-  description: tool.description,
-  openGraph: { title: tool.name, description: tool.description },
-};
-export default function Page() { return <TextCaseClient />; }
+import { toolMetadata } from "@/lib/tool-metadata";
+const tool = toolBySlug("text-case-converter");
+if (!tool) notFound();
+export const metadata: Metadata = toolMetadata(tool!, {
+  title: `${tool!.name} | UPPER, lower, Title, camelCase | Sounez`,
+});
+export default function Page() { return <TextCaseClient tool={tool!} />; }

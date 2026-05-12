@@ -2,10 +2,9 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("youtube-tags-generator")!;
+import type { Tool } from "@/data/tools";
 const MODS = ["best", "top", "2026", "tutorial", "guide", "tips", "free", "review", "how to", "for beginners", "explained", "ideas", "examples", "shorts", "fast"];
-export function YoutubeTagsClient() {
+export function YoutubeTagsClient({ tool }: { tool: Tool }) {
   const [seed, setSeed] = useState("");
   const [tags, setTags] = useState<string[]>([]);
   const make = () => {

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { PasswordGeneratorClient } from "./PasswordGeneratorClient";
 import { toolBySlug } from "@/data/tools";
+import { toolMetadata } from "@/lib/tool-metadata";
 
-const tool = toolBySlug("password-generator")!;
+const tool = toolBySlug("password-generator");
+if (!tool) notFound();
 
-export const metadata: Metadata = {
-  title: `${tool.name} | Free Strong Password Maker | Sounez`,
-  description: tool.description,
-  openGraph: { title: tool.name, description: tool.description },
-};
+export const metadata: Metadata = toolMetadata(tool!, {
+  title: `${tool!.name} | Free Strong Password Maker | Sounez`,
+});
 
 export default function Page() {
-  return <PasswordGeneratorClient />;
+  return <PasswordGeneratorClient tool={tool!} />;
 }

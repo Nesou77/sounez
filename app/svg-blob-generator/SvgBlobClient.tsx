@@ -4,9 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Copy, Download, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("svg-blob-generator")!;
+import type { Tool } from "@/data/tools";
 
 function generateBlob(points: number, randomness: number, seed: number): string {
   const rng = (() => {
@@ -48,7 +46,7 @@ function generateBlob(points: number, randomness: number, seed: number): string 
   return d;
 }
 
-export function SvgBlobClient() {
+export function SvgBlobClient({ tool }: { tool: Tool }) {
   const [points, setPoints] = useState(8);
   const [randomness, setRandomness] = useState(0.4);
   const [fillColor, setFillColor] = useState("#6366f1");

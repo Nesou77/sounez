@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { ImageCompressorClient } from "./ImageCompressorClient";
 import { toolBySlug } from "@/data/tools";
+import { toolMetadata } from "@/lib/tool-metadata";
 
-const tool = toolBySlug("image-compressor")!;
+const tool = toolBySlug("image-compressor");
+if (!tool) notFound();
 
-export const metadata: Metadata = {
-  title: `${tool.name} | Free Browser-Based Image Compression | Sounez`,
-  description: tool.description,
-  openGraph: { title: tool.name, description: tool.description },
-};
+export const metadata: Metadata = toolMetadata(tool!, {
+  title: `${tool!.name} | Free Browser-Based Image Compression | Sounez`,
+});
 
 export default function Page() {
-  return <ImageCompressorClient />;
+  return <ImageCompressorClient tool={tool!} />;
 }

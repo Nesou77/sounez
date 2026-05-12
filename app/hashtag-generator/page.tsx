@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { HashtagClient } from "./HashtagClient";
 import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("hashtag-generator")!;
-export const metadata: Metadata = {
-  title: `${tool.name} | Free Instagram and TikTok Hashtags | Sounez`,
-  description: tool.description,
-  openGraph: { title: tool.name, description: tool.description },
-};
-export default function Page() { return <HashtagClient />; }
+import { toolMetadata } from "@/lib/tool-metadata";
+const tool = toolBySlug("hashtag-generator");
+if (!tool) notFound();
+export const metadata: Metadata = toolMetadata(tool!, {
+  title: `${tool!.name} | Free Instagram and TikTok Hashtags | Sounez`,
+});
+export default function Page() { return <HashtagClient tool={tool!} />; }

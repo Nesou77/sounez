@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { YoutubeTagsClient } from "./YoutubeTagsClient";
 import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("youtube-tags-generator")!;
-export const metadata: Metadata = {
-  title: `${tool.name} | Free YouTube SEO Tags | Sounez`,
-  description: tool.description,
-  openGraph: { title: tool.name, description: tool.description },
-};
-export default function Page() { return <YoutubeTagsClient />; }
+import { toolMetadata } from "@/lib/tool-metadata";
+const tool = toolBySlug("youtube-tags-generator");
+if (!tool) notFound();
+export const metadata: Metadata = toolMetadata(tool!, {
+  title: `${tool!.name} | Free YouTube SEO Tags | Sounez`,
+});
+export default function Page() { return <YoutubeTagsClient tool={tool!} />; }

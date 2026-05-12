@@ -2,9 +2,8 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("css-gradient-generator")!;
-export function CssGradientClient() {
+import type { Tool } from "@/data/tools";
+export function CssGradientClient({ tool }: { tool: Tool }) {
   const [a, setA] = useState("#6366F1");
   const [b, setB] = useState("#8B5CF6");
   const [angle, setAngle] = useState(135);

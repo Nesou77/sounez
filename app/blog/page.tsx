@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
-import { BLOG_POSTS } from "@/data/tools";
+import { BLOG_POSTS } from "@/data/blog";
 
 export const metadata: Metadata = {
   title: "Sounez Blog | Tips and Guides for Creators",

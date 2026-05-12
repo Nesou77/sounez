@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { WordCounterClient } from "./WordCounterClient";
 import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("word-counter")!;
-export const metadata: Metadata = {
-  title: `${tool.name} | Free Word and Character Counter | Sounez`,
-  description: tool.description,
-  openGraph: { title: tool.name, description: tool.description },
-};
-export default function Page() { return <WordCounterClient />; }
+import { toolMetadata } from "@/lib/tool-metadata";
+const tool = toolBySlug("word-counter");
+if (!tool) notFound();
+export const metadata: Metadata = toolMetadata(tool!, {
+  title: `${tool!.name} | Free Word and Character Counter | Sounez`,
+});
+export default function Page() { return <WordCounterClient tool={tool!} />; }

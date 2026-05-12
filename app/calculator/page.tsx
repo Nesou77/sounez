@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { CalculatorClient } from "./CalculatorClient";
+import { toolBySlug } from "@/data/tools";
+import { toolMetadata } from "@/lib/tool-metadata";
+
+const tool = toolBySlug("calculator");
+if (!tool) notFound();
 
 export const metadata: Metadata = {
-  title: "Free Online Calculator | Simple Calculator Tool | Sounez",
-  description:
-    "Use this free online calculator for quick addition, subtraction, multiplication, division and percentage calculations.",
+  ...toolMetadata(tool!, {
+    title: "Free Online Calculator | Simple Calculator Tool | Sounez",
+    description:
+      "Use this free online calculator for quick addition, subtraction, multiplication, division and percentage calculations.",
+  }),
   openGraph: {
     title: "Free Online Calculator | Sounez",
     description:
@@ -13,5 +21,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <CalculatorClient />;
+  return <CalculatorClient tool={tool!} />;
 }

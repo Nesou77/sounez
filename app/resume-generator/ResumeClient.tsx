@@ -4,9 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Copy, Download, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("resume-generator")!;
+import type { Tool } from "@/data/tools";
 
 type WorkEntry = { company: string; role: string; dates: string; bullets: string };
 type EduEntry = { school: string; degree: string; year: string };
@@ -14,7 +12,7 @@ type EduEntry = { school: string; degree: string; year: string };
 const emptyWork = (): WorkEntry => ({ company: "", role: "", dates: "", bullets: "" });
 const emptyEdu = (): EduEntry => ({ school: "", degree: "", year: "" });
 
-export function ResumeClient() {
+export function ResumeClient({ tool }: { tool: Tool }) {
   // Personal
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");

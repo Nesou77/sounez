@@ -2,8 +2,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("text-case-converter")!;
+import type { Tool } from "@/data/tools";
 const conv: Record<string, (s: string) => string> = {
   UPPER: (s) => s.toUpperCase(),
   lower: (s) => s.toLowerCase(),
@@ -13,7 +12,7 @@ const conv: Record<string, (s: string) => string> = {
   "kebab-case": (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
   snake_case: (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, ""),
 };
-export function TextCaseClient() {
+export function TextCaseClient({ tool }: { tool: Tool }) {
   const [text, setText] = useState("Hello world from Sounez!");
   return (
     <ToolPageShell tool={tool}

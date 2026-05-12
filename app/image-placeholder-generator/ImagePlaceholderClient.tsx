@@ -4,9 +4,7 @@ import { useState } from "react";
 import { Copy, Download } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("image-placeholder-generator")!;
+import type { Tool } from "@/data/tools";
 
 type Format = "svg" | "png";
 
@@ -19,7 +17,7 @@ function buildSvg(w: number, h: number, bg: string, fg: string, label: string): 
 </svg>`;
 }
 
-export function ImagePlaceholderClient() {
+export function ImagePlaceholderClient({ tool }: { tool: Tool }) {
   const [width, setWidth] = useState(800);
   const [height, setHeight] = useState(600);
   const [bg, setBg] = useState("#e2e8f0");

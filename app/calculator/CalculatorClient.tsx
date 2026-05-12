@@ -2,9 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("calculator")!;
+import type { Tool } from "@/data/tools";
 
 type HistoryEntry = { expression: string; result: string };
 
@@ -16,7 +14,7 @@ const BUTTONS = [
   ["0", ".", "√", "="],
 ];
 
-export function CalculatorClient() {
+export function CalculatorClient({ tool }: { tool: Tool }) {
   const [display, setDisplay] = useState("0");
   const [expression, setExpression] = useState("");
   const [history, setHistory] = useState<HistoryEntry[]>([]);

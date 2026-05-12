@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { CssGradientClient } from "./CssGradientClient";
 import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("css-gradient-generator")!;
-export const metadata: Metadata = {
-  title: `${tool.name} | Free CSS Gradient Maker | Sounez`,
-  description: tool.description,
-  openGraph: { title: tool.name, description: tool.description },
-};
-export default function Page() { return <CssGradientClient />; }
+import { toolMetadata } from "@/lib/tool-metadata";
+const tool = toolBySlug("css-gradient-generator");
+if (!tool) notFound();
+export const metadata: Metadata = toolMetadata(tool!, {
+  title: `${tool!.name} | Free CSS Gradient Maker | Sounez`,
+});
+export default function Page() { return <CssGradientClient tool={tool!} />; }

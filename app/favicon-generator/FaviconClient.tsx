@@ -4,9 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Copy, Download, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("favicon-generator")!;
+import type { Tool } from "@/data/tools";
 
 type Mode = "text" | "emoji" | "image";
 type Shape = "square" | "rounded" | "circle";
@@ -14,7 +12,7 @@ type FavSize = 16 | 32 | 48 | 180 | 512;
 
 const SIZES: FavSize[] = [16, 32, 48, 180, 512];
 
-export function FaviconClient() {
+export function FaviconClient({ tool }: { tool: Tool }) {
   const [mode, setMode] = useState<Mode>("text");
   const [input, setInput] = useState("S");
   const [bgColor, setBgColor] = useState("#6366f1");

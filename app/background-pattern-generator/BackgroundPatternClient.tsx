@@ -4,9 +4,7 @@ import { useState } from "react";
 import { Copy, Download } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("background-pattern-generator")!;
+import type { Tool } from "@/data/tools";
 
 type PatternType = "dots" | "grid" | "diagonal" | "checkerboard" | "triangles" | "waves";
 
@@ -70,7 +68,7 @@ function buildSvgPattern(type: PatternType, bg: string, fg: string, size: number
 
 const PATTERNS: PatternType[] = ["dots", "grid", "diagonal", "checkerboard", "triangles", "waves"];
 
-export function BackgroundPatternClient() {
+export function BackgroundPatternClient({ tool }: { tool: Tool }) {
   const [type, setType] = useState<PatternType>("dots");
   const [bg, setBg] = useState("#ffffff");
   const [fg, setFg] = useState("#6366f1");

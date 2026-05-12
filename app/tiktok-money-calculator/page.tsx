@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { TiktokMoneyClient } from "./TiktokMoneyClient";
 import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("tiktok-money-calculator")!;
-export const metadata: Metadata = {
-  title: `${tool.name} | Estimate Your TikTok Earnings | Sounez`,
-  description: tool.description,
-  openGraph: { title: tool.name, description: tool.description },
-};
-export default function Page() { return <TiktokMoneyClient />; }
+import { toolMetadata } from "@/lib/tool-metadata";
+const tool = toolBySlug("tiktok-money-calculator");
+if (!tool) notFound();
+export const metadata: Metadata = toolMetadata(tool!, {
+  title: `${tool!.name} | Estimate Your TikTok Earnings | Sounez`,
+});
+export default function Page() { return <TiktokMoneyClient tool={tool!} />; }

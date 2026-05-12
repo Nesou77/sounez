@@ -1,9 +1,8 @@
 "use client";
 import { useMemo, useState } from "react";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-const tool = toolBySlug("word-counter")!;
-export function WordCounterClient() {
+import type { Tool } from "@/data/tools";
+export function WordCounterClient({ tool }: { tool: Tool }) {
   const [text, setText] = useState("");
   const stats = useMemo(() => {
     const words = text.trim() ? text.trim().split(/\s+/).length : 0;

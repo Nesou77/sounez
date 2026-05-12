@@ -1,19 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Heart, Share2, Link2, Check } from "lucide-react";
 import { toast } from "sonner";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
-const LIKES_KEY = (slug: string) => `sounez:blog:likes:${slug}`;
-const LIKED_KEY = (slug: string) => `sounez:blog:liked:${slug}`;
-
-function baselineLikes(slug: string) {
-  let h = 0;
-  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
-  return 12 + (h % 80);
-}
+const LIKES_KEY = (slug: string) => `sounez:likes:${slug}`;
+const LIKED_KEY = (slug: string) => `sounez:liked:${slug}`;
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -46,8 +40,8 @@ export function EngagementBar({
   title: string;
   className?: string;
 }) {
-  const base = useMemo(() => baselineLikes(slug), [slug]);
-  const [likes, setLikes] = useState(base);
+  // Start from 0 — no fake baseline. Count is local to this browser.
+  const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
   const [pulse, setPulse] = useState(false);
 
@@ -55,12 +49,12 @@ export function EngagementBar({
     try {
       const sl = localStorage.getItem(LIKES_KEY(slug));
       const sLiked = localStorage.getItem(LIKED_KEY(slug));
-      if (sl) setLikes(parseInt(sl, 10) || base);
+      if (sl) setLikes(parseInt(sl, 10) || 0);
       if (sLiked === "1") setLiked(true);
     } catch {
       // ignore
     }
-  }, [slug, base]);
+  }, [slug]);
 
   const toggleLike = () => {
     const next = !liked;
@@ -104,8 +98,8 @@ export function EngagementBar({
             !liked && "group-hover:scale-110",
           )}
         />
-        <span className="tabular-nums">{likes}</span>
-        <span className="hidden sm:inline">{likes === 1 ? "Like" : "Likes"}</span>
+        <span className="tabular-nums">{likes > 0 ? likes : null}</span>
+        <span className="hidden sm:inline">{liked ? "Helpful ✓" : "Helpful"}</span>
       </button>
 
       <ShareButton title={title} />

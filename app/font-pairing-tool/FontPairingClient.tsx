@@ -4,9 +4,7 @@ import { useState } from "react";
 import { Copy, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("font-pairing-tool")!;
+import type { Tool } from "@/data/tools";
 
 type Style = "modern" | "elegant" | "startup" | "editorial" | "minimal" | "playful";
 
@@ -47,7 +45,7 @@ const PAIRINGS: Record<Style, Pairing[]> = {
 
 const STYLES: Style[] = ["modern", "elegant", "startup", "editorial", "minimal", "playful"];
 
-export function FontPairingClient() {
+export function FontPairingClient({ tool }: { tool: Tool }) {
   const [style, setStyle] = useState<Style>("modern");
   const [idx, setIdx] = useState(0);
 
