@@ -5,7 +5,6 @@ import { Search } from "lucide-react";
 import { TOOLS, CATEGORIES } from "@/data/tools";
 import { ToolCard } from "@/components/ToolCard";
 import { AdSlot } from "@/components/AdSlot";
-import { ADSENSE_SLOTS } from "@/lib/adsense";
 
 export function ToolsClient() {
   const [q, setQ] = useState("");
@@ -56,7 +55,7 @@ export function ToolsClient() {
       </div>
       {filtered.length === 0 && <p className="py-16 text-center text-muted-foreground">No tools match your search. Try a different keyword.</p>}
 
-      <AdSlot className="mt-12" slot={ADSENSE_SLOTS.toolsPage} />
+      <AdSlot className="mt-12" />
     </div>
   );
 }

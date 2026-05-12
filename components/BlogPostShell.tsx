@@ -3,7 +3,6 @@ import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
 import { Calendar, Clock, ArrowLeft, ArrowRight, Sparkles, Wrench, User } from "lucide-react";
 import { AdSlot } from "./AdSlot";
-import { ADSENSE_SLOTS } from "@/lib/adsense";
 import { BlogEngagement } from "./BlogEngagement";
 import { EngagementBar } from "./EngagementBar";
 import { AuthorCard } from "./AuthorCard";
@@ -119,7 +118,7 @@ export function BlogPostShell({
             {children}
           </div>
 
-          <AdSlot className="my-12" label="Sponsored" slot={ADSENSE_SLOTS.blogMiddle} />
+          <AdSlot className="my-12" label="Sponsored" />
 
           <BlogEngagement slug={slug} />
 
@@ -175,7 +174,7 @@ export function BlogPostShell({
             </div>
           </section>
 
-          <AdSlot className="my-10" label="Sponsored" slot={ADSENSE_SLOTS.blogBottom} />
+          <AdSlot className="my-10" label="Sponsored" />
         </article>
 
         <aside className="hidden lg:block">
@@ -203,7 +202,7 @@ export function BlogPostShell({
               </Link>
             </div>
 
-            <AdSlot label="Sponsored" className="min-h-[300px]" slot={ADSENSE_SLOTS.blogSidebar} />
+            <AdSlot label="Sponsored" className="min-h-[300px]" />
 
             <div className="rounded-2xl border border-border bg-gradient-soft p-5">
               <div className="text-sm font-semibold">More from the blog</div>

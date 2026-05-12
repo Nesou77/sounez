@@ -34,9 +34,4 @@ export const env = {
     if (!v) warnMissing("NEXT_PUBLIC_ADSENSE_PUB_ID");
     return v;
   },
-
-  /** Google AdSense slot ID (NEXT_PUBLIC — safe for client). */
-  get adsenseSlotId(): string | undefined {
-    return process.env.NEXT_PUBLIC_ADSENSE_SLOT_ID;
-  },
 } as const;

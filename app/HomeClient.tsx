@@ -8,7 +8,6 @@ import { TOOLS, CATEGORIES, FEATURED_TOOLS } from "@/data/tools";
 import { BLOG_POSTS } from "@/data/blog";
 import { ToolCard } from "@/components/ToolCard";
 import { AdSlot } from "@/components/AdSlot";
-import { ADSENSE_SLOTS } from "@/lib/adsense";
 import { getCategoryIcon, getToolIcon } from "@/lib/tool-icons";
 
 const FAQS = [
@@ -117,7 +116,7 @@ export function HomeClient() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6"><AdSlot slot={ADSENSE_SLOTS.homeMiddle} /></div>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6"><AdSlot /></div>
 
       {/* Categories */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
