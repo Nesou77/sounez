@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import dynamic from "next/dynamic";
 import { TOOLS, type Tool } from "@/data/tools";
 import { blogPostsForTool } from "@/data/blog";
 import { ToolCard } from "./ToolCard";
@@ -6,8 +7,14 @@ import { AdSlot } from "./AdSlot";
 import { SmartLink as Link } from "@/components/smart-link";
 import { getToolIcon } from "@/lib/tool-icons";
 import { ArrowRight, Lightbulb, Sparkles, BookOpen, Layers } from "lucide-react";
-import { EngagementBar } from "./EngagementBar";
 import Image from "next/image";
+
+// Lazy-load EngagementBar — it's below the fold and reads localStorage.
+// Deferring it reduces initial JS and avoids hydration cost on first paint.
+const EngagementBar = dynamic(
+  () => import("./EngagementBar").then((m) => m.EngagementBar),
+  { ssr: false, loading: () => <div className="h-10" aria-hidden="true" /> },
+);
 
 type FAQ = { q: string; a: string };
 

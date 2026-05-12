@@ -27,19 +27,31 @@ function updateConsent(granted: boolean) {
 }
 
 export function CookieConsentBanner() {
+  // Start hidden — only reveal after a short delay so the banner never
+  // competes with the hero content for LCP.
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
     try {
       const stored = localStorage.getItem(CONSENT_KEY);
-      if (!stored) {
-        setVisible(true);
-      } else if (stored === "accepted") {
+      if (stored === "accepted") {
+        // Re-apply consent immediately (no banner needed)
         updateConsent(true);
+        return;
       }
+      if (stored === "rejected") {
+        // Already decided — nothing to show
+        return;
+      }
+      // First visit: wait ~1 s after hydration so the real LCP element
+      // (hero heading) has already been painted before the banner appears.
+      timer = setTimeout(() => setVisible(true), 1000);
     } catch {
       // localStorage may be unavailable
+      timer = setTimeout(() => setVisible(true), 1000);
     }
+    return () => clearTimeout(timer);
   }, []);
 
   const accept = () => {
