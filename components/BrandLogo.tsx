@@ -34,7 +34,7 @@ export function BrandLogo({ variant = "navbar" }: BrandLogoProps) {
            * All well under the 640w that was previously served.
            */
           sizes="(max-width: 639px) 168px, (max-width: 1023px) 184px, 208px"
-          quality={82}
+          quality={75}
           priority
           fetchPriority="high"
           decoding="async"
@@ -62,7 +62,7 @@ export function BrandLogo({ variant = "navbar" }: BrandLogoProps) {
         height={95}
         className={imgClass}
         sizes="(max-width: 639px) min(280px, 88vw), (max-width: 1023px) min(300px, 92vw), min(380px, 72vw)"
-        quality={85}
+        quality={75}
         fetchPriority="low"
         decoding="async"
         loading="lazy"

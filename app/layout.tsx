@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { GoogleTagManager } from "@/components/GoogleTagManager";
-import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { getSiteUrl } from "@/lib/site-url";
+
+// Lazy load CookieConsentBanner to improve initial page load
+const CookieConsentBanner = dynamic(() => import("@/components/CookieConsentBanner").then(mod => ({ default: mod.CookieConsentBanner })), {
+  loading: () => null,
+});
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -20,6 +26,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   weight: ["600", "700", "800"],
   display: "swap",
+  preload: true,
 });
 
 const siteUrl = getSiteUrl();
@@ -64,6 +71,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
       <head>
+        {/* Preconnect to external origins for faster resource loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Google Consent Mode v2 — defaults to denied until user accepts */}
         <Script id="consent-defaults" strategy="beforeInteractive">{`
           window.dataLayer = window.dataLayer || [];
@@ -83,7 +93,7 @@ export default function RootLayout({
             async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_PUB_ID}`}
             crossOrigin="anonymous"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           />
         )}
         <a href="#main-content" className="skip-link">

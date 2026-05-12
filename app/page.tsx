@@ -41,7 +41,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
-      {/* Hero with search — client component (needs state for search) */}
+      {/* Hero with search — static content renders instantly, search loads interactively */}
       <HomeHero />
       {/* Below-fold static sections — server rendered, zero client JS */}
       <HomeSections />

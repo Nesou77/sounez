@@ -4,11 +4,16 @@
  */
 import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { ArrowRight, Plus } from "lucide-react";
 import { FEATURED_TOOLS, CATEGORIES } from "@/data/tools";
 import { BLOG_POSTS } from "@/data/blog";
-import { ToolCard } from "@/components/ToolCard";
 import { getCategoryIcon } from "@/lib/tool-icons";
+
+// Lazy load ToolCard to reduce initial JS bundle
+const ToolCard = dynamic(() => import("@/components/ToolCard").then(mod => ({ default: mod.ToolCard })), {
+  loading: () => <div className="h-48 animate-pulse rounded-2xl bg-muted" />,
+});
 
 const FAQS = [
   { q: "Is Sounez free to use?", a: "Yes. Every tool on Sounez is completely free. No account, no trial period, no catch." },

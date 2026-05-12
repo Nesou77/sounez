@@ -16,8 +16,10 @@ const grouped: Record<string, { label: string; slug: string; items: typeof TOOLS
 export function Navbar() {
   const [open, setOpen] = useState<string | null>(null);
   const [mobile, setMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const close = () => setOpen(null);
     window.addEventListener("scroll", close);
     return () => window.removeEventListener("scroll", close);
@@ -33,14 +35,14 @@ export function Navbar() {
             Home
           </Link>
 
-          <div className="relative" onMouseEnter={() => setOpen("tools")}>
+          <div className="relative" onMouseEnter={() => mounted && setOpen("tools")}>
             <button
               className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted"
               onClick={() => setOpen(open === "tools" ? null : "tools")}
             >
               Tools <ChevronDown className="h-4 w-4" />
             </button>
-            {open === "tools" && (
+            {mounted && open === "tools" && (
               <div className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-2xl border border-border bg-popover p-6 shadow-pop">
                 <div className="grid grid-cols-3 gap-6">
                   {Object.values(grouped).map(({ label, slug, items }) => (
@@ -84,14 +86,14 @@ export function Navbar() {
             )}
           </div>
 
-          <div className="relative" onMouseEnter={() => setOpen("cats")}>
+          <div className="relative" onMouseEnter={() => mounted && setOpen("cats")}>
             <button
               className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted"
               onClick={() => setOpen(open === "cats" ? null : "cats")}
             >
               Categories <ChevronDown className="h-4 w-4" />
             </button>
-            {open === "cats" && (
+            {mounted && open === "cats" && (
               <div className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-80 -translate-x-1/2 rounded-2xl border border-border bg-popover p-3 shadow-pop">
                 {CATEGORIES.map((c) => {
                   const Icon = getCategoryIcon(c.slug);

@@ -41,7 +41,6 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
             .replace(/×/g, "*")
             .replace(/÷/g, "/")
             .replace(/−/g, "-");
-          // eslint-disable-next-line no-new-func
           const result = Function(`"use strict"; return (${jsExpr})`)();
           const resultStr =
             typeof result === "number" && isFinite(result)
