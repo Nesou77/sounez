@@ -1,10 +1,10 @@
 import { SmartLink as Link } from "@/components/smart-link";
 import { Github, Twitter, Mail } from "lucide-react";
-import { TOOLS, CATEGORIES } from "@/data/tools";
+import { FEATURED_TOOLS, CATEGORIES } from "@/data/tools";
 import { BrandLogo } from "@/components/BrandLogo";
 
 export function Footer() {
-  const popular = TOOLS.slice(0, 6);
+  const popular = FEATURED_TOOLS;
   return (
     <footer className="mt-24 border-t border-border bg-gradient-to-b from-background to-muted/40">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-12">

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { toolBySlug } from "@/data/tools";
 import { BioClient } from "./BioClient";
 
 export const metadata: Metadata = {
@@ -7,11 +9,12 @@ export const metadata: Metadata = {
     "Create short and professional bios for Instagram, TikTok, LinkedIn, websites and social media profiles.",
   openGraph: {
     title: "Free Bio Generator | Sounez",
-    description:
-      "Fill in a few details and get a polished bio tailored to your platform in seconds.",
+    description: "Fill in a few details and get a polished bio tailored to your platform in seconds.",
   },
 };
 
 export default function Page() {
-  return <BioClient />;
+  const tool = toolBySlug("bio-generator");
+  if (!tool) notFound();
+  return <BioClient tool={tool} />;
 }

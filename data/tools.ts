@@ -5,70 +5,62 @@ export type Tool = {
   category: "creator-tools" | "design-tools" | "utility-tools";
   emoji: string;
   keywords: string[];
+  featured?: boolean; // shown in homepage "Popular tools" and footer
 };
 
 export const TOOLS: Tool[] = [
-  { slug: "youtube-tags-generator", name: "YouTube Tags Generator", description: "Type a keyword and get 25 ready-to-paste YouTube tags that help your video show up in search.", category: "creator-tools", emoji: "🎬", keywords: ["youtube tags", "seo tags"] },
-  { slug: "tiktok-money-calculator", name: "TikTok Money Calculator", description: "See what your TikTok account could earn per sponsored post based on your followers and engagement.", category: "creator-tools", emoji: "💸", keywords: ["tiktok money", "creator earnings"] },
-  { slug: "hashtag-generator", name: "Hashtag Generator", description: "Enter a topic and get a ready-to-copy set of hashtags for Instagram, TikTok and YouTube.", category: "creator-tools", emoji: "#️⃣", keywords: ["hashtag", "instagram"] },
-  { slug: "color-palette-generator", name: "Color Palette Generator", description: "Generate a five-color palette in one click. Tap any swatch to copy the hex code.", category: "design-tools", emoji: "🎨", keywords: ["color palette", "design"] },
-  { slug: "css-gradient-generator", name: "CSS Gradient Generator", description: "Pick two colors, set an angle, and copy the CSS gradient code straight into your project.", category: "design-tools", emoji: "🌈", keywords: ["css", "gradient"] },
-  { slug: "qr-code-generator", name: "QR Code Generator", description: "Paste a URL or text and download a high-resolution QR code PNG. Free, no account needed.", category: "utility-tools", emoji: "📱", keywords: ["qr code"] },
-  { slug: "word-counter", name: "Word Counter", description: "Paste your text and instantly see word count, character count, sentence count and reading time.", category: "utility-tools", emoji: "📝", keywords: ["word counter", "character"] },
-  { slug: "password-generator", name: "Password Generator", description: "Create a strong random password with the length and character types you choose. Runs in your browser.", category: "utility-tools", emoji: "🔐", keywords: ["password"] },
-  { slug: "text-case-converter", name: "Text Case Converter", description: "Paste text and convert it to UPPERCASE, lowercase, Title Case, camelCase, kebab-case or snake_case.", category: "utility-tools", emoji: "🔡", keywords: ["text case"] },
-  { slug: "image-compressor", name: "Image Compressor", description: "Drop in a JPG or PNG and compress it right in your browser. Nothing gets uploaded to any server.", category: "utility-tools", emoji: "🖼️", keywords: ["image compressor"] },
-  { slug: "ai-caption-generator", name: "AI Caption Generator", description: "Paste a photo description or topic and get engaging captions for Instagram, TikTok or LinkedIn in one click.", category: "creator-tools", emoji: "✍️", keywords: ["caption generator", "ai captions", "instagram captions"] },
-  { slug: "bio-generator", name: "Bio Generator", description: "Describe yourself in a few words and get a polished social media or professional bio in seconds.", category: "creator-tools", emoji: "👤", keywords: ["bio generator", "instagram bio", "twitter bio"] },
-  { slug: "calculator", name: "Calculator", description: "A clean, fast calculator for everyday maths. Supports basic operations plus percentage and square root.", category: "utility-tools", emoji: "🧮", keywords: ["calculator", "online calculator", "free calculator"] },
-  { slug: "business-name-generator", name: "Business Name Generator", description: "Enter your industry or keywords and get creative, brandable business name ideas instantly.", category: "creator-tools", emoji: "🏢", keywords: ["business name generator", "brand name", "startup name"] },
-  { slug: "study-notes-generator", name: "Study Notes Generator", description: "Paste a topic or text and get concise, structured study notes you can review or export.", category: "utility-tools", emoji: "📚", keywords: ["study notes", "notes generator", "ai notes"] },
-  { slug: "website-idea-generator", name: "Website Idea Generator", description: "Describe your interests or niche and get unique website concepts with suggested names and features.", category: "creator-tools", emoji: "💡", keywords: ["website idea", "website concept", "niche website"] },
-  { slug: "resume-generator", name: "Resume Generator", description: "Fill in your details and export a clean, professional resume as HTML or PDF — no account needed.", category: "utility-tools", emoji: "📄", keywords: ["resume generator", "cv generator", "free resume"] },
-  { slug: "png-to-jpg-converter", name: "PNG to JPG Converter", description: "Drop a PNG and convert it to JPG right in your browser. Choose quality level and download instantly.", category: "utility-tools", emoji: "🖼️", keywords: ["png to jpg", "image converter", "convert png"] },
-  { slug: "favicon-generator", name: "Favicon Generator", description: "Create simple favicons from text, emoji, colors or uploaded images and download browser-ready favicon files.", category: "design-tools", emoji: "⭐", keywords: ["favicon generator", "website icon", "favicon maker"] },
-  { slug: "svg-blob-generator", name: "SVG Blob Generator", description: "Generate smooth random SVG blobs for modern backgrounds, hero sections and creative web design.", category: "design-tools", emoji: "🫧", keywords: ["svg blob generator", "blob maker", "organic shapes"] },
-  { slug: "font-pairing-tool", name: "Font Pairing Tool", description: "Discover clean font combinations for headings and body text with ready-to-copy CSS suggestions.", category: "design-tools", emoji: "🔤", keywords: ["font pairing", "font combinations", "typography tool"] },
-  { slug: "image-placeholder-generator", name: "Image Placeholder Generator", description: "Generate custom image placeholders with dimensions, colors and text for mockups and web layouts.", category: "design-tools", emoji: "🖼️", keywords: ["image placeholder", "placeholder generator", "dummy image"] },
-  { slug: "box-shadow-generator", name: "Box Shadow Generator", description: "Create and preview CSS box shadows visually, then copy the CSS code instantly.", category: "design-tools", emoji: "🌑", keywords: ["box shadow generator", "css shadow", "shadow css"] },
-  { slug: "background-pattern-generator", name: "Background Pattern Generator", description: "Create simple CSS and SVG background patterns for websites, landing pages and UI mockups.", category: "design-tools", emoji: "▧", keywords: ["background pattern generator", "css patterns", "svg patterns"] },
+  { slug: "youtube-tags-generator", name: "YouTube Tags Generator", description: "Type a keyword and get 25 ready-to-paste YouTube tags that help your video show up in search.", category: "creator-tools", emoji: "🎬", keywords: ["youtube tags", "seo tags", "video seo"], featured: true },
+  { slug: "tiktok-money-calculator", name: "TikTok Money Calculator", description: "See what your TikTok account could earn per sponsored post based on your followers and engagement.", category: "creator-tools", emoji: "💸", keywords: ["tiktok money", "creator earnings", "influencer calculator"], featured: true },
+  { slug: "hashtag-generator", name: "Hashtag Generator", description: "Enter a topic and get a ready-to-copy set of hashtags for Instagram, TikTok and YouTube.", category: "creator-tools", emoji: "#️⃣", keywords: ["hashtag", "instagram hashtags", "tiktok hashtags"], featured: true },
+  { slug: "color-palette-generator", name: "Color Palette Generator", description: "Generate a five-color palette in one click. Tap any swatch to copy the hex code.", category: "design-tools", emoji: "🎨", keywords: ["color palette", "design colors", "hex colors"], featured: true },
+  { slug: "css-gradient-generator", name: "CSS Gradient Generator", description: "Pick two colors, set an angle, and copy the CSS gradient code straight into your project.", category: "design-tools", emoji: "🌈", keywords: ["css gradient", "linear gradient", "background gradient"] },
+  { slug: "qr-code-generator", name: "QR Code Generator", description: "Paste a URL or text and download a high-resolution QR code PNG. Free, no account needed.", category: "utility-tools", emoji: "📱", keywords: ["qr code", "qr generator", "free qr code"], featured: true },
+  { slug: "word-counter", name: "Word Counter", description: "Paste your text and instantly see word count, character count, sentence count and reading time.", category: "utility-tools", emoji: "📝", keywords: ["word counter", "character counter", "reading time"] },
+  { slug: "password-generator", name: "Password Generator", description: "Create a strong random password with the length and character types you choose. Runs in your browser.", category: "utility-tools", emoji: "🔐", keywords: ["password generator", "strong password", "random password"], featured: true },
+  { slug: "text-case-converter", name: "Text Case Converter", description: "Paste text and convert it to UPPERCASE, lowercase, Title Case, camelCase, kebab-case or snake_case.", category: "utility-tools", emoji: "🔡", keywords: ["text case", "uppercase", "camelcase converter"] },
+  { slug: "image-compressor", name: "Image Compressor", description: "Drop in a JPG or PNG and compress it right in your browser. Nothing gets uploaded to any server.", category: "utility-tools", emoji: "🖼️", keywords: ["image compressor", "compress image", "reduce image size"] },
+  { slug: "ai-caption-generator", name: "AI Caption Generator", description: "Paste a photo description or topic and get engaging captions for Instagram, TikTok or LinkedIn in one click.", category: "creator-tools", emoji: "✍️", keywords: ["caption generator", "ai captions", "instagram captions", "social media captions"] },
+  { slug: "bio-generator", name: "Bio Generator", description: "Describe yourself in a few words and get a polished social media or professional bio in seconds.", category: "creator-tools", emoji: "👤", keywords: ["bio generator", "instagram bio", "twitter bio", "linkedin bio"] },
+  { slug: "calculator", name: "Calculator", description: "A clean, fast calculator for everyday maths. Supports basic operations plus percentage and square root.", category: "utility-tools", emoji: "🧮", keywords: ["calculator", "online calculator", "free calculator", "percentage calculator"] },
+  { slug: "business-name-generator", name: "Business Name Generator", description: "Enter your industry or keywords and get creative, brandable business name ideas instantly.", category: "creator-tools", emoji: "🏢", keywords: ["business name generator", "brand name", "startup name", "company name ideas"] },
+  { slug: "study-notes-generator", name: "Study Notes Generator", description: "Paste a topic or text and get concise, structured study notes you can review or export.", category: "utility-tools", emoji: "📚", keywords: ["study notes", "notes generator", "ai notes", "summarize text"] },
+  { slug: "website-idea-generator", name: "Website Idea Generator", description: "Describe your interests or niche and get unique website concepts with suggested names and features.", category: "creator-tools", emoji: "💡", keywords: ["website idea", "website concept", "niche website", "startup idea"] },
+  { slug: "resume-generator", name: "Resume Generator", description: "Fill in your details and export a clean, professional resume as HTML or PDF — no account needed.", category: "utility-tools", emoji: "📄", keywords: ["resume generator", "cv generator", "free resume", "resume builder"] },
+  { slug: "png-to-jpg-converter", name: "PNG to JPG Converter", description: "Drop a PNG and convert it to JPG right in your browser. Choose quality level and download instantly.", category: "utility-tools", emoji: "🖼️", keywords: ["png to jpg", "image converter", "convert png", "png jpg"] },
+  { slug: "favicon-generator", name: "Favicon Generator", description: "Create simple favicons from text, emoji, colors or uploaded images and download browser-ready favicon files.", category: "design-tools", emoji: "⭐", keywords: ["favicon generator", "website icon", "favicon maker", "browser icon"] },
+  { slug: "svg-blob-generator", name: "SVG Blob Generator", description: "Generate smooth random SVG blobs for modern backgrounds, hero sections and creative web design.", category: "design-tools", emoji: "🫧", keywords: ["svg blob generator", "blob maker", "organic shapes", "svg shapes"] },
+  { slug: "font-pairing-tool", name: "Font Pairing Tool", description: "Discover clean font combinations for headings and body text with ready-to-copy CSS suggestions.", category: "design-tools", emoji: "🔤", keywords: ["font pairing", "font combinations", "typography tool", "google fonts"] },
+  { slug: "image-placeholder-generator", name: "Image Placeholder Generator", description: "Generate custom image placeholders with dimensions, colors and text for mockups and web layouts.", category: "design-tools", emoji: "🖼️", keywords: ["image placeholder", "placeholder generator", "dummy image", "mockup image"] },
+  { slug: "box-shadow-generator", name: "Box Shadow Generator", description: "Create and preview CSS box shadows visually, then copy the CSS code instantly.", category: "design-tools", emoji: "🌑", keywords: ["box shadow generator", "css shadow", "shadow css", "drop shadow"] },
+  { slug: "background-pattern-generator", name: "Background Pattern Generator", description: "Create simple CSS and SVG background patterns for websites, landing pages and UI mockups.", category: "design-tools", emoji: "▧", keywords: ["background pattern generator", "css patterns", "svg patterns", "dot pattern"] },
 ];
+
+export const FEATURED_TOOLS = TOOLS.filter((t) => t.featured);
 
 export const CATEGORIES = [
-  { slug: "creator-tools", name: "Creator Tools", description: "Tools for YouTubers, TikTokers and content creators who want to grow without wasting time.", emoji: "🚀" },
-  { slug: "design-tools", name: "Design Tools", description: "Color palettes, gradients and visual helpers for designers and developers who ship fast.", emoji: "🎨" },
-  { slug: "utility-tools", name: "Utility Tools", description: "Everyday tools that just get things done. QR codes, word counters, passwords and more.", emoji: "🛠️" },
+  {
+    slug: "creator-tools",
+    name: "Creator Tools",
+    description: "Tools for YouTubers, TikTokers and content creators who want to grow without wasting time.",
+    emoji: "🚀",
+  },
+  {
+    slug: "design-tools",
+    name: "Design Tools",
+    description: "Color palettes, gradients, favicons, SVG blobs, font pairings and CSS helpers for designers and developers.",
+    emoji: "🎨",
+  },
+  {
+    slug: "utility-tools",
+    name: "Utility Tools",
+    description: "Everyday tools that just get things done. QR codes, word counters, passwords, calculators and more.",
+    emoji: "🛠️",
+  },
 ] as const;
 
-export const BLOG_POSTS = [
-  { slug: "best-free-tools-for-creators", title: "10 Best Free Online Tools for Creators in 2026", excerpt: "The free tools every creator should have bookmarked. Save time, publish faster, grow smarter.", date: "2026-05-08", readTime: "6 min", image: "/blog/best-free-tools-for-creators.webp" },
-  { slug: "how-to-grow-on-tiktok", title: "How to Grow on TikTok in 2026: A Creator's Playbook", excerpt: "A practical, no-fluff guide to growing a real TikTok audience this year.", date: "2026-04-29", readTime: "8 min", image: "/blog/how-to-grow-on-tiktok.webp" },
-  { slug: "how-to-compress-images", title: "How to Compress Images Without Losing Quality", excerpt: "Smaller files load faster and rank better. Here's exactly how to compress images the right way.", date: "2026-04-17", readTime: "5 min", image: "/blog/how-to-compress-images.webp" },
-  { slug: "best-color-palettes-for-design", title: "The Best Color Palettes for Modern Design", excerpt: "Curated palettes and the principles behind them. For landing pages, apps and brands.", date: "2026-04-03", readTime: "7 min", image: "/blog/best-color-palettes-for-design.webp" },
-  { slug: "how-to-create-a-strong-password", title: "How to Create a Strong Password You'll Actually Remember", excerpt: "Stop reusing passwords. Here's a simple system for strong, memorable credentials.", date: "2026-03-21", readTime: "4 min", image: "/blog/how-to-create-a-strong-password.webp" },
-  { slug: "how-to-use-qr-codes-for-marketing", title: "How to Use QR Codes for Marketing (Without Looking Cheap)", excerpt: "QR codes are everywhere again. Here's how to use them in a way that actually works.", date: "2026-03-10", readTime: "5 min", image: "/blog/how-to-use-qr-codes-for-marketing.webp" },
-  { slug: "best-productivity-tools-for-remote-workers", title: "The Best Free Productivity Tools for Remote Workers in 2026", excerpt: "Work from anywhere without paying for a bloated app stack. These free tools cover everything.", date: "2026-02-27", readTime: "7 min", image: "/blog/best-productivity-tools-for-remote-workers.webp" },
-  { slug: "how-to-write-youtube-descriptions", title: "How to Write YouTube Descriptions That Actually Get Views", excerpt: "Most creators ignore the description box. That's a mistake. Here's how to fix it.", date: "2026-02-14", readTime: "6 min", image: "/blog/how-to-write-youtube-descriptions.webp" },
-  { slug: "css-gradients-guide", title: "The Complete Guide to CSS Gradients in 2026", excerpt: "Linear, radial, conic. Everything you need to build beautiful gradients with clean code.", date: "2026-01-30", readTime: "8 min", image: "/blog/css-gradients-guide.webp" },
-  { slug: "how-to-grow-instagram-organically", title: "How to Grow Instagram Organically in 2026", excerpt: "No paid ads, no follow-unfollow tricks. A real strategy for building an engaged audience.", date: "2026-01-16", readTime: "7 min", image: "/blog/how-to-grow-instagram-organically.webp" },
-  { slug: "image-seo-guide", title: "Image SEO: The Complete Guide to Ranking Your Images on Google", excerpt: "Alt text, file names, compression, structured data. Everything that makes images rank.", date: "2025-12-19", readTime: "6 min", image: "/blog/image-seo-guide.webp" },
-  { slug: "free-design-tools-for-non-designers", title: "Free Design Tools for Non-Designers: Look Professional Without Hiring Anyone", excerpt: "You don't need Figma or Photoshop. These free browser tools cover 90% of what most people need.", date: "2025-12-05", readTime: "5 min", image: "/blog/free-design-tools-for-non-designers.webp" },
-  { slug: "how-to-write-better-social-media-captions", title: "How to Write Better Social Media Captions with AI", excerpt: "Learn how to create better captions for Instagram, TikTok and LinkedIn using simple prompts, tone selection and AI caption examples.", date: "2026-05-10", readTime: "6 min", image: "/blog/best-free-tools-for-creators.webp" },
-  { slug: "how-to-write-a-good-social-media-bio", title: "How to Write a Good Social Media Bio", excerpt: "Learn how to write short, clear and professional bios for Instagram, TikTok, LinkedIn and personal websites.", date: "2026-05-09", readTime: "5 min", image: "/blog/how-to-grow-instagram-organically.webp" },
-  { slug: "simple-online-calculator-guide", title: "Simple Online Calculator Guide for Everyday Math", excerpt: "Use this guide to understand quick everyday calculations such as percentages, square roots and basic arithmetic.", date: "2026-05-08", readTime: "4 min", image: "/blog/best-productivity-tools-for-remote-workers.webp" },
-  { slug: "how-to-choose-a-business-name", title: "How to Choose a Business Name for Your Brand", excerpt: "Learn how to choose a business name that is simple, memorable and suitable for your brand or startup.", date: "2026-05-07", readTime: "6 min", image: "/blog/best-free-tools-for-creators.webp" },
-  { slug: "how-to-create-effective-study-notes", title: "How to Create Effective Study Notes", excerpt: "Learn how to turn lessons, topics and long text into clear study notes, summaries, bullet points and key terms.", date: "2026-05-06", readTime: "5 min", image: "/blog/best-productivity-tools-for-remote-workers.webp" },
-  { slug: "how-to-find-website-ideas", title: "How to Find Website Ideas for Your Next Project", excerpt: "Discover practical methods to generate website ideas for blogs, SaaS products, communities, ecommerce and online tools.", date: "2026-05-05", readTime: "6 min", image: "/blog/best-free-tools-for-creators.webp" },
-  { slug: "how-to-create-a-professional-resume", title: "How to Create a Professional Resume Online", excerpt: "Learn how to structure a clean resume with personal information, summary, experience, education and skills.", date: "2026-05-04", readTime: "6 min", image: "/blog/best-productivity-tools-for-remote-workers.webp" },
-  { slug: "png-vs-jpg-and-how-to-convert-images", title: "PNG vs JPG: Differences and How to Convert Images", excerpt: "Learn the difference between PNG and JPG images and how to convert PNG files to JPG safely in your browser.", date: "2026-05-03", readTime: "5 min", image: "/blog/how-to-compress-images.webp" },
-  { slug: "how-to-create-a-favicon-for-your-website", title: "How to Create a Favicon for Your Website", excerpt: "Learn what a favicon is, why it matters, recommended sizes and how to create one free in your browser.", date: "2026-05-12", readTime: "5 min", image: "/blog/free-design-tools-for-non-designers.webp" },
-  { slug: "how-to-use-svg-blobs-in-web-design", title: "How to Use SVG Blobs in Modern Web Design", excerpt: "Learn how SVG blobs can improve hero sections, cards and backgrounds with lightweight organic shapes.", date: "2026-05-11", readTime: "5 min", image: "/blog/best-color-palettes-for-design.webp" },
-  { slug: "how-to-choose-font-pairings-for-a-website", title: "How to Choose Font Pairings for a Website", excerpt: "Learn how to combine heading and body fonts for readable, professional and beautiful website typography.", date: "2026-05-10", readTime: "6 min", image: "/blog/css-gradients-guide.webp" },
-  { slug: "how-to-use-image-placeholders-in-web-design", title: "How to Use Image Placeholders in Web Design", excerpt: "Learn how image placeholders help with wireframes, mockups, frontend development and layout planning.", date: "2026-05-09", readTime: "4 min", image: "/blog/free-design-tools-for-non-designers.webp" },
-  { slug: "css-box-shadow-guide", title: "CSS Box Shadow Guide: How to Create Better Shadows", excerpt: "Learn how CSS box-shadow works and how to create soft, modern shadows for cards, buttons and UI elements.", date: "2026-05-08", readTime: "6 min", image: "/blog/css-gradients-guide.webp" },
-  { slug: "css-background-patterns-guide", title: "CSS Background Patterns Guide for Web Design", excerpt: "Learn how to create lightweight CSS and SVG background patterns for websites and landing pages.", date: "2026-05-07", readTime: "5 min", image: "/blog/best-color-palettes-for-design.webp" },
-  { slug: "free-design-tools-for-web-creators", title: "Free Design Tools for Web Creators", excerpt: "Explore free tools for favicons, SVG blobs, font pairings, placeholders, CSS shadows and background patterns.", date: "2026-05-06", readTime: "7 min", image: "/blog/free-design-tools-for-non-designers.webp" },
-];
+// Re-export BLOG_POSTS from data/blog.ts for backwards compatibility
+// (components that still import BLOG_POSTS from here will continue to work)
+export { BLOG_POSTS } from "@/data/blog";
 
 export function toolBySlug(slug: string) {
   return TOOLS.find((t) => t.slug === slug);

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { TOOLS, BLOG_POSTS, type Tool } from "@/data/tools";
+import { TOOLS, type Tool } from "@/data/tools";
+import { blogPostsForTool } from "@/data/blog";
 import { ToolCard } from "./ToolCard";
 import { AdSlot } from "./AdSlot";
 import { SmartLink as Link } from "@/components/smart-link";
@@ -47,7 +48,7 @@ export function ToolPageShell({
   const otherCat = TOOLS.filter((t) => t.category !== tool.category).slice(0, 6);
   const related = [...sameCat, ...otherCat].slice(0, 6);
   const moreTools = TOOLS.filter((t) => t.slug !== tool.slug && !related.includes(t)).slice(0, 6);
-  const featuredPosts = BLOG_POSTS.slice(0, 3);
+  const featuredPosts = blogPostsForTool(tool.slug);
   const Icon = getToolIcon(tool.slug);
 
   return (
@@ -197,7 +198,7 @@ export function ToolPageShell({
           })}
         </div>
         <div className="mt-6 text-sm">
-          See all <Link href="/tools" className="font-medium text-primary hover:underline">100+ free tools</Link> or browse{" "}
+          See <Link href="/tools" className="font-medium text-primary hover:underline">all {TOOLS.length} free tools</Link> or browse{" "}
           <Link href="/categories" className="font-medium text-primary hover:underline">all categories</Link>.
         </div>
       </section>

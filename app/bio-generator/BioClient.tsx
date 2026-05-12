@@ -4,9 +4,7 @@ import { useState } from "react";
 import { Copy, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("bio-generator")!;
+import type { Tool } from "@/data/tools";
 
 type Platform = "instagram" | "twitter" | "linkedin" | "general";
 
@@ -17,13 +15,14 @@ const MAX_CHARS: Record<Platform, number> = {
   general: 300,
 };
 
-export function BioClient() {
+export function BioClient({ tool }: { tool: Tool }) {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [interests, setInterests] = useState("");
   const [platform, setPlatform] = useState<Platform>("instagram");
   const [bio, setBio] = useState("");
   const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const generate = async () => {
     if (!name.trim() || !role.trim()) {
@@ -36,13 +35,13 @@ export function BioClient() {
       const res = await fetch("/api/bio", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name.trim(),
-          role: role.trim(),
-          interests: interests.trim(),
-          platform,
-        }),
+        body: JSON.stringify({ name: name.trim(), role: role.trim(), interests: interests.trim(), platform }),
       });
+      if (res.status === 429) {
+        const data = await res.json().catch(() => ({}));
+        toast.error(data.error ?? "Too many requests. Please wait a moment.");
+        return;
+      }
       const data = await res.json();
       if (typeof data.bio === "string" && data.bio.trim()) {
         setBio(data.bio.trim());
@@ -58,8 +57,11 @@ export function BioClient() {
   };
 
   const copy = () => {
-    navigator.clipboard.writeText(bio);
-    toast.success("Bio copied");
+    navigator.clipboard.writeText(bio).then(() => {
+      setCopied(true);
+      toast.success("Bio copied");
+      setTimeout(() => setCopied(false), 1500);
+    }).catch(() => toast.error("Could not copy. Please copy manually."));
   };
 
   const maxLen = MAX_CHARS[platform];
@@ -69,18 +71,9 @@ export function BioClient() {
       tool={tool}
       intro="Fill in a few details and get a polished bio tailored to your platform in seconds."
       features={[
-        {
-          title: "Platform-specific length",
-          desc: "160 chars for Instagram/Twitter, 300 for LinkedIn.",
-        },
-        {
-          title: "Instant results",
-          desc: "No waiting. Your bio is ready to paste.",
-        },
-        {
-          title: "No signup needed",
-          desc: "Completely free and anonymous.",
-        },
+        { title: "Platform-specific length", desc: "160 chars for Instagram/Twitter, 300 for LinkedIn." },
+        { title: "Instant results", desc: "No waiting. Your bio is ready to paste." },
+        { title: "No signup needed", desc: "Completely free and anonymous." },
       ]}
       howTo={[
         "Enter your name, role and a few interests.",
@@ -88,46 +81,32 @@ export function BioClient() {
         "Click Generate and copy your new bio.",
       ]}
       faqs={[
-        {
-          q: "How long will my bio be?",
-          a: "Instagram and Twitter bios are capped at 160 characters. LinkedIn and general bios can go up to 300 characters.",
-        },
-        {
-          q: "Can I generate multiple versions?",
-          a: "Yes. Click Generate again to get a different result.",
-        },
+        { q: "How long will my bio be?", a: "Instagram and Twitter bios are capped at 160 characters. LinkedIn and general bios can go up to 300 characters." },
+        { q: "Can I generate multiple versions?", a: "Yes. Click Generate again to get a different result." },
       ]}
     >
       <div className="space-y-4">
         <div className="grid gap-3 sm:grid-cols-2">
           <div>
-            <label
-              htmlFor="bio-name"
-              className="mb-1.5 block text-sm font-medium"
-            >
-              Full name
-            </label>
+            <label htmlFor="bio-name" className="mb-1.5 block text-sm font-medium">Full name</label>
             <input
               id="bio-name"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              maxLength={80}
               placeholder="e.g. Alex Johnson"
               className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
           </div>
           <div>
-            <label
-              htmlFor="bio-role"
-              className="mb-1.5 block text-sm font-medium"
-            >
-              Role / Title
-            </label>
+            <label htmlFor="bio-role" className="mb-1.5 block text-sm font-medium">Role / Title</label>
             <input
               id="bio-role"
               type="text"
               value={role}
               onChange={(e) => setRole(e.target.value)}
+              maxLength={120}
               placeholder="e.g. UX Designer & Blogger"
               className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
@@ -135,32 +114,22 @@ export function BioClient() {
         </div>
 
         <div>
-          <label
-            htmlFor="bio-interests"
-            className="mb-1.5 block text-sm font-medium"
-          >
-            Interests{" "}
-            <span className="text-muted-foreground font-normal">
-              (comma-separated)
-            </span>
+          <label htmlFor="bio-interests" className="mb-1.5 block text-sm font-medium">
+            Interests <span className="font-normal text-muted-foreground">(comma-separated)</span>
           </label>
           <input
             id="bio-interests"
             type="text"
             value={interests}
             onChange={(e) => setInterests(e.target.value)}
+            maxLength={250}
             placeholder="e.g. travel, coffee, design"
             className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
         </div>
 
         <div>
-          <label
-            htmlFor="bio-platform"
-            className="mb-1.5 block text-sm font-medium"
-          >
-            Platform
-          </label>
+          <label htmlFor="bio-platform" className="mb-1.5 block text-sm font-medium">Platform</label>
           <select
             id="bio-platform"
             value={platform}
@@ -195,10 +164,11 @@ export function BioClient() {
               aria-label="Copy bio"
             >
               <Copy className="h-4 w-4" />
+              {copied && <span className="sr-only">Copied</span>}
             </button>
           </div>
           <p className="mt-2 text-xs text-muted-foreground">
-            {bio.length} / {maxLen} characters
+            {bio.length} / {maxLen} characters · AI-generated. Review before using.
           </p>
         </div>
       )}

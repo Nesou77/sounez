@@ -7,10 +7,10 @@ import { TOOLS, CATEGORIES } from "@/data/tools";
 import { getToolIcon, getCategoryIcon } from "@/lib/tool-icons";
 import { BrandLogo } from "@/components/BrandLogo";
 
-const grouped = {
-  "Creator Tools": TOOLS.filter((t) => t.category === "creator-tools"),
-  "Design Tools": TOOLS.filter((t) => t.category === "design-tools"),
-  "Utility Tools": TOOLS.filter((t) => t.category === "utility-tools"),
+const grouped: Record<string, { label: string; slug: string; items: typeof TOOLS }> = {
+  "creator-tools":  { label: "Creator Tools",  slug: "creator-tools",  items: TOOLS.filter((t) => t.category === "creator-tools").slice(0, 6) },
+  "design-tools":   { label: "Design Tools",   slug: "design-tools",   items: TOOLS.filter((t) => t.category === "design-tools").slice(0, 6) },
+  "utility-tools":  { label: "Utility Tools",  slug: "utility-tools",  items: TOOLS.filter((t) => t.category === "utility-tools").slice(0, 6) },
 };
 
 export function Navbar() {
@@ -43,9 +43,9 @@ export function Navbar() {
             {open === "tools" && (
               <div className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-2xl border border-border bg-popover p-6 shadow-pop">
                 <div className="grid grid-cols-3 gap-6">
-                  {Object.entries(grouped).map(([title, items]) => (
-                    <div key={title}>
-                      <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{title}</p>
+                  {Object.values(grouped).map(({ label, slug, items }) => (
+                    <div key={slug}>
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</p>
                       <ul className="space-y-0.5">
                         {items.map((t) => {
                           const Icon = getToolIcon(t.slug);
@@ -65,6 +65,13 @@ export function Navbar() {
                           );
                         })}
                       </ul>
+                      <Link
+                        href={`/categories/${slug}`}
+                        onClick={() => setOpen(null)}
+                        className="mt-2 inline-flex items-center gap-1 px-2.5 text-xs font-medium text-primary hover:underline"
+                      >
+                        All {label} →
+                      </Link>
                     </div>
                   ))}
                 </div>

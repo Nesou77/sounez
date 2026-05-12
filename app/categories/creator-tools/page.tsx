@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { CategoryPage } from "@/components/CategoryPage";
+import { toolsByCategory } from "@/data/tools";
+
+const count = toolsByCategory("creator-tools").length;
 
 export const metadata: Metadata = {
-  title: "Creator Tools | YouTube, TikTok and Hashtag Tools | Sounez",
-  description: "Free creator tools: YouTube tags generator, TikTok money calculator and hashtag generator. Built for creators.",
+  title: `Creator Tools | ${count} Free Tools for YouTubers, TikTokers & Creators | Sounez`,
+  description: `Free creator tools: YouTube tags generator, TikTok money calculator, hashtag generator, AI caption generator, bio generator, business name generator and more. ${count} tools, no signup.`,
   openGraph: {
     title: "Creator Tools | Sounez",
     description: "Grow on YouTube, TikTok and Instagram with free creator tools.",

@@ -4,7 +4,8 @@ import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { Search, ArrowRight, Sparkles, Zap, Shield, Heart, Plus } from "lucide-react";
-import { TOOLS, CATEGORIES, BLOG_POSTS } from "@/data/tools";
+import { TOOLS, CATEGORIES, FEATURED_TOOLS } from "@/data/tools";
+import { BLOG_POSTS } from "@/data/blog";
 import { ToolCard } from "@/components/ToolCard";
 import { AdSlot } from "@/components/AdSlot";
 import { getCategoryIcon, getToolIcon } from "@/lib/tool-icons";
@@ -18,11 +19,18 @@ const FAQS = [
 
 export function HomeClient() {
   const [q, setQ] = useState("");
-  const filtered = useMemo(
-    () => TOOLS.filter((t) => t.name.toLowerCase().includes(q.toLowerCase())),
-    [q]
-  );
-  const popular = TOOLS.slice(0, 6);
+  const filtered = useMemo(() => {
+    if (!q) return [];
+    const lower = q.toLowerCase();
+    return TOOLS.filter(
+      (t) =>
+        t.name.toLowerCase().includes(lower) ||
+        t.description.toLowerCase().includes(lower) ||
+        t.category.includes(lower) ||
+        t.keywords.some((k) => k.toLowerCase().includes(lower))
+    );
+  }, [q]);
+  const popular = FEATURED_TOOLS;
 
   return (
     <>
@@ -60,7 +68,7 @@ export function HomeClient() {
               <input
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
-                placeholder={`Search ${TOOLS.length}+ free tools…`}
+                placeholder={`Search ${TOOLS.length} free tools…`}
                 className="w-full rounded-2xl border border-border bg-background/80 py-4 pl-11 pr-4 text-sm shadow-soft outline-none backdrop-blur transition focus:border-primary focus:ring-4 focus:ring-primary/15"
               />
             </div>

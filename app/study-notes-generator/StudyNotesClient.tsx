@@ -1,46 +1,83 @@
 "use client";
 
-import { useState } from "react";
-import { Copy, Download, Loader2 } from "lucide-react";
+import { useRef, useState } from "react";
+import { Copy, Download, Loader2, Square } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
-import { toolBySlug } from "@/data/tools";
-
-const tool = toolBySlug("study-notes-generator")!;
+import type { Tool } from "@/data/tools";
 
 type Level = "beginner" | "intermediate" | "advanced";
 
-export function StudyNotesClient() {
+export function StudyNotesClient({ tool }: { tool: Tool }) {
   const [topic, setTopic] = useState("");
   const [level, setLevel] = useState<Level>("beginner");
   const [notes, setNotes] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [streaming, setStreaming] = useState(false);
+  const abortRef = useRef<AbortController | null>(null);
 
   const generate = async () => {
     if (!topic.trim()) {
       toast.error("Please enter a topic or paste some text");
       return;
     }
-    setLoading(true);
+    if (topic.trim().length > 5000) {
+      toast.error("Topic must be 5000 characters or fewer.");
+      return;
+    }
+
+    // Cancel any in-flight request
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+
+    setStreaming(true);
     setNotes("");
+
     try {
       const res = await fetch("/api/study-notes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ topic: topic.trim(), level }),
+        signal: controller.signal,
       });
-      const data = await res.json();
-      if (typeof data.notes === "string" && data.notes.trim()) {
-        setNotes(data.notes.trim());
-        toast.success("Notes generated");
-      } else {
-        toast.error("No notes returned. Please try again.");
+
+      if (res.status === 429) {
+        const data = await res.json().catch(() => ({}));
+        toast.error(data.error ?? "Too many requests. Please wait a moment.");
+        return;
       }
-    } catch {
-      toast.error("Something went wrong. Please try again.");
+      if (!res.ok || !res.body) {
+        toast.error("Something went wrong. Please try again.");
+        return;
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let accumulated = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const chunk = decoder.decode(value, { stream: true });
+        accumulated += chunk;
+        setNotes(accumulated);
+      }
+
+      toast.success("Notes generated");
+    } catch (e: unknown) {
+      if (e instanceof Error && e.name === "AbortError") {
+        toast("Generation stopped.");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
     } finally {
-      setLoading(false);
+      setStreaming(false);
+      abortRef.current = null;
     }
+  };
+
+  const stop = () => {
+    abortRef.current?.abort();
   };
 
   const copy = () => {
@@ -64,18 +101,9 @@ export function StudyNotesClient() {
       tool={tool}
       intro="Enter any topic and get clean, structured study notes ready to review or export."
       features={[
-        {
-          title: "Structured output",
-          desc: "Notes come with headings, bullets and a key terms section.",
-        },
-        {
-          title: "Level-aware",
-          desc: "Adjust depth from beginner to advanced.",
-        },
-        {
-          title: "Export as text",
-          desc: "Download your notes to read offline or import into Notion.",
-        },
+        { title: "Structured output", desc: "Notes come with headings, bullets and a key terms section." },
+        { title: "Level-aware", desc: "Adjust depth from beginner to advanced." },
+        { title: "Export as text", desc: "Download your notes to read offline or import into Notion." },
       ]}
       howTo={[
         "Type a topic or paste a block of text.",
@@ -83,22 +111,13 @@ export function StudyNotesClient() {
         "Click Generate, then copy or download your notes.",
       ]}
       faqs={[
-        {
-          q: "Can I paste a paragraph and get notes from it?",
-          a: "Yes. Paste any text into the topic box and the tool will summarise it into structured notes.",
-        },
-        {
-          q: "Are the notes accurate?",
-          a: "AI-generated notes can contain errors. Always cross-check important facts with a textbook or trusted source.",
-        },
+        { q: "Can I paste a paragraph and get notes from it?", a: "Yes. Paste any text into the topic box and the tool will summarise it into structured notes." },
+        { q: "Are the notes accurate?", a: "AI-generated notes can contain errors. Always cross-check important facts with a textbook or trusted source." },
       ]}
     >
       <div className="space-y-4">
         <div>
-          <label
-            htmlFor="notes-topic"
-            className="mb-1.5 block text-sm font-medium"
-          >
+          <label htmlFor="notes-topic" className="mb-1.5 block text-sm font-medium">
             Topic or text to summarise
           </label>
           <textarea
@@ -106,18 +125,15 @@ export function StudyNotesClient() {
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             rows={5}
+            maxLength={5000}
             placeholder="e.g. The French Revolution, or paste a paragraph from your textbook…"
             className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
+          <p className="mt-1 text-right text-xs text-muted-foreground">{topic.length}/5000</p>
         </div>
 
         <div>
-          <label
-            htmlFor="notes-level"
-            className="mb-1.5 block text-sm font-medium"
-          >
-            Study level
-          </label>
+          <label htmlFor="notes-level" className="mb-1.5 block text-sm font-medium">Study level</label>
           <select
             id="notes-level"
             value={level}
@@ -130,14 +146,25 @@ export function StudyNotesClient() {
           </select>
         </div>
 
-        <button
-          onClick={generate}
-          disabled={loading}
-          className="flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
-        >
-          {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-          {loading ? "Generating…" : "Generate Notes"}
-        </button>
+        <div className="flex gap-2">
+          <button
+            onClick={generate}
+            disabled={streaming}
+            className="flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {streaming && <Loader2 className="h-4 w-4 animate-spin" />}
+            {streaming ? "Generating…" : "Generate Notes"}
+          </button>
+          {streaming && (
+            <button
+              onClick={stop}
+              className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm font-semibold transition hover:bg-muted active:scale-95"
+              title="Stop generation"
+            >
+              <Square className="h-4 w-4" /> Stop
+            </button>
+          )}
+        </div>
       </div>
 
       {notes && (
@@ -149,21 +176,23 @@ export function StudyNotesClient() {
                 onClick={copy}
                 className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95"
               >
-                <Copy className="h-3.5 w-3.5" />
-                Copy
+                <Copy className="h-3.5 w-3.5" /> Copy
               </button>
               <button
                 onClick={download}
                 className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95"
               >
-                <Download className="h-3.5 w-3.5" />
-                Download .txt
+                <Download className="h-3.5 w-3.5" /> Download .txt
               </button>
             </div>
           </div>
           <pre className="w-full overflow-auto rounded-xl border border-border bg-muted/40 p-4 text-sm leading-relaxed whitespace-pre-wrap font-sans">
             {notes}
+            {streaming && <span className="animate-pulse">▌</span>}
           </pre>
+          <p className="mt-2 text-xs text-muted-foreground">
+            AI-generated notes. Always verify with authoritative sources before an exam.
+          </p>
         </div>
       )}
     </ToolPageShell>

@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { CategoryPage } from "@/components/CategoryPage";
+import { toolsByCategory } from "@/data/tools";
+
+const count = toolsByCategory("design-tools").length;
 
 export const metadata: Metadata = {
-  title: "Design Tools | Color Palettes and CSS Gradients | Sounez",
-  description: "Free design tools: color palette generator and CSS gradient generator. Copy-ready code for designers and developers.",
+  title: `Design Tools | ${count} Free Tools for Designers & Developers | Sounez`,
+  description: `Free design tools: color palette generator, CSS gradient generator, favicon generator, SVG blob generator, font pairing tool, box shadow generator, background pattern generator and more. ${count} tools, no signup.`,
   openGraph: {
     title: "Design Tools | Sounez",
-    description: "Generate beautiful colors and gradients in seconds.",
+    description: "Generate colors, gradients, favicons, blobs, font pairings and CSS patterns in seconds.",
   },
 };
 

@@ -11,9 +11,13 @@ export function ToolsClient() {
   const [cat, setCat] = useState<string>("all");
 
   const filtered = useMemo(() => {
+    const lower = q.toLowerCase();
     return TOOLS.filter((t) =>
       (cat === "all" || t.category === cat) &&
-      (q === "" || t.name.toLowerCase().includes(q.toLowerCase()) || t.description.toLowerCase().includes(q.toLowerCase()))
+      (q === "" ||
+        t.name.toLowerCase().includes(lower) ||
+        t.description.toLowerCase().includes(lower) ||
+        t.keywords.some((k) => k.toLowerCase().includes(lower)))
     );
   }, [q, cat]);
 

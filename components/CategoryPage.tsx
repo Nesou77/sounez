@@ -5,9 +5,9 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { getCategoryIcon } from "@/lib/tool-icons";
 
 const INTROS: Record<string, string> = {
-  "creator-tools": "Tools for YouTubers, TikTokers and Instagram creators who want to spend less time on the repetitive stuff. Generate tags, estimate earnings and find the right hashtags. All free, all instant.",
-  "design-tools": "Color palettes, CSS gradients and visual helpers for designers and developers. Pick a color, build a gradient, copy the code and get back to work.",
-  "utility-tools": "Practical everyday tools that just get things done. QR codes, word counters, password generators, image compressors. Free, fast and nothing gets uploaded.",
+  "creator-tools": "Tools for YouTubers, TikTokers and Instagram creators who want to spend less time on the repetitive stuff. Generate tags, estimate earnings, find hashtags, write captions, create bios and generate business names. All free, all instant.",
+  "design-tools": "Color palettes, CSS gradients, favicons, SVG blobs, font pairings, image placeholders, box shadows and background patterns — everything a designer or developer needs to ship faster. Copy-ready code, no installs.",
+  "utility-tools": "Practical everyday tools that just get things done. QR codes, word counters, password generators, image compressors, calculators, resume builders, study notes and more. Free, fast and nothing gets uploaded.",
 };
 
 const FAQS: Record<string, { q: string; a: string }[]> = {
