@@ -46,7 +46,7 @@ export default function Post() {
           to compress safely without uploading your files to sketchy third-party servers.
         </p>
 
-        <BlogImage src="/blog/inline-compression-comparison.jpg" alt="Before and after image compression comparison" caption="Same image, ten times smaller — visually identical." />
+        <BlogImage src="/blog/how-to-compress-images2.webp" alt="Before and after image compression comparison" caption="Same image, ten times smaller — visually identical." />
 
         <h2>Why image compression matters more than ever</h2>
         <p>

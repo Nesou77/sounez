@@ -74,7 +74,7 @@ export default function Post() {
           <li><strong>Your browser&apos;s built-in manager</strong>: fine as a starting point, upgrade later</li>
         </ul>
 
-        <BlogImage src="/blog/inline-password-manager.jpg" alt="A password manager listing unique strong passwords with a 2FA code on a phone" caption="Manager + 2FA = practically unbreakable." />
+        <BlogImage src="/blog/how-to-create-a-strong-password2.webp" alt="A password manager listing unique strong passwords with a 2FA code on a phone" caption="Manager + 2FA = practically unbreakable." />
 
         <h2>Step 3: Enable two-factor authentication (2FA) everywhere</h2>
         <ol>
