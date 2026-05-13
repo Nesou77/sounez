@@ -8,11 +8,11 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   title: "Sounez | Free Online Tools for Creators, Designers and Productivity",
   description:
-    "Free, fast and simple online tools. QR codes, password generator, image compressor, color palettes, hashtag and YouTube tools. No signup needed.",
+    "Free, fast and simple online tools. QR codes, password generator, image compressor, color palettes, hashtag and YouTube tools. No account needed.",
   alternates: { canonical: siteUrl },
   openGraph: {
     title: "Sounez | Free Online Tools",
-    description: "Free, fast tools for creators, designers and productivity. No signup needed.",
+    description: "Free, fast tools for creators, designers and productivity. No account needed.",
     url: siteUrl,
   },
 };

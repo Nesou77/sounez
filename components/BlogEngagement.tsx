@@ -172,7 +172,7 @@ export function BlogEngagement({ slug }: { slug: string }) {
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
-              placeholder="Share your thoughts…"
+              placeholder="Share your thoughts"
               rows={3}
               maxLength={1000}
               className="rounded-xl border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-primary"
@@ -180,7 +180,7 @@ export function BlogEngagement({ slug }: { slug: string }) {
           </div>
           <div className="mt-3 flex items-center justify-between">
             <span className="text-xs text-muted-foreground">
-              {text.length}/1000. No signup required.
+              {text.length}/1000. No account required.
             </span>
             <button
               type="submit"

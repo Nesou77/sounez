@@ -16,7 +16,7 @@ const ToolCard = dynamic(() => import("@/components/ToolCard").then(mod => ({ de
 });
 
 const FAQS = [
-  { q: "Is Sounez free to use?", a: "Yes. Every tool on Sounez is completely free. No account, no trial period, no catch." },
+  { q: "Is Sounez free to use?", a: "Yes. Every tool on Sounez is completely free. No account, no trial, no catch." },
   { q: "Do my files get uploaded to a server?", a: "No. Tools like the Image Compressor and Password Generator run entirely in your browser. Nothing leaves your device." },
   { q: "Can I use Sounez tools for commercial work?", a: "Yes. You can use the output from any Sounez tool in personal, educational and commercial projects." },
   { q: "Will more tools be added?", a: "Yes. New tools are added regularly. Bookmark the tools page or check the blog to stay updated." },

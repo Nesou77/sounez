@@ -5,10 +5,10 @@ import { BLOG_POSTS } from "@/data/blog";
 
 export const metadata: Metadata = {
   title: "Sounez Blog | Tips and Guides for Creators",
-  description: "Guides, playbooks and tips on growing as a creator, designer and productivity pro.",
+  description: "Practical guides and tips on growing as a creator, designer and productivity pro.",
   openGraph: {
     title: "Sounez Blog",
-    description: "Tips and playbooks for creators.",
+    description: "Practical guides for creators, designers and productivity pros.",
   },
 };
 

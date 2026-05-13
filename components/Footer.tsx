@@ -11,7 +11,7 @@ export function Footer() {
         <div className="md:col-span-4">
           <BrandLogo variant="footer" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Free tools that actually work. No signup, no installs, no clutter. Just open one and use it.
+            Free tools that actually work. No account, no installs, no clutter. Open one and use it.
           </p>
           <div className="mt-5 flex items-center gap-2">
             {[

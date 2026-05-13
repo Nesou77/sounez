@@ -62,7 +62,7 @@ export function HomeHeroSearch() {
           value={q}
           onChange={(e) => { setQ(e.target.value); setActiveIndex(-1); }}
           onKeyDown={handleKeyDown}
-          placeholder={`Search ${TOOLS.length} free tools…`}
+          placeholder={`Search ${TOOLS.length} free tools`}
           aria-label="Search tools"
           aria-autocomplete="list"
           aria-controls={q ? "search-results" : undefined}

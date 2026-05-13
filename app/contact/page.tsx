@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact Sounez",
-    description: "Reach the Sounez team. Feedback, bugs, partnerships.",
+    description: "Reach the Sounez team. Feedback, bugs, tool requests.",
     url: "/contact",
   },
 };

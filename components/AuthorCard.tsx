@@ -31,7 +31,7 @@ export function AuthorCard({ compact = false }: { compact?: boolean }) {
           </span>
         </div>
         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-          Nesou shares practical online tools, creator resources, and productivity tips designed to
+          Nesou shares practical online tools, creator resources and productivity tips to help
           simplify digital workflows.{" "}
           <Link href="/about" className="font-medium text-primary hover:underline">
             About Sounez →

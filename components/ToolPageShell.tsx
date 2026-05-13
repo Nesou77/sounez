@@ -26,7 +26,7 @@ const DEFAULT_USE_CASES = [
 ];
 
 const DEFAULT_PRO_TIPS = [
-  "Bookmark this page. You will come back to it more than you think.",
+  "Bookmark this page. You'll come back to it more than you think.",
   "Combine this tool with another Sounez tool for a faster workflow.",
   "Share the result with a teammate to get feedback in seconds.",
   "Open the tool on mobile. It works exactly the same as on desktop.",
