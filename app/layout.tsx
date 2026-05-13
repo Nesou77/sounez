@@ -71,9 +71,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
       <head>
-        {/* Preconnect to external origins for faster resource loading */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Google Consent Mode v2 — defaults to denied until user accepts */}
         <Script id="consent-defaults" strategy="beforeInteractive">{`
           window.dataLayer = window.dataLayer || [];

@@ -9,10 +9,10 @@ export function HomeHeroStatic() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-      <div className="absolute -top-40 left-1/2 -z-10 h-[28rem] w-[70rem] -translate-x-1/2 rounded-full bg-gradient-brand opacity-25 blur-3xl" />
+      <div className="absolute -top-40 left-1/2 -z-10 h-[28rem] w-[70rem] -translate-x-1/2 rounded-full bg-gradient-brand opacity-25 blur-3xl hidden sm:block" />
       <div className="mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 sm:py-32">
         <span className="animate-fade-in inline-flex items-center gap-1.5 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-xs font-medium text-foreground/80 shadow-soft backdrop-blur">
-          <Sparkles className="h-3.5 w-3.5 text-primary" /> Free tools that actually work.
+          <Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden="true" /> Free tools that actually work.
         </span>
         <h1 className="animate-slide-up mt-6 text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
           Free online tools for{" "}
@@ -41,13 +41,13 @@ export function HomeHeroStatic() {
 
         <div className="animate-fade-in delay-300 mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-xs font-medium text-muted-foreground">
           <span className="flex items-center gap-1.5">
-            <Zap className="h-3.5 w-3.5 text-primary" /> Lightning fast
+            <Zap className="h-3.5 w-3.5 text-primary" aria-hidden="true" /> Lightning fast
           </span>
           <span className="flex items-center gap-1.5">
-            <Shield className="h-3.5 w-3.5 text-primary" /> Private &amp; secure
+            <Shield className="h-3.5 w-3.5 text-primary" aria-hidden="true" /> Private &amp; secure
           </span>
           <span className="flex items-center gap-1.5">
-            <Heart className="h-3.5 w-3.5 text-primary" /> 100% free, forever
+            <Heart className="h-3.5 w-3.5 text-primary" aria-hidden="true" /> 100% free, forever
           </span>
         </div>
       </div>

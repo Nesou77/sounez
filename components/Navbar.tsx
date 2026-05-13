@@ -39,8 +39,10 @@ export function Navbar() {
             <button
               className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted"
               onClick={() => setOpen(open === "tools" ? null : "tools")}
+              aria-haspopup="true"
+              aria-expanded={open === "tools"}
             >
-              Tools <ChevronDown className="h-4 w-4" />
+              Tools <ChevronDown className="h-4 w-4" aria-hidden="true" />
             </button>
             {mounted && open === "tools" && (
               <div className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-2xl border border-border bg-popover p-6 shadow-pop">
@@ -59,7 +61,7 @@ export function Navbar() {
                                 className="group flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm text-foreground/80 transition hover:bg-accent hover:text-accent-foreground"
                               >
                                 <span className="grid h-7 w-7 place-items-center rounded-md bg-gradient-soft text-primary transition group-hover:scale-110">
-                                  <Icon className="h-3.5 w-3.5" />
+                                  <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                                 </span>
                                 <span>{t.name}</span>
                               </Link>
@@ -90,8 +92,10 @@ export function Navbar() {
             <button
               className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted"
               onClick={() => setOpen(open === "cats" ? null : "cats")}
+              aria-haspopup="true"
+              aria-expanded={open === "cats"}
             >
-              Categories <ChevronDown className="h-4 w-4" />
+              Categories <ChevronDown className="h-4 w-4" aria-hidden="true" />
             </button>
             {mounted && open === "cats" && (
               <div className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-80 -translate-x-1/2 rounded-2xl border border-border bg-popover p-3 shadow-pop">
@@ -105,7 +109,7 @@ export function Navbar() {
                       className="group flex items-start gap-3 rounded-xl p-3 transition hover:bg-accent"
                     >
                       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-brand text-primary-foreground shadow-pop transition group-hover:scale-105">
-                        <Icon className="h-4 w-4" />
+                        <Icon className="h-4 w-4" aria-hidden="true" />
                       </span>
                       <div>
                         <div className="text-sm font-semibold">{c.name}</div>

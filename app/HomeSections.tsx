@@ -63,12 +63,12 @@ export function HomeSections() {
               >
                 <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-gradient-brand opacity-[0.07] blur-2xl transition group-hover:opacity-20" />
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-brand text-primary-foreground shadow-pop">
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <h3 className="mt-5 text-xl font-bold tracking-tight">{c.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.description}</p>
                 <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                  Open category <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  Open category <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </span>
               </Link>
             );
@@ -136,7 +136,7 @@ export function HomeSections() {
               <summary className="flex cursor-pointer list-none items-center justify-between font-semibold marker:hidden">
                 <span>{f.q}</span>
                 <span className="grid h-7 w-7 place-items-center rounded-full bg-muted text-muted-foreground transition group-open:rotate-45 group-open:bg-primary group-open:text-primary-foreground">
-                  <Plus className="h-4 w-4" />
+                  <Plus className="h-4 w-4" aria-hidden="true" />
                 </span>
               </summary>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
