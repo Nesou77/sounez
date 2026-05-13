@@ -20,7 +20,7 @@ export function HomeHeroStatic() {
           &amp; everyday productivity
         </h1>
         <p className="animate-slide-up delay-75 mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          No account needed. No installs. Open a tool and use it. Everything runs in your browser and it's all free.
+          No account needed. No installs. Open a tool and use it. Everything runs in your browser and it&apos;s all free.
         </p>
 
         <div className="animate-slide-up delay-150 mt-9 flex flex-wrap items-center justify-center gap-3">
