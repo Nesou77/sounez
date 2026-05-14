@@ -6,8 +6,8 @@ const CONSENT_KEY = "sounez_cookie_consent";
 
 declare global {
   interface Window {
-    dataLayer: unknown[];
-    gtag: (...args: unknown[]) => void;
+    dataLayer?: object[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
