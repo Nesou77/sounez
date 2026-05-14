@@ -5,6 +5,8 @@ import { Copy, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 
 type Style = "modern" | "elegant" | "startup" | "editorial" | "minimal" | "playful";
 
@@ -49,6 +51,8 @@ export function FontPairingClient({ tool }: { tool: Tool }) {
   const [style, setStyle] = useState<Style>("modern");
   const [idx, setIdx] = useState(0);
 
+  useToolView(tool);
+
   const options = PAIRINGS[style];
   const pairing = options[idx % options.length];
 
@@ -56,6 +60,12 @@ export function FontPairingClient({ tool }: { tool: Tool }) {
     const next = (idx + 1) % options.length;
     setIdx(next);
     toast.success("New pairing loaded");
+    trackToolComplete({
+      tool_slug: tool.slug,
+      tool_name: tool.name,
+      tool_category: tool.category,
+      output_type: "font_pairing_css",
+    });
   };
 
   const changeStyle = (s: Style) => {
@@ -72,6 +82,8 @@ font-family: ${pairing.bodyStack};`;
   const copyCss = () => {
     navigator.clipboard.writeText(css);
     toast.success("CSS copied");
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "font_pairing_css" });
+    trackCopyResult({ tool_slug: tool.slug, result_type: "font_pairing_css" });
   };
 
   return (

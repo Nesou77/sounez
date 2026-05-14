@@ -37,15 +37,23 @@ export function Navbar() {
 
           <div className="relative" onMouseEnter={() => mounted && setOpen("tools")}>
             <button
+              type="button"
               className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted"
               onClick={() => setOpen(open === "tools" ? null : "tools")}
               aria-haspopup="true"
               aria-expanded={open === "tools"}
+              aria-controls={open === "tools" ? "nav-tools-menu" : undefined}
+              aria-label="Tools menu"
             >
               Tools <ChevronDown className="h-4 w-4" aria-hidden="true" />
             </button>
             {mounted && open === "tools" && (
-              <div className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-2xl border border-border bg-popover p-6 shadow-pop">
+              <div
+                id="nav-tools-menu"
+                role="region"
+                aria-label="Tools"
+                className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-2xl border border-border bg-popover p-6 shadow-pop"
+              >
                 <div className="grid grid-cols-3 gap-6">
                   {Object.values(grouped).map(({ label, slug, items }) => (
                     <div key={slug}>
@@ -90,15 +98,23 @@ export function Navbar() {
 
           <div className="relative" onMouseEnter={() => mounted && setOpen("cats")}>
             <button
+              type="button"
               className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted"
               onClick={() => setOpen(open === "cats" ? null : "cats")}
               aria-haspopup="true"
               aria-expanded={open === "cats"}
+              aria-controls={open === "cats" ? "nav-categories-menu" : undefined}
+              aria-label="Categories menu"
             >
               Categories <ChevronDown className="h-4 w-4" aria-hidden="true" />
             </button>
             {mounted && open === "cats" && (
-              <div className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-80 -translate-x-1/2 rounded-2xl border border-border bg-popover p-3 shadow-pop">
+              <div
+                id="nav-categories-menu"
+                role="region"
+                aria-label="Categories"
+                className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-80 -translate-x-1/2 rounded-2xl border border-border bg-popover p-3 shadow-pop"
+              >
                 {CATEGORIES.map((c) => {
                   const Icon = getCategoryIcon(c.slug);
                   return (

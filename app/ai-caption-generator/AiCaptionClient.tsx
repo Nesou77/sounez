@@ -5,6 +5,8 @@ import { Copy, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 
 type Platform = "instagram" | "tiktok" | "linkedin";
 type Tone = "funny" | "professional" | "inspirational";
@@ -17,6 +19,8 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
   const [loading, setLoading] = useState(false);
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
   const [copiedAll, setCopiedAll] = useState(false);
+
+  useToolView(tool);
 
   const generate = async () => {
     if (!topic.trim()) {
@@ -44,6 +48,7 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
       if (Array.isArray(data.captions) && data.captions.length > 0) {
         setCaptions(data.captions);
         toast.success("Captions generated");
+        trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "captions" });
       } else {
         toast.error("No captions returned. Please try again.");
       }
@@ -58,6 +63,7 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedIdx(idx);
       toast.success("Caption copied");
+      trackCopyResult({ tool_slug: tool.slug, result_type: "caption" });
       setTimeout(() => setCopiedIdx(null), 1500);
     }).catch(() => toast.error("Could not copy. Please copy manually."));
   };
@@ -67,6 +73,7 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedAll(true);
       toast.success("All captions copied");
+      trackCopyResult({ tool_slug: tool.slug, result_type: "captions_all" });
       setTimeout(() => setCopiedAll(false), 1500);
     }).catch(() => toast.error("Could not copy. Please copy manually."));
   };

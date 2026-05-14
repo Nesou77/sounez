@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
 import { SmartLink as Link } from "@/components/smart-link";
 import { Sparkles, Zap, Heart, Wand2, Rocket, Brush, Wrench, CheckCircle2, ArrowRight } from "lucide-react";
+import { getSiteUrl } from "@/lib/site-url";
+
+const aboutUrl = `${getSiteUrl()}/about`;
 
 export const metadata: Metadata = {
   title: "About Sounez | Free Online Tools for Everyone",
   description:
     "Sounez is a growing collection of free online tools for creators, designers, students and productivity lovers. Built by Nesou. Simple, fast and built to help.",
+  alternates: { canonical: aboutUrl },
   openGraph: {
+    title: "About Sounez",
+    description: "Why we built Sounez and what we stand for.",
+    url: aboutUrl,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "About Sounez",
     description: "Why we built Sounez and what we stand for.",
   },
@@ -39,7 +50,7 @@ export default function AboutPage() {
         <div className="absolute -top-32 left-1/2 -z-10 h-72 w-[60rem] -translate-x-1/2 rounded-full bg-gradient-brand opacity-20 blur-3xl" />
         <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-28">
           <span className="animate-fade-in inline-flex items-center gap-1.5 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-xs font-medium text-foreground/80 shadow-soft backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 text-primary" /> How it started
+            <Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden="true" /> How it started
           </span>
           <h1 className="animate-slide-up mt-5 text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
             Tools that <span className="text-gradient-brand">just work</span>.
@@ -53,7 +64,7 @@ export default function AboutPage() {
       {/* Mission */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6">
         <div className="ring-gradient rounded-3xl border border-border bg-card p-8 shadow-soft sm:p-12">
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary">Why Sounez exists</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Why Sounez exists</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight">Save people time with tools that feel effortless.</h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             The best tool is the one you barely notice. You open it, do the thing, and move on. No account to create, no tutorial to watch, no upgrade prompt. That&apos;s what every tool on Sounez is built to be.
@@ -71,7 +82,7 @@ export default function AboutPage() {
             N
           </div>
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">The person behind Sounez</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">The person behind Sounez</span>
             <h2 className="mt-1.5 text-2xl font-bold tracking-tight">Hi, I&apos;m Nesou.</h2>
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">
               I built Sounez because I kept running into the same frustration: needing a simple tool
@@ -92,7 +103,7 @@ export default function AboutPage() {
                 href="/blog"
                 className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-primary/40"
               >
-                Read the blog <ArrowRight className="h-4 w-4" />
+                Read the blog <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <Link
                 href="/contact"
@@ -108,7 +119,7 @@ export default function AboutPage() {
       {/* What we offer */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary">What we offer</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">What we offer</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Something useful for every kind of maker</h2>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -119,13 +130,13 @@ export default function AboutPage() {
               className="ring-gradient group flex flex-col rounded-2xl border border-border/70 bg-card p-7 shadow-soft transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
             >
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-brand text-primary-foreground shadow-pop transition-transform group-hover:scale-110">
-                <Icon className="h-5 w-5" />
+                <Icon className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="mt-5 text-lg font-bold tracking-tight">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
               <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary">
                 {cta}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </span>
             </Link>
           ))}
@@ -135,14 +146,14 @@ export default function AboutPage() {
       {/* Values */}
       <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <div className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary">What we believe</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">What we believe</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">What goes into every tool</h2>
         </div>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {values.map(({ Icon, title, text }) => (
             <div key={title} className="rounded-2xl border border-border/70 bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
               <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-soft text-primary">
-                <Icon className="h-5 w-5" />
+                <Icon className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="mt-4 font-semibold">{title}</h3>
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{text}</p>
@@ -165,7 +176,7 @@ export default function AboutPage() {
             <ul className="space-y-3">
               {trust.map((t) => (
                 <li key={t} className="flex items-start gap-2.5 text-sm">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" />
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
                   <span>{t}</span>
                 </li>
               ))}
@@ -173,7 +184,7 @@ export default function AboutPage() {
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/tools" className="inline-flex items-center gap-2 rounded-xl bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:-translate-y-0.5">
-              Explore the tools <ArrowRight className="h-4 w-4" />
+              Explore the tools <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link href="/blog" className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-5 py-3 text-sm font-semibold transition hover:bg-white/10">
               Read the blog

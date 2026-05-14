@@ -5,6 +5,8 @@ import { Copy, Download, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult, trackDownloadResult } from "@/lib/analytics";
 
 type WorkEntry = { company: string; role: string; dates: string; bullets: string };
 type EduEntry = { school: string; degree: string; year: string };
@@ -41,6 +43,8 @@ export function ResumeClient({ tool }: { tool: Tool }) {
     .map((s) => s.trim())
     .filter(Boolean);
 
+  useToolView(tool);
+
   // Inject print CSS once
   useEffect(() => {
     const style = document.createElement("style");
@@ -68,12 +72,16 @@ export function ResumeClient({ tool }: { tool: Tool }) {
     window.print();
     document.body.removeChild(printDiv);
     toast.success("Print dialog opened", { description: "Set margins to None for best results." });
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "resume_pdf" });
+    trackDownloadResult({ tool_slug: tool.slug, result_type: "resume", file_type: "pdf" });
   };
 
   const handleCopyHtml = () => {
     if (!previewRef.current) return;
     navigator.clipboard.writeText(previewRef.current.innerHTML);
     toast.success("HTML copied to clipboard");
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "resume_html" });
+    trackCopyResult({ tool_slug: tool.slug, result_type: "resume_html" });
   };
 
   return (

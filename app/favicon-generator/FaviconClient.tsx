@@ -5,6 +5,8 @@ import { Copy, Download, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult, trackDownloadResult } from "@/lib/analytics";
 
 type Mode = "text" | "emoji" | "image";
 type Shape = "square" | "rounded" | "circle";
@@ -22,6 +24,8 @@ export function FaviconClient({ tool }: { tool: Tool }) {
   const [uploadedImg, setUploadedImg] = useState<HTMLImageElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  useToolView(tool);
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
@@ -94,12 +98,15 @@ export function FaviconClient({ tool }: { tool: Tool }) {
     a.href = canvas.toDataURL("image/png");
     a.click();
     toast.success(`favicon-${size}x${size}.png downloaded`);
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "favicon" });
+    trackDownloadResult({ tool_slug: tool.slug, result_type: "favicon", file_type: "png" });
   };
 
   const copySnippet = () => {
     const snippet = `<link rel="icon" type="image/png" href="/favicon.png" />\n<link rel="apple-touch-icon" href="/apple-touch-icon.png" />`;
     navigator.clipboard.writeText(snippet);
     toast.success("HTML snippet copied");
+    trackCopyResult({ tool_slug: tool.slug, result_type: "favicon_html_snippet" });
   };
 
   const inputLabel = mode === "text" ? "Letter or character" : mode === "emoji" ? "Emoji" : "Uploaded image";

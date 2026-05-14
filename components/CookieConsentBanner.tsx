@@ -110,12 +110,14 @@ export function CookieConsentBanner() {
       </p>
       <div className="mt-3 flex gap-2">
         <button
+          type="button"
           onClick={accept}
           className="flex-1 rounded-xl bg-gradient-brand px-4 py-2 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95"
         >
           Accept
         </button>
         <button
+          type="button"
           onClick={reject}
           className="flex-1 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-muted active:scale-95"
         >

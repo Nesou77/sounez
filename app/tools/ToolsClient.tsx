@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { TOOLS, CATEGORIES } from "@/data/tools";
 import { ToolCard } from "@/components/ToolCard";
 import { AdSlot } from "@/components/AdSlot";
+import { trackSearch } from "@/lib/analytics";
 
 export function ToolsClient() {
   const [q, setQ] = useState("");
@@ -20,6 +21,15 @@ export function ToolsClient() {
         t.keywords.some((k) => k.toLowerCase().includes(lower)))
     );
   }, [q, cat]);
+
+  useEffect(() => {
+    const trimmed = q.trim();
+    if (!trimmed) return;
+    const id = window.setTimeout(() => {
+      trackSearch({ search_term: trimmed, result_count: filtered.length });
+    }, 400);
+    return () => clearTimeout(id);
+  }, [q, filtered.length]);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
@@ -51,7 +61,9 @@ export function ToolsClient() {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((t) => <ToolCard key={t.slug} tool={t} />)}
+        {filtered.map((t) => (
+          <ToolCard key={t.slug} tool={t} searchQuery={q.trim() ? q : undefined} />
+        ))}
       </div>
       {filtered.length === 0 && <p className="py-16 text-center text-muted-foreground">No tools match your search. Try a different keyword.</p>}
 

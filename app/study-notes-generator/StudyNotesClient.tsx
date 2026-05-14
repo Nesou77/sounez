@@ -5,6 +5,8 @@ import { Copy, Download, Loader2, Square } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult, trackDownloadResult } from "@/lib/analytics";
 
 type Level = "beginner" | "intermediate" | "advanced";
 
@@ -14,6 +16,8 @@ export function StudyNotesClient({ tool }: { tool: Tool }) {
   const [notes, setNotes] = useState("");
   const [streaming, setStreaming] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
+
+  useToolView(tool);
 
   const generate = async () => {
     if (!topic.trim()) {
@@ -64,6 +68,7 @@ export function StudyNotesClient({ tool }: { tool: Tool }) {
       }
 
       toast.success("Notes generated");
+      trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "study_notes" });
     } catch (e: unknown) {
       if (e instanceof Error && e.name === "AbortError") {
         toast("Generation stopped.");
@@ -83,6 +88,7 @@ export function StudyNotesClient({ tool }: { tool: Tool }) {
   const copy = () => {
     navigator.clipboard.writeText(notes);
     toast.success("Notes copied");
+    trackCopyResult({ tool_slug: tool.slug, result_type: "study_notes" });
   };
 
   const download = () => {
@@ -94,6 +100,7 @@ export function StudyNotesClient({ tool }: { tool: Tool }) {
     a.click();
     URL.revokeObjectURL(url);
     toast.success("Notes downloaded");
+    trackDownloadResult({ tool_slug: tool.slug, result_type: "study_notes", file_type: "txt" });
   };
 
   return (

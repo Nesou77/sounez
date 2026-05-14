@@ -60,14 +60,14 @@ export function ToolPageShell({
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
-      <nav className="mb-6 text-xs text-muted-foreground">
+      <nav className="mb-6 text-xs text-muted-foreground" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-foreground">Home</Link> /{" "}
         <Link href={`/categories/${tool.category}`} className="hover:text-foreground capitalize">{tool.category.replace("-", " ")}</Link> /{" "}
         <span className="text-foreground">{tool.name}</span>
       </nav>
 
       <header className="mb-8 text-center">
-        <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-brand text-primary-foreground shadow-pop">
+        <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-brand text-primary-foreground shadow-pop" aria-hidden="true">
           <Icon className="h-6 w-6" strokeWidth={2} />
         </div>
         <h1 className="text-3xl font-bold sm:text-4xl">{tool.name}</h1>
@@ -109,7 +109,7 @@ export function ToolPageShell({
 
       <section className="my-12">
         <h2 className="flex items-center gap-2 text-2xl font-bold">
-          <Layers className="h-6 w-6 text-primary" /> Who uses {tool.name}?
+          <Layers className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" /> Who uses {tool.name}?
         </h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {useCases.map((u) => (
@@ -125,7 +125,7 @@ export function ToolPageShell({
 
       <section className="my-12">
         <h2 className="flex items-center gap-2 text-2xl font-bold">
-          <Lightbulb className="h-6 w-6 text-primary" /> Pro tips
+          <Lightbulb className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" /> Pro tips
         </h2>
         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
           {proTips.map((t, i) => (
@@ -163,7 +163,7 @@ export function ToolPageShell({
 
       <section className="my-12 rounded-3xl border border-border bg-gradient-soft p-6 sm:p-8">
         <h2 className="flex items-center gap-2 text-2xl font-bold">
-          <BookOpen className="h-6 w-6 text-primary" /> Read next on the blog
+          <BookOpen className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" /> Read next on the blog
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">Practical guides and how-tos from the Sounez blog.</p>
         <div className="mt-5 grid gap-4 sm:grid-cols-3">
@@ -192,14 +192,14 @@ export function ToolPageShell({
             const I = getToolIcon(t.slug);
             return (
               <Link key={t.slug} href={`/${t.slug}`} className="group flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-soft">
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-gradient-soft text-primary ring-1 ring-primary/10">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-gradient-soft text-primary ring-1 ring-primary/10" aria-hidden="true">
                   <I className="h-4 w-4" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="truncate text-sm font-semibold">{t.name}</div>
                   <div className="truncate text-xs text-muted-foreground">{t.description}</div>
                 </div>
-                <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-primary" />
+                <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-primary" aria-hidden="true" />
               </Link>
             );
           })}

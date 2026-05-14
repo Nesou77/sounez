@@ -3,9 +3,12 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 function rand() { return "#" + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, "0"); }
 export function ColorPaletteClient({ tool }: { tool: Tool }) {
   const [cols, setCols] = useState<string[]>(() => Array.from({ length: 5 }, rand));
+  useToolView(tool);
   return (
     <ToolPageShell tool={tool}
       intro="Generate a fresh color palette in one click. Tap any swatch to copy the hex code and use it anywhere."
@@ -21,14 +24,22 @@ export function ColorPaletteClient({ tool }: { tool: Tool }) {
       ]}>
       <div className="grid grid-cols-5 gap-3">
         {cols.map((c, i) => (
-          <button key={i} onClick={() => { navigator.clipboard.writeText(c); toast.success(`Copied ${c.toUpperCase()}`); }}
+          <button key={i} onClick={() => {
+            navigator.clipboard.writeText(c);
+            toast.success(`Copied ${c.toUpperCase()}`);
+            trackCopyResult({ tool_slug: tool.slug, result_type: "hex_color" });
+          }}
             className="group flex aspect-[3/4] flex-col items-center justify-end rounded-2xl p-3 text-xs font-mono text-white shadow-soft transition-transform hover:scale-[1.04] active:scale-[0.98]"
             style={{ backgroundColor: c }}>
             <span className="rounded bg-black/30 px-2 py-1 backdrop-blur">{c.toUpperCase()}</span>
           </button>
         ))}
       </div>
-      <button onClick={() => { setCols(Array.from({ length: 5 }, rand)); toast.success("New palette generated"); }}
+      <button onClick={() => {
+        setCols(Array.from({ length: 5 }, rand));
+        toast.success("New palette generated");
+        trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "color_palette" });
+      }}
         className="mt-5 rounded-xl bg-gradient-brand px-4 py-2 text-sm font-semibold text-primary-foreground shadow-pop transition active:scale-95">
         Generate new palette
       </button>

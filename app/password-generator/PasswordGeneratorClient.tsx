@@ -5,6 +5,8 @@ import { Copy, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 
 function gen(len: number, opts: { upper: boolean; lower: boolean; nums: boolean; sym: boolean }) {
   let chars = "";
@@ -22,8 +24,19 @@ export function PasswordGeneratorClient({ tool }: { tool: Tool }) {
   const [len, setLen] = useState(16);
   const [opts, setOpts] = useState({ upper: true, lower: true, nums: true, sym: true });
   const [pwd, setPwd] = useState(() => gen(16, { upper: true, lower: true, nums: true, sym: true }));
-  const regen = () => { setPwd(gen(len, opts)); toast.success("Generated successfully"); };
-  const copy = () => { navigator.clipboard.writeText(pwd); toast.success("Copied to clipboard"); };
+
+  useToolView(tool);
+
+  const regen = () => {
+    setPwd(gen(len, opts));
+    toast.success("Generated successfully");
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "password" });
+  };
+  const copy = () => {
+    navigator.clipboard.writeText(pwd);
+    toast.success("Copied to clipboard");
+    trackCopyResult({ tool_slug: tool.slug, result_type: "password" });
+  };
 
   return (
     <ToolPageShell

@@ -5,6 +5,8 @@ import { Copy, Download } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult, trackDownloadResult } from "@/lib/analytics";
 
 type PatternType = "dots" | "grid" | "diagonal" | "checkerboard" | "triangles" | "waves";
 
@@ -77,9 +79,13 @@ export function BackgroundPatternClient({ tool }: { tool: Tool }) {
 
   const css = buildCss(type, bg, fg, size, opacity);
 
+  useToolView(tool);
+
   const copyCss = () => {
     navigator.clipboard.writeText(css);
     toast.success("CSS copied");
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "css_pattern" });
+    trackCopyResult({ tool_slug: tool.slug, result_type: "css_pattern" });
   };
 
   const downloadSvg = () => {
@@ -92,6 +98,8 @@ export function BackgroundPatternClient({ tool }: { tool: Tool }) {
     a.click();
     URL.revokeObjectURL(url);
     toast.success(`pattern-${type}.svg downloaded`);
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "svg_pattern" });
+    trackDownloadResult({ tool_slug: tool.slug, result_type: "svg_pattern", file_type: "svg" });
   };
 
   return (

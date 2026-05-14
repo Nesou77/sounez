@@ -3,11 +3,14 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 export function CssGradientClient({ tool }: { tool: Tool }) {
   const [a, setA] = useState("#6366F1");
   const [b, setB] = useState("#8B5CF6");
   const [angle, setAngle] = useState(135);
   const css = `background: linear-gradient(${angle}deg, ${a}, ${b});`;
+  useToolView(tool);
   return (
     <ToolPageShell tool={tool}
       intro="Pick two colors, set an angle, and get the CSS gradient code ready to paste into your project."
@@ -34,7 +37,12 @@ export function CssGradientClient({ tool }: { tool: Tool }) {
         </label>
       </div>
       <pre className="mt-5 overflow-x-auto rounded-xl bg-muted/60 p-4 text-xs"><code>{css}</code></pre>
-      <button onClick={() => { navigator.clipboard.writeText(css); toast.success("CSS copied to clipboard"); }} className="mt-3 rounded-xl bg-gradient-brand px-4 py-2 text-sm font-semibold text-primary-foreground shadow-pop transition active:scale-95">Copy CSS</button>
+      <button onClick={() => {
+        navigator.clipboard.writeText(css);
+        toast.success("CSS copied to clipboard");
+        trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "css_gradient" });
+        trackCopyResult({ tool_slug: tool.slug, result_type: "css_gradient" });
+      }} className="mt-3 rounded-xl bg-gradient-brand px-4 py-2 text-sm font-semibold text-primary-foreground shadow-pop transition active:scale-95">Copy CSS</button>
     </ToolPageShell>
   );
 }

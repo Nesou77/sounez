@@ -6,6 +6,8 @@ import { Upload, Download, ChevronDown, X } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackDownloadResult } from "@/lib/analytics";
 
 function fmt(b: number) {
   return b > 1024 * 1024 ? `${(b / 1024 / 1024).toFixed(2)} MB` : `${(b / 1024).toFixed(0)} KB`;
@@ -20,6 +22,8 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
   const [drag, setDrag] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  useToolView(tool);
+
   const handle = (f: File) => { setFile(f); setOut(null); toast.success("Image uploaded successfully"); };
   const compress = async () => {
     if (!file) return;
@@ -28,6 +32,7 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
       const blob = await imageCompression(file, { maxSizeMB: file.size / 1024 / 1024 * quality, maxWidthOrHeight: 1920, useWebWorker: true, initialQuality: quality });
       setOut({ url: URL.createObjectURL(blob), size: blob.size, name: file.name.replace(/\.(\w+)$/, "-compressed.$1") });
       toast.success("Image compressed", { description: `Saved ${Math.round(((file.size - blob.size) / file.size) * 100)}%` });
+      trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "compressed_image" });
     } catch {
       toast.error("Compression failed. Try another image.");
     } finally { setBusy(false); }
@@ -91,7 +96,19 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
             <div className="mt-5 rounded-xl border border-primary/30 bg-primary-soft p-4">
               <div className="text-sm font-medium">Done! Saved {fmt(file!.size - out.size)} ({Math.round(((file!.size - out.size) / file!.size) * 100)}%)</div>
               <div className="mt-1 text-xs text-muted-foreground">New size: {fmt(out.size)}</div>
-              <a href={out.url} download={out.name} onClick={() => toast.success("Download started")} className="mt-3 inline-flex items-center gap-2 rounded-xl bg-foreground px-4 py-2 text-sm font-semibold text-background transition active:scale-95">
+              <a
+                href={out.url}
+                download={out.name}
+                onClick={() => {
+                  toast.success("Download started");
+                  trackDownloadResult({
+                    tool_slug: tool.slug,
+                    result_type: "compressed_image",
+                    file_type: out.name.split(".").pop()?.toLowerCase(),
+                  });
+                }}
+                className="mt-3 inline-flex items-center gap-2 rounded-xl bg-foreground px-4 py-2 text-sm font-semibold text-background transition active:scale-95"
+              >
                 <Download className="h-4 w-4" /> Download
               </a>
             </div>

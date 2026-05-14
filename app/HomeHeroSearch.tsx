@@ -4,35 +4,42 @@
  */
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { SmartLink as Link } from "@/components/smart-link";
 import { Search } from "lucide-react";
-import { TOOLS } from "@/data/tools";
+import { TOOLS, type Tool } from "@/data/tools";
 import { getToolIcon } from "@/lib/tool-icons";
+import { trackSearch, trackSelectContent } from "@/lib/analytics";
+
+function filterToolsByQuery(raw: string): Tool[] {
+  const q = raw.trim().toLowerCase();
+  if (!q) return [];
+  return TOOLS.filter(
+    (t) =>
+      t.name.toLowerCase().includes(q) ||
+      t.description.toLowerCase().includes(q) ||
+      t.category.includes(q) ||
+      t.keywords.some((k) => k.toLowerCase().includes(q)),
+  );
+}
 
 export function HomeHeroSearch() {
   const [q, setQ] = useState("");
   const [activeIndex, setActiveIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const filtered = useMemo(() => {
-    if (!q) return [];
-    const lower = q.toLowerCase();
-    return TOOLS.filter(
-      (t) =>
-        t.name.toLowerCase().includes(lower) ||
-        t.description.toLowerCase().includes(lower) ||
-        t.category.includes(lower) ||
-        t.keywords.some((k) => k.toLowerCase().includes(lower))
-    );
-  }, [q]);
+  const filtered = useMemo(() => filterToolsByQuery(q), [q]);
 
-  // Reset active index when results change
-  const prevQ = useRef(q);
-  if (prevQ.current !== q) {
-    prevQ.current = q;
-    if (activeIndex !== -1) setActiveIndex(-1);
-  }
+  useEffect(() => {
+    setActiveIndex(-1);
+    const trimmed = q.trim();
+    if (!trimmed) return;
+    const id = window.setTimeout(() => {
+      const results = filterToolsByQuery(q);
+      trackSearch({ search_term: trimmed, result_count: results.length });
+    }, 400);
+    return () => clearTimeout(id);
+  }, [q]);
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (!filtered.length) return;
@@ -49,18 +56,24 @@ export function HomeHeroSearch() {
     } else if (e.key === "Enter" && activeIndex >= 0) {
       e.preventDefault();
       const selected = filtered[activeIndex];
-      if (selected) window.location.href = `/${selected.slug}`;
+      if (selected) {
+        trackSelectContent({ content_type: "tool", item_id: selected.slug, search_term: q.trim() || undefined });
+        window.location.href = `/${selected.slug}`;
+      }
     }
   }
 
   return (
     <div className="mx-auto mt-12 max-w-xl">
       <div className="relative">
-        <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" aria-hidden />
         <input
           ref={inputRef}
           value={q}
-          onChange={(e) => { setQ(e.target.value); setActiveIndex(-1); }}
+          onChange={(e) => {
+            setQ(e.target.value);
+            setActiveIndex(-1);
+          }}
           onKeyDown={handleKeyDown}
           placeholder={`Search ${TOOLS.length} free tools`}
           aria-label="Search tools"
@@ -92,6 +105,13 @@ export function HomeHeroSearch() {
                 role="option"
                 aria-selected={idx === activeIndex}
                 className={`flex items-center gap-3 rounded-lg p-2.5 text-sm transition hover:bg-accent${idx === activeIndex ? " bg-accent" : ""}`}
+                onClick={() =>
+                  trackSelectContent({
+                    content_type: "tool",
+                    item_id: t.slug,
+                    search_term: q.trim() || undefined,
+                  })
+                }
               >
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-soft text-primary ring-1 ring-primary/10">
                   <ToolIcon className="h-4 w-4" strokeWidth={2} />

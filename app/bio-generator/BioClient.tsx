@@ -5,6 +5,8 @@ import { Copy, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 
 type Platform = "instagram" | "twitter" | "linkedin" | "general";
 
@@ -23,6 +25,8 @@ export function BioClient({ tool }: { tool: Tool }) {
   const [bio, setBio] = useState("");
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  useToolView(tool);
 
   const generate = async () => {
     if (!name.trim() || !role.trim()) {
@@ -46,6 +50,7 @@ export function BioClient({ tool }: { tool: Tool }) {
       if (typeof data.bio === "string" && data.bio.trim()) {
         setBio(data.bio.trim());
         toast.success("Bio generated");
+        trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "bio" });
       } else {
         toast.error("No bio returned. Please try again.");
       }
@@ -60,6 +65,7 @@ export function BioClient({ tool }: { tool: Tool }) {
     navigator.clipboard.writeText(bio).then(() => {
       setCopied(true);
       toast.success("Bio copied");
+      trackCopyResult({ tool_slug: tool.slug, result_type: "bio" });
       setTimeout(() => setCopied(false), 1500);
     }).catch(() => toast.error("Could not copy. Please copy manually."));
   };

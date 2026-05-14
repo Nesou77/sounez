@@ -5,6 +5,8 @@ import { Copy, Download } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult, trackDownloadResult } from "@/lib/analytics";
 
 type Format = "svg" | "png";
 
@@ -25,6 +27,8 @@ export function ImagePlaceholderClient({ tool }: { tool: Tool }) {
   const [label, setLabel] = useState("");
   const [format, setFormat] = useState<Format>("svg");
 
+  useToolView(tool);
+
   const clamp = (v: number) => Math.max(1, Math.min(4000, v));
   const w = clamp(width);
   const h = clamp(height);
@@ -35,11 +39,15 @@ export function ImagePlaceholderClient({ tool }: { tool: Tool }) {
   const copySvg = () => {
     navigator.clipboard.writeText(svgString);
     toast.success("SVG code copied");
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "image_placeholder" });
+    trackCopyResult({ tool_slug: tool.slug, result_type: "placeholder_svg" });
   };
 
   const copyDataUrl = () => {
     navigator.clipboard.writeText(svgDataUrl);
     toast.success("Data URL copied");
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "image_placeholder" });
+    trackCopyResult({ tool_slug: tool.slug, result_type: "placeholder_data_url" });
   };
 
   const download = () => {
@@ -52,6 +60,8 @@ export function ImagePlaceholderClient({ tool }: { tool: Tool }) {
       a.click();
       URL.revokeObjectURL(url);
       toast.success(`placeholder-${w}x${h}.svg downloaded`);
+      trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "image_placeholder" });
+      trackDownloadResult({ tool_slug: tool.slug, result_type: "image_placeholder", file_type: "svg" });
     } else {
       // PNG via canvas
       const canvas = document.createElement("canvas");
@@ -67,6 +77,8 @@ export function ImagePlaceholderClient({ tool }: { tool: Tool }) {
         a.href = canvas.toDataURL("image/png");
         a.click();
         toast.success(`placeholder-${w}x${h}.png downloaded`);
+        trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "image_placeholder" });
+        trackDownloadResult({ tool_slug: tool.slug, result_type: "image_placeholder", file_type: "png" });
       };
       img.src = svgDataUrl;
     }

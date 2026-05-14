@@ -3,15 +3,19 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 const MODS = ["best", "top", "2026", "tutorial", "guide", "tips", "free", "review", "how to", "for beginners", "explained", "ideas", "examples", "shorts", "fast"];
 export function YoutubeTagsClient({ tool }: { tool: Tool }) {
   const [seed, setSeed] = useState("");
   const [tags, setTags] = useState<string[]>([]);
+  useToolView(tool);
   const make = () => {
     const s = seed.trim().toLowerCase();
     if (!s) { toast.error("Enter a keyword first"); return setTags([]); }
     setTags([s, ...MODS.map((m) => `${m} ${s}`), ...MODS.map((m) => `${s} ${m}`)].slice(0, 25));
     toast.success("Tags generated");
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "youtube_tags" });
   };
   return (
     <ToolPageShell tool={tool}
@@ -36,7 +40,11 @@ export function YoutubeTagsClient({ tool }: { tool: Tool }) {
           <div className="mt-5 flex flex-wrap gap-2">
             {tags.map((t) => <span key={t} className="rounded-full bg-muted px-3 py-1 text-xs">{t}</span>)}
           </div>
-          <button onClick={() => { navigator.clipboard.writeText(tags.join(", ")); toast.success("All tags copied"); }} className="mt-4 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-muted active:scale-95">Copy all</button>
+          <button onClick={() => {
+            navigator.clipboard.writeText(tags.join(", "));
+            toast.success("All tags copied");
+            trackCopyResult({ tool_slug: tool.slug, result_type: "youtube_tags" });
+          }} className="mt-4 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-muted active:scale-95">Copy all</button>
         </>
       )}
     </ToolPageShell>

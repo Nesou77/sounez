@@ -3,15 +3,19 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 const MODS = ["", "tips", "daily", "love", "official", "lover", "community", "ofinstagram", "oftheday", "addict", "life", "world", "vibes", "gram", "post", "pro", "2026", "viral", "trending"];
 export function HashtagClient({ tool }: { tool: Tool }) {
   const [seed, setSeed] = useState("");
   const [tags, setTags] = useState<string[]>([]);
+  useToolView(tool);
   const make = () => {
     const s = seed.trim().toLowerCase().replace(/\s+/g, "");
     if (!s) { toast.error("Enter a keyword first"); return setTags([]); }
     setTags(MODS.map((m) => `#${s}${m}`));
     toast.success("Hashtags generated");
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "hashtags" });
   };
   return (
     <ToolPageShell tool={tool}
@@ -36,7 +40,11 @@ export function HashtagClient({ tool }: { tool: Tool }) {
           <div className="mt-5 flex flex-wrap gap-2">
             {tags.map((t) => <span key={t} className="rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">{t}</span>)}
           </div>
-          <button onClick={() => { navigator.clipboard.writeText(tags.join(" ")); toast.success("All hashtags copied"); }} className="mt-4 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-muted active:scale-95">Copy all</button>
+          <button onClick={() => {
+            navigator.clipboard.writeText(tags.join(" "));
+            toast.success("All hashtags copied");
+            trackCopyResult({ tool_slug: tool.slug, result_type: "hashtags" });
+          }} className="mt-4 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-muted active:scale-95">Copy all</button>
         </>
       )}
     </ToolPageShell>

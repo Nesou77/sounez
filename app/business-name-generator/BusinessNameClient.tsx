@@ -5,6 +5,8 @@ import { Copy, Loader2, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 
 type Style = "modern" | "playful" | "professional" | "abstract";
 
@@ -16,6 +18,8 @@ export function BusinessNameClient({ tool }: { tool: Tool }) {
   const [loading, setLoading] = useState(false);
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
   const [copiedAll, setCopiedAll] = useState(false);
+
+  useToolView(tool);
 
   const generate = async () => {
     if (!industry.trim()) {
@@ -38,6 +42,7 @@ export function BusinessNameClient({ tool }: { tool: Tool }) {
       if (Array.isArray(data.names) && data.names.length > 0) {
         setNames(data.names);
         toast.success("Names generated");
+        trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "business_names" });
       } else {
         toast.error("No names returned. Please try again.");
       }
@@ -52,6 +57,7 @@ export function BusinessNameClient({ tool }: { tool: Tool }) {
     navigator.clipboard.writeText(name).then(() => {
       setCopiedIdx(idx);
       toast.success(`"${name}" copied`);
+      trackCopyResult({ tool_slug: tool.slug, result_type: "business_name" });
       setTimeout(() => setCopiedIdx(null), 1500);
     }).catch(() => toast.error("Could not copy. Please copy manually."));
   };
@@ -61,6 +67,7 @@ export function BusinessNameClient({ tool }: { tool: Tool }) {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedAll(true);
       toast.success("All names copied");
+      trackCopyResult({ tool_slug: tool.slug, result_type: "business_names_all" });
       setTimeout(() => setCopiedAll(false), 1500);
     }).catch(() => toast.error("Could not copy. Please copy manually."));
   };

@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete } from "@/lib/analytics";
 
 type HistoryEntry = { expression: string; result: string };
 
@@ -19,6 +21,8 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
   const [expression, setExpression] = useState("");
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [justEvaluated, setJustEvaluated] = useState(false);
+
+  useToolView(tool);
 
   const pushHistory = (expr: string, result: string) => {
     setHistory((prev) => [{ expression: expr, result }, ...prev].slice(0, 10));
@@ -50,6 +54,9 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
           setDisplay(resultStr);
           setExpression(resultStr === "Error" ? "" : resultStr);
           setJustEvaluated(true);
+          if (resultStr !== "Error") {
+            trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "calculation" });
+          }
         } catch {
           setDisplay("Error");
           setExpression("");

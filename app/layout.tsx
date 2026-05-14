@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import dynamic from "next/dynamic";
@@ -26,10 +26,17 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   weight: ["600", "700", "800"],
   display: "swap",
-  preload: true,
+  // Headings-only font: avoid competing with Inter for early network bandwidth.
+  preload: false,
 });
 
 const siteUrl = getSiteUrl();
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -71,6 +78,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
       <head>
+        {process.env.NEXT_PUBLIC_GTM_ID?.trim() ? (
+          <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        ) : null}
+        {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ? (
+          <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        ) : null}
         {/* Google Consent Mode v2 — defaults to denied until user accepts */}
         <Script id="consent-defaults" strategy="beforeInteractive">{`
           window.dataLayer = window.dataLayer || [];

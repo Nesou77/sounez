@@ -5,6 +5,8 @@ import { Copy, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 
 type Preset = { label: string; h: number; v: number; blur: number; spread: number; opacity: number; inset: boolean };
 
@@ -34,6 +36,8 @@ export function BoxShadowClient({ tool }: { tool: Tool }) {
   const [radius, setRadius] = useState(16);
   const [bgColor, setBgColor] = useState("#ffffff");
 
+  useToolView(tool);
+
   const { r, g, b } = hexToRgb(color);
   const shadowValue = `${inset ? "inset " : ""}${h}px ${v}px ${blur}px ${spread}px rgba(${r}, ${g}, ${b}, ${opacity.toFixed(2)})`;
   const css = `box-shadow: ${shadowValue};`;
@@ -54,6 +58,8 @@ export function BoxShadowClient({ tool }: { tool: Tool }) {
   const copyCss = () => {
     navigator.clipboard.writeText(css);
     toast.success("CSS copied");
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "css_box_shadow" });
+    trackCopyResult({ tool_slug: tool.slug, result_type: "css_box_shadow" });
   };
 
   return (

@@ -144,7 +144,7 @@ export function BlogEngagement({ slug }: { slug: string }) {
             />
             <span className="tabular-nums">{likes}</span>
           </button>
-          <ShareButton title={slug} />
+          <ShareButton title={slug} shareToolSlug={`blog:${slug}`} />
         </div>
       </div>
 

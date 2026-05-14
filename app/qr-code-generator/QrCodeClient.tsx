@@ -5,16 +5,26 @@ import QRCode from "qrcode";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackDownloadResult } from "@/lib/analytics";
 
 export function QrCodeClient({ tool }: { tool: Tool }) {
   const [text, setText] = useState("https://sounez.com");
   const canvas = useRef<HTMLCanvasElement>(null);
+  const hasTrackedComplete = useRef(false);
+
+  useToolView(tool);
 
   useEffect(() => {
     if (canvas.current && text) {
       QRCode.toCanvas(canvas.current, text, { width: 256, margin: 2, color: { dark: "#111827", light: "#ffffff" } });
+      // Track tool_complete once the QR code is rendered (result exists)
+      if (!hasTrackedComplete.current) {
+        trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "qr_code" });
+        hasTrackedComplete.current = true;
+      }
     }
-  }, [text]);
+  }, [text, tool]);
 
   const download = () => {
     if (!canvas.current) return;
@@ -23,6 +33,7 @@ export function QrCodeClient({ tool }: { tool: Tool }) {
     a.href = canvas.current.toDataURL();
     a.click();
     toast.success("Download started", { description: "Your QR code is saving as PNG." });
+    trackDownloadResult({ tool_slug: tool.slug, result_type: "qr_code", file_type: "png" });
   };
 
   return (

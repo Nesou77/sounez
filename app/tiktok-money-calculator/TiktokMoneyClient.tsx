@@ -2,11 +2,24 @@
 import { useState } from "react";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete } from "@/lib/analytics";
+
 export function TiktokMoneyClient({ tool }: { tool: Tool }) {
   const [followers, setFollowers] = useState(50000);
   const [er, setEr] = useState(5);
   const min = Math.round(followers * (er / 100) * 0.01);
   const max = Math.round(followers * (er / 100) * 0.05);
+  useToolView(tool);
+
+  const onEstimateInteraction = () => {
+    trackToolComplete({
+      tool_slug: tool.slug,
+      tool_name: tool.name,
+      tool_category: tool.category,
+      output_type: "earnings_estimate",
+    });
+  };
   return (
     <ToolPageShell tool={tool}
       intro="See what your TikTok account could realistically earn per sponsored post. Adjust your follower count and engagement rate to get a range."
@@ -22,10 +35,29 @@ export function TiktokMoneyClient({ tool }: { tool: Tool }) {
       ]}>
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="text-sm">Followers: {followers.toLocaleString()}
-          <input type="range" min={1000} max={5_000_000} step={1000} value={followers} onChange={(e) => setFollowers(+e.target.value)} className="mt-2 w-full accent-primary" />
+          <input
+            type="range"
+            min={1000}
+            max={5_000_000}
+            step={1000}
+            value={followers}
+            onChange={(e) => setFollowers(+e.target.value)}
+            onMouseUp={onEstimateInteraction}
+            onTouchEnd={onEstimateInteraction}
+            className="mt-2 w-full accent-primary"
+          />
         </label>
         <label className="text-sm">Engagement rate: {er}%
-          <input type="range" min={1} max={20} value={er} onChange={(e) => setEr(+e.target.value)} className="mt-2 w-full accent-primary" />
+          <input
+            type="range"
+            min={1}
+            max={20}
+            value={er}
+            onChange={(e) => setEr(+e.target.value)}
+            onMouseUp={onEstimateInteraction}
+            onTouchEnd={onEstimateInteraction}
+            className="mt-2 w-full accent-primary"
+          />
         </label>
       </div>
       <div className="mt-6 rounded-2xl bg-gradient-soft p-6 text-center">

@@ -1,9 +1,15 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete } from "@/lib/analytics";
+
 export function WordCounterClient({ tool }: { tool: Tool }) {
   const [text, setText] = useState("");
+  const completedRef = useRef(false);
+  useToolView(tool);
+
   const stats = useMemo(() => {
     const words = text.trim() ? text.trim().split(/\s+/).length : 0;
     const chars = text.length;
@@ -12,6 +18,17 @@ export function WordCounterClient({ tool }: { tool: Tool }) {
     const reading = Math.max(1, Math.round(words / 200));
     return { words, chars, noSpaces, sentences, reading };
   }, [text]);
+
+  useEffect(() => {
+    if (completedRef.current || stats.words === 0) return;
+    completedRef.current = true;
+    trackToolComplete({
+      tool_slug: tool.slug,
+      tool_name: tool.name,
+      tool_category: tool.category,
+      output_type: "word_count_stats",
+    });
+  }, [stats.words, tool.slug, tool.name, tool.category]);
   return (
     <ToolPageShell tool={tool}
       intro="Paste your text and see word count, character count, sentence count and reading time update as you type."

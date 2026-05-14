@@ -5,6 +5,8 @@ import { Copy, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 
 type WebsiteType = "blog" | "saas" | "ecommerce" | "community" | "tool";
 
@@ -21,6 +23,8 @@ export function WebsiteIdeaClient({ tool }: { tool: Tool }) {
   const [ideas, setIdeas] = useState<Idea[]>([]);
   const [loading, setLoading] = useState(false);
   const [copiedAll, setCopiedAll] = useState(false);
+
+  useToolView(tool);
 
   const generate = async () => {
     if (!interests.trim()) {
@@ -48,6 +52,7 @@ export function WebsiteIdeaClient({ tool }: { tool: Tool }) {
       if (Array.isArray(data.ideas) && data.ideas.length > 0) {
         setIdeas(data.ideas);
         toast.success("Ideas generated");
+        trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "website_ideas" });
       } else {
         toast.error("No ideas returned. Please try again.");
       }
@@ -62,6 +67,7 @@ export function WebsiteIdeaClient({ tool }: { tool: Tool }) {
     const text = `${idea.name}\n${idea.tagline}\n\n${idea.description}`;
     navigator.clipboard.writeText(text).then(() => {
       toast.success(`"${idea.name}" copied`);
+      trackCopyResult({ tool_slug: tool.slug, result_type: "website_idea" });
     }).catch(() => toast.error("Could not copy. Please copy manually."));
   };
 
@@ -75,6 +81,7 @@ export function WebsiteIdeaClient({ tool }: { tool: Tool }) {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedAll(true);
       toast.success("All ideas copied");
+      trackCopyResult({ tool_slug: tool.slug, result_type: "website_ideas_all" });
       setTimeout(() => setCopiedAll(false), 1500);
     }).catch(() => toast.error("Could not copy. Please copy manually."));
   };

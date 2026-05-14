@@ -5,6 +5,8 @@ import { Download, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackDownloadResult } from "@/lib/analytics";
 
 function fmt(bytes: number) {
   return bytes > 1024 * 1024
@@ -23,6 +25,8 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
   const [drag, setDrag] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const prevResultUrl = useRef<string | null>(null);
+
+  useToolView(tool);
 
   const handleFile = (f: File) => {
     if (!f.type.startsWith("image/png")) {
@@ -79,6 +83,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
           setResult({ url, size: blob.size, filename });
           setConverting(false);
           toast.success("Conversion complete — ready to download");
+          trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "jpg_image" });
         },
         "image/jpeg",
         quality / 100,
@@ -261,7 +266,10 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
               <a
                 href={result.url}
                 download={result.filename}
-                onClick={() => toast.success("Download started")}
+                onClick={() => {
+                  toast.success("Download started");
+                  trackDownloadResult({ tool_slug: tool.slug, result_type: "jpg_image", file_type: "jpg" });
+                }}
                 className="inline-flex items-center gap-2 rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition hover:-translate-y-0.5 active:scale-95"
               >
                 <Download className="h-4 w-4" />

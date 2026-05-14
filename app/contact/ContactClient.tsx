@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Mail, Send, MessageCircle, CheckCircle2, Loader2 } from "lucide-react";
 import { executeContactRecaptchaV3 } from "@/lib/recaptcha-v3-browser";
+import { trackGenerateLead, getPagePath } from "@/lib/analytics";
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY?.trim() ?? "";
 
@@ -127,6 +128,11 @@ export function ContactClient() {
 
       setSent(true);
       toast.success("Message sent", { description: "We'll reply within 24 hours." });
+      trackGenerateLead({
+        form_name: "contact_form",
+        lead_topic: form.topic,
+        page_path: getPagePath(),
+      });
       setForm({ name: "", email: "", topic: "Feedback", message: "" });
     } catch {
       toast.error("Network error", { description: "Check your connection and try again." });

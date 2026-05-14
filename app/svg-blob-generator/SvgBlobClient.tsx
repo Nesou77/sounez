@@ -5,6 +5,8 @@ import { Copy, Download, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
+import { useToolView } from "@/lib/use-tool-view";
+import { trackToolComplete, trackCopyResult, trackDownloadResult } from "@/lib/analytics";
 
 function generateBlob(points: number, randomness: number, seed: number): string {
   const rng = (() => {
@@ -59,6 +61,8 @@ export function SvgBlobClient({ tool }: { tool: Tool }) {
     setSeed(Math.floor(Math.random() * 100000));
   }, []);
 
+  useToolView(tool);
+
   const path = generateBlob(points, randomness, seed);
 
   const svgContent = useGradient
@@ -78,11 +82,13 @@ export function SvgBlobClient({ tool }: { tool: Tool }) {
   const randomize = useCallback(() => {
     setSeed(Math.floor(Math.random() * 100000));
     toast.success("New blob generated");
-  }, []);
+    trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "svg_blob" });
+  }, [tool]);
 
   const copySvg = () => {
     navigator.clipboard.writeText(svgContent);
     toast.success("SVG code copied");
+    trackCopyResult({ tool_slug: tool.slug, result_type: "svg_blob" });
   };
 
   const downloadSvg = () => {
@@ -94,6 +100,7 @@ export function SvgBlobClient({ tool }: { tool: Tool }) {
     a.click();
     URL.revokeObjectURL(url);
     toast.success("blob.svg downloaded");
+    trackDownloadResult({ tool_slug: tool.slug, result_type: "svg_blob", file_type: "svg" });
   };
 
   return (

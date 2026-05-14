@@ -5,6 +5,7 @@ import { Heart, Share2, Link2, Check } from "lucide-react";
 import { toast } from "sonner";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { trackShare } from "@/lib/analytics";
 
 const LIKES_KEY = (slug: string) => `sounez:likes:${slug}`;
 const LIKED_KEY = (slug: string) => `sounez:liked:${slug}`;
@@ -82,7 +83,7 @@ export function EngagementBar({
         type="button"
         onClick={toggleLike}
         aria-pressed={liked}
-        aria-label={liked ? "Unlike" : "Like"}
+        aria-label={liked ? "Remove helpful vote" : "Mark this page as helpful"}
         className={cn(
           "group inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition active:scale-95",
           liked
@@ -97,12 +98,13 @@ export function EngagementBar({
             pulse && "scale-150",
             !liked && "group-hover:scale-110",
           )}
+          aria-hidden="true"
         />
         <span className="tabular-nums">{likes > 0 ? likes : null}</span>
         <span className="hidden sm:inline">{liked ? "Helpful ✓" : "Helpful"}</span>
       </button>
 
-      <ShareButton title={title} />
+      <ShareButton title={title} shareToolSlug={slug} />
     </div>
   );
 }
@@ -110,9 +112,12 @@ export function EngagementBar({
 export function ShareButton({
   title,
   className,
+  shareToolSlug,
 }: {
   title: string;
   className?: string;
+  /** Used for analytics only (e.g. `tool:qr-code-generator`, `blog:my-post`). */
+  shareToolSlug?: string;
 }) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -127,13 +132,16 @@ export function ShareButton({
       setCopied(true);
       toast.success("Link copied ✔");
       setTimeout(() => setCopied(false), 1500);
+      if (shareToolSlug) trackShare({ tool_slug: shareToolSlug, method: "copy_link" });
     } catch {
       toast.error("Could not copy link");
     }
   };
 
-  const openShare = (href: string) =>
+  const openShare = (href: string, method: string) => {
+    if (shareToolSlug) trackShare({ tool_slug: shareToolSlug, method });
     window.open(href, "_blank", "noopener,noreferrer,width=600,height=520");
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -146,7 +154,7 @@ export function ShareButton({
             className,
           )}
         >
-          <Share2 className="h-4 w-4" />
+          <Share2 className="h-4 w-4" aria-hidden="true" />
           <span>Share</span>
         </button>
       </PopoverTrigger>
@@ -167,7 +175,7 @@ export function ShareButton({
         </button>
         <button
           type="button"
-          onClick={() => openShare(`https://wa.me/?text=${shareText}%20${shareUrl}`)}
+          onClick={() => openShare(`https://wa.me/?text=${shareText}%20${shareUrl}`, "whatsapp")}
           className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition hover:bg-muted"
         >
           <span className="grid h-8 w-8 place-items-center rounded-md bg-[#25D366] text-white">
@@ -178,7 +186,7 @@ export function ShareButton({
         <button
           type="button"
           onClick={() =>
-            openShare(`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`)
+            openShare(`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`, "twitter")
           }
           className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition hover:bg-muted"
         >
@@ -189,7 +197,9 @@ export function ShareButton({
         </button>
         <button
           type="button"
-          onClick={() => openShare(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`)}
+          onClick={() =>
+            openShare(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, "facebook")
+          }
           className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition hover:bg-muted"
         >
           <span className="grid h-8 w-8 place-items-center rounded-md bg-[#1877F2] text-white">

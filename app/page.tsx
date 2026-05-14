@@ -14,6 +14,12 @@ export const metadata: Metadata = {
     title: "Sounez | Free Online Tools",
     description: "Free, fast tools for creators, designers and productivity. No account needed.",
     url: siteUrl,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sounez | Free Online Tools",
+    description: "Free, fast tools for creators, designers and productivity. No account needed.",
   },
 };
 
