@@ -26,8 +26,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   weight: ["600", "700", "800"],
   display: "swap",
-  // Headings-only font: avoid competing with Inter for early network bandwidth.
-  preload: false,
+  preload: true,
 });
 
 const siteUrl = getSiteUrl();

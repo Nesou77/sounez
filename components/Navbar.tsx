@@ -30,7 +30,7 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <BrandLogo variant="navbar" />
 
-        <nav className="hidden items-center gap-1 md:flex" onMouseLeave={() => setOpen(null)}>
+        <nav aria-label="Main navigation" className="hidden items-center gap-1 md:flex" onMouseLeave={() => setOpen(null)}>
           <Link href="/" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted">
             Home
           </Link>
@@ -40,7 +40,7 @@ export function Navbar() {
               type="button"
               className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted"
               onClick={() => setOpen(open === "tools" ? null : "tools")}
-              aria-haspopup="true"
+              aria-haspopup="menu"
               aria-expanded={open === "tools"}
               aria-controls={open === "tools" ? "nav-tools-menu" : undefined}
               aria-label="Tools menu"
@@ -50,8 +50,6 @@ export function Navbar() {
             {mounted && open === "tools" && (
               <div
                 id="nav-tools-menu"
-                role="region"
-                aria-label="Tools"
                 className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-2xl border border-border bg-popover p-6 shadow-pop"
               >
                 <div className="grid grid-cols-3 gap-6">
@@ -101,7 +99,7 @@ export function Navbar() {
               type="button"
               className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted"
               onClick={() => setOpen(open === "cats" ? null : "cats")}
-              aria-haspopup="true"
+              aria-haspopup="menu"
               aria-expanded={open === "cats"}
               aria-controls={open === "cats" ? "nav-categories-menu" : undefined}
               aria-label="Categories menu"
@@ -111,8 +109,6 @@ export function Navbar() {
             {mounted && open === "cats" && (
               <div
                 id="nav-categories-menu"
-                role="region"
-                aria-label="Categories"
                 className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-80 -translate-x-1/2 rounded-2xl border border-border bg-popover p-3 shadow-pop"
               >
                 {CATEGORIES.map((c) => {
