@@ -68,13 +68,13 @@ function u32le(n: number): [number, number, number, number] {
 
 async function buildZip(files: Array<{ name: string; blob: Blob }>): Promise<Blob> {
   const enc = new TextEncoder();
-  const localParts: Uint8Array[] = [];
-  const centralParts: Uint8Array[] = [];
+  const localParts: Uint8Array<ArrayBuffer>[] = [];
+  const centralParts: Uint8Array<ArrayBuffer>[] = [];
   let localOffset = 0;
 
   for (const file of files) {
     const nameBytes = enc.encode(file.name);
-    const data = new Uint8Array(await file.blob.arrayBuffer());
+    const data = new Uint8Array(await file.blob.arrayBuffer() as ArrayBuffer);
     const crc = crc32(data);
     const size = data.length;
 

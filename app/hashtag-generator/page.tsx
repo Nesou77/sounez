@@ -6,6 +6,6 @@ import { toolMetadata } from "@/lib/tool-metadata";
 const tool = toolBySlug("hashtag-generator");
 if (!tool) notFound();
 export const metadata: Metadata = toolMetadata(tool!, {
-  title: `${tool!.name} | Free Instagram and TikTok Hashtags | Sounez`,
+  title: `${tool!.name} | Instagram, TikTok & YouTube Hashtags | Sounez`,
 });
 export default function Page() { return <HashtagClient tool={tool!} />; }

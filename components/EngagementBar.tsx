@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { trackShare } from "@/lib/analytics";
+import { useBlogLike } from "./blog/BlogLikeController";
 
 const LIKES_KEY = (slug: string) => `sounez:likes:${slug}`;
 const LIKED_KEY = (slug: string) => `sounez:liked:${slug}`;
@@ -41,29 +42,33 @@ export function EngagementBar({
   title: string;
   className?: string;
 }) {
-  // Start from 0 — no fake baseline. Count is local to this browser.
-  const [likes, setLikes] = useState(0);
-  const [liked, setLiked] = useState(false);
-  const [pulse, setPulse] = useState(false);
+  const blogLike = useBlogLike();
+  const isInBlogContext = blogLike !== null;
+
+  // Local state — only used on non-blog pages (tool pages, etc.)
+  const [localLikes, setLocalLikes] = useState(0);
+  const [localLiked, setLocalLiked] = useState(false);
+  const [localPulse, setLocalPulse] = useState(false);
 
   useEffect(() => {
+    if (isInBlogContext) return;
     try {
       const sl = localStorage.getItem(LIKES_KEY(slug));
       const sLiked = localStorage.getItem(LIKED_KEY(slug));
-      if (sl) setLikes(parseInt(sl, 10) || 0);
-      if (sLiked === "1") setLiked(true);
+      if (sl) setLocalLikes(parseInt(sl, 10) || 0);
+      if (sLiked === "1") setLocalLiked(true);
     } catch {
       // ignore
     }
-  }, [slug]);
+  }, [slug, isInBlogContext]);
 
-  const toggleLike = () => {
-    const next = !liked;
-    const nextCount = Math.max(0, likes + (next ? 1 : -1));
-    setLiked(next);
-    setLikes(nextCount);
-    setPulse(true);
-    setTimeout(() => setPulse(false), 400);
+  const localToggleLike = () => {
+    const next = !localLiked;
+    const nextCount = Math.max(0, localLikes + (next ? 1 : -1));
+    setLocalLiked(next);
+    setLocalLikes(nextCount);
+    setLocalPulse(true);
+    setTimeout(() => setLocalPulse(false), 400);
     try {
       localStorage.setItem(LIKES_KEY(slug), String(nextCount));
       localStorage.setItem(LIKED_KEY(slug), next ? "1" : "0");
@@ -71,6 +76,11 @@ export function EngagementBar({
       // ignore
     }
   };
+
+  const likes = isInBlogContext ? blogLike.likeCount : localLikes;
+  const liked = isInBlogContext ? blogLike.liked : localLiked;
+  const pulse = isInBlogContext ? blogLike.pulse : localPulse;
+  const toggleLike = isInBlogContext ? blogLike.toggleLike : localToggleLike;
 
   return (
     <div
@@ -126,20 +136,27 @@ export function ShareButton({
   const shareText = encodeURIComponent(title);
   const shareUrl = encodeURIComponent(url);
 
+  const shareContext = shareToolSlug
+    ? {
+        content_type: (shareToolSlug.startsWith("blog:") ? "blog" : "tool") as "tool" | "blog",
+        item_id: shareToolSlug.startsWith("blog:") ? shareToolSlug.slice(5) : shareToolSlug,
+      }
+    : null;
+
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
       toast.success("Link copied ✔");
       setTimeout(() => setCopied(false), 1500);
-      if (shareToolSlug) trackShare({ tool_slug: shareToolSlug, method: "copy_link" });
+      if (shareContext) trackShare({ ...shareContext, method: "copy_link" });
     } catch {
       toast.error("Could not copy link");
     }
   };
 
   const openShare = (href: string, method: string) => {
-    if (shareToolSlug) trackShare({ tool_slug: shareToolSlug, method });
+    if (shareContext) trackShare({ ...shareContext, method });
     window.open(href, "_blank", "noopener,noreferrer,width=600,height=520");
   };
 

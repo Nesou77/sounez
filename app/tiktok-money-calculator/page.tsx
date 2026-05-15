@@ -6,6 +6,6 @@ import { toolMetadata } from "@/lib/tool-metadata";
 const tool = toolBySlug("tiktok-money-calculator");
 if (!tool) notFound();
 export const metadata: Metadata = toolMetadata(tool!, {
-  title: `${tool!.name} | Estimate Your TikTok Earnings | Sounez`,
+  title: `${tool!.name} | TikTok, Instagram & YouTube Earnings | Sounez`,
 });
 export default function Page() { return <TiktokMoneyClient tool={tool!} />; }
