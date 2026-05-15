@@ -41,7 +41,7 @@ export default function Post() {
           you one.
         </p>
 
-        <BlogImage src="/blog/best-color-palettes-for-design2.webp" alt="A row of harmonious color swatches applied to a UI mockup" caption="Restraint reads as confidence." />
+        <BlogImage src="/blog/best-color-palettes-for-design-bg.webp" alt="A row of harmonious color swatches applied to a UI mockup" caption="Restraint reads as confidence." />
 
         <h2>The 60-30-10 rule (and why it works)</h2>
         <ul>

@@ -48,7 +48,7 @@ export default function Post() {
           below meets all three.
         </p>
 
-        <BlogImage src="/blog/best-free-tools-for-creators2.webp" alt="A neatly organized creator toolbox of app icons" caption="A focused toolkit beats a bloated one, every time." />
+        <BlogImage src="/blog/best-free-tools-for-creators-bg.webp" alt="A neatly organized creator toolbox of app icons" caption="A focused toolkit beats a bloated one, every time." />
 
         <h2>Why free tools beat paid bloat in 2026</h2>
         <p>

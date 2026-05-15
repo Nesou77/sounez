@@ -91,7 +91,7 @@ export default function Post() {
           creator toolkit</a> for more.
         </p>
 
-        <BlogImage src="/blog/how-to-grow-on-tiktok2.webp" alt="A TikTok creator analytics dashboard showing follower growth and engagement" caption="Engagement beats raw follower count for brand deals." />
+        <BlogImage src="/blog/how-to-grow-on-tiktok-bg.webp" alt="A TikTok creator analytics dashboard showing follower growth and engagement" caption="Engagement beats raw follower count for brand deals." />
 
         <h2>4. Post consistently: quality over volume</h2>
         <p>
