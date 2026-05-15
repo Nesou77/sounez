@@ -8,6 +8,12 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "browserslist": [
+  "chrome >= 93",
+  "firefox >= 92",
+  "safari >= 15.4",
+  "edge >= 93"
+],
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",

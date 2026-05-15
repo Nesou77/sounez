@@ -103,7 +103,7 @@ export function CookieConsentBanner() {
         We use cookies to improve your experience and show relevant ads.{" "}
         <a
           href="/privacy-policy"
-          className="font-medium text-primary underline underline-offset-2 hover:text-primary/80"
+          className="font-medium text-primary-label underline underline-offset-2 hover:text-primary-label/80"
         >
           Privacy Policy
         </a>

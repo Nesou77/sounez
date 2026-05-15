@@ -14,7 +14,7 @@ export function HomeHeroStatic() {
         <span className="animate-fade-in inline-flex items-center gap-1.5 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-xs font-medium text-foreground/80 shadow-soft backdrop-blur">
           <Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden="true" /> Free tools that actually work.
         </span>
-        <h1 className="animate-slide-up mt-6 text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+        <h1 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
           Free online tools for{" "}
           <span className="text-gradient-brand">creators</span>, designers <br className="hidden sm:block" />
           &amp; everyday productivity
