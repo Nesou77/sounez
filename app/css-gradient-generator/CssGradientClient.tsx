@@ -76,7 +76,7 @@ export function CssGradientClient({ tool }: { tool: Tool }) {
       tool={tool}
       intro="Pick two colors, choose a gradient type and angle, then copy the CSS into your project. Includes presets to get started fast."
       features={[
-        { title: "3 gradient types", desc: "Linear, radial and conic — all the CSS gradient types in one place." },
+        { title: "3 gradient types", desc: "Linear, radial and conic gradients in one place." },
         { title: "Live preview", desc: "Change colors or angle and see the result update immediately." },
         { title: "8 presets", desc: "Start from a curated gradient and tweak from there." },
         { title: "Tailwind snippet", desc: "Copy the equivalent inline style for Tailwind projects." },

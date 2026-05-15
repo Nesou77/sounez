@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { question: "Do QR codes expire?", answer: "Static QR codes never expire — the code is just an encoded URL. Dynamic QR codes from third-party services may expire if you stop paying for the service." },
+  { question: "Do QR codes expire?", answer: "Static QR codes never expire, the code is just an encoded URL. Dynamic QR codes from third-party services may expire if you stop paying for the service." },
   { question: "Can I use a QR code on a dark background?", answer: "Yes, but invert the colors carefully. The dark module must remain darker than the light module. Test thoroughly before printing." },
   { question: "What's the best file format for printing?", answer: "SVG for vector printing (scales to any size without pixelation). PNG at 1000px+ for digital use." },
   { question: "Should I put a QR code on my social media posts?", answer: "Generally no. People are already on a screen and can tap a link. QR codes shine in physical contexts where a tap isn't possible." },
@@ -34,7 +34,7 @@ export default function Post() {
         slug="how-to-use-qr-codes-for-marketing"
         ctaTools={["qr-code-generator", "hashtag-generator", "word-counter"]}
         title="How to Use QR Codes for Marketing (Without Looking Cheap)"
-        excerpt="QR codes are everywhere again — on packaging, business cards, menus, event badges and social posts. Here's how to use them in a way that actually works and looks intentional."
+        excerpt="QR codes are everywhere again, on packaging, business cards, menus, event badges and social posts. Here's how to use them in a way that actually works and looks intentional."
       >
         <p>
           QR codes had a rough decade. They were clunky, required a separate app, and felt like a
@@ -154,14 +154,14 @@ export default function Post() {
         <p>
           A plain QR code gives you no data. Use a URL shortener with analytics (Bitly, Short.io) as
           the destination, then wrap that in your QR code. You&apos;ll see exactly how many people scanned,
-          when, and from which location — invaluable for print campaigns.
+          when, and from which location, invaluable for print campaigns.
         </p>
 
         <h2>Frequently Asked Questions</h2>
         <h3>Do QR codes expire?</h3>
         <p>
           Static QR codes (like those from the <a href="/qr-code-generator">Sounez generator</a>) never
-          expire — the code is just an encoded URL. Dynamic QR codes from third-party services may
+          expire, the code is just an encoded URL. Dynamic QR codes from third-party services may
           expire if you stop paying for the service.
         </p>
         <h3>Can I use a QR code on a dark background?</h3>
@@ -184,7 +184,7 @@ export default function Post() {
         <p>
           QR codes are a bridge, not a destination. Use them where a physical-to-digital jump makes
           sense, label them clearly, and make sure the destination is worth the scan. Generate yours
-          now with the <a href="/qr-code-generator">QR Code Generator</a> — free, no signup, ready in
+          now with the <a href="/qr-code-generator">QR Code Generator</a>, free, no signup, ready in
           seconds.
         </p>
       </BlogPostShell>

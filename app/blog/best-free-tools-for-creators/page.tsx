@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 
 export const metadata: Metadata = {
   title: "10 Best Free Online Tools for Creators in 2026 | Sounez",
-  description: "The 10 best free online tools every creator needs in 2026 — for YouTube, TikTok, blogs and design. No signup, runs in your browser.",
+  description: "The 10 best free online tools every creator needs in 2026, for YouTube, TikTok, blogs and design. No signup, runs in your browser.",
   openGraph: {
     title: "10 Best Free Online Tools for Creators in 2026",
     description: "The free toolkit every modern creator needs. Fast, focused, browser-based.",
@@ -26,7 +26,7 @@ export default function Post() {
       <BlogJsonLd
         slug="best-free-tools-for-creators"
         title="10 Best Free Online Tools for Creators in 2026"
-        description="The 10 best free online tools every creator needs in 2026 — for YouTube, TikTok, blogs and design. No signup, runs in your browser."
+        description="The 10 best free online tools every creator needs in 2026, for YouTube, TikTok, blogs and design. No signup, runs in your browser."
         articleSection="Creator Tools"
         faqs={FAQS}
       />
@@ -175,7 +175,7 @@ export default function Post() {
           the rest. Start with{" "}
           <a href="/youtube-tags-generator">YouTube Tags</a>,{" "}
           <a href="/hashtag-generator">Hashtags</a> and the{" "}
-          <a href="/image-compressor">Image Compressor</a> — they cover 80% of a creator&apos;s daily needs.
+          <a href="/image-compressor">Image Compressor</a>, they cover 80% of a creator&apos;s daily needs.
         </p>
       </BlogPostShell>
     </>

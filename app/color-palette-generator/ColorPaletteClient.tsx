@@ -96,11 +96,11 @@ export function ColorPaletteClient({ tool }: { tool: Tool }) {
       howTo={[
         "Click Generate to create a new 5-color palette.",
         "Lock any color you want to keep using the lock icon.",
-        "Click Generate again — locked colors stay, the rest change.",
+        "Click Generate again, locked colors stay, the rest change.",
         "Click any swatch to copy its hex code, or use the export buttons below.",
       ]}
       faqs={[
-        { q: "Are the colors random?", a: "Yes. Each click generates a fresh set. Lock the ones you like before generating again — they will not change." },
+        { q: "Are the colors random?", a: "Yes. Each click generates a fresh set. Lock colors you want to keep before you generate again." },
         { q: "Can I use these colors in commercial projects?", a: "Yes. The generated colors are yours to use in any project, personal or commercial." },
         { q: "What are CSS variables good for?", a: "CSS custom properties let you define your palette once and reuse it across your entire stylesheet. Change one variable and the whole site updates." },
         { q: "Can I pick a specific color?", a: "Click directly on any swatch color tile to edit it with a color picker." },
@@ -131,7 +131,7 @@ export function ColorPaletteClient({ tool }: { tool: Tool }) {
                   </span>
                 </span>
               </button>
-              {/* Lock button — always visible when locked, shown on hover when unlocked */}
+              {/* Lock button, always visible when locked, shown on hover when unlocked */}
               <button
                 onClick={() => toggleLock(i)}
                 title={locked[i] ? "Unlock color" : "Lock color"}

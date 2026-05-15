@@ -94,13 +94,13 @@ export function BioClient({ tool }: { tool: Tool }) {
       howTo={[
         "Enter your name, role and a few interests.",
         "Select your platform to get the right length and tone.",
-        "Click Generate — copy it or click Generate again for a different version.",
+        "Click Generate, copy the bio, or click Generate again for a different version.",
       ]}
       faqs={[
         { q: "How long will my bio be?", a: "Instagram and Twitter bios are capped at 160 characters. LinkedIn and general bios can go up to 300 characters." },
         { q: "Can I generate multiple versions?", a: "Yes. Click Generate as many times as you like to get different options from the same input." },
         { q: "What if the bio is too long?", a: "The character counter will turn red if the bio exceeds the platform limit. Try a shorter role description or fewer interests." },
-        { q: "Can I edit the bio after generating?", a: "You can copy it and edit it in any text editor. The tool does not support in-place editing — that keeps things simple." },
+        { q: "Can I edit the bio after generating?", a: "Yes. Copy it into any text editor and change what you like. This tool only generates text." },
       ]}
       useCases={[
         { title: "Social media creators", desc: "Write a clear, punchy bio that explains what you do and who you are in under 160 characters." },

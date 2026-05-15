@@ -40,7 +40,7 @@ export default function Post() {
         <p>
           A flat white or grey background is clean, but it can also feel empty. Background patterns
           add texture, depth and visual interest without the weight of image files. The best part:
-          most common patterns can be created with pure CSS gradients — no images, no external
+          most common patterns can be created with pure CSS gradients, no images, no external
           dependencies, no HTTP requests.
         </p>
         <p>
@@ -55,11 +55,11 @@ export default function Post() {
           Background patterns serve several design purposes:
         </p>
         <ul>
-          <li><strong>Add texture</strong> — A subtle dot or grid pattern breaks up flat backgrounds without adding visual noise.</li>
-          <li><strong>Create depth</strong> — Patterns make backgrounds feel layered rather than flat.</li>
-          <li><strong>Guide the eye</strong> — Diagonal lines and directional patterns can subtly direct attention toward key content.</li>
-          <li><strong>Reinforce brand identity</strong> — A consistent pattern used across a site becomes part of the visual language.</li>
-          <li><strong>Differentiate sections</strong> — Alternating between a plain background and a patterned one creates clear section breaks.</li>
+          <li><strong>Add texture</strong>: A subtle dot or grid pattern breaks up flat backgrounds without adding visual noise.</li>
+          <li><strong>Create depth</strong>: Patterns make backgrounds feel layered rather than flat.</li>
+          <li><strong>Guide the eye</strong>: Diagonal lines and directional patterns can subtly direct attention toward key content.</li>
+          <li><strong>Reinforce brand identity</strong>: A consistent pattern used across a site becomes part of the visual language.</li>
+          <li><strong>Differentiate sections</strong>: Alternating between a plain background and a patterned one creates clear section breaks.</li>
         </ul>
 
         <PullQuote>
@@ -70,7 +70,7 @@ export default function Post() {
         <p>
           CSS gradient patterns work by combining <code>background-image</code> gradients with
           <code>background-size</code> to create repeating tiles. The browser renders the pattern
-          entirely in memory — no image file required.
+          entirely in memory, no image file required.
         </p>
 
         <h3>Dot pattern</h3>
@@ -123,19 +123,19 @@ background-size: 48px 48px;`}</code>
 
         <h2>Best use cases for background patterns</h2>
         <ul>
-          <li><strong>Hero sections</strong> — A subtle dot or grid pattern behind a headline adds texture without competing with the text.</li>
-          <li><strong>Feature sections</strong> — Alternate between plain and patterned backgrounds to create visual rhythm.</li>
-          <li><strong>Cards and panels</strong> — A light pattern on a card background differentiates it from the page background.</li>
-          <li><strong>Full-page backgrounds</strong> — A very subtle pattern (5–10% opacity) adds depth to otherwise flat pages.</li>
-          <li><strong>Email templates</strong> — CSS patterns work in most modern email clients and add visual interest without image attachments.</li>
+          <li><strong>Hero sections</strong>: A subtle dot or grid pattern behind a headline adds texture without competing with the text.</li>
+          <li><strong>Feature sections</strong>: Alternate between plain and patterned backgrounds to create visual rhythm.</li>
+          <li><strong>Cards and panels</strong>: A light pattern on a card background differentiates it from the page background.</li>
+          <li><strong>Full-page backgrounds</strong>: A very subtle pattern (5–10% opacity) adds depth to otherwise flat pages.</li>
+          <li><strong>Email templates</strong>: CSS patterns work in most modern email clients and add visual interest without image attachments.</li>
         </ul>
 
         <h2>Performance tips</h2>
         <ul>
-          <li><strong>Keep opacity low</strong> — Patterns at 10–30% opacity are subtle and professional. High-opacity patterns compete with content.</li>
-          <li><strong>Use CSS over images</strong> — CSS patterns have zero file size and render instantly. Image patterns add HTTP requests and fixed resolutions.</li>
-          <li><strong>Avoid complex patterns on mobile</strong> — Very complex CSS patterns can cause rendering performance issues on low-end devices. Test on mobile before shipping.</li>
-          <li><strong>Combine with a solid background color</strong> — Always set a <code>background-color</code> alongside the pattern. This ensures the page looks correct while the CSS loads and provides a fallback.</li>
+          <li><strong>Keep opacity low</strong>: Patterns at 10–30% opacity are subtle and professional. High-opacity patterns compete with content.</li>
+          <li><strong>Use CSS over images</strong>: CSS patterns have zero file size and render instantly. Image patterns add HTTP requests and fixed resolutions.</li>
+          <li><strong>Avoid complex patterns on mobile</strong>: Very complex CSS patterns can cause rendering performance issues on low-end devices. Test on mobile before shipping.</li>
+          <li><strong>Combine with a solid background color</strong>: Always set a <code>background-color</code> alongside the pattern. This ensures the page looks correct while the CSS loads and provides a fallback.</li>
         </ul>
 
         <h2>How to use the Background Pattern Generator</h2>

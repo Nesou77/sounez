@@ -51,7 +51,7 @@ export default function Post() {
         <h2>What is box-shadow in CSS?</h2>
         <p>
           The <code>box-shadow</code> property adds one or more shadow effects around an element&apos;s
-          frame. It does not affect layout — it is purely visual.
+          frame. It does not affect layout, it is purely visual.
         </p>
 
         <h2>Box-shadow syntax explained</h2>
@@ -59,12 +59,12 @@ export default function Post() {
           <code>{`box-shadow: [inset] <offset-x> <offset-y> <blur-radius> <spread-radius> <color>;`}</code>
         </pre>
         <ul>
-          <li><strong>inset</strong> (optional) — Makes the shadow appear inside the element.</li>
-          <li><strong>offset-x</strong> — Horizontal offset. Positive moves right, negative moves left.</li>
-          <li><strong>offset-y</strong> — Vertical offset. Positive moves down, negative moves up.</li>
-          <li><strong>blur-radius</strong> — How blurry the shadow is. 0 = sharp edge. Higher = softer.</li>
-          <li><strong>spread-radius</strong> — Expands or contracts the shadow. Negative values shrink it.</li>
-          <li><strong>color</strong> — The shadow color. Use rgba() for transparency control.</li>
+          <li><strong>inset</strong> (optional), Makes the shadow appear inside the element.</li>
+          <li><strong>offset-x</strong>: Horizontal offset. Positive moves right, negative moves left.</li>
+          <li><strong>offset-y</strong>: Vertical offset. Positive moves down, negative moves up.</li>
+          <li><strong>blur-radius</strong>: How blurry the shadow is. 0 = sharp edge. Higher = softer.</li>
+          <li><strong>spread-radius</strong>: Expands or contracts the shadow. Negative values shrink it.</li>
+          <li><strong>color</strong>: The shadow color. Use rgba() for transparency control.</li>
         </ul>
 
         <h3>Common examples</h3>
@@ -112,18 +112,18 @@ box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);`}</code>
 
         <h2>UI examples: where to use shadows</h2>
         <ul>
-          <li><strong>Cards</strong> — A soft shadow lifts the card off the background, making it feel interactive.</li>
-          <li><strong>Buttons</strong> — A subtle shadow on a primary button adds depth and makes it feel pressable.</li>
-          <li><strong>Modals and dropdowns</strong> — A larger shadow creates the illusion of the element floating above the page.</li>
-          <li><strong>Input fields</strong> — An inset shadow on a focused input creates a subtle pressed effect.</li>
-          <li><strong>Navigation bars</strong> — A thin bottom shadow separates the nav from the page content.</li>
+          <li><strong>Cards</strong>: A soft shadow lifts the card off the background, making it feel interactive.</li>
+          <li><strong>Buttons</strong>: A subtle shadow on a primary button adds depth and makes it feel pressable.</li>
+          <li><strong>Modals and dropdowns</strong>: A larger shadow creates the illusion of the element floating above the page.</li>
+          <li><strong>Input fields</strong>: An inset shadow on a focused input creates a subtle pressed effect.</li>
+          <li><strong>Navigation bars</strong>: A thin bottom shadow separates the nav from the page content.</li>
         </ul>
 
         <h2>Accessibility and readability tips</h2>
         <ul>
-          <li><strong>Do not rely on shadows alone for contrast</strong> — Users with visual impairments or high-contrast mode may not see shadows. Use borders or background color differences as well.</li>
-          <li><strong>Avoid colored shadows on text</strong> — Colored shadows on text can reduce readability. Use them only on decorative elements.</li>
-          <li><strong>Test in dark mode</strong> — Shadows that look great on white backgrounds can disappear or look wrong on dark backgrounds. Use lighter shadow colors in dark mode.</li>
+          <li><strong>Do not rely on shadows alone for contrast</strong>: Users with visual impairments or high-contrast mode may not see shadows. Use borders or background color differences as well.</li>
+          <li><strong>Avoid colored shadows on text</strong>: Colored shadows on text can reduce readability. Use them only on decorative elements.</li>
+          <li><strong>Test in dark mode</strong>: Shadows that look great on white backgrounds can disappear or look wrong on dark backgrounds. Use lighter shadow colors in dark mode.</li>
         </ul>
 
         <h2>How to use the Box Shadow Generator</h2>

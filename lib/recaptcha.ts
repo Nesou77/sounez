@@ -37,7 +37,7 @@ export async function verifyContactRecaptchaV3(token: string | undefined): Promi
 
   if (!token || typeof token !== "string" || token.trim() === "") {
     debugLog({ reason: "missing_token" });
-    return { ok: false, error: "Spam check failed — please reload and try again." };
+    return { ok: false, error: "Spam check failed. Please reload the page and try again." };
   }
 
   try {

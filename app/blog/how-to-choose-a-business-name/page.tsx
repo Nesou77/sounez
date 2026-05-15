@@ -39,7 +39,7 @@ const FAQS = [
   {
     question: "What is the best naming style for a startup?",
     answer:
-      "Modern and abstract names tend to age better and are easier to trademark. Playful names work well for consumer brands. Professional names suit B2B services. There's no single right answer — it depends on your audience.",
+      "Modern and abstract names tend to age better and are easier to trademark. Playful names work well for consumer brands. Professional names suit B2B services. There's no single right answer, it depends on your audience.",
   },
 ];
 
@@ -57,12 +57,12 @@ export default function Post() {
         slug="how-to-choose-a-business-name"
         ctaTools={["business-name-generator", "website-idea-generator", "bio-generator"]}
         title="How to Choose a Business Name for Your Brand"
-        excerpt="Your business name is the first thing customers see and the last thing they forget. Here&apos;s a practical framework for choosing one that works — and a free generator to speed up the process."
+        excerpt="Your business name is the first thing customers see and the last thing they forget. Here&apos;s a practical framework for choosing one that works, and a free generator to speed up the process."
       >
         <p>
           Choosing a business name feels simple until you&apos;re staring at a blank page. Every good name
           seems taken. Every creative idea either sounds too generic or too weird. The truth is that
-          most great business names follow a small set of patterns — and once you know them, the
+          most great business names follow a small set of patterns, and once you know them, the
           process becomes much faster.
         </p>
         <p>
@@ -75,29 +75,29 @@ export default function Post() {
         <p>The best business names share most of these qualities:</p>
         <ul>
           <li>
-            <strong>Short and memorable</strong> — 1–3 syllables. Easy to say, spell and remember.
+            <strong>Short and memorable</strong>: 1–3 syllables. Easy to say, spell and remember.
             &quot;Slack&quot;, &quot;Zoom&quot;, &quot;Stripe&quot; are all one syllable.
           </li>
           <li>
-            <strong>Easy to spell from hearing it</strong> — If you have to spell it out every time
+            <strong>Easy to spell from hearing it</strong>: If you have to spell it out every time
             you say it, it&apos;s too complicated.
           </li>
           <li>
-            <strong>Available as a domain</strong> — Check .com availability before falling in love
+            <strong>Available as a domain</strong>: Check .com availability before falling in love
             with a name. A .com domain still carries the most trust.
           </li>
           <li>
-            <strong>Trademarkable</strong> — Generic or purely descriptive names are hard to protect.
+            <strong>Trademarkable</strong>: Generic or purely descriptive names are hard to protect.
             Invented or abstract names are easier to trademark.
           </li>
           <li>
-            <strong>Scalable</strong> — Avoid names that lock you into a specific product or location.
+            <strong>Scalable</strong>: Avoid names that lock you into a specific product or location.
             &quot;London Plumbing Co&quot; is hard to scale nationally.
           </li>
         </ul>
 
         <PullQuote>
-          The best business names don&apos;t describe what you do — they make people feel something.
+          The best business names don&apos;t describe what you do, they make people feel something.
         </PullQuote>
 
         <h2>Common naming styles with examples</h2>
@@ -187,7 +187,7 @@ export default function Post() {
         </p>
         <ol>
           <li>
-            <strong>Trademark search</strong> — Check your country&apos;s trademark register. In the US,
+            <strong>Trademark search</strong>: Check your country&apos;s trademark register. In the US,
             use the{" "}
             <ExternalLink href="https://www.uspto.gov/trademarks/search" type="source">
               USPTO TESS database
@@ -202,15 +202,15 @@ export default function Post() {
             .
           </li>
           <li>
-            <strong>Domain availability</strong> — Check .com first, then .co, .io or country-code
+            <strong>Domain availability</strong>: Check .com first, then .co, .io or country-code
             domains. A matching domain is a strong signal the name is available.
           </li>
           <li>
-            <strong>Social media handles</strong> — Search Instagram, LinkedIn, TikTok and X for the
+            <strong>Social media handles</strong>: Search Instagram, LinkedIn, TikTok and X for the
             exact name. Consistent handles across platforms matter for brand recognition.
           </li>
           <li>
-            <strong>Google search</strong> — Search the name in quotes. If the first page is full of
+            <strong>Google search</strong>: Search the name in quotes. If the first page is full of
             unrelated results, you&apos;ll struggle to rank for your own brand name.
           </li>
         </ol>
@@ -230,7 +230,7 @@ export default function Post() {
             Choose a naming style: Modern, Playful, Professional or Abstract.
           </li>
           <li>
-            Click Generate. You get 6 names — copy any you like and run them through the trademark
+            Click Generate. You get 6 names, copy any you like and run them through the trademark
             and domain checks above.
           </li>
           <li>

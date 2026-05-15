@@ -67,9 +67,9 @@ export function QrCodeClient({ tool }: { tool: Tool }) {
       tool={tool}
       intro="Paste any URL, text, Wi-Fi credentials, email or phone number and download a crisp PNG QR code. Free, no account needed, runs entirely in your browser."
       features={[
-        { title: "Updates in real time", desc: "Type and watch the QR code change as you go — no button to press." },
+        { title: "Updates in real time", desc: "Type and watch the QR code change. No generate button needed." },
         { title: "Custom colors", desc: "Match your brand with custom foreground and background colors." },
-        { title: "5 export sizes", desc: "From 128px to 512px — pick the right size for print or screen." },
+        { title: "5 export sizes", desc: "From 128px to 512px. Pick a size for print or screen." },
         { title: "Private", desc: "Nothing is uploaded. The QR code is generated entirely in your browser." },
       ]}
       howTo={[
@@ -81,7 +81,7 @@ export function QrCodeClient({ tool }: { tool: Tool }) {
         { q: "Is the QR code free to use commercially?", a: "Yes. Use it on print materials, ads, merchandise, presentations or anywhere else." },
         { q: "Can I make a QR code for Wi-Fi?", a: "Yes. Use the format WIFI:T:WPA;S:NetworkName;P:Password;; and scan it to auto-connect on most devices." },
         { q: "What size should I use for print?", a: "For print, use 512px or larger. For digital use (emails, presentations), 256px is usually enough." },
-        { q: "Can I change the QR code colors?", a: "Yes. Pick any foreground and background color. Make sure there is enough contrast — the scanner needs to clearly distinguish the dark and light areas." },
+        { q: "Can I change the QR code colors?", a: "Yes. Pick any foreground and background color. Keep strong contrast so scanners can read the code." },
         { q: "Does the QR code expire?", a: "No. QR codes created here are static and permanent. They work as long as the URL they point to is active." },
       ]}
       useCases={[

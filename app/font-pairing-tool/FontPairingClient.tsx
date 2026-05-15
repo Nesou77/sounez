@@ -101,7 +101,7 @@ font-family: ${pairing.bodyStack};`;
         "Copy the CSS and apply it to your project.",
       ]}
       faqs={[
-        { q: "What makes a good font pairing?", a: "A good pairing usually combines contrast and readability — a strong heading font with a clean body font." },
+        { q: "What makes a good font pairing?", a: "A good pairing usually combines contrast and readability, a strong heading font with a clean body font." },
         { q: "Should I use more than two fonts?", a: "Usually no. Two fonts are enough for most websites. More than two creates visual noise." },
         { q: "Can I use Google Fonts?", a: "Yes. Each pairing links to Google Fonts. Load only the weights you need to keep the site fast." },
       ]}
@@ -129,13 +129,13 @@ font-family: ${pairing.bodyStack};`;
       {/* Preview */}
       <div className="rounded-2xl border border-border bg-background p-6 space-y-4">
         <div>
-          <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Heading — {pairing.heading}</p>
+          <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Heading, {pairing.heading}</p>
           <p style={{ fontFamily: pairing.headingStack }} className="text-3xl font-bold leading-tight">
             The quick brown fox jumps
           </p>
         </div>
         <div>
-          <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Body — {pairing.body}</p>
+          <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Body, {pairing.body}</p>
           <p style={{ fontFamily: pairing.bodyStack }} className="text-base leading-relaxed text-muted-foreground">
             Good typography makes reading effortless. The right font pairing creates visual hierarchy and guides the reader through your content naturally.
           </p>

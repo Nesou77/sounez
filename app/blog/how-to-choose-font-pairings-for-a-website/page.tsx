@@ -54,7 +54,7 @@ export default function Post() {
         <h2>Why typography matters</h2>
         <p>
           Typography is not just about aesthetics. It directly affects how long people stay on your
-          page. Poor typography — low contrast, cramped line spacing, mismatched fonts — increases
+          page. Poor typography, low contrast, cramped line spacing, mismatched fonts, increases
           cognitive load and causes readers to leave. Good typography is invisible: readers absorb
           the content without noticing the design.
         </p>
@@ -82,7 +82,7 @@ export default function Post() {
 
         <h3>2. Maintain harmony</h3>
         <p>
-          Contrast does not mean clash. The fonts should share some quality — similar proportions,
+          Contrast does not mean clash. The fonts should share some quality, similar proportions,
           a shared historical period, or a complementary mood. A playful display font paired with a
           formal serif creates tension rather than harmony.
         </p>
@@ -109,9 +109,9 @@ export default function Post() {
           editorial sites, blogs and content-heavy pages.
         </p>
         <ul>
-          <li>DM Sans + Fraunces — editorial, modern</li>
-          <li>Space Grotesk + Lora — startup, approachable</li>
-          <li>Manrope + Roboto Slab — clean, professional</li>
+          <li>DM Sans + Fraunces, editorial, modern</li>
+          <li>Space Grotesk + Lora, startup, approachable</li>
+          <li>Manrope + Roboto Slab, clean, professional</li>
         </ul>
 
         <h3>Serif heading + sans-serif body</h3>
@@ -120,8 +120,8 @@ export default function Post() {
           readability. Works well for luxury brands, agencies and professional services.
         </p>
         <ul>
-          <li>Playfair Display + Inter — elegant, timeless</li>
-          <li>Cormorant Garamond + Lato — refined, editorial</li>
+          <li>Playfair Display + Inter, elegant, timeless</li>
+          <li>Cormorant Garamond + Lato, refined, editorial</li>
         </ul>
 
         <h3>Sans-serif heading + sans-serif body</h3>
@@ -130,8 +130,8 @@ export default function Post() {
           for tech products, SaaS and modern apps.
         </p>
         <ul>
-          <li>Montserrat + Open Sans — clean, versatile</li>
-          <li>Poppins + Inter — friendly, modern</li>
+          <li>Montserrat + Open Sans, clean, versatile</li>
+          <li>Poppins + Inter, friendly, modern</li>
         </ul>
 
         <h2>Font pairing examples by project type</h2>
@@ -146,11 +146,11 @@ export default function Post() {
 
         <h2>Performance tips when using web fonts</h2>
         <ul>
-          <li><strong>Load only the weights you need</strong> — Each font weight is a separate file. Loading 400 and 700 is usually enough.</li>
-          <li><strong>Use font-display: swap</strong> — Prevents invisible text while the font loads. Add <code>display=swap</code> to your Google Fonts URL.</li>
-          <li><strong>Preconnect to Google Fonts</strong> — Add <code>&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;</code> to your <code>&lt;head&gt;</code>.</li>
-          <li><strong>Consider self-hosting</strong> — Download fonts and serve them from your own domain for the best performance and privacy.</li>
-          <li><strong>Subset fonts</strong> — If your site is in English only, load the Latin subset to reduce file size.</li>
+          <li><strong>Load only the weights you need</strong>: Each font weight is a separate file. Loading 400 and 700 is usually enough.</li>
+          <li><strong>Use font-display: swap</strong>: Prevents invisible text while the font loads. Add <code>display=swap</code> to your Google Fonts URL.</li>
+          <li><strong>Preconnect to Google Fonts</strong>: Add <code>&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;</code> to your <code>&lt;head&gt;</code>.</li>
+          <li><strong>Consider self-hosting</strong>: Download fonts and serve them from your own domain for the best performance and privacy.</li>
+          <li><strong>Subset fonts</strong>: If your site is in English only, load the Latin subset to reduce file size.</li>
         </ul>
 
         <h2>How to use the Font Pairing Tool</h2>

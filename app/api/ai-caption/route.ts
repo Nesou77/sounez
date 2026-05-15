@@ -16,13 +16,13 @@ function fallbackCaptions(topic: string, platform: string, tone: string): string
         `${t} said what now? 😅 Tag someone who needs to see this.`,
       ],
       professional: [
-        `Exploring the world of ${t} — and the impact it creates. Thoughts? 💼`,
+        `Exploring ${t} and the impact it creates. What is your take? 💼`,
         `${t} is more than a trend. Here's why it matters. 👇`,
         `Diving deeper into ${t} today. What's your take? Drop it below.`,
       ],
       inspirational: [
         `Small steps, big progress. Today's focus: ${t}. ✨ Save this for when you need it.`,
-        `Turning ideas into momentum — one post at a time. ${t} 🌟`,
+        `Turning ideas into momentum, one post at a time. Today's focus: ${t} 🌟`,
         `${t} reminds us that every step forward counts. Keep going. 💪 #instagood`,
       ],
     },
@@ -34,7 +34,7 @@ function fallbackCaptions(topic: string, platform: string, tone: string): string
       ],
       professional: [
         `3 things I learned from ${t} that changed how I work 💼 #tiktokbusiness`,
-        `${t} — here's what most people get wrong #learnontiktok #fyp`,
+        `${t}: here is what most people get wrong #learnontiktok #fyp`,
         `The truth about ${t} nobody talks about 👇 #contentcreator`,
       ],
       inspirational: [
@@ -51,7 +51,7 @@ function fallbackCaptions(topic: string, platform: string, tone: string): string
       ],
       professional: [
         `Exploring ${t} and the impact it can create for teams, customers and long-term growth.`,
-        `${t} is more than a trend — it is an opportunity to improve how we work and deliver value.`,
+        `${t} is more than a trend. It is a chance to improve how we work and deliver value.`,
         `A practical look at ${t}: what matters, what changes, and where the opportunities are.`,
       ],
       inspirational: [

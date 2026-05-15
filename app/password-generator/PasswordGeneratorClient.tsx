@@ -59,7 +59,7 @@ export function PasswordGeneratorClient({ tool }: { tool: Tool }) {
   return (
     <ToolPageShell
       tool={tool}
-      intro="Create a strong, random password in seconds. Choose the length and character types — everything runs in your browser and nothing is stored anywhere."
+      intro="Create a strong random password in seconds. Choose the length and character types. Everything runs in your browser and nothing is stored."
       features={[
         { title: "Cryptographically secure", desc: "Uses your browser's built-in secure random number generator, not Math.random()." },
         { title: "Strength indicator", desc: "See instantly whether your password is weak, fair, good or strong." },

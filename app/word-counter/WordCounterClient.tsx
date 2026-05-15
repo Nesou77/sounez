@@ -76,7 +76,7 @@ export function WordCounterClient({ tool }: { tool: Tool }) {
       tool={tool}
       intro="Paste your text and see word count, character count, sentence count, paragraph count, and reading time update as you type. No upload, no limit."
       features={[
-        { title: "Live stats", desc: "Every number updates the moment you type or paste — no button to press." },
+        { title: "Live stats", desc: "Counts update as you type or paste. No button to press." },
         { title: "8 metrics at once", desc: "Words, characters, sentences, paragraphs, unique words, avg word length and reading time." },
         { title: "Private", desc: "Your text stays on your device and is never sent anywhere." },
       ]}
@@ -86,7 +86,7 @@ export function WordCounterClient({ tool }: { tool: Tool }) {
         "Use the Copy stats button to grab a summary. Use Clear to start fresh.",
       ]}
       faqs={[
-        { q: "Is there a character limit?", a: "No. Paste as much text as you want — a blog post, an essay, or an entire chapter." },
+        { q: "Is there a character limit?", a: "No. Paste as much text as you want, from a short post to a full chapter." },
         { q: "How is reading time calculated?", a: "It uses the average adult reading speed of 200 words per minute." },
         { q: "What counts as a paragraph?", a: "A paragraph is a block of text separated from the next by a blank line." },
         { q: "Does it count unique words accurately?", a: "It counts unique lowercase words. 'Run' and 'run' are treated as the same word. Punctuation attached to words is stripped." },

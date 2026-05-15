@@ -18,7 +18,7 @@ const FAQS = [
   {
     question: "How do I know if a website idea is good?",
     answer:
-      "A good website idea solves a specific problem for a specific audience. Validate it by searching for the problem on Reddit, Quora and Google. If people are actively asking about it, there's demand. If there are no competitors, either the market is untapped or there's no demand — research which.",
+      "A good website idea solves a specific problem for a specific audience. Validate it by searching for the problem on Reddit, Quora and Google. If people are actively asking about it, there's demand. If there are no competitors, either the market is untapped or there's no demand, research which.",
   },
   {
     question: "Do I need to be an expert to build a website in a niche?",
@@ -56,7 +56,7 @@ export default function Post() {
         slug="how-to-find-website-ideas"
         ctaTools={["website-idea-generator", "business-name-generator", "resume-generator"]}
         title="How to Find Website Ideas for Your Next Project"
-        excerpt="The best website ideas come from real problems, not brainstorming sessions. Here&apos;s a practical framework for finding ideas that are worth building — and a free generator to spark the process."
+        excerpt="The best website ideas come from real problems, not brainstorming sessions. Here&apos;s a practical framework for finding ideas that are worth building, and a free generator to spark the process."
       >
         <p>
           Most people approach website ideation backwards. They think of a concept they find
@@ -82,7 +82,7 @@ export default function Post() {
         </p>
 
         <PullQuote>
-          The best website ideas are hiding in plain sight — in the complaints of the audience you
+          The best website ideas are hiding in plain sight, in the complaints of the audience you
           want to serve.
         </PullQuote>
 
@@ -204,7 +204,7 @@ export default function Post() {
 
         <h2>Feature planning: what to build first</h2>
         <p>
-          Every website idea has a core feature — the one thing that makes it worth visiting. Build
+          Every website idea has a core feature, the one thing that makes it worth visiting. Build
           that first and nothing else. Resist the urge to add features before you have users. The
           most common reason websites fail is building too much before validating demand.
         </p>
@@ -221,7 +221,7 @@ export default function Post() {
         <h2>How to use the Website Idea Generator</h2>
         <p>
           The <a href="/website-idea-generator">Website Idea Generator</a> takes your interests or
-          niche and a website type, and returns four fully-formed ideas — each with a name, tagline,
+          niche and a website type, and returns four fully-formed ideas, each with a name, tagline,
           description and three key features.
         </p>
         <ol>

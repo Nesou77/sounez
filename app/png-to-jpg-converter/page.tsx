@@ -15,10 +15,10 @@ const canonical = `${siteUrl}/${tool!.slug}`;
 //
 // Two schemas stacked together give the richest search appearance:
 //
-//  1. WebApplication  — tells Google this is a free online tool,
+//  1. WebApplication , tells Google this is a free online tool,
 //     unlocks star ratings and the sitelinks search box in SERPs.
 //
-//  2. HowTo  — eligible for a rich result that shows the numbered
+//  2. HowTo , eligible for a rich result that shows the numbered
 //     steps directly on the search result page, increasing CTR.
 //
 const jsonLd = [
@@ -36,12 +36,12 @@ const jsonLd = [
       priceCurrency: "USD",
     },
     description:
-      "Convert one or many PNG images to JPG in your browser. Batch conversion, adjustable quality, and ZIP download — no uploads, no account required.",
+      "Convert one or many PNG images to JPG in your browser. Batch conversion, adjustable quality, and ZIP download, no uploads, no account required.",
     featureList: [
       "Batch PNG to JPG conversion",
       "Adjustable output quality",
       "Download all files as ZIP",
-      "Client-side — files never leave your device",
+      "Client-side, files never leave your device",
       "Transparent backgrounds filled with white automatically",
     ],
     screenshot: `${siteUrl}/og/png-to-jpg-converter.webp`,
@@ -56,7 +56,7 @@ const jsonLd = [
     "@type": "HowTo",
     name: "How to convert PNG to JPG online",
     description:
-      "Convert PNG images to JPG for free in your browser — no upload, no account needed.",
+      "Convert PNG images to JPG for free in your browser, no upload, no account needed.",
     totalTime: "PT1M",
     tool: [
       {
@@ -106,12 +106,12 @@ export const metadata: Metadata = {
   ...toolMetadata(tool!, {
     // Primary keyword first ("PNG to JPG converter"), then modifier
     // ("free", "online"), then brand. Keep under 60 chars.
-    title: "PNG to JPG Converter — Free, Batch & Online | Sounez",
+    title: "PNG to JPG Converter, Free, Batch & Online | Sounez",
 
     // 150–160 chars. Front-load the primary keyword.
     // Mention the key differentiators: batch, no upload, free.
     description:
-      "Convert PNG to JPG free online — batch convert multiple files at once, adjust quality, and download as ZIP. Runs entirely in your browser. No uploads, no account.",
+      "Convert PNG to JPG free online, batch convert multiple files at once, adjust quality, and download as ZIP. Runs entirely in your browser. No uploads, no account.",
   }),
 
   // OpenGraph: must repeat the canonical URL and add image + type.
@@ -121,7 +121,7 @@ export const metadata: Metadata = {
     siteName: "Sounez",
     locale: "en_US",
     url: canonical,
-    title: "PNG to JPG Converter — Free Batch Conversion Online",
+    title: "PNG to JPG Converter, Free Batch Conversion Online",
     description:
       "Convert one or many PNG files to JPG right in your browser. Batch processing, quality control, ZIP download. Your images never leave your device.",
     images: [
@@ -131,19 +131,19 @@ export const metadata: Metadata = {
         url: `${siteUrl}/og/png-to-jpg-converter.webp`,
         width: 1200,
         height: 630,
-        alt: "PNG to JPG Converter — Sounez",
+        alt: "PNG to JPG Converter, Sounez",
         type: "image/webp",
       },
     ],
   },
 
-  // Twitter / X card — "summary_large_image" shows the full OG image.
+  // Twitter / X card, "summary_large_image" shows the full OG image.
   twitter: {
     card: "summary_large_image",
     site: "@sounez",
-    title: "PNG to JPG Converter — Free Batch Conversion",
+    title: "PNG to JPG Converter, Free Batch Conversion",
     description:
-      "Batch convert PNG images to JPG online. Runs in your browser — nothing is uploaded. Free, no account needed.",
+      "Batch convert PNG images to JPG online. Runs in your browser, nothing is uploaded. Free, no account needed.",
     images: [`${siteUrl}/og/png-to-jpg-converter.webp`],
   },
 };

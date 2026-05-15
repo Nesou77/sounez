@@ -67,7 +67,7 @@ export default function Post() {
         </ul>
 
         <PullQuote>
-          The first two lines of your description are the most important — they show in search results
+          The first two lines of your description are the most important, they show in search results
           before the &quot;more&quot; button.
         </PullQuote>
 
@@ -94,15 +94,15 @@ export default function Post() {
           and they create additional keyword-rich text that YouTube indexes. Format:
         </p>
         <ul>
-          <li>0:00 — Introduction</li>
-          <li>1:45 — Why most creators fail at this</li>
-          <li>4:20 — The niche selection framework</li>
-          <li>8:10 — Hook writing masterclass</li>
-          <li>12:30 — Hashtag strategy</li>
+          <li>0:00, Introduction</li>
+          <li>1:45, Why most creators fail at this</li>
+          <li>4:20, The niche selection framework</li>
+          <li>8:10, Hook writing masterclass</li>
+          <li>12:30, Hashtag strategy</li>
         </ul>
         <p>
           Each chapter title is another keyword opportunity. Use the{" "}
-          <a href="/word-counter">Word Counter</a> to keep chapter titles tight — under 50 characters
+          <a href="/word-counter">Word Counter</a> to keep chapter titles tight, under 50 characters
           is ideal.
         </p>
 
@@ -115,7 +115,7 @@ export default function Post() {
         </p>
         <p>
           Use the <a href="/youtube-tags-generator">YouTube Tags Generator</a> to discover related
-          keyword variations — many of them belong in your description, not just your tags.
+          keyword variations, many of them belong in your description, not just your tags.
         </p>
 
         <h2>Step 4: Add links that keep viewers in your ecosystem</h2>
@@ -132,14 +132,14 @@ export default function Post() {
 
         <h2>Step 5: End with hashtags</h2>
         <p>
-          YouTube displays up to 3 hashtags above your video title — they come from the last hashtags
+          YouTube displays up to 3 hashtags above your video title, they come from the last hashtags
           in your description. Use 3–5 relevant hashtags at the very end. Generate the right mix with
           the <a href="/hashtag-generator">Hashtag Generator</a>.
         </p>
 
         <h2>Description length: how long is long enough?</h2>
         <p>
-          YouTube allows up to 5,000 characters. Aim for 300–500 words for most videos — enough to
+          YouTube allows up to 5,000 characters. Aim for 300–500 words for most videos, enough to
           give the algorithm plenty to work with, not so much that it feels like spam. Use the{" "}
           <a href="/word-counter">Word Counter</a> to hit that range before publishing.
         </p>
@@ -186,7 +186,7 @@ export default function Post() {
         <h2>Conclusion: treat the description box like a landing page</h2>
         <p>
           Your description is free SEO real estate that most creators waste. Spend 10 extra minutes
-          on it per video — use the{" "}
+          on it per video, use the{" "}
           <a href="/youtube-tags-generator">YouTube Tags Generator</a> for keyword ideas, the{" "}
           <a href="/word-counter">Word Counter</a> to hit the right length, and the{" "}
           <a href="/hashtag-generator">Hashtag Generator</a> for the footer. That&apos;s a 10-minute

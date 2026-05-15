@@ -81,9 +81,9 @@ export default function Post() {
         <h2>3. Use smart hashtags (the 1-2-1 formula)</h2>
         <p>Random hashtags don&apos;t work in 2026. The formula that does:</p>
         <ul>
-          <li>1 broad tag (1M+ posts) — gets you in the wider feed</li>
-          <li>2 niche tags (50k–500k posts) — your real targeting</li>
-          <li>1 trending tag — rides the daily algorithm wave</li>
+          <li>1 broad tag (1M+ posts), gets you in the wider feed</li>
+          <li>2 niche tags (50k–500k posts), your real targeting</li>
+          <li>1 trending tag, rides the daily algorithm wave</li>
         </ul>
         <p>
           Save hours of research with the <a href="/hashtag-generator">Hashtag Generator</a>. It
@@ -144,7 +144,7 @@ export default function Post() {
 
         <h2>Conclusion: niche down, hook hard, ship daily</h2>
         <p>
-          TikTok growth in 2026 isn&apos;t a mystery — it&apos;s a system. Niche down further than feels
+          TikTok growth in 2026 isn&apos;t a mystery, it&apos;s a system. Niche down further than feels
           comfortable, hook viewers in the first second, post consistently, and repurpose everything.
           Open the <a href="/hashtag-generator">Hashtag Generator</a> and the{" "}
           <a href="/tiktok-money-calculator">TikTok Money Calculator</a> now and start your first

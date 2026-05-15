@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Simple Online Calculator Guide for Everyday Math",
     description:
-      "Percentages, square roots, basic arithmetic — explained clearly with a free browser calculator.",
+      "Percentages, square roots, basic arithmetic, explained clearly with a free browser calculator.",
   },
 };
 
@@ -56,13 +56,13 @@ export default function Post() {
         slug="simple-online-calculator-guide"
         ctaTools={["calculator", "word-counter", "text-case-converter"]}
         title="Simple Online Calculator Guide for Everyday Math"
-        excerpt="Percentages, discounts, square roots, basic arithmetic — this guide explains the calculations you actually need every day, with a free browser calculator to do them instantly."
+        excerpt="Percentages, discounts, square roots, basic arithmetic, this guide explains the calculations you actually need every day, with a free browser calculator to do them instantly."
       >
         <p>
           You don&apos;t need a scientific calculator for most everyday maths. Whether you&apos;re splitting a
           bill, working out a discount, calculating a tip, or checking a measurement, a clean online
           calculator handles it in seconds. This guide explains the operations you&apos;ll use most, with
-          worked examples, so you know exactly what you&apos;re calculating — not just what button to press.
+          worked examples, so you know exactly what you&apos;re calculating, not just what button to press.
         </p>
         <p>
           Open the <a href="/calculator">free online Calculator</a> alongside this guide and follow
@@ -172,7 +172,7 @@ export default function Post() {
         <ul>
           <li>√25 = 5 (because 5 × 5 = 25)</li>
           <li>√144 = 12 (because 12 × 12 = 144)</li>
-          <li>√2 ≈ 1.414 (irrational — the calculator shows the decimal approximation)</li>
+          <li>√2 ≈ 1.414 (irrational, the calculator shows the decimal approximation)</li>
         </ul>
         <p>
           Practical example: you want to tile a square room with an area of 36 m². Each side = √36 ={" "}
@@ -182,7 +182,7 @@ export default function Post() {
         <h2>How to use the Sounez Calculator</h2>
         <ol>
           <li>
-            Open the <a href="/calculator">Calculator</a>. It loads instantly in your browser — no
+            Open the <a href="/calculator">Calculator</a>. It loads instantly in your browser, no
             install, no account.
           </li>
           <li>
@@ -191,7 +191,7 @@ export default function Post() {
           </li>
           <li>Use the % button for percentage calculations and √ for square roots.</li>
           <li>
-            The ± button toggles between positive and negative numbers — useful for calculating
+            The ± button toggles between positive and negative numbers, useful for calculating
             losses or negative balances.
           </li>
           <li>
@@ -235,7 +235,7 @@ export default function Post() {
         <h2>Conclusion: bookmark it, use it daily</h2>
         <p>
           The <a href="/calculator">Sounez Calculator</a> is designed for the calculations you
-          actually do every day — not the ones you studied in school and never used again. Bookmark
+          actually do every day, not the ones you studied in school and never used again. Bookmark
           it, use the keyboard shortcuts, and let the history panel save you from retyping. For
           anything text-related, the <a href="/word-counter">Word Counter</a> is just as fast.
         </p>

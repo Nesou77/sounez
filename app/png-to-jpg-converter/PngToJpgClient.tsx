@@ -33,7 +33,7 @@ function savings(original: number, converted: number) {
   return Math.round(((original - converted) / original) * 100);
 }
 
-/* ── Pure-JS ZIP builder — no external dependencies ─────────────
+/* ── Pure-JS ZIP builder, no external dependencies ─────────────
    Implements the ZIP local-file + central-directory format (PKZIP
    spec). Files are stored uncompressed (method 0), which is correct
    for JPEGs that are already compressed.
@@ -168,7 +168,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
   const addFiles = (files: FileList | File[]) => {
     const pngs = Array.from(files).filter((f) => f.type === "image/png");
     const rejected = Array.from(files).length - pngs.length;
-    if (rejected > 0) toast.error(`${rejected} file(s) skipped — PNG only`);
+    if (rejected > 0) toast.error(`${rejected} file(s) skipped, PNG only`);
     if (pngs.length === 0) return;
 
     const newItems: ImageItem[] = pngs.map((f) => ({
@@ -302,7 +302,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
       const done = current.filter((i) => i.status === "done").length;
       const errors = current.filter((i) => i.status === "error").length;
       if (errors > 0) {
-        toast.error(`${errors} file${errors > 1 ? "s" : ""} failed — ${done} converted`);
+        toast.error(`${errors} file${errors > 1 ? "s" : ""} failed, ${done} converted`);
       } else {
         toast.success(`All ${done} image${done > 1 ? "s" : ""} converted`);
       }
@@ -363,7 +363,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
       // Release the temporary ZIP URL after the browser has had time to start the download
       setTimeout(() => URL.revokeObjectURL(url), 10_000);
 
-      toast.success(`ZIP ready — ${done.length} files`);
+      toast.success(`ZIP ready, ${done.length} files`);
       trackDownloadResult({ tool_slug: tool.slug, result_type: "jpg_image", file_type: "zip" });
     } catch (err) {
       console.error("ZIP build failed:", err);
@@ -384,7 +384,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
   return (
     <ToolPageShell
       tool={tool}
-      intro="Convert one or many PNG files to JPG right in your browser — no uploads, no account, no limits. All processing runs locally on your device."
+      intro="Convert one or many PNG files to JPG right in your browser, no uploads, no account, no limits. All processing runs locally on your device."
       features={[
         {
           title: "Batch conversion",
@@ -400,7 +400,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
         },
         {
           title: "Handles transparency",
-          desc: "Transparent areas are automatically filled with white — the JPG standard.",
+          desc: "Transparent areas are automatically filled with white, the JPG standard.",
         },
         {
           title: "Private by design",
@@ -409,7 +409,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
       ]}
       howTo={[
         "Drop your PNG files (any amount) onto the upload area, or click to browse.",
-        "Adjust the quality slider — lower means smaller files, higher means better quality.",
+        "Adjust the quality slider, lower means smaller files, higher means better quality.",
         "Click Convert All to process every image at once.",
         "Download individual JPGs or click Download ZIP for everything in one file.",
       ]}
@@ -464,7 +464,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
             {totalItems > 0 ? "Drop more PNGs to add them" : "Drop your PNG files here"}
           </p>
           <p className="mt-0.5 text-sm text-muted-foreground">
-            {totalItems > 0 ? "or click to browse" : "Any number of files — or click to browse"}
+            {totalItems > 0 ? "or click to browse" : "Any number of files, or click to browse"}
           </p>
         </div>
         <input

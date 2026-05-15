@@ -34,7 +34,7 @@ const FAQS = [
   {
     question: "Can I use AI captions without editing them?",
     answer:
-      "You can, but a quick personal edit always improves results. Add your own voice, a specific detail, or a call to action that fits your audience. AI gives you a strong starting point — you make it yours.",
+      "You can, but a quick personal edit always improves results. Add your own voice, a specific detail, or a call to action that fits your audience. AI gives you a strong starting point, you make it yours.",
   },
   {
     question: "Is the AI Caption Generator free?",
@@ -57,7 +57,7 @@ export default function Post() {
         slug="how-to-write-better-social-media-captions"
         ctaTools={["ai-caption-generator", "hashtag-generator", "bio-generator"]}
         title="How to Write Better Social Media Captions with AI"
-        excerpt="A caption is the difference between a scroll and a stop. Here&apos;s how to write captions that work on every platform — and how AI can do the heavy lifting."
+        excerpt="A caption is the difference between a scroll and a stop. Here&apos;s how to write captions that work on every platform, and how AI can do the heavy lifting."
       >
         <p>
           Most creators spend 80% of their time on the visual and 30 seconds on the caption. That&apos;s
@@ -95,26 +95,26 @@ export default function Post() {
         <p>Every high-performing caption has at least three of these four elements:</p>
         <ul>
           <li>
-            <strong>Hook</strong> — the first line, visible before &quot;more&quot;. It must stop the scroll.
+            <strong>Hook</strong>: the first line, visible before &quot;more&quot;. It must stop the scroll.
             Start with a question, a bold claim, a number, or a relatable situation.
           </li>
           <li>
-            <strong>Body</strong> — the value, story or context. Keep it tight. Every sentence should
+            <strong>Body</strong>: the value, story or context. Keep it tight. Every sentence should
             earn its place.
           </li>
           <li>
-            <strong>Call to action</strong> — tell people what to do: comment, save, share, click the
+            <strong>Call to action</strong>: tell people what to do: comment, save, share, click the
             link. Posts with explicit CTAs get significantly more engagement than those without.
           </li>
           <li>
-            <strong>Hashtags</strong> — placed at the end or in the first comment. Use the{" "}
+            <strong>Hashtags</strong>: placed at the end or in the first comment. Use the{" "}
             <a href="/hashtag-generator">Hashtag Generator</a> to build a targeted set in seconds.
           </li>
         </ul>
 
         <h2>Caption examples by platform</h2>
 
-        <h3>Instagram — storytelling and emotion</h3>
+        <h3>Instagram, storytelling and emotion</h3>
         <p>
           Instagram rewards captions that feel personal. The algorithm favors saves and comments, so
           write captions that make people want to save for later or respond.
@@ -134,7 +134,7 @@ export default function Post() {
           </li>
         </ul>
 
-        <h3>TikTok — short, punchy, keyword-rich</h3>
+        <h3>TikTok, short, punchy, keyword-rich</h3>
         <p>
           TikTok captions are short (max 2,200 characters, but under 150 performs best) and serve
           double duty: they hook viewers who read before watching, and they tell the algorithm what
@@ -145,7 +145,7 @@ export default function Post() {
           <li>&quot;The caption mistake killing your reach (and how to fix it) #tiktokgrowth #viral&quot;</li>
         </ul>
 
-        <h3>LinkedIn — professional but human</h3>
+        <h3>LinkedIn, professional but human</h3>
         <p>
           LinkedIn&apos;s algorithm rewards dwell time and comments. Long-form captions with a clear
           lesson, a personal story, or a contrarian take consistently outperform short ones.
@@ -185,22 +185,22 @@ export default function Post() {
         <h2>Common caption mistakes to avoid</h2>
         <ul>
           <li>
-            <strong>Starting with &quot;I&quot;</strong> — Instagram&apos;s algorithm reportedly deprioritizes posts
+            <strong>Starting with &quot;I&quot;</strong>: Instagram&apos;s algorithm reportedly deprioritizes posts
             starting with &quot;I&quot;. Start with a hook instead.
           </li>
           <li>
-            <strong>No CTA</strong> — If you don&apos;t ask for engagement, you won&apos;t get it. End every
+            <strong>No CTA</strong>: If you don&apos;t ask for engagement, you won&apos;t get it. End every
             caption with a question or a clear action.
           </li>
           <li>
-            <strong>Hashtag stuffing</strong> — 30 random hashtags don&apos;t help. 5–10 targeted ones do.
+            <strong>Hashtag stuffing</strong>: 30 random hashtags don&apos;t help. 5–10 targeted ones do.
           </li>
           <li>
-            <strong>Copying competitors</strong> — Audiences can tell. Use AI as a starting point,
+            <strong>Copying competitors</strong>: Audiences can tell. Use AI as a starting point,
             then add your own voice.
           </li>
           <li>
-            <strong>Ignoring the first line</strong> — On mobile, only the first 125 characters show
+            <strong>Ignoring the first line</strong>: On mobile, only the first 125 characters show
             before &quot;more&quot;. Make them count.
           </li>
         </ul>
@@ -219,7 +219,7 @@ export default function Post() {
           <li>Select your platform: Instagram, TikTok or LinkedIn.</li>
           <li>Choose a tone: funny, professional or inspirational.</li>
           <li>
-            Click Generate. You get three options — pick the one that fits, or mix elements from
+            Click Generate. You get three options, pick the one that fits, or mix elements from
             different ones.
           </li>
           <li>

@@ -36,7 +36,7 @@ export function YoutubeTagsClient({ tool }: { tool: Tool }) {
 
   const copyAll = () => {
     navigator.clipboard.writeText(tags.join(", "));
-    toast.success("All tags copied — paste into YouTube Studio");
+    toast.success("All tags copied, paste into YouTube Studio");
     trackCopyResult({ tool_slug: tool.slug, result_type: "youtube_tags" });
   };
 
@@ -64,7 +64,7 @@ export function YoutubeTagsClient({ tool }: { tool: Tool }) {
       ]}
       howTo={[
         "Enter your video's main keyword in the box, then press Enter or click Generate.",
-        "Review the tags — remove any that don't fit your video.",
+        "Review the tags, remove any that don't fit your video.",
         "Click Copy all and paste them into YouTube Studio under Video Details → Tags.",
       ]}
       faqs={[

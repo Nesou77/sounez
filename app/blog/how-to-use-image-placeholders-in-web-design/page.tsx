@@ -62,12 +62,12 @@ export default function Post() {
 
         <h2>When to use placeholders</h2>
         <ul>
-          <li><strong>Wireframing</strong> — Show image positions and proportions without sourcing real images.</li>
-          <li><strong>Client presentations</strong> — Present a layout before final assets are ready.</li>
-          <li><strong>Component development</strong> — Build and test image components with consistent dimensions.</li>
-          <li><strong>Content management systems</strong> — Use as default images while content is being populated.</li>
-          <li><strong>Documentation</strong> — Illustrate image dimensions in design system documentation.</li>
-          <li><strong>Testing responsive layouts</strong> — Quickly generate images at different aspect ratios to test how a layout responds.</li>
+          <li><strong>Wireframing</strong>: Show image positions and proportions without sourcing real images.</li>
+          <li><strong>Client presentations</strong>: Present a layout before final assets are ready.</li>
+          <li><strong>Component development</strong>: Build and test image components with consistent dimensions.</li>
+          <li><strong>Content management systems</strong>: Use as default images while content is being populated.</li>
+          <li><strong>Documentation</strong>: Illustrate image dimensions in design system documentation.</li>
+          <li><strong>Testing responsive layouts</strong>: Quickly generate images at different aspect ratios to test how a layout responds.</li>
         </ul>
 
         <PullQuote>
@@ -92,12 +92,12 @@ export default function Post() {
         </p>
         <ul>
           <li>
-            <strong>SVG</strong> — Best for most use cases. Resolution-independent, extremely small
+            <strong>SVG</strong>: Best for most use cases. Resolution-independent, extremely small
             file size, scales perfectly at any dimension. Use SVG when you need the placeholder to
             look sharp at any size.
           </li>
           <li>
-            <strong>PNG</strong> — Use when your project requires a raster image format, or when
+            <strong>PNG</strong>: Use when your project requires a raster image format, or when
             you need to embed the placeholder in a tool that does not support SVG.
           </li>
         </ul>
