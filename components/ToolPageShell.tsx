@@ -19,17 +19,17 @@ const EngagementBar = dynamic(
 type FAQ = { q: string; a: string };
 
 const DEFAULT_USE_CASES = [
-  { title: "Content creators", desc: "Get results in one click and spend more time actually creating." },
-  { title: "Students", desc: "Free tools with no account needed. Good for assignments and study notes." },
-  { title: "Marketers", desc: "Build campaign assets without opening heavy software." },
-  { title: "Developers", desc: "Lightweight utilities that fit into any workflow without getting in the way." },
+  { title: "Content creators", desc: "Get a result in one click and move on to publishing." },
+  { title: "Students", desc: "Free tools with no account. Handy for assignments and study notes." },
+  { title: "Marketers", desc: "Make campaign assets without opening heavy design software." },
+  { title: "Developers", desc: "Small utilities you can open in a tab and copy from." },
 ];
 
 const DEFAULT_PRO_TIPS = [
-  "Bookmark this page. You'll come back to it more than you think.",
-  "Combine this tool with another Sounez tool for a faster workflow.",
-  "Share the result with a teammate to get feedback in seconds.",
-  "Open the tool on mobile. It works exactly the same as on desktop.",
+  "Bookmark this page if you use it often.",
+  "Try a related Sounez tool when you need the next step.",
+  "Copy the result when you are done, or download it if the tool offers a file.",
+  "Works on mobile the same way as on desktop.",
 ];
 
 export function ToolPageShell({

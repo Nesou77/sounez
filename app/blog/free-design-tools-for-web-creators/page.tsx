@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const FAQS = [
   { question: "Are all these tools really free?", answer: "Yes. Every tool listed is 100% free, no account required, no usage limits." },
   { question: "Do these tools upload my files?", answer: "No. All tools that handle files (like the Favicon Generator) process them locally in your browser. Nothing is uploaded to any server." },
-  { question: "Can I use the generated assets commercially?", answer: "Yes. All generated assets — favicons, SVG blobs, CSS code, placeholders — are yours to use in any project, personal or commercial." },
+  { question: "Can I use the generated assets commercially?", answer: "Yes. All generated assets, favicons, SVG blobs, CSS code, placeholders, are yours to use in any project, personal or commercial." },
   { question: "Do I need to install anything?", answer: "No. Every tool runs directly in your browser on desktop and mobile." },
 ];
 
@@ -37,7 +37,7 @@ export default function Post() {
         excerpt="Six free browser-based design tools that cover the small but important details: favicons, organic shapes, typography, placeholders, shadows and patterns."
       >
         <p>
-          The big design decisions — layout, color, typography — get most of the attention. But the
+          The big design decisions, layout, color, typography, get most of the attention. But the
           small details are what separate a polished website from an unfinished one. A missing favicon.
           A flat hero section that needs texture. A font combination that almost works. A card shadow
           that&apos;s just slightly too heavy.
@@ -51,7 +51,7 @@ export default function Post() {
         <p>
           Opening Figma or Photoshop for a favicon or a CSS shadow is overkill. Browser-based tools
           that do one thing well are faster, more focused and easier to share with teammates. They
-          also work on any device — no license, no install, no waiting.
+          also work on any device, no license, no install, no waiting.
         </p>
 
         <PullQuote>
@@ -76,7 +76,7 @@ export default function Post() {
           Organic shapes break the rigid grid of most web layouts. The{" "}
           <a href="/svg-blob-generator">SVG Blob Generator</a> creates smooth, random SVG blobs for
           hero sections, card backgrounds and decorative accents. Adjust points, randomness and color,
-          then copy the SVG code or download the file. The output is a few hundred bytes — lighter
+          then copy the SVG code or download the file. The output is a few hundred bytes, lighter
           than any image.
         </p>
         <p>
@@ -90,7 +90,7 @@ export default function Post() {
           Typography is the foundation of every web design. The{" "}
           <a href="/font-pairing-tool">Font Pairing Tool</a> shows curated heading and body font
           combinations with a live preview and a copy-ready CSS snippet. Choose from six design
-          styles — Modern, Elegant, Startup, Editorial, Minimal and Playful — and cycle through
+          styles, Modern, Elegant, Startup, Editorial, Minimal and Playful, and cycle through
           pairings until you find the right one.
         </p>
         <p>
@@ -115,7 +115,7 @@ export default function Post() {
         <p>
           Flat backgrounds can feel empty. The{" "}
           <a href="/background-pattern-generator">Background Pattern Generator</a> creates CSS
-          background patterns — dots, grids, diagonal lines, checkerboards, triangles and waves —
+          background patterns, dots, grids, diagonal lines, checkerboards, triangles and waves, 
           with zero file size. Adjust colors, size and opacity, then copy the CSS directly into your
           stylesheet.
         </p>
@@ -129,7 +129,7 @@ export default function Post() {
         <p>
           Every project needs placeholders while real images are being sourced. The{" "}
           <a href="/image-placeholder-generator">Image Placeholder Generator</a> creates custom SVG
-          or PNG placeholders with your dimensions, colors and label. No external service required —
+          or PNG placeholders with your dimensions, colors and label. No external service required, 
           everything is generated in your browser.
         </p>
         <p>
@@ -157,7 +157,7 @@ export default function Post() {
         <h3>Do these tools upload my files?</h3>
         <p>No. All tools that handle files process them locally in your browser. Nothing is uploaded to any server.</p>
         <h3>Can I use the generated assets commercially?</h3>
-        <p>Yes. All generated assets — favicons, SVG blobs, CSS code, placeholders — are yours to use in any project, personal or commercial.</p>
+        <p>Yes. All generated assets, favicons, SVG blobs, CSS code, placeholders, are yours to use in any project, personal or commercial.</p>
         <h3>Do I need to install anything?</h3>
         <p>No. Every tool runs directly in your browser on desktop and mobile.</p>
 

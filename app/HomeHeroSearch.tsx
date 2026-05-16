@@ -78,23 +78,29 @@ export function HomeHeroSearch() {
           placeholder={`Search ${TOOLS.length} free tools`}
           aria-label="Search tools"
           aria-autocomplete="list"
-          aria-controls={q ? "search-results" : undefined}
+          aria-controls={q && filtered.length > 0 ? "search-results" : undefined}
           aria-activedescendant={activeIndex >= 0 ? `search-option-${activeIndex}` : undefined}
           role="combobox"
           aria-expanded={q.length > 0}
           className="w-full rounded-2xl border border-border bg-background/80 py-4 pl-11 pr-4 text-sm shadow-soft outline-none backdrop-blur transition focus:border-primary focus:ring-4 focus:ring-primary/15"
         />
       </div>
-      {q && (
-        <div
-          id="search-results"
-          role="listbox"
-          aria-label="Search results"
-          className="animate-fade-in mt-3 max-h-72 overflow-y-auto rounded-2xl border border-border bg-popover p-2 text-left shadow-pop"
-        >
-          {filtered.length === 0 && (
-            <p className="p-3 text-sm text-muted-foreground">No tools found.</p>
-          )}
+      {q && filtered.length === 0 && (
+          <p
+            role="status"
+            aria-live="polite"
+            className="mt-3 p-3 text-sm text-muted-foreground"
+          >
+            No tools found.
+          </p>
+        )}
+        {q && filtered.length > 0 && (
+          <div
+            id="search-results"
+            role="listbox"
+            aria-label="Search results"
+            className="animate-fade-in mt-3 max-h-72 overflow-y-auto rounded-2xl border border-border bg-popover p-2 text-left shadow-pop"
+          >
           {filtered.map((t, idx) => {
             const ToolIcon = getToolIcon(t.slug);
             return (

@@ -51,7 +51,7 @@ export default function Post() {
 
         <h2>What is a favicon?</h2>
         <p>
-          The word &quot;favicon&quot; comes from &quot;favorite icon&quot; — it was originally the icon shown when
+          The word &quot;favicon&quot; comes from &quot;favorite icon&quot;, it was originally the icon shown when
           you bookmarked a page in Internet Explorer. Today it appears in:
         </p>
         <ul>
@@ -66,7 +66,7 @@ export default function Post() {
         <h2>Why favicons matter for branding</h2>
         <p>
           Most users have 10–20 tabs open at once. A recognizable favicon is how they find your site
-          again without reading the full title. It is also a trust signal — a site without a favicon
+          again without reading the full title. It is also a trust signal, a site without a favicon
           looks unfinished or abandoned.
         </p>
 
@@ -76,11 +76,11 @@ export default function Post() {
 
         <h2>Recommended favicon sizes</h2>
         <ul>
-          <li><strong>16×16px</strong> — Standard browser tab icon</li>
-          <li><strong>32×32px</strong> — High-DPI browser tabs, taskbar shortcuts</li>
-          <li><strong>48×48px</strong> — Windows site icons</li>
-          <li><strong>180×180px</strong> — Apple touch icon (iOS home screen)</li>
-          <li><strong>512×512px</strong> — PWA manifest, Android home screen</li>
+          <li><strong>16×16px</strong>: Standard browser tab icon</li>
+          <li><strong>32×32px</strong>: High-DPI browser tabs, taskbar shortcuts</li>
+          <li><strong>48×48px</strong>: Windows site icons</li>
+          <li><strong>180×180px</strong>: Apple touch icon (iOS home screen)</li>
+          <li><strong>512×512px</strong>: PWA manifest, Android home screen</li>
         </ul>
         <p>
           At minimum, create a 32×32 PNG for browser tabs and a 180×180 PNG for Apple touch icons.
@@ -128,11 +128,11 @@ export default function Post() {
 
         <h2>Common favicon mistakes to avoid</h2>
         <ul>
-          <li><strong>Too much detail</strong> — At 16×16px, complex logos become unreadable. Use a single letter, symbol or simple shape.</li>
-          <li><strong>No contrast</strong> — A light icon on a white background disappears in browser tabs. Use strong contrast.</li>
-          <li><strong>Wrong size</strong> — Uploading a 16×16 image and expecting it to look good at 180×180 will result in a blurry icon. Generate each size separately.</li>
-          <li><strong>Forgetting the Apple touch icon</strong> — iOS users who add your site to their home screen will see a blank icon if you skip the 180×180 version.</li>
-          <li><strong>Not updating after a rebrand</strong> — Old favicons cached in browsers can confuse returning users after a brand refresh.</li>
+          <li><strong>Too much detail</strong>: At 16×16px, complex logos become unreadable. Use a single letter, symbol or simple shape.</li>
+          <li><strong>No contrast</strong>: A light icon on a white background disappears in browser tabs. Use strong contrast.</li>
+          <li><strong>Wrong size</strong>: Uploading a 16×16 image and expecting it to look good at 180×180 will result in a blurry icon. Generate each size separately.</li>
+          <li><strong>Forgetting the Apple touch icon</strong>: iOS users who add your site to their home screen will see a blank icon if you skip the 180×180 version.</li>
+          <li><strong>Not updating after a rebrand</strong>: Old favicons cached in browsers can confuse returning users after a brand refresh.</li>
         </ul>
 
         <h2>Frequently Asked Questions</h2>

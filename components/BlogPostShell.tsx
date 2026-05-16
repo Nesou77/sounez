@@ -5,6 +5,7 @@ import { Calendar, Clock, ArrowLeft, ArrowRight, Sparkles, Wrench, User } from "
 import { AdSlot } from "./AdSlot";
 import { BlogEngagement } from "./BlogEngagement";
 import { EngagementBar } from "./EngagementBar";
+import { BlogLikeController } from "./blog/BlogLikeController";
 import { AuthorCard } from "./AuthorCard";
 import { BLOG_POSTS } from "@/data/blog";
 import { TOOLS } from "@/data/tools";
@@ -35,6 +36,7 @@ export function BlogPostShell({
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
+        <BlogLikeController slug={slug}>
         <article>
           <Link
             href="/blog"
@@ -176,6 +178,7 @@ export function BlogPostShell({
 
           <AdSlot className="my-10" label="Sponsored" />
         </article>
+        </BlogLikeController>
 
         <aside className="hidden lg:block">
           <div className="sticky top-24 space-y-6">

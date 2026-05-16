@@ -6,7 +6,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 export const metadata: Metadata = {
   title: "Free Design Tools for Non-Designers: Look Professional Without Hiring Anyone | Sounez",
   description:
-    "You don't need Figma or Photoshop. These free browser-based design tools cover 90% of what most people need — color palettes, gradients, image compression and more.",
+    "You don't need Figma or Photoshop. These free browser-based design tools cover 90% of what most people need, color palettes, gradients, image compression and more.",
   openGraph: {
     title: "Free Design Tools for Non-Designers",
     description: "Look professional without Figma, Photoshop or a design budget.",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { question: "Do I need design skills to use these tools?", answer: "No. Every tool listed is designed for non-designers — visual interfaces, instant results, no learning curve." },
+  { question: "Do I need design skills to use these tools?", answer: "No. Every tool listed is designed for non-designers, visual interfaces, instant results, no learning curve." },
   { question: "Are these tools really free?", answer: "Yes. Every tool on Sounez is 100% free, no signup, no hidden limits." },
   { question: "What's the single most impactful design change a non-designer can make?", answer: "Pick a consistent color palette and use it everywhere. It's the fastest way to go from 'looks random' to 'looks designed'. Start with the Color Palette Generator." },
   { question: "Can I use these tools for client work?", answer: "Yes. There are no restrictions on commercial use of the output from Sounez tools." },
@@ -26,7 +26,7 @@ export default function Post() {
       <BlogJsonLd
         slug="free-design-tools-for-non-designers"
         title="Free Design Tools for Non-Designers: Look Professional Without Hiring Anyone"
-        description="You don't need Figma or Photoshop. These free browser-based design tools cover 90% of what most people need — color palettes, gradients, image compression and more."
+        description="You don't need Figma or Photoshop. These free browser-based design tools cover 90% of what most people need, color palettes, gradients, image compression and more."
         articleSection="Design Tools"
         faqs={FAQS}
       />
@@ -39,7 +39,7 @@ export default function Post() {
         <p>
           Most people who need design work aren&apos;t designers. They&apos;re founders building a landing page,
           bloggers making thumbnails, freelancers creating proposals, or small business owners putting
-          together social posts. They don&apos;t need a full design education — they need a handful of
+          together social posts. They don&apos;t need a full design education, they need a handful of
           focused tools that make their work look intentional.
         </p>
         <p>
@@ -48,7 +48,7 @@ export default function Post() {
 
         <h2>The non-designer&apos;s design problem</h2>
         <p>
-          The gap between &quot;looks amateur&quot; and &quot;looks professional&quot; is usually not skill — it&apos;s
+          The gap between &quot;looks amateur&quot; and &quot;looks professional&quot; is usually not skill, it&apos;s
           consistency. Professional design is mostly about using the same colors, the same spacing,
           and the same visual language throughout. The tools below help you establish that consistency
           without a design background.
@@ -105,13 +105,13 @@ export default function Post() {
           Business cards, flyers, packaging and presentations all benefit from a QR code that links
           to your website, portfolio or contact page. The{" "}
           <a href="/qr-code-generator">QR Code Generator</a> creates clean, high-resolution codes in
-          seconds — free, no watermark, ready for print.
+          seconds, free, no watermark, ready for print.
         </p>
 
         <h2>5. Text Case Converter: fix formatting instantly</h2>
         <p>
           Inconsistent capitalization is one of the most common signs of amateur work. The{" "}
-          <a href="/text-case-converter">Text Case Converter</a> fixes it in one click — title case
+          <a href="/text-case-converter">Text Case Converter</a> fixes it in one click, title case
           for headings, sentence case for body text, and everything in between.
         </p>
 
@@ -137,7 +137,7 @@ export default function Post() {
             <a href="/image-compressor">Image Compressor</a> before publishing.
           </li>
           <li>
-            <strong>Consistency</strong>: Same colors, same fonts, same spacing — everywhere.
+            <strong>Consistency</strong>: Same colors, same fonts, same spacing, everywhere.
           </li>
         </ul>
 
@@ -156,7 +156,7 @@ export default function Post() {
         <h2>Frequently Asked Questions</h2>
         <h3>Do I need design skills to use these tools?</h3>
         <p>
-          No. Every tool listed is designed for non-designers — visual interfaces, instant results,
+          No. Every tool listed is designed for non-designers, visual interfaces, instant results,
           no learning curve.
         </p>
         <h3>Are these tools really free?</h3>

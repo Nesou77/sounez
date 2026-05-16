@@ -100,10 +100,19 @@ export function trackSelectContent(params: {
 
 /**
  * share — user initiated a share flow (blog engagement, tool share UI, etc.).
- * `tool_slug` identifies context (tool slug, or a prefixed id such as `blog:my-post`).
  */
-export function trackShare(params: { tool_slug: string; method?: string }): void {
-  trackEvent("share", params);
+export function trackShare(params: {
+  content_type: "tool" | "blog";
+  item_id: string;
+  method?: string;
+  page_path?: string;
+}): void {
+  trackEvent("share", {
+    content_type: params.content_type,
+    item_id: params.item_id,
+    method: params.method,
+    page_path: params.page_path ?? getPagePath(),
+  });
 }
 
 /**

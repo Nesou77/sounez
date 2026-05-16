@@ -19,7 +19,7 @@ const FAQS = [
   {
     question: "What is the best note-taking method?",
     answer:
-      "It depends on the subject. The Cornell method works well for lectures. Mind maps suit visual learners and complex topics with many connections. Bullet summaries are best for dense reading material. The key is active engagement — rewriting in your own words beats copying verbatim.",
+      "It depends on the subject. The Cornell method works well for lectures. Mind maps suit visual learners and complex topics with many connections. Bullet summaries are best for dense reading material. The key is active engagement, rewriting in your own words beats copying verbatim.",
   },
   {
     question: "How often should I review my notes?",
@@ -57,12 +57,12 @@ export default function Post() {
         slug="how-to-create-effective-study-notes"
         ctaTools={["study-notes-generator", "word-counter", "text-case-converter"]}
         title="How to Create Effective Study Notes"
-        excerpt="Good notes are the difference between understanding a topic and just having read about it. Here&apos;s how to take notes that actually help you learn — and how AI can do the first draft."
+        excerpt="Good notes are the difference between understanding a topic and just having read about it. Here&apos;s how to take notes that actually help you learn, and how AI can do the first draft."
       >
         <p>
           Most students take notes by copying what they see or hear. That&apos;s the least effective
           method. Research on learning consistently shows that the act of processing and rewriting
-          information in your own words is what creates lasting memory — not transcription.
+          information in your own words is what creates lasting memory, not transcription.
         </p>
         <p>
           This guide covers the note-taking methods that work, how to structure notes for review, and
@@ -74,7 +74,7 @@ export default function Post() {
         <p>
           Structured notes force you to organize information, which is itself a form of learning.
           When you decide what goes under a heading, what belongs in a bullet point, and what counts
-          as a key term, you&apos;re making decisions about the material — and those decisions stick.
+          as a key term, you&apos;re making decisions about the material, and those decisions stick.
         </p>
         <p>
           According to research on{" "}
@@ -84,7 +84,7 @@ export default function Post() {
           >
             learner-centered principles from the American Psychological Association
           </ExternalLink>
-          , active processing of information — rather than passive re-reading — is one of the most
+          , active processing of information, rather than passive re-reading, is one of the most
           reliable predictors of long-term retention.
         </p>
 
@@ -161,7 +161,7 @@ export default function Post() {
           <li>Note any term that appears in the glossary</li>
           <li>Pay attention to words your teacher or lecturer defines explicitly</li>
           <li>
-            Include any term that appears in past exam questions — these are almost always key terms
+            Include any term that appears in past exam questions, these are almost always key terms
           </li>
         </ul>
         <p>
@@ -223,7 +223,7 @@ export default function Post() {
         <p>
           It depends on the subject. The Cornell method works well for lectures. Mind maps suit
           visual learners. Bullet summaries are best for dense reading material. The key is active
-          engagement — rewriting in your own words beats copying verbatim.
+          engagement, rewriting in your own words beats copying verbatim.
         </p>
         <h3>How often should I review my notes?</h3>
         <p>

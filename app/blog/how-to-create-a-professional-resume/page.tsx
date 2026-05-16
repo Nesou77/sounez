@@ -18,7 +18,7 @@ const FAQS = [
   {
     question: "How long should a resume be?",
     answer:
-      "One page for candidates with under 10 years of experience. Two pages for senior professionals with extensive relevant experience. Never pad to fill space — a tight one-pager beats a padded two-pager every time.",
+      "One page for candidates with under 10 years of experience. Two pages for senior professionals with extensive relevant experience. Never pad to fill space, a tight one-pager beats a padded two-pager every time.",
   },
   {
     question: "Should I include a photo on my resume?",
@@ -38,7 +38,7 @@ const FAQS = [
   {
     question: "Is my data saved when I use the Resume Generator?",
     answer:
-      "No. Everything stays in your browser. Nothing is uploaded to any server. If you close the tab, your data is gone — download your PDF before closing.",
+      "No. Everything stays in your browser. Nothing is uploaded to any server. If you close the tab, your data is gone, download your PDF before closing.",
   },
 ];
 
@@ -56,10 +56,10 @@ export default function Post() {
         slug="how-to-create-a-professional-resume"
         ctaTools={["resume-generator", "word-counter", "bio-generator"]}
         title="How to Create a Professional Resume Online"
-        excerpt="A resume is your first impression. Here&apos;s how to structure it, what to include in each section, and how to export a clean PDF — all for free, without creating an account."
+        excerpt="A resume is your first impression. Here&apos;s how to structure it, what to include in each section, and how to export a clean PDF, all for free, without creating an account."
       >
         <p>
-          Most resume advice focuses on what to write. This guide focuses on structure — because a
+          Most resume advice focuses on what to write. This guide focuses on structure, because a
           well-structured resume with average content outperforms a poorly structured one with great
           content. Recruiters spend an average of 7 seconds on a first scan. If the structure doesn&apos;t
           guide their eye to the right information immediately, the content never gets read.
@@ -76,21 +76,21 @@ export default function Post() {
         </p>
         <ul>
           <li>
-            <strong>Personal information</strong> — Name, email, phone, location, LinkedIn URL
+            <strong>Personal information</strong>: Name, email, phone, location, LinkedIn URL
           </li>
           <li>
-            <strong>Professional summary</strong> — 2–3 sentences summarizing your experience and
+            <strong>Professional summary</strong>: 2–3 sentences summarizing your experience and
             value proposition
           </li>
           <li>
-            <strong>Work experience</strong> — Roles in reverse chronological order, with bullet
+            <strong>Work experience</strong>: Roles in reverse chronological order, with bullet
             points for achievements
           </li>
           <li>
-            <strong>Education</strong> — Degrees, institutions and graduation years
+            <strong>Education</strong>: Degrees, institutions and graduation years
           </li>
           <li>
-            <strong>Skills</strong> — A concise list of relevant technical and soft skills
+            <strong>Skills</strong>: A concise list of relevant technical and soft skills
           </li>
         </ul>
 
@@ -105,22 +105,22 @@ export default function Post() {
             roles.
           </li>
           <li>
-            <strong>Consistent margins</strong> — 0.75–1 inch on all sides. Don&apos;t shrink margins to
+            <strong>Consistent margins</strong>: 0.75–1 inch on all sides. Don&apos;t shrink margins to
             fit more content.
           </li>
           <li>
-            <strong>Clean font</strong> — Inter, Calibri or Georgia at 10–12pt. Your name at 16–18pt.
+            <strong>Clean font</strong>: Inter, Calibri or Georgia at 10–12pt. Your name at 16–18pt.
           </li>
           <li>
-            <strong>No photos, no graphics, no colour blocks</strong> — unless you&apos;re in a creative
+            <strong>No photos, no graphics, no colour blocks</strong>: unless you&apos;re in a creative
             field where visual presentation is part of the job.
           </li>
           <li>
-            <strong>Reverse chronological order</strong> — Most recent experience first. This is what
+            <strong>Reverse chronological order</strong>: Most recent experience first. This is what
             recruiters expect.
           </li>
           <li>
-            <strong>White space is your friend</strong> — A resume that breathes is easier to scan
+            <strong>White space is your friend</strong>: A resume that breathes is easier to scan
             than one that&apos;s packed to the margins.
           </li>
         </ul>
@@ -133,13 +133,13 @@ export default function Post() {
         <p>A strong summary has three elements:</p>
         <ol>
           <li>
-            <strong>Who you are</strong> — Your role and years of experience
+            <strong>Who you are</strong>: Your role and years of experience
           </li>
           <li>
-            <strong>What you&apos;re good at</strong> — Your core skill or specialization
+            <strong>What you&apos;re good at</strong>: Your core skill or specialization
           </li>
           <li>
-            <strong>What you&apos;re looking for</strong> — The type of role or company you want to join
+            <strong>What you&apos;re looking for</strong>: The type of role or company you want to join
           </li>
         </ol>
         <p>
@@ -149,7 +149,7 @@ export default function Post() {
         </p>
         <p>
           Keep it under 60 words. Use the <a href="/word-counter">Word Counter</a> to check length.
-          Avoid clichés like &quot;passionate&quot;, &quot;results-driven&quot; or &quot;team player&quot; — they add no
+          Avoid clichés like &quot;passionate&quot;, &quot;results-driven&quot; or &quot;team player&quot;, they add no
           information.
         </p>
 
@@ -190,7 +190,7 @@ export default function Post() {
         <p>
           List 8–12 relevant skills as a comma-separated list or in a simple grid. Separate hard
           skills (specific tools, languages, certifications) from soft skills (communication,
-          leadership). Recruiters scan this section quickly — keep it tight.
+          leadership). Recruiters scan this section quickly, keep it tight.
         </p>
 
         <h2>How to export your resume as PDF</h2>

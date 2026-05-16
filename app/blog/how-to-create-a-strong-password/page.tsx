@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { question: "How long should a password be?", answer: "Aim for 16+ characters with mixed case, numbers and symbols — generated, not invented. For the few you memorize (master passwords), use 20+ character passphrases." },
+  { question: "How long should a password be?", answer: "Aim for 16+ characters with mixed case, numbers and symbols, generated, not invented. For the few you memorize (master passwords), use 20+ character passphrases." },
   { question: "Are password managers safe?", answer: "Yes. Modern managers encrypt your vault with your master password, so even the company can't read it. The biggest risk is a weak master password, so make that one count." },
   { question: "What's the safest 2FA method?", answer: "Hardware keys (YubiKey) > authenticator apps > SMS. Avoid SMS where you can." },
   { question: "How often should I change my passwords?", answer: "Modern advice: only when there's a breach. Forced rotation just makes people choose weaker passwords. Generate strong ones and leave them alone." },
@@ -74,11 +74,11 @@ export default function Post() {
           <li><strong>Your browser&apos;s built-in manager</strong>: fine as a starting point, upgrade later</li>
         </ul>
 
-        <BlogImage src="/blog/how-to-create-a-strong-password2.webp" alt="A password manager listing unique strong passwords with a 2FA code on a phone" caption="Manager + 2FA = practically unbreakable." />
+        <BlogImage src="/blog/how-to-create-a-strong-password-bg.webp" alt="A password manager listing unique strong passwords with a 2FA code on a phone" caption="Manager + 2FA = practically unbreakable." />
 
         <h2>Step 3: Enable two-factor authentication (2FA) everywhere</h2>
         <ol>
-          <li>Email (this is the master key — protect it first)</li>
+          <li>Email (this is the master key, protect it first)</li>
           <li>Banking and finance</li>
           <li>Cloud storage (Google Drive, iCloud, Dropbox)</li>
           <li>Social accounts</li>
@@ -96,7 +96,7 @@ export default function Post() {
 
         <h2>Frequently Asked Questions</h2>
         <h3>How long should a password be?</h3>
-        <p>Aim for 16+ characters with mixed case, numbers and symbols — generated, not invented. For the few you memorize (master passwords), use 20+ character passphrases.</p>
+        <p>Aim for 16+ characters with mixed case, numbers and symbols, generated, not invented. For the few you memorize (master passwords), use 20+ character passphrases.</p>
         <h3>Are password managers safe?</h3>
         <p>Yes. Modern managers encrypt your vault with your master password, so even the company can&apos;t read it. The biggest risk is a weak master password, so make that one count.</p>
         <h3>What&apos;s the safest 2FA method?</h3>

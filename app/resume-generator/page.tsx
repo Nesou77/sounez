@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Free Resume Generator | Sounez",
     description:
-      "Fill in your details and export a clean, professional resume as PDF — no account, no watermark.",
+      "Fill in your details and export a clean resume as PDF. No account and no watermark.",
   },
 };
 

@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Heart, MessageCircle, Send } from "lucide-react";
 import { toast } from "sonner";
 import { ShareButton } from "./EngagementBar";
+import { useBlogLike } from "./blog/BlogLikeController";
 import { cn } from "@/lib/utils";
 
 type Comment = {
@@ -37,10 +38,15 @@ function timeAgo(ts: number) {
 }
 
 export function BlogEngagement({ slug }: { slug: string }) {
+  const blogLike = useBlogLike();
+  const isInBlogContext = blogLike !== null;
+
   const base = useMemo(() => baselineLikes(slug), [slug]);
-  const [likes, setLikes] = useState(base);
-  const [liked, setLiked] = useState(false);
-  const [pulse, setPulse] = useState(false);
+
+  // Local like state — only active when no BlogLikeController is in the tree
+  const [localLikes, setLocalLikes] = useState(base);
+  const [localLiked, setLocalLiked] = useState(false);
+  const [localPulse, setLocalPulse] = useState(false);
 
   const [comments, setComments] = useState<Comment[]>([]);
   const [name, setName] = useState("");
@@ -49,24 +55,29 @@ export function BlogEngagement({ slug }: { slug: string }) {
 
   useEffect(() => {
     try {
-      const storedLikes = localStorage.getItem(LIKES_KEY(slug));
-      const storedLiked = localStorage.getItem(LIKED_KEY(slug));
       const storedComments = localStorage.getItem(COMMENTS_KEY(slug));
-      if (storedLikes) setLikes(parseInt(storedLikes, 10) || base);
-      if (storedLiked === "1") setLiked(true);
       if (storedComments) setComments(JSON.parse(storedComments));
     } catch {
       // ignore
     }
-  }, [slug, base]);
+    if (isInBlogContext) return;
+    try {
+      const storedLikes = localStorage.getItem(LIKES_KEY(slug));
+      const storedLiked = localStorage.getItem(LIKED_KEY(slug));
+      if (storedLikes) setLocalLikes(parseInt(storedLikes, 10) || base);
+      if (storedLiked === "1") setLocalLiked(true);
+    } catch {
+      // ignore
+    }
+  }, [slug, base, isInBlogContext]);
 
-  const toggleLike = () => {
-    const next = !liked;
-    const nextCount = Math.max(0, likes + (next ? 1 : -1));
-    setLiked(next);
-    setLikes(nextCount);
-    setPulse(true);
-    setTimeout(() => setPulse(false), 350);
+  const localToggleLike = () => {
+    const next = !localLiked;
+    const nextCount = Math.max(0, localLikes + (next ? 1 : -1));
+    setLocalLiked(next);
+    setLocalLikes(nextCount);
+    setLocalPulse(true);
+    setTimeout(() => setLocalPulse(false), 350);
     try {
       localStorage.setItem(LIKES_KEY(slug), String(nextCount));
       localStorage.setItem(LIKED_KEY(slug), next ? "1" : "0");
@@ -74,6 +85,11 @@ export function BlogEngagement({ slug }: { slug: string }) {
       // ignore
     }
   };
+
+  const likes = isInBlogContext ? blogLike.likeCount : localLikes;
+  const liked = isInBlogContext ? blogLike.liked : localLiked;
+  const pulse = isInBlogContext ? blogLike.pulse : localPulse;
+  const toggleLike = isInBlogContext ? blogLike.toggleLike : localToggleLike;
 
   const submitComment = (e: React.FormEvent) => {
     e.preventDefault();

@@ -19,7 +19,7 @@ function fallbackBio(
   const templates: Record<string, string> = {
     instagram: `${name} | ${role}${interests ? ` | ${interests}` : ""} ✨`,
     twitter: `${role} at heart${interests ? ` • ${interests}` : ""} | ${name}`,
-    linkedin: `${name} — ${role}.${interests ? ` Passionate about ${interests}.` : ""} Open to new opportunities.`,
+    linkedin: `${name} | ${role}.${interests ? ` Interested in ${interests}.` : ""} Open to new opportunities.`,
     general: `${name} is a ${role}${interests ? ` with a passion for ${interests}` : ""}. Building things that matter.`,
   };
 

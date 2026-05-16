@@ -29,7 +29,7 @@ const FAQS = [
   {
     question: "What happens to transparent areas when converting PNG to JPG?",
     answer:
-      "JPG does not support transparency. Transparent areas are filled with a solid color — white by default in the Sounez PNG to JPG Converter. If you need a different background color, edit the image before converting.",
+      "JPG does not support transparency. Transparent areas are filled with a solid color, white by default in the Sounez PNG to JPG Converter. If you need a different background color, edit the image before converting.",
   },
   {
     question: "Is it safe to convert images in the browser?",
@@ -57,7 +57,7 @@ export default function Post() {
         slug="png-vs-jpg-and-how-to-convert-images"
         ctaTools={["png-to-jpg-converter", "image-compressor", "qr-code-generator"]}
         title="PNG vs JPG: Differences and How to Convert Images"
-        excerpt="PNG and JPG are the two most common image formats on the web, but they serve very different purposes. Here&apos;s when to use each one — and how to convert between them safely in your browser."
+        excerpt="PNG and JPG are the two most common image formats on the web, but they serve very different purposes. Here&apos;s when to use each one, and how to convert between them safely in your browser."
       >
         <p>
           PNG and JPG are both everywhere on the web, but they&apos;re built for different jobs. Using the
@@ -68,26 +68,26 @@ export default function Post() {
         <p>
           This guide explains both formats, compares them directly, covers what happens to
           transparency during conversion, and shows you how to convert PNG to JPG safely using the{" "}
-          <a href="/png-to-jpg-converter">PNG to JPG Converter</a> — entirely in your browser.
+          <a href="/png-to-jpg-converter">PNG to JPG Converter</a>, entirely in your browser.
         </p>
 
         <h2>What is PNG?</h2>
         <p>
           PNG (Portable Network Graphics) is a lossless image format. &quot;Lossless&quot; means that no image
-          data is discarded during compression — the file is smaller than the original, but the image
+          data is discarded during compression, the file is smaller than the original, but the image
           quality is identical to the source.
         </p>
         <p>PNG&apos;s key properties:</p>
         <ul>
           <li>
-            <strong>Lossless compression</strong> — no quality loss, ever
+            <strong>Lossless compression</strong>: no quality loss, ever
           </li>
           <li>
-            <strong>Supports transparency</strong> — pixels can be fully transparent, semi-transparent
+            <strong>Supports transparency</strong>: pixels can be fully transparent, semi-transparent
             or opaque (alpha channel)
           </li>
           <li>
-            <strong>Larger file sizes</strong> — especially for photos with many colors
+            <strong>Larger file sizes</strong>: especially for photos with many colors
           </li>
           <li>
             <strong>Best for:</strong> logos, icons, UI screenshots, diagrams, images with text,
@@ -104,21 +104,21 @@ export default function Post() {
 
         <h2>What is JPG?</h2>
         <p>
-          JPG (also written JPEG — Joint Photographic Experts Group) is a lossy image format. &quot;Lossy&quot;
+          JPG (also written JPEG, Joint Photographic Experts Group) is a lossy image format. &quot;Lossy&quot;
           means that some image data is permanently discarded during compression to achieve smaller
           file sizes. The amount of data discarded is controlled by a quality setting.
         </p>
         <p>JPG&apos;s key properties:</p>
         <ul>
           <li>
-            <strong>Lossy compression</strong> — some quality is lost, but the loss is usually
+            <strong>Lossy compression</strong>: some quality is lost, but the loss is usually
             invisible at 80%+ quality
           </li>
           <li>
-            <strong>No transparency support</strong> — all pixels must be fully opaque
+            <strong>No transparency support</strong>: all pixels must be fully opaque
           </li>
           <li>
-            <strong>Much smaller file sizes</strong> — especially for photos
+            <strong>Much smaller file sizes</strong>: especially for photos
           </li>
           <li>
             <strong>Best for:</strong> photographs, product images, hero images, any image with
@@ -160,7 +160,7 @@ export default function Post() {
         <h2>What happens to transparency when converting PNG to JPG</h2>
         <p>
           This is the most important thing to understand before converting. JPG has no alpha channel
-          — it cannot represent transparent pixels. When you convert a PNG with transparency to JPG,
+         , it cannot represent transparent pixels. When you convert a PNG with transparency to JPG,
           every transparent pixel must be replaced with a solid color.
         </p>
         <p>
@@ -272,7 +272,7 @@ export default function Post() {
 
         <h2>Conclusion: right format, right job</h2>
         <p>
-          PNG and JPG are both excellent formats — for different jobs. Use PNG for logos, icons and
+          PNG and JPG are both excellent formats, for different jobs. Use PNG for logos, icons and
           anything with transparency. Use JPG for photos and web images where file size matters. When
           you need to convert, the{" "}
           <a href="/png-to-jpg-converter">PNG to JPG Converter</a> does it instantly in your browser

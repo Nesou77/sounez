@@ -103,7 +103,7 @@ export function CookieConsentBanner() {
         We use cookies to improve your experience and show relevant ads.{" "}
         <a
           href="/privacy-policy"
-          className="font-medium text-primary underline underline-offset-2 hover:text-primary/80"
+          className="font-medium text-primary-label underline underline-offset-2 hover:text-primary-label/80"
         >
           Privacy Policy
         </a>
@@ -114,14 +114,14 @@ export function CookieConsentBanner() {
           onClick={accept}
           className="flex-1 rounded-xl bg-gradient-brand px-4 py-2 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95"
         >
-          Accept
+          Accept cookies
         </button>
         <button
           type="button"
           onClick={reject}
           className="flex-1 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-muted active:scale-95"
         >
-          Reject
+          Reject cookies
         </button>
       </div>
     </div>

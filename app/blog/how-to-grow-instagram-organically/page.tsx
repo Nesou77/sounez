@@ -43,7 +43,7 @@ export default function Post() {
           identity, smart hashtags, and content that earns saves.
         </p>
         <p>
-          This guide is for creators, small businesses and personal brands who want real followers —
+          This guide is for creators, small businesses and personal brands who want real followers, 
           people who actually care about what you post.
         </p>
 
@@ -65,7 +65,7 @@ export default function Post() {
         </p>
         <ul>
           <li>What is your account about? (One sentence, no &quot;and&quot;s)</li>
-          <li>Who is it for? (Be specific — &quot;freelance designers in their 20s&quot; beats &quot;creatives&quot;)</li>
+          <li>Who is it for? (Be specific, &quot;freelance designers in their 20s&quot; beats &quot;creatives&quot;)</li>
           <li>What does your grid look like? (Pick 2–3 colors and stick to them)</li>
         </ul>
         <p>
@@ -110,7 +110,7 @@ export default function Post() {
         <ul>
           <li>Use 5–10 highly relevant hashtags, not 30 generic ones</li>
           <li>Mix niche hashtags (under 500k posts) with mid-size ones (500k–2M)</li>
-          <li>Avoid banned or overused hashtags — they suppress reach</li>
+          <li>Avoid banned or overused hashtags, they suppress reach</li>
         </ul>
         <p>
           Generate the right mix instantly with the{" "}
@@ -189,7 +189,7 @@ export default function Post() {
           Organic Instagram growth in 2026 is a long game. Pick a niche, build a visual identity with
           the <a href="/color-palette-generator">Color Palette Generator</a>, use smart hashtags from
           the <a href="/hashtag-generator">Hashtag Generator</a>, and post consistently. The accounts
-          that win aren&apos;t the ones that go viral once — they&apos;re the ones that show up every week.
+          that win aren&apos;t the ones that go viral once, they&apos;re the ones that show up every week.
         </p>
       </BlogPostShell>
     </>

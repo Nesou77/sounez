@@ -23,7 +23,7 @@ const FAQS = [
   {
     question: "Should I use emojis in my bio?",
     answer:
-      "On Instagram and TikTok, yes — emojis break up text and add personality. On LinkedIn, use them sparingly or not at all. One or two at most in a professional context.",
+      "On Instagram and TikTok, yes, emojis break up text and add personality. On LinkedIn, use them sparingly or not at all. One or two at most in a professional context.",
   },
   {
     question: "What should I put in my LinkedIn bio?",
@@ -56,7 +56,7 @@ export default function Post() {
         slug="how-to-write-a-good-social-media-bio"
         ctaTools={["bio-generator", "ai-caption-generator", "hashtag-generator"]}
         title="How to Write a Good Social Media Bio"
-        excerpt="Your bio is the first thing people read when they decide whether to follow you. Here&apos;s how to write one that works — with examples for every platform."
+        excerpt="Your bio is the first thing people read when they decide whether to follow you. Here&apos;s how to write one that works, with examples for every platform."
       >
         <p>
           Your social media bio has one job: convince a stranger to follow you in under five seconds.
@@ -72,15 +72,15 @@ export default function Post() {
         <p>A strong bio answers three questions immediately:</p>
         <ul>
           <li>
-            <strong>Who are you?</strong> — Your name, role or niche. Be specific. &quot;Fitness coach for
+            <strong>Who are you?</strong>: Your name, role or niche. Be specific. &quot;Fitness coach for
             busy parents&quot; beats &quot;fitness enthusiast&quot;.
           </li>
           <li>
-            <strong>What do you offer?</strong> — What will someone get from following you? Tips,
+            <strong>What do you offer?</strong>: What will someone get from following you? Tips,
             entertainment, inspiration, tutorials?
           </li>
           <li>
-            <strong>What should they do next?</strong> — A CTA: follow for X, link in bio, DM for Y.
+            <strong>What should they do next?</strong>: A CTA: follow for X, link in bio, DM for Y.
           </li>
         </ul>
 
@@ -140,7 +140,7 @@ export default function Post() {
         <h3>Personal website / general bio (up to 300 characters)</h3>
         <p>
           Website bios have more flexibility. You can be slightly more narrative, but keep the first
-          sentence punchy — it&apos;s often used as a meta description.
+          sentence punchy, it&apos;s often used as a meta description.
         </p>
         <ul>
           <li>
@@ -151,7 +151,7 @@ export default function Post() {
 
         <h2>Personal bio vs business bio</h2>
         <p>
-          Personal bios should have personality — a specific detail, a hobby, a point of view.
+          Personal bios should have personality, a specific detail, a hobby, a point of view.
           Business bios should focus on the customer: what problem do you solve, who do you serve,
           what makes you different.
         </p>
@@ -169,19 +169,19 @@ export default function Post() {
         <h2>Bio writing mistakes to avoid</h2>
         <ul>
           <li>
-            <strong>Being too generic</strong> — &quot;Passionate about life&quot; tells nobody anything. Be
+            <strong>Being too generic</strong>: &quot;Passionate about life&quot; tells nobody anything. Be
             specific about your niche.
           </li>
           <li>
-            <strong>No CTA</strong> — Always tell people what to do next. Even &quot;new post every
+            <strong>No CTA</strong>: Always tell people what to do next. Even &quot;new post every
             Tuesday&quot; is a CTA.
           </li>
           <li>
-            <strong>Outdated information</strong> — Check your bio every quarter. Old job titles and
+            <strong>Outdated information</strong>: Check your bio every quarter. Old job titles and
             dead links hurt credibility.
           </li>
           <li>
-            <strong>Keyword stuffing</strong> — Instagram and LinkedIn bios are searchable, but
+            <strong>Keyword stuffing</strong>: Instagram and LinkedIn bios are searchable, but
             stuffing keywords makes them unreadable.
           </li>
         </ul>
@@ -211,7 +211,7 @@ export default function Post() {
         </p>
         <h3>Should I use emojis in my bio?</h3>
         <p>
-          On Instagram and TikTok, yes — emojis break up text and add personality. On LinkedIn, use
+          On Instagram and TikTok, yes, emojis break up text and add personality. On LinkedIn, use
           them sparingly. One or two at most in a professional context.
         </p>
         <h3>What should I put in my LinkedIn bio?</h3>
@@ -236,7 +236,7 @@ export default function Post() {
           A great bio takes 10 minutes to write and pays dividends for months. Use the{" "}
           <a href="/bio-generator">Bio Generator</a> to get a strong first draft, then personalize it
           with a specific detail that only you could write. Set a reminder to review it every quarter
-          — your role, focus and CTA will change, and your bio should too. Once your bio is sorted,
+         , your role, focus and CTA will change, and your bio should too. Once your bio is sorted,
           pair it with great captions using the{" "}
           <a href="/ai-caption-generator">AI Caption Generator</a>.
         </p>

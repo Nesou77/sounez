@@ -87,7 +87,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
   return (
     <ToolPageShell
       tool={tool}
-      intro="Fill in your details and export a clean, professional resume as PDF — no account, no watermark."
+      intro="Fill in your details and export a clean resume as PDF. No account and no watermark."
       features={[
         { title: "Live preview", desc: "See your resume update as you type." },
         { title: "PDF export", desc: "Print to PDF directly from your browser." },
@@ -390,7 +390,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                     <div key={i} className="flex items-baseline justify-between">
                       <div>
                         <span className="font-semibold text-gray-900">{e.degree || "Degree"}</span>
-                        {e.school && <span className="text-xs text-gray-500 ml-2">— {e.school}</span>}
+                        {e.school && <span className="text-xs text-gray-500 ml-2">,  {e.school}</span>}
                       </div>
                       <span className="text-xs text-gray-400">{e.year}</span>
                     </div>

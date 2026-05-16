@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 
 export const metadata: Metadata = {
   title: "The Best Color Palettes for Modern Design (2026) | Sounez",
-  description: "The principles behind color palettes that just work — for landing pages, apps and brands. Plus the free tools to build your own.",
+  description: "The principles behind color palettes that just work, for landing pages, apps and brands. Plus the free tools to build your own.",
   openGraph: {
     title: "Best Color Palettes for Modern Design",
     description: "Palettes that just work, and the principles behind them.",
@@ -24,7 +24,7 @@ export default function Post() {
       <BlogJsonLd
         slug="best-color-palettes-for-design"
         title="The Best Color Palettes for Modern Design"
-        description="The principles behind color palettes that just work — for landing pages, apps and brands. Plus the free tools to build your own."
+        description="The principles behind color palettes that just work, for landing pages, apps and brands. Plus the free tools to build your own."
         articleSection="Design Tools"
         faqs={FAQS}
       />
@@ -37,11 +37,11 @@ export default function Post() {
         <p>
           Color is the first thing a visitor sees and the last thing they remember. Get it right and
           your product feels confident, modern, considered. Get it wrong and even great copy and
-          layout fall flat. Most designers don&apos;t lack taste — they lack a system. This article gives
+          layout fall flat. Most designers don&apos;t lack taste, they lack a system. This article gives
           you one.
         </p>
 
-        <BlogImage src="/blog/best-color-palettes-for-design2.webp" alt="A row of harmonious color swatches applied to a UI mockup" caption="Restraint reads as confidence." />
+        <BlogImage src="/blog/best-color-palettes-for-design-bg.webp" alt="A row of harmonious color swatches applied to a UI mockup" caption="Restraint reads as confidence." />
 
         <h2>The 60-30-10 rule (and why it works)</h2>
         <ul>
@@ -63,12 +63,12 @@ export default function Post() {
         </p>
         <PullQuote>Two colors used with intent will always beat seven used by accident.</PullQuote>
 
-        <h2>Use gradients sparingly — make them count</h2>
+        <h2>Use gradients sparingly, make them count</h2>
         <p>
           One signature gradient on your hero section beats a rainbow everywhere. Modern gradients
           work best when they stay close in hue (e.g. blue → violet) rather than jumping across the
           wheel. Build yours with the <a href="/css-gradient-generator">CSS Gradient Generator</a> and
-          save them as design tokens — never re-invent the gradient on every page.
+          save them as design tokens, never re-invent the gradient on every page.
         </p>
 
         <h2>Test contrast (this is non-negotiable)</h2>
@@ -92,7 +92,7 @@ export default function Post() {
 
         <h2>The pre-launch color checklist</h2>
         <ol>
-          <li>Pick one hero color — the rest follows</li>
+          <li>Pick one hero color, the rest follows</li>
           <li>Build tints and shades with the <a href="/color-palette-generator">Palette Generator</a></li>
           <li>Test every text/background combination for WCAG AA</li>
           <li>Define semantic tokens (no raw hex in components)</li>
@@ -112,7 +112,7 @@ export default function Post() {
         <p>
           Pick fewer colors and use them with intent. Build a system, not a mood board. Open the{" "}
           <a href="/color-palette-generator">Color Palette Generator</a> and start with one hero color
-          right now — the rest of your design system will fall into place.
+          right now, the rest of your design system will fall into place.
         </p>
       </BlogPostShell>
     </>

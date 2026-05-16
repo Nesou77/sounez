@@ -54,7 +54,7 @@ export function SvgBlobClient({ tool }: { tool: Tool }) {
   const [fillColor, setFillColor] = useState("#6366f1");
   const [useGradient, setUseGradient] = useState(false);
   const [gradientColor, setGradientColor] = useState("#8b5cf6");
-  const [seed, setSeed] = useState(42); // stable initial seed — same on server and client
+  const [seed, setSeed] = useState(42); // stable initial seed, same on server and client
 
   // Randomize on first client mount so the initial blob isn't always identical
   useEffect(() => {

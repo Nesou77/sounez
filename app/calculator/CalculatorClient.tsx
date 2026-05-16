@@ -184,7 +184,7 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
   return (
     <ToolPageShell
       tool={tool}
-      intro="A clean, fast calculator for everyday maths. Runs entirely in your browser — no data sent anywhere."
+      intro="A clean, fast calculator for everyday maths. Runs in your browser. No data is sent anywhere."
       features={[
         {
           title: "Keyboard support",
