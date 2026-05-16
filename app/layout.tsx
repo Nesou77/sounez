@@ -25,8 +25,9 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-plus-jakarta",
   weight: ["600", "700", "800"],
-  display: "optional",
-  preload: true,
+  display: "swap",
+  // Headings-only font: avoid competing with Inter for early network bandwidth.
+  preload: false,
 });
 
 const siteUrl = getSiteUrl();
@@ -78,7 +79,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
       <head>
         {process.env.NEXT_PUBLIC_GTM_ID?.trim() ? (
-          <link rel="preconnect" href="https://www.googletagmanager.com" />
+          <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         ) : null}
         {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ? (
           <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
@@ -102,7 +103,7 @@ export default function RootLayout({
             async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_PUB_ID}`}
             crossOrigin="anonymous"
-            strategy="beforeInteractive"
+            strategy="lazyOnload"
           />
         )}
         <a href="#main-content" className="skip-link">
