@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@sounez",
+    site: "@souneztools",
     images: [{ url: `${siteUrl}/logo.webp`, alt: "Sounez" }],
   },
 };

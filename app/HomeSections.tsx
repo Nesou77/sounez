@@ -1,22 +1,59 @@
 /**
- * Server component — renders popular tools, categories, blog posts, and FAQ.
+ * Server component — renders popular tools, categories, blog posts, FAQ and trust bar.
  * No client JS needed for these sections.
  */
 import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
 import { ToolCard } from "@/components/ToolCard";
-import { ArrowRight, Plus } from "lucide-react";
+import { ArrowRight, Plus, Shield, Zap, Heart } from "lucide-react";
 import { FEATURED_TOOLS, CATEGORIES } from "@/data/tools";
 import { BLOG_POSTS } from "@/data/blog";
 import { getCategoryIcon } from "@/lib/tool-icons";
 
-
 const FAQS = [
-  { q: "Is Sounez free to use?", a: "Yes. Every tool on Sounez is completely free. No account, no trial, no catch." },
-  { q: "Do my files get uploaded to a server?", a: "No. Tools like the Image Compressor and Password Generator run entirely in your browser. Nothing leaves your device." },
-  { q: "Can I use Sounez tools for commercial work?", a: "Yes. You can use the output from any Sounez tool in personal, educational and commercial projects." },
-  { q: "Will more tools be added?", a: "Yes. New tools are added regularly. Bookmark the tools page or check the blog to stay updated." },
+  {
+    q: "Is Sounez free to use?",
+    a: "Yes. Every tool on Sounez is completely free. No account, no trial, no catch.",
+  },
+  {
+    q: "Do my files get uploaded to a server?",
+    a: "No. Tools like the Image Compressor and Password Generator run entirely in your browser. Nothing leaves your device.",
+  },
+  {
+    q: "Can I use Sounez tools for commercial work?",
+    a: "Yes. You can use the output from any Sounez tool in personal, educational and commercial projects.",
+  },
+  {
+    q: "Will more tools be added?",
+    a: "Yes. New tools are added regularly. Bookmark the tools page or check the blog to stay updated.",
+  },
+  {
+    q: "What types of tools does Sounez offer?",
+    a: "There are three main categories: creator tools (hashtags, AI captions, earnings calculators), design tools (color palettes, CSS gradients, box shadows), and utility tools (image compressor, QR code generator, password generator, word counter and more).",
+  },
+  {
+    q: "Do I need to install anything?",
+    a: "No. Everything runs directly in your browser. There is nothing to download or install.",
+  },
+  {
+    q: "Do the tools work on mobile?",
+    a: "Yes. All tools are designed to work on mobile browsers. Upload areas, sliders, copy buttons and dropdowns are all touch-friendly.",
+  },
+  {
+    q: "How do I compress an image on Sounez?",
+    a: "Open the Image Compressor, drag your JPG, PNG or WebP file onto the upload area, adjust the quality slider, and click Compress. You can download the compressed file or batch-compress multiple images and download them all as a ZIP.",
+  },
 ];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
 export function HomeSections() {
   return (
@@ -25,10 +62,9 @@ export function HomeSections() {
       <section id="popular" className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <div className="mb-10 flex items-end justify-between gap-4">
           <div>
-            {/* text-primary-label is darker than text-primary, passes WCAG AA for small uppercase text */}
             <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Most used</span>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Popular tools</h2>
-            <p className="mt-2 text-muted-foreground">The tools people open most. Good place to start.</p>
+            <p className="mt-2 text-muted-foreground">The tools people open most. A good place to start.</p>
           </div>
           <Link href="/tools" className="hidden text-sm font-medium text-primary-label hover:underline sm:inline">
             View all →
@@ -38,6 +74,47 @@ export function HomeSections() {
           {FEATURED_TOOLS.map((t) => (
             <ToolCard key={t.slug} tool={t} />
           ))}
+        </div>
+        <div className="mt-6 text-center sm:hidden">
+          <Link
+            href="/tools"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+          >
+            See all free tools <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      {/* Trust / privacy bar */}
+      <section className="mx-auto max-w-5xl px-4 pb-4 sm:px-6">
+        <div className="grid gap-5 rounded-3xl border border-border bg-gradient-soft p-6 sm:grid-cols-3 sm:p-8">
+          <div className="flex gap-3">
+            <Shield className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+            <div>
+              <h3 className="text-sm font-semibold">Private by design</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                Most tools process your files locally in your browser. Nothing is uploaded or stored on any server.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <Zap className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+            <div>
+              <h3 className="text-sm font-semibold">No account required</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                Open any tool and use it right away. No signup, no email, no waiting.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <Heart className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+            <div>
+              <h3 className="text-sm font-semibold">Free for personal and commercial use</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                All tools are free with no usage limits. Output you create is yours to use however you like.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -93,7 +170,7 @@ export function HomeSections() {
               href={`/blog/${p.slug}`}
               className="group overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-glow"
             >
-              <div className="aspect-[16/9] overflow-hidden relative">
+              <div className="relative aspect-[16/9] overflow-hidden">
                 <Image
                   src={p.image}
                   alt={p.title}
@@ -110,7 +187,7 @@ export function HomeSections() {
                 <h3 className="mt-2 text-base font-semibold leading-snug tracking-tight transition group-hover:text-primary">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-2">{p.excerpt}</p>
+                <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{p.excerpt}</p>
               </div>
             </Link>
           ))}
@@ -119,9 +196,16 @@ export function HomeSections() {
 
       {/* FAQ */}
       <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
         <div className="text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">FAQ</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Common questions</h2>
+          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+            Quick answers about how Sounez works, what it costs, and how your data is handled.
+          </p>
         </div>
         <div className="mt-10 space-y-3">
           {FAQS.map((f) => (
@@ -138,6 +222,13 @@ export function HomeSections() {
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
             </details>
           ))}
+        </div>
+        <div className="mt-8 text-center text-sm text-muted-foreground">
+          Have a question not listed here?{" "}
+          <Link href="/contact" className="font-medium text-primary hover:underline">
+            Contact us
+          </Link>
+          .
         </div>
       </section>
     </>

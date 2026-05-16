@@ -2,11 +2,47 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { Mail, Send, MessageCircle, CheckCircle2, Loader2 } from "lucide-react";
+import { Send, MessageCircle, CheckCircle2, Loader2, Bug, Wrench, Handshake, MessageSquare, Twitter, Instagram, Facebook, Youtube } from "lucide-react";
 import { executeContactRecaptchaV3 } from "@/lib/recaptcha-v3-browser";
 import { trackGenerateLead, getPagePath } from "@/lib/analytics";
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY?.trim() ?? "";
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.56a8.16 8.16 0 004.77 1.52V7.65a4.85 4.85 0 01-1-.96z" />
+    </svg>
+  );
+}
+
+function PinterestIcon({ className }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+    </svg>
+  );
+}
+
+const SOCIAL_LINKS = [
+  { href: "https://www.tiktok.com/@souneztools?is_from_webapp=1&sender_device=pc", label: "Sounez on TikTok", icon: "tiktok" },
+  { href: "https://www.instagram.com/souneztools/", label: "Sounez on Instagram", icon: "instagram" },
+  { href: "https://pin.it/45jluYJOT", label: "Sounez on Pinterest", icon: "pinterest" },
+  { href: "https://x.com/souneztools", label: "Sounez on X", icon: "x" },
+  { href: "https://www.facebook.com/profile.php?id=61589812104461", label: "Sounez on Facebook", icon: "facebook" },
+  { href: "https://www.youtube.com/@Souneztools", label: "Sounez on YouTube", icon: "youtube" },
+] as const;
+
+type SocialIconType = (typeof SOCIAL_LINKS)[number]["icon"];
+
+function SocialIconEl({ type }: { type: SocialIconType }) {
+  if (type === "tiktok") return <TikTokIcon className="h-4 w-4" />;
+  if (type === "instagram") return <Instagram className="h-4 w-4" aria-hidden="true" />;
+  if (type === "pinterest") return <PinterestIcon className="h-4 w-4" />;
+  if (type === "x") return <Twitter className="h-4 w-4" aria-hidden="true" />;
+  if (type === "facebook") return <Facebook className="h-4 w-4" aria-hidden="true" />;
+  return <Youtube className="h-4 w-4" aria-hidden="true" />;
+}
 
 const TOPICS = ["Feedback", "Bug report", "Tool request", "Partnership", "Other"] as const;
 type Topic = (typeof TOPICS)[number];
@@ -143,6 +179,25 @@ export function ContactClient() {
 
   const msgLeft = 2000 - form.message.length;
 
+  const QUICK_FAQS = [
+    {
+      q: "Is there a way to request a new tool?",
+      a: "Yes. Use the form below and select Tool request as the topic. Describe what the tool should do and we will consider it for a future update.",
+    },
+    {
+      q: "How do I report a bug?",
+      a: "Select Bug report in the form, then describe the issue as clearly as you can. Include the tool name, what you were trying to do, and what happened instead. Screenshots help but are not required.",
+    },
+    {
+      q: "I have a business or partnership inquiry. Is this the right place?",
+      a: "Yes. Select Partnership in the topic list and describe your proposal briefly. We will review it and get back to you.",
+    },
+    {
+      q: "How long does it take to get a reply?",
+      a: "We reply to most messages within 24 hours. Complex requests may take a little longer.",
+    },
+  ];
+
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
       <header className="text-center">
@@ -152,28 +207,78 @@ export function ContactClient() {
         </p>
       </header>
 
+      {/* Reason cards */}
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
-        <a
-          href="mailto:hello@sounez.com"
-          className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-soft"
-        >
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-soft text-primary">
-            <Mail className="h-5 w-5" />
-          </div>
-          <div className="min-w-0">
-            <div className="text-sm font-semibold">Email</div>
-            <div className="truncate text-sm text-muted-foreground">hello@sounez.com</div>
-          </div>
-        </a>
-        <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-5">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-soft text-primary">
-            <MessageCircle className="h-5 w-5" />
+        <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-soft text-primary">
+            <MessageSquare className="h-4 w-4" />
           </div>
           <div>
-            <div className="text-sm font-semibold">Response time</div>
-            <div className="text-sm text-muted-foreground">Usually within 24 hours</div>
+            <div className="text-sm font-semibold">Feedback</div>
+            <div className="text-xs text-muted-foreground">Tell us what works, what does not, or what you would like to see next.</div>
           </div>
         </div>
+        <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-soft text-primary">
+            <Bug className="h-4 w-4" />
+          </div>
+          <div>
+            <div className="text-sm font-semibold">Bug reports</div>
+            <div className="text-xs text-muted-foreground">Found something broken? Include the tool name and what went wrong.</div>
+          </div>
+        </div>
+        <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-soft text-primary">
+            <Wrench className="h-4 w-4" />
+          </div>
+          <div>
+            <div className="text-sm font-semibold">Tool requests</div>
+            <div className="text-xs text-muted-foreground">Have an idea for a tool that should exist? We are always looking for good suggestions.</div>
+          </div>
+        </div>
+        <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-soft text-primary">
+            <Handshake className="h-4 w-4" />
+          </div>
+          <div>
+            <div className="text-sm font-semibold">Partnerships</div>
+            <div className="text-xs text-muted-foreground">Business inquiries, content partnerships, or other collaborations.</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Response info */}
+      <div className="mt-4 flex items-center gap-3 rounded-2xl border border-border bg-card p-5">
+        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-soft text-primary">
+          <MessageCircle className="h-4 w-4" />
+        </div>
+        <div>
+          <div className="text-sm font-semibold">Response time</div>
+          <div className="text-sm text-muted-foreground">
+            Usually within 24 hours. Reach us directly at{" "}
+            <a href="mailto:hello@sounez.com" className="font-medium text-primary hover:underline">
+              hello@sounez.com
+            </a>
+            .
+          </div>
+        </div>
+      </div>
+
+      {/* Social links */}
+      <div className="mt-4 flex flex-wrap items-center gap-3 rounded-2xl border border-border bg-card p-5">
+        <span className="text-sm font-medium text-muted-foreground">Follow us:</span>
+        {SOCIAL_LINKS.map(({ href, label, icon }) => (
+          <a
+            key={icon}
+            href={href}
+            aria-label={label}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="grid h-9 w-9 place-items-center rounded-lg border border-border bg-background text-muted-foreground transition hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary min-h-[2.75rem] min-w-[2.75rem]"
+          >
+            <SocialIconEl type={icon} />
+          </a>
+        ))}
       </div>
 
       <form
@@ -274,6 +379,24 @@ export function ContactClient() {
           </div>
         )}
       </form>
+
+      {/* Quick help FAQ */}
+      <section className="mt-16">
+        <h2 className="text-2xl font-bold tracking-tight">Common questions</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Quick answers before you write to us.
+        </p>
+        <div className="mt-6 divide-y divide-border rounded-2xl border border-border bg-card">
+          {QUICK_FAQS.map((f) => (
+            <details key={f.q} className="group p-5">
+              <summary className="cursor-pointer list-none font-semibold marker:hidden">
+                {f.q}
+              </summary>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

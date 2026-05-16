@@ -6,20 +6,22 @@ import { HomeSections } from "./HomeSections";
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  title: "Sounez | Free Online Tools for Creators, Designers and Productivity",
+  title: "Sounez | Free Online Tools for Creators, Designers and Developers",
   description:
-    "Free, fast and simple online tools. QR codes, password generator, image compressor, color palettes, hashtag and YouTube tools. No account needed.",
+    "Free browser-based tools for everyday tasks. Compress images, generate QR codes, build color palettes, create strong passwords, write hashtags and more. No account needed.",
   alternates: { canonical: siteUrl },
   openGraph: {
     title: "Sounez | Free Online Tools",
-    description: "Free, fast tools for creators, designers and productivity. No account needed.",
+    description:
+      "Free browser-based tools for creators, designers and developers. No account, no install, no catch.",
     url: siteUrl,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Sounez | Free Online Tools",
-    description: "Free, fast tools for creators, designers and productivity. No account needed.",
+    description:
+      "Free browser-based tools for creators, designers and developers. No account, no install, no catch.",
   },
 };
 
@@ -40,6 +42,20 @@ const websiteJsonLd = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Sounez",
+  url: siteUrl,
+  description:
+    "Free browser-based tools for creators, designers, developers and anyone who needs to complete practical tasks online without installing software or creating an account.",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    url: `${siteUrl}/contact`,
+  },
+};
+
 export default function HomePage() {
   return (
     <>
@@ -47,9 +63,11 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
-      {/* Hero with search — static content renders instantly, search loads interactively */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
       <HomeHero />
-      {/* Below-fold static sections — server rendered, zero client JS */}
       <HomeSections />
     </>
   );

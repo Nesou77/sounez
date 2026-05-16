@@ -8,7 +8,9 @@ const tool = toolBySlug("image-compressor");
 if (!tool) notFound();
 
 export const metadata: Metadata = toolMetadata(tool!, {
-  title: `${tool!.name} | Free Browser-Based Image Compression | Sounez`,
+  title: "Free Image Compressor | Compress JPG, PNG & WebP Online | Sounez",
+  description:
+    "Compress JPG, PNG and WebP images free online. Reduce file size without losing quality, convert formats, resize, and download as ZIP. Runs entirely in your browser with no upload needed.",
 });
 
 export default function Page() {

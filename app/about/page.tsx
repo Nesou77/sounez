@@ -3,23 +3,40 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { Sparkles, Zap, Heart, Wand2, Rocket, Brush, Wrench, CheckCircle2, ArrowRight } from "lucide-react";
 import { getSiteUrl } from "@/lib/site-url";
 
-const aboutUrl = `${getSiteUrl()}/about`;
+const siteUrl = getSiteUrl();
+const aboutUrl = `${siteUrl}/about`;
 
 export const metadata: Metadata = {
-  title: "About Sounez | Free Online Tools for Everyone",
+  title: "About Sounez | Free Browser-Based Tools Built for Real Use",
   description:
-    "Sounez is a growing collection of free online tools for creators, designers, students and productivity lovers. Built by Nesou. Simple, fast and built to help.",
+    "Sounez is a collection of free online tools for creators, designers, developers and students. No account needed, no installs. Built by Nesou with privacy and simplicity in mind.",
   alternates: { canonical: aboutUrl },
   openGraph: {
     title: "About Sounez",
-    description: "Why we built Sounez and what we stand for.",
+    description:
+      "Free online tools for creators, designers, developers and students. No account, no install.",
     url: aboutUrl,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "About Sounez",
-    description: "Why we built Sounez and what we stand for.",
+    description:
+      "Free online tools for creators, designers, developers and students. No account, no install.",
+  },
+};
+
+const aboutPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Sounez",
+  url: aboutUrl,
+  description:
+    "Sounez is a collection of free browser-based tools built for creators, designers, developers and students. No account or installation needed.",
+  publisher: {
+    "@type": "Organization",
+    name: "Sounez",
+    url: siteUrl,
   },
 };
 
@@ -46,6 +63,10 @@ const trust = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
+      />
       <section className="relative overflow-hidden">
         <div className="absolute -top-32 left-1/2 -z-10 h-72 w-[60rem] -translate-x-1/2 rounded-full bg-gradient-brand opacity-20 blur-3xl" />
         <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-28">
