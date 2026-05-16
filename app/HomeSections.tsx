@@ -132,9 +132,9 @@ export function HomeSections() {
               <Link
                 key={c.slug}
                 href={`/categories/${c.slug}`}
-                className="group ring-gradient relative overflow-hidden rounded-2xl border border-border/70 bg-card p-7 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-glow"
+                className="group ring-gradient relative overflow-hidden rounded-2xl border border-border/70 bg-card p-7 shadow-soft transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
               >
-                <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-gradient-brand opacity-[0.07] blur-2xl transition group-hover:opacity-20" />
+                <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-gradient-brand opacity-10 blur-2xl pointer-events-none" />
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-brand text-primary-foreground shadow-pop">
                   <Icon className="h-5 w-5" aria-hidden="true" />
                 </div>
@@ -168,7 +168,7 @@ export function HomeSections() {
             <Link
               key={p.slug}
               href={`/blog/${p.slug}`}
-              className="group overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-glow"
+              className="group overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-glow"
             >
               <div className="relative aspect-[16/9] overflow-hidden">
                 <Image

@@ -26,8 +26,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   weight: ["600", "700", "800"],
   display: "swap",
-  // Headings-only font: avoid competing with Inter for early network bandwidth.
-  preload: false,
+  preload: true,
 });
 
 const siteUrl = getSiteUrl();
@@ -79,22 +78,16 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
       <head>
         {process.env.NEXT_PUBLIC_GTM_ID?.trim() ? (
-          <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+          <link rel="preconnect" href="https://www.googletagmanager.com" />
         ) : null}
         {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ? (
-          <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+          <>
+            <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
+            <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossOrigin="anonymous" />
+          </>
         ) : null}
-        {/* Google Consent Mode v2 — defaults to denied until user accepts */}
-        <Script id="consent-defaults" strategy="beforeInteractive">{`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('consent', 'default', {
-            ad_storage: 'denied',
-            analytics_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied'
-          });
-        `}</Script>
+        {/* Google Consent Mode v2 — inline so it runs before GTM without Next.js beforeInteractive overhead */}
+        <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});` }} />
       </head>
       <body>
         <GoogleTagManager />

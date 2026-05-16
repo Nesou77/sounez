@@ -12,7 +12,7 @@ export function ToolCard({ tool, searchQuery }: { tool: Tool; searchQuery?: stri
   return (
     <Link
       href={`/${tool.slug}`}
-      className="group ring-gradient relative flex flex-col rounded-2xl border border-border/70 bg-card p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
+      className="group ring-gradient relative flex flex-col rounded-2xl border border-border/70 bg-card p-5 shadow-soft transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
       onClick={() => {
         if (q)
           trackSelectContent({ content_type: "tool", item_id: tool.slug, search_term: q });
