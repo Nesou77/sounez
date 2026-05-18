@@ -82,6 +82,10 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/_next/static/(.*)",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
+      {
         // Cache static assets for 1 year — safe because filenames are content-hashed
         source: "/(.*\\.(?:webp|png|svg|ico|jpg|woff2))",
         headers: [
