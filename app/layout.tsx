@@ -76,8 +76,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
       <head>
-        <style dangerouslySetInnerHTML={{ __html: `*,::before,::after{box-sizing:border-box;margin:0;padding:0}body{background:#fff;color:oklch(0.18 0.02 264);font-family:Inter,ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}h1,h2,h3,h4{font-family:"Plus Jakarta Sans",Inter,ui-sans-serif,sans-serif;letter-spacing:-0.02em}` }} />
-        {process.env.NEXT_PUBLIC_GTM_ID?.trim() ? (
+{process.env.NEXT_PUBLIC_GTM_ID?.trim() ? (
           <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         ) : null}
         {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ? (
