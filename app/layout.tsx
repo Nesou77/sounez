@@ -77,7 +77,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
       <head>
         {process.env.NEXT_PUBLIC_GTM_ID?.trim() ? (
-          <link rel="preconnect" href="https://www.googletagmanager.com" />
+          <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         ) : null}
         {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ? (
           <>

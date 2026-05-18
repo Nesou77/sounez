@@ -36,9 +36,6 @@ export function BrandLogo({ variant = "navbar" }: BrandLogoProps) {
           sizes="(max-width: 639px) 168px, (max-width: 1023px) 184px, 208px"
           quality={75}
           priority
-          fetchPriority="high"
-          decoding="async"
-          loading="eager"
         />
       </Link>
     );

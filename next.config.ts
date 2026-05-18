@@ -27,7 +27,9 @@ const nextConfig: NextConfig = {
     deviceSizes: [390, 414, 640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 24, 32, 48, 64, 96, 128, 144, 192, 216, 256, 384],
   },
+  // Inline critical CSS and defer the rest, eliminating render-blocking CSS (requires `critters` package).
   experimental: {
+    optimizeCss: true,
     // Tree-shake large packages so only used icons/components are bundled.
     optimizePackageImports: [
       "lucide-react",
@@ -60,6 +62,22 @@ const nextConfig: NextConfig = {
       "@radix-ui/react-toggle-group",
       "@radix-ui/react-tooltip",
     ],
+  },
+  webpack(config, { isServer }) {
+    // Strip core-js polyfills for features our target browsers (Chrome 93+, Safari 15.4+) support natively.
+    // Using false in webpack 5 resolve.alias replaces the module with an empty module at build time.
+    if (!isServer) {
+      Object.assign(config.resolve.alias, {
+        "core-js/modules/es.array.at.js": false,
+        "core-js/modules/es.array.flat.js": false,
+        "core-js/modules/es.array.flat-map.js": false,
+        "core-js/modules/es.object.from-entries.js": false,
+        "core-js/modules/es.object.has-own.js": false,
+        "core-js/modules/es.string.trim-end.js": false,
+        "core-js/modules/es.string.trim-start.js": false,
+      });
+    }
+    return config;
   },
   async headers() {
     return [
