@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "How to Grow Instagram Organically in 2026 | Sounez",
   description:
     "No paid ads, no follow-unfollow tricks. A real strategy for building an engaged Instagram audience in 2026: niche, content, hashtags and consistency.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-grow-instagram-organically" },
   openGraph: {
     title: "How to Grow Instagram Organically in 2026",
     description: "A real strategy for building an engaged Instagram audience. No ads required.",

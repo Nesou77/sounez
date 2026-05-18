@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "How to Use Image Placeholders in Web Design (2026) | Sounez",
   description:
     "Learn how image placeholders help with wireframes, mockups, frontend development and layout planning. Includes a free placeholder generator.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-use-image-placeholders-in-web-design" },
   openGraph: {
     title: "How to Use Image Placeholders in Web Design",
     description: "When to use placeholders, SVG vs PNG, common sizes and a free browser-based generator.",

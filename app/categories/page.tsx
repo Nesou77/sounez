@@ -3,10 +3,12 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { CATEGORIES, toolsByCategory } from "@/data/tools";
 import { ArrowRight } from "lucide-react";
 import { getCategoryIcon } from "@/lib/tool-icons";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Tool Categories | Sounez",
   description: "Browse Sounez tools by category: Creator Tools, Design Tools and Utility Tools.",
+  alternates: { canonical: getSiteUrl() + "/categories" },
   openGraph: {
     title: "Tool Categories | Sounez",
     description: "Find the right tool for the job, organized by category.",

@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "How to Use QR Codes for Marketing (Without Looking Cheap) | Sounez",
   description:
     "QR codes are everywhere again in 2026. Here's how to use them in print, packaging, events and social media in a way that actually converts.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-use-qr-codes-for-marketing" },
   openGraph: {
     title: "How to Use QR Codes for Marketing",
     description: "QR codes are back. Here's how to use them without looking cheap.",

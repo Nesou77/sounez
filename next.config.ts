@@ -14,10 +14,10 @@ const securityHeaders = [
   },
   // Allow popups for Google sign-in / share flows while keeping same-origin isolation
   { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
-  // HSTS — 1 year, include subdomains (add preload only after verifying all subdomains are HTTPS)
+  // HSTS — 1 year, include subdomains, preload (submitted to hstspreload.org)
   {
     key: "Strict-Transport-Security",
-    value: "max-age=31536000; includeSubDomains",
+    value: "max-age=31536000; includeSubDomains; preload",
   },
 ];
 

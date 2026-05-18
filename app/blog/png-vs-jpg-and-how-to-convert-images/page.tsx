@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
   title: "PNG vs JPG: Differences and How to Convert Images (2026) | Sounez",
   description:
     "Learn the difference between PNG and JPG images and how to convert PNG files to JPG safely in your browser. No upload required.",
+  alternates: { canonical: getSiteUrl() + "/blog/png-vs-jpg-and-how-to-convert-images" },
   openGraph: {
     title: "PNG vs JPG: Differences and How to Convert Images",
     description:

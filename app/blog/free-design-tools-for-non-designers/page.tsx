@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "Free Design Tools for Non-Designers: Look Professional Without Hiring Anyone | Sounez",
   description:
     "You don't need Figma or Photoshop. These free browser-based design tools cover 90% of what most people need, color palettes, gradients, image compression and more.",
+  alternates: { canonical: getSiteUrl() + "/blog/free-design-tools-for-non-designers" },
   openGraph: {
     title: "Free Design Tools for Non-Designers",
     description: "Look professional without Figma, Photoshop or a design budget.",

@@ -51,7 +51,6 @@ export const metadata: Metadata = {
   description:
     "Free online tools for creators, designers and everyday productivity. QR codes, passwords, image compression, color palettes and more. No account needed.",
   authors: [{ name: "Sounez" }],
-  alternates: { canonical: siteUrl },
   openGraph: {
     title: "Sounez | Free Online Tools",
     description:

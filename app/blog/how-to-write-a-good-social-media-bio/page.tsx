@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "How to Write a Good Social Media Bio (2026 Guide) | Sounez",
   description:
     "Learn how to write short, clear and professional bios for Instagram, TikTok, LinkedIn and personal websites. With examples and a free bio generator.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-write-a-good-social-media-bio" },
   openGraph: {
     title: "How to Write a Good Social Media Bio",
     description:

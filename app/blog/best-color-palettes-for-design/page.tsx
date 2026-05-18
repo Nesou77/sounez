@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -6,6 +7,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 export const metadata: Metadata = {
   title: "The Best Color Palettes for Modern Design (2026) | Sounez",
   description: "The principles behind color palettes that just work, for landing pages, apps and brands. Plus the free tools to build your own.",
+  alternates: { canonical: getSiteUrl() + "/blog/best-color-palettes-for-design" },
   openGraph: {
     title: "Best Color Palettes for Modern Design",
     description: "Palettes that just work, and the principles behind them.",

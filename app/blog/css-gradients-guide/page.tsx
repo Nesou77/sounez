@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "The Complete Guide to CSS Gradients in 2026 | Sounez",
   description:
     "Linear, radial, conic, everything you need to build beautiful CSS gradients with clean, modern code. Includes examples, tips and a free generator.",
+  alternates: { canonical: getSiteUrl() + "/blog/css-gradients-guide" },
   openGraph: {
     title: "The Complete Guide to CSS Gradients in 2026",
     description: "Linear, radial, conic, build beautiful gradients with clean CSS.",

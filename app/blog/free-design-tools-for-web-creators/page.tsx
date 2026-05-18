@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "Free Design Tools for Web Creators (2026) | Sounez",
   description:
     "Explore free tools for favicons, SVG blobs, font pairings, placeholders, CSS shadows and background patterns. No installs, no accounts.",
+  alternates: { canonical: getSiteUrl() + "/blog/free-design-tools-for-web-creators" },
   openGraph: {
     title: "Free Design Tools for Web Creators",
     description: "Six free browser-based design tools for favicons, blobs, fonts, placeholders, shadows and patterns.",

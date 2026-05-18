@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
   title: "How to Choose a Business Name for Your Brand (2026 Guide) | Sounez",
   description:
     "Learn how to choose a business name that is simple, memorable and suitable for your brand or startup. Includes naming styles, examples and a free generator.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-choose-a-business-name" },
   openGraph: {
     title: "How to Choose a Business Name for Your Brand",
     description:

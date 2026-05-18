@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -6,6 +7,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 export const metadata: Metadata = {
   title: "How to Create a Strong Password You'll Actually Remember (2026) | Sounez",
   description: "Stop reusing passwords. A simple, modern system for strong, memorable credentials, plus 2FA, password managers and the best free generator.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-create-a-strong-password" },
   openGraph: {
     title: "How to Create a Strong Password",
     description: "A simple system for strong, memorable, never-reused passwords.",

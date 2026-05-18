@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
   title: "How to Create Effective Study Notes (2026 Guide) | Sounez",
   description:
     "Learn how to turn lessons, topics and long text into clear study notes, summaries, bullet points and key terms. Includes a free AI study notes generator.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-create-effective-study-notes" },
   openGraph: {
     title: "How to Create Effective Study Notes",
     description:

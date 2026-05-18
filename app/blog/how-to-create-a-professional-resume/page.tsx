@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "How to Create a Professional Resume Online (2026 Guide) | Sounez",
   description:
     "Learn how to structure a clean resume with personal information, summary, experience, education and skills. Export as PDF for free.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-create-a-professional-resume" },
   openGraph: {
     title: "How to Create a Professional Resume Online",
     description:

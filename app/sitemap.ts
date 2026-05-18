@@ -5,7 +5,7 @@ import { getSiteUrl } from "@/lib/site-url";
 
 // Stable date for pages that don't have a real updatedAt.
 // Update this when you make significant content changes to static pages.
-const STATIC_LAST_MODIFIED = new Date("2026-05-01");
+const STATIC_LAST_MODIFIED = new Date("2026-05-18");
 
 const STATIC_ROUTES = [
   "/",

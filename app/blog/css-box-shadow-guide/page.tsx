@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "CSS Box Shadow Guide: How to Create Better Shadows (2026) | Sounez",
   description:
     "Learn how CSS box-shadow works and how to create soft, modern shadows for cards, buttons and UI elements. Includes a free visual shadow generator.",
+  alternates: { canonical: getSiteUrl() + "/blog/css-box-shadow-guide" },
   openGraph: {
     title: "CSS Box Shadow Guide: How to Create Better Shadows",
     description: "Box-shadow syntax, soft vs strong shadows, UI examples and a free visual generator.",

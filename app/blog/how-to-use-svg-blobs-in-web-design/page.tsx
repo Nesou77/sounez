@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "How to Use SVG Blobs in Modern Web Design (2026) | Sounez",
   description:
     "Learn how SVG blobs can improve hero sections, cards and backgrounds with lightweight organic shapes. Includes a free SVG blob generator.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-use-svg-blobs-in-web-design" },
   openGraph: {
     title: "How to Use SVG Blobs in Modern Web Design",
     description: "Best use cases for SVG blobs, performance benefits and a free generator.",

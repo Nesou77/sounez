@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "How to Write YouTube Descriptions That Actually Get Views (2026) | Sounez",
   description:
     "Most creators ignore the YouTube description box. Here's why that's a mistake, and a step-by-step guide to writing descriptions that rank and convert.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-write-youtube-descriptions" },
   openGraph: {
     title: "How to Write YouTube Descriptions That Get Views",
     description: "The description box is free SEO real estate. Here's how to use it.",

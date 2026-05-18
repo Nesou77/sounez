@@ -14,7 +14,7 @@ type Size = 128 | 192 | 256 | 384 | 512;
 const SIZES: Size[] = [128, 192, 256, 384, 512];
 
 const EXAMPLES = [
-  { label: "Website", value: "https://sounez.com" },
+  { label: "Website", value: "https://www.sounez.com" },
   { label: "Wi-Fi", value: "WIFI:T:WPA;S:MyNetwork;P:MyPassword;;" },
   { label: "Email", value: "mailto:hello@example.com" },
   { label: "Phone", value: "tel:+15550001234" },
@@ -22,7 +22,7 @@ const EXAMPLES = [
 ];
 
 export function QrCodeClient({ tool }: { tool: Tool }) {
-  const [text, setText] = useState("https://sounez.com");
+  const [text, setText] = useState("https://www.sounez.com");
   const [dark, setDark] = useState("#111827");
   const [light, setLight] = useState("#ffffff");
   const [size, setSize] = useState<Size>(256);

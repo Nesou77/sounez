@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -6,6 +7,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 export const metadata: Metadata = {
   title: "How to Grow on TikTok in 2026: A Creator's Playbook | Sounez",
   description: "A practical, no-fluff playbook to grow a real TikTok audience in 2026: niche, hook, hashtags, posting schedule and monetization.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-grow-on-tiktok" },
   openGraph: {
     title: "How to Grow on TikTok in 2026",
     description: "The playbook serious TikTok creators are using right now.",

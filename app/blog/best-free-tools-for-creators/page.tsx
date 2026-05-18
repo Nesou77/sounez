@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -6,6 +7,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 export const metadata: Metadata = {
   title: "10 Best Free Online Tools for Creators in 2026 | Sounez",
   description: "The 10 best free online tools every creator needs in 2026, for YouTube, TikTok, blogs and design. No signup, runs in your browser.",
+  alternates: { canonical: getSiteUrl() + "/blog/best-free-tools-for-creators" },
   openGraph: {
     title: "10 Best Free Online Tools for Creators in 2026",
     description: "The free toolkit every modern creator needs. Fast, focused, browser-based.",

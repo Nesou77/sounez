@@ -78,7 +78,7 @@ export function HomeSections() {
         <div className="mt-6 text-center sm:hidden">
           <Link
             href="/tools"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-label hover:underline"
           >
             See all free tools <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
@@ -225,7 +225,7 @@ export function HomeSections() {
         </div>
         <div className="mt-8 text-center text-sm text-muted-foreground">
           Have a question not listed here?{" "}
-          <Link href="/contact" className="font-medium text-primary hover:underline">
+          <Link href="/contact" className="font-medium text-primary-label hover:underline">
             Contact us
           </Link>
           .

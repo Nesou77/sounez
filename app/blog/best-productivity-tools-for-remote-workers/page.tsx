@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "Best Free Productivity Tools for Remote Workers in 2026 | Sounez",
   description:
     "Work from anywhere without paying for a bloated app stack. The best free browser-based productivity tools for remote workers in 2026.",
+  alternates: { canonical: getSiteUrl() + "/blog/best-productivity-tools-for-remote-workers" },
   openGraph: {
     title: "Best Free Productivity Tools for Remote Workers in 2026",
     description: "Free tools that cover everything a remote worker needs. No subscriptions.",

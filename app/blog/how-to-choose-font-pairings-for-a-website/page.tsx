@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
   title: "How to Choose Font Pairings for a Website (2026 Guide) | Sounez",
   description:
     "Learn how to combine heading and body fonts for readable, professional and beautiful website typography. With examples and a free font pairing tool.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-choose-font-pairings-for-a-website" },
   openGraph: {
     title: "How to Choose Font Pairings for a Website",
     description: "Font pairing principles, serif vs sans-serif combinations, examples and performance tips.",

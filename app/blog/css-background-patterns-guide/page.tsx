@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "CSS Background Patterns Guide for Web Design (2026) | Sounez",
   description:
     "Learn how to create lightweight CSS and SVG background patterns for websites and landing pages. Dots, grids, lines and more.",
+  alternates: { canonical: getSiteUrl() + "/blog/css-background-patterns-guide" },
   openGraph: {
     title: "CSS Background Patterns Guide for Web Design",
     description: "CSS gradient patterns, SVG basics, best use cases and a free pattern generator.",

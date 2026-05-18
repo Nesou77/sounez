@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "Simple Online Calculator Guide for Everyday Math | Sounez",
   description:
     "Use this guide to understand quick everyday calculations such as percentages, square roots and basic arithmetic. Includes a free online calculator.",
+  alternates: { canonical: getSiteUrl() + "/blog/simple-online-calculator-guide" },
   openGraph: {
     title: "Simple Online Calculator Guide for Everyday Math",
     description:

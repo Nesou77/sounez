@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -6,6 +7,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 export const metadata: Metadata = {
   title: "How to Compress Images Without Losing Quality (2026 Guide) | Sounez",
   description: "A complete 2026 guide to compressing images without losing quality. JPG vs PNG vs WebP, the right size for the web, and the safest free tool to use.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-compress-images" },
   openGraph: {
     title: "How to Compress Images Without Losing Quality",
     description: "Smaller files, faster sites, better SEO. The right way to compress images.",

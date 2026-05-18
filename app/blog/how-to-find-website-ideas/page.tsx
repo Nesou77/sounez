@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "How to Find Website Ideas for Your Next Project (2026) | Sounez",
   description:
     "Discover practical methods to generate website ideas for blogs, SaaS products, communities, ecommerce and online tools. Includes a free website idea generator.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-find-website-ideas" },
   openGraph: {
     title: "How to Find Website Ideas for Your Next Project",
     description:

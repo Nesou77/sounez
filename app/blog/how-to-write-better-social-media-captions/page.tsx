@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
   title: "How to Write Better Social Media Captions with AI (2026) | Sounez",
   description:
     "Learn how to create better captions for Instagram, TikTok and LinkedIn using simple prompts, tone selection and AI caption examples.",
+  alternates: { canonical: getSiteUrl() + "/blog/how-to-write-better-social-media-captions" },
   openGraph: {
     title: "How to Write Better Social Media Captions with AI",
     description:

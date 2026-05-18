@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
 import { BLOG_POSTS } from "@/data/blog";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Sounez Blog | Tips and Guides for Creators",
   description: "Practical guides and tips on growing as a creator, designer and productivity pro.",
+  alternates: { canonical: getSiteUrl() + "/blog" },
   openGraph: {
     title: "Sounez Blog",
     description: "Practical guides for creators, designers and productivity pros.",

@@ -44,7 +44,7 @@ export default function TermsOfServicePage() {
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               By accessing or using Sounez (&quot;the website&quot;, &quot;the service&quot;) at{" "}
-              <a href="https://sounez.com" className="font-medium text-primary hover:underline">
+              <a href="https://www.sounez.com" className="font-medium text-primary hover:underline">
                 sounez.com
               </a>
               , you agree to comply with and be bound by these Terms of Service and our{" "}

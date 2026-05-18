@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   title: "Image SEO: The Complete Guide to Ranking Your Images on Google (2026) | Sounez",
   description:
     "Alt text, file names, compression, structured data, everything that makes images rank in Google Image Search and improve your page's Core Web Vitals.",
+  alternates: { canonical: getSiteUrl() + "/blog/image-seo-guide" },
   openGraph: {
     title: "Image SEO: The Complete Guide (2026)",
     description: "Alt text, file names, compression, everything that makes images rank on Google.",
