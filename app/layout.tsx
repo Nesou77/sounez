@@ -83,6 +83,7 @@ export default function RootLayout({
           <>
             <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
             <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+            <meta name="google-adsense-account" content="ca-pub-5339334010592024"></meta>
           </>
         ) : null}
         {/* Google Consent Mode v2 — inline so it runs before GTM without Next.js beforeInteractive overhead */}
