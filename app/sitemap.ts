@@ -3,20 +3,9 @@ import { TOOLS, CATEGORIES } from "@/data/tools";
 import { BLOG_POSTS } from "@/data/blog";
 import { getSiteUrl } from "@/lib/site-url";
 
-// Stable date for pages that don't have a real updatedAt.
+// Fallback date for static pages without a real updatedAt.
 // Update this when you make significant content changes to static pages.
 const STATIC_LAST_MODIFIED = new Date("2026-05-01");
-
-const STATIC_ROUTES = [
-  "/",
-  "/about",
-  "/blog",
-  "/categories",
-  "/contact",
-  "/privacy-policy",
-  "/terms-of-service",
-  "/tools",
-];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl();
@@ -74,7 +63,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // ── 2. Category pages (3 pages) ───────────────────────────────────────────
-  // Driven by CATEGORIES from data/tools.ts — new categories are picked up automatically.
   const categoryEntries: MetadataRoute.Sitemap = CATEGORIES.map((c) => ({
     url: `${base}/categories/${c.slug}`,
     lastModified: STATIC_LAST_MODIFIED,
@@ -82,25 +70,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  // ── 3. Tool pages (24 pages) ──────────────────────────────────────────────
-  // Driven by TOOLS from data/tools.ts — new tools are picked up automatically.
+  // ── 3. Tool pages — all under /tools/{slug} ───────────────────────────────
+  // Uses updatedAt from each tool for accurate lastModified.
+  // Falls back to STATIC_LAST_MODIFIED when updatedAt is not set.
   const toolEntries: MetadataRoute.Sitemap = TOOLS.map((t) => ({
-    url: `${base}/${t.slug}`,
-    lastModified: STATIC_LAST_MODIFIED,
+    url: `${base}/tools/${t.slug}`,
+    lastModified: t.updatedAt ? new Date(t.updatedAt) : STATIC_LAST_MODIFIED,
     changeFrequency: "monthly" as const,
     priority: t.featured ? 0.9 : 0.75,
   }));
 
-  // ── 4. Blog posts (27 posts) ──────────────────────────────────────────────
-  // Each post uses its own publish date so crawlers know the freshest content.
-  // New posts in data/blog.ts are picked up automatically.
+  // ── 4. Blog posts ─────────────────────────────────────────────────────────
   const blogEntries: MetadataRoute.Sitemap = BLOG_POSTS.map((p) => ({
     url: `${base}/blog/${p.slug}`,
-    lastModified: new Date(p.date),
+    lastModified: new Date(p.updatedAt ?? p.date),
     changeFrequency: "monthly" as const,
     priority: 0.65,
   }));
 
-  // ── Total: 8 static + 3 categories + 24 tools + 27 blog = 62 pages ────────
   return [...staticEntries, ...categoryEntries, ...toolEntries, ...blogEntries];
 }

@@ -9,6 +9,7 @@ import { BlogLikeController } from "./blog/BlogLikeController";
 import { AuthorCard } from "./AuthorCard";
 import { BLOG_POSTS } from "@/data/blog";
 import { TOOLS } from "@/data/tools";
+import { sortBlogPostsByPopularity, sortToolsByPopularity } from "@/lib/popularity";
 import { getToolIcon } from "@/lib/tool-icons";
 
 export function BlogPostShell({
@@ -25,13 +26,16 @@ export function BlogPostShell({
   ctaTools?: string[];
 }) {
   const post = BLOG_POSTS.find((p) => p.slug === slug)!;
-  const others = BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, 3);
+  const others = sortBlogPostsByPopularity(BLOG_POSTS.filter((p) => p.slug !== slug)).slice(0, 3);
   const featuredTools = (ctaTools ?? [])
     .map((s) => TOOLS.find((t) => t.slug === s))
     .filter((t): t is NonNullable<typeof t> => Boolean(t));
-  const fillerTools = TOOLS.filter((t) => !featuredTools.includes(t)).slice(0, Math.max(0, 3 - featuredTools.length));
+  const fillerTools = sortToolsByPopularity(TOOLS.filter((t) => !featuredTools.includes(t))).slice(
+    0,
+    Math.max(0, 3 - featuredTools.length),
+  );
   const primaryTools = [...featuredTools, ...fillerTools].slice(0, 3);
-  const sidebarTools = TOOLS.filter((t) => !primaryTools.includes(t)).slice(0, 5);
+  const sidebarTools = sortToolsByPopularity(TOOLS.filter((t) => !primaryTools.includes(t))).slice(0, 5);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -91,7 +95,7 @@ export function BlogPostShell({
                 {primaryTools.map((t) => {
                   const I = getToolIcon(t.slug);
                   return (
-                    <Link key={t.slug} href={`/${t.slug}`} className="group flex items-center gap-3 rounded-xl bg-card/80 p-3 transition hover:bg-card hover:shadow-soft">
+                    <Link key={t.slug} href={`/tools/${t.slug}`} className="group flex items-center gap-3 rounded-xl bg-card/80 p-3 transition hover:bg-card hover:shadow-soft">
                       <div className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-brand text-primary-foreground">
                         <I className="h-4 w-4" />
                       </div>
@@ -137,7 +141,7 @@ export function BlogPostShell({
                   <p className="mt-1 text-sm opacity-90">Open {primaryTools[0].name} and try it now. Free, no account needed.</p>
                 </div>
                 <Link
-                  href={`/${primaryTools[0].slug}`}
+                  href={`/tools/${primaryTools[0].slug}`}
                   className="inline-flex items-center gap-2 rounded-xl bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-soft transition hover:-translate-y-0.5 active:scale-95"
                 >
                   Open {primaryTools[0].name} <ArrowRight className="h-4 w-4" />
@@ -191,7 +195,7 @@ export function BlogPostShell({
                   const I = getToolIcon(t.slug);
                   return (
                     <li key={t.slug}>
-                      <Link href={`/${t.slug}`} className="group flex items-center gap-2.5 rounded-lg p-2 text-sm transition hover:bg-muted">
+                      <Link href={`/tools/${t.slug}`} className="group flex items-center gap-2.5 rounded-lg p-2 text-sm transition hover:bg-muted">
                         <I className="h-4 w-4 text-primary" />
                         <span className="flex-1 truncate font-medium">{t.name}</span>
                         <ArrowRight className="h-3.5 w-3.5 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:text-primary" />

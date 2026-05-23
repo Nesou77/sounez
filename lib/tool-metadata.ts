@@ -14,7 +14,7 @@ export function toolMetadata(
   }>,
 ): Metadata {
   const siteUrl = getSiteUrl();
-  const canonical = `${siteUrl}/${tool.slug}`;
+  const canonical = `${siteUrl}/tools/${tool.slug}`;
   const title = overrides?.title ?? tool.name;
   const description = overrides?.description ?? tool.description;
 

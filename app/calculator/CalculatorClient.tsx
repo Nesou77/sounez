@@ -132,7 +132,7 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
         return prev + value;
       });
     },
-    [display, expression, justEvaluated],
+    [display, expression, justEvaluated, tool.slug, tool.name, tool.category],
   );
 
   useEffect(() => {

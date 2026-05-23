@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { baselineLikeCount } from "@/lib/blog-engagement";
 
 interface BlogLikeState {
   liked: boolean;
@@ -14,12 +15,6 @@ const BlogLikeContext = createContext<BlogLikeState | null>(null);
 const LIKES_KEY = (slug: string) => `sounez:blog:likes:${slug}`;
 const LIKED_KEY = (slug: string) => `sounez:blog:liked:${slug}`;
 
-function computeBaseline(slug: string) {
-  let h = 0;
-  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
-  return 12 + (h % 80);
-}
-
 export function BlogLikeController({
   slug,
   children,
@@ -27,7 +22,7 @@ export function BlogLikeController({
   slug: string;
   children: React.ReactNode;
 }) {
-  const base = useMemo(() => computeBaseline(slug), [slug]);
+  const base = useMemo(() => baselineLikeCount(slug), [slug]);
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(base);
   const [pulse, setPulse] = useState(false);

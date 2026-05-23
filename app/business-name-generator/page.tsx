@@ -1,20 +1,2 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { toolBySlug } from "@/data/tools";
-import { BusinessNameClient } from "./BusinessNameClient";
-
-export const metadata: Metadata = {
-  title: "Free Business Name Generator | Brand Name Ideas | Sounez",
-  description:
-    "Generate creative business name ideas for your brand, startup, project or company using this free tool.",
-  openGraph: {
-    title: "Free Business Name Generator | Sounez",
-    description: "Enter your industry and keywords and get 6 creative, brandable name ideas in seconds.",
-  },
-};
-
-export default function Page() {
-  const tool = toolBySlug("business-name-generator");
-  if (!tool) notFound();
-  return <BusinessNameClient tool={tool} />;
-}
+import { permanentRedirect } from "next/navigation";
+export default function Page() { permanentRedirect("/tools/business-name-generator"); }

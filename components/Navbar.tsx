@@ -4,13 +4,14 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { TOOLS, CATEGORIES } from "@/data/tools";
+import { sortToolsByPopularity } from "@/lib/popularity";
 import { getToolIcon, getCategoryIcon } from "@/lib/tool-icons";
 import { BrandLogo } from "@/components/BrandLogo";
 
 const grouped: Record<string, { label: string; slug: string; items: typeof TOOLS }> = {
-  "creator-tools":  { label: "Creator Tools",  slug: "creator-tools",  items: TOOLS.filter((t) => t.category === "creator-tools").slice(0, 6) },
-  "design-tools":   { label: "Design Tools",   slug: "design-tools",   items: TOOLS.filter((t) => t.category === "design-tools").slice(0, 6) },
-  "utility-tools":  { label: "Utility Tools",  slug: "utility-tools",  items: TOOLS.filter((t) => t.category === "utility-tools").slice(0, 6) },
+  "creator-tools":  { label: "Creator Tools",  slug: "creator-tools",  items: sortToolsByPopularity(TOOLS.filter((t) => t.category === "creator-tools")).slice(0, 6) },
+  "design-tools":   { label: "Design Tools",   slug: "design-tools",   items: sortToolsByPopularity(TOOLS.filter((t) => t.category === "design-tools")).slice(0, 6) },
+  "utility-tools":  { label: "Utility Tools",  slug: "utility-tools",  items: sortToolsByPopularity(TOOLS.filter((t) => t.category === "utility-tools")).slice(0, 6) },
 };
 
 export function Navbar() {
@@ -62,7 +63,7 @@ export function Navbar() {
                           return (
                             <li key={t.slug}>
                               <Link
-                                href={`/${t.slug}`}
+                                href={`/tools/${t.slug}`}
                                 onClick={() => setOpen(null)}
                                 className="group flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm text-foreground/80 transition hover:bg-accent hover:text-accent-foreground"
                               >

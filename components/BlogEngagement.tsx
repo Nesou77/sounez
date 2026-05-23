@@ -5,6 +5,7 @@ import { Heart, MessageCircle, Send } from "lucide-react";
 import { toast } from "sonner";
 import { ShareButton } from "./EngagementBar";
 import { useBlogLike } from "./blog/BlogLikeController";
+import { baselineLikeCount, formatTimeAgo } from "@/lib/blog-engagement";
 import { cn } from "@/lib/utils";
 
 type Comment = {
@@ -19,29 +20,11 @@ const LIKED_KEY = (slug: string) => `sounez:blog:liked:${slug}`;
 const COMMENTS_KEY = (slug: string) => `sounez:blog:comments:${slug}`;
 const RATE_KEY = (slug: string) => `sounez:blog:lastComment:${slug}`;
 
-function baselineLikes(slug: string) {
-  let h = 0;
-  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
-  return 12 + (h % 80);
-}
-
-function timeAgo(ts: number) {
-  const s = Math.floor((Date.now() - ts) / 1000);
-  if (s < 60) return "just now";
-  const m = Math.floor(s / 60);
-  if (m < 60) return `${m}m ago`;
-  const h = Math.floor(m / 60);
-  if (h < 24) return `${h}h ago`;
-  const d = Math.floor(h / 24);
-  if (d < 30) return `${d}d ago`;
-  return new Date(ts).toLocaleDateString();
-}
-
 export function BlogEngagement({ slug }: { slug: string }) {
   const blogLike = useBlogLike();
   const isInBlogContext = blogLike !== null;
 
-  const base = useMemo(() => baselineLikes(slug), [slug]);
+  const base = useMemo(() => baselineLikeCount(slug), [slug]);
 
   // Local like state — only active when no BlogLikeController is in the tree
   const [localLikes, setLocalLikes] = useState(base);
@@ -226,7 +209,7 @@ export function BlogEngagement({ slug }: { slug: string }) {
                   </div>
                   <div className="text-sm font-semibold">{c.name}</div>
                 </div>
-                <div className="text-xs text-muted-foreground">{timeAgo(c.createdAt)}</div>
+                <div className="text-xs text-muted-foreground">{formatTimeAgo(c.createdAt)}</div>
               </div>
               <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-foreground/85">
                 {c.text}

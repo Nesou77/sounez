@@ -107,7 +107,7 @@ export function Footer() {
           <ul className="space-y-2.5 text-sm text-muted-foreground">
             {popular.map((t) => (
               <li key={t.slug}>
-                <Link href={`/${t.slug}`} className="transition hover:text-foreground">
+                <Link href={`/tools/${t.slug}`} className="transition hover:text-foreground">
                   {t.name}
                 </Link>
               </li>

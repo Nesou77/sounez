@@ -8,19 +8,14 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { SmartLink as Link } from "@/components/smart-link";
 import { Search } from "lucide-react";
 import { TOOLS, type Tool } from "@/data/tools";
+import { sortToolsByPopularity } from "@/lib/popularity";
+import { matchToolHeroSearch } from "@/lib/tools-search";
 import { getToolIcon } from "@/lib/tool-icons";
 import { trackSearch, trackSelectContent } from "@/lib/analytics";
 
 function filterToolsByQuery(raw: string): Tool[] {
-  const q = raw.trim().toLowerCase();
-  if (!q) return [];
-  return TOOLS.filter(
-    (t) =>
-      t.name.toLowerCase().includes(q) ||
-      t.description.toLowerCase().includes(q) ||
-      t.category.includes(q) ||
-      t.keywords.some((k) => k.toLowerCase().includes(q)),
-  );
+  if (!raw.trim()) return [];
+  return sortToolsByPopularity(TOOLS.filter((t) => matchToolHeroSearch(t, raw)));
 }
 
 export function HomeHeroSearch() {
@@ -58,7 +53,7 @@ export function HomeHeroSearch() {
       const selected = filtered[activeIndex];
       if (selected) {
         trackSelectContent({ content_type: "tool", item_id: selected.slug, search_term: q.trim() || undefined });
-        window.location.href = `/${selected.slug}`;
+        window.location.href = `/tools/${selected.slug}`;
       }
     }
   }
@@ -107,7 +102,7 @@ export function HomeHeroSearch() {
               <Link
                 key={t.slug}
                 id={`search-option-${idx}`}
-                href={`/${t.slug}`}
+                href={`/tools/${t.slug}`}
                 role="option"
                 aria-selected={idx === activeIndex}
                 className={`flex items-center gap-3 rounded-lg p-2.5 text-sm transition hover:bg-accent${idx === activeIndex ? " bg-accent" : ""}`}

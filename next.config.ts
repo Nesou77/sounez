@@ -21,6 +21,36 @@ const securityHeaders = [
   },
 ];
 
+// All tool slugs that previously lived at root level (/{slug}).
+// Each entry emits a permanent 301 redirect to /tools/{slug}.
+// When new tools are added they start under /tools/ directly — no entry needed here.
+const LEGACY_TOOL_SLUGS = [
+  "youtube-tags-generator",
+  "tiktok-money-calculator",
+  "hashtag-generator",
+  "color-palette-generator",
+  "css-gradient-generator",
+  "qr-code-generator",
+  "word-counter",
+  "password-generator",
+  "text-case-converter",
+  "image-compressor",
+  "ai-caption-generator",
+  "bio-generator",
+  "calculator",
+  "business-name-generator",
+  "study-notes-generator",
+  "website-idea-generator",
+  "resume-generator",
+  "png-to-jpg-converter",
+  "favicon-generator",
+  "svg-blob-generator",
+  "font-pairing-tool",
+  "image-placeholder-generator",
+  "box-shadow-generator",
+  "background-pattern-generator",
+];
+
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
@@ -79,6 +109,14 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
+  async redirects() {
+    return LEGACY_TOOL_SLUGS.map((slug) => ({
+      source: `/${slug}`,
+      destination: `/tools/${slug}`,
+      permanent: true,
+    }));
+  },
+
   async headers() {
     return [
       {

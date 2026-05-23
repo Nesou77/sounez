@@ -1,24 +1,2 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { SvgBlobClient } from "./SvgBlobClient";
-import { toolBySlug } from "@/data/tools";
-import { toolMetadata } from "@/lib/tool-metadata";
-
-const tool = toolBySlug("svg-blob-generator");
-if (!tool) notFound();
-
-export const metadata: Metadata = {
-  ...toolMetadata(tool!, {
-    title: "Free SVG Blob Generator | Create Organic Shapes | Sounez",
-    description:
-      "Generate smooth SVG blobs for backgrounds, hero sections and modern web design. Copy SVG code or download instantly.",
-  }),
-  openGraph: {
-    title: "Free SVG Blob Generator | Sounez",
-    description: "Generate smooth organic SVG blobs for websites and UI design.",
-  },
-};
-
-export default function Page() {
-  return <SvgBlobClient tool={tool!} />;
-}
+import { permanentRedirect } from "next/navigation";
+export default function Page() { permanentRedirect("/tools/svg-blob-generator"); }

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { TOOLS, type Tool } from "@/data/tools";
+import { sortToolsByPopularity } from "@/lib/popularity";
 import { blogPostsForTool } from "@/data/blog";
 import { ToolCard } from "./ToolCard";
 import { AdSlot } from "./AdSlot";
@@ -51,10 +52,14 @@ export function ToolPageShell({
   proTips?: string[];
   children: ReactNode;
 }) {
-  const sameCat = TOOLS.filter((t) => t.category === tool.category && t.slug !== tool.slug);
-  const otherCat = TOOLS.filter((t) => t.category !== tool.category).slice(0, 6);
+  const sameCat = sortToolsByPopularity(
+    TOOLS.filter((t) => t.category === tool.category && t.slug !== tool.slug),
+  );
+  const otherCat = sortToolsByPopularity(TOOLS.filter((t) => t.category !== tool.category)).slice(0, 6);
   const related = [...sameCat, ...otherCat].slice(0, 6);
-  const moreTools = TOOLS.filter((t) => t.slug !== tool.slug && !related.includes(t)).slice(0, 6);
+  const moreTools = sortToolsByPopularity(
+    TOOLS.filter((t) => t.slug !== tool.slug && !related.includes(t)),
+  ).slice(0, 6);
   const featuredPosts = blogPostsForTool(tool.slug);
   const Icon = getToolIcon(tool.slug);
 
@@ -191,7 +196,7 @@ export function ToolPageShell({
           {moreTools.map((t) => {
             const I = getToolIcon(t.slug);
             return (
-              <Link key={t.slug} href={`/${t.slug}`} className="group flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-soft">
+              <Link key={t.slug} href={`/tools/${t.slug}`} className="group flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-soft">
                 <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-gradient-soft text-primary ring-1 ring-primary/10" aria-hidden="true">
                   <I className="h-4 w-4" />
                 </div>

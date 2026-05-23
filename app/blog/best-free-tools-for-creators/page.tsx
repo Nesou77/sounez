@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import { SmartLink as Link } from "@/components/smart-link";
 
 export const metadata: Metadata = {
   title: "10 Best Free Online Tools for Creators in 2026 | Sounez",
@@ -168,7 +169,7 @@ export default function Post() {
         <h3>Which tool should I start with?</h3>
         <p>If you make videos: <a href="/youtube-tags-generator">YouTube Tags Generator</a>. If you publish on social: <a href="/hashtag-generator">Hashtag Generator</a>. If you design: <a href="/color-palette-generator">Color Palette Generator</a>.</p>
         <h3>Do you add new tools?</h3>
-        <p>Yes. New tools are shipped every month. Bookmark the <a href="/tools">tools page</a> and check back, or follow the <a href="/blog">blog</a> for announcements.</p>
+        <p>Yes. New tools are shipped every month. Bookmark the <Link href="/tools">tools page</Link> and check back, or follow the <Link href="/blog">blog</Link> for announcements.</p>
 
         <h2>Conclusion: pick three, bookmark them, ship faster</h2>
         <p>

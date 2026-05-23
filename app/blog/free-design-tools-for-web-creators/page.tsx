@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import { SmartLink as Link } from "@/components/smart-link";
 
 export const metadata: Metadata = {
   title: "Free Design Tools for Web Creators (2026) | Sounez",
@@ -167,7 +168,7 @@ export default function Post() {
         <p>
           A polished website is the sum of many small decisions made well. These six tools handle the
           details that are easy to overlook but immediately noticeable when they&apos;re missing. Bookmark
-          the <a href="/tools">tools page</a> and reach for them whenever you need a favicon, a blob,
+          the <Link href="/tools">tools page</Link> and reach for them whenever you need a favicon, a blob,
           a font pairing, a placeholder, a shadow or a pattern. Each one takes under two minutes and
           produces production-ready output.
         </p>

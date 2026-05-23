@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { TOOLS, CATEGORIES } from "@/data/tools";
+import { sortToolsByPopularity } from "@/lib/popularity";
+import { matchToolListSearch } from "@/lib/tools-search";
 import { ToolCard } from "@/components/ToolCard";
 import { AdSlot } from "@/components/AdSlot";
 import { trackSearch } from "@/lib/analytics";
@@ -12,14 +14,10 @@ export function ToolsClient() {
   const [cat, setCat] = useState<string>("all");
 
   const filtered = useMemo(() => {
-    const lower = q.toLowerCase();
-    return TOOLS.filter((t) =>
-      (cat === "all" || t.category === cat) &&
-      (q === "" ||
-        t.name.toLowerCase().includes(lower) ||
-        t.description.toLowerCase().includes(lower) ||
-        t.keywords.some((k) => k.toLowerCase().includes(lower)))
+    const list = TOOLS.filter(
+      (t) => (cat === "all" || t.category === cat) && matchToolListSearch(t, q),
     );
+    return sortToolsByPopularity(list);
   }, [q, cat]);
 
   useEffect(() => {

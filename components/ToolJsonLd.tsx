@@ -10,7 +10,7 @@ type FAQ = { q: string; a: string };
  */
 export function ToolJsonLd({ tool, faqs }: { tool: Tool; faqs?: FAQ[] }) {
   const siteUrl = getSiteUrl();
-  const pageUrl = `${siteUrl}/${tool.slug}`;
+  const pageUrl = `${siteUrl}/tools/${tool.slug}`;
 
   const softwareApp = {
     "@context": "https://schema.org",

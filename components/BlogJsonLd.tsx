@@ -1,4 +1,4 @@
-import { BLOG_POSTS } from "@/data/tools";
+import { BLOG_POSTS } from "@/data/blog";
 import { getSiteUrl } from "@/lib/site-url";
 
 export type FaqItem = { question: string; answer: string };
@@ -49,7 +49,7 @@ export function BlogJsonLd({
       },
     },
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updatedAt ?? post.date,
     image: {
       "@type": "ImageObject",
       url: imageUrl,
