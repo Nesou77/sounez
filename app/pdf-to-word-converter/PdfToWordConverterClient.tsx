@@ -245,7 +245,7 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
       )}
 
       {/* File ready */}
-      {(stage === "ready" || stage === "processing" || stage === "done") && file && (
+      {(stage === "ready" || stage === "processing" || stage === "done" || stage === "error") && file && (
         <div className="space-y-5">
           {/* File card */}
           <div className="flex items-center gap-4 rounded-xl border border-border bg-muted/40 p-4">
