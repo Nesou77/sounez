@@ -1,12 +1,25 @@
+# Render deployment configuration for the sounez-backend service.
+#
+# This file lives at: sounez/backend/render.yaml
+# The GitHub repo root is:  sounez/
+# So rootDir below is relative to the repo root → "backend"
+#
+# Deploy steps on Render:
+#   1. Connect your GitHub repo (sounez)
+#   2. Render auto-detects this render.yaml
+#   3. Set ALLOWED_ORIGINS in the Render dashboard environment variables
+#
+# Docker build is used so LibreOffice is available for PDF conversion.
+
 services:
   - type: web
     name: sounez-backend
-    runtime: node
+    runtime: docker
+    dockerfilePath: ./Dockerfile        # relative to rootDir
+    dockerContext: .                    # relative to rootDir
+    rootDir: backend                    # relative to repo root (sounez/)
     region: oregon
-    plan: free
-    rootDir: backend
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    plan: starter                       # free plan has no persistent disk; starter recommended for LibreOffice
     healthCheckPath: /health
     envVars:
       - key: NODE_ENV
@@ -14,4 +27,8 @@ services:
       - key: PORT
         value: 3001
       - key: ALLOWED_ORIGINS
-        sync: false   # Set this in the Render dashboard: https://www.sounez.com,https://sounez.com
+        sync: false                     # ← set in Render dashboard: https://www.sounez.com,https://sounez.com
+      - key: MAX_FILE_SIZE_MB
+        value: 20
+      - key: TEMP_DIR
+        value: /tmp/sounez

@@ -34,4 +34,13 @@ export const env = {
     if (!v) warnMissing("NEXT_PUBLIC_ADSENSE_PUB_ID");
     return v;
   },
+
+  /**
+   * Render backend URL (NEXT_PUBLIC — safe for client, no secrets).
+   * Example: https://sounez-backend.onrender.com
+   * Used by PdfToWordConverterClient to call /api/pdf-to-word.
+   */
+  get backendUrl(): string {
+    return process.env.NEXT_PUBLIC_BACKEND_URL?.trim() || "";
+  },
 } as const;

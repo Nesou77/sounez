@@ -1,17 +1,20 @@
 import { Router, Request, Response } from "express";
 import multer from "multer";
 import { rateLimit } from "express-rate-limit";
-import { convertPdfToDocx } from "../services/pdf-converter";
+import path from "path";
+import fs from "fs";
+import { convertWithLibreOffice } from "../lib/libreoffice";
+import { createJobDir, cleanupDir } from "../lib/temp";
 
 const router = Router();
 
-// ── Per-route rate limit: 5 conversions/min per IP ───────────────────────────
+// ── Per-route rate limit: 5 conversions / min per IP ─────────────────────────
 const convertRateLimit = rateLimit({
-  windowMs: 60 * 1000,
+  windowMs: 60_000,
   max: 5,
   keyGenerator: (req) => {
-    const forwarded = req.headers["x-forwarded-for"];
-    if (typeof forwarded === "string") return forwarded.split(",")[0].trim();
+    const fwd = req.headers["x-forwarded-for"];
+    if (typeof fwd === "string") return fwd.split(",")[0].trim();
     return req.ip ?? "anonymous";
   },
   message: { error: "Too many conversion requests. Please wait a moment and try again." },
@@ -19,10 +22,23 @@ const convertRateLimit = rateLimit({
   legacyHeaders: false,
 });
 
-// ── Multer: memory storage, 20 MB limit ──────────────────────────────────────
+// ── Multer: disk storage so LibreOffice can read the file ─────────────────────
+const MAX_MB = parseInt(process.env.MAX_FILE_SIZE_MB || "20", 10);
+
 const upload = multer({
-  storage: multer.memoryStorage(),
-  limits: { fileSize: 20 * 1024 * 1024 }, // 20 MB
+  storage: multer.diskStorage({
+    destination: (_req, _file, cb) => {
+      // Each upload gets its own job directory
+      const dir = createJobDir();
+      cb(null, dir);
+    },
+    filename: (_req, file, cb) => {
+      // Sanitise filename — keep extension, replace everything else
+      const ext = path.extname(file.originalname).toLowerCase() || ".pdf";
+      cb(null, `upload${ext}`);
+    },
+  }),
+  limits: { fileSize: MAX_MB * 1024 * 1024 },
   fileFilter: (_req, file, cb) => {
     if (
       file.mimetype === "application/pdf" ||
@@ -42,43 +58,68 @@ router.post(
   convertRateLimit,
   upload.single("pdf"),
   async (req: Request, res: Response): Promise<void> => {
-    if (!req.file) {
+    const uploadedFile = req.file;
+
+    if (!uploadedFile) {
       res.status(400).json({ error: "No PDF file provided." });
       return;
     }
 
-    const preserveLayout = req.body.preserveLayout === "true";
-    const useOcr = req.body.useOcr === "true";
+    // The job directory is the directory multer wrote the file into
+    const jobDir = path.dirname(uploadedFile.path);
 
     try {
-      const docxBuffer = await convertPdfToDocx(req.file.buffer, {
-        preserveLayout,
-        useOcr,
-      });
+      const result = await convertWithLibreOffice(uploadedFile.path, jobDir);
 
+      if (!result.ok) {
+        const statusMap: Record<string, number> = {
+          not_installed: 503,
+          encrypted: 422,
+          corrupt: 422,
+          no_text: 422,
+          timeout: 504,
+          unknown: 500,
+        };
+        res
+          .status(statusMap[result.reason] ?? 500)
+          .json({ error: result.message });
+        cleanupDir(jobDir);
+        return;
+      }
+
+      // Build a clean output filename from the original upload name
       const outputName =
-        (req.file.originalname || "document.pdf")
+        (uploadedFile.originalname || "document.pdf")
           .replace(/\.pdf$/i, "")
-          .replace(/[^a-zA-Z0-9_\-. ]/g, "_") + ".docx";
+          .replace(/[^a-zA-Z0-9_\-. ]/g, "_")
+          .slice(0, 100) + ".docx";
 
-      res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-      res.setHeader("Content-Disposition", `attachment; filename="${outputName}"`);
+      res.setHeader(
+        "Content-Type",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      );
+      res.setHeader(
+        "Content-Disposition",
+        `attachment; filename="${outputName}"`,
+      );
       res.setHeader("Cache-Control", "no-store");
-      res.send(docxBuffer);
+
+      // Stream the file then clean up
+      const readStream = fs.createReadStream(result.docxPath);
+      readStream.pipe(res);
+      readStream.on("end", () => cleanupDir(jobDir));
+      readStream.on("error", (err) => {
+        console.error("[pdf-to-word] Stream error:", err.message);
+        cleanupDir(jobDir);
+        if (!res.headersSent) {
+          res.status(500).json({ error: "Failed to send converted file." });
+        }
+      });
     } catch (err) {
+      cleanupDir(jobDir);
       const message = err instanceof Error ? err.message : "Conversion failed.";
-      console.error("[pdf-to-word] Conversion error:", message);
-
-      if (message.includes("encrypted") || message.includes("password")) {
-        res.status(422).json({ error: "This PDF is password-protected. Please remove the password and try again." });
-        return;
-      }
-      if (message.includes("corrupt") || message.includes("invalid")) {
-        res.status(422).json({ error: "The PDF file appears to be corrupted. Please try a different file." });
-        return;
-      }
-
-      res.status(500).json({ error: "Conversion failed. Please try again or use a different PDF." });
+      console.error("[pdf-to-word] Unexpected error:", message);
+      res.status(500).json({ error: "Conversion failed. Please try again." });
     }
   },
 );

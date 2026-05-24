@@ -119,9 +119,9 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
     setErrorMsg("");
 
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL?.trim() || "";
       if (!backendUrl) {
-        setErrorMsg("Conversion service is not configured. Please try again later.");
+        setErrorMsg("Conversion service is not available right now. Please try again later.");
         setStage("error");
         return;
       }
@@ -131,14 +131,26 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
       formData.append("preserveLayout", String(preserveLayout));
       formData.append("useOcr", String(useOcr));
 
-      const res = await fetch(`${backendUrl}/api/pdf-to-word`, {
-        method: "POST",
-        body: formData,
-      });
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 90_000); // 90 s
+
+      let res: Response;
+      try {
+        res = await fetch(`${backendUrl}/api/pdf-to-word`, {
+          method: "POST",
+          body: formData,
+          signal: controller.signal,
+        });
+      } finally {
+        clearTimeout(timeout);
+      }
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        setErrorMsg((data as { error?: string })?.error || "Conversion failed. Please try again.");
+        setErrorMsg(
+          (data as { error?: string })?.error ||
+            "Conversion failed. Please try again.",
+        );
         setStage("error");
         return;
       }
@@ -147,8 +159,12 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
       const url = URL.createObjectURL(blob);
       setDownloadUrl(url);
       setStage("done");
-    } catch {
-      setErrorMsg("Network error. Please check your connection and try again.");
+    } catch (err) {
+      if (err instanceof Error && err.name === "AbortError") {
+        setErrorMsg("Conversion timed out. Try a smaller PDF or try again later.");
+      } else {
+        setErrorMsg("Network error. Please check your connection and try again.");
+      }
       setStage("error");
     }
   };
