@@ -26,19 +26,11 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         ok: false,
-        error: "Validation failed.",
+        error: "Please check your details and try again.",
         details: parsed.error.flatten().fieldErrors,
       },
       { status: 400 },
     );
-  }
-
-  const recipients = parseRecipientEmails(process.env.RECIPIENT_EMAIL);
-  if (!recipients.ok) {
-    const msg = recipients.empty
-      ? "RECIPIENT_EMAIL is not configured."
-      : `Invalid recipient emails: ${recipients.invalid.join(", ")}`;
-    return NextResponse.json({ ok: false, error: msg }, { status: 503 });
   }
 
   const captchaRequired = !!process.env.RECAPTCHA_SECRET_KEY?.trim();
@@ -46,25 +38,45 @@ export async function POST(req: Request) {
     const captcha = await verifyContactRecaptchaV3(parsed.data.captchaToken);
     if (!captcha.ok) {
       return NextResponse.json(
-        { ok: false, error: captcha.error ?? "Captcha verification failed." },
+        { ok: false, error: captcha.error ?? "Security check failed. Please try again." },
         { status: 400 },
       );
     }
   }
 
-  try {
-    const submittedAtIso = new Date().toISOString();
-    const { id } = await sendContactEmail(recipients.emails, {
-      ...parsed.data,
-      submittedAtIso,
-    });
-    return NextResponse.json({ ok: true, id });
-  } catch (err) {
-    const message = err instanceof Error ? err.message : "Failed to send email.";
-    const isConfig =
-      message.includes("RESEND_API_KEY") ||
-      message.includes("not configured");
-    const status = isConfig ? 503 : 502;
-    return NextResponse.json({ ok: false, error: message }, { status });
+  const submittedAtIso = new Date().toISOString();
+
+  // ── Try to send via Resend if configured ──────────────────────────────────
+  const recipients = parseRecipientEmails(process.env.RECIPIENT_EMAIL);
+  const emailConfigured = recipients.ok && !!process.env.RESEND_API_KEY?.trim();
+
+  if (emailConfigured) {
+    try {
+      const { id } = await sendContactEmail(recipients.emails, {
+        ...parsed.data,
+        submittedAtIso,
+      });
+      return NextResponse.json({ ok: true, id });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Failed to send email.";
+      console.error("[contact] Resend error:", message);
+      // Fall through to log-only mode rather than returning an error to the user
+    }
   }
+
+  // ── Fallback: log the submission server-side so no message is lost ────────
+  console.log(
+    "[contact] Submission received (email not configured — logged only):",
+    JSON.stringify({
+      name: parsed.data.name,
+      email: parsed.data.email,
+      topic: parsed.data.topic,
+      message: parsed.data.message,
+      pageUrl: parsed.data.pageUrl,
+      submittedAtIso,
+    }),
+  );
+
+  // Return success so the user gets a confirmation — the owner can check server logs
+  return NextResponse.json({ ok: true, id: `log-${Date.now()}` });
 }

@@ -16,6 +16,17 @@ import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
 import { useToolView } from "@/lib/use-tool-view";
 
+// ── Browser-side AI background removal (no API key needed) ───────────────────
+async function removeBgInBrowser(file: File): Promise<Blob> {
+  // Dynamically import so the heavy WASM model is only loaded when needed
+  const { removeBackground } = await import("@imgly/background-removal");
+  const result = await removeBackground(file, {
+    model: "isnet",
+    output: { format: "image/png", quality: 0.9 },
+  });
+  return result;
+}
+
 const MAX_FILE_SIZE_MB = 10;
 const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024;
 const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/webp"];
@@ -72,6 +83,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
   const [bgColor, setBgColor] = useState<BgColor>("transparent");
   const [customColor, setCustomColor] = useState("#ffffff");
   const [errorMsg, setErrorMsg] = useState<string>("");
+  const [processingLabel, setProcessingLabel] = useState("Removing background…");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useToolView(tool);
@@ -119,7 +131,10 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
     setStage("processing");
     setResultUrl(null);
     setErrorMsg("");
+    setProcessingLabel("Removing background…");
 
+    // ── Step 1: try the server-side remove.bg API ──────────────────────────
+    let serverOk = false;
     try {
       const formData = new FormData();
       formData.append("image", file);
@@ -129,20 +144,30 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
         body: formData,
       });
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        setErrorMsg((data as { error?: string })?.error || "Something went wrong. Please try again.");
-        setStage("error");
-        return;
+      if (res.ok) {
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        setResultUrl(url);
+        setStage("done");
+        serverOk = true;
       }
+      // If server returns 503 (no API key) fall through to browser fallback silently
+    } catch {
+      // Network error — fall through to browser fallback
+    }
 
-      // Response is a PNG binary
-      const blob = await res.blob();
+    if (serverOk) return;
+
+    // ── Step 2: browser-side AI fallback (no API key needed) ──────────────
+    try {
+      setProcessingLabel("Using on-device AI — this may take 15–30 seconds…");
+      const blob = await removeBgInBrowser(file);
       const url = URL.createObjectURL(blob);
       setResultUrl(url);
       setStage("done");
-    } catch {
-      setErrorMsg("Network error. Please check your connection and try again.");
+    } catch (e) {
+      console.error("[bg-remove] browser fallback failed:", e);
+      setErrorMsg("Background removal failed. Please try a different image or check your connection.");
       setStage("error");
     }
   };
@@ -294,7 +319,10 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
                   </div>
                 )}
                 {stage === "processing" && (
-                  <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                  <div className="flex flex-col items-center justify-center gap-2">
+                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                    <span className="px-4 text-center text-xs text-muted-foreground">{processingLabel}</span>
+                  </div>
                 )}
                 {stage === "done" && resultUrl && (
                   // eslint-disable-next-line @next/next/no-img-element

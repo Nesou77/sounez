@@ -119,24 +119,17 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
     setErrorMsg("");
 
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL?.trim() || "";
-      if (!backendUrl) {
-        setErrorMsg("PDF conversion is not set up yet. Please check back soon.");
-        setStage("error");
-        return;
-      }
-
       const formData = new FormData();
       formData.append("pdf", file);
       formData.append("preserveLayout", String(preserveLayout));
       formData.append("useOcr", String(useOcr));
 
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 90_000); // 90 s
+      const timeout = setTimeout(() => controller.abort(), 120_000); // 2 min
 
       let res: Response;
       try {
-        res = await fetch(`${backendUrl}/api/pdf-to-word`, {
+        res = await fetch("/api/pdf-to-word", {
           method: "POST",
           body: formData,
           signal: controller.signal,

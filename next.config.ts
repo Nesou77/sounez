@@ -107,6 +107,17 @@ const nextConfig: NextConfig = {
         "core-js/modules/es.string.trim-start.js": false,
       });
     }
+
+    // pdf-parse uses Node.js built-ins — mark them as external on the server
+    // so webpack doesn't try to bundle them.
+    if (isServer) {
+      const existingExternals = config.externals ?? [];
+      config.externals = [
+        ...(Array.isArray(existingExternals) ? existingExternals : [existingExternals]),
+        "pdf-parse",
+      ];
+    }
+
     return config;
   },
   async redirects() {
