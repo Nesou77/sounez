@@ -16,46 +16,23 @@ import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
 import { useToolView } from "@/lib/use-tool-view";
 
-// ── Browser-side AI background removal (no API key, loaded from CDN) ────────
-// The @imgly/background-removal package is NOT bundled — it's loaded on demand
-// from jsDelivr CDN to keep the Vercel Lambda bundle under the 250 MB limit.
-// The WASM model files are also fetched from CDN at runtime.
-
-declare global {
-  interface Window {
-    imglyRemoveBackground?: (source: File | string, config?: Record<string, unknown>) => Promise<Blob>;
-  }
-}
-
-async function loadImglyScript(): Promise<void> {
-  if (typeof window.imglyRemoveBackground === "function") return;
-  return new Promise((resolve, reject) => {
-    const existing = document.getElementById("imgly-bg-removal-script");
-    if (existing) {
-      // Script already injected — wait for it to finish loading
-      existing.addEventListener("load", () => resolve());
-      existing.addEventListener("error", () => reject(new Error("Failed to load background removal library.")));
-      return;
-    }
-    const script = document.createElement("script");
-    script.id = "imgly-bg-removal-script";
-    script.src = "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/browser/index.js";
-    script.crossOrigin = "anonymous";
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error("Failed to load background removal library. Please check your connection."));
-    document.head.appendChild(script);
-  });
-}
+// ── Browser-side AI background removal ───────────────────────────────────────
+// @imgly/background-removal is 1.1 MB — safe to bundle.
+// The WASM model (~40 MB) is fetched from CDN at runtime, not bundled.
+// Dynamic import ensures it only loads when the user actually clicks the button.
 
 async function removeBgInBrowser(file: File): Promise<Blob> {
-  await loadImglyScript();
-  if (typeof window.imglyRemoveBackground !== "function") {
-    throw new Error("Background removal library could not be loaded.");
-  }
-  return window.imglyRemoveBackground(file, {
+  const { removeBackground } = await import("@imgly/background-removal");
+  return removeBackground(file, {
     model: "isnet",
     output: { format: "image/png", quality: 0.9 },
   });
+}
+
+declare global {
+  interface Window {
+    imglyRemoveBackground?: never; // unused — kept for type safety
+  }
 }
 
 const MAX_FILE_SIZE_MB = 10;

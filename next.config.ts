@@ -57,9 +57,9 @@ const nextConfig: NextConfig = {
     deviceSizes: [390, 414, 640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 24, 32, 48, 64, 96, 128, 144, 192, 216, 256, 384],
   },
-  // onnxruntime-web is a browser-only WASM peer dep — never bundle it server-side.
-  // @imgly/background-removal is loaded from CDN at runtime, not bundled.
-  serverExternalPackages: [],
+  // @imgly/background-removal is a browser-only package (1.1 MB JS + WASM from CDN at runtime).
+  // Excluding it from the server Lambda trace keeps the bundle lean.
+  serverExternalPackages: ["@imgly/background-removal"],
 
   // Inline critical CSS and defer the rest, eliminating render-blocking CSS (requires `critters` package).
   experimental: {
@@ -108,6 +108,11 @@ const nextConfig: NextConfig = {
         "core-js/modules/es.object.has-own.js": false,
         "core-js/modules/es.string.trim-end.js": false,
         "core-js/modules/es.string.trim-start.js": false,
+        // @imgly/background-removal imports onnxruntime-web statically in its bundle,
+        // but loads the actual WASM from CDN at runtime. Stub these out so webpack
+        // doesn't fail trying to resolve the uninstalled peer dependency.
+        "onnxruntime-web": false,
+        "onnxruntime-web/webgpu": false,
       });
     }
 
