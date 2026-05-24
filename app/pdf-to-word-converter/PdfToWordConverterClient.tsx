@@ -121,7 +121,7 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
     try {
       const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL?.trim() || "";
       if (!backendUrl) {
-        setErrorMsg("Conversion service is not available right now. Please try again later.");
+        setErrorMsg("PDF conversion is not set up yet. Please check back soon.");
         setStage("error");
         return;
       }
@@ -343,7 +343,7 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
               <div className="flex items-start gap-3 rounded-xl border border-destructive/40 bg-destructive/5 p-4">
                 <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
                 <div className="text-sm">
-                  <p className="font-semibold text-destructive">Conversion failed</p>
+                  <p className="font-semibold text-destructive">Unable to convert</p>
                   <p className="mt-1 text-muted-foreground">{errorMsg}</p>
                 </div>
               </div>

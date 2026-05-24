@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import { env } from "@/lib/env";
 import { checkRateLimit, getClientIp, AI_RATE_LIMIT } from "@/lib/rate-limit";
 
-// ── Types ────────────────────────────────────────────────────────────────────
-
 type Tone = "descriptive" | "accessibility" | "seo" | "social";
 
 type DescribeResult = {
@@ -14,56 +12,45 @@ type DescribeResult = {
   socialCaption: string;
 };
 
-// ── Fallback ─────────────────────────────────────────────────────────────────
+// ── Fallback (used when Gemini key is missing or call fails) ──────────────────
 
 function fallbackResult(tone: Tone): DescribeResult {
-  const base = {
-    altText: "An image uploaded by the user.",
+  const base: DescribeResult = {
+    altText: "An uploaded image.",
     shortCaption: "A photo ready for use.",
-    detailedDescription: "The image has been uploaded successfully. AI description is temporarily unavailable.",
-    seoKeywords: "image, photo, visual content",
-    socialCaption: "Check out this image! ✨ #photo #content",
+    detailedDescription: "Your image was uploaded successfully. Add your own description to get the most out of this tool.",
+    seoKeywords: "image, photo, visual content, media",
+    socialCaption: "Check out this image! ✨ #photo #content #visual",
   };
-
   if (tone === "accessibility") {
-    return {
-      ...base,
-      altText: "Image content — description unavailable. Please add a manual alt text.",
-    };
+    return { ...base, altText: "Image — please add a descriptive alt text for accessibility." };
   }
   if (tone === "seo") {
-    return {
-      ...base,
-      seoKeywords: "image, photo, visual, content, media",
-    };
+    return { ...base, seoKeywords: "image, photo, visual, content, media, digital" };
   }
   return base;
 }
 
-// ── Gemini Vision call ────────────────────────────────────────────────────────
+// ── Gemini Vision ─────────────────────────────────────────────────────────────
 
 const GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 
 function buildPrompt(tone: Tone): string {
   const toneInstructions: Record<Tone, string> = {
-    descriptive:
-      "Provide a neutral, factual description of the image. Focus on what is visible: subjects, objects, setting, colors, and composition.",
-    accessibility:
-      "Write concise alt text suitable for screen readers. Be specific and informative. Keep it under 125 characters if possible. Describe the most important content first.",
-    seo:
-      "Generate SEO-optimised content. Focus on keywords a user might search for. Include relevant descriptive terms for the image subject, setting, and context.",
-    social:
-      "Write engaging social media content. Be conversational, use relevant emojis, and include 3-5 hashtags at the end.",
+    descriptive: "Provide a neutral, factual description. Focus on subjects, objects, setting, colors, and composition.",
+    accessibility: "Write concise alt text for screen readers. Be specific, under 125 characters if possible. Most important content first.",
+    seo: "Generate SEO-optimised content with keywords a user might search for. Include descriptive terms for subject, setting, and context.",
+    social: "Write engaging social media content. Be conversational, use relevant emojis, include 3-5 hashtags at the end.",
   };
 
   return `Analyse this image and return a JSON object with exactly these fields:
-- "altText": ${tone === "accessibility" ? "Concise alt text for screen readers (under 125 characters)." : "A short descriptive alt text for the image (1-2 sentences)."}
+- "altText": ${tone === "accessibility" ? "Concise alt text for screen readers (under 125 characters)." : "A short descriptive alt text (1-2 sentences)."}
 - "shortCaption": A punchy one-line caption (under 15 words).
-- "detailedDescription": A detailed description of the image (3-5 sentences).
+- "detailedDescription": A detailed description (3-5 sentences).
 - "seoKeywords": A comma-separated list of 8-12 relevant SEO keywords.
 - "socialCaption": An engaging social media caption with emojis and 3-5 hashtags.
 
-Tone instruction: ${toneInstructions[tone]}
+Tone: ${toneInstructions[tone]}
 
 Return ONLY valid JSON. No markdown fences. No explanation.`;
 }
@@ -81,15 +68,8 @@ async function callGeminiVision(
       {
         role: "user",
         parts: [
-          {
-            inlineData: {
-              mimeType,
-              data: base64Image,
-            },
-          },
-          {
-            text: buildPrompt(tone),
-          },
+          { inlineData: { mimeType, data: base64Image } },
+          { text: buildPrompt(tone) },
         ],
       },
     ],
@@ -106,8 +86,7 @@ async function callGeminiVision(
   });
 
   if (!res.ok) {
-    const errText = await res.text();
-    console.error(`[image-describe] Gemini error ${res.status}: ${errText}`);
+    console.error(`[image-describe] Gemini error ${res.status}: ${await res.text()}`);
     return fallbackResult(tone);
   }
 
@@ -116,31 +95,27 @@ async function callGeminiVision(
   if (!text) return fallbackResult(tone);
 
   try {
-    const cleaned = text
-      .replace(/^```(?:json)?\s*/i, "")
-      .replace(/\s*```$/i, "")
-      .trim();
+    const cleaned = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
     const parsed = JSON.parse(cleaned) as Partial<DescribeResult>;
-
+    const fb = fallbackResult(tone);
     return {
-      altText: parsed.altText?.trim() || fallbackResult(tone).altText,
-      shortCaption: parsed.shortCaption?.trim() || fallbackResult(tone).shortCaption,
-      detailedDescription: parsed.detailedDescription?.trim() || fallbackResult(tone).detailedDescription,
-      seoKeywords: parsed.seoKeywords?.trim() || fallbackResult(tone).seoKeywords,
-      socialCaption: parsed.socialCaption?.trim() || fallbackResult(tone).socialCaption,
+      altText: parsed.altText?.trim() || fb.altText,
+      shortCaption: parsed.shortCaption?.trim() || fb.shortCaption,
+      detailedDescription: parsed.detailedDescription?.trim() || fb.detailedDescription,
+      seoKeywords: parsed.seoKeywords?.trim() || fb.seoKeywords,
+      socialCaption: parsed.socialCaption?.trim() || fb.socialCaption,
     };
   } catch {
     return fallbackResult(tone);
   }
 }
 
-// ── Route ────────────────────────────────────────────────────────────────────
+// ── Route ─────────────────────────────────────────────────────────────────────
 
 const ACCEPTED_MIME = ["image/png", "image/jpeg", "image/webp", "image/gif"];
-const MAX_SIZE = 10 * 1024 * 1024; // 10 MB
+const MAX_SIZE = 10 * 1024 * 1024;
 
 export async function POST(req: Request) {
-  // Rate limit
   const ip = getClientIp(req);
   const rl = checkRateLimit(`image-describe:${ip}`, AI_RATE_LIMIT);
   if (!rl.allowed) {
@@ -150,20 +125,14 @@ export async function POST(req: Request) {
     );
   }
 
-  // Check API key
-  if (!env.geminiApiKey) {
-    return NextResponse.json(
-      { error: "AI service is temporarily unavailable. Please try again later." },
-      { status: 503 },
-    );
-  }
+  // If no API key, return graceful fallback instead of an error
+  const hasKey = !!env.geminiApiKey;
 
-  // Parse multipart form data
   let formData: FormData;
   try {
     formData = await req.formData();
   } catch {
-    return NextResponse.json({ error: "Invalid request format." }, { status: 400 });
+    return NextResponse.json({ error: "Invalid request. Please try again." }, { status: 400 });
   }
 
   const imageFile = formData.get("image");
@@ -173,7 +142,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "No image file provided." }, { status: 400 });
   }
 
-  // Validate file type
   const mimeType = imageFile.type || "image/jpeg";
   if (!ACCEPTED_MIME.includes(mimeType)) {
     return NextResponse.json(
@@ -182,7 +150,6 @@ export async function POST(req: Request) {
     );
   }
 
-  // Validate file size
   if (imageFile.size > MAX_SIZE) {
     return NextResponse.json(
       { error: "File too large. Maximum size is 10 MB." },
@@ -190,26 +157,25 @@ export async function POST(req: Request) {
     );
   }
 
-  // Validate tone
   const VALID_TONES: Tone[] = ["descriptive", "accessibility", "seo", "social"];
   const tone: Tone =
     typeof toneRaw === "string" && VALID_TONES.includes(toneRaw as Tone)
       ? (toneRaw as Tone)
       : "descriptive";
 
-  // Convert to base64
+  // Return fallback immediately if no key configured
+  if (!hasKey) {
+    return NextResponse.json(fallbackResult(tone));
+  }
+
   const arrayBuffer = await imageFile.arrayBuffer();
   const base64 = Buffer.from(arrayBuffer).toString("base64");
 
-  // Call Gemini Vision
   try {
     const result = await callGeminiVision(base64, mimeType, tone);
     return NextResponse.json(result);
   } catch (e) {
     console.error("[image-describe] Unexpected error:", e);
-    return NextResponse.json(
-      { error: "Something went wrong. Please try again." },
-      { status: 500 },
-    );
+    return NextResponse.json(fallbackResult(tone));
   }
 }
