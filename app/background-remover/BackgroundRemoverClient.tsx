@@ -8,7 +8,7 @@ import {
   Shield,
   Download,
   Loader2,
-  Info,
+  AlertCircle,
   ImageIcon,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -40,7 +40,7 @@ const FAQS = [
   },
   {
     q: "Is my image sent to a server?",
-    a: "When the AI backend is active, your image is sent securely over HTTPS, processed, and immediately deleted. We do not store your images.",
+    a: "Yes. Your image is sent securely over HTTPS, processed, and immediately deleted. We do not store your images.",
   },
   {
     q: "What file formats are supported?",
@@ -66,10 +66,12 @@ const CHECKERBOARD =
 export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [stage, setStage] = useState<Stage>("idle");
   const [dragging, setDragging] = useState(false);
   const [bgColor, setBgColor] = useState<BgColor>("transparent");
   const [customColor, setCustomColor] = useState("#ffffff");
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useToolView(tool);
@@ -104,16 +106,80 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
 
   const reset = () => {
     if (preview) URL.revokeObjectURL(preview);
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
     setFile(null);
     setPreview(null);
+    setResultUrl(null);
     setStage("idle");
+    setErrorMsg("");
   };
 
   const removeBackground = async () => {
     if (!file) return;
     setStage("processing");
-    await new Promise((r) => setTimeout(r, 2200));
-    setStage("done");
+    setResultUrl(null);
+    setErrorMsg("");
+
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const res = await fetch("/api/background-remove", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setErrorMsg((data as { error?: string })?.error || "Something went wrong. Please try again.");
+        setStage("error");
+        return;
+      }
+
+      // Response is a PNG binary
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      setResultUrl(url);
+      setStage("done");
+    } catch {
+      setErrorMsg("Network error. Please check your connection and try again.");
+      setStage("error");
+    }
+  };
+
+  const downloadResult = () => {
+    if (!resultUrl) return;
+
+    // If a background color is selected, composite onto a canvas before downloading
+    if (bgColor !== "transparent") {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        // Fill background
+        ctx.fillStyle = resolvedBg;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+
+        canvas.toBlob((blob) => {
+          if (!blob) return;
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "background-removed.png";
+          a.click();
+        }, "image/png");
+      };
+      img.src = resultUrl;
+    } else {
+      const a = document.createElement("a");
+      a.href = resultUrl;
+      a.download = "background-removed.png";
+      a.click();
+    }
   };
 
   const resolvedBg =
@@ -230,10 +296,18 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
                 {stage === "processing" && (
                   <Loader2 className="h-8 w-8 animate-spin text-primary" />
                 )}
-                {stage === "done" && (
-                  <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground">
-                    <Info className="h-5 w-5 text-amber-500" />
-                    <span className="px-4 text-center text-xs">Preview available when API is connected</span>
+                {stage === "done" && resultUrl && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={resultUrl}
+                    alt="Background removed"
+                    className="h-full w-full object-contain"
+                  />
+                )}
+                {stage === "error" && (
+                  <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                    <AlertCircle className="h-8 w-8 text-destructive" />
+                    <span className="px-4 text-center text-xs">Processing failed</span>
                   </div>
                 )}
               </div>
@@ -299,23 +373,39 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
             </button>
           )}
 
-          {/* Done */}
-          {stage === "done" && (
+          {/* Error */}
+          {stage === "error" && (
             <div className="space-y-3">
-              <div className="flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-950/30">
-                <Info className="mt-0.5 h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400" />
+              <div className="flex items-start gap-3 rounded-xl border border-destructive/40 bg-destructive/5 p-4">
+                <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
                 <div className="text-sm">
-                  <p className="font-semibold text-amber-800 dark:text-amber-300">AI backend required</p>
-                  <p className="mt-1 text-amber-700 dark:text-amber-400">
-                    AI background removal requires a server-side model to process your image. This feature is currently in development. Download will be available once the API is connected.
-                  </p>
+                  <p className="font-semibold text-destructive">Processing failed</p>
+                  <p className="mt-1 text-muted-foreground">{errorMsg}</p>
                 </div>
               </div>
               <button
-                disabled
-                className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted py-3 text-sm font-semibold text-muted-foreground cursor-not-allowed"
+                onClick={() => setStage("ready")}
+                className="w-full rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
               >
-                <Download className="h-4 w-4" /> Download PNG (coming soon)
+                Try Again
+              </button>
+              <button
+                onClick={reset}
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 text-sm font-medium hover:bg-muted"
+              >
+                <RotateCcw className="h-4 w-4" /> Try another image
+              </button>
+            </div>
+          )}
+
+          {/* Done */}
+          {stage === "done" && (
+            <div className="space-y-3">
+              <button
+                onClick={downloadResult}
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
+              >
+                <Download className="h-4 w-4" /> Download PNG
               </button>
               <button
                 onClick={reset}

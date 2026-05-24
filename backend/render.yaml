@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: sounez-backend
+    runtime: node
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: ALLOWED_ORIGINS
+        sync: false   # Set this in the Render dashboard: https://www.sounez.com,https://sounez.com

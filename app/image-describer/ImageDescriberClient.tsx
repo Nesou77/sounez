@@ -9,9 +9,9 @@ import {
   Copy,
   Check,
   Loader2,
-  Info,
   ImageIcon,
   Sparkles,
+  AlertCircle,
 } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
@@ -25,6 +25,14 @@ const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/webp", "image/gif"];
 const ACCEPTED_EXT = [".png", ".jpg", ".jpeg", ".webp", ".gif"];
 
 type Stage = "idle" | "ready" | "generating" | "done" | "error";
+
+type DescribeResult = {
+  altText: string;
+  shortCaption: string;
+  detailedDescription: string;
+  seoKeywords: string;
+  socialCaption: string;
+};
 type Tone = "descriptive" | "accessibility" | "seo" | "social";
 
 function isAccepted(file: File) {
@@ -50,7 +58,7 @@ const FAQS = [
   },
   {
     q: "Is my image sent to a server?",
-    a: "When the AI backend is active, your image is sent securely over HTTPS and processed immediately. Images are never stored after the result is returned.",
+    a: "Yes. Your image is sent securely over HTTPS and processed immediately. Images are never stored after the result is returned.",
   },
   {
     q: "What image formats are supported?",
@@ -120,6 +128,8 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
   const [stage, setStage] = useState<Stage>("idle");
   const [dragging, setDragging] = useState(false);
   const [tone, setTone] = useState<Tone>("descriptive");
+  const [result, setResult] = useState<DescribeResult | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useToolView(tool);
@@ -157,14 +167,40 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
     setFile(null);
     setPreview(null);
     setStage("idle");
+    setResult(null);
+    setErrorMsg("");
   };
 
   const generate = async () => {
     if (!file) return;
     setStage("generating");
-    // Simulate API call — replace with real fetch when backend is ready
-    await new Promise((r) => setTimeout(r, 2500));
-    setStage("done");
+    setResult(null);
+    setErrorMsg("");
+
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+      formData.append("tone", tone);
+
+      const res = await fetch("/api/image-describe", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data?.error || "Something went wrong. Please try again.");
+        setStage("error");
+        return;
+      }
+
+      setResult(data as DescribeResult);
+      setStage("done");
+    } catch {
+      setErrorMsg("Network error. Please check your connection and try again.");
+      setStage("error");
+    }
   };
 
   return (
@@ -300,34 +336,48 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
             </div>
           )}
 
-          {/* Done — API placeholder */}
-          {stage === "done" && (
+          {/* Error */}
+          {stage === "error" && (
             <div className="space-y-4">
-              <div className="flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-950/30">
-                <Info className="mt-0.5 h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400" />
+              <div className="flex items-start gap-3 rounded-xl border border-destructive/40 bg-destructive/5 p-4">
+                <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
                 <div className="text-sm">
-                  <p className="font-semibold text-amber-800 dark:text-amber-300">AI backend required</p>
-                  <p className="mt-1 text-amber-700 dark:text-amber-400">
-                    Image description generation requires a vision AI backend. This feature is currently in development. Results will appear here once the API is connected.
-                  </p>
+                  <p className="font-semibold text-destructive">Unable to generate description</p>
+                  <p className="mt-1 text-muted-foreground">{errorMsg}</p>
                 </div>
               </div>
+              <button
+                onClick={() => setStage("ready")}
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
+              >
+                <Sparkles className="h-4 w-4" /> Try Again
+              </button>
+              <button
+                onClick={reset}
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 text-sm font-medium hover:bg-muted"
+              >
+                <ImageIcon className="h-4 w-4" /> New image
+              </button>
+            </div>
+          )}
 
-              {/* Result placeholders */}
+          {/* Done — real results */}
+          {stage === "done" && result && (
+            <div className="space-y-4">
               <div className="space-y-3">
-                <ResultCard label="Alt Text" value="" toolSlug={tool.slug} resultType="alt_text" />
-                <ResultCard label="Short Caption" value="" toolSlug={tool.slug} resultType="short_caption" />
-                <ResultCard label="Detailed Description" value="" toolSlug={tool.slug} resultType="detailed_description" />
-                <ResultCard label="SEO Keywords" value="" toolSlug={tool.slug} resultType="seo_keywords" />
-                <ResultCard label="Social Media Caption" value="" toolSlug={tool.slug} resultType="social_caption" />
+                <ResultCard label="Alt Text" value={result.altText} toolSlug={tool.slug} resultType="alt_text" />
+                <ResultCard label="Short Caption" value={result.shortCaption} toolSlug={tool.slug} resultType="short_caption" />
+                <ResultCard label="Detailed Description" value={result.detailedDescription} toolSlug={tool.slug} resultType="detailed_description" />
+                <ResultCard label="SEO Keywords" value={result.seoKeywords} toolSlug={tool.slug} resultType="seo_keywords" />
+                <ResultCard label="Social Media Caption" value={result.socialCaption} toolSlug={tool.slug} resultType="social_caption" />
               </div>
 
               <div className="flex gap-3">
                 <button
-                  disabled
-                  className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-muted py-3 text-sm font-semibold text-muted-foreground cursor-not-allowed"
+                  onClick={() => { setStage("ready"); setResult(null); }}
+                  className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 text-sm font-semibold hover:bg-muted"
                 >
-                  <RotateCcw className="h-4 w-4" /> Regenerate (coming soon)
+                  <RotateCcw className="h-4 w-4" /> Regenerate
                 </button>
                 <button
                   onClick={reset}

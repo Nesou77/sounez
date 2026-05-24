@@ -8,7 +8,8 @@ import {
   RotateCcw,
   Shield,
   Loader2,
-  Info,
+  Download,
+  AlertCircle,
 } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
@@ -33,11 +34,11 @@ function isPdf(file: File) {
 const FAQS = [
   {
     q: "Is my PDF file uploaded to a server?",
-    a: "This page currently uses a client-side placeholder. When the full conversion API is available, your file will be securely processed and immediately deleted. We never store your documents.",
+    a: "Yes. Your PDF is securely transmitted over HTTPS to our conversion server, processed immediately, and deleted right after the DOCX is returned. We never store your documents.",
   },
   {
     q: "What does the DOCX output preserve?",
-    a: "When the backend API is connected, the converter aims to preserve text, headings, paragraphs and basic formatting. Complex layouts, tables and images may require manual adjustment after conversion.",
+    a: "The converter preserves text, headings, paragraphs and basic formatting. Complex layouts, tables and images may require manual adjustment after conversion.",
   },
   {
     q: "What is the maximum file size?",
@@ -45,7 +46,7 @@ const FAQS = [
   },
   {
     q: "Does it support scanned PDFs?",
-    a: "Scanned PDFs are image-based. The converter uses OCR (Optical Character Recognition) when the backend is active to extract text from scanned pages.",
+    a: "Scanned PDFs are image-based. Enable the OCR option to attempt text extraction from scanned pages. Results may vary depending on scan quality.",
   },
   {
     q: "Is the converter free?",
@@ -64,6 +65,8 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
   const [preserveLayout, setPreserveLayout] = useState(true);
   const [extractImages, setExtractImages] = useState(false);
   const [useOcr, setUseOcr] = useState(false);
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useToolView(tool);
@@ -102,16 +105,60 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
   const onDragLeave = () => setDragging(false);
 
   const reset = () => {
+    if (downloadUrl) URL.revokeObjectURL(downloadUrl);
     setFile(null);
     setStage("idle");
+    setDownloadUrl(null);
+    setErrorMsg("");
   };
 
   const convert = async () => {
     if (!file) return;
     setStage("processing");
-    // Simulated delay to represent API call
-    await new Promise((r) => setTimeout(r, 1800));
-    setStage("done");
+    setDownloadUrl(null);
+    setErrorMsg("");
+
+    try {
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
+      if (!backendUrl) {
+        setErrorMsg("Conversion service is not configured. Please try again later.");
+        setStage("error");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("pdf", file);
+      formData.append("preserveLayout", String(preserveLayout));
+      formData.append("useOcr", String(useOcr));
+
+      const res = await fetch(`${backendUrl}/api/pdf-to-word`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setErrorMsg((data as { error?: string })?.error || "Conversion failed. Please try again.");
+        setStage("error");
+        return;
+      }
+
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      setDownloadUrl(url);
+      setStage("done");
+    } catch {
+      setErrorMsg("Network error. Please check your connection and try again.");
+      setStage("error");
+    }
+  };
+
+  const downloadFile = () => {
+    if (!downloadUrl || !file) return;
+    const a = document.createElement("a");
+    a.href = downloadUrl;
+    a.download = outputName;
+    a.click();
   };
 
   const outputName = file ? file.name.replace(/\.pdf$/i, ".docx") : "document.docx";
@@ -274,23 +321,48 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
             </div>
           )}
 
-          {/* Done — API placeholder */}
-          {stage === "done" && (
+          {/* Error */}
+          {stage === "error" && (
             <div className="space-y-4">
-              <div className="flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-950/30">
-                <Info className="mt-0.5 h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400" />
+              <div className="flex items-start gap-3 rounded-xl border border-destructive/40 bg-destructive/5 p-4">
+                <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
                 <div className="text-sm">
-                  <p className="font-semibold text-amber-800 dark:text-amber-300">Backend API required</p>
-                  <p className="mt-1 text-amber-700 dark:text-amber-400">
-                    PDF to Word conversion requires a server-side API to process your document. This feature is currently in development. The download will be available once the backend is connected.
+                  <p className="font-semibold text-destructive">Conversion failed</p>
+                  <p className="mt-1 text-muted-foreground">{errorMsg}</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setStage("ready")}
+                className="w-full rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
+              >
+                Try Again
+              </button>
+              <button
+                onClick={reset}
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 text-sm font-medium hover:bg-muted"
+              >
+                <RotateCcw className="h-4 w-4" /> Convert another file
+              </button>
+            </div>
+          )}
+
+          {/* Done */}
+          {stage === "done" && downloadUrl && (
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 rounded-xl border border-emerald-300 bg-emerald-50 p-4 dark:border-emerald-700 dark:bg-emerald-950/30">
+                <FileText className="h-5 w-5 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                <div className="text-sm">
+                  <p className="font-semibold text-emerald-800 dark:text-emerald-300">Conversion complete</p>
+                  <p className="mt-0.5 text-emerald-700 dark:text-emerald-400">
+                    Your Word document is ready to download.
                   </p>
                 </div>
               </div>
               <button
-                disabled
-                className="w-full cursor-not-allowed rounded-xl border border-border bg-muted py-3 text-sm font-semibold text-muted-foreground"
+                onClick={downloadFile}
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
               >
-                Download DOCX (coming soon)
+                <Download className="h-4 w-4" /> Download DOCX
               </button>
               <button
                 onClick={reset}
