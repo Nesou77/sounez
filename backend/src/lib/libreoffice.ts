@@ -16,7 +16,6 @@ import { execFile } from "child_process";
 import { promisify } from "util";
 import fs from "fs";
 import path from "path";
-import { glob } from "fs/promises";
 
 const execFileAsync = promisify(execFile);
 
@@ -46,19 +45,22 @@ async function findLibreOfficeBin(): Promise<string | null> {
     }
   }
 
-  // Try glob for manual installs like /opt/libreoffice7.6/program/soffice
+  // Try readdirSync scan for manual installs like /opt/libreoffice7.6/program/soffice
   try {
-    const matches: string[] = [];
-    for await (const f of glob("/opt/libreoffice*/program/soffice")) {
-      matches.push(f);
-    }
-    if (matches.length > 0) {
-      _resolvedBin = matches[0];
-      console.log(`[libreoffice] Found binary via glob: ${_resolvedBin}`);
-      return _resolvedBin;
+    if (fs.existsSync("/opt")) {
+      const optEntries = fs.readdirSync("/opt");
+      for (const entry of optEntries) {
+        if (!entry.startsWith("libreoffice")) continue;
+        const candidate = path.join("/opt", entry, "program", "soffice");
+        if (fs.existsSync(candidate)) {
+          _resolvedBin = candidate;
+          console.log(`[libreoffice] Found binary via /opt scan: ${candidate}`);
+          return _resolvedBin;
+        }
+      }
     }
   } catch {
-    // glob not available or no matches
+    // /opt not readable — skip
   }
 
   // PATH fallback — try running `soffice --version`
