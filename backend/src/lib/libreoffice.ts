@@ -8,7 +8,7 @@
  *   1. LIBREOFFICE_PATH env var
  *   2. /usr/bin/libreoffice   (Debian/Ubuntu apt install)
  *   3. /usr/bin/soffice       (alternative symlink)
- *   4. /opt/libreoffice*/program/soffice  (manual install)
+ *   4. /opt/libreofficeX/program/soffice  (manual install, X = version number)
  *   5. soffice / libreoffice  (PATH fallback)
  */
 
@@ -31,7 +31,7 @@ const CANDIDATES = [
   "libreoffice",
 ].filter(Boolean) as string[];
 
-let _resolvedBin: string | null | undefined = undefined; // undefined = not yet checked
+let _resolvedBin: string | null | undefined = undefined;
 
 async function findLibreOfficeBin(): Promise<string | null> {
   if (_resolvedBin !== undefined) return _resolvedBin;
@@ -45,7 +45,7 @@ async function findLibreOfficeBin(): Promise<string | null> {
     }
   }
 
-  // Try readdirSync scan for manual installs like /opt/libreoffice7.6/program/soffice
+  // Scan /opt for versioned installs like /opt/libreoffice7.6/program/soffice
   try {
     if (fs.existsSync("/opt")) {
       const optEntries = fs.readdirSync("/opt");
@@ -63,7 +63,7 @@ async function findLibreOfficeBin(): Promise<string | null> {
     // /opt not readable — skip
   }
 
-  // PATH fallback — try running `soffice --version`
+  // PATH fallback — try running soffice --version
   for (const name of ["soffice", "libreoffice"]) {
     try {
       await execFileAsync(name, ["--version"], { timeout: 5000 });
@@ -71,7 +71,7 @@ async function findLibreOfficeBin(): Promise<string | null> {
       console.log(`[libreoffice] Found binary on PATH: ${name}`);
       return _resolvedBin;
     } catch {
-      // not found
+      // not found on PATH
     }
   }
 
@@ -80,21 +80,16 @@ async function findLibreOfficeBin(): Promise<string | null> {
   return null;
 }
 
-// ── Conversion ────────────────────────────────────────────────────────────────
+// ── Types ─────────────────────────────────────────────────────────────────────
 
 export type ConvertResult =
   | { ok: true; docxPath: string }
   | { ok: false; reason: "not_installed" | "encrypted" | "corrupt" | "no_text" | "timeout" | "unknown"; message: string };
 
-const CONVERSION_TIMEOUT_MS = 60_000; // 60 s
+const CONVERSION_TIMEOUT_MS = 60_000;
 
-/**
- * Convert a PDF file to DOCX using LibreOffice headless.
- *
- * @param pdfPath   Absolute path to the input PDF file.
- * @param outDir    Directory where LibreOffice will write the output DOCX.
- * @returns         ConvertResult — either the path to the DOCX or an error descriptor.
- */
+// ── Main conversion ───────────────────────────────────────────────────────────
+
 export async function convertWithLibreOffice(
   pdfPath: string,
   outDir: string,
@@ -105,8 +100,7 @@ export async function convertWithLibreOffice(
     return {
       ok: false,
       reason: "not_installed",
-      message:
-        "PDF conversion service is temporarily unavailable. Please try again later.",
+      message: "PDF conversion service is temporarily unavailable. Please try again later.",
     };
   }
 
@@ -127,9 +121,8 @@ export async function convertWithLibreOffice(
         timeout: CONVERSION_TIMEOUT_MS,
         env: {
           ...process.env,
-          // Prevent LibreOffice from trying to open a display
           DISPLAY: "",
-          HOME: outDir, // isolate user profile per job
+          HOME: outDir,
         },
       },
     );
@@ -144,7 +137,6 @@ export async function convertWithLibreOffice(
       };
     }
 
-    // LibreOffice exits 0 even on some errors — check stderr for clues
     if (msg.toLowerCase().includes("encrypt") || msg.toLowerCase().includes("password")) {
       return {
         ok: false,
@@ -161,24 +153,20 @@ export async function convertWithLibreOffice(
     };
   }
 
-  // LibreOffice names the output file after the input basename
   const baseName = path.basename(pdfPath, path.extname(pdfPath));
   const docxPath = path.join(outDir, `${baseName}.docx`);
 
   if (!fs.existsSync(docxPath)) {
-    // LibreOffice produced no output — likely a corrupt or image-only PDF
     return {
       ok: false,
       reason: "corrupt",
-      message:
-        "Could not convert this PDF. It may be corrupted, image-only, or in an unsupported format.",
+      message: "Could not convert this PDF. It may be corrupted, image-only, or in an unsupported format.",
     };
   }
 
   return { ok: true, docxPath };
 }
 
-/** Check whether LibreOffice is available (used by health endpoint). */
 export async function isLibreOfficeAvailable(): Promise<boolean> {
   return (await findLibreOfficeBin()) !== null;
 }
