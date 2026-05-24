@@ -1,7 +1,7 @@
 {
   "name": "sounez-backend",
   "version": "1.0.0",
-  "description": "Sounez backend — heavy processing (PDF→DOCX, etc.) for Render deployment",
+  "description": "Sounez backend — heavy processing (PDF to DOCX) for Render deployment",
   "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",

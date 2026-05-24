@@ -1,14 +1,8 @@
-# Render deployment configuration — sounez-backend
+# Render Blueprint — sounez-backend
 #
-# Repo root:  sounez/
-# This file:  sounez/backend/render.yaml
-# rootDir:    backend   (relative to repo root)
-#
-# Setup:
-#   1. In Render dashboard → New Web Service → connect GitHub repo (sounez)
-#   2. Set Root Directory to "backend"
-#   3. Render will use the build/start commands below
-#   4. Add ALLOWED_ORIGINS env var in the dashboard
+# This file must be at the repo root for Render to detect it automatically.
+# Repo: https://github.com/Nesou77/sounez
+# Backend source: /backend subfolder
 
 services:
   - type: web
