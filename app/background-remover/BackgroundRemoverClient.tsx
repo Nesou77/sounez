@@ -16,15 +16,46 @@ import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
 import { useToolView } from "@/lib/use-tool-view";
 
-// ── Browser-side AI background removal (no API key needed) ───────────────────
+// ── Browser-side AI background removal (no API key, loaded from CDN) ────────
+// The @imgly/background-removal package is NOT bundled — it's loaded on demand
+// from jsDelivr CDN to keep the Vercel Lambda bundle under the 250 MB limit.
+// The WASM model files are also fetched from CDN at runtime.
+
+declare global {
+  interface Window {
+    imglyRemoveBackground?: (source: File | string, config?: Record<string, unknown>) => Promise<Blob>;
+  }
+}
+
+async function loadImglyScript(): Promise<void> {
+  if (typeof window.imglyRemoveBackground === "function") return;
+  return new Promise((resolve, reject) => {
+    const existing = document.getElementById("imgly-bg-removal-script");
+    if (existing) {
+      // Script already injected — wait for it to finish loading
+      existing.addEventListener("load", () => resolve());
+      existing.addEventListener("error", () => reject(new Error("Failed to load background removal library.")));
+      return;
+    }
+    const script = document.createElement("script");
+    script.id = "imgly-bg-removal-script";
+    script.src = "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/browser/index.js";
+    script.crossOrigin = "anonymous";
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("Failed to load background removal library. Please check your connection."));
+    document.head.appendChild(script);
+  });
+}
+
 async function removeBgInBrowser(file: File): Promise<Blob> {
-  // Dynamically import so the heavy WASM model is only loaded when needed
-  const { removeBackground } = await import("@imgly/background-removal");
-  const result = await removeBackground(file, {
+  await loadImglyScript();
+  if (typeof window.imglyRemoveBackground !== "function") {
+    throw new Error("Background removal library could not be loaded.");
+  }
+  return window.imglyRemoveBackground(file, {
     model: "isnet",
     output: { format: "image/png", quality: 0.9 },
   });
-  return result;
 }
 
 const MAX_FILE_SIZE_MB = 10;
@@ -335,7 +366,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
                 {stage === "error" && (
                   <div className="flex flex-col items-center gap-2 text-muted-foreground">
                     <AlertCircle className="h-8 w-8 text-destructive" />
-                    <span className="px-4 text-center text-xs">Processing failed</span>
+                    <span className="px-4 text-center text-xs">Unable to remove background</span>
                   </div>
                 )}
               </div>
@@ -407,7 +438,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
               <div className="flex items-start gap-3 rounded-xl border border-destructive/40 bg-destructive/5 p-4">
                 <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
                 <div className="text-sm">
-                  <p className="font-semibold text-destructive">Processing failed</p>
+                  <p className="font-semibold text-destructive">Unable to remove background</p>
                   <p className="mt-1 text-muted-foreground">{errorMsg}</p>
                 </div>
               </div>

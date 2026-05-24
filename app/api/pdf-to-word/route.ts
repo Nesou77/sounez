@@ -1,3 +1,15 @@
+/**
+ * PDF-to-Word proxy route.
+ *
+ * Forwards the upload to the Render backend (NEXT_PUBLIC_BACKEND_URL).
+ * The backend handles all heavy processing — pdf-parse + docx generation.
+ *
+ * Why proxy instead of calling the backend directly from the client?
+ * - Keeps the backend URL server-side (no CORS issues, no URL exposure)
+ * - Allows rate-limiting and validation at the Next.js layer
+ * - Single endpoint for the frontend regardless of where processing happens
+ */
+
 import { NextResponse } from "next/server";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
@@ -5,6 +17,7 @@ const PDF_RATE_LIMIT = { limit: 5, windowMs: 60 * 1000 };
 const MAX_SIZE = 20 * 1024 * 1024; // 20 MB
 
 export async function POST(req: Request) {
+  // ── Rate limit ────────────────────────────────────────────────────────────
   const ip = getClientIp(req);
   const rl = checkRateLimit(`pdf-to-word:${ip}`, PDF_RATE_LIMIT);
   if (!rl.allowed) {
@@ -14,6 +27,7 @@ export async function POST(req: Request) {
     );
   }
 
+  // ── Parse form data ───────────────────────────────────────────────────────
   let formData: FormData;
   try {
     formData = await req.formData();
@@ -30,10 +44,7 @@ export async function POST(req: Request) {
     pdfFile.type === "application/pdf" ||
     pdfFile.name.toLowerCase().endsWith(".pdf");
   if (!mimeOk) {
-    return NextResponse.json(
-      { error: "Please upload a valid PDF file." },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "Please upload a valid PDF file." }, { status: 400 });
   }
 
   if (pdfFile.size > MAX_SIZE) {
@@ -43,223 +54,87 @@ export async function POST(req: Request) {
     );
   }
 
-  try {
-    const arrayBuffer = await pdfFile.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
+  // ── Resolve backend URL ───────────────────────────────────────────────────
+  // NEXT_PUBLIC_BACKEND_URL is readable server-side too (it's a NEXT_PUBLIC_ var).
+  // We also check the server-only BACKEND_URL as a fallback for environments
+  // where the URL should not be exposed to the client bundle.
+  const backendUrl =
+    (process.env.BACKEND_URL ?? process.env.NEXT_PUBLIC_BACKEND_URL ?? "").trim();
 
-    // Dynamically import to avoid issues with Next.js edge/server boundaries
-    const pdfParse = (await import("pdf-parse")).default;
-    const docx = await import("docx");
-    const {
-      Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType,
-      Table, TableRow, TableCell, WidthType, BorderStyle,
-    } = docx;
-
-    type DocChild = InstanceType<typeof Paragraph> | InstanceType<typeof Table>;
-
-    let pdfData: { text: string; numpages: number };
-    try {
-      pdfData = await pdfParse(buffer, { max: 0 });
-    } catch {
-      return NextResponse.json(
-        { error: "Could not read this PDF. It may be password-protected or corrupted." },
-        { status: 422 },
-      );
-    }
-
-    const rawText = pdfData.text || "";
-    if (!rawText.trim()) {
-      return NextResponse.json(
-        { error: "This PDF appears to be image-based (scanned). Text extraction is not available for scanned PDFs without OCR." },
-        { status: 422 },
-      );
-    }
-
-    // ── Parse text into structured paragraphs ──────────────────────────────
-    const lines = rawText.split("\n");
-    const docChildren: DocChild[] = [];
-
-    // Heuristics for heading detection
-    function looksLikeHeading(line: string): { level: 1 | 2 | 3 } | null {
-      const t = line.trim();
-      if (!t || t.length > 120) return null;
-      // All-caps short line → H1
-      if (t === t.toUpperCase() && t.length <= 60 && /[A-Z]/.test(t)) return { level: 1 };
-      // Numbered heading: "1. Title" or "1.1 Title"
-      if (/^\d+\.\s+[A-Z]/.test(t) && t.length <= 80) return { level: 2 };
-      if (/^\d+\.\d+\s+[A-Z]/.test(t) && t.length <= 80) return { level: 3 };
-      // Title-case short line with no period at end
-      const words = t.split(" ");
-      const titleCase = words.every(
-        (w) => !w || w[0] === w[0].toUpperCase() || w.length <= 3,
-      );
-      if (titleCase && t.length <= 60 && !t.endsWith(".") && words.length >= 2 && words.length <= 8) {
-        return { level: 2 };
-      }
-      return null;
-    }
-
-    function looksLikeBullet(line: string): boolean {
-      return /^[\s]*[-•*·▪▸►◆○●]\s+/.test(line) || /^[\s]*\d+[.)]\s+/.test(line);
-    }
-
-    function stripBulletPrefix(line: string): string {
-      return line.replace(/^[\s]*[-•*·▪▸►◆○●]\s+/, "").replace(/^[\s]*\d+[.)]\s+/, "").trim();
-    }
-
-    // Group consecutive blank lines and build paragraphs
-    let i = 0;
-    while (i < lines.length) {
-      const raw = lines[i];
-      const trimmed = raw.trim();
-
-      // Skip blank lines
-      if (!trimmed) {
-        i++;
-        continue;
-      }
-
-      const headingMatch = looksLikeHeading(trimmed);
-      if (headingMatch) {
-        const levelMap: Record<1 | 2 | 3, typeof HeadingLevel[keyof typeof HeadingLevel]> = {
-          1: HeadingLevel.HEADING_1,
-          2: HeadingLevel.HEADING_2,
-          3: HeadingLevel.HEADING_3,
-        };
-        docChildren.push(
-          new Paragraph({
-            text: trimmed,
-            heading: levelMap[headingMatch.level],
-            spacing: { before: 240, after: 120 },
-          }),
-        );
-        i++;
-        continue;
-      }
-
-      if (looksLikeBullet(raw)) {
-        // Collect consecutive bullet lines
-        const bulletItems: string[] = [];
-        while (i < lines.length && (looksLikeBullet(lines[i]) || (lines[i].trim() && !looksLikeHeading(lines[i].trim())))) {
-          if (looksLikeBullet(lines[i])) {
-            bulletItems.push(stripBulletPrefix(lines[i]));
-          } else if (lines[i].trim()) {
-            // continuation of previous bullet
-            if (bulletItems.length > 0) {
-              bulletItems[bulletItems.length - 1] += " " + lines[i].trim();
-            } else {
-              bulletItems.push(lines[i].trim());
-            }
-          } else {
-            break;
-          }
-          i++;
-        }
-        for (const item of bulletItems) {
-          docChildren.push(
-            new Paragraph({
-              children: [new TextRun({ text: item })],
-              bullet: { level: 0 },
-              spacing: { after: 80 },
-            }),
-          );
-        }
-        continue;
-      }
-
-      // Regular paragraph — accumulate until blank line or heading
-      const paraLines: string[] = [];
-      while (i < lines.length) {
-        const l = lines[i];
-        const lt = l.trim();
-        if (!lt) { i++; break; }
-        if (looksLikeHeading(lt)) break;
-        if (looksLikeBullet(l)) break;
-        paraLines.push(lt);
-        i++;
-      }
-
-      const paraText = paraLines.join(" ").trim();
-      if (paraText) {
-        // Detect if it looks like a table row (tab-separated or multiple spaces)
-        const isTableRow = paraText.includes("\t") || /\s{3,}/.test(paraText);
-        if (isTableRow) {
-          // Split by tabs or multiple spaces
-          const cells = paraText.split(/\t|\s{3,}/).map((c) => c.trim()).filter(Boolean);
-          if (cells.length >= 2) {
-            docChildren.push(
-              new Table({
-                width: { size: 100, type: WidthType.PERCENTAGE },
-                rows: [
-                  new TableRow({
-                    children: cells.map(
-                      (cell) =>
-                        new TableCell({
-                          children: [new Paragraph({ children: [new TextRun({ text: cell })] })],
-                          borders: {
-                            top: { style: BorderStyle.SINGLE, size: 1 },
-                            bottom: { style: BorderStyle.SINGLE, size: 1 },
-                            left: { style: BorderStyle.SINGLE, size: 1 },
-                            right: { style: BorderStyle.SINGLE, size: 1 },
-                          },
-                        }),
-                    ),
-                  }),
-                ],
-              }),
-            );
-            continue;
-          }
-        }
-
-        docChildren.push(
-          new Paragraph({
-            children: [new TextRun({ text: paraText })],
-            spacing: { after: 160 },
-            alignment: AlignmentType.LEFT,
-          }),
-        );
-      }
-    }
-
-    // Ensure at least one paragraph
-    if (docChildren.length === 0) {
-      docChildren.push(new Paragraph({ children: [new TextRun({ text: rawText.trim() })] }));
-    }
-
-    // ── Build DOCX ─────────────────────────────────────────────────────────
-    const doc = new Document({
-      styles: {
-        default: {
-          document: {
-            run: { font: "Calibri", size: 24 }, // 12pt
-          },
-        },
+  if (!backendUrl) {
+    return NextResponse.json(
+      {
+        error:
+          "PDF conversion is temporarily unavailable. Please try again later or contact support.",
       },
-      sections: [
-        {
-          properties: {},
-          children: docChildren,
-        },
-      ],
-    });
+      { status: 503 },
+    );
+  }
 
-    const docxBuffer = await Packer.toBuffer(doc);
+  // ── Proxy to Render backend ───────────────────────────────────────────────
+  try {
+    // Re-build the FormData to forward to the backend
+    const upstream = new FormData();
+    upstream.append("pdf", pdfFile, pdfFile.name);
+    upstream.append("preserveLayout", formData.get("preserveLayout") ?? "true");
+    upstream.append("useOcr", formData.get("useOcr") ?? "false");
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 110_000); // 110 s (client has 120 s)
+
+    let backendRes: Response;
+    try {
+      backendRes = await fetch(`${backendUrl}/api/pdf-to-word`, {
+        method: "POST",
+        body: upstream,
+        signal: controller.signal,
+      });
+    } finally {
+      clearTimeout(timeout);
+    }
+
+    if (!backendRes.ok) {
+      // Forward user-friendly error from backend, never expose raw stack traces
+      const data = await backendRes.json().catch(() => ({}));
+      const raw = (data as { error?: string })?.error ?? "";
+      const userMsg =
+        raw &&
+        !raw.toLowerCase().includes("internal") &&
+        !raw.toLowerCase().includes("unexpected") &&
+        raw.length < 300
+          ? raw
+          : "We could not convert this PDF. Please try a different file or try again later.";
+
+      return NextResponse.json({ error: userMsg }, { status: backendRes.status });
+    }
+
+    // Stream the DOCX binary back to the client
+    const docxBuffer = await backendRes.arrayBuffer();
     const outputName = pdfFile.name.replace(/\.pdf$/i, ".docx");
 
-    return new NextResponse(new Uint8Array(docxBuffer), {
+    return new NextResponse(docxBuffer, {
       status: 200,
       headers: {
-        "Content-Type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "Content-Type":
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         "Content-Disposition": `attachment; filename="${outputName}"`,
         "Cache-Control": "no-store",
       },
     });
-  } catch (e) {
-    console.error("[pdf-to-word] Unexpected error:", e);
+  } catch (err) {
+    if (err instanceof Error && err.name === "AbortError") {
+      return NextResponse.json(
+        {
+          error:
+            "Conversion is taking longer than expected. Try a smaller PDF or try again later.",
+        },
+        { status: 504 },
+      );
+    }
+    console.error("[pdf-to-word proxy] Unexpected error:", err instanceof Error ? err.message : err);
     return NextResponse.json(
-      { error: "Conversion failed. Please try a different PDF or try again later." },
-      { status: 500 },
+      { error: "We could not convert this PDF. Please try again later." },
+      { status: 502 },
     );
   }
 }

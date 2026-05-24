@@ -140,10 +140,15 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        setErrorMsg(
-          (data as { error?: string })?.error ||
-            "Conversion failed. Please try again.",
-        );
+        const raw = (data as { error?: string })?.error ?? "";
+        const userMsg =
+          raw &&
+          !raw.toLowerCase().includes("internal") &&
+          !raw.toLowerCase().includes("unexpected") &&
+          raw.length < 300
+            ? raw
+            : "We could not convert this PDF. Please try a different file or try again later.";
+        setErrorMsg(userMsg);
         setStage("error");
         return;
       }
@@ -154,9 +159,9 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
       setStage("done");
     } catch (err) {
       if (err instanceof Error && err.name === "AbortError") {
-        setErrorMsg("Conversion timed out. Try a smaller PDF or try again later.");
+        setErrorMsg("Conversion is taking longer than expected. Try a smaller PDF or try again later.");
       } else {
-        setErrorMsg("Network error. Please check your connection and try again.");
+        setErrorMsg("Could not reach the conversion service. Please check your connection and try again.");
       }
       setStage("error");
     }
