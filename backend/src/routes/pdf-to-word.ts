@@ -28,12 +28,10 @@ const MAX_MB = parseInt(process.env.MAX_FILE_SIZE_MB || "20", 10);
 const upload = multer({
   storage: multer.diskStorage({
     destination: (_req, _file, cb) => {
-      // Each upload gets its own job directory
       const dir = createJobDir();
       cb(null, dir);
     },
     filename: (_req, file, cb) => {
-      // Sanitise filename — keep extension, replace everything else
       const ext = path.extname(file.originalname).toLowerCase() || ".pdf";
       cb(null, `upload${ext}`);
     },
@@ -46,7 +44,7 @@ const upload = multer({
     ) {
       cb(null, true);
     } else {
-      cb(new Error("Only PDF files are accepted."));
+      cb(new Error("Please upload a PDF file."));
     }
   },
 });
@@ -65,7 +63,6 @@ router.post(
       return;
     }
 
-    // The job directory is the directory multer wrote the file into
     const jobDir = path.dirname(uploadedFile.path);
 
     try {
@@ -80,14 +77,11 @@ router.post(
           timeout: 504,
           unknown: 500,
         };
-        res
-          .status(statusMap[result.reason] ?? 500)
-          .json({ error: result.message });
+        res.status(statusMap[result.reason] ?? 500).json({ error: result.message });
         cleanupDir(jobDir);
         return;
       }
 
-      // Build a clean output filename from the original upload name
       const outputName =
         (uploadedFile.originalname || "document.pdf")
           .replace(/\.pdf$/i, "")
@@ -98,13 +92,9 @@ router.post(
         "Content-Type",
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       );
-      res.setHeader(
-        "Content-Disposition",
-        `attachment; filename="${outputName}"`,
-      );
+      res.setHeader("Content-Disposition", `attachment; filename="${outputName}"`);
       res.setHeader("Cache-Control", "no-store");
 
-      // Stream the file then clean up
       const readStream = fs.createReadStream(result.docxPath);
       readStream.pipe(res);
       readStream.on("end", () => cleanupDir(jobDir));
@@ -112,14 +102,13 @@ router.post(
         console.error("[pdf-to-word] Stream error:", err.message);
         cleanupDir(jobDir);
         if (!res.headersSent) {
-          res.status(500).json({ error: "Failed to send converted file." });
+          res.status(500).json({ error: "Your file is ready but could not be delivered. Please try again." });
         }
       });
     } catch (err) {
       cleanupDir(jobDir);
-      const message = err instanceof Error ? err.message : "Conversion failed.";
-      console.error("[pdf-to-word] Unexpected error:", message);
-      res.status(500).json({ error: "Conversion failed. Please try again." });
+      console.error("[pdf-to-word] Unexpected error:", err instanceof Error ? err.message : err);
+      res.status(500).json({ error: "Something went wrong. Please try again with a different PDF." });
     }
   },
 );

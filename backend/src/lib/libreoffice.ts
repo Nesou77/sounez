@@ -100,7 +100,7 @@ export async function convertWithLibreOffice(
     return {
       ok: false,
       reason: "not_installed",
-      message: "PDF conversion service is temporarily unavailable. Please try again later.",
+      message: "We could not process your PDF right now. Please try again in a moment.",
     };
   }
 
@@ -133,7 +133,7 @@ export async function convertWithLibreOffice(
       return {
         ok: false,
         reason: "timeout",
-        message: "Conversion timed out. Try a smaller or simpler PDF.",
+        message: "Your PDF took too long to process. Try a smaller file or split it into sections.",
       };
     }
 
@@ -141,7 +141,7 @@ export async function convertWithLibreOffice(
       return {
         ok: false,
         reason: "encrypted",
-        message: "This PDF is password-protected. Please remove the password and try again.",
+        message: "This PDF is password-protected. Please unlock it and try again.",
       };
     }
 
@@ -149,7 +149,7 @@ export async function convertWithLibreOffice(
     return {
       ok: false,
       reason: "unknown",
-      message: "Conversion failed. Please try a different PDF.",
+      message: "We could not read this PDF. Please try a different file.",
     };
   }
 
@@ -160,7 +160,7 @@ export async function convertWithLibreOffice(
     return {
       ok: false,
       reason: "corrupt",
-      message: "Could not convert this PDF. It may be corrupted, image-only, or in an unsupported format.",
+      message: "This PDF could not be converted. It may be image-only or in an unsupported format. Try enabling OCR.",
     };
   }
 
