@@ -62,7 +62,12 @@ app.use(
 
 app.use(express.json({ limit: "512kb" }));
 
-// ── Health check ──────────────────────────────────────────────────────────────
+// ── Root route ────────────────────────────────────────────────────────────────
+app.get("/", (_req: Request, res: Response) => {
+  res.json({ status: "Backend running" });
+});
+
+// ── Health checks ─────────────────────────────────────────────────────────────
 app.get("/health", async (_req: Request, res: Response) => {
   const libreoffice = await isLibreOfficeAvailable();
   res.json({
@@ -71,6 +76,10 @@ app.get("/health", async (_req: Request, res: Response) => {
     libreoffice,
     timestamp: new Date().toISOString(),
   });
+});
+
+app.get("/healthz", (_req: Request, res: Response) => {
+  res.send("OK");
 });
 
 // ── Routes ────────────────────────────────────────────────────────────────────
