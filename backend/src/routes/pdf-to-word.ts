@@ -1,10 +1,7 @@
 import { Router, Request, Response } from "express";
 import multer from "multer";
 import { rateLimit } from "express-rate-limit";
-import path from "path";
-import fs from "fs";
-import { convertWithLibreOffice } from "../lib/libreoffice";
-import { createJobDir, cleanupDir } from "../lib/temp";
+import { convertPdfToDocx } from "../services/pdf-converter";
 
 const router = Router();
 
@@ -22,20 +19,11 @@ const convertRateLimit = rateLimit({
   legacyHeaders: false,
 });
 
-// ── Multer: disk storage so LibreOffice can read the file ─────────────────────
+// ── Multer: memory storage (no disk needed for pure-Node conversion) ──────────
 const MAX_MB = parseInt(process.env.MAX_FILE_SIZE_MB || "20", 10);
 
 const upload = multer({
-  storage: multer.diskStorage({
-    destination: (_req, _file, cb) => {
-      const dir = createJobDir();
-      cb(null, dir);
-    },
-    filename: (_req, file, cb) => {
-      const ext = path.extname(file.originalname).toLowerCase() || ".pdf";
-      cb(null, `upload${ext}`);
-    },
-  }),
+  storage: multer.memoryStorage(),
   limits: { fileSize: MAX_MB * 1024 * 1024 },
   fileFilter: (_req, file, cb) => {
     if (
@@ -56,34 +44,30 @@ router.post(
   convertRateLimit,
   upload.single("pdf"),
   async (req: Request, res: Response): Promise<void> => {
-    const uploadedFile = req.file;
-
-    if (!uploadedFile) {
+    if (!req.file) {
       res.status(400).json({ error: "No PDF file provided." });
       return;
     }
 
-    const jobDir = path.dirname(uploadedFile.path);
-
     try {
-      const result = await convertWithLibreOffice(uploadedFile.path, jobDir);
+      const preserveLayout = req.body.preserveLayout === "true";
+      const useOcr = req.body.useOcr === "true";
+
+      const result = await convertPdfToDocx(req.file.buffer, { preserveLayout, useOcr });
 
       if (!result.ok) {
         const statusMap: Record<string, number> = {
-          not_installed: 503,
           encrypted: 422,
           corrupt: 422,
           no_text: 422,
-          timeout: 504,
           unknown: 500,
         };
         res.status(statusMap[result.reason] ?? 500).json({ error: result.message });
-        cleanupDir(jobDir);
         return;
       }
 
       const outputName =
-        (uploadedFile.originalname || "document.pdf")
+        (req.file.originalname || "document.pdf")
           .replace(/\.pdf$/i, "")
           .replace(/[^a-zA-Z0-9_\-. ]/g, "_")
           .slice(0, 100) + ".docx";
@@ -94,19 +78,8 @@ router.post(
       );
       res.setHeader("Content-Disposition", `attachment; filename="${outputName}"`);
       res.setHeader("Cache-Control", "no-store");
-
-      const readStream = fs.createReadStream(result.docxPath);
-      readStream.pipe(res);
-      readStream.on("end", () => cleanupDir(jobDir));
-      readStream.on("error", (err) => {
-        console.error("[pdf-to-word] Stream error:", err.message);
-        cleanupDir(jobDir);
-        if (!res.headersSent) {
-          res.status(500).json({ error: "Your file is ready but could not be delivered. Please try again." });
-        }
-      });
+      res.send(result.buffer);
     } catch (err) {
-      cleanupDir(jobDir);
       console.error("[pdf-to-word] Unexpected error:", err instanceof Error ? err.message : err);
       res.status(500).json({ error: "Something went wrong. Please try again with a different PDF." });
     }

@@ -5,7 +5,6 @@ import helmet from "helmet";
 import { rateLimit } from "express-rate-limit";
 import { pdfToWordRouter } from "./routes/pdf-to-word";
 import { scheduleTempCleanup } from "./lib/temp";
-import { isLibreOfficeAvailable } from "./lib/libreoffice";
 
 const app = express();
 const PORT = parseInt(process.env.PORT || "3001", 10);
@@ -68,12 +67,10 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 // ── Health checks ─────────────────────────────────────────────────────────────
-app.get("/health", async (_req: Request, res: Response) => {
-  const libreoffice = await isLibreOfficeAvailable();
+app.get("/health", (_req: Request, res: Response) => {
   res.json({
     status: "ok",
     service: "sounez-backend",
-    libreoffice,
     timestamp: new Date().toISOString(),
   });
 });
