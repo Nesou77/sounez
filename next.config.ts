@@ -57,6 +57,17 @@ const nextConfig: NextConfig = {
     deviceSizes: [390, 414, 640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 24, 32, 48, 64, 96, 128, 144, 192, 216, 256, 384],
   },
+  // Packages that must NOT be bundled into the server Lambda.
+  // - pdf-parse / docx: used only in /api/pdf-to-word — large, Node-native, available at runtime.
+  // - @imgly/background-removal / onnxruntime-web: browser-only WASM, dynamically imported
+  //   client-side. Including them in the server trace would push the Lambda over Vercel's 250 MB limit.
+  serverExternalPackages: [
+    "pdf-parse",
+    "docx",
+    "@imgly/background-removal",
+    "onnxruntime-web",
+  ],
+
   // Inline critical CSS and defer the rest, eliminating render-blocking CSS (requires `critters` package).
   experimental: {
     optimizeCss: true,
@@ -95,7 +106,6 @@ const nextConfig: NextConfig = {
   },
   webpack(config, { isServer }) {
     // Strip core-js polyfills for features our target browsers (Chrome 93+, Safari 15.4+) support natively.
-    // Using false in webpack 5 resolve.alias replaces the module with an empty module at build time.
     if (!isServer) {
       Object.assign(config.resolve.alias, {
         "core-js/modules/es.array.at.js": false,
@@ -106,16 +116,6 @@ const nextConfig: NextConfig = {
         "core-js/modules/es.string.trim-end.js": false,
         "core-js/modules/es.string.trim-start.js": false,
       });
-    }
-
-    // pdf-parse uses Node.js built-ins — mark them as external on the server
-    // so webpack doesn't try to bundle them.
-    if (isServer) {
-      const existingExternals = config.externals ?? [];
-      config.externals = [
-        ...(Array.isArray(existingExternals) ? existingExternals : [existingExternals]),
-        "pdf-parse",
-      ];
     }
 
     return config;
