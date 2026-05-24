@@ -1,0 +1,3 @@
+# The backend folder is a separate Express service deployed on Render.
+# Vercel must not include it in the Next.js build.
+backend
