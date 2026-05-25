@@ -5,10 +5,11 @@
  * No system binaries required — works on any Node.js runtime including Render free tier.
  *
  * Formatting preserved:
- *   - H1 / H2 / H3 headings (ALL-CAPS, numbered, title-case heuristics)
+ *   - H1 / H2 / H3 headings (ALL-CAPS, numbered, strict title-case heuristics)
  *   - Bullet and numbered lists
  *   - Bold / italic inline runs (detected via surrounding markers)
- *   - Table-like rows (tab or multi-space separated columns)
+ *   - Tables: pipe-delimited (|col|col|), tab-delimited, and space-aligned
+ *     — multi-line confirmation prevents false positives on normal paragraph text
  *   - Page breaks (separator lines)
  *   - Paragraph spacing and indentation
  *   - Font: Calibri 11pt body, larger for headings
@@ -51,9 +52,37 @@ export type ConvertResult =
       message: string;
     };
 
+// ── Text pre-processing ───────────────────────────────────────────────────────
+// Normalise common PDF extraction artifacts before any structural analysis.
+
+function preprocessText(raw: string): string {
+  return (
+    raw
+      // Non-breaking spaces → regular space
+      .replace(/ /g, " ")
+      // Soft hyphens → nothing (invisible formatting character)
+      .replace(/­/g, "")
+      // PDF hyphenation: "word-\nword" at line wrap → rejoin as "wordword"
+      // Only applies when the char before hyphen is a letter and after newline is lowercase
+      .replace(/-\n([a-z])/g, "$1")
+      // Collapse 4+ consecutive blank lines to 2
+      .replace(/\n{4,}/g, "\n\n\n")
+      // Trim trailing whitespace from every line
+      .split("\n")
+      .map((l) => l.trimEnd())
+      .join("\n")
+  );
+}
+
 // ── Heading detection ─────────────────────────────────────────────────────────
 
 type HeadingMatch = { level: 1 | 2 | 3 } | null;
+
+// Short words that are NOT capitalised in standard title case
+const TITLE_CONNECTORS = new Set([
+  "a", "an", "the", "and", "or", "but", "for", "nor", "so", "yet",
+  "at", "by", "in", "of", "on", "to", "up", "as", "is", "are", "via",
+]);
 
 function detectHeading(line: string): HeadingMatch {
   const t = line.trim();
@@ -65,27 +94,32 @@ function detectHeading(line: string): HeadingMatch {
     t.length >= 3 &&
     t.length <= 60 &&
     /[A-Z]/.test(t) &&
-    !/[.!?,;]$/.test(t)
+    !/[.!?,;]$/.test(t) &&
+    // Must contain at least one actual letter (not just punctuation/numbers)
+    /[A-Z]{2,}/.test(t)
   ) {
     return { level: 1 };
   }
 
-  // Numbered section: "1. Title" or "1.1 Title" or "1.1.1 Title"
-  if (/^\d+\.\s+[A-Z\u00C0-\u024F]/.test(t) && t.length <= 100 && !/[.!?]$/.test(t)) {
+  // Numbered section: "1. Title" or "1.1 Title"
+  if (/^\d+\.\s+[A-ZÀ-ɏ]/.test(t) && t.length <= 100 && !/[.!?]$/.test(t)) {
     return { level: 2 };
   }
-  if (/^\d+\.\d+[\s.]+[A-Z\u00C0-\u024F]/.test(t) && t.length <= 100 && !/[.!?]$/.test(t)) {
+  if (/^\d+\.\d+[\s.]+[A-ZÀ-ɏ]/.test(t) && t.length <= 100 && !/[.!?]$/.test(t)) {
     return { level: 3 };
   }
 
-  // Title Case: short line, most words capitalised, no trailing punctuation
+  // Strict Title Case: short line, nearly ALL meaningful words start with a capital,
+  // no trailing punctuation. Threshold raised to 0.9 to avoid false positives on
+  // normal sentence-case paragraph starts.
   const words = t.split(/\s+/);
-  if (words.length >= 2 && words.length <= 10 && t.length <= 80 && !/[.!?,;]$/.test(t)) {
-    const capCount = words.filter(
-      (w) => w.length > 0 && /^[A-Z\u00C0-\u024F]/.test(w),
-    ).length;
-    const shortWords = words.filter((w) => w.length <= 3).length;
-    if ((capCount - shortWords) / Math.max(1, words.length - shortWords) >= 0.7) {
+  if (words.length >= 2 && words.length <= 8 && t.length <= 70 && !/[.!?,;]$/.test(t)) {
+    const significant = words.filter(
+      (w) => w.length > 0 && !TITLE_CONNECTORS.has(w.toLowerCase()),
+    );
+    const capSig = significant.filter((w) => /^[A-ZÀ-ɏ]/.test(w));
+    // Require at least 2 significant words AND 90 % of them capitalized
+    if (significant.length >= 2 && capSig.length / significant.length >= 0.9) {
       return { level: 2 };
     }
   }
@@ -117,13 +151,11 @@ function isSeparatorLine(line: string): boolean {
 }
 
 // ── Inline bold/italic detection ──────────────────────────────────────────────
-// Handles **bold**, *italic*, __bold__, _italic_ markers
 
 type InlineRun = { text: string; bold: boolean; italic: boolean };
 
 function parseInlineRuns(text: string): InlineRun[] {
   const runs: InlineRun[] = [];
-  // Simple state-machine for **bold**, *italic*, __bold__, _italic_
   const re = /(\*\*|__|\*|_)(.*?)\1/g;
   let lastIndex = 0;
   let match: RegExpExecArray | null;
@@ -165,21 +197,112 @@ function makeTextRuns(text: string, baseSize = 22): TextRun[] {
 }
 
 // ── Table detection ───────────────────────────────────────────────────────────
-// Consecutive lines that look like table rows (tab-separated or aligned columns)
+//
+// Three table formats are detected, in priority order:
+//   1. Pipe  — "| col1 | col2 | col3 |"  (most reliable — explicit delimiters)
+//   2. Tab   — "col1\tcol2\tcol3"         (reliable — tabs rarely appear in prose)
+//   3. Space — "col1    col2    col3"      (conservative — require 4+ spaces AND
+//                                           multi-line confirmation to avoid false
+//                                           positives on normal paragraph text)
+//
+// Multi-line confirmation: we only start a table block if the CURRENT line AND
+// at least one of the next two non-blank lines share the same format. A single
+// line that looks like a table row is almost always just prose.
 
-function looksLikeTableRow(line: string): boolean {
-  return line.includes("\t") || /\S {3,}\S/.test(line);
+type TableFormat = "pipe" | "tab" | "space";
+
+// ── Pipe table ────────────────────────────────────────────────────────────────
+
+function looksLikePipeRow(line: string): boolean {
+  const t = line.trim();
+  // Need at least two pipe characters with non-pipe content between them
+  return (t.match(/\|/g) ?? []).length >= 2 && /\|[^|]+\|/.test(t);
 }
 
-function splitTableRow(line: string): string[] {
-  if (line.includes("\t")) {
-    return line.split("\t").map((c) => c.trim()).filter(Boolean);
+function isPipeRowSeparator(line: string): boolean {
+  // Matches "| --- | :--- | ---: |" style separator rows in GFM-style tables
+  return /^\|?[\s:]*-{1,}[\s:]*(\|[\s:]*-+[\s:]*)+\|?$/.test(line.trim());
+}
+
+function splitPipeRow(line: string): string[] {
+  let s = line.trim();
+  if (s.startsWith("|")) s = s.slice(1);
+  if (s.endsWith("|")) s = s.slice(0, -1);
+  return s.split("|").map((c) => c.trim()).filter(Boolean);
+}
+
+// ── Tab table ─────────────────────────────────────────────────────────────────
+
+function looksLikeTabRow(line: string): boolean {
+  return line.includes("\t") && line.split("\t").filter((s) => s.trim()).length >= 2;
+}
+
+function splitTabRow(line: string): string[] {
+  return line.split("\t").map((c) => c.trim()).filter(Boolean);
+}
+
+// ── Space-aligned table ───────────────────────────────────────────────────────
+// Require ≥ 4 spaces between non-empty tokens AND at least 2 columns.
+// This is stricter than the previous 3-space threshold to cut false positives.
+
+function looksLikeSpaceRow(line: string): boolean {
+  const t = line.trim();
+  if (!t || t.length > 300) return false;
+  const cols = t.split(/\s{4,}/).map((c) => c.trim()).filter(Boolean);
+  return cols.length >= 2;
+}
+
+function splitSpaceRow(line: string): string[] {
+  return line.trim().split(/\s{4,}/).map((c) => c.trim()).filter(Boolean);
+}
+
+// ── Format detector ───────────────────────────────────────────────────────────
+
+function detectLineTableFormat(line: string): TableFormat | null {
+  if (looksLikePipeRow(line)) return "pipe";
+  if (looksLikeTabRow(line)) return "tab";
+  if (looksLikeSpaceRow(line)) return "space";
+  return null;
+}
+
+/**
+ * Look-ahead: return the table format only if the current line AND at least one
+ * of the next two non-blank lines agree on the same format. This prevents a
+ * single "table-like" line from being pulled out of a paragraph.
+ */
+function peekTableFormat(lines: string[], startIdx: number): TableFormat | null {
+  const fmt = detectLineTableFormat(lines[startIdx]);
+  if (!fmt) return null;
+
+  // For pipe tables, a separator row (|---|---| immediately after the header)
+  // also counts as confirmation.
+  for (let j = startIdx + 1; j < Math.min(startIdx + 4, lines.length); j++) {
+    const next = lines[j];
+    if (!next.trim()) continue; // skip blank lines between rows
+    if (detectLineTableFormat(next) === fmt) return fmt;
+    if (fmt === "pipe" && isPipeRowSeparator(next)) return fmt;
+    break; // first non-blank line didn't match — not a table
   }
-  return line.split(/\s{3,}/).map((c) => c.trim()).filter(Boolean);
+
+  return null;
 }
+
+// ── Table builder ─────────────────────────────────────────────────────────────
 
 function buildTable(rows: string[][]): Table {
   const colCount = Math.max(...rows.map((r) => r.length));
+
+  // Proportional column widths: based on the max content length seen in each column.
+  // Clamped to a minimum of 8 % so no column becomes invisible.
+  const maxLens = Array.from({ length: colCount }, (_, ci) =>
+    Math.max(...rows.map((r) => (r[ci] ?? "").length), 4),
+  );
+  const totalLen = maxLens.reduce((s, l) => s + l, 0) || 1;
+  // Widths as integer percentages; last column absorbs any rounding remainder.
+  const widthPcts = maxLens.map((l) => Math.max(8, Math.round((l / totalLen) * 100)));
+  const sumPcts = widthPcts.reduce((s, p) => s + p, 0);
+  widthPcts[widthPcts.length - 1] += 100 - sumPcts; // fix rounding
+
   return new Table({
     width: { size: 100, type: WidthType.PERCENTAGE },
     rows: rows.map(
@@ -188,6 +311,7 @@ function buildTable(rows: string[][]): Table {
           tableHeader: ri === 0,
           children: Array.from({ length: colCount }, (_, ci) =>
             new TableCell({
+              width: { size: Math.max(1, widthPcts[ci]), type: WidthType.PERCENTAGE },
               children: [
                 new Paragraph({
                   children: makeTextRuns(cells[ci] ?? "", 20),
@@ -195,12 +319,13 @@ function buildTable(rows: string[][]): Table {
                 }),
               ],
               borders: {
-                top: { style: BorderStyle.SINGLE, size: 4, color: "AAAAAA" },
-                bottom: { style: BorderStyle.SINGLE, size: 4, color: "AAAAAA" },
-                left: { style: BorderStyle.SINGLE, size: 4, color: "AAAAAA" },
-                right: { style: BorderStyle.SINGLE, size: 4, color: "AAAAAA" },
+                top: { style: BorderStyle.SINGLE, size: 4, color: "BBBBBB" },
+                bottom: { style: BorderStyle.SINGLE, size: 4, color: "BBBBBB" },
+                left: { style: BorderStyle.SINGLE, size: 4, color: "BBBBBB" },
+                right: { style: BorderStyle.SINGLE, size: 4, color: "BBBBBB" },
               },
-              shading: ri === 0 ? { fill: "F2F2F2" } : undefined,
+              // Header row: slightly darker shade; data rows: white
+              shading: ri === 0 ? { fill: "DDEEFF" } : ri % 2 === 0 ? { fill: "F7F9FC" } : undefined,
             }),
           ),
         }),
@@ -264,20 +389,46 @@ function buildDocChildren(text: string, preserveLayout: boolean): DocChild[] {
     }
 
     // ── Table block ─────────────────────────────────────────────────────────
-    if (looksLikeTableRow(raw) && splitTableRow(raw).length >= 2) {
+    // peekTableFormat confirms ≥ 2 lines share the same format before we commit.
+    const tableFormat = peekTableFormat(lines, i);
+    if (tableFormat) {
+      const tableStartI = i;
       const tableRows: string[][] = [];
-      while (i < lines.length && lines[i].trim() && looksLikeTableRow(lines[i])) {
-        const cells = splitTableRow(lines[i]);
-        if (cells.length >= 2) tableRows.push(cells);
-        else break;
+
+      while (i < lines.length) {
+        const line = lines[i];
+        if (!line.trim()) { i++; break; } // blank line ends the block
+
+        // Skip GFM-style separator rows inside pipe tables
+        if (tableFormat === "pipe" && isPipeRowSeparator(line)) { i++; continue; }
+
+        // Stop if the line no longer matches the established format
+        if (detectLineTableFormat(line) !== tableFormat) break;
+
+        let cells: string[];
+        switch (tableFormat) {
+          case "pipe":  cells = splitPipeRow(line);  break;
+          case "tab":   cells = splitTabRow(line);   break;
+          default:      cells = splitSpaceRow(line); break;
+        }
+
+        if (cells.length >= 2) {
+          tableRows.push(cells);
+        } else {
+          // Line doesn't split cleanly — stop collecting
+          break;
+        }
         i++;
       }
-      if (tableRows.length >= 1) {
+
+      if (tableRows.length >= 2) {
         children.push(buildTable(tableRows));
-        // Add spacing after table
-        children.push(new Paragraph({ children: [], spacing: { after: 120 } }));
+        children.push(new Paragraph({ children: [], spacing: { after: 160 } }));
         continue;
       }
+
+      // Fewer than 2 rows collected → not a real table; reset and fall through
+      i = tableStartI;
     }
 
     // ── Bullet list ─────────────────────────────────────────────────────────
@@ -298,19 +449,15 @@ function buildDocChildren(text: string, preserveLayout: boolean): DocChild[] {
         } else if (detectHeading(l.trim()) || isSeparatorLine(l)) {
           break;
         } else {
-          // Continuation of previous bullet
-          const last = children[children.length - 1];
-          if (last instanceof Paragraph) {
-            // Append to last bullet — just add a new bullet for the continuation
-            children.push(
-              new Paragraph({
-                children: makeTextRuns(l.trim()),
-                bullet: { level: 0 },
-                spacing: { after: 80 },
-                indent: { left: convertInchesToTwip(0.25) },
-              }),
-            );
-          }
+          // Continuation of the previous bullet item
+          children.push(
+            new Paragraph({
+              children: makeTextRuns(l.trim()),
+              bullet: { level: 0 },
+              spacing: { after: 80 },
+              indent: { left: convertInchesToTwip(0.25) },
+            }),
+          );
           i++;
         }
       }
@@ -319,7 +466,6 @@ function buildDocChildren(text: string, preserveLayout: boolean): DocChild[] {
 
     // ── Numbered list ───────────────────────────────────────────────────────
     if (isNumberedListLine(raw)) {
-      let listNum = 1;
       while (i < lines.length) {
         const l = lines[i];
         if (!l.trim()) { i++; break; }
@@ -332,7 +478,6 @@ function buildDocChildren(text: string, preserveLayout: boolean): DocChild[] {
               indent: { left: convertInchesToTwip(0.25) },
             }),
           );
-          listNum++;
           i++;
         } else if (detectHeading(l.trim()) || isSeparatorLine(l)) {
           break;
@@ -340,7 +485,6 @@ function buildDocChildren(text: string, preserveLayout: boolean): DocChild[] {
           i++;
         }
       }
-      void listNum;
       continue;
     }
 
@@ -350,8 +494,16 @@ function buildDocChildren(text: string, preserveLayout: boolean): DocChild[] {
       const l = lines[i];
       const lt = l.trim();
       if (!lt) { i++; break; }
-      if (detectHeading(lt) || isSeparatorLine(l) || isBulletLine(l) || isNumberedListLine(l)) break;
-      if (looksLikeTableRow(l) && splitTableRow(l).length >= 2) break;
+      if (
+        detectHeading(lt) ||
+        isSeparatorLine(l) ||
+        isBulletLine(l) ||
+        isNumberedListLine(l)
+      ) {
+        break;
+      }
+      // Stop if this line would start a confirmed table (don't consume it as paragraph text)
+      if (peekTableFormat(lines, i)) break;
       paraLines.push(lt);
       i++;
     }
@@ -398,9 +550,9 @@ export async function convertPdfToDocx(
     };
   }
 
-  const { text, numpages, info } = parsed;
+  const { text: rawText, numpages, info } = parsed;
 
-  if (!text || text.trim().length < 10) {
+  if (!rawText || rawText.trim().length < 10) {
     return {
       ok: false,
       reason: "no_text",
@@ -409,6 +561,9 @@ export async function convertPdfToDocx(
         "For scanned PDFs, please use a dedicated OCR tool before converting.",
     };
   }
+
+  // Normalise PDF extraction artifacts before structural analysis
+  const text = preprocessText(rawText);
 
   const title =
     typeof info?.Title === "string" && info.Title ? info.Title : "Converted Document";
@@ -445,7 +600,7 @@ export async function convertPdfToDocx(
     styles: {
       default: {
         document: {
-          run: { font: "Calibri", size: 22 }, // 11pt
+          run: { font: "Calibri", size: 22 }, // 11 pt
         },
       },
     },

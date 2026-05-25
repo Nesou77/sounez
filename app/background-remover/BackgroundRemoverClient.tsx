@@ -150,58 +150,41 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
     setStage("processing");
     setResultUrl(null);
     setErrorMsg("");
-    setProcessingLabel("Removing background…");
+    setProcessingLabel("Analysing your image…");
 
-    // ── Step 1: try the server-side remove.bg API ──────────────────────────
-    let useBrowserFallback = false;
+    // ── Step 1: try the server-side API (best-effort, completely optional) ──
+    // If the server is unavailable for ANY reason — no API key, rate limit,
+    // upstream error, timeout, network failure — we fall through silently to
+    // on-device AI. The user never sees a backend error message.
     try {
       const fd = new FormData();
       fd.append("image", file);
-
       const res = await fetch("/api/background-remove", {
         method: "POST",
         body: fd,
       });
-
       if (res.ok) {
         const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        setResultUrl(url);
+        setResultUrl(URL.createObjectURL(blob));
         setStage("done");
         return;
       }
-
-      if (res.status === 503) {
-        // API key not configured on the server — silently fall through to on-device AI
-        useBrowserFallback = true;
-      } else {
-        // 400 / 422 / 429 / 502 / 504 — parse the server's user-facing message
-        const data = await res.json().catch(() => ({}));
-        const msg =
-          (data as { error?: string })?.error?.trim() ||
-          "Unable to remove background. Please try again.";
-        setErrorMsg(msg);
-        setStage("error");
-        return;
-      }
+      // Any non-ok response → fall through to on-device AI
     } catch {
-      // Network error (fetch itself failed) — try on-device as last resort
-      useBrowserFallback = true;
+      // Network / fetch error → fall through to on-device AI
     }
 
-    if (!useBrowserFallback) return;
-
-    // ── Step 2: browser-side AI fallback (no API key needed) ──────────────
+    // ── Step 2: on-device AI (works with no API key, no server required) ────
     try {
-      setProcessingLabel("Using on-device AI — this may take 15–30 seconds…");
+      setProcessingLabel("Running on-device AI — this may take 20–30 seconds…");
       const blob = await removeBgInBrowser(file);
-      const url = URL.createObjectURL(blob);
-      setResultUrl(url);
+      setResultUrl(URL.createObjectURL(blob));
       setStage("done");
     } catch (e) {
-      console.error("[bg-remove] browser fallback failed:", e);
+      console.error("[bg-remove] on-device AI failed:", e);
       setErrorMsg(
-        "Background removal failed. Please try a different image or check your internet connection.",
+        "We couldn't remove the background from this image. " +
+          "Try a different photo — use a high-contrast image with a clear subject on a plain background.",
       );
       setStage("error");
     }
@@ -370,7 +353,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
                 {stage === "error" && (
                   <div className="flex flex-col items-center gap-2 text-muted-foreground">
                     <AlertCircle className="h-8 w-8 text-destructive" />
-                    <span className="px-4 text-center text-xs">Unable to remove background</span>
+                    <span className="px-4 text-center text-xs">Processing failed</span>
                   </div>
                 )}
               </div>
