@@ -16,34 +16,28 @@ import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
 import { useToolView } from "@/lib/use-tool-view";
 
-// ── Browser-side AI background removal ───────────────────────────────────────
-// @imgly/background-removal dynamically fetches ~40 MB WASM + ONNX model files
-// from CDN at runtime. We must set publicPath explicitly — without it the library
-// resolves asset URLs relative to the webpack chunk URL (/_next/static/chunks/…)
-// where the model files don't exist, causing a silent 404 failure.
+// ── On-device AI background removal ──────────────────────────────────────────
+// @imgly/background-removal runs fully in the browser via ONNX/WebAssembly.
+// No server, no API key, no image uploads — everything happens on-device.
 //
-// publicPath should match the exact installed package version. Update this when
-// upgrading @imgly/background-removal in package.json.
+// The library fetches its WASM runtime + ONNX model files (~40 MB total) from
+// the CDN specified by publicPath. This must match the installed package version
+// exactly so the model files are found. The version is pinned in package.json.
 const BG_REMOVAL_CDN =
   process.env.NEXT_PUBLIC_BG_REMOVAL_CDN ??
   "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/";
 
-async function removeBgInBrowser(file: File): Promise<Blob> {
+async function runOnDeviceRemoval(file: File): Promise<Blob> {
+  // Dynamic import keeps the library (~1.1 MB JS) out of the main bundle.
+  // The actual WASM + model files are fetched from CDN only when needed.
   const { removeBackground } = await import("@imgly/background-removal");
   return removeBackground(file, {
     publicPath: BG_REMOVAL_CDN,
-    // "isnet_fp16" is the high-quality model for @imgly/background-removal ≥ 1.4.
-    // The old alias "isnet" was removed in v1.4; "medium" is a friendly alias for
-    // the same model in ≥ 1.5. Use "isnet_fp16" to be explicit across versions.
+    // isnet_fp16: high-quality ISNet model (16-bit float) — valid for ≥ v1.4.
+    // Equivalent to "medium" preset in ≥ v1.5 but explicit about the model file.
     model: "isnet_fp16",
     output: { format: "image/png", quality: 1 },
   });
-}
-
-declare global {
-  interface Window {
-    imglyRemoveBackground?: never; // unused — kept for type safety
-  }
 }
 
 const MAX_FILE_SIZE_MB = 10;
@@ -70,7 +64,7 @@ const FAQS = [
   },
   {
     q: "Is my image sent to a server?",
-    a: "Yes. Your image is sent securely over HTTPS, processed, and immediately deleted. We do not store your images.",
+    a: "No. Your image is processed entirely in your browser using on-device AI (WebAssembly). It never leaves your device — no uploads, no server, no API key required.",
   },
   {
     q: "What file formats are supported?",
@@ -150,34 +144,11 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
     setStage("processing");
     setResultUrl(null);
     setErrorMsg("");
-    setProcessingLabel("Analysing your image…");
+    setProcessingLabel("Loading AI model — this may take a moment on the first run…");
 
-    // ── Step 1: try the server-side API (best-effort, completely optional) ──
-    // If the server is unavailable for ANY reason — no API key, rate limit,
-    // upstream error, timeout, network failure — we fall through silently to
-    // on-device AI. The user never sees a backend error message.
     try {
-      const fd = new FormData();
-      fd.append("image", file);
-      const res = await fetch("/api/background-remove", {
-        method: "POST",
-        body: fd,
-      });
-      if (res.ok) {
-        const blob = await res.blob();
-        setResultUrl(URL.createObjectURL(blob));
-        setStage("done");
-        return;
-      }
-      // Any non-ok response → fall through to on-device AI
-    } catch {
-      // Network / fetch error → fall through to on-device AI
-    }
-
-    // ── Step 2: on-device AI (works with no API key, no server required) ────
-    try {
-      setProcessingLabel("Running on-device AI — this may take 20–30 seconds…");
-      const blob = await removeBgInBrowser(file);
+      setProcessingLabel("Removing background — please wait…");
+      const blob = await runOnDeviceRemoval(file);
       setResultUrl(URL.createObjectURL(blob));
       setStage("done");
     } catch (e) {
@@ -193,7 +164,6 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
   const downloadResult = () => {
     if (!resultUrl) return;
 
-    // If a background color is selected, composite onto a canvas before downloading
     if (bgColor !== "transparent") {
       const img = new Image();
       img.onload = () => {
@@ -202,12 +172,9 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
         canvas.height = img.naturalHeight;
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
-
-        // Fill background
         ctx.fillStyle = resolvedBg;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0);
-
         canvas.toBlob((blob) => {
           if (!blob) return;
           const a = document.createElement("a");
@@ -236,12 +203,12 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       tool={tool}
       intro="Remove image backgrounds automatically with AI. Upload a photo and get a clean transparent PNG ready for products, profiles, presentations and social media."
       features={[
-        { title: "AI-Powered Removal", desc: "Deep learning model precisely separates foreground subjects from any background." },
+        { title: "100% On-Device AI", desc: "Powered by ONNX WebAssembly — runs entirely in your browser. No uploads, no server, no API key." },
         { title: "Drag & Drop Upload", desc: "Drop your image or click to browse. PNG, JPG, JPEG and WEBP supported." },
         { title: "Before / After Preview", desc: "Compare the original and result side by side before downloading." },
         { title: "Transparent Background", desc: "Output is always a clean transparent PNG ready for design tools." },
         { title: "Background Color Replace", desc: "Optionally fill the removed background with white, black or a custom color." },
-        { title: "Privacy First", desc: "Images are processed securely and deleted immediately after download." },
+        { title: "Completely Private", desc: "Your image never leaves your device — processed locally with no data sent anywhere." },
       ]}
       howTo={[
         "Click the upload area or drag and drop your image onto the page.",
@@ -468,7 +435,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       <div className="mt-6 flex items-start gap-2 rounded-xl border border-border bg-muted/40 px-4 py-3 text-xs text-muted-foreground">
         <Shield className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
         <span>
-          Your image is processed securely. Files are never stored on our servers after processing.
+          Your image is processed entirely in your browser using on-device AI — it never leaves your device.
         </span>
       </div>
     </ToolPageShell>

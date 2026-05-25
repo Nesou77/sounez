@@ -1,7 +1,10 @@
 import { Router, Request, Response } from "express";
 import multer from "multer";
 import { rateLimit } from "express-rate-limit";
-import { convertPdfToDocx } from "../services/pdf-converter";
+import fs from "fs";
+import path from "path";
+import { convertWithLibreOffice } from "../lib/libreoffice";
+import { createJobDir, cleanupDir } from "../lib/temp";
 
 const router = Router();
 
@@ -19,7 +22,7 @@ const convertRateLimit = rateLimit({
   legacyHeaders: false,
 });
 
-// ── Multer: memory storage (no disk needed for pure-Node conversion) ──────────
+// ── Multer: memory storage, stream to disk only when conversion starts ────────
 const MAX_MB = parseInt(process.env.MAX_FILE_SIZE_MB || "20", 10);
 
 const upload = multer({
@@ -49,28 +52,34 @@ router.post(
       return;
     }
 
-    try {
-      const preserveLayout = req.body.preserveLayout === "true";
-      const useOcr = req.body.useOcr === "true";
+    const jobDir = createJobDir();
+    const originalBase = (req.file.originalname || "document.pdf")
+      .replace(/\.pdf$/i, "")
+      .replace(/[^a-zA-Z0-9_\-. ]/g, "_")
+      .slice(0, 100);
+    const pdfPath = path.join(jobDir, `${originalBase}.pdf`);
 
-      const result = await convertPdfToDocx(req.file.buffer, { preserveLayout, useOcr });
+    try {
+      // Write the uploaded PDF buffer to a temp file so LibreOffice can read it
+      fs.writeFileSync(pdfPath, req.file.buffer);
+
+      const result = await convertWithLibreOffice(pdfPath, jobDir);
 
       if (!result.ok) {
         const statusMap: Record<string, number> = {
+          not_installed: 503,
           encrypted: 422,
           corrupt: 422,
           no_text: 422,
+          timeout: 504,
           unknown: 500,
         };
         res.status(statusMap[result.reason] ?? 500).json({ error: result.message });
         return;
       }
 
-      const outputName =
-        (req.file.originalname || "document.pdf")
-          .replace(/\.pdf$/i, "")
-          .replace(/[^a-zA-Z0-9_\-. ]/g, "_")
-          .slice(0, 100) + ".docx";
+      const docxBuffer = fs.readFileSync(result.docxPath);
+      const outputName = `${originalBase}.docx`;
 
       res.setHeader(
         "Content-Type",
@@ -78,10 +87,12 @@ router.post(
       );
       res.setHeader("Content-Disposition", `attachment; filename="${outputName}"`);
       res.setHeader("Cache-Control", "no-store");
-      res.send(result.buffer);
+      res.send(docxBuffer);
     } catch (err) {
       console.error("[pdf-to-word] Unexpected error:", err instanceof Error ? err.message : err);
       res.status(500).json({ error: "Something went wrong. Please try again with a different PDF." });
+    } finally {
+      cleanupDir(jobDir);
     }
   },
 );

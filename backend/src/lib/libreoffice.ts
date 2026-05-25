@@ -86,7 +86,7 @@ export type ConvertResult =
   | { ok: true; docxPath: string }
   | { ok: false; reason: "not_installed" | "encrypted" | "corrupt" | "no_text" | "timeout" | "unknown"; message: string };
 
-const CONVERSION_TIMEOUT_MS = 60_000;
+const CONVERSION_TIMEOUT_MS = parseInt(process.env.LIBREOFFICE_TIMEOUT_MS || "90000", 10);
 
 // ── Main conversion ───────────────────────────────────────────────────────────
 
