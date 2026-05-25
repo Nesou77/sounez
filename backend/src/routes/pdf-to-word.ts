@@ -3,7 +3,7 @@ import multer from "multer";
 import { rateLimit } from "express-rate-limit";
 import fs from "fs";
 import path from "path";
-import { convertWithLibreOffice } from "../lib/libreoffice";
+import { convertWithLibreOffice, type ConvertOptions } from "../lib/libreoffice";
 import { createJobDir, cleanupDir } from "../lib/temp";
 
 const router = Router();
@@ -63,7 +63,11 @@ router.post(
       // Write the uploaded PDF buffer to a temp file so LibreOffice can read it
       fs.writeFileSync(pdfPath, req.file.buffer);
 
-      const result = await convertWithLibreOffice(pdfPath, jobDir);
+      const opts: ConvertOptions = {
+        preserveLayout: req.body.preserveLayout === "true",
+      };
+
+      const result = await convertWithLibreOffice(pdfPath, jobDir, opts);
 
       if (!result.ok) {
         const statusMap: Record<string, number> = {

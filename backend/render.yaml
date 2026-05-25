@@ -1,25 +1,22 @@
 # Render deployment configuration — sounez-backend
 #
 # Repo root:  sounez/
-# This file:  sounez/backend/render.yaml
-# rootDir:    backend   (relative to repo root)
+# This file:  sounez/backend/render.yaml  (kept for reference — Render reads the root render.yaml)
 #
-# Setup:
-#   1. In Render dashboard → New Web Service → connect GitHub repo (sounez)
-#   2. Set Root Directory to "backend"
-#   3. Render will use the build/start commands below
-#   4. Add ALLOWED_ORIGINS env var in the dashboard
+# Why Docker?
+# Render's native Node runtime only deploys project files; apt-installed packages like
+# LibreOffice are discarded after the build step and unavailable at runtime.
+# Using runtime: docker bakes LibreOffice into the image so it is always present.
 
 services:
   - type: web
     name: sounez-backend
-    runtime: node
+    runtime: docker
     region: oregon
     plan: free
     branch: main
-    rootDir: backend
-    buildCommand: "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libreoffice && npm install && npm run build"
-    startCommand: npm start
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
     healthCheckPath: /health
     envVars:
       - key: NODE_ENV

@@ -86,6 +86,19 @@ export type ConvertResult =
   | { ok: true; docxPath: string }
   | { ok: false; reason: "not_installed" | "encrypted" | "corrupt" | "no_text" | "timeout" | "unknown"; message: string };
 
+export type ConvertOptions = {
+  /**
+   * When true, opens the PDF in LibreOffice Draw (--draw) instead of Writer.
+   * Draw preserves the visual layout of each page as positioned drawing objects
+   * (text boxes, shapes, images), at the cost of reflowable text.
+   * Best for PDFs with complex columns, tables or fixed-position elements.
+   *
+   * When false (default), Writer is used. Text flows naturally and is fully
+   * editable in Word, but complex layouts may be simplified.
+   */
+  preserveLayout?: boolean;
+};
+
 const CONVERSION_TIMEOUT_MS = parseInt(process.env.LIBREOFFICE_TIMEOUT_MS || "90000", 10);
 
 // ── Main conversion ───────────────────────────────────────────────────────────
@@ -93,7 +106,9 @@ const CONVERSION_TIMEOUT_MS = parseInt(process.env.LIBREOFFICE_TIMEOUT_MS || "90
 export async function convertWithLibreOffice(
   pdfPath: string,
   outDir: string,
+  options: ConvertOptions = {},
 ): Promise<ConvertResult> {
+  const { preserveLayout = false } = options;
   const bin = await findLibreOfficeBin();
 
   if (!bin) {
@@ -104,6 +119,13 @@ export async function convertWithLibreOffice(
     };
   }
 
+  // --draw: opens PDF in Draw mode. Content becomes positioned drawing objects
+  //         (text boxes, shapes) that preserve the visual page layout exactly.
+  //         Best for multi-column layouts, forms, and table-heavy PDFs.
+  // --writer: opens PDF in Writer mode. Text flows as normal paragraphs and
+  //           is fully editable in Word, but complex layouts may reflow.
+  const componentFlag = preserveLayout ? "--draw" : "--writer";
+
   try {
     await execFileAsync(
       bin,
@@ -111,6 +133,7 @@ export async function convertWithLibreOffice(
         "--headless",
         "--norestore",
         "--nofirststartwizard",
+        componentFlag,
         "--convert-to",
         "docx",
         "--outdir",
