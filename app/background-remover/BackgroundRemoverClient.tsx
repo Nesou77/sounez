@@ -17,15 +17,26 @@ import type { Tool } from "@/data/tools";
 import { useToolView } from "@/lib/use-tool-view";
 
 // ── Browser-side AI background removal ───────────────────────────────────────
-// @imgly/background-removal is 1.1 MB — safe to bundle.
-// The WASM model (~40 MB) is fetched from CDN at runtime, not bundled.
-// Dynamic import ensures it only loads when the user actually clicks the button.
+// @imgly/background-removal dynamically fetches ~40 MB WASM + ONNX model files
+// from CDN at runtime. We must set publicPath explicitly — without it the library
+// resolves asset URLs relative to the webpack chunk URL (/_next/static/chunks/…)
+// where the model files don't exist, causing a silent 404 failure.
+//
+// publicPath should match the exact installed package version. Update this when
+// upgrading @imgly/background-removal in package.json.
+const BG_REMOVAL_CDN =
+  process.env.NEXT_PUBLIC_BG_REMOVAL_CDN ??
+  "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/";
 
 async function removeBgInBrowser(file: File): Promise<Blob> {
   const { removeBackground } = await import("@imgly/background-removal");
   return removeBackground(file, {
-    model: "isnet",
-    output: { format: "image/png", quality: 0.9 },
+    publicPath: BG_REMOVAL_CDN,
+    // "isnet_fp16" is the high-quality model for @imgly/background-removal ≥ 1.4.
+    // The old alias "isnet" was removed in v1.4; "medium" is a friendly alias for
+    // the same model in ≥ 1.5. Use "isnet_fp16" to be explicit across versions.
+    model: "isnet_fp16",
+    output: { format: "image/png", quality: 1 },
   });
 }
 
@@ -142,14 +153,14 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
     setProcessingLabel("Removing background…");
 
     // ── Step 1: try the server-side remove.bg API ──────────────────────────
-    let serverOk = false;
+    let useBrowserFallback = false;
     try {
-      const formData = new FormData();
-      formData.append("image", file);
+      const fd = new FormData();
+      fd.append("image", file);
 
       const res = await fetch("/api/background-remove", {
         method: "POST",
-        body: formData,
+        body: fd,
       });
 
       if (res.ok) {
@@ -157,14 +168,28 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
         const url = URL.createObjectURL(blob);
         setResultUrl(url);
         setStage("done");
-        serverOk = true;
+        return;
       }
-      // If server returns 503 (no API key) fall through to browser fallback silently
+
+      if (res.status === 503) {
+        // API key not configured on the server — silently fall through to on-device AI
+        useBrowserFallback = true;
+      } else {
+        // 400 / 422 / 429 / 502 / 504 — parse the server's user-facing message
+        const data = await res.json().catch(() => ({}));
+        const msg =
+          (data as { error?: string })?.error?.trim() ||
+          "Unable to remove background. Please try again.";
+        setErrorMsg(msg);
+        setStage("error");
+        return;
+      }
     } catch {
-      // Network error — fall through to browser fallback
+      // Network error (fetch itself failed) — try on-device as last resort
+      useBrowserFallback = true;
     }
 
-    if (serverOk) return;
+    if (!useBrowserFallback) return;
 
     // ── Step 2: browser-side AI fallback (no API key needed) ──────────────
     try {
@@ -175,7 +200,9 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       setStage("done");
     } catch (e) {
       console.error("[bg-remove] browser fallback failed:", e);
-      setErrorMsg("Background removal failed. Please try a different image or check your connection.");
+      setErrorMsg(
+        "Background removal failed. Please try a different image or check your internet connection.",
+      );
       setStage("error");
     }
   };

@@ -21,6 +21,6 @@ services:
       - key: PORT
         value: 10000
       - key: ALLOWED_ORIGINS
-        sync: false
+        value: "https://www.sounez.com,https://sounez.com"
       - key: MAX_FILE_SIZE_MB
         value: 20

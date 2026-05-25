@@ -50,18 +50,30 @@ export async function POST(req: Request) {
     );
   }
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 25_000); // 25 s — well within Vercel's limit
+
   try {
     const removeBgForm = new FormData();
     removeBgForm.append("image_file", imageFile);
     removeBgForm.append("size", "auto");
 
-    const res = await fetch("https://api.remove.bg/v1.0/removebg", {
-      method: "POST",
-      headers: { "X-Api-Key": apiKey },
-      body: removeBgForm,
-    });
+    let res: Response;
+    try {
+      res = await fetch("https://api.remove.bg/v1.0/removebg", {
+        method: "POST",
+        headers: { "X-Api-Key": apiKey },
+        body: removeBgForm,
+        signal: controller.signal,
+      });
+    } finally {
+      clearTimeout(timeoutId);
+    }
 
     if (!res.ok) {
+      const errBody = await res.text().catch(() => "");
+      console.error(`[bg-remove] remove.bg error ${res.status}:`, errBody.slice(0, 300));
+
       if (res.status === 402) {
         return NextResponse.json(
           { error: "Background removal is not available right now. Please try again later." },
@@ -80,7 +92,6 @@ export async function POST(req: Request) {
           { status: 429 },
         );
       }
-      console.error(`[bg-remove] remove.bg error ${res.status}`);
       return NextResponse.json(
         { error: "We could not remove the background. Please try a different image." },
         { status: 502 },
@@ -97,6 +108,14 @@ export async function POST(req: Request) {
       },
     });
   } catch (e) {
+    clearTimeout(timeoutId);
+    if (e instanceof Error && e.name === "AbortError") {
+      console.error("[bg-remove] remove.bg request timed out after 25 s");
+      return NextResponse.json(
+        { error: "Background removal timed out. Please try a smaller image." },
+        { status: 504 },
+      );
+    }
     console.error("[bg-remove] Unexpected error:", e);
     return NextResponse.json(
       { error: "Something went wrong. Please check your connection and try again." },

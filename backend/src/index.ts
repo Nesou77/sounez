@@ -10,7 +10,9 @@ const app = express();
 const PORT = parseInt(process.env.PORT || "3001", 10);
 
 // ── CORS origins ──────────────────────────────────────────────────────────────
-const rawOrigins = process.env.ALLOWED_ORIGINS || "https://www.sounez.com";
+// Default covers both www and apex so the frontend works with or without www.
+const rawOrigins =
+  process.env.ALLOWED_ORIGINS || "https://www.sounez.com,https://sounez.com";
 const allowedOrigins = rawOrigins
   .split(",")
   .map((o) => o.trim())
@@ -103,5 +105,24 @@ app.listen(PORT, "0.0.0.0", () => {
 
 // ── Temp file cleanup: every 30 min ──────────────────────────────────────────
 scheduleTempCleanup(30 * 60_000);
+
+// ── Render free-tier keep-alive ───────────────────────────────────────────────
+// Render spins down free services after 15 min of inactivity. Self-pinging every
+// 14 min keeps the process warm so PDF conversions don't hit the cold-start delay.
+// RENDER_EXTERNAL_URL is automatically injected by Render at runtime.
+if (process.env.NODE_ENV === "production" && process.env.RENDER_EXTERNAL_URL) {
+  const pingUrl = `${process.env.RENDER_EXTERNAL_URL}/healthz`;
+  console.log(`[server] Keep-alive ping enabled → ${pingUrl} every 14 min`);
+  setInterval(async () => {
+    try {
+      const ac = new AbortController();
+      const tid = setTimeout(() => ac.abort(), 8_000);
+      await fetch(pingUrl, { signal: ac.signal });
+      clearTimeout(tid);
+    } catch {
+      // best-effort — ignore ping failures
+    }
+  }, 14 * 60_000);
+}
 
 export default app;
