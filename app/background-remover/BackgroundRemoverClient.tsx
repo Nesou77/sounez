@@ -25,7 +25,7 @@ import { useToolView } from "@/lib/use-tool-view";
 // exactly so the model files are found. The version is pinned in package.json.
 const BG_REMOVAL_CDN =
   process.env.NEXT_PUBLIC_BG_REMOVAL_CDN ??
-  "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/";
+  "https://staticimgly.com/@imgly/background-removal-data/1.7.0/dist/";
 
 async function runOnDeviceRemoval(file: File): Promise<Blob> {
   // Dynamic import keeps the library (~1.1 MB JS) out of the main bundle.

@@ -57,9 +57,9 @@ const nextConfig: NextConfig = {
     deviceSizes: [390, 414, 640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 24, 32, 48, 64, 96, 128, 144, 192, 216, 256, 384],
   },
-  // @imgly/background-removal is a browser-only package (1.1 MB JS + WASM from CDN at runtime).
-  // Excluding it from the server Lambda trace keeps the bundle lean.
-  serverExternalPackages: ["@imgly/background-removal"],
+  // Keep browser-only packages out of the server (Node.js) bundle.
+  // onnxruntime-web is a hard peer dep of @imgly/background-removal — both are client-only.
+  serverExternalPackages: ["@imgly/background-removal", "onnxruntime-web"],
 
   // Inline critical CSS and defer the rest, eliminating render-blocking CSS (requires `critters` package).
   experimental: {
@@ -98,8 +98,8 @@ const nextConfig: NextConfig = {
     ],
   },
   webpack(config, { isServer }) {
-    // Strip core-js polyfills for features our target browsers (Chrome 93+, Safari 15.4+) support natively.
     if (!isServer) {
+      // Strip core-js polyfills for features our target browsers (Chrome 93+, Safari 15.4+) support natively.
       Object.assign(config.resolve.alias, {
         "core-js/modules/es.array.at.js": false,
         "core-js/modules/es.array.flat.js": false,
@@ -108,9 +108,14 @@ const nextConfig: NextConfig = {
         "core-js/modules/es.object.has-own.js": false,
         "core-js/modules/es.string.trim-end.js": false,
         "core-js/modules/es.string.trim-start.js": false,
-        // @imgly/background-removal imports onnxruntime-web statically in its bundle,
-        // but loads the actual WASM from CDN at runtime. Stub these out so webpack
-        // doesn't fail trying to resolve the uninstalled peer dependency.
+      });
+    }
+
+    if (isServer) {
+      // ORT is browser-only. If the server webpack somehow encounters it (e.g. via
+      // a transitive import outside serverExternalPackages), stub it rather than
+      // failing the build with a WebAssembly/browser-API error.
+      Object.assign(config.resolve.alias, {
         "onnxruntime-web": false,
         "onnxruntime-web/webgpu": false,
       });
