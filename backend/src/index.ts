@@ -4,6 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import { rateLimit } from "express-rate-limit";
 import { pdfToWordRouter } from "./routes/pdf-to-word";
+import { isLibreOfficeAvailable } from "./lib/libreoffice";
 import { scheduleTempCleanup } from "./lib/temp";
 
 const app = express();
@@ -79,6 +80,16 @@ app.get("/health", (_req: Request, res: Response) => {
 
 app.get("/healthz", (_req: Request, res: Response) => {
   res.send("OK");
+});
+
+// Diagnostic: reports whether LibreOffice is installed and reachable.
+// Hit GET /health/libreoffice in your browser or curl to verify the Docker setup.
+app.get("/health/libreoffice", async (_req: Request, res: Response) => {
+  const available = await isLibreOfficeAvailable();
+  res.status(available ? 200 : 503).json({
+    libreoffice: available ? "available" : "not_found",
+    method: available ? "libreoffice" : "fallback (Node.js)",
+  });
 });
 
 // ── Routes ────────────────────────────────────────────────────────────────────

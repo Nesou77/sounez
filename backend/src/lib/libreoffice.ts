@@ -21,14 +21,17 @@ const execFileAsync = promisify(execFile);
 
 // ── Binary resolution ─────────────────────────────────────────────────────────
 
-const CANDIDATES = [
+// Ordered from most to least likely. Includes the actual Debian binary path
+// (/usr/lib/libreoffice/program/soffice) in addition to the wrapper symlinks
+// (/usr/bin/soffice, /usr/bin/libreoffice) so detection works even when the
+// package manager only installed the underlying binary without the wrappers.
+const FIXED_PATHS = [
   process.env.LIBREOFFICE_PATH,
   "/usr/bin/libreoffice",
   "/usr/bin/soffice",
-  "/usr/local/bin/soffice",
   "/usr/local/bin/libreoffice",
-  "soffice",
-  "libreoffice",
+  "/usr/local/bin/soffice",
+  "/usr/lib/libreoffice/program/soffice",
 ].filter(Boolean) as string[];
 
 let _resolvedBin: string | null | undefined = undefined;
@@ -36,48 +39,52 @@ let _resolvedBin: string | null | undefined = undefined;
 async function findLibreOfficeBin(): Promise<string | null> {
   if (_resolvedBin !== undefined) return _resolvedBin;
 
-  // Check fixed paths first
-  for (const candidate of CANDIDATES.filter((c) => c.startsWith("/"))) {
+  // 1. Fast fs.existsSync check on fixed/known paths — no subprocess risk
+  for (const candidate of FIXED_PATHS) {
     if (fs.existsSync(candidate)) {
       _resolvedBin = candidate;
-      console.log(`[libreoffice] Found binary at: ${candidate}`);
+      console.log(`[libreoffice] Found at: ${candidate}`);
       return _resolvedBin;
     }
   }
 
-  // Scan /opt for versioned installs like /opt/libreoffice7.6/program/soffice
+  // 2. Scan /opt for versioned installs like /opt/libreoffice7.6/program/soffice
   try {
     if (fs.existsSync("/opt")) {
-      const optEntries = fs.readdirSync("/opt");
-      for (const entry of optEntries) {
+      for (const entry of fs.readdirSync("/opt")) {
         if (!entry.startsWith("libreoffice")) continue;
         const candidate = path.join("/opt", entry, "program", "soffice");
         if (fs.existsSync(candidate)) {
           _resolvedBin = candidate;
-          console.log(`[libreoffice] Found binary via /opt scan: ${candidate}`);
+          console.log(`[libreoffice] Found via /opt: ${candidate}`);
           return _resolvedBin;
         }
       }
     }
-  } catch {
-    // /opt not readable — skip
-  }
+  } catch { /* /opt not readable */ }
 
-  // PATH fallback — try running soffice --version
+  // 3. `which` — more reliable than running --version because LibreOffice can
+  //    fail startup (missing HOME, DISPLAY) even when the binary is present.
   for (const name of ["soffice", "libreoffice"]) {
     try {
-      await execFileAsync(name, ["--version"], { timeout: 5000 });
-      _resolvedBin = name;
-      console.log(`[libreoffice] Found binary on PATH: ${name}`);
-      return _resolvedBin;
-    } catch {
-      // not found on PATH
-    }
+      const { stdout } = await execFileAsync("which", [name], { timeout: 3_000 });
+      const found = stdout.trim();
+      if (found) {
+        _resolvedBin = found;
+        console.log(`[libreoffice] Found via which: ${found}`);
+        return _resolvedBin;
+      }
+    } catch { /* not on PATH */ }
   }
 
   _resolvedBin = null;
-  console.warn("[libreoffice] LibreOffice binary not found.");
+  console.warn("[libreoffice] Binary not found — LibreOffice is not installed.");
   return null;
+}
+
+/** Reset the cached binary path. Call this only in tests. */
+export function _resetLibreOfficeBinCache(): void {
+  _resolvedBin = undefined;
 }
 
 // ── Types ─────────────────────────────────────────────────────────────────────

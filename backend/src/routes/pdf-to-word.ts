@@ -3,7 +3,8 @@ import multer from "multer";
 import { rateLimit } from "express-rate-limit";
 import fs from "fs";
 import path from "path";
-import { convertWithLibreOffice, type ConvertOptions } from "../lib/libreoffice";
+import { convertWithLibreOffice, isLibreOfficeAvailable, type ConvertOptions } from "../lib/libreoffice";
+import { convertPdfToDocx } from "../services/pdf-converter";
 import { createJobDir, cleanupDir } from "../lib/temp";
 
 const router = Router();
@@ -22,7 +23,7 @@ const convertRateLimit = rateLimit({
   legacyHeaders: false,
 });
 
-// ── Multer: memory storage, stream to disk only when conversion starts ────────
+// ── Multer: memory storage ────────────────────────────────────────────────────
 const MAX_MB = parseInt(process.env.MAX_FILE_SIZE_MB || "20", 10);
 
 const upload = multer({
@@ -52,38 +53,77 @@ router.post(
       return;
     }
 
-    const jobDir = createJobDir();
+    const preserveLayout = req.body.preserveLayout === "true";
+    const useOcr = req.body.useOcr === "true";
     const originalBase = (req.file.originalname || "document.pdf")
       .replace(/\.pdf$/i, "")
       .replace(/[^a-zA-Z0-9_\-. ]/g, "_")
       .slice(0, 100);
-    const pdfPath = path.join(jobDir, `${originalBase}.pdf`);
+    const outputName = `${originalBase}.docx`;
 
-    try {
-      // Write the uploaded PDF buffer to a temp file so LibreOffice can read it
-      fs.writeFileSync(pdfPath, req.file.buffer);
+    // ── Try LibreOffice first (high-quality, Docker image required) ───────────
+    const libreOfficeAvailable = await isLibreOfficeAvailable();
 
-      const opts: ConvertOptions = {
-        preserveLayout: req.body.preserveLayout === "true",
-      };
+    if (libreOfficeAvailable) {
+      const jobDir = createJobDir();
+      const pdfPath = path.join(jobDir, `${originalBase}.pdf`);
 
-      const result = await convertWithLibreOffice(pdfPath, jobDir, opts);
+      try {
+        fs.writeFileSync(pdfPath, req.file.buffer);
 
-      if (!result.ok) {
+        const opts: ConvertOptions = { preserveLayout };
+        const result = await convertWithLibreOffice(pdfPath, jobDir, opts);
+
+        if (result.ok) {
+          const docxBuffer = fs.readFileSync(result.docxPath);
+          res.setHeader(
+            "Content-Type",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          );
+          res.setHeader("Content-Disposition", `attachment; filename="${outputName}"`);
+          res.setHeader("Cache-Control", "no-store");
+          res.send(docxBuffer);
+          return;
+        }
+
+        // LibreOffice found but conversion failed (encrypted, corrupt, timeout…)
         const statusMap: Record<string, number> = {
-          not_installed: 503,
           encrypted: 422,
           corrupt: 422,
           no_text: 422,
           timeout: 504,
           unknown: 500,
+          not_installed: 503,
         };
         res.status(statusMap[result.reason] ?? 500).json({ error: result.message });
         return;
+      } catch (err) {
+        console.error("[pdf-to-word] LibreOffice unexpected error:", err instanceof Error ? err.message : err);
+        res.status(500).json({ error: "Something went wrong. Please try again with a different PDF." });
+        return;
+      } finally {
+        cleanupDir(jobDir);
       }
+    }
 
-      const docxBuffer = fs.readFileSync(result.docxPath);
-      const outputName = `${originalBase}.docx`;
+    // ── Fallback: Node.js converter (works on any runtime, no system deps) ────
+    // Used when LibreOffice is not installed (e.g. native Render runtime, local dev).
+    // Produces lower-quality DOCX (text flow only, no images) but never errors out.
+    console.warn("[pdf-to-word] LibreOffice not available — using Node.js fallback converter.");
+
+    try {
+      const fallback = await convertPdfToDocx(req.file.buffer, { preserveLayout, useOcr });
+
+      if (!fallback.ok) {
+        const statusMap: Record<string, number> = {
+          encrypted: 422,
+          corrupt: 422,
+          no_text: 422,
+          unknown: 500,
+        };
+        res.status(statusMap[fallback.reason] ?? 500).json({ error: fallback.message });
+        return;
+      }
 
       res.setHeader(
         "Content-Type",
@@ -91,12 +131,11 @@ router.post(
       );
       res.setHeader("Content-Disposition", `attachment; filename="${outputName}"`);
       res.setHeader("Cache-Control", "no-store");
-      res.send(docxBuffer);
+      res.setHeader("X-Conversion-Method", "fallback"); // visible in Render logs
+      res.send(fallback.buffer);
     } catch (err) {
-      console.error("[pdf-to-word] Unexpected error:", err instanceof Error ? err.message : err);
+      console.error("[pdf-to-word] Fallback converter error:", err instanceof Error ? err.message : err);
       res.status(500).json({ error: "Something went wrong. Please try again with a different PDF." });
-    } finally {
-      cleanupDir(jobDir);
     }
   },
 );
