@@ -242,6 +242,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       ]}
       privacyNote="Processing runs on your device via WebAssembly. The model files load from a CDN; your image bytes are not uploaded to Sounez."
       whenNotToUse="Skip for multi-person crowd shots, glass reflections, or images you do not have rights to edit."
+    >
       {/* Upload zone */}
       {stage === "idle" && (
         <div

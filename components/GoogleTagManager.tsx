@@ -23,7 +23,7 @@ export function GoogleTagManager() {
     if (!gtmId) return;
 
     let loaded = false;
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let timeoutId: number | undefined;
     const PASSIVE: AddEventListenerOptions = { passive: true };
 
     function loadGTM() {
@@ -36,7 +36,7 @@ export function GoogleTagManager() {
       window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
       const s = document.createElement("script");
       s.async = true;
-      s.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmId)}`;
+      s.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmId as string)}`;
       document.head.appendChild(s);
     }
 

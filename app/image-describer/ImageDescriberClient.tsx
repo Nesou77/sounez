@@ -247,6 +247,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
       ]}
       privacyNote="Images are sent securely for AI vision analysis and are not stored after results are returned."
       whenNotToUse="Avoid uploading ID documents, medical scans, or other sensitive images you would not share with a third-party processor."
+    >
       {/* Upload zone */}
       {stage === "idle" && (
         <div
