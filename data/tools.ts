@@ -18,7 +18,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "pdf-to-word-converter",
     name: "PDF to Word Converter",
-    description: "Convert PDF files into editable Word documents online. Drag and drop your PDF and get a clean DOCX file ready to edit.",
+    description: "Turn a PDF into an editable Word file when you have permission to process it. Upload, convert, download DOCX.",
     category: "utility-tools",
     emoji: "📄",
     keywords: ["pdf to word", "pdf to docx", "pdf converter", "convert pdf to word", "online pdf converter", "editable word document"],
@@ -323,19 +323,19 @@ export const CATEGORIES = [
   {
     slug: "creator-tools",
     name: "Creator Tools",
-    description: "Tools for YouTubers, TikTokers and content creators who want to grow without burning time on the boring stuff.",
+    description: "Draft captions, hashtags, YouTube tags, bios, and rough sponsored-post estimates. Edit every line before you publish.",
     emoji: "🚀",
   },
   {
     slug: "design-tools",
     name: "Design Tools",
-    description: "Color palettes, gradients, favicons, SVG blobs, font pairings and CSS helpers for designers and developers.",
+    description: "Pick colours, build gradients, export favicons, and copy CSS for shadows and patterns — without opening a full design suite.",
     emoji: "🎨",
   },
   {
     slug: "utility-tools",
     name: "Utility Tools",
-    description: "Everyday tools that just get things done. QR codes, word counters, passwords, calculators and more.",
+    description: "Compress images, convert PDFs, count words, make QR codes, and handle other one-off jobs. Privacy notes vary by tool.",
     emoji: "🛠️",
   },
 ] as const;

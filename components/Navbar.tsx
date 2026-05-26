@@ -3,16 +3,21 @@
 import { SmartLink as Link } from "@/components/smart-link";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { TOOLS, CATEGORIES } from "@/data/tools";
+import { TOOLS } from "@/data/tools";
 import { sortToolsByPopularity } from "@/lib/popularity";
-import { getToolIcon, getCategoryIcon } from "@/lib/tool-icons";
+import { getToolIcon } from "@/lib/tool-icons";
 import { BrandLogo } from "@/components/BrandLogo";
+import { TOOL_GROUPS, toolsByGroup } from "@/lib/tool-groups";
 
-const grouped: Record<string, { label: string; slug: string; items: typeof TOOLS }> = {
-  "creator-tools":  { label: "Creator Tools",  slug: "creator-tools",  items: sortToolsByPopularity(TOOLS.filter((t) => t.category === "creator-tools")).slice(0, 6) },
-  "design-tools":   { label: "Design Tools",   slug: "design-tools",   items: sortToolsByPopularity(TOOLS.filter((t) => t.category === "design-tools")).slice(0, 6) },
-  "utility-tools":  { label: "Utility Tools",  slug: "utility-tools",  items: sortToolsByPopularity(TOOLS.filter((t) => t.category === "utility-tools")).slice(0, 6) },
-};
+const NAV_LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/smart-packs", label: "Smart Packs" },
+  { href: "/tools", label: "Tools", hasMenu: "tools" as const },
+  { href: "/categories", label: "Categories", hasMenu: "categories" as const },
+  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
 
 export function Navbar() {
   const [open, setOpen] = useState<string | null>(null);
@@ -26,155 +31,164 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", close);
   }, []);
 
+  const featuredTools = sortToolsByPopularity(TOOLS.filter((t) => t.featured)).slice(0, 6);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <BrandLogo variant="navbar" />
 
-        <nav aria-label="Main navigation" className="hidden items-center gap-1 md:flex" onMouseLeave={() => setOpen(null)}>
-          <Link href="/" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted">
-            Home
-          </Link>
-
-          <div className="relative" onMouseEnter={() => mounted && setOpen("tools")}>
-            <button
-              type="button"
-              className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted"
-              onClick={() => setOpen(open === "tools" ? null : "tools")}
-              aria-haspopup="menu"
-              aria-expanded={open === "tools"}
-              aria-controls={open === "tools" ? "nav-tools-menu" : undefined}
-              aria-label="Tools menu"
-            >
-              Tools <ChevronDown className="h-4 w-4" aria-hidden="true" />
-            </button>
-            {mounted && open === "tools" && (
-              <div
-                id="nav-tools-menu"
-                className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-2xl border border-border bg-popover p-6 shadow-pop"
-              >
-                <div className="grid grid-cols-3 gap-6">
-                  {Object.values(grouped).map(({ label, slug, items }) => (
-                    <div key={slug}>
-                      <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</p>
-                      <ul className="space-y-0.5">
-                        {items.map((t) => {
-                          const Icon = getToolIcon(t.slug);
-                          return (
-                            <li key={t.slug}>
-                              <Link
-                                href={`/tools/${t.slug}`}
-                                onClick={() => setOpen(null)}
-                                className="group flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm text-foreground/80 transition hover:bg-accent hover:text-accent-foreground"
-                              >
-                                <span className="grid h-7 w-7 place-items-center rounded-md bg-gradient-soft text-primary transition group-hover:scale-110">
-                                  <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-                                </span>
-                                <span>{t.name}</span>
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                      <Link
-                        href={`/categories/${slug}`}
-                        onClick={() => setOpen(null)}
-                        className="mt-2 inline-flex items-center gap-1 px-2.5 text-xs font-medium text-primary hover:underline"
-                      >
-                        All {label} →
+        <nav aria-label="Main navigation" className="hidden items-center gap-0.5 lg:flex" onMouseLeave={() => setOpen(null)}>
+          {NAV_LINKS.map((item) => {
+            if (item.hasMenu === "tools") {
+              return (
+                <div key={item.href} className="relative" onMouseEnter={() => mounted && setOpen("tools")}>
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-muted hover:text-foreground"
+                    onClick={() => setOpen(open === "tools" ? null : "tools")}
+                    aria-expanded={open === "tools"}
+                    aria-haspopup="menu"
+                  >
+                    Tools <ChevronDown className="h-4 w-4" aria-hidden="true" />
+                  </button>
+                  {mounted && open === "tools" && (
+                    <div className="animate-fade-in absolute left-0 top-full z-50 mt-2 w-[min(100vw-2rem,52rem)] rounded-2xl border border-border bg-popover p-5 shadow-pop lg:left-1/2 lg:-translate-x-1/2">
+                      <div className="mb-4 flex items-center justify-between gap-4 border-b border-border pb-3">
+                        <p className="text-sm font-semibold">Browse by type</p>
+                        <Link href="/tools" onClick={() => setOpen(null)} className="text-xs font-medium text-primary hover:underline">
+                          All tools →
+                        </Link>
+                      </div>
+                      <div className="grid max-h-[70vh] gap-6 overflow-y-auto sm:grid-cols-2 lg:grid-cols-4">
+                        {TOOL_GROUPS.slice(0, 4).map((g) => (
+                          <div key={g.slug}>
+                            <Link
+                              href={`/tools#${g.slug}`}
+                              onClick={() => setOpen(null)}
+                              className="text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-primary"
+                            >
+                              {g.name}
+                            </Link>
+                            <ul className="mt-2 space-y-0.5">
+                              {toolsByGroup(g.slug).slice(0, 4).map((t) => {
+                                const Icon = getToolIcon(t.slug);
+                                return (
+                                  <li key={t.slug}>
+                                    <Link
+                                      href={`/tools/${t.slug}`}
+                                      onClick={() => setOpen(null)}
+                                      className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm hover:bg-accent"
+                                    >
+                                      <Icon className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+                                      <span className="truncate">{t.name}</span>
+                                    </Link>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-4 border-t border-border pt-3">
+                        <p className="mb-2 text-xs font-semibold text-muted-foreground">Featured</p>
+                        <div className="flex flex-wrap gap-2">
+                          {featuredTools.map((t) => (
+                            <Link
+                              key={t.slug}
+                              href={`/tools/${t.slug}`}
+                              onClick={() => setOpen(null)}
+                              className="rounded-lg border border-border px-2.5 py-1 text-xs font-medium hover:bg-muted"
+                            >
+                              {t.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            }
+            if (item.hasMenu === "categories") {
+              return (
+                <div key={item.href} className="relative" onMouseEnter={() => mounted && setOpen("cats")}>
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-muted hover:text-foreground"
+                    onClick={() => setOpen(open === "cats" ? null : "cats")}
+                    aria-expanded={open === "cats"}
+                    aria-haspopup="menu"
+                  >
+                    Categories <ChevronDown className="h-4 w-4" aria-hidden="true" />
+                  </button>
+                  {mounted && open === "cats" && (
+                    <div className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-72 -translate-x-1/2 rounded-2xl border border-border bg-popover p-3 shadow-pop">
+                      <Link href="/categories/creator-tools" onClick={() => setOpen(null)} className="block rounded-lg px-3 py-2 text-sm hover:bg-accent">Creator tools</Link>
+                      <Link href="/categories/design-tools" onClick={() => setOpen(null)} className="block rounded-lg px-3 py-2 text-sm hover:bg-accent">Design tools</Link>
+                      <Link href="/categories/utility-tools" onClick={() => setOpen(null)} className="block rounded-lg px-3 py-2 text-sm hover:bg-accent">Utility tools</Link>
+                      <Link href="/categories" onClick={() => setOpen(null)} className="mt-2 block border-t border-border px-3 pt-2 text-xs font-medium text-primary hover:underline">
+                        All categories →
                       </Link>
                     </div>
-                  ))}
+                  )}
                 </div>
-                <div className="mt-5 border-t border-border pt-3 text-right">
-                  <Link href="/tools" onClick={() => setOpen(null)} className="text-sm font-medium text-primary hover:underline">
-                    View all tools →
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="relative" onMouseEnter={() => mounted && setOpen("cats")}>
-            <button
-              type="button"
-              className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted"
-              onClick={() => setOpen(open === "cats" ? null : "cats")}
-              aria-haspopup="menu"
-              aria-expanded={open === "cats"}
-              aria-controls={open === "cats" ? "nav-categories-menu" : undefined}
-              aria-label="Categories menu"
-            >
-              Categories <ChevronDown className="h-4 w-4" aria-hidden="true" />
-            </button>
-            {mounted && open === "cats" && (
-              <div
-                id="nav-categories-menu"
-                className="animate-fade-in absolute left-1/2 top-full z-50 mt-2 w-80 -translate-x-1/2 rounded-2xl border border-border bg-popover p-3 shadow-pop"
+              );
+            }
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-muted hover:text-foreground ${
+                  item.href === "/smart-packs" ? "text-primary" : ""
+                }`}
               >
-                {CATEGORIES.map((c) => {
-                  const Icon = getCategoryIcon(c.slug);
-                  return (
-                    <Link
-                      key={c.slug}
-                      href={`/categories/${c.slug}`}
-                      onClick={() => setOpen(null)}
-                      className="group flex items-start gap-3 rounded-xl p-3 transition hover:bg-accent"
-                    >
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-brand text-primary-foreground shadow-pop transition group-hover:scale-105">
-                        <Icon className="h-4 w-4" aria-hidden="true" />
-                      </span>
-                      <div>
-                        <div className="text-sm font-semibold">{c.name}</div>
-                        <div className="text-xs leading-relaxed text-muted-foreground">{c.description}</div>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-
-          <Link href="/smart-packs" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted">Smart Packs</Link>
-          <Link href="/blog" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted">Blog</Link>
-          <Link href="/about" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted">About</Link>
-          <Link href="/contact" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted">Contact</Link>
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="hidden md:block">
-          <Link href="/tools" className="inline-flex items-center rounded-xl bg-gradient-brand px-4 py-2 text-sm font-semibold text-primary-foreground shadow-pop transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow active:translate-y-0">
-            Explore tools
+        <div className="hidden lg:block">
+          <Link
+            href="/smart-packs"
+            className="inline-flex items-center rounded-xl bg-gradient-brand px-4 py-2 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5"
+          >
+            Smart Packs
           </Link>
         </div>
 
         <button
           type="button"
-          className="md:hidden rounded-md p-2 outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          className="rounded-md p-2 hover:bg-muted lg:hidden"
           onClick={() => setMobile(!mobile)}
-          aria-label={mobile ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={mobile}
-          aria-controls="mobile-navigation"
+          aria-label={mobile ? "Close menu" : "Open menu"}
         >
-          {mobile ? <X aria-hidden /> : <Menu aria-hidden />}
+          {mobile ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </div>
 
       {mobile && (
-        <nav id="mobile-navigation" aria-label="Mobile navigation" className="border-t border-border bg-background md:hidden">
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="border-t border-border bg-background lg:hidden">
           <div className="space-y-1 px-4 py-3">
-            {[
-              { href: "/", label: "Home" },
-              { href: "/tools", label: "All Tools" },
-              { href: "/categories", label: "Categories" },
-              { href: "/smart-packs", label: "Smart Packs" },
-              { href: "/blog", label: "Blog" },
-              { href: "/about", label: "About" },
-              { href: "/contact", label: "Contact" },
-            ].map((l) => (
-              <Link key={l.href} href={l.href} onClick={() => setMobile(false)} className="block rounded-md px-3 py-2 text-sm font-medium hover:bg-muted">
+            {NAV_LINKS.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setMobile(false)}
+                className="block rounded-md px-3 py-2.5 text-sm font-medium hover:bg-muted"
+              >
                 {l.label}
               </Link>
             ))}
+            <Link
+              href="/smart-packs"
+              onClick={() => setMobile(false)}
+              className="mt-2 block rounded-xl bg-gradient-brand px-3 py-2.5 text-center text-sm font-semibold text-primary-foreground"
+            >
+              Create a Smart Pack
+            </Link>
           </div>
         </nav>
       )}

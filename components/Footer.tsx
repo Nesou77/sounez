@@ -55,7 +55,8 @@ export function Footer() {
         <div className="md:col-span-4">
           <BrandLogo variant="footer" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Free tools that actually work. No account, no installs, no clutter. Open one and use it.
+            Free tools and Smart Pack workflows for captions, images, PDFs, and small design jobs. Each tool page
+            explains who it helps, how to use it, and how your data is handled.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-2">
             <SocialLink

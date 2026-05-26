@@ -6,22 +6,22 @@ import { HomeSections } from "./HomeSections";
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  title: "Sounez | Free Online Tools for Creators, Designers and Developers",
+  title: "Sounez | Smart Packs & Free Tools for Creators and Small Business",
   description:
-    "Free browser-based tools for everyday tasks. Compress images, generate QR codes, build color palettes, create strong passwords, write hashtags and more. No account needed.",
+    "Create captions, optimize images, generate QR codes, convert PDFs, and run Smart Pack workflows. Free tools with clear privacy notes — no account for most features.",
   alternates: { canonical: siteUrl },
   openGraph: {
-    title: "Sounez | Free Online Tools",
+    title: "Sounez | Smart Packs & Free Tools",
     description:
-      "Free browser-based tools for creators, designers and developers. No account, no install, no catch.",
+      "Useful digital assets faster: Smart Packs plus free tools for images, writing, PDFs, and SEO.",
     url: siteUrl,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sounez | Free Online Tools",
+    title: "Sounez | Smart Packs & Free Tools",
     description:
-      "Free browser-based tools for creators, designers and developers. No account, no install, no catch.",
+      "Smart Packs and free tools for captions, images, QR codes, PDFs, and everyday productivity.",
   },
 };
 

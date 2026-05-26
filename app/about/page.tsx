@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { SmartLink as Link } from "@/components/smart-link";
 import { Sparkles, Zap, Heart, Wand2, Rocket, Brush, Wrench, CheckCircle2, ArrowRight } from "lucide-react";
 import { getSiteUrl } from "@/lib/site-url";
+import { TOOLS } from "@/data/tools";
+import { BLOG_POSTS } from "@/data/blog";
 
 const siteUrl = getSiteUrl();
 const aboutUrl = `${siteUrl}/about`;
@@ -56,12 +58,15 @@ const offers = [
 const values = [
   { Icon: Wand2, title: "Simplicity", text: "Each tool does one thing. No settings you'll never use, no menus to dig through." },
   { Icon: Zap, title: "Speed", text: "Tools open right away and update in real time. No loading screens, no waiting." },
-  { Icon: Heart, title: "Free", text: "Everything is free. No account, no paywall, no premium tier." },
+  { Icon: Heart, title: "Free to use", text: "No account for most tools. Fair-use limits on AI and server features, stated upfront." },
   { Icon: Sparkles, title: "Honest", text: "We only build tools we'd actually use. If it's not useful, it doesn't ship." },
 ];
 
+const toolCount = TOOLS.length;
+const guideCount = BLOG_POSTS.length;
+
 const trust = [
-  "30+ free tools, with more added regularly",
+  `${toolCount} free tools, with more added when they solve a real problem`,
   "Free to use with fair-use limits — no account required for most tools",
   "Many tools run in your browser; server-backed tools disclose processing clearly",
   "Built and maintained since 2024 by a solo developer",
@@ -84,7 +89,7 @@ export default function AboutPage() {
             Tools that <span className="text-gradient-brand">just work</span>.
           </h1>
           <p className="animate-slide-up delay-75 mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Sounez is a collection of free browser-based tools built for creators, designers, students and anyone who needs to get something done without signing up for yet another app.
+            Sounez is a small site of free tools and Smart Pack workflows — built for creators, shop owners, students, and developers who want clear results without another subscription.
           </p>
         </div>
       </section>
@@ -120,7 +125,7 @@ export default function AboutPage() {
             </p>
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">
               I&apos;m a developer and creator with a background in web tools, design utilities and
-              content workflows. Today Sounez has over 30 free tools and 35 practical guides. I ship
+              content workflows. Today Sounez has {toolCount} free tools and {guideCount} practical guides. I ship
               new tools regularly and read every message that comes through the{" "}
               <Link href="/contact" className="font-medium text-primary hover:underline">
                 contact form

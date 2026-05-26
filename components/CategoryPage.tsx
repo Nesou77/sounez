@@ -2,32 +2,13 @@ import { CATEGORIES, toolsByCategory } from "@/data/tools";
 import { ToolCard } from "@/components/ToolCard";
 import { SmartLink as Link } from "@/components/smart-link";
 import { getCategoryIcon } from "@/lib/tool-icons";
-
-const INTROS: Record<string, string> = {
-  "creator-tools": "Tools for YouTubers, TikTokers and Instagram creators who want to spend less time on the repetitive stuff. Generate tags, estimate earnings, find hashtags, write captions, create bios and generate business names. All free, all instant.",
-  "design-tools": "Color palettes, CSS gradients, favicons, SVG blobs, font pairings, image placeholders, box shadows and background patterns. Everything a designer or developer needs to ship faster. Copy-ready code, no installs.",
-  "utility-tools": "Practical everyday tools that just get things done. QR codes, word counters, password generators, image compressors, calculators, resume builders, study notes and more. Free, fast and nothing gets uploaded.",
-};
-
-const FAQS: Record<string, { q: string; a: string }[]> = {
-  "creator-tools": [
-    { q: "Are these creator tools free?", a: "Yes. Every tool on Sounez is free with no account required and no watermarks." },
-    { q: "Do they work on mobile?", a: "Yes. Sounez works on any phone or tablet, no app needed." },
-  ],
-  "design-tools": [
-    { q: "Can I use the colors and gradients in commercial projects?", a: "Yes. Anything you generate is yours to use however you like." },
-    { q: "Is my work saved anywhere?", a: "No. Nothing is stored. Copy or save what you need before you close the tab." },
-  ],
-  "utility-tools": [
-    { q: "Are these tools safe to use?", a: "Many utility tools run in your browser. AI and PDF tools may securely process the content you submit — see each tool page for details." },
-    { q: "Is there a usage limit?", a: "Free to use with fair-use limits on server-backed AI tools." },
-  ],
-};
+import { getCategoryEditorial } from "@/lib/category-content";
 
 export function CategoryPage({ slug }: { slug: string }) {
   const cat = CATEGORIES.find((c) => c.slug === slug)!;
   const items = toolsByCategory(slug);
-  const faqs = FAQS[slug] ?? [];
+  const editorial = getCategoryEditorial(slug);
+  const faqs = editorial?.faqs ?? [];
   const others = CATEGORIES.filter((c) => c.slug !== slug);
   const CatIcon = getCategoryIcon(slug);
 
@@ -44,15 +25,53 @@ export function CategoryPage({ slug }: { slug: string }) {
           <CatIcon className="h-6 w-6" strokeWidth={2} />
         </div>
         <h1 className="text-4xl font-bold sm:text-5xl">{cat.name}</h1>
-        <p className="mt-4 text-lg text-muted-foreground">{INTROS[slug]}</p>
+        <p className="mt-4 text-lg text-muted-foreground">{cat.description}</p>
+        {editorial && (
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{editorial.extendedIntro}</p>
+        )}
       </header>
+
+      {editorial && editorial.useCases.length > 0 && (
+        <section className="mb-10">
+          <h2 className="text-xl font-bold">Common situations</h2>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            {editorial.useCases.map((u) => (
+              <div key={u.title} className="rounded-2xl border border-border bg-card p-5">
+                <h3 className="font-semibold">{u.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{u.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((t) => <ToolCard key={t.slug} tool={t} />)}
       </div>
 
+      {editorial && editorial.tips.length > 0 && (
+        <section className="my-10">
+          <h2 className="text-xl font-bold">Practical tips</h2>
+          <ul className="mt-4 list-disc space-y-2 pl-6 text-sm leading-relaxed text-muted-foreground">
+            {editorial.tips.map((t) => (
+              <li key={t}>{t}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section className="my-10 rounded-2xl border border-primary/20 bg-primary/5 p-6">
+        <h2 className="font-bold">Need several assets from one idea?</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Smart Packs walk you through captions, listings, or image SEO step by step. You run each Sounez tool yourself and edit before publishing.{" "}
+          <Link href="/smart-packs" className="font-medium text-primary hover:underline">
+            Browse Smart Packs →
+          </Link>
+        </p>
+      </section>
+
       <section className="my-12">
-        <h2 className="text-2xl font-bold">FAQ</h2>
+        <h2 className="text-2xl font-bold">Questions about {cat.name.toLowerCase()}</h2>
         <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card">
           {faqs.map((f) => (
             <details key={f.q} className="group p-5">

@@ -32,6 +32,40 @@ export default function BlogPage() {
         </p>
       </header>
 
+      <section className="mx-auto mb-10 max-w-3xl rounded-2xl border border-border bg-muted/30 p-6 sm:p-8">
+        <h2 className="text-lg font-semibold text-center">What we write about</h2>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground text-center">
+          Guides are written for people who use Sounez tools in real workflows — not generic listicles.
+          Each article links to the tool it mentions so you can follow along.
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-xl border border-border bg-card p-4">
+            <h3 className="text-sm font-semibold">Images &amp; performance</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Compression, formats, alt text, and SEO checklists for blogs and shops.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <h3 className="text-sm font-semibold">Social &amp; video</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Captions, bios, hashtags, YouTube descriptions, and honest growth notes.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <h3 className="text-sm font-semibold">Design &amp; CSS</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Palettes, gradients, shadows, patterns, favicons, and font pairings with copy-paste code.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <h3 className="text-sm font-semibold">Work &amp; study</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              PDF conversion, study notes, resumes, passwords, and everyday productivity.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Category filter links */}
       <nav aria-label="Blog categories" className="mb-10 flex flex-wrap justify-center gap-2">
         {CATEGORIES.map((c) => (

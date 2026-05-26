@@ -18,10 +18,21 @@ export const metadata: Metadata = {
 export default function CategoriesPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-      <header className="mb-10 text-center">
-        <h1 className="text-4xl font-bold sm:text-5xl">Tool Categories</h1>
-        <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-          Not sure which tool you need? Browse by category and find the right one for the job.
+      <nav className="mb-6 text-xs text-muted-foreground" aria-label="Breadcrumb">
+        <Link href="/" className="hover:text-foreground">Home</Link>
+        {" / "}
+        <span className="text-foreground">Categories</span>
+      </nav>
+      <header className="mb-10 max-w-2xl">
+        <h1 className="text-4xl font-bold sm:text-5xl">Categories</h1>
+        <p className="mt-3 text-muted-foreground leading-relaxed">
+          Three broad groups of tools. For a finer breakdown (AI writing, image, PDF, SEO, etc.), see the{" "}
+          <Link href="/tools" className="font-medium text-primary hover:underline">tools directory</Link> or{" "}
+          <Link href="/smart-packs" className="font-medium text-primary hover:underline">Smart Packs</Link>.
+        </p>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          Every category page lists the tools in that group plus practical tips and FAQs that apply to the whole set.
+          Open a tool card when you know the job; open a category when you are exploring what Sounez can do in that area.
         </p>
       </header>
 
