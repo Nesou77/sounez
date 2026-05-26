@@ -140,6 +140,7 @@ export function Footer() {
           <ul className="space-y-2.5 text-sm text-muted-foreground">
             <li><Link href="/about" className="transition hover:text-foreground">About</Link></li>
             <li><Link href="/smart-packs" className="transition hover:text-foreground">Smart Packs</Link></li>
+            <li><Link href="/smart-packs/history" className="transition hover:text-foreground">Pack history</Link></li>
             <li><Link href="/blog" className="transition hover:text-foreground">Blog</Link></li>
             <li><Link href="/contact" className="transition hover:text-foreground">Contact</Link></li>
             <li><Link href="/privacy-policy" className="transition hover:text-foreground">Privacy Policy</Link></li>

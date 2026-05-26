@@ -95,6 +95,45 @@ export async function callGeminiJson<T>(options: GeminiJsonOptions): Promise<T> 
 }
 
 /**
+ * Like callGeminiJson but returns null when the API key is missing or the call fails.
+ * Use when production must not silently substitute fallback data.
+ */
+export async function callGeminiJsonRequired<T>(options: Omit<GeminiJsonOptions, "fallback">): Promise<T | null> {
+  const { systemPrompt, userPrompt, maxOutputTokens = 800 } = options;
+
+  if (!env.geminiApiKey) {
+    return null;
+  }
+
+  try {
+    const res = await fetch(geminiUrl(env.geminiModel, "generateContent"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(buildBody(systemPrompt, userPrompt, maxOutputTokens, true)),
+    });
+
+    if (!res.ok) {
+      console.error(`[ai] Gemini error ${res.status}: ${await res.text()}`);
+      return null;
+    }
+
+    const data = await res.json();
+    const text: string = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+    if (!text) return null;
+
+    try {
+      const cleaned = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+      return JSON.parse(cleaned) as T;
+    } catch {
+      return null;
+    }
+  } catch (e) {
+    console.error("[ai] callGeminiJsonRequired failed:", e);
+    return null;
+  }
+}
+
+/**
  * Call Gemini with streaming and return a ReadableStream<Uint8Array>.
  * Falls back to streaming the fallbackText if the API key is missing or the call fails.
  */

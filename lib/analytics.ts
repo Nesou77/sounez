@@ -129,3 +129,33 @@ export function trackGenerateLead(params: {
     page_path: params.page_path ?? getPagePath(),
   });
 }
+
+export function trackSmartPackStarted(params: { pack_slug: string }): void {
+  trackEvent("smart_pack_started", {
+    pack_slug: params.pack_slug,
+    page_path: getPagePath(),
+  });
+}
+
+export function trackSmartPackGenerated(params: { pack_slug: string }): void {
+  trackEvent("smart_pack_generated", {
+    pack_slug: params.pack_slug,
+    page_path: getPagePath(),
+  });
+}
+
+export function trackSmartPackCopied(params: { pack_slug: string; export_type: string }): void {
+  trackEvent("smart_pack_copied", {
+    pack_slug: params.pack_slug,
+    export_type: params.export_type,
+    page_path: getPagePath(),
+  });
+}
+
+export function trackSmartPackExported(params: { pack_slug: string; format: string }): void {
+  trackEvent("smart_pack_exported", {
+    pack_slug: params.pack_slug,
+    format: params.format,
+    page_path: getPagePath(),
+  });
+}

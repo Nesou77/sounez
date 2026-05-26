@@ -47,3 +47,19 @@ model Like {
   @@unique([contentType, slug, visitorHash])
   @@index([contentType, slug])
 }
+
+model SmartPackGeneration {
+  id          String   @id @default(cuid())
+  packSlug    String
+  input       Json
+  output      Json
+  language    String?
+  tone        String?
+  visitorHash String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([packSlug])
+  @@index([createdAt])
+  @@index([visitorHash])
+}

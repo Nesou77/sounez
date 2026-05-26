@@ -97,9 +97,23 @@ export default function PrivacyPolicyPage() {
             <p>
               A small number of tools send your input to a server-side API to generate a result.
               These tools are clearly identified and include AI-powered tools such as the Bio
-              Generator, Caption Generator, and Business Name Generator. In these cases, your input
+              Generator, Caption Generator, Business Name Generator, and{" "}
+              <strong className="text-foreground">Smart Packs</strong>. In these cases, your input
               is transmitted securely over HTTPS, used only to generate your requested result, and
-              not stored or used for any other purpose.
+              not used to train third-party models for unrelated purposes.
+            </p>
+            <p>
+              <strong className="text-foreground">Smart Packs</strong> send your brief and form
+              fields to our AI provider to build a structured pack (captions, listing copy, study
+              notes, etc.). Successful generations may be stored in our database with the pack type,
+              language, tone, input, output, and an anonymous session identifier (
+              <code className="rounded bg-muted px-1">sounez_sp_visitor</code> cookie). We do not
+              publish your prompts or results. Other visitors cannot access your history. You may
+              delete individual saved packs from{" "}
+              <Link href="/smart-packs/history" className="font-medium text-primary hover:underline">
+                Smart Pack history
+              </Link>{" "}
+              on this device, or contact us to request removal.
             </p>
           </div>
         </section>
@@ -129,6 +143,11 @@ export default function PrivacyPolicyPage() {
                 <strong className="text-foreground">Browser-side data</strong> (localStorage,
                 sessionStorage) is stored only on your device and can be cleared by you at any time
                 through your browser settings.
+              </li>
+              <li>
+                <strong className="text-foreground">Smart Pack generations</strong> are kept until
+                you delete them from your history on this device or until we run routine database
+                maintenance. Timestamps shown in history are real database dates.
               </li>
             </ul>
           </div>
@@ -160,6 +179,9 @@ export default function PrivacyPolicyPage() {
               <strong className="text-foreground">Cookie settings</strong> in the site footer at any
               time. Your choice is stored in your browser&apos;s local storage under the key{" "}
               <code className="rounded bg-muted px-1 py-0.5 text-xs">sounez_cookie_consent</code>.
+              Smart Pack history uses an httpOnly cookie named{" "}
+              <code className="rounded bg-muted px-1 py-0.5 text-xs">sounez_sp_visitor</code> so we
+              can show only your saved generations on this browser.
             </p>
             <p>
               Third parties, including Google, may place and read cookies on your browser, or use web

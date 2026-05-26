@@ -12,6 +12,7 @@ import { ContentDates } from "@/components/ContentDates";
 import { getToolDisclaimer } from "@/lib/tool-disclaimers";
 import { getToolEditorial } from "@/lib/tool-editorial";
 import { toolBySlug } from "@/data/tools";
+import { smartPackForTool } from "@/lib/tool-smart-pack-links";
 
 const EngagementBar = dynamic(
   () => import("./EngagementBar").then((m) => m.EngagementBar),
@@ -96,6 +97,7 @@ export function ToolPageShell({
     TOOLS.filter((t) => t.slug !== tool.slug && !related.includes(t)),
   ).slice(0, 6);
   const featuredPosts = blogPostsForTool(tool.slug);
+  const smartPack = smartPackForTool(tool.slug);
   const Icon = getToolIcon(tool.slug);
 
   return (
@@ -230,6 +232,27 @@ export function ToolPageShell({
           ))}
         </div>
       </section>
+
+      {smartPack && (
+        <section className="my-12 rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
+          <h2 className="flex items-center gap-2 text-xl font-bold">
+            <Layers className="h-5 w-5 text-primary" aria-hidden="true" /> Need several assets at once?
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Try the{" "}
+            <Link href={smartPack.href} className="font-medium text-primary hover:underline">
+              {smartPack.label}
+            </Link>{" "}
+            to generate matching fields from one brief — then refine with {tool.name} if needed.
+          </p>
+          <Link
+            href={smartPack.href}
+            className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+          >
+            Open Smart Pack →
+          </Link>
+        </section>
+      )}
 
       <section className="my-12">
         <h2 className="text-2xl font-bold">Related tools</h2>

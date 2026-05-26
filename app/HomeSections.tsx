@@ -94,8 +94,8 @@ export function HomeSections() {
               className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:border-primary/40"
             >
               <Layers className="h-5 w-5 text-primary" aria-hidden="true" />
-              <h3 className="mt-3 text-lg font-bold">{p.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.tagline}</p>
+              <h3 className="mt-3 text-lg font-bold">{p.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.shortDescription}</p>
               <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
                 Open pack <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden="true" />
               </span>

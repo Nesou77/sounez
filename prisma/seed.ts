@@ -106,9 +106,11 @@ async function seedContentMeta() {
     { slug: "social-media-pack", title: "Social Media Pack" },
     { slug: "product-listing-pack", title: "Product Listing Pack" },
     { slug: "seo-image-pack", title: "SEO Image Pack" },
+    { slug: "business-launch-pack", title: "Business Launch Pack" },
+    { slug: "student-study-pack", title: "Student Study Pack" },
   ];
   for (const pack of packs) {
-    const fp = path.join(root, "app", "smart-packs", pack.slug, "page.tsx");
+    const fp = path.join(root, "app", "smart-packs", "[slug]", "page.tsx");
     const times = fs.existsSync(fp) ? fileTimes(fp) : null;
     const createdAt = times?.createdAt ?? migrationDate;
     const updatedAt = times?.updatedAt ?? migrationDate;

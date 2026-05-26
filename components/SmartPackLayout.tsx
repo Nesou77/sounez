@@ -11,14 +11,14 @@ export function SmartPackLayout({ pack }: { pack: SmartPack }) {
         {" / "}
         <Link href="/smart-packs" className="hover:text-foreground">Smart Packs</Link>
         {" / "}
-        <span className="text-foreground">{pack.title}</span>
+        <span className="text-foreground">{pack.name}</span>
       </nav>
 
       <header>
         <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium">
           <Layers className="h-3.5 w-3.5 text-primary" aria-hidden="true" /> Smart Pack
         </span>
-        <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{pack.title}</h1>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{pack.name}</h1>
         <p className="mt-2 text-lg font-medium text-foreground/90">{pack.tagline}</p>
         <ContentDates contentType="smart_pack" slug={pack.slug} className="mt-3 text-sm text-muted-foreground" />
         <p className="mt-6 leading-relaxed text-muted-foreground">{pack.summary}</p>

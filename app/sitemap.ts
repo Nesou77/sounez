@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { TOOLS, CATEGORIES } from "@/data/tools";
 import { BLOG_POSTS } from "@/data/blog";
+import { SMART_PACKS } from "@/data/smartPacks";
 import { getSiteUrl } from "@/lib/site-url";
 import { prisma } from "@/lib/prisma";
 
@@ -68,11 +69,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   const packEntries: MetadataRoute.Sitemap = await Promise.all(
-    ["social-media-pack", "product-listing-pack", "seo-image-pack"].map(async (slug) => ({
-      url: `${base}/smart-packs/${slug}`,
-      lastModified: await lastModified("smart_pack", slug, fallback),
+    SMART_PACKS.map(async (p) => ({
+      url: `${base}/smart-packs/${p.slug}`,
+      lastModified: await lastModified("smart_pack", p.slug, fallback),
       changeFrequency: "monthly" as const,
-      priority: 0.7,
+      priority: 0.75,
     })),
   );
 

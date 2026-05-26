@@ -148,6 +148,13 @@ export default function TermsOfServicePage() {
               sharing. Always verify important results independently before relying on them.
             </p>
             <p>
+              <strong className="text-foreground">Smart Packs</strong> produce structured drafts
+              (social posts, listings, image SEO fields, launch copy, or study notes). They are
+              suggestions, not legal, financial, medical, or professional advice. Sounez may refuse
+              or limit requests that violate our usage rules. Do not use Smart Packs to cheat,
+              impersonate others, or generate illegal, misleading, infringing, or harmful content.
+            </p>
+            <p>
               Free tools are offered with fair-use limits. Server-backed features may be rate-limited
               to keep the service available for everyone.
             </p>
