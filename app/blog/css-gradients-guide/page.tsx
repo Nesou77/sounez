@@ -97,13 +97,13 @@ export default function Post() {
         <h3>The hero background gradient</h3>
         <p>
           A subtle, large radial gradient behind your hero section adds depth without distraction.
-          Keep it low opacity (10–20%) and use your brand color.
+          Keep it low opacity (10-20%) and use your brand color.
         </p>
 
         <h3>The brand gradient on CTAs</h3>
         <p>
           A diagonal linear gradient on your primary button makes it feel premium and distinct. Use
-          two adjacent hues (blue → violet, orange → pink) for the most natural result.
+          two adjacent hues (blue to violet, orange to pink) for the most natural result.
         </p>
 
         <h3>The text gradient</h3>
@@ -128,7 +128,7 @@ export default function Post() {
           </li>
           <li>
             <strong>Jumping across the color wheel</strong>: blue to orange creates a grey muddy
-            middle. Stay within 60–90° of the color wheel for clean transitions.
+            middle. Stay within 60-90° of the color wheel for clean transitions.
           </li>
           <li>
             <strong>Gradients everywhere</strong>: one signature gradient per UI. More than that and

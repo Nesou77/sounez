@@ -18,7 +18,7 @@ export const env = {
     process.env.APP_URL?.trim() ||
     "http://localhost:3000",
 
-  /** Google AI Studio API key — server-side only. Never expose to client. */
+  /** Google AI Studio API key - server-side only. Never expose to client. */
   get geminiApiKey(): string | undefined {
     return process.env.GEMINI_API_KEY;
   },
@@ -28,7 +28,7 @@ export const env = {
     return process.env.GEMINI_MODEL?.trim() || "gemini-2.5-flash";
   },
 
-  /** Google AdSense publisher ID (NEXT_PUBLIC — safe for client). */
+  /** Google AdSense publisher ID (NEXT_PUBLIC - safe for client). */
   get adsensePubId(): string | undefined {
     const v = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID;
     if (!v) warnMissing("NEXT_PUBLIC_ADSENSE_PUB_ID");
@@ -36,7 +36,7 @@ export const env = {
   },
 
   /**
-   * Render backend URL (NEXT_PUBLIC — safe for client, no secrets).
+   * Render backend URL (NEXT_PUBLIC - safe for client, no secrets).
    * Example: https://sounez-backend.onrender.com
    * Used by PdfToWordConverterClient to call /api/pdf-to-word.
    */

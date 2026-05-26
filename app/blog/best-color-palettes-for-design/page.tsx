@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { question: "How many colors should a brand have?", answer: "One primary, one accent, plus 5–7 neutrals (background, surface, border, text variants). That's it. More and you'll lose consistency." },
+  { question: "How many colors should a brand have?", answer: "One primary, one accent, plus 5-7 neutrals (background, surface, border, text variants). That's it. More and you'll lose consistency." },
   { question: "Should I use trendy colors?", answer: "Trends are great for hero gradients and marketing pages, but your core brand color should outlast trends. Pick something you'd be happy with in five years." },
   { question: "What's the easiest way to make a palette feel premium?", answer: "Reduce saturation and increase contrast. The most premium palettes are also the most restrained." },
 ];
@@ -68,7 +68,7 @@ export default function Post() {
         <h2>Use gradients sparingly, make them count</h2>
         <p>
           One signature gradient on your hero section beats a rainbow everywhere. Modern gradients
-          work best when they stay close in hue (e.g. blue → violet) rather than jumping across the
+          work best when they stay close in hue (for example blue to violet) rather than jumping across the
           wheel. Build yours with the <a href="/css-gradient-generator">CSS Gradient Generator</a> and
           save them as design tokens, never re-invent the gradient on every page.
         </p>
@@ -104,7 +104,7 @@ export default function Post() {
 
         <h2>Frequently Asked Questions</h2>
         <h3>How many colors should a brand have?</h3>
-        <p>One primary, one accent, plus 5–7 neutrals (background, surface, border, text variants). That&apos;s it. More and you&apos;ll lose consistency.</p>
+        <p>One primary, one accent, plus 5-7 neutrals (background, surface, border, text variants). That&apos;s it. More and you&apos;ll lose consistency.</p>
         <h3>Should I use trendy colors?</h3>
         <p>Trends are great for hero gradients and marketing pages, but your core brand color should outlast trends. Pick something you&apos;d be happy with in five years.</p>
         <h3>What&apos;s the easiest way to make a palette feel premium?</h3>

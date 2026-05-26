@@ -269,7 +269,7 @@ export default function Post() {
           and images rather than hoping a second upload will fix everything.
         </p>
         <p>
-          For most everyday documents—reports, forms, resumes, and handouts—the fastest path is the{" "}
+          For most everyday documents-reports, forms, resumes, and handouts-the fastest path is the{" "}
           <Link href="/tools/pdf-to-word-converter">PDF to Word Converter</Link>: upload, download, review,
           and edit. Pair it with the <Link href="/tools/word-counter">Word Counter</Link> and{" "}
           <Link href="/tools/text-case-converter">Text Case Converter</Link> when you need polished,

@@ -243,13 +243,13 @@ export function ToolPageShell({
             <Link href={smartPack.href} className="font-medium text-primary hover:underline">
               {smartPack.label}
             </Link>{" "}
-            to generate matching fields from one brief — then refine with {tool.name} if needed.
+            to generate matching fields from one brief - then refine with {tool.name} if needed.
           </p>
           <Link
             href={smartPack.href}
             className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
           >
-            Open Smart Pack →
+            Open Smart Pack
           </Link>
         </section>
       )}

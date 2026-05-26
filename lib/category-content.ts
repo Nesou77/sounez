@@ -1,4 +1,4 @@
-/** Unique editorial content per tool category — not duplicated on tool pages. */
+/** Unique editorial content per tool category - not duplicated on tool pages. */
 
 export type CategoryEditorial = {
   extendedIntro: string;
@@ -10,7 +10,7 @@ export type CategoryEditorial = {
 export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
   "creator-tools": {
     extendedIntro:
-      "These tools help with the text and numbers around publishing: captions, hashtags, channel tags, bios, and rough sponsored-post estimates. They are starting points — you should edit anything before it goes live and follow each platform’s rules for ads and disclosures.",
+      "These tools help with the text and numbers around publishing: captions, hashtags, channel tags, bios, and rough sponsored-post estimates. They are starting points - you should edit anything before it goes live and follow each platform's rules for ads and disclosures.",
     useCases: [
       {
         title: "Upload day",
@@ -18,7 +18,7 @@ export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
       },
       {
         title: "Profile refresh",
-        desc: "Rewrite your bio when your offer changes without copying a template from someone else’s niche.",
+        desc: "Rewrite your bio when your offer changes without copying a template from someone else's niche.",
       },
       {
         title: "Brand sanity check",
@@ -27,7 +27,7 @@ export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
     ],
     tips: [
       "Keep one branded hashtag you reuse; rotate the rest so posts do not look copy-pasted.",
-      "Tags and hashtags support good titles and retention — they do not replace them.",
+      "Tags and hashtags support good titles and retention - they do not replace them.",
       "AI captions can misstate facts; read every line against your image or clip.",
     ],
     faqs: [
@@ -45,13 +45,13 @@ export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
       },
       {
         q: "Are earnings calculator results guaranteed?",
-        a: "No. They are ballpark ranges for planning. Real deals depend on niche, deliverables, and the brand’s budget.",
+        a: "No. They are ballpark ranges for planning. Real deals depend on niche, deliverables, and the brand's budget.",
       },
     ],
   },
   "design-tools": {
     extendedIntro:
-      "Design tools on Sounez focus on quick decisions: pick colours, build gradients, export favicons, or copy CSS for shadows and patterns. They suit landing pages, side projects, and handoffs — not full print production without a final proof.",
+      "Design tools on Sounez focus on quick decisions: pick colours, build gradients, export favicons, or copy CSS for shadows and patterns. They suit landing pages, side projects, and handoffs - not full print production without a final proof.",
     useCases: [
       {
         title: "New landing page",
@@ -68,7 +68,7 @@ export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
     ],
     tips: [
       "Test text contrast on every colour you use for buttons and links.",
-      "Font previews load from Google Fonts — self-host if your project requires it.",
+      "Font previews load from Google Fonts - self-host if your project requires it.",
       "Export SVG blobs at low opacity behind headlines so type stays readable.",
     ],
     faqs: [
@@ -108,7 +108,7 @@ export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
       },
     ],
     tips: [
-      "Keep originals when converting PNG to JPG — transparency does not survive JPEG.",
+      "Keep originals when converting PNG to JPG - transparency does not survive JPEG.",
       "Enable OCR on PDF conversion only when the file is a scan, not typed text.",
       "Store passwords in a manager, not in chat or email.",
     ],

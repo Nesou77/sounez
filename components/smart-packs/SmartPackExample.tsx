@@ -5,7 +5,7 @@ export function SmartPackExample({ pack }: { pack: SmartPackDefinition }) {
     <section className="rounded-2xl border border-border bg-muted/30 p-6">
       <h2 className="text-lg font-bold">Example output</h2>
       <p className="mt-2 text-sm text-muted-foreground">
-        Sample structure — your generated pack will match your brief.
+        Sample structure - your generated pack will match your brief.
       </p>
       <div className="mt-4 space-y-4">
         {pack.exampleOutput.map((ex) => (

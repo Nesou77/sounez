@@ -88,7 +88,7 @@ export default function Post() {
         <ul>
           <li>
             <strong>JPG</strong>: photos, hero banners, and any image without transparency. Best balance of
-            size and quality at 70–85% compression.
+            size and quality at 70-85% compression.
           </li>
           <li>
             <strong>PNG</strong>: logos, icons, screenshots with sharp text, and anything that needs a
@@ -96,7 +96,7 @@ export default function Post() {
           </li>
           <li>
             <strong>WebP</strong>: default for modern sites when your CMS or build step supports it, often
-            25–35% smaller than JPG at the same visual quality.
+            25-35% smaller than JPG at the same visual quality.
           </li>
         </ul>
         <p>
@@ -116,7 +116,7 @@ export default function Post() {
           page. Compress <em>before</em> upload so your CMS, CDN, and backups all store the lean version.
         </p>
         <ul>
-          <li>Resize to actual display width first (hero: ~1600px, inline: ~1200px, thumbnails: 400–600px).</li>
+          <li>Resize to actual display width first (hero: ~1600px, inline: ~1200px, thumbnails: 400-600px).</li>
           <li>Aim for under 200 KB per image on blogs and marketing pages; up to 300 KB for detailed heroes.</li>
           <li>Use a local, browser-based tool so client work and unreleased designs never leave your device.</li>
         </ul>

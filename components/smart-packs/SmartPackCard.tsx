@@ -13,7 +13,7 @@ export function SmartPackCard({ pack }: { pack: SmartPackDefinition }) {
       <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{pack.shortDescription}</p>
       <ul className="mt-4 space-y-1 text-xs text-muted-foreground">
         {pack.outputFields.slice(0, 4).map((g) => (
-          <li key={g}>· {g}</li>
+          <li key={g}>- {g}</li>
         ))}
       </ul>
       <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary">

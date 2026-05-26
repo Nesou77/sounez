@@ -33,9 +33,9 @@ export function AuthorCard({ compact = false }: { compact?: boolean }) {
         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
           Nesou is a developer and creator who built Sounez to make professional-grade tools free
           and accessible. The focus is on tools and guides that solve real tasks for creators,
-          designers and makers — without unnecessary complexity or paywalls.{" "}
+          designers and makers - without unnecessary complexity or paywalls.{" "}
           <Link href="/about" className="font-medium text-primary hover:underline">
-            About Sounez →
+            About Sounez
           </Link>
         </p>
       </div>

@@ -26,7 +26,7 @@ const FAQS = [
   {
     question: "Does converting PNG to JPG lose quality?",
     answer:
-      "JPG uses lossy compression, so some quality is lost in the conversion. At 85–90% quality, the difference is invisible to the human eye for most photos. For images with sharp edges, text or flat colors, the loss may be more noticeable.",
+      "JPG uses lossy compression, so some quality is lost in the conversion. At 85-90% quality, the difference is invisible to the human eye for most photos. For images with sharp edges, text or flat colors, the loss may be more noticeable.",
   },
   {
     question: "What happens to transparent areas when converting PNG to JPG?",
@@ -41,7 +41,7 @@ const FAQS = [
   {
     question: "What quality setting should I use?",
     answer:
-      "For web use, 80–90% quality is the sweet spot: visually identical to the original but significantly smaller. For print or archival purposes, use 95–100%. For thumbnails and previews, 70–75% is fine.",
+      "For web use, 80-90% quality is the sweet spot: visually identical to the original but significantly smaller. For print or archival purposes, use 95-100%. For thumbnails and previews, 70-75% is fine.",
   },
 ];
 
@@ -135,7 +135,7 @@ export default function Post() {
         <h2>PNG vs JPG: direct comparison</h2>
         <ul>
           <li>
-            <strong>File size:</strong> JPG wins for photos (often 5–10x smaller). PNG wins for
+            <strong>File size:</strong> JPG wins for photos (often 5-10x smaller). PNG wins for
             simple graphics with flat colors.
           </li>
           <li>
@@ -173,14 +173,14 @@ export default function Post() {
         </p>
         <ul>
           <li>
-            <strong>Logo on transparent background → JPG:</strong> The transparent area becomes
+            <strong>Logo on transparent background to JPG:</strong> The transparent area becomes
             white. The logo itself is preserved.
           </li>
           <li>
-            <strong>Photo with no transparency → JPG:</strong> No visible change at 85%+ quality.
+            <strong>Photo with no transparency to JPG:</strong> No visible change at 85%+ quality.
           </li>
           <li>
-            <strong>Screenshot with transparent UI elements → JPG:</strong> Transparent areas become
+            <strong>Screenshot with transparent UI elements to JPG:</strong> Transparent areas become
             white. May look different from the original.
           </li>
         </ul>
@@ -222,7 +222,7 @@ export default function Post() {
             Drag and drop your PNG file onto the upload area, or click to browse and select it.
           </li>
           <li>
-            Adjust the quality slider. For web use, 80–90% is the sweet spot. For print, use 95%+.
+            Adjust the quality slider. For web use, 80-90% is the sweet spot. For print, use 95%+.
           </li>
           <li>
             Click Convert to JPG. The conversion happens instantly in your browser.
@@ -252,7 +252,7 @@ export default function Post() {
         </p>
         <h3>Does converting PNG to JPG lose quality?</h3>
         <p>
-          JPG uses lossy compression, so some quality is lost. At 85–90% quality, the difference is
+          JPG uses lossy compression, so some quality is lost. At 85-90% quality, the difference is
           invisible to the human eye for most photos. For images with sharp edges or text, the loss
           may be more noticeable.
         </p>
@@ -268,8 +268,8 @@ export default function Post() {
         </p>
         <h3>What quality setting should I use?</h3>
         <p>
-          For web use, 80–90% quality is the sweet spot. For print or archival purposes, use 95–100%.
-          For thumbnails and previews, 70–75% is fine.
+          For web use, 80-90% quality is the sweet spot. For print or archival purposes, use 95-100%.
+          For thumbnails and previews, 70-75% is fine.
         </p>
 
         <h2>Conclusion: right format, right job</h2>

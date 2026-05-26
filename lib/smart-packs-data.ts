@@ -1,4 +1,4 @@
-/** @deprecated Import from @/data/smartPacks — kept for backwards compatibility */
+/** @deprecated Import from @/data/smartPacks - kept for backwards compatibility */
 export {
   SMART_PACKS,
   smartPackBySlug,

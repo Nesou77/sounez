@@ -63,10 +63,10 @@ export const SMART_PACKS: SmartPackDefinition[] = [
   {
     slug: "social-media-pack",
     name: "Social Media Pack",
-    shortDescription: "One post brief → caption, hashtags, CTA, and platform-ready copy.",
+    shortDescription: "One post brief -> caption, hashtags, CTA, and platform-ready copy.",
     longDescription:
-      "Enter what you are posting about — a service, product, event, or tip. You get a structured pack with a title, caption, first comment, hashtags, visual text idea, and short versions for other platforms. Edit everything before you schedule.",
-    tagline: "One post idea → caption, tags, and comments ready to edit",
+      "Enter what you are posting about - a service, product, event, or tip. You get a structured pack with a title, caption, first comment, hashtags, visual text idea, and short versions for other platforms. Edit everything before you schedule.",
+    tagline: "One post idea -> caption, tags, and comments ready to edit",
     summary:
       "Turn a short brief into post copy you can paste into Instagram, Facebook, LinkedIn, TikTok, or X. Sounez does not publish for you.",
     targetUsers: [
@@ -100,7 +100,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
         label: "Post brief",
         type: "textarea",
         required: true,
-        placeholder: "e.g. Instagram post for a cleaning company before Eid — 20% off deep clean, families in the city.",
+        placeholder: "e.g. Instagram post for a cleaning company before Eid - 20% off deep clean, families in the city.",
         helpText: "What is the post about, who is it for, and any offer or deadline?",
       },
       {
@@ -172,13 +172,13 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       "Copy into your scheduler or app.",
     ],
     exampleOutput: [
-      { label: "Brief", sample: "Cleaning company Eid promo — 20% off deep clean, Instagram, local families." },
+      { label: "Brief", sample: "Cleaning company Eid promo - 20% off deep clean, Instagram, local families." },
       {
         label: "Caption (draft)",
         sample:
-          "Eid prep without the stress. Book a deep clean this week and save 20% — limited slots in your area. Message us or tap the link in bio.",
+          "Eid prep without the stress. Book a deep clean this week and save 20% - limited slots in your area. Message us or tap the link in bio.",
       },
-      { label: "First comment", sample: "Book here → [your-link] · Offer ends Sunday." },
+      { label: "First comment", sample: "Book here -> [your-link] - Offer ends Sunday." },
     ],
     commonMistakes: [
       "Publishing without checking prices and dates.",
@@ -188,7 +188,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
     faqs: [
       { q: "Does this auto-post?", a: "No. You copy the pack and publish yourself." },
       { q: "Is the output stored?", a: "Successful generations may be saved with a session identifier so you can reopen them on this device. See our Privacy Policy." },
-      { q: "Can I use Arabic or French?", a: "Yes — pick the language in the form." },
+      { q: "Can I use Arabic or French?", a: "Yes - pick the language in the form." },
     ],
     relatedTools: [
       { href: "/tools/ai-caption-generator", label: "AI Caption Generator" },
@@ -203,17 +203,17 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       title: "Social Media Pack | Sounez Smart Packs",
       description:
         "Generate captions, hashtags, CTAs, and platform variations from one brief. Free Smart Pack for Instagram, Facebook, LinkedIn, TikTok, and X.",
-      ogTitle: "Social Media Pack — Sounez",
-      ogDescription: "One brief → caption, hashtags, first comment, and more. Edit before you post.",
+      ogTitle: "Social Media Pack - Sounez",
+      ogDescription: "One brief -> caption, hashtags, first comment, and more. Edit before you post.",
     },
   },
   {
     slug: "product-listing-pack",
     name: "Product Listing Pack",
-    shortDescription: "Product facts → title, descriptions, SEO meta, and social line.",
+    shortDescription: "Product facts -> title, descriptions, SEO meta, and social line.",
     longDescription:
       "Describe your product once and get marketplace-ready copy: title, bullets, long description, meta title and description, alt text, and a short social caption. Built for sellers who list on Shopify, Etsy, WooCommerce, or similar platforms.",
-    tagline: "One product → title, descriptions, alt text, and social line",
+    tagline: "One product -> title, descriptions, alt text, and social line",
     summary:
       "Listing copy in one structured pack. You paste into your shop admin and edit to match your brand voice.",
     targetUsers: [
@@ -287,7 +287,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       "Paste into your marketplace and proofread.",
     ],
     exampleOutput: [
-      { label: "Title", sample: "Ceramic Pour-Over Dripper — Matte White, 1–2 Cups" },
+      { label: "Title", sample: "Ceramic Pour-Over Dripper - Matte White, 1-2 Cups" },
       { label: "Alt text", sample: "White ceramic pour-over dripper beside a glass carafe on a wooden counter." },
     ],
     commonMistakes: [
@@ -297,7 +297,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
     ],
     faqs: [
       { q: "Does Sounez connect to my shop?", a: "No. You copy fields into your admin." },
-      { q: "Are SEO fields guaranteed to rank?", a: "No. They are drafts — test in your marketplace." },
+      { q: "Are SEO fields guaranteed to rank?", a: "No. They are drafts - test in your marketplace." },
       { q: "Can I regenerate?", a: "Yes. Try a different tone or clearer benefits." },
     ],
     relatedTools: [
@@ -316,10 +316,10 @@ export const SMART_PACKS: SmartPackDefinition[] = [
   {
     slug: "seo-image-pack",
     name: "SEO Image Pack",
-    shortDescription: "Image context → filename, alt text, caption, and on-page copy ideas.",
+    shortDescription: "Image context -> filename, alt text, caption, and on-page copy ideas.",
     longDescription:
       "Describe your image and page topic to get an SEO-friendly filename, alt text, caption, paragraph to place nearby, keyword ideas, and compression advice. Helps bloggers and shop owners fix image SEO without guessing.",
-    tagline: "One image → filename, alt text, compression plan, and keywords",
+    tagline: "One image -> filename, alt text, compression plan, and keywords",
     summary: "Structured image SEO assets from a short brief. Always check alt text against the real image.",
     targetUsers: [
       { title: "Bloggers", desc: "Fix older posts without reshooting." },
@@ -374,7 +374,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
     workflow: [
       "Rename file before upload.",
       "Compress with Image Compressor.",
-      "Use generated alt text — edit for accuracy.",
+      "Use generated alt text - edit for accuracy.",
       "Place image near matching paragraph text.",
     ],
     exampleOutput: [
@@ -387,7 +387,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       "Skipping alt text after cropping.",
     ],
     faqs: [
-      { q: "Do you upload my image?", a: "No image file is required for this pack — text brief only." },
+      { q: "Do you upload my image?", a: "No image file is required for this pack - text brief only." },
       { q: "Is alt text enough for SEO?", a: "It helps. Filename, compression, and page copy matter too." },
       { q: "WebP or JPG?", a: "The pack suggests a format; use Image Compressor to apply it." },
     ],
@@ -407,10 +407,10 @@ export const SMART_PACKS: SmartPackDefinition[] = [
   {
     slug: "business-launch-pack",
     name: "Business Launch Pack",
-    shortDescription: "Business idea → names, taglines, bios, and first post ideas.",
+    shortDescription: "Business idea -> names, taglines, bios, and first post ideas.",
     longDescription:
       "Describe your business idea, sector, and audience to get name ideas, taglines, a short pitch, homepage hero text, social bios, service blurbs, and five starter post ideas. Check domain and trademark availability yourself before committing.",
-    tagline: "One idea → names, pitch, bios, and starter posts",
+    tagline: "One idea -> names, pitch, bios, and starter posts",
     summary: "Launch copy in one pack. Names and claims need your own verification.",
     targetUsers: [
       { title: "Freelancers", desc: "Position a new offer clearly." },
@@ -458,7 +458,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
     ],
     exampleOutput: [
       { label: "Tagline idea", sample: "Bookkeeping that speaks plain language." },
-      { label: "Hero draft", sample: "Monthly books and tax-ready reports for freelancers — without the jargon." },
+      { label: "Hero draft", sample: "Monthly books and tax-ready reports for freelancers - without the jargon." },
     ],
     commonMistakes: [
       "Choosing a name without checking .com availability.",
@@ -487,10 +487,10 @@ export const SMART_PACKS: SmartPackDefinition[] = [
   {
     slug: "student-study-pack",
     name: "Student Study Pack",
-    shortDescription: "Topic → summary, flashcards, quiz questions, and revision plan.",
+    shortDescription: "Topic -> summary, flashcards, quiz questions, and revision plan.",
     longDescription:
-      "Enter a subject and topic to get a study summary, key concepts, flashcards, quiz questions, a revision plan, a plain explanation, and common mistakes to watch for. Built for learning — not for submitting as graded work you did not create.",
-    tagline: "One topic → notes, flashcards, and a revision plan",
+      "Enter a subject and topic to get a study summary, key concepts, flashcards, quiz questions, a revision plan, a plain explanation, and common mistakes to watch for. Built for learning - not for submitting as graded work you did not create.",
+    tagline: "One topic -> notes, flashcards, and a revision plan",
     summary: "Revision assets from your topic. Verify facts with your course materials.",
     targetUsers: [
       { title: "Students", desc: "Organize revision before exams." },
@@ -535,8 +535,8 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       "Add your own examples under each heading.",
     ],
     exampleOutput: [
-      { label: "Key concept", sample: "Photosynthesis: light energy → chemical energy in glucose." },
-      { label: "Flashcard", sample: "Term: Stomata — Definition: Pores on leaves for gas exchange." },
+      { label: "Key concept", sample: "Photosynthesis: light energy -> chemical energy in glucose." },
+      { label: "Flashcard", sample: "Term: Stomata - Definition: Pores on leaves for gas exchange." },
     ],
     commonMistakes: [
       "Trusting dates or formulas without checking.",
@@ -545,7 +545,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
     ],
     faqs: [
       { q: "Can I submit this as homework?", a: "No. Use it to study, then write answers in your own words." },
-      { q: "Are facts always correct?", a: "No. AI can err — verify with official materials." },
+      { q: "Are facts always correct?", a: "No. AI can err - verify with official materials." },
       { q: "Stored on server?", a: "Prompts may be stored per our Privacy Policy; use History on this device." },
     ],
     relatedTools: [
@@ -556,11 +556,11 @@ export const SMART_PACKS: SmartPackDefinition[] = [
     relatedPack: { href: "/smart-packs/business-launch-pack", label: "Business Launch Pack" },
     studyDisclaimer:
       "Use this pack for learning and revision. Do not use it to cheat, impersonate someone, or submit work you did not create.",
-    safetyNote: "Study briefs are processed by AI. Follow your school’s academic integrity rules.",
+    safetyNote: "Study briefs are processed by AI. Follow your school's academic integrity rules.",
     seo: {
       title: "Student Study Pack | Sounez Smart Packs",
       description:
-        "Generate study summaries, flashcards, quiz questions, and revision plans from a topic. For learning only — not for cheating.",
+        "Generate study summaries, flashcards, quiz questions, and revision plans from a topic. For learning only - not for cheating.",
     },
   },
 ];

@@ -131,13 +131,13 @@ export default function Post() {
         <ul>
           <li>Hero images: 1600px wide</li>
           <li>Blog inline images: 1200px wide</li>
-          <li>Thumbnails: 400–600px wide</li>
-          <li>Open Graph images: 1200×630px</li>
+          <li>Thumbnails: 400-600px wide</li>
+          <li>Open Graph images: 1200x630px</li>
         </ul>
 
         <h2>5. Modern formats: WebP and AVIF</h2>
         <p>
-          WebP is 25–35% smaller than JPG at the same quality and is supported in every modern
+          WebP is 25-35% smaller than JPG at the same quality and is supported in every modern
           browser. AVIF is even smaller but has patchier support. Use WebP as your default in 2026, 
           the file size savings directly improve your Core Web Vitals score.
         </p>
@@ -180,7 +180,7 @@ export default function Post() {
         <h2>Frequently Asked Questions</h2>
         <h3>How long does it take for images to rank in Google Image Search?</h3>
         <p>
-          Typically 2–8 weeks after Google crawls the page. New sites may take longer. Make sure your
+          Typically 2-8 weeks after Google crawls the page. New sites may take longer. Make sure your
           page is indexed first, images on non-indexed pages won&apos;t rank.
         </p>
         <h3>Does image file size affect SEO?</h3>

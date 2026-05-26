@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { question: "How often should I post on TikTok?", answer: "One quality video per day is the sweet spot for most creators. Below 4–5 per week and you lose algorithmic momentum; above 2 per day and quality usually drops." },
+  { question: "How often should I post on TikTok?", answer: "One quality video per day is the sweet spot for most creators. Below 4-5 per week and you lose algorithmic momentum; above 2 per day and quality usually drops." },
   { question: "Should I follow trends?", answer: "Use trends as a delivery system for your unique angle, never as the angle itself. The creators who grow fastest take a trending sound and apply it to their niche." },
   { question: "Do hashtags still matter in 2026?", answer: "Yes. They help the algorithm categorize you, especially when your account is new. Use the Hashtag Generator for the right mix." },
-  { question: "How long until I see growth?", answer: "With consistent posting and a sharp niche, most creators see their first 1k followers within 4–8 weeks. Plateau at 1k? Your hook is the problem 90% of the time." },
+  { question: "How long until I see growth?", answer: "With consistent posting and a sharp niche, most creators see their first 1k followers within 4-8 weeks. Plateau at 1k? Your hook is the problem 90% of the time." },
   { question: "How much can I earn from TikTok?", answer: "Way more from brand deals than from the Creator Fund. Use the TikTok Money Calculator to estimate your ranges by follower count and engagement." },
 ];
 
@@ -84,7 +84,7 @@ export default function Post() {
         <p>Random hashtags don&apos;t work in 2026. The formula that does:</p>
         <ul>
           <li>1 broad tag (1M+ posts), gets you in the wider feed</li>
-          <li>2 niche tags (50k–500k posts), your real targeting</li>
+          <li>2 niche tags (50k-500k posts), your real targeting</li>
           <li>1 trending tag, rides the daily algorithm wave</li>
         </ul>
         <p>
@@ -134,13 +134,13 @@ export default function Post() {
 
         <h2>Frequently Asked Questions</h2>
         <h3>How often should I post on TikTok?</h3>
-        <p>One quality video per day is the sweet spot for most creators. Below 4–5 per week and you lose algorithmic momentum; above 2 per day and quality usually drops.</p>
+        <p>One quality video per day is the sweet spot for most creators. Below 4-5 per week and you lose algorithmic momentum; above 2 per day and quality usually drops.</p>
         <h3>Should I follow trends?</h3>
         <p>Use trends as a delivery system for your unique angle, never as the angle itself. The creators who grow fastest take a trending sound and apply it to their niche.</p>
         <h3>Do hashtags still matter in 2026?</h3>
         <p>Yes. They help the algorithm categorize you, especially when your account is new. Use the <a href="/hashtag-generator">Hashtag Generator</a> for the right mix.</p>
         <h3>How long until I see growth?</h3>
-        <p>With consistent posting and a sharp niche, most creators see their first 1k followers within 4–8 weeks. Plateau at 1k? Your hook is the problem 90% of the time.</p>
+        <p>With consistent posting and a sharp niche, most creators see their first 1k followers within 4-8 weeks. Plateau at 1k? Your hook is the problem 90% of the time.</p>
         <h3>How much can I earn from TikTok?</h3>
         <p>Way more from brand deals than from the Creator Fund. Use the <a href="/tiktok-money-calculator">TikTok Money Calculator</a> to estimate your ranges by follower count and engagement.</p>
 

@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 
-/** Kept for layout compatibility — likes are handled directly in EngagementBar via the API. */
+/** Kept for layout compatibility - likes are handled directly in EngagementBar via the API. */
 export function BlogLikeController({
   children,
 }: {

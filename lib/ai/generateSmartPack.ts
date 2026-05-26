@@ -129,7 +129,7 @@ const PACK_PROMPTS: Record<string, { schema: string; userSuffix: string }> = {
   "commonMistakes": string[],
   "relatedTools": string[]
 }`,
-    userSuffix: "Provide 6-10 flashcards and 5 quiz questions. Educational tone only — do not help cheat on assignments.",
+    userSuffix: "Provide 6-10 flashcards and 5 quiz questions. Educational tone only - do not help cheat on assignments.",
   },
 };
 
@@ -142,7 +142,7 @@ function devFallbackOutput(slug: string, input: SmartPackGenerateRequest): unkno
         caption: `[Development sample] ${input.brief}\n\nEdit before posting.`,
         firstComment: "Add your link or CTA here.",
         hashtags: ["#draft", "#editme"],
-        cta: "Learn more — link in bio.",
+        cta: "Learn more - link in bio.",
         visualText: "Short headline for image",
         imageIdea: "Photo that shows the offer clearly",
         altText: "Describe the actual photo when you upload it",
@@ -155,10 +155,10 @@ function devFallbackOutput(slug: string, input: SmartPackGenerateRequest): unkno
         productTitle: input.productName || topic,
         shortDescription: input.mainBenefits?.slice(0, 160) || input.brief.slice(0, 160),
         longDescription: input.brief,
-        bulletPoints: ["Benefit one — edit", "Benefit two — edit", "Shipping — edit"],
+        bulletPoints: ["Benefit one - edit", "Benefit two - edit", "Shipping - edit"],
         seoMetaTitle: (input.productName || topic).slice(0, 60),
         seoMetaDescription: input.brief.slice(0, 155),
-        imageAltText: "Product photo — update to match your image",
+        imageAltText: "Product photo - update to match your image",
         socialCaption: `Now available: ${input.productName || "our product"}. Link in bio.`,
         marketplaceTips: ["Compress images before upload.", "Match title length to your marketplace."],
         relatedTools: ["/tools/image-compressor", "/tools/image-describer"],
@@ -178,21 +178,21 @@ function devFallbackOutput(slug: string, input: SmartPackGenerateRequest): unkno
     case "business-launch-pack":
       return {
         businessNameIdeas: ["Sample Name Co", "Working Title LLC"],
-        taglineIdeas: ["Clear tagline — edit", "Second option — edit"],
+        taglineIdeas: ["Clear tagline - edit", "Second option - edit"],
         shortPitch: input.brief,
         homepageHeroText: input.businessIdea?.slice(0, 200) || input.brief.slice(0, 200),
-        instagramBio: "What you do · Who you help · Link",
+        instagramBio: "What you do - Who you help - Link",
         linkedInIntro: input.brief.slice(0, 260),
-        serviceDescriptions: ["Service one — edit", "Service two — edit"],
+        serviceDescriptions: ["Service one - edit", "Service two - edit"],
         firstPostIdeas: ["Introduce what you do", "Share a customer problem you solve"],
         relatedTools: ["/tools/business-name-generator", "/tools/bio-generator"],
       };
     case "student-study-pack":
       return {
         summary: input.brief,
-        keyConcepts: ["Concept 1 — verify in your materials", "Concept 2 — verify"],
-        flashcards: [{ term: "Term", definition: "Definition — edit" }],
-        quizQuestions: [{ question: "Sample question?", answer: "Sample answer — verify" }],
+        keyConcepts: ["Concept 1 - verify in your materials", "Concept 2 - verify"],
+        flashcards: [{ term: "Term", definition: "Definition - edit" }],
+        quizQuestions: [{ question: "Sample question?", answer: "Sample answer - verify" }],
         revisionPlan: ["Day 1: Read summary", "Day 2: Flashcards", "Day 3: Practice quiz"],
         simpleExplanation: input.brief,
         commonMistakes: ["Trusting AI without checking your textbook"],

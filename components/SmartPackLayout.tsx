@@ -35,7 +35,7 @@ export function SmartPackLayout({ pack }: { pack: SmartPack }) {
           ))}
         </ul>
         <p className="mt-4 text-xs text-muted-foreground">
-          Sounez gives you drafts and checklists — you choose what to publish. AI tools process your brief on our servers; see each tool page for details.
+          Sounez gives you drafts and checklists - you choose what to publish. AI tools process your brief on our servers; see each tool page for details.
         </p>
       </section>
 
@@ -110,7 +110,7 @@ export function SmartPackLayout({ pack }: { pack: SmartPack }) {
           {pack.relatedTools.map((t) => (
             <li key={t.href}>
               <Link href={t.href} className="text-sm font-medium text-primary hover:underline">
-                {t.label} →
+                {t.label}
               </Link>
             </li>
           ))}

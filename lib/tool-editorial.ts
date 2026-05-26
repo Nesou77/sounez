@@ -27,12 +27,12 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     features: [
       { title: "Drag-and-drop", desc: "One file at a time, up to 20 MB, with clear errors if something is wrong." },
       { title: "Layout options", desc: "Choose whether to preserve layout, pull images, or run OCR on scans." },
-      { title: "No account", desc: "Convert when you need it — fair-use limits apply on the server." },
+      { title: "No account", desc: "Convert when you need it - fair-use limits apply on the server." },
     ],
     howTo: ["Drop your PDF on the upload area.", "Pick options that match the file (OCR for scans).", "Start conversion and wait for the DOCX.", "Download and proofread in Word."],
     examples: [
-      { title: "Typed contract", desc: "12-page text PDF → DOCX with headings you can redline." },
-      { title: "Scanned form", desc: "Phone photo PDF with OCR → editable text to fill gaps." },
+      { title: "Typed contract", desc: "12-page text PDF -> DOCX with headings you can redline." },
+      { title: "Scanned form", desc: "Phone photo PDF with OCR -> editable text to fill gaps." },
     ],
     mistakes: ["Expecting perfect tables from magazine layouts.", "Uploading password-locked PDFs.", "Skipping proofread on OCR output."],
     privacyNote: "Your PDF is processed on our servers and removed after conversion. Only upload documents you may process.",
@@ -46,7 +46,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     relatedSlugs: ["word-counter", "text-case-converter", "image-compressor"],
   },
   "background-remover": {
-    intro: "Cut out a person, product, or object and download a PNG with a transparent background — processing stays on your device.",
+    intro: "Cut out a person, product, or object and download a PNG with a transparent background - processing stays on your device.",
     whatItDoes: "Runs an on-device AI model in your browser to separate the subject from the background.",
     whoFor: [
       { title: "Shop owners", desc: "White or transparent product shots for marketplaces." },
@@ -75,7 +75,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     relatedSlugs: ["image-compressor", "png-to-jpg-converter", "image-describer"],
   },
   "image-describer": {
-    intro: "Upload a photo and get alt text, captions, keywords, and a short social line — then edit anything that is not quite right.",
+    intro: "Upload a photo and get alt text, captions, keywords, and a short social line - then edit anything that is not quite right.",
     whatItDoes: "Sends your image to our AI vision service and returns several text fields for accessibility and SEO.",
     whoFor: [
       { title: "Bloggers", desc: "Write alt text without guessing what search engines need." },
@@ -89,22 +89,22 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Upload an image up to 10 MB.", "Pick a tone.", "Generate and read each field.", "Copy, edit, and publish."],
     examples: [
-      { title: "Product hero", desc: "SEO tone → alt text + keywords for a kettle listing." },
-      { title: "Event photo", desc: "Social tone → caption with a natural CTA." },
+      { title: "Product hero", desc: "SEO tone -> alt text + keywords for a kettle listing." },
+      { title: "Event photo", desc: "Social tone -> caption with a natural CTA." },
     ],
     mistakes: ["Publishing alt text you did not verify against the image.", "Keyword stuffing inside alt attributes.", "Uploading private documents as images."],
     privacyNote: "Images are sent securely for analysis and are not kept after the response.",
     whenNotToUse: "Avoid ID cards, medical images, or anything you would not share with a processor.",
     faqs: [
-      { q: "Can I use the text commercially?", a: "Yes, after you edit it — you are responsible for accuracy." },
+      { q: "Can I use the text commercially?", a: "Yes, after you edit it - you are responsible for accuracy." },
       { q: "Is it always correct?", a: "No. AI can miss context; always review." },
-      { q: "Can I change the tone?", a: "Yes — pick accessibility, SEO, descriptive, or social-focused output." },
+      { q: "Can I change the tone?", a: "Yes - pick accessibility, SEO, descriptive, or social-focused output." },
     ],
     proTips: ["Accessibility tone for informative images; keep alt under ~125 characters when possible.", "Match keywords to visible content only."],
     relatedSlugs: ["image-compressor", "ai-caption-generator", "hashtag-generator"],
   },
   "youtube-tags-generator": {
-    intro: "Type a video topic and get a list of tags you can paste into YouTube Studio — useful as a starting point, not a guarantee of rankings.",
+    intro: "Type a video topic and get a list of tags you can paste into YouTube Studio - useful as a starting point, not a guarantee of rankings.",
     whatItDoes: "Builds a set of related tags from your keyword using our tag rules and suggestions.",
     whoFor: [
       { title: "YouTubers", desc: "Fill the tags box faster on upload day." },
@@ -118,22 +118,22 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Enter your main topic or title.", "Generate tags.", "Remove any that feel off-topic.", "Paste into YouTube and save."],
     examples: [
-      { title: "Tutorial video", desc: "Topic “Excel pivot tables beginner” → how-to and software-related tags." },
-      { title: "Vlog", desc: "Topic “morning routine 2026” → lifestyle tags without spam." },
+      { title: "Tutorial video", desc: "Topic 'Excel pivot tables beginner' to how-to and software-related tags." },
+      { title: "Vlog", desc: "Topic 'morning routine 2026' to lifestyle tags without spam." },
     ],
     mistakes: ["Using tags that do not appear in the video.", "Copying competitor tags blindly.", "Relying on tags instead of title and watch time."],
-    privacyNote: "Your keyword is processed in the browser or on our server depending on implementation — it is not stored.",
+    privacyNote: "Your keyword is processed in the browser or on our server depending on implementation - it is not stored.",
     whenNotToUse: "Tags alone will not fix misleading titles or low retention.",
     faqs: [
       { q: "Do tags still matter?", a: "They help context, but title, thumbnail, and retention matter more." },
-      { q: "Can I edit the list?", a: "Yes — treat output as a draft." },
-      { q: "How many tags are generated?", a: "Up to 25 per run — enough for typical YouTube tag fields." },
+      { q: "Can I edit the list?", a: "Yes - treat output as a draft." },
+      { q: "How many tags are generated?", a: "Up to 25 per run - enough for typical YouTube tag fields." },
     ],
     proTips: ["Mirror language from your title in a few tags.", "Drop duplicate or overly broad tags."],
     relatedSlugs: ["hashtag-generator", "ai-caption-generator", "bio-generator"],
   },
   "tiktok-money-calculator": {
-    intro: "Rough estimate of what a sponsored post might pay based on followers and engagement — useful for planning, not a contract rate.",
+    intro: "Rough estimate of what a sponsored post might pay based on followers and engagement - useful for planning, not a contract rate.",
     whatItDoes: "Applies simple formulas to your numbers and shows a ballpark range per post.",
     whoFor: [
       { title: "New creators", desc: "See whether a brand offer is in the right ballpark." },
@@ -147,12 +147,12 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Choose platform.", "Enter followers and engagement rate.", "Read the estimated range.", "Compare with real offers you receive."],
     examples: [
-      { title: "10k followers", desc: "5% engagement → modest per-post range for micro creators." },
-      { title: "100k followers", desc: "Higher range — still depends on niche and brand budget." },
+      { title: "10k followers", desc: "5% engagement -> modest per-post range for micro creators." },
+      { title: "100k followers", desc: "Higher range - still depends on niche and brand budget." },
     ],
     mistakes: ["Treating the number as guaranteed payment.", "Ignoring niche (finance vs comedy pays differently).", "Forgetting usage rights and whitelisting fees."],
     privacyNote: "Numbers stay in your browser; nothing is saved on Sounez.",
-    whenNotToUse: "Not for tax, legal, or signed deals — negotiate with real quotes.",
+    whenNotToUse: "Not for tax, legal, or signed deals - negotiate with real quotes.",
     faqs: [
       { q: "Why is my offer lower?", a: "Brands consider niche, geography, deliverables, and exclusivity." },
       { q: "Is this stored?", a: "No." },
@@ -162,7 +162,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     relatedSlugs: ["hashtag-generator", "bio-generator", "ai-caption-generator"],
   },
   "hashtag-generator": {
-    intro: "Enter a topic and copy a block of hashtags for Instagram, TikTok, or YouTube — mix popular and specific tags yourself before posting.",
+    intro: "Enter a topic and copy a block of hashtags for Instagram, TikTok, or YouTube - mix popular and specific tags yourself before posting.",
     whatItDoes: "Suggests hashtags grouped by relevance to your keyword.",
     whoFor: [
       { title: "Instagram creators", desc: "Fill the caption hashtag block in seconds." },
@@ -183,9 +183,9 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     privacyNote: "Your topic is used only to generate tags and is not published.",
     whenNotToUse: "Hashtags help discovery but do not replace good content and consistency.",
     faqs: [
-      { q: "How many should I use?", a: "Platform-dependent — many creators use 3–15 focused tags." },
+      { q: "How many should I use?", a: "Platform-dependent - many creators use 3-15 focused tags." },
       { q: "Can I save sets?", a: "Copy into a notes app or scheduler." },
-      { q: "Do I need an account?", a: "No — generate and copy in one visit." },
+      { q: "Do I need an account?", a: "No - generate and copy in one visit." },
     ],
     proTips: ["Keep one branded hashtag on every post.", "Rotate tags so you are not repetitive."],
     relatedSlugs: ["ai-caption-generator", "youtube-tags-generator", "bio-generator"],
@@ -212,9 +212,9 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     privacyNote: "Runs in your browser. Uploaded images for extraction are not sent to Sounez servers.",
     whenNotToUse: "Print projects still need CMYK review with a professional proof.",
     faqs: [
-      { q: "Commercial use?", a: "Yes — the palette you build is yours." },
+      { q: "Commercial use?", a: "Yes - the palette you build is yours." },
       { q: "Saved palettes?", a: "Copy codes to your project file." },
-      { q: "Can I pull colours from a photo?", a: "Yes — upload an image to extract a starting palette." },
+      { q: "Can I pull colours from a photo?", a: "Yes - upload an image to extract a starting palette." },
     ],
     proTips: ["Pick one dominant, one accent, one neutral.", "Test #fff and #000 text on each swatch."],
     relatedSlugs: ["css-gradient-generator", "box-shadow-generator", "font-pairing-tool"],
@@ -234,22 +234,22 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Add or move colour stops.", "Set angle or centre.", "Preview on the box.", "Copy CSS into your project."],
     examples: [
-      { title: "Sunset hero", desc: "Orange → pink → purple at 135deg behind white headline." },
+      { title: "Sunset hero", desc: "Orange -> pink -> purple at 135deg behind white headline." },
       { title: "Subtle card", desc: "Light grey radial for depth on a white dashboard." },
     ],
-    mistakes: ["Banding on wide gradients — add a mid stop.", "Text contrast fails on busy gradients.", "Huge gradients on every section slowing perception."],
+    mistakes: ["Banding on wide gradients - add a mid stop.", "Text contrast fails on busy gradients.", "Huge gradients on every section slowing perception."],
     privacyNote: "Entirely in-browser; nothing uploaded.",
     whenNotToUse: "Very dark gradients behind body text without an overlay.",
     faqs: [
       { q: "Works in all browsers?", a: "Modern browsers yes; check older targets if you support them." },
       { q: "Tailwind?", a: "Paste into arbitrary values or extend theme." },
-      { q: "Radial gradients too?", a: "Yes — switch between linear and radial in the editor." },
+      { q: "Radial gradients too?", a: "Yes - switch between linear and radial in the editor." },
     ],
     proTips: ["Add a semi-transparent overlay for text on photos.", "Use subtle gradients for cards, bold for heroes."],
     relatedSlugs: ["color-palette-generator", "background-pattern-generator", "box-shadow-generator"],
   },
   "qr-code-generator": {
-    intro: "Type a link or text and download a PNG QR code — handy for menus, flyers, Wi-Fi, and quick device tests.",
+    intro: "Type a link or text and download a PNG QR code - handy for menus, flyers, Wi-Fi, and quick device tests.",
     whatItDoes: "Renders a QR image in your browser from the characters you enter.",
     whoFor: [
       { title: "Cafés and shops", desc: "Link to menus or Google reviews on tables." },
@@ -267,18 +267,18 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
       { title: "Menu", desc: "https://yoursite.com/menu-table-4 for table tents." },
     ],
     mistakes: ["Low contrast colours phones cannot read.", "Tiny print size.", "Encoding passwords in public QRs."],
-    privacyNote: "Generated locally — Sounez does not receive your QR content.",
+    privacyNote: "Generated locally - Sounez does not receive your QR content.",
     whenNotToUse: "Do not point public codes at staging logins or private docs.",
     faqs: [
       { q: "Do codes expire?", a: "The image is static; the destination must stay live." },
       { q: "Commercial use?", a: "Yes." },
-      { q: "Can I brand the QR colours?", a: "Yes — pick colours with enough contrast for phone cameras." },
+      { q: "Can I brand the QR colours?", a: "Yes - pick colours with enough contrast for phone cameras." },
     ],
     proTips: ["Test scan distance before printing 500 flyers.", "Use 512px for print."],
     relatedSlugs: ["word-counter", "password-generator", "favicon-generator"],
   },
   "word-counter": {
-    intro: "Paste text and see words, characters, sentences, and reading time — helpful before hitting a platform limit.",
+    intro: "Paste text and see words, characters, sentences, and reading time - helpful before hitting a platform limit.",
     whatItDoes: "Counts statistics in real time as you type or paste.",
     whoFor: [
       { title: "Writers", desc: "Check essay or article length." },
@@ -301,7 +301,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     faqs: [
       { q: "Saved anywhere?", a: "No." },
       { q: "Includes spaces?", a: "Character count includes spaces; word count uses standard splitting." },
-      { q: "Reading time accurate?", a: "It is an estimate at average reading speed — adjust for dense or technical text." },
+      { q: "Reading time accurate?", a: "It is an estimate at average reading speed - adjust for dense or technical text." },
     ],
     proTips: ["Strip formatting in a plain editor first.", "Use reading time for video scripts."],
     relatedSlugs: ["text-case-converter", "ai-caption-generator", "study-notes-generator"],
@@ -326,11 +326,11 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     mistakes: ["Pasting into Slack.", "Generating once and reusing everywhere.", "Losing it because you did not save in a manager."],
     privacyNote: "Generated locally; Sounez never sees your password.",
-    whenNotToUse: "Not for memorised PINs you type often — consider a manager instead.",
+    whenNotToUse: "Not for memorised PINs you type often - consider a manager instead.",
     faqs: [
       { q: "How random is it?", a: "Uses the browser crypto API." },
       { q: "Stored?", a: "No." },
-      { q: "Can I exclude confusing symbols?", a: "Yes — turn off ambiguous characters if a site rejects them." },
+      { q: "Can I exclude confusing symbols?", a: "Yes - turn off ambiguous characters if a site rejects them." },
     ],
     proTips: ["Use 16+ characters for important accounts.", "Turn off ambiguous symbols if a site rejects them."],
     relatedSlugs: ["text-case-converter", "qr-code-generator", "word-counter"],
@@ -350,8 +350,8 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Paste source text.", "Pick a case style.", "Copy the result."],
     examples: [
-      { title: "CSS class", desc: "my-button-component → MY-BUTTON-COMPONENT for a constant." },
-      { title: "Headline fix", desc: "ALL CAPS press release → Title Case for web." },
+      { title: "CSS class", desc: "my-button-component -> MY-BUTTON-COMPONENT for a constant." },
+      { title: "Headline fix", desc: "ALL CAPS press release -> Title Case for web." },
     ],
     mistakes: ["Title-casing articles (a, the) when style guides differ.", "Changing meaning in case-sensitive passwords."],
     privacyNote: "Processed in your browser only.",
@@ -359,7 +359,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     faqs: [
       { q: "Unicode?", a: "Works with most common characters; test special scripts if unsure." },
       { q: "Saved?", a: "No." },
-      { q: "camelCase and kebab-case?", a: "Yes — along with upper, lower, title, and sentence modes." },
+      { q: "camelCase and kebab-case?", a: "Yes - along with upper, lower, title, and sentence modes." },
     ],
     proTips: ["Keep a backup before bulk-changing legal text.", "Use sentence case for body copy."],
     relatedSlugs: ["word-counter", "password-generator", "ai-caption-generator"],
@@ -379,8 +379,8 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Add images.", "Set quality and optional max width.", "Compress.", "Download singles or ZIP."],
     examples: [
-      { title: "Hero JPEG", desc: "2.4 MB → ~400 KB at 80% quality." },
-      { title: "Shop grid", desc: "12 PNGs → WebP batch for upload." },
+      { title: "Hero JPEG", desc: "2.4 MB -> ~400 KB at 80% quality." },
+      { title: "Shop grid", desc: "12 PNGs -> WebP batch for upload." },
     ],
     mistakes: ["Quality below 50% on portraits.", "JPEG for logos needing transparency.", "Re-compressing already tiny files."],
     privacyNote: "Compression runs locally; images are not uploaded.",
@@ -408,7 +408,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Describe the image or offer.", "Choose platform and tone.", "Generate.", "Edit, then post."],
     examples: [
-      { title: "Bakery reel", desc: "Fresh croissants, weekend hours → warm casual caption." },
+      { title: "Bakery reel", desc: "Fresh croissants, weekend hours -> warm casual caption." },
       { title: "B2B tip", desc: "LinkedIn tone on a productivity habit." },
     ],
     mistakes: ["Posting without reading for factual errors.", "Same tone for every brand.", "Ignoring platform length limits."],
@@ -444,15 +444,15 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     privacyNote: "Inputs may be processed by AI on our servers; not published.",
     whenNotToUse: "Bios still need your real credentials and compliance text where required.",
     faqs: [
-      { q: "Can I edit?", a: "Always — output is a starting draft." },
+      { q: "Can I edit?", a: "Always - output is a starting draft." },
       { q: "Emojis?", a: "Optional depending on tone." },
-      { q: "Will it fit my platform?", a: "Output targets common length limits — trim before you save your profile." },
+      { q: "Will it fit my platform?", a: "Output targets common length limits - trim before you save your profile." },
     ],
     proTips: ["One clear outcome per bio.", "Put the link closest to the action you want."],
     relatedSlugs: ["hashtag-generator", "ai-caption-generator", "tiktok-money-calculator"],
   },
   calculator: {
-    intro: "A simple calculator in the browser for quick maths — no app install, no history saved on our side.",
+    intro: "A simple calculator in the browser for quick maths - no app install, no history saved on our side.",
     whatItDoes: "Evaluates basic arithmetic with standard buttons.",
     whoFor: [
       { title: "Students", desc: "Check homework steps." },
@@ -469,7 +469,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
       { title: "Tip split", desc: "Bill ÷ 4 + percentage." },
       { title: "Margin", desc: "Selling price minus cost." },
     ],
-    mistakes: ["Order of operations surprises — use parentheses mentally.", "Relying on browser calc for tax filings."],
+    mistakes: ["Order of operations surprises - use parentheses mentally.", "Relying on browser calc for tax filings."],
     privacyNote: "Runs locally; we do not log calculations.",
     whenNotToUse: "Scientific or graphing needs require a specialised app.",
     faqs: [
@@ -495,22 +495,22 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Describe product and audience.", "Pick a style.", "Generate.", "Search domains and trademarks before committing."],
     examples: [
-      { title: "Plant shop", desc: "Eco, local, friendly → earthy name ideas." },
+      { title: "Plant shop", desc: "Eco, local, friendly -> earthy name ideas." },
       { title: "Dev tool", desc: "Short technical-sounding names." },
     ],
     mistakes: ["Picking a name without checking .com availability.", "Names too similar to famous brands.", "Hard-to-spell words on the phone."],
     privacyNote: "Your brief is sent for AI processing and not stored.",
-    whenNotToUse: "We do not provide legal clearance — verify trademarks.",
+    whenNotToUse: "We do not provide legal clearance - verify trademarks.",
     faqs: [
-      { q: "Are names unique?", a: "No guarantee — you must research." },
+      { q: "Are names unique?", a: "No guarantee - you must research." },
       { q: "Commercial use?", a: "Yes after you verify availability." },
-      { q: "How many ideas per run?", a: "Several directions — shortlist and check domains before you commit." },
+      { q: "How many ideas per run?", a: "Several directions - shortlist and check domains before you commit." },
     ],
     proTips: ["Say the name aloud.", "Check social handles too."],
     relatedSlugs: ["website-idea-generator", "bio-generator", "favicon-generator"],
   },
   "website-idea-generator": {
-    intro: "Describe who you help and get website angle ideas — useful when you are stuck on what the site should focus on.",
+    intro: "Describe who you help and get website angle ideas - useful when you are stuck on what the site should focus on.",
     whatItDoes: "AI lists possible site concepts, pages, and hooks from your inputs.",
     whoFor: [
       { title: "Freelancers", desc: "Portfolio angles for a niche." },
@@ -531,15 +531,15 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     privacyNote: "Brief processed by AI; not stored.",
     whenNotToUse: "Not a replacement for market research.",
     faqs: [
-      { q: "Includes code?", a: "Ideas only — use your stack to build." },
+      { q: "Includes code?", a: "Ideas only - use your stack to build." },
       { q: "Unique?", a: "Treat as brainstorming." },
-      { q: "Is this a website builder?", a: "No — concepts and page angles only; you build with your own tools." },
+      { q: "Is this a website builder?", a: "No - concepts and page angles only; you build with your own tools." },
     ],
     proTips: ["One audience per site.", "Match idea to one clear CTA."],
     relatedSlugs: ["business-name-generator", "bio-generator", "color-palette-generator"],
   },
   "study-notes-generator": {
-    intro: "Paste a topic or lecture snippet and get structured notes for revision — then verify facts yourself.",
+    intro: "Paste a topic or lecture snippet and get structured notes for revision - then verify facts yourself.",
     whatItDoes: "AI formats headings, bullets, and key terms from your input.",
     whoFor: [
       { title: "Students", desc: "Turn dense readings into scan-friendly notes." },
@@ -553,14 +553,14 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Enter topic or paste text.", "Choose level.", "Generate.", "Cross-check with your materials."],
     examples: [
-      { title: "History unit", desc: "WWI causes → timeline bullets." },
-      { title: "Biology", desc: "Paste a paragraph → defined terms list." },
+      { title: "History unit", desc: "WWI causes -> timeline bullets." },
+      { title: "Biology", desc: "Paste a paragraph -> defined terms list." },
     ],
     mistakes: ["Submitting work you did not write.", "Trusting dates and formulas without checking.", "Pasting entire copyrighted books."],
     privacyNote: "Text sent for AI processing; not kept after response.",
     whenNotToUse: "Do not cheat on exams or impersonate others' work.",
     faqs: [
-      { q: "Accurate?", a: "Can contain errors — always verify." },
+      { q: "Accurate?", a: "Can contain errors - always verify." },
       { q: "Limits?", a: "Fair-use caps on length and frequency." },
       { q: "Can I export notes?", a: "Copy or download plain text after generation." },
     ],
@@ -568,7 +568,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     relatedSlugs: ["word-counter", "calculator", "resume-generator"],
   },
   "resume-generator": {
-    intro: "Fill in your experience and print a clean one-page resume — data stays in your browser.",
+    intro: "Fill in your experience and print a clean one-page resume - data stays in your browser.",
     whatItDoes: "Builds a formatted CV preview you can print to PDF or copy as HTML.",
     whoFor: [
       { title: "Job seekers", desc: "First draft in minutes." },
@@ -587,11 +587,11 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     mistakes: ["False employers or degrees.", "Closing tab before export.", "Two pages for entry-level roles."],
     privacyNote: "Stays on your device; Sounez does not store your CV.",
-    whenNotToUse: "Not legal advice — do not list credentials you do not hold.",
+    whenNotToUse: "Not legal advice - do not list credentials you do not hold.",
     faqs: [
       { q: "ATS friendly?", a: "Simple layout helps; export and test in your target system." },
-      { q: "Saved?", a: "No — download before closing." },
-      { q: "Watermarks?", a: "No — the PDF or HTML you export is yours." },
+      { q: "Saved?", a: "No - download before closing." },
+      { q: "Watermarks?", a: "No - the PDF or HTML you export is yours." },
     ],
     proTips: ["Use action verbs per bullet.", "One page until you have 10+ years."],
     relatedSlugs: ["study-notes-generator", "word-counter", "business-name-generator"],
@@ -611,16 +611,16 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Upload PNG.", "Set quality.", "Convert.", "Download JPG."],
     examples: [
-      { title: "Screenshot", desc: "UI capture PNG → JPG for a blog post." },
+      { title: "Screenshot", desc: "UI capture PNG -> JPG for a blog post." },
       { title: "Photo export", desc: "Drop transparency, save 40% size." },
     ],
-    mistakes: ["Converting logos with transparency — backgrounds turn white.", "Quality 30% on text screenshots."],
+    mistakes: ["Converting logos with transparency - backgrounds turn white.", "Quality 30% on text screenshots."],
     privacyNote: "Processed locally in your browser.",
     whenNotToUse: "Keep PNG when you need alpha (logos, icons).",
     faqs: [
-      { q: "Transparency?", a: "Lost in JPG — use PNG or WebP instead." },
+      { q: "Transparency?", a: "Lost in JPG - use PNG or WebP instead." },
       { q: "Batch?", a: "Convert one at a time on this page." },
-      { q: "Quality slider?", a: "Yes — lower quality means smaller files and more visible artefacts." },
+      { q: "Quality slider?", a: "Yes - lower quality means smaller files and more visible artefacts." },
     ],
     proTips: ["Use 85% for photos, higher for text-heavy images.", "Keep originals archived."],
     relatedSlugs: ["image-compressor", "image-describer", "background-remover"],
@@ -640,10 +640,10 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Upload square or high-res logo.", "Generate pack.", "Download ZIP.", "Add tags to your layout."],
     examples: [
-      { title: "Startup launch", desc: "Letter mark → favicon + apple-touch." },
+      { title: "Startup launch", desc: "Letter mark -> favicon + apple-touch." },
       { title: "Rebrand", desc: "Replace old favicon bundle on deploy." },
     ],
-    mistakes: ["Tiny source image — looks blurry when scaled.", "Non-square art without padding.", "Forgetting cache bust after deploy."],
+    mistakes: ["Tiny source image - looks blurry when scaled.", "Non-square art without padding.", "Forgetting cache bust after deploy."],
     privacyNote: "Image stays in the browser during generation.",
     whenNotToUse: "Complex animated favicons need dedicated tools.",
     faqs: [
@@ -651,7 +651,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
       { q: "Commercial?", a: "Yes for your own brand assets." },
       { q: "What sizes are included?", a: "Common set from 16px through 512px in one ZIP." },
     ],
-    proTips: ["Start from 512×512 or larger.", "Test on dark and light browser chrome."],
+    proTips: ["Start from 512x512 or larger.", "Test on dark and light browser chrome."],
     relatedSlugs: ["image-compressor", "png-to-jpg-converter", "color-palette-generator"],
   },
   "svg-blob-generator": {
@@ -701,7 +701,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
       { title: "Blog", desc: "Serif heading + sans body for long reads." },
       { title: "App UI", desc: "Geometric sans for both, different weights." },
     ],
-    mistakes: ["Loading too many weights — slows page.", "Decorative fonts for body paragraphs.", "Skipping line-height in CSS."],
+    mistakes: ["Loading too many weights - slows page.", "Decorative fonts for body paragraphs.", "Skipping line-height in CSS."],
     privacyNote: "Preview loads fonts from Google; your choices are not stored on Sounez.",
     whenNotToUse: "Licensed brand fonts not on Google need your own files.",
     faqs: [
@@ -727,16 +727,16 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Enter width and height.", "Pick colours and label.", "Download SVG or PNG."],
     examples: [
-      { title: "Card grid", desc: "400×300 grey blocks in a Figma handoff." },
-      { title: "Hero", desc: "1920×1080 labelled placeholder." },
+      { title: "Card grid", desc: "400x300 grey blocks in a Figma handoff." },
+      { title: "Hero", desc: "1920x1080 labelled placeholder." },
     ],
     mistakes: ["Shipping placeholders to production.", "Wrong aspect ratio for real photos later."],
     privacyNote: "Generated in browser.",
     whenNotToUse: "Replace with real alt text and photos before launch.",
     faqs: [
-      { q: "Retina?", a: "Set 2× dimensions if you need sharper mockups." },
+      { q: "Retina?", a: "Set 2x dimensions if you need sharper mockups." },
       { q: "SVG size?", a: "Scales cleanly for responsive layouts." },
-      { q: "PNG or SVG output?", a: "Both — pick what fits your mockup or handoff." },
+      { q: "PNG or SVG output?", a: "Both - pick what fits your mockup or handoff." },
     ],
     proTips: ["Match final aspect ratio to avoid layout shift later."],
     relatedSlugs: ["image-compressor", "favicon-generator", "background-pattern-generator"],
@@ -765,7 +765,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     faqs: [
       { q: "Inset shadows?", a: "Toggle inset in the tool if available." },
       { q: "Tailwind?", a: "Map values to shadow utilities." },
-      { q: "Stack multiple shadows?", a: "Yes — layer shadows and copy one CSS declaration." },
+      { q: "Stack multiple shadows?", a: "Yes - layer shadows and copy one CSS declaration." },
     ],
     proTips: ["Use one elevation scale across the app.", "Softer shadows in dark mode."],
     relatedSlugs: ["css-gradient-generator", "color-palette-generator", "background-pattern-generator"],
@@ -794,7 +794,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     faqs: [
       { q: "Performance?", a: "CSS patterns are light vs big PNGs." },
       { q: "Dark mode?", a: "Generate a second palette for dark sections." },
-      { q: "Need image files?", a: "No — patterns are CSS only, so there is no PNG tile to host." },
+      { q: "Need image files?", a: "No - patterns are CSS only, so there is no PNG tile to host." },
     ],
     proTips: ["Keep opacity under 15% for readability.", "Test with real paragraph text on top."],
     relatedSlugs: ["css-gradient-generator", "svg-blob-generator", "box-shadow-generator"],
@@ -811,7 +811,7 @@ function defaultEditorial(slug: string): ToolEditorialContent {
     whatItDoes: tool?.description ?? `${name} performs one focused job so you do not need a separate desktop app.`,
     whoFor: [
       { title: "Quick tasks", desc: "Anyone who needs a result once without installing software." },
-      { title: "Mobile users", desc: "Works in a phone browser — no app store download." },
+      { title: "Mobile users", desc: "Works in a phone browser - no app store download." },
     ],
     features: [
       { title: "No account", desc: "Open and use for typical day-to-day jobs." },
@@ -831,7 +831,7 @@ function defaultEditorial(slug: string): ToolEditorialContent {
     faqs: [
       { q: "Is it free?", a: "Yes for normal use. Fair-use limits may apply on AI or server processing." },
       { q: "Do I need an account?", a: "No account is required for everyday use." },
-      { q: "Is my input stored?", a: "Check the privacy note on this page — it varies by tool." },
+      { q: "Is my input stored?", a: "Check the privacy note on this page - it varies by tool." },
     ],
     proTips: ["Bookmark the page if you use it weekly.", "Read the related tools section for the next step in your workflow."],
     relatedSlugs: [],

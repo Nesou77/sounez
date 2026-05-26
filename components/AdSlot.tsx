@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Legacy placeholder — Sounez uses AdSense Auto Ads only (see AdSenseScript).
+ * Legacy placeholder - Sounez uses AdSense Auto Ads only (see AdSenseScript).
  * Kept for optional dev layout markers; not mounted on live pages.
  */
 export function AdSlot({

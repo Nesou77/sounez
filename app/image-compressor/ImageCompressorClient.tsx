@@ -316,17 +316,17 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
         },
       ]}
       examples={[
-        { title: "Blog hero image", desc: "A 2.4 MB JPEG at 82% quality often drops under 400 KB — enough for fast LCP without visible blur." },
+        { title: "Blog hero image", desc: "A 2.4 MB JPEG at 82% quality often drops under 400 KB - enough for fast LCP without visible blur." },
         { title: "Shopify product grid", desc: "Batch 12 PNGs, convert to WebP at 75%, and ZIP download for a bulk CMS upload." },
         { title: "Email newsletter", desc: "Resize to max width 1200px while compressing so images stay sharp but under attachment limits." },
       ]}
       mistakes={[
-        "Setting quality below 50% on photos with fine detail (faces, hair) — artifacts become obvious.",
-        "Converting logos with transparency to JPEG — you will lose the alpha channel.",
-        "Compressing the same file repeatedly at low quality — each pass adds more loss.",
+        "Setting quality below 50% on photos with fine detail (faces, hair) - artifacts become obvious.",
+        "Converting logos with transparency to JPEG - you will lose the alpha channel.",
+        "Compressing the same file repeatedly at low quality - each pass adds more loss.",
       ]}
       privacyNote="Compression runs locally in your browser via a web worker. Images are not uploaded to Sounez servers."
-      whenNotToUse="Skip this tool for RAW camera files, animated GIFs, or print-ready CMYK assets — use dedicated software for those workflows."
+      whenNotToUse="Skip this tool for RAW camera files, animated GIFs, or print-ready CMYK assets - use dedicated software for those workflows."
       howTo={[
         "Drop your images onto the upload zone or click Choose Files to select up to 20 JPG, PNG, or WebP files.",
         "Adjust the Quality slider. Lower values give smaller files; higher values keep more detail.",
@@ -536,7 +536,7 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
                       <span>{fmt(item.file.size)}</span>
                       {item.outSize !== undefined && (
                         <>
-                          <span className="text-muted-foreground/40">→</span>
+                          <span className="text-muted-foreground/40">to</span>
                           <span>{fmt(item.outSize)}</span>
                           {pct !== null && pct > 0 && (
                             <span className={`font-semibold ${savingsColor(pct)}`}>

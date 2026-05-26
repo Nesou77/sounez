@@ -15,7 +15,7 @@ function minScoreThreshold(): number {
   return Number.isFinite(n) ? Math.min(1, Math.max(0, n)) : 0.5;
 }
 
-/** No tokens or PII — safe for prod logs */
+/** No tokens or PII - safe for prod logs */
 function debugLog(details: Record<string, unknown>) {
   const payload = JSON.stringify(details);
   if (process.env.NODE_ENV !== "production") {
@@ -95,7 +95,7 @@ export async function verifyContactRecaptchaV3(token: string | undefined): Promi
       return {
         ok: false,
         error:
-          "We couldn’t verify this submission. Try again or contact us directly using the email on this page.",
+          "We couldn't verify this submission. Try again or contact us directly using the email on this page.",
       };
     }
 

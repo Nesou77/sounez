@@ -108,7 +108,7 @@ const BLOG_POSTS_RAW: BlogPost[] = [
 /** All posts sorted alphabetically by title (no synthetic popularity metrics). */
 export const BLOG_POSTS = [...BLOG_POSTS_RAW].sort((a, b) => a.title.localeCompare(b.title));
 
-/** Map from tool slug → related blog post slugs (most relevant first) */
+/** Map from tool slug -> related blog post slugs (most relevant first) */
 export const TOOL_BLOG_MAP: Record<string, string[]> = {
   "pdf-to-word-converter":        ["how-to-convert-pdf-to-word", "best-productivity-tools-for-remote-workers", "best-free-tools-for-creators"],
   "background-remover":           ["how-to-remove-image-backgrounds-online", "image-optimization-checklist", "png-vs-jpg-and-how-to-convert-images"],

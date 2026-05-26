@@ -23,7 +23,7 @@ export const TOOLS: Tool[] = [
     emoji: "📄",
     keywords: ["pdf to word", "pdf to docx", "pdf converter", "convert pdf to word", "online pdf converter", "editable word document"],
     featured: true,
-    seoTitle: "PDF to Word Converter – Convert PDF to Editable DOCX Online",
+    seoTitle: "PDF to Word Converter - Convert PDF to Editable DOCX Online",
     seoDescription: "Convert PDF files into editable Word documents online with a simple and secure PDF to DOCX converter.",
   },
   {
@@ -34,7 +34,7 @@ export const TOOLS: Tool[] = [
     emoji: "✂️",
     keywords: ["background remover", "remove background", "ai background remover", "transparent background", "remove image background", "online background remover"],
     featured: true,
-    seoTitle: "AI Background Remover – Remove Image Background Online",
+    seoTitle: "AI Background Remover - Remove Image Background Online",
     seoDescription: "Remove image backgrounds automatically with AI and download a clean transparent image for products, profiles, social media, and design projects.",
   },
   {
@@ -45,7 +45,7 @@ export const TOOLS: Tool[] = [
     emoji: "🔍",
     keywords: ["image describer", "alt text generator", "image caption generator", "image keywords", "image description generator", "accessibility alt text", "SEO image description"],
     featured: true,
-    seoTitle: "Image Describer – Generate Alt Text, Captions and SEO Keywords",
+    seoTitle: "Image Describer - Generate Alt Text, Captions and SEO Keywords",
     seoDescription: "Generate image descriptions, alt text, captions, and SEO keywords from an uploaded image to improve accessibility and content optimization.",
   },
   {
@@ -329,7 +329,7 @@ export const CATEGORIES = [
   {
     slug: "design-tools",
     name: "Design Tools",
-    description: "Pick colours, build gradients, export favicons, and copy CSS for shadows and patterns — without opening a full design suite.",
+    description: "Pick colours, build gradients, export favicons, and copy CSS for shadows and patterns - without opening a full design suite.",
     emoji: "🎨",
   },
   {

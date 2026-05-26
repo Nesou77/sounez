@@ -50,10 +50,26 @@ export function SmartPackPageContent({ pack }: { pack: SmartPackDefinition }) {
             <ul className="mt-4 grid gap-2 sm:grid-cols-2">
               {pack.outputFields.map((item) => (
                 <li key={item} className="flex gap-2 text-sm text-muted-foreground">
-                  <span className="text-primary">·</span> {item}
+                  <span className="text-primary">-</span> {item}
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-2xl border border-border bg-muted/30 p-5">
+            <h2 className="text-lg font-bold">How to write a useful brief</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Give the pack enough real context to work with: who the content is for, what you are
+              trying to make happen, the tone you want, and any details that must be exact. For a
+              promotion, include the offer and deadline. For a product, include size, material,
+              delivery notes, and what makes it different. For study work, include your level and
+              the source you are reviewing.
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Avoid private customer data, passwords, ID numbers, unreleased client material, or
+              anything you do not have permission to process. The generated pack is a draft; edit
+              the final wording before you publish, submit, or send it.
+            </p>
           </section>
 
           <section>
@@ -73,6 +89,16 @@ export function SmartPackPageContent({ pack }: { pack: SmartPackDefinition }) {
               {pack.commonMistakes.map((m) => (
                 <li key={m}>{m}</li>
               ))}
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold">Before you copy the result</h2>
+            <ul className="mt-3 list-disc space-y-2 pl-6 text-sm text-muted-foreground">
+              <li>Check every claim, price, date, name, link, and specification.</li>
+              <li>Read the copy aloud once. If it sounds stiff, shorten the sentence and use your own phrasing.</li>
+              <li>Remove anything that does not match the real image, product, lesson, or offer.</li>
+              <li>Keep a copy of the final version in your own notes or publishing tool.</li>
             </ul>
           </section>
 
@@ -115,7 +141,7 @@ export function SmartPackPageContent({ pack }: { pack: SmartPackDefinition }) {
             href="/smart-packs/history"
             className="block text-center text-sm font-medium text-primary hover:underline"
           >
-            View your pack history on this device →
+            View your pack history on this device
           </Link>
         </aside>
       </div>

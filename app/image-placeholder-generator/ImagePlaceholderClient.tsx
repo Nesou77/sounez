@@ -11,7 +11,7 @@ import { trackToolComplete, trackCopyResult, trackDownloadResult } from "@/lib/a
 type Format = "svg" | "png";
 
 function buildSvg(w: number, h: number, bg: string, fg: string, label: string): string {
-  const text = label || `${w}×${h}`;
+  const text = label || `${w}x${h}`;
   const fontSize = Math.max(12, Math.min(Math.floor(Math.min(w, h) * 0.12), 48));
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
   <rect width="${w}" height="${h}" fill="${bg}"/>
@@ -158,7 +158,7 @@ export function ImagePlaceholderClient({ tool }: { tool: Tool }) {
               type="text"
               value={label}
               onChange={(e) => setLabel(e.target.value)}
-              placeholder={`${w}×${h}`}
+              placeholder={`${w}x${h}`}
               className="w-full rounded-xl border border-border bg-background px-3 py-2.5 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
           </div>
@@ -202,13 +202,13 @@ export function ImagePlaceholderClient({ tool }: { tool: Tool }) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={svgDataUrl}
-              alt={`Placeholder ${w}×${h}`}
+              alt={`Placeholder ${w}x${h}`}
               width={previewW}
               height={previewH}
               style={{ display: "block", maxWidth: "100%" }}
             />
           </div>
-          <p className="text-xs text-muted-foreground">{w}×{h}px</p>
+          <p className="text-xs text-muted-foreground">{w}x{h}px</p>
         </div>
       </div>
     </ToolPageShell>

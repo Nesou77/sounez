@@ -23,7 +23,7 @@ function fallbackResult(tone: Tone): DescribeResult {
     socialCaption: "Check out this image! ✨ #photo #content #visual",
   };
   if (tone === "accessibility") {
-    return { ...base, altText: "Image — please add a descriptive alt text for accessibility." };
+    return { ...base, altText: "Image - please add a descriptive alt text for accessibility." };
   }
   if (tone === "seo") {
     return { ...base, seoKeywords: "image, photo, visual, content, media, digital" };

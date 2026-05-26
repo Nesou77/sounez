@@ -35,7 +35,7 @@ const FAQS = [
   {
     question: "How many ideas should I generate before picking one?",
     answer:
-      "Generate at least 10–20 ideas before evaluating any of them. Quantity first, quality second. The best ideas often come after you've exhausted the obvious ones.",
+      "Generate at least 10-20 ideas before evaluating any of them. Quantity first, quality second. The best ideas often come after you've exhausted the obvious ones.",
   },
   {
     question: "Is the Website Idea Generator free?",
@@ -105,7 +105,7 @@ export default function Post() {
             tools), sponsored posts, ebooks
           </li>
           <li>
-            <strong>Time to first revenue:</strong> 6–18 months (SEO-driven)
+            <strong>Time to first revenue:</strong> 6-18 months (SEO-driven)
           </li>
         </ul>
 
@@ -124,7 +124,7 @@ export default function Post() {
             pricing
           </li>
           <li>
-            <strong>Time to first revenue:</strong> 3–12 months (depends on build time)
+            <strong>Time to first revenue:</strong> 3-12 months (depends on build time)
           </li>
         </ul>
 
@@ -142,7 +142,7 @@ export default function Post() {
             <strong>Monetization:</strong> product sales, upsells, bundles
           </li>
           <li>
-            <strong>Time to first revenue:</strong> 1–6 months
+            <strong>Time to first revenue:</strong> 1-6 months
           </li>
         </ul>
 
@@ -160,7 +160,7 @@ export default function Post() {
             <strong>Monetization:</strong> monthly membership fees, course sales, events
           </li>
           <li>
-            <strong>Time to first revenue:</strong> 1–3 months (if you have an existing audience)
+            <strong>Time to first revenue:</strong> 1-3 months (if you have an existing audience)
           </li>
         </ul>
 
@@ -178,7 +178,7 @@ export default function Post() {
             <strong>Monetization:</strong> display ads, premium features, API licensing
           </li>
           <li>
-            <strong>Time to first revenue:</strong> 3–12 months (SEO-driven traffic)
+            <strong>Time to first revenue:</strong> 3-12 months (SEO-driven traffic)
           </li>
         </ul>
 
@@ -265,7 +265,7 @@ export default function Post() {
         </p>
         <h3>How many ideas should I generate before picking one?</h3>
         <p>
-          Generate at least 10–20 ideas before evaluating any of them. Quantity first, quality
+          Generate at least 10-20 ideas before evaluating any of them. Quantity first, quality
           second. The best ideas often come after you&apos;ve exhausted the obvious ones.
         </p>
         <h3>Is the Website Idea Generator free?</h3>

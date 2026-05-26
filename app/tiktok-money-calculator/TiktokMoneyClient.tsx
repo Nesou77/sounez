@@ -28,7 +28,7 @@ export function TiktokMoneyClient({ tool }: { tool: Tool }) {
 
   const { minRate, maxRate } = PLATFORM_RATES[platform];
 
-  // TikTok and Instagram: CPM-style based on follower × ER × rate
+  // TikTok and Instagram: CPM-style based on follower x ER x rate
   // YouTube: views-based sponsor estimate
   let min: number, max: number;
   if (platform === "youtube") {
@@ -47,7 +47,7 @@ export function TiktokMoneyClient({ tool }: { tool: Tool }) {
 
   const copyEstimate = () => {
     const platformLabel = PLATFORM_RATES[platform].label;
-    const text = `${platformLabel} sponsored post estimate: ${formatCurrency(min)} – ${formatCurrency(max)} per post (${followers.toLocaleString()} followers, ${er}${platform === "youtube" ? "k avg views" : "% ER"})`;
+    const text = `${platformLabel} sponsored post estimate: ${formatCurrency(min)} - ${formatCurrency(max)} per post (${followers.toLocaleString()} followers, ${er}${platform === "youtube" ? "k avg views" : "% ER"})`;
     navigator.clipboard.writeText(text);
     toast.success("Estimate copied to clipboard");
     trackCopyResult({ tool_slug: tool.slug, result_type: "earnings_estimate" });
@@ -78,7 +78,7 @@ export function TiktokMoneyClient({ tool }: { tool: Tool }) {
         { q: "Are these numbers exact?", a: "No. They are estimates based on typical brand deal ranges. Your actual rate depends on your niche, audience location, content quality and the brand's budget." },
         { q: "What counts as a good engagement rate?", a: "Above 5% is strong on TikTok and Instagram. YouTube sponsorships are usually calculated per view or per thousand views (CPM)." },
         { q: "How do nano and micro influencers compare?", a: "Smaller accounts (under 50k) often have higher engagement rates and can charge more per engaged follower than mega influencers." },
-        { q: "What is a CPM deal?", a: "CPM stands for cost per thousand impressions. YouTube sponsorships often use CPM ($1.50–$4 per 1,000 views is typical for mid-sized channels)." },
+        { q: "What is a CPM deal?", a: "CPM stands for cost per thousand impressions. YouTube sponsorships often use CPM ($1.50-$4 per 1,000 views is typical for mid-sized channels)." },
       ]}
       useCases={[
         { title: "Content creators", desc: "Set a realistic floor price when brands reach out for partnerships." },
@@ -145,10 +145,10 @@ export function TiktokMoneyClient({ tool }: { tool: Tool }) {
       <div className="mt-6 rounded-2xl bg-gradient-soft p-6 text-center">
         <div className="text-sm text-muted-foreground">Estimated earnings per sponsored post</div>
         <div className="mt-1 text-4xl font-bold text-gradient-brand">
-          {formatCurrency(min)} – {formatCurrency(max)}
+          {formatCurrency(min)} - {formatCurrency(max)}
         </div>
         <div className="mt-1 text-xs text-muted-foreground">
-          {PLATFORM_RATES[platform].label} · {followers.toLocaleString()} followers ·{" "}
+          {PLATFORM_RATES[platform].label} - {followers.toLocaleString()} followers -{" "}
           {platform === "youtube" ? `${er}k avg views` : `${er}% ER`}
         </div>
         <button

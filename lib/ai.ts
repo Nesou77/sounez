@@ -1,6 +1,6 @@
 /**
  * Centralised Gemini AI helper.
- * All Gemini API calls go through this file — never from client components.
+ * All Gemini API calls go through this file - never from client components.
  *
  * Uses the Gemini REST API directly (no SDK) to avoid adding a dependency.
  * Model: process.env.GEMINI_MODEL || "gemini-2.5-flash"

@@ -18,7 +18,7 @@ import { useToolView } from "@/lib/use-tool-view";
 
 // ── On-device AI background removal ──────────────────────────────────────────
 // @imgly/background-removal runs fully in the browser via ONNX/WebAssembly.
-// No server, no API key, no image uploads — everything happens on-device.
+// No server, no API key, no image uploads - everything happens on-device.
 //
 // The library fetches its WASM runtime + ONNX model files (~40 MB total) from
 // the CDN specified by publicPath. This must match the installed package version
@@ -33,7 +33,7 @@ async function runOnDeviceRemoval(file: File): Promise<Blob> {
   const { removeBackground } = await import("@imgly/background-removal");
   return removeBackground(file, {
     publicPath: BG_REMOVAL_CDN,
-    // isnet_fp16: high-quality ISNet model (16-bit float) — valid for ≥ v1.4.
+    // isnet_fp16: high-quality ISNet model (16-bit float) - valid for ≥ v1.4.
     // Equivalent to "medium" preset in ≥ v1.5 but explicit about the model file.
     model: "isnet_fp16",
     output: { format: "image/png", quality: 1 },
@@ -64,7 +64,7 @@ const FAQS = [
   },
   {
     q: "Is my image sent to a server?",
-    a: "No. Your image is processed entirely in your browser using on-device AI (WebAssembly). It never leaves your device — no uploads, no server, no API key required.",
+    a: "No. Your image is processed entirely in your browser using on-device AI (WebAssembly). It never leaves your device - no uploads, no server, no API key required.",
   },
   {
     q: "What file formats are supported?",
@@ -144,10 +144,10 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
     setStage("processing");
     setResultUrl(null);
     setErrorMsg("");
-    setProcessingLabel("Loading AI model — this may take a moment on the first run…");
+    setProcessingLabel("Loading AI model - this may take a moment on the first run…");
 
     try {
-      setProcessingLabel("Removing background — please wait…");
+      setProcessingLabel("Removing background - please wait…");
       const blob = await runOnDeviceRemoval(file);
       setResultUrl(URL.createObjectURL(blob));
       setStage("done");
@@ -155,7 +155,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       console.error("[bg-remove] on-device AI failed:", e);
       setErrorMsg(
         "We couldn't remove the background from this image. " +
-          "Try a different photo — use a high-contrast image with a clear subject on a plain background.",
+          "Try a different photo - use a high-contrast image with a clear subject on a plain background.",
       );
       setStage("error");
     }
@@ -203,12 +203,12 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       tool={tool}
       intro="Remove image backgrounds automatically with AI. Upload a photo and get a clean transparent PNG ready for products, profiles, presentations and social media."
       features={[
-        { title: "100% On-Device AI", desc: "Powered by ONNX WebAssembly — runs entirely in your browser. No uploads, no server, no API key." },
+        { title: "100% On-Device AI", desc: "Powered by ONNX WebAssembly - runs entirely in your browser. No uploads, no server, no API key." },
         { title: "Drag & Drop Upload", desc: "Drop your image or click to browse. PNG, JPG, JPEG and WEBP supported." },
         { title: "Before / After Preview", desc: "Compare the original and result side by side before downloading." },
         { title: "Transparent Background", desc: "Output is always a clean transparent PNG ready for design tools." },
         { title: "Background Color Replace", desc: "Optionally fill the removed background with white, black or a custom color." },
-        { title: "Completely Private", desc: "Your image never leaves your device — processed locally with no data sent anywhere." },
+        { title: "Completely Private", desc: "Your image never leaves your device - processed locally with no data sent anywhere." },
       ]}
       howTo={[
         "Click the upload area or drag and drop your image onto the page.",
@@ -231,14 +231,14 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
         "After removal, add a solid color background for a clean studio look.",
       ]}
       examples={[
-        { title: "Marketplace listing", desc: "Product on a busy table → transparent PNG on white for Amazon main image rules." },
-        { title: "Profile photo", desc: "Selfie with cluttered room → cutout for LinkedIn banner composite." },
-        { title: "Sticker asset", desc: "Logo PNG with grey backdrop → transparent file for Slack or Discord emoji." },
+        { title: "Marketplace listing", desc: "Product on a busy table -> transparent PNG on white for Amazon main image rules." },
+        { title: "Profile photo", desc: "Selfie with cluttered room -> cutout for LinkedIn banner composite." },
+        { title: "Sticker asset", desc: "Logo PNG with grey backdrop -> transparent file for Slack or Discord emoji." },
       ]}
       mistakes={[
-        "Expecting perfect hair on low-contrast backgrounds — fine strands may need touch-up.",
-        "Uploading 20 MB RAW files — convert to JPG first; the tool caps at 10 MB.",
-        "Downloading JPEG expecting transparency — output is PNG for alpha support.",
+        "Expecting perfect hair on low-contrast backgrounds - fine strands may need touch-up.",
+        "Uploading 20 MB RAW files - convert to JPG first; the tool caps at 10 MB.",
+        "Downloading JPEG expecting transparency - output is PNG for alpha support.",
       ]}
       privacyNote="Processing runs on your device via WebAssembly. The model files load from a CDN; your image bytes are not uploaded to Sounez."
       whenNotToUse="Skip for multi-person crowd shots, glass reflections, or images you do not have rights to edit."
@@ -269,7 +269,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
           <div>
             <p className="text-base font-semibold">Drop your image here, or click to browse</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              PNG, JPG, JPEG, WEBP — maximum {MAX_FILE_SIZE_MB} MB
+              PNG, JPG, JPEG, WEBP - maximum {MAX_FILE_SIZE_MB} MB
             </p>
           </div>
         </div>
@@ -447,7 +447,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       <div className="mt-6 flex items-start gap-2 rounded-xl border border-border bg-muted/40 px-4 py-3 text-xs text-muted-foreground">
         <Shield className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
         <span>
-          Your image is processed entirely in your browser using on-device AI — it never leaves your device.
+          Your image is processed entirely in your browser using on-device AI - it never leaves your device.
         </span>
       </div>
     </ToolPageShell>

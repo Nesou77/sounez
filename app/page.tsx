@@ -8,7 +8,7 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   title: "Sounez | Smart Packs & Free Tools for Creators and Small Business",
   description:
-    "Create captions, optimize images, generate QR codes, convert PDFs, and run Smart Pack workflows. Free tools with clear privacy notes — no account for most features.",
+    "Create captions, optimize images, generate QR codes, convert PDFs, and run Smart Pack workflows. Free tools with clear privacy notes - no account for most features.",
   alternates: { canonical: siteUrl },
   openGraph: {
     title: "Sounez | Smart Packs & Free Tools",

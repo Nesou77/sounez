@@ -65,7 +65,7 @@ export function YoutubeTagsClient({ tool }: { tool: Tool }) {
       howTo={[
         "Enter your video's main keyword in the box, then press Enter or click Generate.",
         "Review the tags, remove any that don't fit your video.",
-        "Click Copy all and paste them into YouTube Studio under Video Details → Tags.",
+        "Click Copy all and paste them into YouTube Studio under Video Details -> Tags.",
       ]}
       faqs={[
         { q: "Do YouTube tags still work in 2026?", a: "Yes. Tags help YouTube understand the context of your video. They matter less than the title and thumbnail, but they still help surface your video in related searches." },
@@ -133,7 +133,7 @@ export function YoutubeTagsClient({ tool }: { tool: Tool }) {
               </span>
             ))}
           </div>
-          <p className="mt-3 text-xs text-muted-foreground">Click a tag to copy it individually. Click × to remove it from the list.</p>
+          <p className="mt-3 text-xs text-muted-foreground">Click a tag to copy it individually. Click x to remove it from the list.</p>
         </>
       )}
     </ToolPageShell>

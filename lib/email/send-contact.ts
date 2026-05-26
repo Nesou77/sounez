@@ -55,7 +55,7 @@ export async function sendContactEmail(to: string[], payload: ContactPayload): P
     from,
     to,
     replyTo: payload.email,
-    subject: `[Sounez Contact] ${payload.topic} — ${payload.name}`,
+    subject: `[Sounez Contact] ${payload.topic} - ${payload.name}`,
     text,
     html,
   });

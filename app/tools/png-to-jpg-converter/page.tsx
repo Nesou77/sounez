@@ -42,7 +42,7 @@ const jsonLd = [
     tool: [{ "@type": "HowToTool", name: "PNG to JPG Converter by Sounez", url: canonical }],
     step: [
       { "@type": "HowToStep", position: 1, name: "Upload your PNG files", text: "Drop one or more PNG files onto the upload area, or click to browse your device.", url: `${canonical}#upload` },
-      { "@type": "HowToStep", position: 2, name: "Choose the output quality", text: "Use the quality slider to balance file size against image clarity. 85–90% is recommended.", url: `${canonical}#quality` },
+      { "@type": "HowToStep", position: 2, name: "Choose the output quality", text: "Use the quality slider to balance file size against image clarity. 85-90% is recommended.", url: `${canonical}#quality` },
       { "@type": "HowToStep", position: 3, name: "Convert all images", text: "Click Convert All to process every image at once. Conversion happens entirely in your browser.", url: `${canonical}#convert` },
       { "@type": "HowToStep", position: 4, name: "Download JPG files", text: "Download each JPG individually or click Download ZIP to get all converted images in one file.", url: `${canonical}#download` },
     ],

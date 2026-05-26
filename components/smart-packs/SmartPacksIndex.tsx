@@ -8,7 +8,7 @@ import { ToolCard } from "@/components/ToolCard";
 const FAQS = [
   {
     q: "What is a Smart Pack?",
-    a: "A Smart Pack turns one brief into several related assets — captions, listing copy, image SEO fields, or study notes — in a single structured result you can copy or download.",
+    a: "A Smart Pack turns one brief into several related assets - captions, listing copy, image SEO fields, or study notes - in a single structured result you can copy or download.",
   },
   {
     q: "Does Sounez post to social networks for me?",
@@ -22,6 +22,20 @@ const FAQS = [
     q: "Do I need an account?",
     a: "No account is required for normal use. Fair-use limits apply on AI generation.",
   },
+];
+
+const PACK_TIPS = [
+  "Write the brief as if you were explaining the job to a careful assistant. Include audience, goal, deadline, and any words you want to avoid.",
+  "Keep facts separate from style notes. Prices, dates, product specs, and school requirements should be easy to check after generation.",
+  "Run the pack once, edit the strongest version, then use individual Sounez tools only for the fields that need extra polish.",
+];
+
+const CHOOSE_PACK = [
+  { name: "Social Media Pack", use: "Use this when one post needs a caption, first comment, hashtags, alt text, and a simple publishing note." },
+  { name: "Product Listing Pack", use: "Use this when you have product facts but need cleaner titles, bullets, descriptions, and meta copy." },
+  { name: "SEO Image Pack", use: "Use this when an image needs a better filename, alt text, caption, and nearby page copy." },
+  { name: "Business Launch Pack", use: "Use this when a new offer needs name ideas, taglines, bios, and first post angles." },
+  { name: "Student Study Pack", use: "Use this for revision structure, flashcards, and quiz prompts. Verify facts with your course material." },
 ];
 
 export function SmartPacksIndex() {
@@ -68,7 +82,7 @@ export function SmartPacksIndex() {
         <h2 className="text-xl font-bold">What are Smart Packs?</h2>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
           A Smart Pack is one form and one structured result. Instead of opening five tools and copying bits
-          into a doc, you describe your goal once and receive matching fields — caption and hashtags together,
+          into a doc, you describe your goal once and receive matching fields - caption and hashtags together,
           or product title and meta description together. AI processes your text on our servers; you stay
           responsible for accuracy and publishing.
         </p>
@@ -93,11 +107,42 @@ export function SmartPacksIndex() {
         </ol>
       </section>
 
+      <section className="mt-12 grid gap-6 lg:grid-cols-[1fr_1fr]">
+        <div className="rounded-2xl border border-border bg-card p-6">
+          <h2 className="text-xl font-bold">How to get a better result</h2>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
+            {PACK_TIPS.map((tip) => (
+              <li key={tip}>{tip}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-2xl border border-border bg-card p-6">
+          <h2 className="text-xl font-bold">What to check before publishing</h2>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            Smart Packs produce drafts, not final approval. Check names, links, prices, dates,
+            claims, platform rules, image accuracy, and tone. If the pack mentions a feature,
+            guarantee, discount, grade, or result, make sure it is true before you use it.
+          </p>
+        </div>
+      </section>
+
       <section id="all-packs" className="mt-16">
         <h2 className="text-2xl font-bold">Available Smart Packs</h2>
         <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SMART_PACKS.map((p) => (
             <SmartPackCard key={p.slug} pack={p} />
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <h2 className="text-xl font-bold">Which pack should you choose?</h2>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          {CHOOSE_PACK.map((item) => (
+            <div key={item.name} className="rounded-2xl border border-border bg-card p-5">
+              <h3 className="font-semibold">{item.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.use}</p>
+            </div>
           ))}
         </div>
       </section>
@@ -110,7 +155,7 @@ export function SmartPacksIndex() {
             Social Media Pack
           </Link>
           , enter the brief, and receive a title, caption, first comment, hashtags, CTA, and image ideas. They
-          fix the dates and link, then schedule in their app — Sounez never posts for them.
+          fix the dates and link, then schedule in their app - Sounez never posts for them.
         </p>
       </section>
 
@@ -118,7 +163,7 @@ export function SmartPacksIndex() {
         <h2 className="text-xl font-bold">Why use a pack instead of separate tools?</h2>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
           Individual Sounez tools are best when you need one job done fast. Packs help when several pieces must
-          match — same offer in the caption and first comment, or the same keywords in alt text and the
+          match - same offer in the caption and first comment, or the same keywords in alt text and the
           paragraph below the image. You can still open related tools afterward to tweak one field.
         </p>
       </section>

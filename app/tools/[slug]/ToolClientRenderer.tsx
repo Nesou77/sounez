@@ -83,7 +83,7 @@ const REGISTRY: Record<string, ComponentType<{ tool: Tool }>> = {
     { loading: Skeleton },
   ),
   // png-to-jpg-converter has a dedicated static page at app/tools/png-to-jpg-converter/
-  // that takes priority over this dynamic route — it's listed here as a fallback only.
+  // that takes priority over this dynamic route - it's listed here as a fallback only.
   "png-to-jpg-converter": dynamic(
     () => import("@/app/png-to-jpg-converter/PngToJpgClient").then((m) => ({ default: m.PngToJpgClient })),
     { loading: Skeleton },

@@ -106,7 +106,7 @@ export function ToolsClient() {
             <h2 className="text-xl font-bold">Before you use a tool</h2>
             <ul className="mt-4 list-disc space-y-2 pl-6 text-sm leading-relaxed text-muted-foreground">
               <li>Read the privacy note on the tool page if you are uploading files or using AI.</li>
-              <li>Treat AI output as a draft — check facts, prices, and claims before publishing.</li>
+              <li>Treat AI output as a draft - check facts, prices, and claims before publishing.</li>
               <li>For several assets from one brief, a Smart Pack may save you jumping between pages.</li>
             </ul>
           </section>

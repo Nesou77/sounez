@@ -113,7 +113,7 @@ export default function TermsOfServicePage() {
                 copyrighted documents, images, or media.
               </li>
               <li>
-                Using AI-generated outputs (captions, notes, descriptions, resumes) dishonestly —
+                Using AI-generated outputs (captions, notes, descriptions, resumes) dishonestly -
                 for example cheating, impersonation, or submitting work you did not create.
               </li>
               <li>
@@ -144,7 +144,7 @@ export default function TermsOfServicePage() {
             </p>
             <p>
               You are solely responsible for how you use the output from our tools. AI-generated
-              content may be inaccurate — review and edit it before publishing, submitting, or
+              content may be inaccurate - review and edit it before publishing, submitting, or
               sharing. Always verify important results independently before relying on them.
             </p>
             <p>
@@ -161,6 +161,24 @@ export default function TermsOfServicePage() {
             <p>
               We reserve the right to modify, suspend, or discontinue any tool at any time without
               notice.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">4A. Practical Examples</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              Acceptable uses include compressing your own website images, drafting a caption for
+              your own post, creating a QR code for a public page, converting a work document you
+              are allowed to edit, or making study notes from your own class material.
+            </p>
+            <p>
+              Unacceptable uses include uploading files you do not have permission to process,
+              submitting AI-generated study work as if you wrote it yourself, using generated copy
+              to mislead customers, or trying to overload the service with automated requests.
             </p>
           </div>
         </section>
@@ -394,11 +412,11 @@ export default function TermsOfServicePage() {
         <Link href="/privacy-policy" className="hover:text-foreground hover:underline">
           Privacy Policy
         </Link>
-        <span aria-hidden>·</span>
+        <span aria-hidden>-</span>
         <Link href="/contact" className="hover:text-foreground hover:underline">
           Contact
         </Link>
-        <span aria-hidden>·</span>
+        <span aria-hidden>-</span>
         <Link href="/" className="hover:text-foreground hover:underline">
           Home
         </Link>

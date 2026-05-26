@@ -1,7 +1,7 @@
 import { TOOLS, type Tool } from "@/data/tools";
 import { sortToolsByPopularity } from "@/lib/popularity";
 
-/** Display groups for /tools page and navigation — each tool appears once. */
+/** Display groups for /tools page and navigation - each tool appears once. */
 export const TOOL_GROUPS = [
   {
     slug: "ai-writing",
@@ -31,7 +31,7 @@ export const TOOL_GROUPS = [
   {
     slug: "student",
     name: "Student Tools",
-    description: "Notes, resumes, and calculators for school work — use them honestly.",
+    description: "Notes, resumes, and calculators for school work - use them honestly.",
   },
   {
     slug: "business",

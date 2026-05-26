@@ -54,7 +54,7 @@ export default function Post() {
         <h2>What is an image placeholder?</h2>
         <p>
           An image placeholder is a temporary image that represents a real image not yet available.
-          It typically shows the dimensions (e.g. &quot;800×600&quot;) on a neutral background, making it
+          It typically shows the dimensions (e.g. &quot;800x600&quot;) on a neutral background, making it
           easy to see exactly where and how large the real image will be.
         </p>
         <p>
@@ -78,13 +78,13 @@ export default function Post() {
 
         <h2>Placeholder sizes for common web layouts</h2>
         <ul>
-          <li><strong>Hero image:</strong> 1600×900 (16:9) or 1600×600 (wide banner)</li>
-          <li><strong>Blog post thumbnail:</strong> 1200×675 (16:9) or 800×600 (4:3)</li>
-          <li><strong>Product image:</strong> 800×800 (1:1 square)</li>
-          <li><strong>Team member photo:</strong> 400×400 (1:1 square)</li>
-          <li><strong>Open Graph / social card:</strong> 1200×630</li>
-          <li><strong>Card thumbnail:</strong> 600×400 (3:2)</li>
-          <li><strong>Avatar:</strong> 64×64 or 128×128</li>
+          <li><strong>Hero image:</strong> 1600x900 (16:9) or 1600x600 (wide banner)</li>
+          <li><strong>Blog post thumbnail:</strong> 1200x675 (16:9) or 800x600 (4:3)</li>
+          <li><strong>Product image:</strong> 800x800 (1:1 square)</li>
+          <li><strong>Team member photo:</strong> 400x400 (1:1 square)</li>
+          <li><strong>Open Graph / social card:</strong> 1200x630</li>
+          <li><strong>Card thumbnail:</strong> 600x400 (3:2)</li>
+          <li><strong>Avatar:</strong> 64x64 or 128x128</li>
         </ul>
 
         <h2>SVG vs PNG placeholders</h2>
@@ -104,14 +104,14 @@ export default function Post() {
           </li>
         </ul>
         <p>
-          For web development, SVG is almost always the better choice. A 1200×675 SVG placeholder
+          For web development, SVG is almost always the better choice. A 1200x675 SVG placeholder
           is typically under 500 bytes. The equivalent PNG would be several kilobytes.
         </p>
 
         <h2>How to use the Image Placeholder Generator</h2>
         <ol>
           <li>Open the <a href="/image-placeholder-generator">Image Placeholder Generator</a>.</li>
-          <li>Enter your desired width and height in pixels (up to 4000×4000).</li>
+          <li>Enter your desired width and height in pixels (up to 4000x4000).</li>
           <li>Choose a background color and text color.</li>
           <li>Optionally add a custom label. If left blank, the dimensions are shown automatically.</li>
           <li>Select SVG or PNG format.</li>

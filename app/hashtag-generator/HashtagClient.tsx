@@ -167,7 +167,7 @@ export function HashtagClient({ tool }: { tool: Tool }) {
               </span>
             ))}
           </div>
-          <p className="mt-3 text-xs text-muted-foreground">Click a hashtag to copy it individually. Click × to remove it.</p>
+          <p className="mt-3 text-xs text-muted-foreground">Click a hashtag to copy it individually. Click x to remove it.</p>
         </>
       )}
     </ToolPageShell>

@@ -195,9 +195,9 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
         { title: "Course handout", desc: "Turn a lecture PDF into DOCX for students who need screen-reader friendly editing." },
       ]}
       mistakes={[
-        "Expecting pixel-perfect tables from complex magazine layouts — plan manual cleanup.",
+        "Expecting pixel-perfect tables from complex magazine layouts - plan manual cleanup.",
         "Uploading password-protected PDFs without unlocking them first.",
-        "Using OCR on blurry scans — results will need heavy proofreading.",
+        "Using OCR on blurry scans - results will need heavy proofreading.",
       ]}
       privacyNote="Your PDF is sent securely to our conversion service, processed, and deleted after the DOCX is returned. We do not keep copies."
       whenNotToUse="Do not use for confidential legal filings or classified documents unless your organisation approves third-party processing."
@@ -248,7 +248,7 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
           <div>
             <p className="text-base font-semibold">Drop your PDF here, or click to browse</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              PDF files only — maximum {MAX_FILE_SIZE_MB} MB
+              PDF files only - maximum {MAX_FILE_SIZE_MB} MB
             </p>
           </div>
         </div>
@@ -290,7 +290,7 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
                 />
                 <span className="text-sm">
                   <span className="font-medium">Preserve layout</span>
-                  <span className="ml-1.5 text-muted-foreground">— keep columns, spacing and page structure</span>
+                  <span className="ml-1.5 text-muted-foreground">- keep columns, spacing and page structure</span>
                 </span>
               </label>
               <label className="flex cursor-pointer items-center gap-3">
@@ -302,7 +302,7 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
                 />
                 <span className="text-sm">
                   <span className="font-medium">Extract images</span>
-                  <span className="ml-1.5 text-muted-foreground">— include embedded images in the DOCX</span>
+                  <span className="ml-1.5 text-muted-foreground">- include embedded images in the DOCX</span>
                 </span>
               </label>
               <label className="flex cursor-pointer items-center gap-3">
@@ -314,7 +314,7 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
                 />
                 <span className="text-sm">
                   <span className="font-medium">OCR (scanned PDF)</span>
-                  <span className="ml-1.5 text-muted-foreground">— extract text from image-based pages</span>
+                  <span className="ml-1.5 text-muted-foreground">- extract text from image-based pages</span>
                 </span>
               </label>
             </div>

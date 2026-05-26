@@ -28,9 +28,9 @@ export function BrandLogo({ variant = "navbar" }: BrandLogoProps) {
           className={imgClass}
           /**
            * Accurate sizes so Next.js serves the smallest adequate variant.
-           * Mobile: max 168px CSS → 336px @2x → use 384w bucket.
-           * Tablet: max 184px CSS → 368px @2x → use 384w bucket.
-           * Desktop: max 208px CSS → 416px @2x → use 432w (not available) → 384w is fine.
+           * Mobile: max 168px CSS -> 336px @2x -> use 384w bucket.
+           * Tablet: max 184px CSS -> 368px @2x -> use 384w bucket.
+           * Desktop: max 208px CSS -> 416px @2x -> use 432w (not available) -> 384w is fine.
            * All well under the 640w that was previously served.
            */
           sizes="(max-width: 639px) 168px, (max-width: 1023px) 184px, 208px"
@@ -50,9 +50,9 @@ export function BrandLogo({ variant = "navbar" }: BrandLogoProps) {
         src="/logo.webp"
         alt="Sounez"
         /**
-         * Footer logo: displayed at ~280–380px CSS wide.
+         * Footer logo: displayed at ~280-380px CSS wide.
          * Use a smaller intrinsic width so Next.js doesn't generate a 640w variant.
-         * 380px CSS × 2x DPR = 760px → 768w bucket is the ceiling we need.
+         * 380px CSS x 2x DPR = 760px -> 768w bucket is the ceiling we need.
          * Setting width=380 keeps the aspect ratio correct and caps generation.
          */
         width={380}

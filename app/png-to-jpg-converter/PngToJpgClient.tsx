@@ -331,7 +331,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
     const done = items.filter((i) => i.status === "done" && i.resultUrl);
     if (done.length === 0) return;
 
-    // Single file → download directly, no ZIP needed
+    // Single file -> download directly, no ZIP needed
     if (done.length === 1) {
       const item = done[0];
       const a = document.createElement("a");
@@ -675,7 +675,7 @@ function ImageCard({
             <span>{fmt(item.file.size)}</span>
             {item.resultSize && (
               <>
-                <span>→</span>
+                <span>to</span>
                 <span className="font-medium text-foreground">{fmt(item.resultSize)}</span>
                 {savingsPct !== null && (
                   <span className="font-medium text-emerald-600">−{savingsPct}%</span>

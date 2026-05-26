@@ -211,7 +211,7 @@ export function ContactClient() {
         </p>
         <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
           For bugs, include the tool name, what you clicked, and what you expected. Screenshots help but are
-          optional. We cannot recover files you processed in your browser — only describe what went wrong.
+          optional. We cannot recover files you processed in your browser - only describe what went wrong.
         </p>
       </header>
 

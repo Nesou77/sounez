@@ -83,7 +83,7 @@ export default function Post() {
           and copy the CSS, or just screenshot the preview for use in Canva or Google Slides.
         </p>
         <p>
-          The key to gradients that look professional: stay within 60–90° of the color wheel. Blue to
+          The key to gradients that look professional: stay within 60-90° of the color wheel. Blue to
           violet works. Blue to orange creates a muddy middle. Read the{" "}
           <a href="/blog/css-gradients-guide">complete CSS gradients guide</a> for more.
         </p>
@@ -120,7 +120,7 @@ export default function Post() {
         <h2>The non-designer&apos;s design checklist</h2>
         <ul>
           <li>
-            <strong>Colors</strong>: Pick 2–3 colors and use them everywhere. Generate your palette
+            <strong>Colors</strong>: Pick 2-3 colors and use them everywhere. Generate your palette
             with the <a href="/color-palette-generator">Color Palette Generator</a>.
           </li>
           <li>

@@ -66,7 +66,7 @@ export function PasswordGeneratorClient({ tool }: { tool: Tool }) {
         { title: "100% private", desc: "Passwords are generated locally and never sent to any server." },
       ]}
       howTo={[
-        "Set your preferred password length using the slider (6–64 characters).",
+        "Set your preferred password length using the slider (6-64 characters).",
         "Toggle the character types you want: uppercase, lowercase, numbers and symbols.",
         "Click Generate, review the strength meter, then copy your password.",
       ]}

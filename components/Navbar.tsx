@@ -57,7 +57,7 @@ export function Navbar() {
                       <div className="mb-4 flex items-center justify-between gap-4 border-b border-border pb-3">
                         <p className="text-sm font-semibold">Browse by type</p>
                         <Link href="/tools" onClick={() => setOpen(null)} className="text-xs font-medium text-primary hover:underline">
-                          All tools →
+                          All tools
                         </Link>
                       </div>
                       <div className="grid max-h-[70vh] gap-6 overflow-y-auto sm:grid-cols-2 lg:grid-cols-4">
@@ -128,7 +128,7 @@ export function Navbar() {
                       <Link href="/categories/design-tools" onClick={() => setOpen(null)} className="block rounded-lg px-3 py-2 text-sm hover:bg-accent">Design tools</Link>
                       <Link href="/categories/utility-tools" onClick={() => setOpen(null)} className="block rounded-lg px-3 py-2 text-sm hover:bg-accent">Utility tools</Link>
                       <Link href="/categories" onClick={() => setOpen(null)} className="mt-2 block border-t border-border px-3 pt-2 text-xs font-medium text-primary hover:underline">
-                        All categories →
+                        All categories
                       </Link>
                     </div>
                   )}

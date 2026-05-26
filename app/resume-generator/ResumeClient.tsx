@@ -123,11 +123,11 @@ export function ResumeClient({ tool }: { tool: Tool }) {
       ]}
       mistakes={[
         "Listing technologies you cannot discuss in an interview.",
-        "Forgetting to export before closing the tab — data lives only in the browser session.",
+        "Forgetting to export before closing the tab - data lives only in the browser session.",
         "Using a two-page layout when recruiters expect one page for early-career roles.",
       ]}
       privacyNote="Resume data is entered and rendered locally. Sounez does not store your CV on our servers."
-      whenNotToUse="Do not use to fabricate degrees, employers, or certifications — review every line before sending."
+      whenNotToUse="Do not use to fabricate degrees, employers, or certifications - review every line before sending."
     >
       <div className="grid gap-8 lg:grid-cols-2">
         {/* ── FORM ── */}
@@ -222,7 +222,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                         type="text"
                         value={w.dates}
                         onChange={(e) => updateWork(i, "dates", e.target.value)}
-                        placeholder="Jan 2022 – Present"
+                        placeholder="Jan 2022 - Present"
                         className="w-full rounded-xl border border-border bg-background px-3 py-2 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                       />
                     </div>

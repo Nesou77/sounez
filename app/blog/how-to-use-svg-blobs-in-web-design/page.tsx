@@ -117,7 +117,7 @@ export default function Post() {
           SVG blobs are extremely lightweight compared to image-based alternatives:
         </p>
         <ul>
-          <li>A typical blob SVG is 200–500 bytes, smaller than a single pixel of a PNG.</li>
+          <li>A typical blob SVG is 200-500 bytes, smaller than a single pixel of a PNG.</li>
           <li>SVGs scale to any size without quality loss, so one file works on all screen densities.</li>
           <li>SVGs can be inlined directly in HTML, eliminating an HTTP request entirely.</li>
           <li>SVG shapes can be animated with CSS transitions, adding motion without JavaScript overhead.</li>
@@ -126,7 +126,7 @@ export default function Post() {
         <h2>How to use the SVG Blob Generator</h2>
         <ol>
           <li>Open the <a href="/svg-blob-generator">SVG Blob Generator</a>.</li>
-          <li>Adjust the Points slider (5–16) to control how many anchor points the blob has. More points create more complex shapes.</li>
+          <li>Adjust the Points slider (5-16) to control how many anchor points the blob has. More points create more complex shapes.</li>
           <li>Adjust Randomness to control how irregular the shape is. Higher values create more organic, unpredictable blobs.</li>
           <li>Set your fill color. Enable the gradient toggle for a two-color gradient fill.</li>
           <li>Click Randomize to generate a new shape with the same settings.</li>

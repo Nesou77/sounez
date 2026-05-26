@@ -16,7 +16,7 @@ export default function DmcaPage() {
       <header className="mb-10">
         <h1 className="text-4xl font-bold tracking-tight">DMCA / Copyright</h1>
         <p className="mt-4 leading-relaxed text-muted-foreground">
-          Sounez respects intellectual property. Our tools let you process files and text you provide — you are
+          Sounez respects intellectual property. Our tools let you process files and text you provide - you are
           responsible for having the right to use that material. This page explains what we expect from visitors
           and how to report infringement.
         </p>
@@ -42,6 +42,19 @@ export default function DmcaPage() {
             Visitor comments on tool and blog pages are moderated before they appear. If you believe a comment
             infringes your copyright, include the page URL in your notice (see below). We may remove comments or
             disable engagement on a page while we review a report.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-bold text-foreground">Before you send a notice</h2>
+          <p className="mt-2">
+            Please include enough detail for us to find the exact material. A page title alone is
+            often not enough because tool pages can include comments, examples, generated snippets,
+            and links. If the issue is a visitor comment, quote the comment text and include the URL.
+          </p>
+          <p className="mt-2">
+            Copyright reports are for rights issues, not general feedback, search result complaints,
+            or requests to change a tool. For those, use the contact page instead.
           </p>
         </section>
 

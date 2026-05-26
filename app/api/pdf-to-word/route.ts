@@ -2,7 +2,7 @@
  * PDF-to-Word proxy route.
  *
  * Forwards the upload to the Render backend (NEXT_PUBLIC_BACKEND_URL).
- * The backend handles all heavy processing — pdf-parse + docx generation.
+ * The backend handles all heavy processing - pdf-parse + docx generation.
  *
  * Why proxy instead of calling the backend directly from the client?
  * - Keeps the backend URL server-side (no CORS issues, no URL exposure)

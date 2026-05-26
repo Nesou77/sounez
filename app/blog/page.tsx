@@ -9,7 +9,7 @@ import { sortBlogPostsByPopularity } from "@/lib/popularity";
 export const metadata: Metadata = {
   title: "Sounez Blog | Guides for Creators, Designers and Makers",
   description:
-    "Hands-on guides covering social media growth, design workflows, image optimization, productivity tools and more — written for people who make things online.",
+    "Hands-on guides covering social media growth, design workflows, image optimization, productivity tools and more - written for people who make things online.",
   alternates: { canonical: getSiteUrl() + "/blog" },
   openGraph: {
     title: "Sounez Blog | Guides for Creators, Designers and Makers",
@@ -35,7 +35,7 @@ export default function BlogPage() {
       <section className="mx-auto mb-10 max-w-3xl rounded-2xl border border-border bg-muted/30 p-6 sm:p-8">
         <h2 className="text-lg font-semibold text-center">What we write about</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground text-center">
-          Guides are written for people who use Sounez tools in real workflows — not generic listicles.
+          Guides are written for people who use Sounez tools in real workflows - not generic listicles.
           Each article links to the tool it mentions so you can follow along.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -103,7 +103,7 @@ export default function BlogPage() {
               </h2>
               <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{p.excerpt}</p>
               <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-primary opacity-0 transition group-hover:opacity-100">
-                Read article →
+                Read article
               </span>
             </div>
           </Link>

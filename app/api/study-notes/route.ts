@@ -94,7 +94,7 @@ Format requirements:
 - Include a "## Key Terms" section with 3-5 important terms and brief definitions.
 - Include a "## Quick Review" section with 3 questions to test understanding.
 - Keep the total length appropriate for ${level} level (beginner: concise; advanced: more detailed).
-- Use plain markdown only — no HTML, no code blocks unless the topic is programming.`;
+- Use plain markdown only - no HTML, no code blocks unless the topic is programming.`;
 
   const fallbackText = fallbackNotes(topic, level);
 

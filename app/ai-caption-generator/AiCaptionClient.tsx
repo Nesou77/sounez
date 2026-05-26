@@ -98,8 +98,8 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
         { q: "Can I edit the captions?", a: "Copy and paste into your favourite editor to tweak them." },
       ]}
       examples={[
-        { title: "Product launch", desc: "Topic: matte black water bottle on marble — get three Instagram captions with a professional tone." },
-        { title: "Travel reel", desc: "Topic: rainy street food market in Tokyo — TikTok captions with a funny, punchy tone." },
+        { title: "Product launch", desc: "Topic: matte black water bottle on marble - get three Instagram captions with a professional tone." },
+        { title: "Travel reel", desc: "Topic: rainy street food market in Tokyo - TikTok captions with a funny, punchy tone." },
       ]}
       mistakes={[
         "Posting AI captions without reading them for accuracy or brand voice.",

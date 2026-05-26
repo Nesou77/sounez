@@ -67,7 +67,7 @@ const guideCount = BLOG_POSTS.length;
 
 const trust = [
   `${toolCount} free tools, with more added when they solve a real problem`,
-  "Free to use with fair-use limits — no account required for most tools",
+  "Free to use with fair-use limits - no account required for most tools",
   "Many tools run in your browser; server-backed tools disclose processing clearly",
   "Built and maintained since 2024 by a solo developer",
 ];
@@ -89,7 +89,7 @@ export default function AboutPage() {
             Tools that <span className="text-gradient-brand">just work</span>.
           </h1>
           <p className="animate-slide-up delay-75 mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Sounez is a small site of free tools and Smart Pack workflows — built for creators, shop owners, students, and developers who want clear results without another subscription.
+            Sounez is a small site of free tools and Smart Pack workflows - built for creators, shop owners, students, and developers who want clear results without another subscription.
           </p>
         </div>
       </section>
@@ -120,7 +120,7 @@ export default function AboutPage() {
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">
               I built Sounez because I kept running into the same frustration: needing a simple tool
               and finding only bloated apps that wanted my email address, a subscription, or a
-              download. So I started building the tools I actually wanted to use — and launched
+              download. So I started building the tools I actually wanted to use - and launched
               Sounez in 2024 to make them available to everyone.
             </p>
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">

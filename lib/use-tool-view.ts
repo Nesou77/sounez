@@ -1,5 +1,5 @@
 /**
- * useToolView — fires a tool_view analytics event once on mount.
+ * useToolView - fires a tool_view analytics event once on mount.
  * Import this in any tool client component.
  */
 "use client";

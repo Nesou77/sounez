@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-/** Serve ads.txt from NEXT_PUBLIC_ADSENSE_PUB_ID — no hardcoded publisher IDs. */
+/** Serve ads.txt from NEXT_PUBLIC_ADSENSE_PUB_ID - no hardcoded publisher IDs. */
 export function GET() {
   const raw = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID?.trim();
   if (!raw) {

@@ -67,7 +67,7 @@ export default function Post() {
           "image-describer",
         ]}
         title="Best Free AI Tools for Creators, Students and Small Businesses in 2026"
-        excerpt="Discover free AI tools that help with captions, bios, study notes, business names, website ideas, and image descriptions — all in your browser, no signup."
+        excerpt="Discover free AI tools that help with captions, bios, study notes, business names, website ideas, and image descriptions - all in your browser, no signup."
       >
         <h2>Introduction</h2>
         <p>
@@ -92,15 +92,15 @@ export default function Post() {
         />
 
         <PullQuote>
-          Free AI wins when it removes a specific bottleneck — not when it tries to do everything.
+          Free AI wins when it removes a specific bottleneck - not when it tries to do everything.
         </PullQuote>
 
         <h2>Best AI tools for creators</h2>
         <p>
           Creators live in a loop: ideate, publish, engage, repeat. AI helps most when it speeds up the
-          parts that are repetitive but still need a human touch — especially captions and profile bios.
+          parts that are repetitive but still need a human touch - especially captions and profile bios.
           Generic copy gets ignored; platform-native copy gets saves and replies. You don&apos;t need
-          to sound robotic — you need a strong starting point you can edit in two minutes.
+          to sound robotic - you need a strong starting point you can edit in two minutes.
         </p>
 
         <h3>AI Caption Generator</h3>
@@ -116,7 +116,7 @@ export default function Post() {
         <h3>Bio Generator</h3>
         <p>
           Your bio is the only text many visitors read before they follow or leave. It has to explain who
-          you are, what you offer, and why someone should care — often in under 150 characters. The{" "}
+          you are, what you offer, and why someone should care - often in under 150 characters. The{" "}
           <Link href="/tools/bio-generator">Bio Generator</Link> produces platform-aware bios for Instagram,
           TikTok, LinkedIn, and more. Use it to beat blank-page syndrome, then personalize with a specific
           detail only you can add. See{" "}
@@ -126,7 +126,7 @@ export default function Post() {
 
         <h2>Best AI tools for students</h2>
         <p>
-          Students do not need AI to skip learning — they need it to organize information faster so review
+          Students do not need AI to skip learning - they need it to organize information faster so review
           time goes further. The best study tools turn messy lectures and long readings into structures you
           can actually revisit: headings, bullets, summaries, and key terms.
         </p>
@@ -135,7 +135,7 @@ export default function Post() {
         <p>
           Paste a topic, chapter title, or block of text into the{" "}
           <Link href="/tools/study-notes-generator">Study Notes Generator</Link> and get structured notes you
-          can annotate. Use the output as a first draft, then rewrite definitions in your own words — that
+          can annotate. Use the output as a first draft, then rewrite definitions in your own words - that
           active step is what builds memory, according to{" "}
           <ExternalLink
             href="https://www.apa.org/education-career/k12/learner-centered.pdf"
@@ -159,7 +159,7 @@ export default function Post() {
         <p>
           A good name is short, memorable, and flexible enough to grow with the brand. The{" "}
           <Link href="/tools/business-name-generator">Business Name Generator</Link> suggests names by industry
-          and style — modern, playful, professional — so you are not stuck on the first idea that sounds
+          and style - modern, playful, professional - so you are not stuck on the first idea that sounds
           fine at midnight. Always check trademarks and domains before committing.{" "}
           <Link href="/blog/how-to-choose-a-business-name">How to choose a business name</Link> covers the
           checklist we recommend before you print anything.
@@ -179,7 +179,7 @@ export default function Post() {
         <h2>Best AI tools for image content</h2>
         <p>
           Images drive clicks, but search engines and screen readers only see text. Alt text and image
-          descriptions are not optional extras — they are how you reach more people and rank image-heavy
+          descriptions are not optional extras - they are how you reach more people and rank image-heavy
           pages. Writing unique descriptions for dozens of product or blog images is tedious; AI makes it
           consistent.
         </p>
@@ -187,7 +187,7 @@ export default function Post() {
         <h3>Image Describer</h3>
         <p>
           The <Link href="/tools/image-describer">Image Describer</Link> helps you draft alt text and short
-          descriptions from what is in the image — useful for ecommerce, blogs, and social posts where
+          descriptions from what is in the image - useful for ecommerce, blogs, and social posts where
           accessibility and SEO matter. Edit every output for accuracy: AI can miss context only you know
           (brand names, promotions, subtle details). For a broader picture, see our{" "}
           <Link href="/blog/image-seo-guide">image SEO guide</Link> and compress assets with the{" "}
@@ -272,7 +272,7 @@ export default function Post() {
           <Link href="/tools/study-notes-generator">Study Notes Generator</Link>,{" "}
           <Link href="/tools/business-name-generator">Business Name Generator</Link>,{" "}
           <Link href="/tools/website-idea-generator">Website Idea Generator</Link>, and{" "}
-          <Link href="/tools/image-describer">Image Describer</Link>. Bookmark what you use — the best free AI
+          <Link href="/tools/image-describer">Image Describer</Link>. Bookmark what you use - the best free AI
           stack is the one you actually open tomorrow.
         </p>
       </BlogPostShell>

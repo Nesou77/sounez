@@ -1,4 +1,4 @@
-/** Tool slug → recommended Smart Pack page */
+/** Tool slug -> recommended Smart Pack page */
 export const TOOL_SMART_PACK_MAP: Record<string, { href: string; label: string }> = {
   "ai-caption-generator": { href: "/smart-packs/social-media-pack", label: "Social Media Pack" },
   "hashtag-generator": { href: "/smart-packs/social-media-pack", label: "Social Media Pack" },

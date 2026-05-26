@@ -14,9 +14,9 @@ import {
 export function CookieConsentBanner() {
   /**
    * Three-state machine:
-   *   "pending"  — not yet checked localStorage (SSR + first client tick)
-   *   "hidden"   — user already decided, or we're waiting for LCP to finish
-   *   "visible"  — show the banner
+   *   "pending"  - not yet checked localStorage (SSR + first client tick)
+   *   "hidden"   - user already decided, or we're waiting for LCP to finish
+   *   "visible"  - show the banner
    */
   const [state, setState] = useState<"pending" | "hidden" | "visible">("pending");
 

@@ -128,13 +128,13 @@ background-size: 48px 48px;`}</code>
           <li><strong>Hero sections</strong>: A subtle dot or grid pattern behind a headline adds texture without competing with the text.</li>
           <li><strong>Feature sections</strong>: Alternate between plain and patterned backgrounds to create visual rhythm.</li>
           <li><strong>Cards and panels</strong>: A light pattern on a card background differentiates it from the page background.</li>
-          <li><strong>Full-page backgrounds</strong>: A very subtle pattern (5–10% opacity) adds depth to otherwise flat pages.</li>
+          <li><strong>Full-page backgrounds</strong>: A very subtle pattern (5-10% opacity) adds depth to otherwise flat pages.</li>
           <li><strong>Email templates</strong>: CSS patterns work in most modern email clients and add visual interest without image attachments.</li>
         </ul>
 
         <h2>Performance tips</h2>
         <ul>
-          <li><strong>Keep opacity low</strong>: Patterns at 10–30% opacity are subtle and professional. High-opacity patterns compete with content.</li>
+          <li><strong>Keep opacity low</strong>: Patterns at 10-30% opacity are subtle and professional. High-opacity patterns compete with content.</li>
           <li><strong>Use CSS over images</strong>: CSS patterns have zero file size and render instantly. Image patterns add HTTP requests and fixed resolutions.</li>
           <li><strong>Avoid complex patterns on mobile</strong>: Very complex CSS patterns can cause rendering performance issues on low-end devices. Test on mobile before shipping.</li>
           <li><strong>Combine with a solid background color</strong>: Always set a <code>background-color</code> alongside the pattern. This ensures the page looks correct while the CSS loads and provides a fallback.</li>
@@ -168,7 +168,7 @@ background-size: 48px 48px;`}</code>
           CSS background patterns are one of the most cost-effective design improvements you can make.
           They add texture and depth with zero file size and instant rendering. Open the{" "}
           <a href="/background-pattern-generator">Background Pattern Generator</a>, pick a dot or
-          grid pattern, set your brand color at 15–20% opacity, and copy the CSS. Pair it with a
+          grid pattern, set your brand color at 15-20% opacity, and copy the CSS. Pair it with a
           gradient from the <a href="/css-gradient-generator">CSS Gradient Generator</a> for a
           complete background design system. For more design tools, read{" "}
           <a href="/blog/free-design-tools-for-web-creators">free design tools for web creators</a>.

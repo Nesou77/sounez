@@ -43,7 +43,7 @@ const FAQS = [
   {
     question: "Should I use PNG or JPG after removing a background?",
     answer:
-      "Use PNG whenever you need transparency—for logos, stickers, overlays, and marketplace listings on white or colored layouts. Convert to JPG with the PNG to JPG Converter only when transparency is no longer needed and you want a smaller file for photo-only use.",
+      "Use PNG whenever you need transparency-for logos, stickers, overlays, and marketplace listings on white or colored layouts. Convert to JPG with the PNG to JPG Converter only when transparency is no longer needed and you want a smaller file for photo-only use.",
   },
 ];
 
@@ -66,7 +66,7 @@ export default function Post() {
         <p>
           A clean cutout can turn a casual snapshot into a professional product shot, a polished profile
           picture, or a social graphic that fits any layout. You used to need Photoshop, GIMP, or hours
-          with the magic wand. Today you can remove image backgrounds online in minutes—often for free—using
+          with the magic wand. Today you can remove image backgrounds online in minutes-often for free-using
           AI that understands what&apos;s subject and what&apos;s backdrop.
         </p>
         <p>
@@ -131,7 +131,7 @@ export default function Post() {
         <p>
           Traditional tools asked you to click edges or paint masks pixel by pixel. AI background
           removal uses a segmentation model trained on millions of images. It estimates which pixels
-          belong to the foreground—person, product, pet, logo—and which belong to the background,
+          belong to the foreground-person, product, pet, logo-and which belong to the background,
           then outputs a mask you can turn into transparency.
         </p>
         <p>The pipeline, simplified:</p>
@@ -169,7 +169,7 @@ export default function Post() {
             modern websites; keep PNG as a fallback if you serve older clients.
           </li>
           <li>
-            <strong>SVG:</strong> Only for true vector art (icons, logos drawn as paths)—not for
+            <strong>SVG:</strong> Only for true vector art (icons, logos drawn as paths)-not for
             photographic cutouts from AI removal.
           </li>
           <li>
@@ -186,7 +186,7 @@ export default function Post() {
         <h2>PNG vs JPG for transparent images</h2>
         <p>
           This is a common point of confusion after background removal. You removed the background to
-          get transparency—but JPG cannot store transparent pixels. If you save a cutout as JPG, the
+          get transparency-but JPG cannot store transparent pixels. If you save a cutout as JPG, the
           tool fills former transparent areas with a solid color (usually white), and you lose the
           ability to layer the image on arbitrary backgrounds.
         </p>
@@ -198,7 +198,7 @@ export default function Post() {
           <strong>Use JPG when:</strong> the image is a final photo on a fixed background (e.g. white
           catalog shot), file size matters more than layering, and you will not need transparency again.
           The <Link href="/tools/png-to-jpg-converter">PNG to JPG Converter</Link> is the right step only
-          after that decision—never before, if you still need a floating subject.
+          after that decision-never before, if you still need a floating subject.
         </p>
         <p>
           For a deeper comparison of when each format wins, see{" "}
@@ -208,7 +208,7 @@ export default function Post() {
         </p>
 
         <PullQuote>
-          Remove the background → save as PNG. Convert to JPG only when transparency is done forever.
+          Remove the background, then save as PNG. Convert to JPG only when transparency is done forever.
         </PullQuote>
 
         <h2>Frequently Asked Questions</h2>
@@ -246,7 +246,7 @@ export default function Post() {
           to the <Link href="/tools/background-remover">Background Remover</Link>, download a transparent PNG,
           then optimize with the <Link href="/tools/image-compressor">Image Compressor</Link> or convert with
           the <Link href="/tools/png-to-jpg-converter">PNG to JPG Converter</Link> when you&apos;re ready for a
-          smaller, non-transparent file. Start with your messiest photo—the AI will do the heavy lifting.
+          smaller, non-transparent file. Start with your messiest photo-the AI will do the heavy lifting.
         </p>
       </BlogPostShell>
     </>

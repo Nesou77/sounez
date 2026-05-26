@@ -109,8 +109,17 @@ export default function CookiePolicyPage() {
           <p className="mt-2">
             Many Sounez tools process your text or files without using advertising cookies. For example, the
             image compressor runs in your browser. AI and PDF tools may send content to our servers for
-            processing — that is described on each tool page, not via AdSense cookies.
+            processing - that is described on each tool page, not via AdSense cookies.
           </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-bold text-foreground">Common examples</h2>
+          <ul className="mt-2 list-disc space-y-2 pl-5">
+            <li>Rejecting optional cookies does not stop browser-only tools from working.</li>
+            <li>Clearing site data may reset cookie consent, helpful votes, and local tool preferences.</li>
+            <li>Private browsing usually forgets Sounez storage when the private window closes.</li>
+          </ul>
         </section>
 
         <section>

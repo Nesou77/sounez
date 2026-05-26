@@ -36,7 +36,7 @@ const FAQS = [
   {
     question: "What should a key terms section include?",
     answer:
-      "The 5–10 most important terms from the topic, each with a concise definition in your own words. Being able to define key terms is often the difference between a pass and a distinction.",
+      "The 5-10 most important terms from the topic, each with a concise definition in your own words. Being able to define key terms is often the difference between a pass and a distinction.",
   },
   {
     question: "Is the Study Notes Generator free?",
@@ -241,7 +241,7 @@ export default function Post() {
         </p>
         <h3>What should a key terms section include?</h3>
         <p>
-          The 5–10 most important terms from the topic, each with a concise definition in your own
+          The 5-10 most important terms from the topic, each with a concise definition in your own
           words. Being able to define key terms is often the difference between a pass and a
           distinction.
         </p>

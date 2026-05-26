@@ -254,10 +254,10 @@ export default function PrivacyPolicyPage() {
             <p>
               <strong className="text-foreground">Google Consent Mode v2.</strong> Sounez
               implements Google Consent Mode v2. When you first visit the site, all consent signals
-              — including <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_storage</code>,{" "}
+              - including <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_storage</code>,{" "}
               <code className="rounded bg-muted px-1 py-0.5 text-xs">analytics_storage</code>,{" "}
               <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_user_data</code>, and{" "}
-              <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_personalization</code> —
+              <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_personalization</code> -
               default to <strong className="text-foreground">denied</strong>. This means no
               cookies are set, no personal data is shared with Google for advertising or analytics
               purposes, and only non-personalised ads may be shown until consent is updated. Google
@@ -457,7 +457,7 @@ export default function PrivacyPolicyPage() {
             <p>
               If you submit a comment, we store your display name, comment text, optional email (not shown
               publicly), and timestamps. Comments are moderated before publication. Helpful votes use a
-              hashed browser identifier to prevent duplicate votes — we do not use this to identify you by
+              hashed browser identifier to prevent duplicate votes - we do not use this to identify you by
               name.
             </p>
           </div>
@@ -467,7 +467,27 @@ export default function PrivacyPolicyPage() {
 
         {/* 16 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">16. Contact Us</h2>
+          <h2 className="text-xl font-bold tracking-tight">16. Quick Privacy Examples</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              If you compress an image with a browser-only tool, the file is processed on your
+              device. If you convert a PDF or use an AI writing tool, the content may be sent to
+              our server or AI provider to complete the request. Each tool page includes a shorter
+              note so you do not have to read this whole policy every time.
+            </p>
+            <p>
+              Do not submit passwords, private customer records, ID documents, unreleased client
+              work, or files you are not allowed to process. If you are unsure, use local software
+              approved by your school, employer, or client.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 17 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">17. Contact Us</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               If you have questions about this Privacy Policy or how we handle your data, please get
@@ -495,11 +515,11 @@ export default function PrivacyPolicyPage() {
         <Link href="/terms-of-service" className="hover:text-foreground hover:underline">
           Terms of Service
         </Link>
-        <span aria-hidden>·</span>
+        <span aria-hidden>-</span>
         <Link href="/contact" className="hover:text-foreground hover:underline">
           Contact
         </Link>
-        <span aria-hidden>·</span>
+        <span aria-hidden>-</span>
         <Link href="/" className="hover:text-foreground hover:underline">
           Home
         </Link>

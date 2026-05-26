@@ -30,7 +30,7 @@ export async function ContentDates({
       {updated && (
         <>
           {" "}
-          ·{" "}
+          -{" "}
           <time dateTime={dates.updatedAt.toISOString()}>Updated {updated}</time>
         </>
       )}

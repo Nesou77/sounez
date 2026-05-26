@@ -1,4 +1,4 @@
-/** Sort tools/posts by editorial priority — no synthetic view/like metrics. */
+/** Sort tools/posts by editorial priority - no synthetic view/like metrics. */
 
 export type SortableContent = {
   slug: string;

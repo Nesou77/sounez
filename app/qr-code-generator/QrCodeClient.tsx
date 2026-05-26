@@ -50,7 +50,7 @@ export function QrCodeClient({ tool }: { tool: Tool }) {
     a.download = `qrcode-${size}x${size}.png`;
     a.href = canvas.current.toDataURL();
     a.click();
-    toast.success("Download started", { description: `Saving as ${size}×${size}px PNG.` });
+    toast.success("Download started", { description: `Saving as ${size}x${size}px PNG.` });
     trackDownloadResult({ tool_slug: tool.slug, result_type: "qr_code", file_type: "png" });
   };
 
@@ -65,12 +65,12 @@ export function QrCodeClient({ tool }: { tool: Tool }) {
   return (
     <ToolPageShell
       tool={tool}
-      intro="Paste any URL, text, Wi-Fi credentials, email or phone number and download a crisp PNG QR code. Free to use, no account required — generated in your browser."
+      intro="Paste any URL, text, Wi-Fi credentials, email or phone number and download a crisp PNG QR code. Free to use, no account required - generated in your browser."
       features={[
         { title: "Updates in real time", desc: "Type and watch the QR code change. No generate button needed." },
         { title: "Custom colors", desc: "Match your brand with custom foreground and background colors." },
         { title: "5 export sizes", desc: "From 128px to 512px. Pick a size for print or screen." },
-        { title: "Private", desc: "QR data is generated locally in your browser — not sent to Sounez servers." },
+        { title: "Private", desc: "QR data is generated locally in your browser - not sent to Sounez servers." },
       ]}
       howTo={[
         "Type or paste your URL or text into the input. You can also click an example to try it.",
@@ -199,7 +199,7 @@ export function QrCodeClient({ tool }: { tool: Tool }) {
           <div className="flex items-center justify-center rounded-2xl border border-border bg-background p-6">
             <canvas ref={canvas} style={{ width: 200, height: 200 }} />
           </div>
-          <p className="text-xs text-muted-foreground">Export: {size}×{size}px</p>
+          <p className="text-xs text-muted-foreground">Export: {size}x{size}px</p>
         </div>
       </div>
     </ToolPageShell>

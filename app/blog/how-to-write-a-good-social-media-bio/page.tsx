@@ -107,7 +107,7 @@ export default function Post() {
             below 👇&quot;
           </li>
           <li>
-            <strong>Personal brand:</strong> &quot;UX designer → helping startups ship faster | Figma tips
+            <strong>Personal brand:</strong> &quot;UX designer helping startups ship faster | Figma tips
             daily | DM for collabs&quot;
           </li>
         </ul>

@@ -45,7 +45,7 @@
   --primary: oklch(0.585 0.196 277);
   --primary-foreground: oklch(0.99 0 0);
   --primary-soft: oklch(0.96 0.03 277);
-  /* Accessible label color — darker than primary, passes WCAG AA for small text on white */
+  /* Accessible label color - darker than primary, passes WCAG AA for small text on white */
   --primary-label: oklch(0.48 0.18 277);
   /* #8B5CF6 */
   --secondary: oklch(0.62 0.22 295);
@@ -125,7 +125,7 @@
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-pop { box-shadow: var(--shadow-pop); }
   .shadow-glow { box-shadow: 0 0 0 1px oklch(0.585 0.196 277 / 0.15), 0 12px 40px -10px oklch(0.585 0.196 277 / 0.45); }
-  /* Accessible label color for small uppercase text — passes WCAG AA on white */
+  /* Accessible label color for small uppercase text - passes WCAG AA on white */
   .text-primary-label { color: var(--primary-label); }
   .ring-gradient {
     position: relative;
@@ -141,7 +141,7 @@
             mask-composite: exclude;
     pointer-events: none;
   }
-  /* Respect user motion preferences — animations only run when no-preference is set */
+  /* Respect user motion preferences - animations only run when no-preference is set */
   .animate-fade-in  { animation: none; }
   .animate-slide-up { animation: none; }
   .animate-scale-in { animation: none; }
@@ -170,7 +170,7 @@
   .animate-scale-in { animation: scaleIn 0.4s ease-out both; }
 }
 
-/* Google AdSense Auto Ads — keep placements below chrome, avoid nav overlap (Better Ads / ads interfering) */
+/* Google AdSense Auto Ads - keep placements below chrome, avoid nav overlap (Better Ads / ads interfering) */
 ins.adsbygoogle,
 iframe[id^="google_ads_iframe"],
 .google-auto-placed {

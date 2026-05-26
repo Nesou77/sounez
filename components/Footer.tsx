@@ -56,7 +56,10 @@ export function Footer() {
           <BrandLogo variant="footer" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Free tools and Smart Pack workflows for captions, images, PDFs, and small design jobs. Each tool page
-            explains who it helps, how to use it, and how your data is handled.
+            explains who it helps, how to use it, what to check, and how your data is handled.
+          </p>
+          <p className="mt-3 max-w-xs text-xs leading-relaxed text-muted-foreground">
+            Use the outputs as drafts. Check important details before publishing, submitting, printing, or sending.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-2">
             <SocialLink

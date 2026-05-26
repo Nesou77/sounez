@@ -1,5 +1,5 @@
 /**
- * Analytics helper — GA4 / GTM dataLayer events.
+ * Analytics helper - GA4 / GTM dataLayer events.
  *
  * All events are pushed to `window.dataLayer`, which GTM picks up and
  * forwards to GA4 via Custom Event triggers + GA4 Event tags.
@@ -7,7 +7,7 @@
  * Rules:
  *  - Browser-only: every function is a no-op on the server.
  *  - No PII: never pass email, name, phone, message content, or IP.
- *  - No AdSense click tracking: ad revenue comes from the GA4–AdSense integration.
+ *  - No AdSense click tracking: ad revenue comes from the GA4-AdSense integration.
  */
 
 export type DataLayerValue = string | number | boolean | undefined;
@@ -23,7 +23,7 @@ declare global {
 
 /**
  * Push a custom event to `window.dataLayer`.
- * Safe to import from Server Components — no-ops on the server.
+ * Safe to import from Server Components - no-ops on the server.
  */
 export function trackEvent(eventName: string, params: DataLayerParams = {}): void {
   if (typeof window === "undefined") return;
@@ -41,7 +41,7 @@ export function getPagePath(): string | undefined {
 }
 
 /**
- * tool_view — fired when a user opens/views a tool page.
+ * tool_view - fired when a user opens/views a tool page.
  */
 export function trackToolView(params: {
   tool_slug: string;
@@ -58,7 +58,7 @@ export function trackToolView(params: {
 }
 
 /**
- * tool_complete — fired when a user successfully receives a result.
+ * tool_complete - fired when a user successfully receives a result.
  * Primary key event for GA4 (tool engagement).
  */
 export function trackToolComplete(params: {
@@ -70,12 +70,12 @@ export function trackToolComplete(params: {
   trackEvent("tool_complete", params);
 }
 
-/** copy_result — user copied a generated result. */
+/** copy_result - user copied a generated result. */
 export function trackCopyResult(params: { tool_slug: string; result_type: string }): void {
   trackEvent("copy_result", params);
 }
 
-/** download_result — user downloaded an output file. */
+/** download_result - user downloaded an output file. */
 export function trackDownloadResult(params: {
   tool_slug: string;
   result_type: string;
@@ -84,12 +84,12 @@ export function trackDownloadResult(params: {
   trackEvent("download_result", params);
 }
 
-/** search — site or tool search (e.g. homepage hero, /tools directory). */
+/** search - site or tool search (e.g. homepage hero, /tools directory). */
 export function trackSearch(params: { search_term: string; result_count: number }): void {
   trackEvent("search", params);
 }
 
-/** select_content — user chose a tool from search or filtered listing. */
+/** select_content - user chose a tool from search or filtered listing. */
 export function trackSelectContent(params: {
   content_type: "tool";
   item_id: string;
@@ -99,7 +99,7 @@ export function trackSelectContent(params: {
 }
 
 /**
- * share — user initiated a share flow (blog engagement, tool share UI, etc.).
+ * share - user initiated a share flow (blog engagement, tool share UI, etc.).
  */
 export function trackShare(params: {
   content_type: "tool" | "blog";
@@ -116,7 +116,7 @@ export function trackShare(params: {
 }
 
 /**
- * generate_lead — successful contact form submission (secondary KPI only).
+ * generate_lead - successful contact form submission (secondary KPI only).
  */
 export function trackGenerateLead(params: {
   form_name: string;

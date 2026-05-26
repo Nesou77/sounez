@@ -124,14 +124,14 @@ export function StudyNotesClient({ tool }: { tool: Tool }) {
         { q: "Can I use these notes in an exam?", a: "Use them for revision only. Do not submit generated notes as your own work or use them to cheat." },
       ]}
       examples={[
-        { title: "History unit", desc: "Topic: \"Causes of World War I\" at intermediate level — headings, timeline bullets, and key terms." },
+        { title: "History unit", desc: "Topic: \"Causes of World War I\" at intermediate level - headings, timeline bullets, and key terms." },
         { title: "Lecture paste", desc: "Paste 800 words from a biology slide deck and get a condensed outline for flashcards." },
-        { title: "Exam cram", desc: "Beginner notes on \"Photosynthesis\" the night before a quiz — focus on definitions and steps." },
+        { title: "Exam cram", desc: "Beginner notes on \"Photosynthesis\" the night before a quiz - focus on definitions and steps." },
       ]}
       mistakes={[
         "Trusting dates, names, or formulas without verifying against your syllabus.",
-        "Pasting copyrighted textbook chapters in full — summarise your own notes instead.",
-        "Choosing advanced depth for introductory classes — you may get unnecessary jargon.",
+        "Pasting copyrighted textbook chapters in full - summarise your own notes instead.",
+        "Choosing advanced depth for introductory classes - you may get unnecessary jargon.",
       ]}
       privacyNote="Your topic or pasted text is sent securely for AI processing. We do not retain it after notes are generated."
       whenNotToUse="Do not use to impersonate another student, bypass honour codes, or submit work you did not create."

@@ -4,7 +4,7 @@
  *
  * For production at scale, replace the in-memory store with Upstash Redis
  * by setting UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.
- * The interface stays the same — only the backing store changes.
+ * The interface stays the same - only the backing store changes.
  */
 
 type Bucket = {
@@ -12,7 +12,7 @@ type Bucket = {
   lastRefill: number; // ms timestamp
 };
 
-// Global store — survives across requests in the same Node.js process.
+// Global store - survives across requests in the same Node.js process.
 const store = new Map<string, Bucket>();
 
 // Clean up stale entries every 5 minutes to avoid unbounded memory growth.
@@ -51,7 +51,7 @@ export function checkRateLimit(
   let bucket = store.get(key);
 
   if (!bucket || now - bucket.lastRefill >= config.windowMs) {
-    // New window — full bucket
+    // New window - full bucket
     bucket = { tokens: config.limit, lastRefill: now };
   }
 

@@ -148,7 +148,7 @@ export default function Post() {
             older Android.
           </li>
           <li>
-            Minimum print size: 2cm × 2cm. Smaller and scanners struggle.
+            Minimum print size: 2cm x 2cm. Smaller and scanners struggle.
           </li>
         </ul>
 

@@ -21,12 +21,12 @@ const FAQS = [
   {
     question: "How do I calculate a percentage?",
     answer:
-      "To find X% of a number, multiply the number by X and divide by 100. For example, 20% of 150 = 150 × 20 ÷ 100 = 30. The Sounez Calculator has a % button that handles this automatically.",
+      "To find X% of a number, multiply the number by X and divide by 100. For example, 20% of 150 = 150 x 20 ÷ 100 = 30. The Sounez Calculator has a % button that handles this automatically.",
   },
   {
     question: "What is a square root?",
     answer:
-      "The square root of a number is the value that, when multiplied by itself, gives the original number. The square root of 25 is 5, because 5 × 5 = 25. Use the √ button on the calculator.",
+      "The square root of a number is the value that, when multiplied by itself, gives the original number. The square root of 25 is 5, because 5 x 5 = 25. Use the √ button on the calculator.",
   },
   {
     question: "Does the calculator save my calculations?",
@@ -100,10 +100,10 @@ export default function Post() {
           £67.40. Remaining = 100 − 67.40 = <strong>£32.60</strong>.
         </p>
 
-        <h3>Multiplication (×)</h3>
+        <h3>Multiplication (x)</h3>
         <p>
           Multiplies two numbers. Example: you need 6 packs of tiles, each costing £14.99. Total =
-          6 × 14.99 = <strong>£89.94</strong>.
+          6 x 14.99 = <strong>£89.94</strong>.
         </p>
 
         <h3>Division (÷)</h3>
@@ -121,48 +121,48 @@ export default function Post() {
 
         <h3>Finding X% of a number</h3>
         <p>
-          Formula: <code>number × percentage ÷ 100</code>
+          Formula: <code>number x percentage ÷ 100</code>
         </p>
         <ul>
-          <li>20% of £250 = 250 × 20 ÷ 100 = <strong>£50</strong></li>
-          <li>15% tip on a £60 meal = 60 × 15 ÷ 100 = <strong>£9</strong></li>
-          <li>7.5% VAT on £400 = 400 × 7.5 ÷ 100 = <strong>£30</strong></li>
+          <li>20% of £250 = 250 x 20 ÷ 100 = <strong>£50</strong></li>
+          <li>15% tip on a £60 meal = 60 x 15 ÷ 100 = <strong>£9</strong></li>
+          <li>7.5% VAT on £400 = 400 x 7.5 ÷ 100 = <strong>£30</strong></li>
         </ul>
         <p>
-          On the <Link href="/tools/calculator">Calculator</Link>, type the number, press ×, type the percentage,
+          On the <Link href="/tools/calculator">Calculator</Link>, type the number, press x, type the percentage,
           then press the % button. It calculates automatically.
         </p>
 
         <h3>Calculating a discount</h3>
         <p>
-          A £120 jacket is 30% off. Discount = 120 × 30 ÷ 100 = £36. Sale price = 120 − 36 ={" "}
+          A £120 jacket is 30% off. Discount = 120 x 30 ÷ 100 = £36. Sale price = 120 − 36 ={" "}
           <strong>£84</strong>.
         </p>
 
         <h3>Finding what percentage one number is of another</h3>
         <p>
-          Formula: <code>(part ÷ whole) × 100</code>
+          Formula: <code>(part ÷ whole) x 100</code>
         </p>
         <ul>
-          <li>You scored 42 out of 60 on a test. Percentage = (42 ÷ 60) × 100 = <strong>70%</strong></li>
+          <li>You scored 42 out of 60 on a test. Percentage = (42 ÷ 60) x 100 = <strong>70%</strong></li>
           <li>
-            Your website had 320 visitors and 48 clicked a button. Click rate = (48 ÷ 320) × 100 ={" "}
+            Your website had 320 visitors and 48 clicked a button. Click rate = (48 ÷ 320) x 100 ={" "}
             <strong>15%</strong>
           </li>
         </ul>
 
         <h3>Percentage increase and decrease</h3>
         <p>
-          Increase: <code>((new − old) ÷ old) × 100</code>
+          Increase: <code>((new − old) ÷ old) x 100</code>
           <br />
-          Decrease: <code>((old − new) ÷ old) × 100</code>
+          Decrease: <code>((old − new) ÷ old) x 100</code>
         </p>
         <ul>
           <li>
-            Sales went from 200 to 260. Increase = ((260 − 200) ÷ 200) × 100 = <strong>30%</strong>
+            Sales went from 200 to 260. Increase = ((260 − 200) ÷ 200) x 100 = <strong>30%</strong>
           </li>
           <li>
-            Price dropped from £80 to £68. Decrease = ((80 − 68) ÷ 80) × 100 = <strong>15%</strong>
+            Price dropped from £80 to £68. Decrease = ((80 − 68) ÷ 80) x 100 = <strong>15%</strong>
           </li>
         </ul>
 
@@ -173,8 +173,8 @@ export default function Post() {
           and in some financial calculations.
         </p>
         <ul>
-          <li>√25 = 5 (because 5 × 5 = 25)</li>
-          <li>√144 = 12 (because 12 × 12 = 144)</li>
+          <li>√25 = 5 (because 5 x 5 = 25)</li>
+          <li>√144 = 12 (because 12 x 12 = 144)</li>
           <li>√2 ≈ 1.414 (irrational, the calculator shows the decimal approximation)</li>
         </ul>
         <p>
@@ -189,7 +189,7 @@ export default function Post() {
             install, no account.
           </li>
           <li>
-            Click number buttons or type directly from your keyboard. Supported keys: 0–9, +, −, ×
+            Click number buttons or type directly from your keyboard. Supported keys: 0-9, +, −, x
             (*), ÷ (/), %, Enter (=), Escape (clear).
           </li>
           <li>Use the % button for percentage calculations and √ for square roots.</li>
@@ -208,13 +208,13 @@ export default function Post() {
         <h3>How do I calculate a percentage?</h3>
         <p>
           To find X% of a number, multiply the number by X and divide by 100. For example, 20% of
-          150 = 150 × 20 ÷ 100 = 30. The <Link href="/tools/calculator">Sounez Calculator</Link> has a % button
+          150 = 150 x 20 ÷ 100 = 30. The <Link href="/tools/calculator">Sounez Calculator</Link> has a % button
           that handles this automatically.
         </p>
         <h3>What is a square root?</h3>
         <p>
           The square root of a number is the value that, when multiplied by itself, gives the
-          original number. The square root of 25 is 5, because 5 × 5 = 25. Use the √ button on the
+          original number. The square root of 25 is 5, because 5 x 5 = 25. Use the √ button on the
           calculator.
         </p>
         <h3>Does the calculator save my calculations?</h3>

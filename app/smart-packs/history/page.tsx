@@ -21,7 +21,7 @@ export default function SmartPackHistoryPage() {
       <h1 className="text-3xl font-bold">Your pack history</h1>
       <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
         Generations are tied to this browser via a session cookie. Other devices and browsers will not see the
-        same list. We do not show your full brief on this page listing — open a pack to see the result.
+        same list. We do not show your full brief on this page listing - open a pack to see the result.
       </p>
       <div className="mt-8">
         <SmartPackHistoryClient />

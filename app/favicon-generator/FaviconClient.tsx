@@ -229,7 +229,7 @@ export function FaviconClient({ tool }: { tool: Tool }) {
                       : "border-border bg-background hover:bg-muted"
                   }`}
                 >
-                  {s}×{s}
+                  {s}x{s}
                 </button>
               ))}
             </div>
@@ -248,7 +248,7 @@ export function FaviconClient({ tool }: { tool: Tool }) {
                 className="rounded"
               />
             </div>
-            <p className="text-xs text-muted-foreground">Export: {size}×{size}px PNG</p>
+            <p className="text-xs text-muted-foreground">Export: {size}x{size}px PNG</p>
           </div>
 
           <div className="flex flex-col gap-2 w-full">

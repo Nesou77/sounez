@@ -117,7 +117,7 @@ function ResultCard({
         <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</span>
         {value && <CopyButton text={value} label={label} toolSlug={toolSlug} resultType={resultType} />}
       </div>
-      <p className="text-sm leading-relaxed">{value || <span className="text-muted-foreground italic">—</span>}</p>
+      <p className="text-sm leading-relaxed">{value || <span className="text-muted-foreground italic">-</span>}</p>
     </div>
   );
 }
@@ -219,7 +219,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
         "Click the upload area or drag and drop your image onto the page.",
         "Choose a tone that matches your use case: accessibility, SEO, social media or neutral.",
         "Click Generate Description to start AI analysis.",
-        "Review the results — alt text, caption, keywords and social media copy.",
+        "Review the results - alt text, caption, keywords and social media copy.",
         "Click Copy next to any result to copy it to your clipboard.",
       ]}
       faqs={FAQS}
@@ -230,20 +230,20 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
         { title: "SEO specialists", desc: "Extract target keywords from images to inform alt tags and structured data." },
       ]}
       proTips={[
-        "Use the Accessibility tone for alt text on informational images — it produces concise, screen-reader-friendly results.",
+        "Use the Accessibility tone for alt text on informational images - it produces concise, screen-reader-friendly results.",
         "SEO-focused tone is best for product and category page images.",
         "Social tone generates captions with natural hashtag suggestions.",
         "For complex infographics, use Detailed Description to get a full text summary.",
       ]}
       examples={[
-        { title: "Product photo", desc: "SEO tone on a stainless water bottle — alt text plus keyword list for a Shopify listing." },
-        { title: "Team headshot", desc: "Accessibility tone for an about-page portrait — short, factual alt under 125 characters." },
-        { title: "Event flyer", desc: "Social tone on a conference graphic — caption with CTA for LinkedIn." },
+        { title: "Product photo", desc: "SEO tone on a stainless water bottle - alt text plus keyword list for a Shopify listing." },
+        { title: "Team headshot", desc: "Accessibility tone for an about-page portrait - short, factual alt under 125 characters." },
+        { title: "Event flyer", desc: "Social tone on a conference graphic - caption with CTA for LinkedIn." },
       ]}
       mistakes={[
         "Publishing AI alt text without checking it matches what is actually in the image.",
         "Uploading photos of people without consent or rights to process them.",
-        "Stuffing keywords unnaturally — search engines and screen readers both suffer.",
+        "Stuffing keywords unnaturally - search engines and screen readers both suffer.",
       ]}
       privacyNote="Images are sent securely for AI vision analysis and are not stored after results are returned."
       whenNotToUse="Avoid uploading ID documents, medical scans, or other sensitive images you would not share with a third-party processor."
@@ -274,7 +274,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
           <div>
             <p className="text-base font-semibold">Drop your image here, or click to browse</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              PNG, JPG, JPEG, WEBP, GIF — maximum {MAX_FILE_SIZE_MB} MB
+              PNG, JPG, JPEG, WEBP, GIF - maximum {MAX_FILE_SIZE_MB} MB
             </p>
           </div>
         </div>
@@ -373,7 +373,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
             </div>
           )}
 
-          {/* Done — real results */}
+          {/* Done - real results */}
           {stage === "done" && result && (
             <div className="space-y-4">
               <div className="space-y-3">

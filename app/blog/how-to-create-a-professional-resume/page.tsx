@@ -30,7 +30,7 @@ const FAQS = [
   {
     question: "What font should I use for a resume?",
     answer:
-      "Clean, readable fonts: Inter, Calibri, Georgia, or Garamond. Avoid decorative fonts. Use 10–12pt for body text and 14–16pt for your name. The Sounez Resume Generator uses Inter by default.",
+      "Clean, readable fonts: Inter, Calibri, Georgia, or Garamond. Avoid decorative fonts. Use 10-12pt for body text and 14-16pt for your name. The Sounez Resume Generator uses Inter by default.",
   },
   {
     question: "How do I export my resume as a PDF?",
@@ -81,7 +81,7 @@ export default function Post() {
             <strong>Personal information</strong>: Name, email, phone, location, LinkedIn URL
           </li>
           <li>
-            <strong>Professional summary</strong>: 2–3 sentences summarizing your experience and
+            <strong>Professional summary</strong>: 2-3 sentences summarizing your experience and
             value proposition
           </li>
           <li>
@@ -107,11 +107,11 @@ export default function Post() {
             roles.
           </li>
           <li>
-            <strong>Consistent margins</strong>: 0.75–1 inch on all sides. Don&apos;t shrink margins to
+            <strong>Consistent margins</strong>: 0.75-1 inch on all sides. Don&apos;t shrink margins to
             fit more content.
           </li>
           <li>
-            <strong>Clean font</strong>: Inter, Calibri or Georgia at 10–12pt. Your name at 16–18pt.
+            <strong>Clean font</strong>: Inter, Calibri or Georgia at 10-12pt. Your name at 16-18pt.
           </li>
           <li>
             <strong>No photos, no graphics, no colour blocks</strong>: unless you&apos;re in a creative
@@ -130,7 +130,7 @@ export default function Post() {
         <h2>How to write a professional summary</h2>
         <p>
           The summary sits at the top of your resume, below your contact details. It&apos;s the first
-          thing a recruiter reads and the most important 2–3 sentences on the page.
+          thing a recruiter reads and the most important 2-3 sentences on the page.
         </p>
         <p>A strong summary has three elements:</p>
         <ol>
@@ -158,7 +158,7 @@ export default function Post() {
         <h2>How to present work experience</h2>
         <p>
           Each work experience entry should have: company name, your role, dates (month and year),
-          and 2–4 bullet points describing your achievements.
+          and 2-4 bullet points describing your achievements.
         </p>
         <p>
           The most important rule: write achievements, not responsibilities. Responsibilities
@@ -190,7 +190,7 @@ export default function Post() {
 
         <h3>Skills</h3>
         <p>
-          List 8–12 relevant skills as a comma-separated list or in a simple grid. Separate hard
+          List 8-12 relevant skills as a comma-separated list or in a simple grid. Separate hard
           skills (specific tools, languages, certifications) from soft skills (communication,
           leadership). Recruiters scan this section quickly, keep it tight.
         </p>
@@ -232,7 +232,7 @@ export default function Post() {
         <h3>What font should I use for a resume?</h3>
         <p>
           Clean, readable fonts: Inter, Calibri, Georgia or Garamond. Avoid decorative fonts. Use
-          10–12pt for body text and 14–16pt for your name.
+          10-12pt for body text and 14-16pt for your name.
         </p>
         <h3>How do I export my resume as a PDF?</h3>
         <p>

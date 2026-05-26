@@ -77,7 +77,7 @@ export async function POST(req: Request) {
   }
 
   console.log(
-    "[contact] Submission logged locally (development only — email not configured):",
+    "[contact] Submission logged locally (development only - email not configured):",
     JSON.stringify({
       name: parsed.data.name,
       email: parsed.data.email,

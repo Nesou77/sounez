@@ -82,7 +82,7 @@ export default function Post() {
           Brands lowball creators who don&apos;t know their numbers. The{" "}
           <a href="/tiktok-money-calculator">TikTok Money Calculator</a> gives a fast estimate based on
           followers and engagement so you can quote real prices. Most creators we&apos;ve spoken to undercharged
-          by 40–60% before running their own numbers.
+          by 40-60% before running their own numbers.
         </p>
 
         <h2>3. Hashtag Generator: stop guessing, start ranking</h2>
@@ -147,7 +147,7 @@ export default function Post() {
         <h2>How to combine these tools into a creator workflow</h2>
         <p>Tools are 10x more powerful in combination. Here&apos;s a typical day:</p>
         <ul>
-          <li>Draft a video idea → check title length with <a href="/word-counter">Word Counter</a></li>
+          <li>Draft a video idea, then check title length with <a href="/word-counter">Word Counter</a></li>
           <li>Generate tags with the <a href="/youtube-tags-generator">YouTube Tags Generator</a></li>
           <li>Build a thumbnail palette with the <a href="/color-palette-generator">Color Palette Generator</a></li>
           <li>Compress the thumbnail with the <a href="/image-compressor">Image Compressor</a></li>

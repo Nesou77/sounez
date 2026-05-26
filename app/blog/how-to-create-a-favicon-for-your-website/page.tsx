@@ -16,9 +16,9 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { question: "What is a favicon?", answer: "A favicon is the small icon shown in browser tabs, bookmarks, search results and home screen shortcuts. It is typically 16×16 or 32×32 pixels." },
+  { question: "What is a favicon?", answer: "A favicon is the small icon shown in browser tabs, bookmarks, search results and home screen shortcuts. It is typically 16x16 or 32x32 pixels." },
   { question: "Do I need an ICO file?", answer: "Not anymore. Modern browsers support PNG favicons. An ICO file is only needed for very old browsers. Use PNG with the correct HTML link tag and you will cover 99% of users." },
-  { question: "What size should a favicon be?", answer: "Create at least a 32×32 PNG for browser tabs and a 180×180 PNG for Apple touch icons. A 512×512 version is useful for PWA manifests and high-DPI displays." },
+  { question: "What size should a favicon be?", answer: "Create at least a 32x32 PNG for browser tabs and a 180x180 PNG for Apple touch icons. A 512x512 version is useful for PWA manifests and high-DPI displays." },
   { question: "Does the Favicon Generator upload my image?", answer: "No. Everything is processed locally in your browser using the Canvas API. Your image never leaves your device." },
   { question: "Can I use an emoji as a favicon?", answer: "Yes. Emoji favicons are a popular modern technique. The Favicon Generator supports emoji mode directly." },
 ];
@@ -67,7 +67,7 @@ export default function Post() {
 
         <h2>Why favicons matter for branding</h2>
         <p>
-          Most users have 10–20 tabs open at once. A recognizable favicon is how they find your site
+          Most users have 10-20 tabs open at once. A recognizable favicon is how they find your site
           again without reading the full title. It is also a trust signal, a site without a favicon
           looks unfinished or abandoned.
         </p>
@@ -78,14 +78,14 @@ export default function Post() {
 
         <h2>Recommended favicon sizes</h2>
         <ul>
-          <li><strong>16×16px</strong>: Standard browser tab icon</li>
-          <li><strong>32×32px</strong>: High-DPI browser tabs, taskbar shortcuts</li>
-          <li><strong>48×48px</strong>: Windows site icons</li>
-          <li><strong>180×180px</strong>: Apple touch icon (iOS home screen)</li>
-          <li><strong>512×512px</strong>: PWA manifest, Android home screen</li>
+          <li><strong>16x16px</strong>: Standard browser tab icon</li>
+          <li><strong>32x32px</strong>: High-DPI browser tabs, taskbar shortcuts</li>
+          <li><strong>48x48px</strong>: Windows site icons</li>
+          <li><strong>180x180px</strong>: Apple touch icon (iOS home screen)</li>
+          <li><strong>512x512px</strong>: PWA manifest, Android home screen</li>
         </ul>
         <p>
-          At minimum, create a 32×32 PNG for browser tabs and a 180×180 PNG for Apple touch icons.
+          At minimum, create a 32x32 PNG for browser tabs and a 180x180 PNG for Apple touch icons.
           The <a href="/favicon-generator">Favicon Generator</a> lets you export any of these sizes
           with one click.
         </p>
@@ -104,7 +104,7 @@ export default function Post() {
         </p>
         <p>
           The recommended approach in 2026: provide a PNG favicon via the HTML link tag, and
-          optionally place a 32×32 ICO at <code>/favicon.ico</code> as a fallback.
+          optionally place a 32x32 ICO at <code>/favicon.ico</code> as a fallback.
         </p>
 
         <h2>The HTML snippet you need</h2>
@@ -123,17 +123,17 @@ export default function Post() {
           <li>Open the <a href="/favicon-generator">Favicon Generator</a>.</li>
           <li>Choose a mode: Text (a letter or initials), Emoji, or Image upload.</li>
           <li>Set your background color, text/icon color, and shape (square, rounded or circle).</li>
-          <li>Select the export size you need (32×32 for browser tabs, 180×180 for Apple touch).</li>
+          <li>Select the export size you need (32x32 for browser tabs, 180x180 for Apple touch).</li>
           <li>Click Download PNG to save the file.</li>
           <li>Click Copy HTML snippet and paste it into your site&apos;s <code>&lt;head&gt;</code>.</li>
         </ol>
 
         <h2>Common favicon mistakes to avoid</h2>
         <ul>
-          <li><strong>Too much detail</strong>: At 16×16px, complex logos become unreadable. Use a single letter, symbol or simple shape.</li>
+          <li><strong>Too much detail</strong>: At 16x16px, complex logos become unreadable. Use a single letter, symbol or simple shape.</li>
           <li><strong>No contrast</strong>: A light icon on a white background disappears in browser tabs. Use strong contrast.</li>
-          <li><strong>Wrong size</strong>: Uploading a 16×16 image and expecting it to look good at 180×180 will result in a blurry icon. Generate each size separately.</li>
-          <li><strong>Forgetting the Apple touch icon</strong>: iOS users who add your site to their home screen will see a blank icon if you skip the 180×180 version.</li>
+          <li><strong>Wrong size</strong>: Uploading a 16x16 image and expecting it to look good at 180x180 will result in a blurry icon. Generate each size separately.</li>
+          <li><strong>Forgetting the Apple touch icon</strong>: iOS users who add your site to their home screen will see a blank icon if you skip the 180x180 version.</li>
           <li><strong>Not updating after a rebrand</strong>: Old favicons cached in browsers can confuse returning users after a brand refresh.</li>
         </ul>
 
@@ -143,7 +143,7 @@ export default function Post() {
         <h3>Do I need an ICO file?</h3>
         <p>Not anymore. Modern browsers support PNG favicons. Use PNG with the correct HTML link tag and you will cover 99% of users.</p>
         <h3>What size should a favicon be?</h3>
-        <p>Create at least a 32×32 PNG for browser tabs and a 180×180 PNG for Apple touch icons.</p>
+        <p>Create at least a 32x32 PNG for browser tabs and a 180x180 PNG for Apple touch icons.</p>
         <h3>Does the Favicon Generator upload my image?</h3>
         <p>No. Everything is processed locally in your browser using the Canvas API. Your image never leaves your device.</p>
         <h3>Can I use an emoji as a favicon?</h3>

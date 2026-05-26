@@ -195,7 +195,7 @@ export default function Post() {
             caption with a question or a clear action.
           </li>
           <li>
-            <strong>Hashtag stuffing</strong>: 30 random hashtags don&apos;t help. 5–10 targeted ones do.
+            <strong>Hashtag stuffing</strong>: 30 random hashtags don&apos;t help. 5-10 targeted ones do.
           </li>
           <li>
             <strong>Copying competitors</strong>: Audiences can tell. Use AI as a starting point,

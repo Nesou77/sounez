@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { question: "How long does organic Instagram growth take?", answer: "With consistent posting and a sharp niche, most accounts see meaningful growth (500–1k followers) within 60–90 days. Viral moments can accelerate this, but don't plan around them." },
+  { question: "How long does organic Instagram growth take?", answer: "With consistent posting and a sharp niche, most accounts see meaningful growth (500-1k followers) within 60-90 days. Viral moments can accelerate this, but don't plan around them." },
   { question: "Do hashtags still matter in 2026?", answer: "Yes, but for categorization more than distribution. Use the Hashtag Generator to find relevant, non-oversaturated tags." },
   { question: "Should I use Instagram Stories every day?", answer: "Yes. Stories keep you at the top of your followers' feeds and signal activity to the algorithm. They don't need to be polished; behind-the-scenes content works well." },
   { question: "Is it worth buying followers?", answer: "No. Bought followers don't engage, which tanks your engagement rate and tells the algorithm your content isn't worth pushing. It's actively harmful to organic growth." },
@@ -68,7 +68,7 @@ export default function Post() {
         <ul>
           <li>What is your account about? (One sentence, no &quot;and&quot;s)</li>
           <li>Who is it for? (Be specific, &quot;freelance designers in their 20s&quot; beats &quot;creatives&quot;)</li>
-          <li>What does your grid look like? (Pick 2–3 colors and stick to them)</li>
+          <li>What does your grid look like? (Pick 2-3 colors and stick to them)</li>
         </ul>
         <p>
           Build your color palette with the{" "}
@@ -110,8 +110,8 @@ export default function Post() {
           In 2026, the algorithm uses them primarily for categorization, not distribution. That means:
         </p>
         <ul>
-          <li>Use 5–10 highly relevant hashtags, not 30 generic ones</li>
-          <li>Mix niche hashtags (under 500k posts) with mid-size ones (500k–2M)</li>
+          <li>Use 5-10 highly relevant hashtags, not 30 generic ones</li>
+          <li>Mix niche hashtags (under 500k posts) with mid-size ones (500k-2M)</li>
           <li>Avoid banned or overused hashtags, they suppress reach</li>
         </ul>
         <p>
@@ -133,15 +133,15 @@ export default function Post() {
           Optimal Instagram image dimensions in 2026:
         </p>
         <ul>
-          <li>Square posts: 1080×1080px</li>
-          <li>Portrait posts: 1080×1350px (best for feed real estate)</li>
-          <li>Reels cover: 1080×1920px</li>
-          <li>Stories: 1080×1920px</li>
+          <li>Square posts: 1080x1080px</li>
+          <li>Portrait posts: 1080x1350px (best for feed real estate)</li>
+          <li>Reels cover: 1080x1920px</li>
+          <li>Stories: 1080x1920px</li>
         </ul>
 
         <h2>Step 5: Post consistently and engage genuinely</h2>
         <p>
-          3–5 feed posts per week is the sweet spot for most accounts. Daily Stories keep you visible
+          3-5 feed posts per week is the sweet spot for most accounts. Daily Stories keep you visible
           without the pressure of polished feed content. More important than frequency: reply to every
           comment in the first hour after posting. Early engagement signals to the algorithm that your
           content is worth pushing.
@@ -166,8 +166,8 @@ export default function Post() {
         <h2>Frequently Asked Questions</h2>
         <h3>How long does organic Instagram growth take?</h3>
         <p>
-          With consistent posting and a sharp niche, most accounts see meaningful growth (500–1k
-          followers) within 60–90 days. Viral moments can accelerate this, but don&apos;t plan around
+          With consistent posting and a sharp niche, most accounts see meaningful growth (500-1k
+          followers) within 60-90 days. Viral moments can accelerate this, but don&apos;t plan around
           them.
         </p>
         <h3>Do hashtags still matter in 2026?</h3>

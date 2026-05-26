@@ -10,7 +10,7 @@ type HistoryEntry = { expression: string; result: string };
 
 const BUTTONS = [
   ["C", "±", "%", "÷"],
-  ["7", "8", "9", "×"],
+  ["7", "8", "9", "x"],
   ["4", "5", "6", "−"],
   ["1", "2", "3", "+"],
   ["0", ".", "√", "="],
@@ -42,7 +42,7 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
         try {
           // Replace display operators with JS operators
           const jsExpr = expression
-            .replace(/×/g, "*")
+            .replace(/x/g, "*")
             .replace(/÷/g, "/")
             .replace(/−/g, "-");
           const result = Function(`"use strict"; return (${jsExpr})`)();
@@ -100,13 +100,13 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
         return;
       }
 
-      const isOperator = ["÷", "×", "−", "+"].includes(value);
+      const isOperator = ["÷", "x", "−", "+"].includes(value);
 
       if (isOperator) {
         setJustEvaluated(false);
         setExpression((prev) => {
           const last = prev.slice(-1);
-          const isLastOp = ["÷", "×", "−", "+"].includes(last);
+          const isLastOp = ["÷", "x", "−", "+"].includes(last);
           return isLastOp ? prev.slice(0, -1) + value : prev + value;
         });
         setDisplay(value);
@@ -126,7 +126,7 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
         return prev + value;
       });
       setDisplay((prev) => {
-        const isLastOp = ["÷", "×", "−", "+"].includes(prev);
+        const isLastOp = ["÷", "x", "−", "+"].includes(prev);
         if (isLastOp) return value;
         if (prev === "0" && value !== ".") return value;
         return prev + value;
@@ -151,7 +151,7 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
         ".": ".",
         "+": "+",
         "-": "−",
-        "*": "×",
+        "*": "x",
         "/": "÷",
         "%": "%",
         Enter: "=",
@@ -169,7 +169,7 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
   }, [handleInput]);
 
   const btnClass = (label: string) => {
-    const isOp = ["÷", "×", "−", "+"].includes(label);
+    const isOp = ["÷", "x", "−", "+"].includes(label);
     const isEq = label === "=";
     const isFn = ["C", "±", "%", "√"].includes(label);
     if (isEq)
@@ -201,7 +201,7 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
       ]}
       howTo={[
         "Click the number buttons or type on your keyboard.",
-        "Select an operator (+, −, ×, ÷).",
+        "Select an operator (+, −, x, ÷).",
         "Press = or Enter to see the result.",
       ]}
       faqs={[

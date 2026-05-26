@@ -23,7 +23,7 @@ export function HomeHeroStatic() {
         </p>
         <p className="animate-slide-up delay-100 mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
           Each tool page explains who it is for, how to use it, and what happens to your data. Smart Packs
-          walk you through several steps — for example, a product photo, alt text, and a launch caption — without
+          walk you through several steps - for example, a product photo, alt text, and a launch caption - without
           auto-posting anywhere.
         </p>
 

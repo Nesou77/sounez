@@ -19,7 +19,7 @@ export function SmartPackRelatedTools({
         {tools.map((t) => (
           <li key={t.href}>
             <Link href={t.href} className="text-sm font-medium text-primary hover:underline">
-              {t.label} →
+              {t.label}
             </Link>
           </li>
         ))}

@@ -65,7 +65,7 @@ export function CategoryPage({ slug }: { slug: string }) {
         <p className="mt-2 text-sm text-muted-foreground">
           Smart Packs walk you through captions, listings, or image SEO step by step. You run each Sounez tool yourself and edit before publishing.{" "}
           <Link href="/smart-packs" className="font-medium text-primary hover:underline">
-            Browse Smart Packs →
+            Browse Smart Packs
           </Link>
         </p>
       </section>

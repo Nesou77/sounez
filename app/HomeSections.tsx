@@ -1,5 +1,5 @@
 /**
- * Server component — homepage sections in visitor-friendly order.
+ * Server component - homepage sections in visitor-friendly order.
  */
 import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
@@ -14,7 +14,7 @@ import { TOOL_GROUPS } from "@/lib/tool-groups";
 const FAQS = [
   {
     q: "What is a Smart Pack?",
-    a: "A Smart Pack is a checklist workflow: one brief, several assets (caption, alt text, hashtags, etc.). You run Sounez tools step by step and edit before publishing.",
+    a: "A Smart Pack is a structured workflow: one brief, several matching assets, and a clear reminder to edit before anything goes public.",
   },
   {
     q: "Is Sounez free?",
@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "Are my files uploaded?",
-    a: "It depends on the tool. QR codes and counters run in your browser. PDF conversion and AI tools process what you submit securely — each tool page explains which applies.",
+    a: "It depends on the tool. QR codes and counters run in your browser. PDF conversion and AI tools process what you submit securely - each tool page explains which applies.",
   },
   {
     q: "Can I use outputs commercially?",
@@ -42,15 +42,30 @@ const faqJsonLd = {
 
 const HOW_IT_WORKS = [
   { step: "1", title: "Pick a tool or pack", text: "Start from the homepage, Smart Packs, or the tools directory." },
-  { step: "2", title: "Add your input", text: "Paste text, upload a file, or fill a short form — only what that tool needs." },
+  { step: "2", title: "Add your input", text: "Paste text, upload a file, or fill a short form - only what that tool needs." },
   { step: "3", title: "Review the result", text: "Copy, download, or move to the next step in a Smart Pack workflow." },
 ];
 
 const USE_CASES = [
-  { title: "Creators", text: "Captions, hashtags, and QR codes for posts without juggling five apps." },
-  { title: "Shop owners", text: "Compress product photos, write alt text, and draft listing copy." },
-  { title: "Students", text: "Study notes and resumes with clear reminders to verify facts and cite sources." },
-  { title: "Developers", text: "CSS gradients, favicons, placeholders, and utilities in one tab." },
+  { title: "Creators", text: "Draft captions, hashtags, bios, and video tags, then trim the result so it sounds like you." },
+  { title: "Shop owners", text: "Compress product photos, write useful alt text, create QR codes, and prepare listing copy before publishing." },
+  { title: "Students", text: "Turn messy notes into study material, check word counts, and build simple resumes while still verifying facts yourself." },
+  { title: "Developers", text: "Grab CSS gradients, favicons, placeholders, shadows, and quick utilities while you are already in the browser." },
+];
+
+const WORKFLOW_EXAMPLES = [
+  {
+    title: "Prepare a product post",
+    text: "Compress the product photo, describe the image for alt text, run a Social Media Pack, then check the caption for price, stock, and delivery details.",
+  },
+  {
+    title: "Clean up a website page",
+    text: "Use the color, font, shadow, and pattern tools to settle the visual details, then test contrast and copy only the CSS you need.",
+  },
+  {
+    title: "Handle a quick office task",
+    text: "Convert a PDF, count the edited text, create a QR code for the final link, and keep the original file in case the conversion needs checking.",
+  },
 ];
 
 export function HomeSections() {
@@ -63,7 +78,7 @@ export function HomeSections() {
         <div className="rounded-3xl border border-border bg-card p-6 text-center shadow-soft sm:p-8">
           <h2 className="text-xl font-bold sm:text-2xl">What you get on Sounez</h2>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Sounez is a collection of free browser tools plus Smart Packs — step-by-step workflows for posts, product listings, and image SEO.
+            Sounez is a collection of free browser tools plus Smart Packs - step-by-step workflows for posts, product listings, and image SEO.
             Each tool page explains what happens to your files, who the tool is for, and mistakes to avoid. We do not auto-publish to social networks or shops.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -77,13 +92,13 @@ export function HomeSections() {
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Smart Packs</span>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">One idea → several ready-to-use assets</h2>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">One idea, several ready-to-use assets</h2>
             <p className="mt-2 max-w-2xl text-muted-foreground">
-              Structured workflows that combine Sounez tools. You stay in control — we do not auto-post or auto-publish for you.
+              Structured workflows that combine Sounez tools. You stay in control - we do not auto-post or auto-publish for you.
             </p>
           </div>
           <Link href="/smart-packs" className="text-sm font-medium text-primary-label hover:underline shrink-0">
-            All Smart Packs →
+            All Smart Packs
           </Link>
         </div>
         <div className="grid gap-5 md:grid-cols-3">
@@ -110,10 +125,10 @@ export function HomeSections() {
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Tools</span>
             <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Popular right now</h2>
-            <p className="mt-2 text-muted-foreground">A few starting points — the full list is on the tools page.</p>
+            <p className="mt-2 text-muted-foreground">A few starting points - the full list is on the tools page.</p>
           </div>
           <Link href="/tools" className="hidden text-sm font-medium text-primary-label hover:underline sm:inline">
-            All tools →
+            All tools
           </Link>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -149,7 +164,7 @@ export function HomeSections() {
               <Link href={`/categories/${c.slug}`} className="font-medium text-primary hover:underline">
                 {c.name}
               </Link>
-              {i < CATEGORIES.length - 1 ? " · " : ""}
+              {i < CATEGORIES.length - 1 ? " - " : ""}
             </span>
           ))}
         </p>
@@ -182,6 +197,26 @@ export function HomeSections() {
             <div key={u.title} className="rounded-2xl border border-border bg-gradient-soft p-5">
               <h3 className="font-semibold">{u.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{u.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Example workflows */}
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <div className="mb-8">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Examples</span>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">How people actually use Sounez</h2>
+          <p className="mt-2 max-w-2xl text-muted-foreground">
+            Most visits are small, practical jobs. These examples show how a few tools can fit together
+            without turning a simple task into a big project.
+          </p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {WORKFLOW_EXAMPLES.map((item) => (
+            <div key={item.title} className="rounded-2xl border border-border bg-card p-5 shadow-soft">
+              <h3 className="font-semibold">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
             </div>
           ))}
         </div>
@@ -230,7 +265,7 @@ export function HomeSections() {
             <p className="mt-2 text-muted-foreground">Step-by-step articles linked to the tools we mention.</p>
           </div>
           <Link href="/blog" className="hidden text-sm font-medium text-primary-label hover:underline sm:inline">
-            All posts →
+            All posts
           </Link>
         </div>
         <div className="grid gap-6 md:grid-cols-3">

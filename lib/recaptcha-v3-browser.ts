@@ -70,7 +70,7 @@ export function loadRecaptchaV3(siteKey: string): Promise<void> {
 }
 
 /**
- * Executes reCAPTCHA v3 for the contact form — no visible widget.
+ * Executes reCAPTCHA v3 for the contact form - no visible widget.
  * Call after mount only (e.g. on submit) to avoid SSR / hydration issues.
  */
 export async function executeContactRecaptchaV3(siteKey: string): Promise<string> {

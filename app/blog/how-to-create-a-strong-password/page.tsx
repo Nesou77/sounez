@@ -90,7 +90,7 @@ export default function Post() {
         <h2>The passphrase trick: strong AND memorable</h2>
         <p>
           For the few passwords you do need to memorize (your password manager itself, your computer
-          login), use a passphrase: 4–5 random words strung together. Something like{" "}
+          login), use a passphrase: 4-5 random words strung together. Something like{" "}
           <code>copper-violin-marshmallow-dolphin-72</code> is both extremely strong and weirdly easy
           to remember. Need to convert it to lowercase or title case? The{" "}
           <a href="/text-case-converter">Text Case Converter</a> handles it instantly.

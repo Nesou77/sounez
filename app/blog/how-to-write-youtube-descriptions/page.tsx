@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const FAQS = [
   { question: "Do YouTube descriptions really affect rankings?", answer: "Yes. YouTube's algorithm uses the description to understand video content and match it to search queries. A keyword-rich, well-structured description consistently outperforms a blank or thin one." },
   { question: "Should I use the same description template for every video?", answer: "Use the same structure, but write unique content for each video. Duplicate descriptions across videos can hurt your channel's SEO." },
-  { question: "How many hashtags should I use?", answer: "3–5 is the sweet spot. YouTube ignores descriptions with more than 15 hashtags entirely." },
+  { question: "How many hashtags should I use?", answer: "3-5 is the sweet spot. YouTube ignores descriptions with more than 15 hashtags entirely." },
   { question: "Where should I put my most important link?", answer: "In the first 200 characters, before the 'more' button. That's the only part most viewers see without clicking." },
 ];
 
@@ -55,11 +55,11 @@ export default function Post() {
         </p>
         <ul>
           <li>
-            <strong>Above the fold (first 2–3 lines)</strong>: this is what viewers see before
+            <strong>Above the fold (first 2-3 lines)</strong>: this is what viewers see before
             clicking &quot;more&quot;. It must hook them and include your primary keyword naturally.
           </li>
           <li>
-            <strong>The body (lines 4–20)</strong>: expand on the video content, include secondary
+            <strong>The body (lines 4-20)</strong>: expand on the video content, include secondary
             keywords, add timestamps, and link to related resources.
           </li>
           <li>
@@ -110,7 +110,7 @@ export default function Post() {
 
         <h2>Step 3: Include secondary keywords naturally</h2>
         <p>
-          After your opening paragraph and timestamps, write 3–5 sentences that naturally include
+          After your opening paragraph and timestamps, write 3-5 sentences that naturally include
           related terms. If your primary keyword is &quot;TikTok growth&quot;, secondary keywords might be
           &quot;TikTok algorithm 2026&quot;, &quot;grow TikTok followers&quot;, &quot;TikTok for beginners&quot;, and &quot;TikTok
           content strategy&quot;.
@@ -122,7 +122,7 @@ export default function Post() {
 
         <h2>Step 4: Add links that keep viewers in your ecosystem</h2>
         <ul>
-          <li>Link to 2–3 related videos on your channel</li>
+          <li>Link to 2-3 related videos on your channel</li>
           <li>Link to your most important playlist</li>
           <li>Link to your website or newsletter signup</li>
           <li>Link to any tools or resources mentioned in the video</li>
@@ -135,13 +135,13 @@ export default function Post() {
         <h2>Step 5: End with hashtags</h2>
         <p>
           YouTube displays up to 3 hashtags above your video title, they come from the last hashtags
-          in your description. Use 3–5 relevant hashtags at the very end. Generate the right mix with
+          in your description. Use 3-5 relevant hashtags at the very end. Generate the right mix with
           the <a href="/hashtag-generator">Hashtag Generator</a>.
         </p>
 
         <h2>Description length: how long is long enough?</h2>
         <p>
-          YouTube allows up to 5,000 characters. Aim for 300–500 words for most videos, enough to
+          YouTube allows up to 5,000 characters. Aim for 300-500 words for most videos, enough to
           give the algorithm plenty to work with, not so much that it feels like spam. Use the{" "}
           <a href="/word-counter">Word Counter</a> to hit that range before publishing.
         </p>
@@ -149,18 +149,18 @@ export default function Post() {
         <h2>The description template</h2>
         <p>Copy and adapt this for every video:</p>
         <ul>
-          <li>Line 1–2: Hook + primary keyword</li>
+          <li>Line 1-2: Hook + primary keyword</li>
           <li>Line 3: What viewers will learn</li>
           <li>Blank line</li>
           <li>Timestamps</li>
           <li>Blank line</li>
-          <li>3–5 sentences with secondary keywords</li>
+          <li>3-5 sentences with secondary keywords</li>
           <li>Blank line</li>
           <li>Related video links</li>
           <li>Subscribe CTA</li>
           <li>Social links</li>
           <li>Blank line</li>
-          <li>3–5 hashtags</li>
+          <li>3-5 hashtags</li>
         </ul>
 
         <h2>Frequently Asked Questions</h2>
@@ -177,7 +177,7 @@ export default function Post() {
         </p>
         <h3>How many hashtags should I use?</h3>
         <p>
-          3–5 is the sweet spot. YouTube ignores descriptions with more than 15 hashtags entirely.
+          3-5 is the sweet spot. YouTube ignores descriptions with more than 15 hashtags entirely.
         </p>
         <h3>Where should I put my most important link?</h3>
         <p>
