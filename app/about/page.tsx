@@ -50,9 +50,9 @@ const aboutPageJsonLd = {
 };
 
 const offers = [
-  { Icon: Rocket, title: "For creators", text: "Hashtag generators, YouTube tag tools, earnings calculators. Built for people who publish content and want to spend less time on the boring parts.", href: "/categories/creator-tools", cta: "Explore creator tools" },
-  { Icon: Brush, title: "For designers", text: "Color palettes, CSS gradients and visual helpers. Open one, get what you need, and get back to designing.", href: "/categories/design-tools", cta: "Explore design tools" },
-  { Icon: Wrench, title: "For everyone", text: "QR codes, password generators, word counters, image compressors. The kind of tools you need once a week and always forget to bookmark.", href: "/categories/utility-tools", cta: "Explore utility tools" },
+  { Icon: Rocket, title: "For creators", text: "Hashtag generators, YouTube tag tools, captions, bios, and rough sponsorship calculators. Built for people who publish often and need clean drafts.", href: "/tools#creator-tools", cta: "Browse creator tools" },
+  { Icon: Brush, title: "For designers", text: "Color palettes, CSS gradients, favicons, shadows, patterns, and font helpers. Open one, copy what you need, and keep working.", href: "/tools#design-tools", cta: "Browse design tools" },
+  { Icon: Wrench, title: "For everyday tasks", text: "QR codes, password generators, word counters, image compressors, PDF conversion, and other small jobs that should not need a full app.", href: "/tools#utility-tools", cta: "Browse utility tools" },
 ];
 
 const values = [
@@ -152,7 +152,7 @@ export default function AboutPage() {
                 href="/blog"
                 className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-primary/40"
               >
-                Read the blog <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                Read the guides <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <Link
                 href="/contact"
@@ -236,7 +236,7 @@ export default function AboutPage() {
               Explore the tools <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link href="/blog" className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-5 py-3 text-sm font-semibold transition hover:bg-white/10">
-              Read the blog
+              Read the guides
             </Link>
           </div>
         </div>

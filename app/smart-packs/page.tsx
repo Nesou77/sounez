@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sounez Smart Packs",
     description:
-      "One idea -> multiple ready-to-use assets. Social, product, SEO, business launch, and study packs.",
+      "One idea, multiple ready-to-use drafts. Social, product, SEO, business launch, and study packs.",
     url,
   },
 };

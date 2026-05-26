@@ -3,9 +3,11 @@ import { TOOLS, CATEGORIES } from "@/data/tools";
 import { BLOG_POSTS } from "@/data/blog";
 import { SMART_PACKS } from "@/data/smartPacks";
 import { getSiteUrl } from "@/lib/site-url";
-import { prisma } from "@/lib/prisma";
+import { hasDatabaseUrl, prisma } from "@/lib/prisma";
 
 async function lastModified(contentType: string, slug: string, fallback: Date): Promise<Date> {
+  if (!hasDatabaseUrl) return fallback;
+
   try {
     const row = await prisma.contentMeta.findUnique({
       where: { contentType_slug: { contentType, slug } },

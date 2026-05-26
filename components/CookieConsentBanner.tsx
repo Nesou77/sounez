@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import {
   CONSENT_KEY,
-  CONSENT_CHANGED_EVENT,
   OPEN_COOKIE_SETTINGS_EVENT,
   dispatchConsentChanged,
   getStoredConsent,

@@ -190,3 +190,12 @@ header.sticky {
   position: relative;
   z-index: 0;
 }
+
+form ins.adsbygoogle,
+form iframe[id^="google_ads_iframe"],
+form .google-auto-placed,
+.ad-free-zone ins.adsbygoogle,
+.ad-free-zone iframe[id^="google_ads_iframe"],
+.ad-free-zone .google-auto-placed {
+  display: none !important;
+}

@@ -9,7 +9,7 @@ export async function BlogJsonLd({
   title,
   description,
   faqs,
-  articleSection = "Blog",
+  articleSection = "Guides",
 }: {
   slug: string;
   title: string;
@@ -59,7 +59,7 @@ export async function BlogJsonLd({
     inLanguage: "en-US",
     isPartOf: {
       "@type": "Blog",
-      name: "Sounez Blog",
+      name: "Sounez Guides",
       url: `${siteUrl}/blog`,
     },
   };

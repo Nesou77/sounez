@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { hasDatabaseUrl, prisma } from "@/lib/prisma";
 import type { ContentType } from "@/lib/content-types";
 
 export type ContentDates = {
@@ -7,6 +7,8 @@ export type ContentDates = {
 };
 
 export async function getContentMeta(contentType: ContentType, slug: string) {
+  if (!hasDatabaseUrl) return null;
+
   try {
     return await prisma.contentMeta.findUnique({
       where: { contentType_slug: { contentType, slug } },

@@ -4,12 +4,12 @@ import { ToolsClient } from "./ToolsClient";
 import { getSiteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
-  title: "All Free Online Tools | Sounez",
+  title: "Tools | Free Creator, Design and Utility Tools | Sounez",
   description: `Browse all ${TOOLS.length} free online tools on Sounez. Filter by category and search tools for creators, designers and productivity.`,
   alternates: { canonical: getSiteUrl() + "/tools" },
   openGraph: {
-    title: "All Free Online Tools | Sounez",
-    description: "Browse and search all free Sounez tools.",
+    title: "Tools | Sounez",
+    description: "Browse free Sounez tools grouped by creator, design and utility categories.",
   },
 };
 

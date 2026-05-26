@@ -56,7 +56,7 @@ const SYSTEM_BASE = `You are a helpful assistant for Sounez, a free online tools
 Return valid JSON only. No markdown fences. No extra keys outside the schema.
 Do not generate harmful, illegal, sexually explicit, hateful, deceptive, or academic cheating content.
 Write in the requested language. Be specific and practical, not generic marketing fluff.
-Avoid phrases like "unlock your potential", "seamless experience", or "in today's digital world".`;
+Avoid canned marketing slogans, corporate filler, and broad claims that do not help the user.`;
 
 const PACK_PROMPTS: Record<string, { schema: string; userSuffix: string }> = {
   "social-media-pack": {

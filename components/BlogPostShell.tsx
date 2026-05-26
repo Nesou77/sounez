@@ -47,7 +47,7 @@ export function BlogPostShell({
             href="/blog"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition hover:text-foreground"
           >
-            <ArrowLeft className="h-4 w-4" /> All articles
+            <ArrowLeft className="h-4 w-4" /> All guides
           </Link>
 
           <header className="mt-6">
@@ -213,7 +213,7 @@ export function BlogPostShell({
             </div>
 
             <div className="rounded-2xl border border-border bg-gradient-soft p-5">
-              <div className="text-sm font-semibold">More from the blog</div>
+              <div className="text-sm font-semibold">More guides</div>
               <ul className="mt-3 space-y-2">
                 {others.map((p) => (
                   <li key={p.slug}>

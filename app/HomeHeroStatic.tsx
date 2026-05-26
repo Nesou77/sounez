@@ -14,12 +14,11 @@ export function HomeHeroStatic() {
           <Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden="true" /> Free tools + Smart Packs
         </span>
         <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight sm:text-6xl">
-          Create useful digital assets{" "}
-          <span className="text-gradient-brand">faster</span>
+          Useful tools for everyday online work
         </h1>
         <p className="animate-slide-up delay-75 mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           Sounez helps you write captions, optimize images, generate QR codes, prepare PDFs, and build
-          ready-to-use content packs from simple ideas. No account needed for most tools.
+          content packs from simple ideas. No account needed for most tools.
         </p>
         <p className="animate-slide-up delay-100 mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
           Each tool page explains who it is for, how to use it, and what happens to your data. Smart Packs

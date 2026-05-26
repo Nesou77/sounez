@@ -7,12 +7,12 @@ import { getSiteUrl } from "@/lib/site-url";
 import { sortBlogPostsByPopularity } from "@/lib/popularity";
 
 export const metadata: Metadata = {
-  title: "Sounez Blog | Guides for Creators, Designers and Makers",
+  title: "Sounez Guides | Practical Tool Guides for Creators and Makers",
   description:
     "Hands-on guides covering social media growth, design workflows, image optimization, productivity tools and more - written for people who make things online.",
   alternates: { canonical: getSiteUrl() + "/blog" },
   openGraph: {
-    title: "Sounez Blog | Guides for Creators, Designers and Makers",
+    title: "Sounez Guides | Practical Tool Guides",
     description:
       "Hands-on guides covering social media growth, design workflows, image optimization, productivity tools and more.",
   },
@@ -24,12 +24,20 @@ export default function BlogPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <header className="mb-10 text-center">
-        <h1 className="text-4xl font-bold sm:text-5xl">The Sounez Blog</h1>
+        <h1 className="text-4xl font-bold sm:text-5xl">Sounez Guides</h1>
         <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
           Hands-on guides for creators, designers, students and anyone building things on the web.
           Each article pairs practical advice with the free tools on this site so you can act on it
           immediately.
         </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <Link href="/tools" className="rounded-xl border border-border px-4 py-2 text-sm font-semibold hover:bg-muted">
+            Browse tools
+          </Link>
+          <Link href="/smart-packs" className="rounded-xl bg-gradient-brand px-4 py-2 text-sm font-semibold text-primary-foreground shadow-pop">
+            Try Smart Packs
+          </Link>
+        </div>
       </header>
 
       <section className="mx-auto mb-10 max-w-3xl rounded-2xl border border-border bg-muted/30 p-6 sm:p-8">
@@ -66,12 +74,11 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Category filter links */}
-      <nav aria-label="Blog categories" className="mb-10 flex flex-wrap justify-center gap-2">
+      <nav aria-label="Guide category links" className="mb-10 flex flex-wrap justify-center gap-2">
         {CATEGORIES.map((c) => (
           <Link
             key={c.slug}
-            href={`/categories/${c.slug}`}
+            href={`/tools#${c.slug}`}
             className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground transition hover:border-primary/40 hover:text-primary"
           >
             {c.name}
@@ -103,7 +110,7 @@ export default function BlogPage() {
               </h2>
               <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{p.excerpt}</p>
               <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-primary opacity-0 transition group-hover:opacity-100">
-                Read article
+                Read guide
               </span>
             </div>
           </Link>

@@ -121,11 +121,11 @@ export function Footer() {
         </div>
 
         <div className="md:col-span-2">
-          <p className="mb-4 text-sm font-semibold">Categories</p>
+          <p className="mb-4 text-sm font-semibold">Tool Categories</p>
           <ul className="space-y-2.5 text-sm text-muted-foreground">
             {CATEGORIES.map((c) => (
               <li key={c.slug}>
-                <Link href={`/categories/${c.slug}`} className="transition hover:text-foreground">
+                <Link href={`/tools#${c.slug}`} className="transition hover:text-foreground">
                   {c.name}
                 </Link>
               </li>
@@ -144,7 +144,7 @@ export function Footer() {
             <li><Link href="/about" className="transition hover:text-foreground">About</Link></li>
             <li><Link href="/smart-packs" className="transition hover:text-foreground">Smart Packs</Link></li>
             <li><Link href="/smart-packs/history" className="transition hover:text-foreground">Pack history</Link></li>
-            <li><Link href="/blog" className="transition hover:text-foreground">Blog</Link></li>
+            <li><Link href="/blog" className="transition hover:text-foreground">Guides</Link></li>
             <li><Link href="/contact" className="transition hover:text-foreground">Contact</Link></li>
             <li><Link href="/privacy-policy" className="transition hover:text-foreground">Privacy Policy</Link></li>
             <li><Link href="/cookie-policy" className="transition hover:text-foreground">Cookie Policy</Link></li>

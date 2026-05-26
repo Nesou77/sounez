@@ -31,7 +31,9 @@ export function SmartPackPageContent({ pack }: { pack: SmartPackDefinition }) {
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_320px] lg:items-start">
         <div className="min-w-0 space-y-10">
-          <SmartPackGenerator pack={pack} />
+          <div className="ad-free-zone">
+            <SmartPackGenerator pack={pack} />
+          </div>
 
           <section>
             <h2 className="text-lg font-bold">Who this pack helps</h2>
