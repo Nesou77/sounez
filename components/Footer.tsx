@@ -2,6 +2,7 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { Twitter, Instagram, Facebook, Youtube } from "lucide-react";
 import { FEATURED_TOOLS, CATEGORIES } from "@/data/tools";
 import { BrandLogo } from "@/components/BrandLogo";
+import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -141,11 +142,20 @@ export function Footer() {
             <li><Link href="/contact" className="transition hover:text-foreground">Contact</Link></li>
             <li><Link href="/privacy-policy" className="transition hover:text-foreground">Privacy Policy</Link></li>
             <li><Link href="/terms-of-service" className="transition hover:text-foreground">Terms of Service</Link></li>
+            <li>
+              <CookieSettingsButton className="transition hover:text-foreground" />
+            </li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-border py-6 text-center text-xs text-muted-foreground">
-        &copy; {new Date().getFullYear()} Sounez. Built by Nesou for makers everywhere.
+      <div className="border-t border-border px-4 py-6 text-center text-xs text-muted-foreground">
+        <p>&copy; {new Date().getFullYear()} Sounez. Built by Nesou for makers everywhere.</p>
+        <p className="mt-1">
+          Sounez is supported by advertising. Ads are served by Google AdSense.{" "}
+          <Link href="/privacy-policy" className="underline underline-offset-2 hover:text-foreground">
+            Privacy Policy
+          </Link>
+        </p>
       </div>
     </footer>
   );

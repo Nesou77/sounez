@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import Script from "next/script";
 import dynamic from "next/dynamic";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { GoogleTagManager } from "@/components/GoogleTagManager";
+import { AdSenseScript } from "@/components/AdSenseScript";
 import { getSiteUrl } from "@/lib/site-url";
 
 // Lazy load CookieConsentBanner to improve initial page load
@@ -83,7 +83,10 @@ export default function RootLayout({
           <>
             <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
             <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
-            <meta name="google-adsense-account" content="ca-pub-5339334010592024"></meta>
+            <meta
+              name="google-adsense-account"
+              content={process.env.NEXT_PUBLIC_ADSENSE_PUB_ID}
+            />
           </>
         ) : null}
         {/* Google Consent Mode v2 — inline so it runs before GTM without Next.js beforeInteractive overhead */}
@@ -91,14 +94,7 @@ export default function RootLayout({
       </head>
       <body>
         <GoogleTagManager />
-        {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID && (
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_PUB_ID}`}
-            crossOrigin="anonymous"
-            strategy="lazyOnload"
-          />
-        )}
+        <AdSenseScript />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

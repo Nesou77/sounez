@@ -6,7 +6,6 @@ import { TOOLS, CATEGORIES } from "@/data/tools";
 import { sortToolsByPopularity } from "@/lib/popularity";
 import { matchToolListSearch } from "@/lib/tools-search";
 import { ToolCard } from "@/components/ToolCard";
-import { AdSlot } from "@/components/AdSlot";
 import { trackSearch } from "@/lib/analytics";
 
 export function ToolsClient() {
@@ -64,8 +63,6 @@ export function ToolsClient() {
         ))}
       </div>
       {filtered.length === 0 && <p className="py-16 text-center text-muted-foreground">No tools match your search. Try a different keyword.</p>}
-
-      <AdSlot className="mt-12" />
     </div>
   );
 }

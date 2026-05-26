@@ -1,13 +1,8 @@
 "use client";
 
 /**
- * AdSlot — Auto Ads mode.
- *
- * Google AdSense Auto Ads handles all placement automatically via the script
- * in app/layout.tsx. Manual display units are not used.
- *
- * In production this component renders nothing.
- * In development it shows a subtle placeholder so layout gaps are visible.
+ * Legacy placeholder — Sounez uses AdSense Auto Ads only (see AdSenseScript).
+ * Kept for optional dev layout markers; not mounted on live pages.
  */
 export function AdSlot({
   className = "",

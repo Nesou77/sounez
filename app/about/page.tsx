@@ -37,6 +37,13 @@ const aboutPageJsonLd = {
     "@type": "Organization",
     name: "Sounez",
     url: siteUrl,
+    email: "hello@sounez.com",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: "hello@sounez.com",
+      url: `${siteUrl}/contact`,
+    },
   },
 };
 
@@ -54,10 +61,10 @@ const values = [
 ];
 
 const trust = [
-  "100% free, forever",
-  "No account required",
-  "Runs in your browser. Your data stays with you",
-  "New tools added regularly",
+  "30+ free tools, with more added regularly",
+  "100% free, forever — no account, no paywall",
+  "Runs in your browser. Your files stay on your device",
+  "Built and maintained since 2024 by a solo developer",
 ];
 
 export default function AboutPage() {
@@ -108,16 +115,32 @@ export default function AboutPage() {
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">
               I built Sounez because I kept running into the same frustration: needing a simple tool
               and finding only bloated apps that wanted my email address, a subscription, or a
-              download. So I started building the tools I actually wanted to use.
+              download. So I started building the tools I actually wanted to use — and launched
+              Sounez in 2024 to make them available to everyone.
             </p>
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              I&apos;m a developer and creator. I care about tools that respect your time and don&apos;t get
-              in your way. Sounez is something I actively work on. I ship new tools regularly and I
-              read every message that comes through the{" "}
+              I&apos;m a developer and creator with a background in web tools, design utilities and
+              content workflows. Today Sounez has over 30 free tools and 35 practical guides. I ship
+              new tools regularly and read every message that comes through the{" "}
               <Link href="/contact" className="font-medium text-primary hover:underline">
                 contact form
-              </Link>
+              </Link>{" "}
+              or at{" "}
+              <a
+                href="mailto:hello@sounez.com"
+                className="font-medium text-primary hover:underline"
+              >
+                hello@sounez.com
+              </a>
               .
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Sounez is operated by Nesou as an independent publisher. Advertising on the site is
+              served by Google AdSense; see our{" "}
+              <Link href="/privacy-policy" className="font-medium text-primary hover:underline">
+                Privacy Policy
+              </Link>{" "}
+              for how data and cookies are used.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link

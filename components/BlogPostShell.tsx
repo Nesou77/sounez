@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
 import { Calendar, Clock, ArrowLeft, ArrowRight, Sparkles, Wrench, User } from "lucide-react";
-import { AdSlot } from "./AdSlot";
 import { BlogEngagement } from "./BlogEngagement";
 import { EngagementBar } from "./EngagementBar";
 import { BlogLikeController } from "./blog/BlogLikeController";
@@ -124,8 +123,6 @@ export function BlogPostShell({
             {children}
           </div>
 
-          <AdSlot className="my-12" label="Sponsored" />
-
           <BlogEngagement slug={slug} />
 
           <div className="my-8">
@@ -180,7 +177,6 @@ export function BlogPostShell({
             </div>
           </section>
 
-          <AdSlot className="my-10" label="Sponsored" />
         </article>
         </BlogLikeController>
 
@@ -208,8 +204,6 @@ export function BlogPostShell({
                 See all tools <ArrowRight className="h-3 w-3" />
               </Link>
             </div>
-
-            <AdSlot label="Sponsored" className="min-h-[300px]" />
 
             <div className="rounded-2xl border border-border bg-gradient-soft p-5">
               <div className="text-sm font-semibold">More from the blog</div>

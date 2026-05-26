@@ -257,7 +257,7 @@ export default function Post() {
           and verify facts before using output in exams, legal documents, or customer-facing materials.
         </p>
 
-        <h2>Final CTA: explore Sounez tools</h2>
+        <h2>Where to start today</h2>
         <p>
           You don&apos;t need a paid AI subscription to ship captions, bios, notes, names, site ideas, or image
           descriptions this week. Pick the tool that matches your biggest bottleneck, generate a draft,

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-const LAST_UPDATED = "May 16, 2026";
+const LAST_UPDATED = "May 26, 2026";
 
 export default function PrivacyPolicyPage() {
   return (
@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
         </div>
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Privacy Policy</h1>
         <p className="mt-4 text-muted-foreground">
-          Last updated: <time dateTime="2026-05-16">{LAST_UPDATED}</time>
+          Last updated: <time dateTime="2026-05-26">{LAST_UPDATED}</time>
         </p>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
           This policy explains what information Sounez collects, how it is used, how your files and
@@ -155,6 +155,17 @@ export default function PrivacyPolicyPage() {
               cookies may affect some features of the site. Instructions for managing cookies are
               available in your browser&apos;s help documentation.
             </p>
+            <p>
+              To change your cookie choices on Sounez, use{" "}
+              <strong className="text-foreground">Cookie settings</strong> in the site footer at any
+              time. Your choice is stored in your browser&apos;s local storage under the key{" "}
+              <code className="rounded bg-muted px-1 py-0.5 text-xs">sounez_cookie_consent</code>.
+            </p>
+            <p>
+              Third parties, including Google, may place and read cookies on your browser, or use web
+              beacons or IP addresses, to collect information as a result of ad serving on this
+              website.
+            </p>
           </div>
         </section>
 
@@ -205,9 +216,32 @@ export default function PrivacyPolicyPage() {
                 rel="noopener noreferrer"
                 className="font-medium text-primary hover:underline"
               >
-                Google&apos;s partner sites policy
+                How Google uses data when you use our partners&apos; sites or apps
               </a>
-              .
+              . Interest-based ads may show an AdChoices icon; see the{" "}
+              <a
+                href="https://youradchoices.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary hover:underline"
+              >
+                Digital Advertising Alliance
+              </a>{" "}
+              for industry opt-out options.
+            </p>
+            <p>
+              <strong className="text-foreground">Google Consent Mode v2.</strong> Sounez
+              implements Google Consent Mode v2. When you first visit the site, all consent signals
+              — including <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_storage</code>,{" "}
+              <code className="rounded bg-muted px-1 py-0.5 text-xs">analytics_storage</code>,{" "}
+              <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_user_data</code>, and{" "}
+              <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_personalization</code> —
+              default to <strong className="text-foreground">denied</strong>. This means no
+              cookies are set, no personal data is shared with Google for advertising or analytics
+              purposes, and only non-personalised ads may be shown until consent is updated. Google
+              may use cookieless pings and conversion modelling in this state, which do not involve
+              personal data. You can manage your consent preferences at any time through your
+              browser settings or via the opt-out links above.
             </p>
           </div>
         </section>

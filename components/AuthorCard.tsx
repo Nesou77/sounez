@@ -27,12 +27,13 @@ export function AuthorCard({ compact = false }: { compact?: boolean }) {
         <div className="flex flex-wrap items-center gap-2">
           <span className="font-semibold">Nesou</span>
           <span className="rounded-full border border-primary/30 bg-primary-soft px-2 py-0.5 text-xs font-medium text-primary">
-            Author
+            Founder &amp; Creator
           </span>
         </div>
         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-          Nesou shares practical online tools, creator resources and productivity tips to help
-          simplify digital workflows.{" "}
+          Nesou is a developer and creator who built Sounez to make professional-grade tools free
+          and accessible. The focus is on tools and guides that solve real tasks for creators,
+          designers and makers — without unnecessary complexity or paywalls.{" "}
           <Link href="/about" className="font-medium text-primary hover:underline">
             About Sounez →
           </Link>

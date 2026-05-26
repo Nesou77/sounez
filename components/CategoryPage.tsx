@@ -1,6 +1,5 @@
 import { CATEGORIES, toolsByCategory } from "@/data/tools";
 import { ToolCard } from "@/components/ToolCard";
-import { AdSlot } from "@/components/AdSlot";
 import { SmartLink as Link } from "@/components/smart-link";
 import { getCategoryIcon } from "@/lib/tool-icons";
 
@@ -51,8 +50,6 @@ export function CategoryPage({ slug }: { slug: string }) {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((t) => <ToolCard key={t.slug} tool={t} />)}
       </div>
-
-      <AdSlot className="my-12" />
 
       <section className="my-12">
         <h2 className="text-2xl font-bold">FAQ</h2>

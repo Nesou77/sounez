@@ -273,7 +273,7 @@ export default function Post() {
           reinforce the page topic.
         </p>
 
-        <h2>CTA: run your next image through Sounez tools</h2>
+        <h2>Put the checklist into practice</h2>
         <p>
           You don&apos;t need Photoshop or a paid plugin stack to ship optimized images. Open the{" "}
           <Link href="/tools/image-compressor">Image Compressor</Link> for size, the{" "}

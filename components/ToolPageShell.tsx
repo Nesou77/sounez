@@ -4,7 +4,6 @@ import { TOOLS, type Tool } from "@/data/tools";
 import { sortToolsByPopularity } from "@/lib/popularity";
 import { blogPostsForTool } from "@/data/blog";
 import { ToolCard } from "./ToolCard";
-import { AdSlot } from "./AdSlot";
 import { SmartLink as Link } from "@/components/smart-link";
 import { getToolIcon } from "@/lib/tool-icons";
 import { ArrowRight, Lightbulb, Sparkles, BookOpen, Layers } from "lucide-react";
@@ -86,8 +85,6 @@ export function ToolPageShell({
         {children}
       </section>
 
-      <AdSlot className="my-10" label="Sponsored" />
-
       <section className="my-12">
         <h2 className="text-2xl font-bold">Features</h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -126,8 +123,6 @@ export function ToolPageShell({
         </div>
       </section>
 
-      <AdSlot className="my-10" label="Sponsored" />
-
       <section className="my-12">
         <h2 className="flex items-center gap-2 text-2xl font-bold">
           <Lightbulb className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" /> Pro tips
@@ -155,8 +150,6 @@ export function ToolPageShell({
           ))}
         </div>
       </section>
-
-      <AdSlot className="my-10" label="Sponsored" />
 
       <section className="my-12">
         <h2 className="text-2xl font-bold">Related tools</h2>

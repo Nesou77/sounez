@@ -47,13 +47,26 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Sounez",
   url: siteUrl,
+  logo: {
+    "@type": "ImageObject",
+    url: `${siteUrl}/logo.webp`,
+  },
   description:
     "Free browser-based tools for creators, designers, developers and anyone who needs to complete practical tasks online without installing software or creating an account.",
+  foundingDate: "2024",
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
     url: `${siteUrl}/contact`,
   },
+  sameAs: [
+    "https://www.tiktok.com/@souneztools",
+    "https://www.instagram.com/souneztools/",
+    "https://x.com/souneztools",
+    "https://www.facebook.com/profile.php?id=61589812104461",
+    "https://www.youtube.com/@Souneztools",
+    "https://pin.it/45jluYJOT",
+  ],
 };
 
 export default function HomePage() {

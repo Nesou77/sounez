@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import { SmartLink as Link } from "@/components/smart-link";
 
 export const metadata: Metadata = {
   title: "Simple Online Calculator Guide for Everyday Math | Sounez",
@@ -67,7 +68,7 @@ export default function Post() {
           worked examples, so you know exactly what you&apos;re calculating, not just what button to press.
         </p>
         <p>
-          Open the <a href="/calculator">free online Calculator</a> alongside this guide and follow
+          Open the <Link href="/tools/calculator">free online Calculator</Link> alongside this guide and follow
           along with the examples.
         </p>
 
@@ -128,7 +129,7 @@ export default function Post() {
           <li>7.5% VAT on £400 = 400 × 7.5 ÷ 100 = <strong>£30</strong></li>
         </ul>
         <p>
-          On the <a href="/calculator">Calculator</a>, type the number, press ×, type the percentage,
+          On the <Link href="/tools/calculator">Calculator</Link>, type the number, press ×, type the percentage,
           then press the % button. It calculates automatically.
         </p>
 
@@ -184,7 +185,7 @@ export default function Post() {
         <h2>How to use the Sounez Calculator</h2>
         <ol>
           <li>
-            Open the <a href="/calculator">Calculator</a>. It loads instantly in your browser, no
+            Open the <Link href="/tools/calculator">Calculator</Link>. It loads instantly in your browser, no
             install, no account.
           </li>
           <li>
@@ -207,7 +208,7 @@ export default function Post() {
         <h3>How do I calculate a percentage?</h3>
         <p>
           To find X% of a number, multiply the number by X and divide by 100. For example, 20% of
-          150 = 150 × 20 ÷ 100 = 30. The <a href="/calculator">Sounez Calculator</a> has a % button
+          150 = 150 × 20 ÷ 100 = 30. The <Link href="/tools/calculator">Sounez Calculator</Link> has a % button
           that handles this automatically.
         </p>
         <h3>What is a square root?</h3>
@@ -218,7 +219,7 @@ export default function Post() {
         </p>
         <h3>Does the calculator save my calculations?</h3>
         <p>
-          The <a href="/calculator">Sounez Calculator</a> keeps a history of your last 10
+          The <Link href="/tools/calculator">Sounez Calculator</Link> keeps a history of your last 10
           calculations in the current session. Nothing is saved to a server or stored after you close
           the tab.
         </p>
@@ -236,10 +237,10 @@ export default function Post() {
 
         <h2>Conclusion: bookmark it, use it daily</h2>
         <p>
-          The <a href="/calculator">Sounez Calculator</a> is designed for the calculations you
+          The <Link href="/tools/calculator">Sounez Calculator</Link> is designed for the calculations you
           actually do every day, not the ones you studied in school and never used again. Bookmark
           it, use the keyboard shortcuts, and let the history panel save you from retyping. For
-          anything text-related, the <a href="/word-counter">Word Counter</a> is just as fast.
+          anything text-related, the <Link href="/tools/word-counter">Word Counter</Link> is just as fast.
         </p>
       </BlogPostShell>
     </>

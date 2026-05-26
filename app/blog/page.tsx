@@ -2,17 +2,23 @@ import type { Metadata } from "next";
 import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
 import { BLOG_POSTS } from "@/data/blog";
+import { CATEGORIES } from "@/data/tools";
 import { getSiteUrl } from "@/lib/site-url";
+import { sortBlogPostsByPopularity } from "@/lib/popularity";
 
 export const metadata: Metadata = {
-  title: "Sounez Blog | Tips and Guides for Creators",
-  description: "Practical guides and tips on growing as a creator, designer and productivity pro.",
+  title: "Sounez Blog | Guides for Creators, Designers and Makers",
+  description:
+    "Hands-on guides covering social media growth, design workflows, image optimization, productivity tools and more — written for people who make things online.",
   alternates: { canonical: getSiteUrl() + "/blog" },
   openGraph: {
-    title: "Sounez Blog",
-    description: "Practical guides for creators, designers and productivity pros.",
+    title: "Sounez Blog | Guides for Creators, Designers and Makers",
+    description:
+      "Hands-on guides covering social media growth, design workflows, image optimization, productivity tools and more.",
   },
 };
+
+const sortedPosts = sortBlogPostsByPopularity(BLOG_POSTS);
 
 export default function BlogPage() {
   return (
@@ -20,11 +26,27 @@ export default function BlogPage() {
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-bold sm:text-5xl">The Sounez Blog</h1>
         <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-          Hands-on guides for creators, designers and productivity pros.
+          Hands-on guides for creators, designers, students and anyone building things on the web.
+          Each article pairs practical advice with the free tools on this site so you can act on it
+          immediately.
         </p>
       </header>
+
+      {/* Category filter links */}
+      <nav aria-label="Blog categories" className="mb-10 flex flex-wrap justify-center gap-2">
+        {CATEGORIES.map((c) => (
+          <Link
+            key={c.slug}
+            href={`/categories/${c.slug}`}
+            className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground transition hover:border-primary/40 hover:text-primary"
+          >
+            {c.name}
+          </Link>
+        ))}
+      </nav>
+
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {BLOG_POSTS.map((p) => (
+        {sortedPosts.map((p) => (
           <Link
             key={p.slug}
             href={`/blog/${p.slug}`}

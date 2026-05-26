@@ -9,6 +9,7 @@ import { ArrowRight, Plus, Shield, Zap, Heart } from "lucide-react";
 import { FEATURED_TOOLS, CATEGORIES } from "@/data/tools";
 import { BLOG_POSTS } from "@/data/blog";
 import { getCategoryIcon } from "@/lib/tool-icons";
+import { sortBlogPostsByPopularity } from "@/lib/popularity";
 
 const FAQS = [
   {
@@ -164,7 +165,7 @@ export function HomeSections() {
           </Link>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
-          {BLOG_POSTS.slice(0, 3).map((p) => (
+          {sortBlogPostsByPopularity(BLOG_POSTS).slice(0, 3).map((p) => (
             <Link
               key={p.slug}
               href={`/blog/${p.slug}`}
