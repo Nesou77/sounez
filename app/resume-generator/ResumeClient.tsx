@@ -111,7 +111,23 @@ export function ResumeClient({ tool }: { tool: Tool }) {
           q: "What if the PDF looks wrong?",
           a: "In the print dialog, set margins to 'None' or 'Minimum' and enable 'Background graphics' for best results.",
         },
+        {
+          q: "Should I copy example text verbatim?",
+          a: "No. Write your own experience and skills. False claims on a resume can have serious consequences.",
+        },
       ]}
+      examples={[
+        { title: "Junior developer", desc: "One role, bootcamp education, and a skills line with React + TypeScript." },
+        { title: "Career switcher", desc: "Summary emphasising transferable project management skills from retail." },
+        { title: "Student internship", desc: "Single education block, two campus projects, and volunteer experience." },
+      ]}
+      mistakes={[
+        "Listing technologies you cannot discuss in an interview.",
+        "Forgetting to export before closing the tab — data lives only in the browser session.",
+        "Using a two-page layout when recruiters expect one page for early-career roles.",
+      ]}
+      privacyNote="Resume data is entered and rendered locally. Sounez does not store your CV on our servers."
+      whenNotToUse="Do not use to fabricate degrees, employers, or certifications — review every line before sending."
     >
       <div className="grid gap-8 lg:grid-cols-2">
         {/* ── FORM ── */}

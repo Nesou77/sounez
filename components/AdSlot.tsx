@@ -11,7 +11,7 @@ export function AdSlot({
   className?: string;
   slot?: string;
 }) {
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === "production" || !process.env.NEXT_PUBLIC_ADSENSE_PUB_ID?.trim()) {
     return null;
   }
 

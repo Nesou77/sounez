@@ -120,7 +120,21 @@ export function StudyNotesClient({ tool }: { tool: Tool }) {
       faqs={[
         { q: "Can I paste a paragraph and get notes from it?", a: "Yes. Paste any text into the topic box and the tool will summarise it into structured notes." },
         { q: "Are the notes accurate?", a: "AI-generated notes can contain errors. Always cross-check important facts with a textbook or trusted source." },
+        { q: "Is my topic sent to a server?", a: "Yes. Your input is processed by our AI service to generate notes. It is not stored after the response." },
+        { q: "Can I use these notes in an exam?", a: "Use them for revision only. Do not submit generated notes as your own work or use them to cheat." },
       ]}
+      examples={[
+        { title: "History unit", desc: "Topic: \"Causes of World War I\" at intermediate level — headings, timeline bullets, and key terms." },
+        { title: "Lecture paste", desc: "Paste 800 words from a biology slide deck and get a condensed outline for flashcards." },
+        { title: "Exam cram", desc: "Beginner notes on \"Photosynthesis\" the night before a quiz — focus on definitions and steps." },
+      ]}
+      mistakes={[
+        "Trusting dates, names, or formulas without verifying against your syllabus.",
+        "Pasting copyrighted textbook chapters in full — summarise your own notes instead.",
+        "Choosing advanced depth for introductory classes — you may get unnecessary jargon.",
+      ]}
+      privacyNote="Your topic or pasted text is sent securely for AI processing. We do not retain it after notes are generated."
+      whenNotToUse="Do not use to impersonate another student, bypass honour codes, or submit work you did not create."
     >
       <div className="space-y-4">
         <div>

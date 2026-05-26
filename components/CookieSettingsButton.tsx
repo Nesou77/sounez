@@ -9,7 +9,7 @@ export function CookieSettingsButton({ className = "" }: { className?: string })
       onClick={() => dispatchOpenCookieSettings()}
       className={className}
     >
-      Cookie settings
+      Cookie Preferences
     </button>
   );
 }

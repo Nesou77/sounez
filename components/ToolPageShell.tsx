@@ -6,14 +6,18 @@ import { blogPostsForTool } from "@/data/blog";
 import { ToolCard } from "./ToolCard";
 import { SmartLink as Link } from "@/components/smart-link";
 import { getToolIcon } from "@/lib/tool-icons";
-import { ArrowRight, Lightbulb, Sparkles, BookOpen, Layers } from "lucide-react";
+import { ArrowRight, Lightbulb, Sparkles, BookOpen, Layers, AlertTriangle } from "lucide-react";
 import Image from "next/image";
+import { ContentDates } from "@/components/ContentDates";
+import { getToolDisclaimer } from "@/lib/tool-disclaimers";
 
-// Lazy-load EngagementBar — it's below the fold and reads localStorage.
-// Deferring it reduces initial JS and avoids hydration cost on first paint.
 const EngagementBar = dynamic(
   () => import("./EngagementBar").then((m) => m.EngagementBar),
   { ssr: false, loading: () => <div className="h-10" aria-hidden="true" /> },
+);
+const CommentsSection = dynamic(
+  () => import("./CommentsSection").then((m) => m.CommentsSection),
+  { ssr: false },
 );
 
 type FAQ = { q: string; a: string };
@@ -40,6 +44,10 @@ export function ToolPageShell({
   faqs,
   useCases = DEFAULT_USE_CASES,
   proTips = DEFAULT_PRO_TIPS,
+  examples,
+  mistakes,
+  privacyNote,
+  whenNotToUse,
   children,
 }: {
   tool: Tool;
@@ -49,8 +57,13 @@ export function ToolPageShell({
   faqs: FAQ[];
   useCases?: { title: string; desc: string }[];
   proTips?: string[];
+  examples?: { title: string; desc: string }[];
+  mistakes?: string[];
+  privacyNote?: string;
+  whenNotToUse?: string;
   children: ReactNode;
 }) {
+  const disclaimer = getToolDisclaimer(tool.slug);
   const sameCat = sortToolsByPopularity(
     TOOLS.filter((t) => t.category === tool.category && t.slug !== tool.slug),
   );
@@ -76,6 +89,13 @@ export function ToolPageShell({
         </div>
         <h1 className="text-3xl font-bold sm:text-4xl">{tool.name}</h1>
         <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">{intro}</p>
+        <ContentDates contentType="tool" slug={tool.slug} className="mt-3 text-center text-xs text-muted-foreground" />
+        {disclaimer && (
+          <p className="mx-auto mt-4 flex max-w-2xl items-start justify-center gap-2 rounded-xl border border-amber-500/30 bg-amber-500/5 px-4 py-3 text-left text-sm text-foreground/90">
+            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" aria-hidden="true" />
+            {disclaimer}
+          </p>
+        )}
         <div className="mt-5 flex justify-center">
           <EngagementBar slug={`tool:${tool.slug}`} title={tool.name} />
         </div>
@@ -96,6 +116,20 @@ export function ToolPageShell({
           ))}
         </div>
       </section>
+
+      {examples && examples.length > 0 && (
+        <section className="my-12">
+          <h2 className="text-2xl font-bold">Real examples</h2>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+            {examples.map((ex) => (
+              <div key={ex.title} className="rounded-2xl border border-border bg-card p-5">
+                <h3 className="font-semibold">{ex.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{ex.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="my-12">
         <h2 className="text-2xl font-bold">How to use {tool.name}</h2>
@@ -136,6 +170,34 @@ export function ToolPageShell({
           ))}
         </ul>
       </section>
+
+      {mistakes && mistakes.length > 0 && (
+        <section className="my-12">
+          <h2 className="text-2xl font-bold">Common mistakes</h2>
+          <ul className="mt-5 list-disc space-y-2 pl-6 text-sm text-muted-foreground">
+            {mistakes.map((m) => (
+              <li key={m}>{m}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {(privacyNote || whenNotToUse) && (
+        <section className="my-12 rounded-2xl border border-border bg-muted/30 p-6">
+          {privacyNote && (
+            <>
+              <h2 className="text-lg font-bold">Privacy note</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{privacyNote}</p>
+            </>
+          )}
+          {whenNotToUse && (
+            <>
+              <h2 className="mt-6 text-lg font-bold">When not to use this tool</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{whenNotToUse}</p>
+            </>
+          )}
+        </section>
+      )}
 
       <section className="my-12">
         <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
@@ -207,6 +269,8 @@ export function ToolPageShell({
           <Link href="/categories" className="font-medium text-primary hover:underline">all categories</Link>.
         </div>
       </section>
+
+      <CommentsSection contentType="tool" slug={tool.slug} />
     </article>
   );
 }

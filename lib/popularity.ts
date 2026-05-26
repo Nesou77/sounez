@@ -1,16 +1,21 @@
-export type PopularityItem = { views?: number; likes?: number; slug: string };
+/** Sort tools/posts by editorial priority — no synthetic view/like metrics. */
 
-function comparePopularity(a: PopularityItem, b: PopularityItem): number {
-  const viewsDiff = (b.views ?? 0) - (a.views ?? 0);
-  if (viewsDiff !== 0) return viewsDiff;
-  const likesDiff = (b.likes ?? 0) - (a.likes ?? 0);
-  if (likesDiff !== 0) return likesDiff;
-  return a.slug.localeCompare(b.slug);
+export type SortableContent = {
+  slug: string;
+  name?: string;
+  title?: string;
+  featured?: boolean;
+};
+
+export function sortByEditorialPriority<T extends SortableContent>(items: T[]): T[] {
+  return [...items].sort((a, b) => {
+    const feat = Number(!!b.featured) - Number(!!a.featured);
+    if (feat !== 0) return feat;
+    const labelA = (a.name ?? a.title ?? a.slug).toLowerCase();
+    const labelB = (b.name ?? b.title ?? b.slug).toLowerCase();
+    return labelA.localeCompare(labelB);
+  });
 }
 
-export function sortByPopularity<T extends PopularityItem>(items: T[]): T[] {
-  return [...items].sort(comparePopularity);
-}
-
-export const sortToolsByPopularity = sortByPopularity;
-export const sortBlogPostsByPopularity = sortByPopularity;
+export const sortToolsByPopularity = sortByEditorialPriority;
+export const sortBlogPostsByPopularity = sortByEditorialPriority;

@@ -284,7 +284,7 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
   return (
     <ToolPageShell
       tool={tool}
-      intro="Compress JPG, PNG and WebP images right in your browser. Batch compress up to 20 files at once, pick your quality level, convert formats, and download everything as a ZIP. Nothing leaves your device."
+      intro="Compress JPG, PNG and WebP images in your browser. Batch up to 20 files, tune quality, convert formats, resize, and download individually or as a ZIP."
       features={[
         {
           title: "Fully private",
@@ -312,9 +312,21 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
         },
         {
           title: "No account needed",
-          desc: "Free, unlimited, and open to anyone. No signup, no watermark, no limit on how many times you use it.",
+          desc: "Free to use with fair-use limits. No signup or watermark on downloads.",
         },
       ]}
+      examples={[
+        { title: "Blog hero image", desc: "A 2.4 MB JPEG at 82% quality often drops under 400 KB — enough for fast LCP without visible blur." },
+        { title: "Shopify product grid", desc: "Batch 12 PNGs, convert to WebP at 75%, and ZIP download for a bulk CMS upload." },
+        { title: "Email newsletter", desc: "Resize to max width 1200px while compressing so images stay sharp but under attachment limits." },
+      ]}
+      mistakes={[
+        "Setting quality below 50% on photos with fine detail (faces, hair) — artifacts become obvious.",
+        "Converting logos with transparency to JPEG — you will lose the alpha channel.",
+        "Compressing the same file repeatedly at low quality — each pass adds more loss.",
+      ]}
+      privacyNote="Compression runs locally in your browser via a web worker. Images are not uploaded to Sounez servers."
+      whenNotToUse="Skip this tool for RAW camera files, animated GIFs, or print-ready CMYK assets — use dedicated software for those workflows."
       howTo={[
         "Drop your images onto the upload zone or click Choose Files to select up to 20 JPG, PNG, or WebP files.",
         "Adjust the Quality slider. Lower values give smaller files; higher values keep more detail.",

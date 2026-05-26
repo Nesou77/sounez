@@ -230,7 +230,18 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
         "Portrait photos of people consistently produce excellent cutouts.",
         "After removal, add a solid color background for a clean studio look.",
       ]}
-    >
+      examples={[
+        { title: "Marketplace listing", desc: "Product on a busy table → transparent PNG on white for Amazon main image rules." },
+        { title: "Profile photo", desc: "Selfie with cluttered room → cutout for LinkedIn banner composite." },
+        { title: "Sticker asset", desc: "Logo PNG with grey backdrop → transparent file for Slack or Discord emoji." },
+      ]}
+      mistakes={[
+        "Expecting perfect hair on low-contrast backgrounds — fine strands may need touch-up.",
+        "Uploading 20 MB RAW files — convert to JPG first; the tool caps at 10 MB.",
+        "Downloading JPEG expecting transparency — output is PNG for alpha support.",
+      ]}
+      privacyNote="Processing runs on your device via WebAssembly. The model files load from a CDN; your image bytes are not uploaded to Sounez."
+      whenNotToUse="Skip for multi-person crowd shots, glass reflections, or images you do not have rights to edit."
       {/* Upload zone */}
       {stage === "idle" && (
         <div

@@ -93,10 +93,20 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
         "Click Generate and copy the caption you like best.",
       ]}
       faqs={[
-        { q: "Is this free?", a: "Yes, completely free. No account needed." },
-        { q: "Does it use AI?", a: "Yes, it uses Gemini AI when configured, and smart templates as a fallback." },
+        { q: "Is this free?", a: "Yes. Free to use with fair-use rate limits. No account required." },
+        { q: "Does it use AI?", a: "Yes. Your topic is sent securely to our server for AI caption generation (Google Gemini when configured)." },
         { q: "Can I edit the captions?", a: "Copy and paste into your favourite editor to tweak them." },
       ]}
+      examples={[
+        { title: "Product launch", desc: "Topic: matte black water bottle on marble — get three Instagram captions with a professional tone." },
+        { title: "Travel reel", desc: "Topic: rainy street food market in Tokyo — TikTok captions with a funny, punchy tone." },
+      ]}
+      mistakes={[
+        "Posting AI captions without reading them for accuracy or brand voice.",
+        "Using the same caption across platforms without adjusting length or hashtags.",
+      ]}
+      privacyNote="Your topic text is sent to Sounez servers for AI processing. It is used only to generate captions and is not sold to third parties."
+      whenNotToUse="Do not use generated captions for regulated claims (health, finance, legal) without human review."
     >
       <div className="space-y-4">
         <div>

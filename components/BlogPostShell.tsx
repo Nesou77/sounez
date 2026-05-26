@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
 import { SmartLink as Link } from "@/components/smart-link";
 import Image from "next/image";
-import { Calendar, Clock, ArrowLeft, ArrowRight, Sparkles, Wrench, User } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles, Wrench, User } from "lucide-react";
+import { BlogPostDate } from "@/components/BlogPostDate";
+import { ContentDates } from "@/components/ContentDates";
 import { BlogEngagement } from "./BlogEngagement";
 import { EngagementBar } from "./EngagementBar";
 import { BlogLikeController } from "./blog/BlogLikeController";
@@ -49,17 +51,13 @@ export function BlogPostShell({
           </Link>
 
           <header className="mt-6">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5">
-                <Calendar className="h-3.5 w-3.5" /> {post.date}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5" /> {post.readTime} read
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <User className="h-3.5 w-3.5" /> by Nesou
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+              <BlogPostDate slug={slug} readTime={post.readTime} />
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                <User className="h-3.5 w-3.5" aria-hidden="true" /> by Nesou
               </span>
             </div>
+            <ContentDates contentType="blog" slug={slug} className="mt-2 text-xs text-muted-foreground" />
             <h1 className="animate-slide-up mt-3 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
               {title}
             </h1>
@@ -68,7 +66,7 @@ export function BlogPostShell({
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
               <AuthorCard compact />
-              <EngagementBar slug={slug} title={title} />
+              <EngagementBar slug={`blog:${slug}`} title={title} />
             </div>
           </header>
 
@@ -123,7 +121,7 @@ export function BlogPostShell({
             {children}
           </div>
 
-          <BlogEngagement slug={slug} />
+          <BlogEngagement slug={slug} title={title} />
 
           <div className="my-8">
             <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Written by</p>

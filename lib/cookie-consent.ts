@@ -1,6 +1,7 @@
 /** Shared cookie / Google Consent Mode helpers for Sounez. */
 
-export const CONSENT_KEY = "sounez_cookie_consent";
+export const CONSENT_KEY = "sounez_cookie_consent_v1";
+export const CONSENT_VERSION = 1;
 export const OPEN_COOKIE_SETTINGS_EVENT = "sounez-open-cookie-settings";
 export const CONSENT_CHANGED_EVENT = "sounez-consent-changed";
 

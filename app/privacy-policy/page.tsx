@@ -430,7 +430,22 @@ export default function PrivacyPolicyPage() {
 
         {/* 15 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">15. Contact Us</h2>
+          <h2 className="text-xl font-bold tracking-tight">15. Comments and engagement</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              If you submit a comment, we store your display name, comment text, optional email (not shown
+              publicly), and timestamps. Comments are moderated before publication. Helpful votes use a
+              hashed browser identifier to prevent duplicate votes — we do not use this to identify you by
+              name.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 16 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">16. Contact Us</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               If you have questions about this Privacy Policy or how we handle your data, please get

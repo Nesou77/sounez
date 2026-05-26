@@ -63,7 +63,7 @@ export default function BlogPage() {
               />
             </div>
             <div className="p-5">
-              <div className="text-xs text-muted-foreground">{p.date} · {p.readTime} read</div>
+              <div className="text-xs text-muted-foreground">{p.readTime} read</div>
               <h2 className="mt-2 font-semibold leading-snug transition-colors group-hover:text-primary">
                 {p.title}
               </h2>

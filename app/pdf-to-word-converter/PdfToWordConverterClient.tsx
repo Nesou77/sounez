@@ -187,8 +187,20 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
         { title: "Conversion Options", desc: "Preserve layout, extract images and enable OCR for scanned documents." },
         { title: "Output Preview", desc: "See the output filename before you download so you know exactly what you'll get." },
         { title: "Privacy First", desc: "Files are processed securely and never stored after conversion." },
-        { title: "Free & No Account", desc: "No sign-up, no watermarks, no limits for standard use." },
+        { title: "Free & No Account", desc: "No sign-up or watermarks. Free to use with fair-use limits on server conversion." },
       ]}
+      examples={[
+        { title: "Contract redlines", desc: "Convert a text-based 12-page agreement PDF to DOCX, then track changes in Word." },
+        { title: "Scanned invoice", desc: "Enable OCR on a phone-scanned PDF so line items become editable cells." },
+        { title: "Course handout", desc: "Turn a lecture PDF into DOCX for students who need screen-reader friendly editing." },
+      ]}
+      mistakes={[
+        "Expecting pixel-perfect tables from complex magazine layouts — plan manual cleanup.",
+        "Uploading password-protected PDFs without unlocking them first.",
+        "Using OCR on blurry scans — results will need heavy proofreading.",
+      ]}
+      privacyNote="Your PDF is sent securely to our conversion service, processed, and deleted after the DOCX is returned. We do not keep copies."
+      whenNotToUse="Do not use for confidential legal filings or classified documents unless your organisation approves third-party processing."
       howTo={[
         "Click the upload area or drag and drop your PDF file onto it.",
         "Review the file name and size to confirm you selected the right document.",

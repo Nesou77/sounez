@@ -62,8 +62,8 @@ const values = [
 
 const trust = [
   "30+ free tools, with more added regularly",
-  "100% free, forever — no account, no paywall",
-  "Runs in your browser. Your files stay on your device",
+  "Free to use with fair-use limits — no account required for most tools",
+  "Many tools run in your browser; server-backed tools disclose processing clearly",
   "Built and maintained since 2024 by a solo developer",
 ];
 

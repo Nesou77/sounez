@@ -29,7 +29,18 @@ export function CookieConsentBanner() {
 
     const init = () => {
       try {
-        const stored = getStoredConsent();
+        let stored = getStoredConsent();
+        if (!stored) {
+          try {
+            const legacy = localStorage.getItem("sounez_cookie_consent");
+            if (legacy === "accepted" || legacy === "rejected") {
+              localStorage.setItem(CONSENT_KEY, legacy);
+              stored = legacy;
+            }
+          } catch {
+            // ignore
+          }
+        }
         if (stored === "accepted") {
           updateGoogleConsent(true);
           setState("hidden");

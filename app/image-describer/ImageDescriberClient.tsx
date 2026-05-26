@@ -235,7 +235,18 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
         "Social tone generates captions with natural hashtag suggestions.",
         "For complex infographics, use Detailed Description to get a full text summary.",
       ]}
-    >
+      examples={[
+        { title: "Product photo", desc: "SEO tone on a stainless water bottle — alt text plus keyword list for a Shopify listing." },
+        { title: "Team headshot", desc: "Accessibility tone for an about-page portrait — short, factual alt under 125 characters." },
+        { title: "Event flyer", desc: "Social tone on a conference graphic — caption with CTA for LinkedIn." },
+      ]}
+      mistakes={[
+        "Publishing AI alt text without checking it matches what is actually in the image.",
+        "Uploading photos of people without consent or rights to process them.",
+        "Stuffing keywords unnaturally — search engines and screen readers both suffer.",
+      ]}
+      privacyNote="Images are sent securely for AI vision analysis and are not stored after results are returned."
+      whenNotToUse="Avoid uploading ID documents, medical scans, or other sensitive images you would not share with a third-party processor."
       {/* Upload zone */}
       {stage === "idle" && (
         <div

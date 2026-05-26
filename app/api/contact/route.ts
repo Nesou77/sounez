@@ -64,9 +64,20 @@ export async function POST(req: Request) {
     }
   }
 
-  // ── Fallback: log the submission server-side so no message is lost ────────
+  if (process.env.NODE_ENV === "production") {
+    console.error("[contact] Email delivery is not configured in production.");
+    return NextResponse.json(
+      {
+        ok: false,
+        error:
+          "Message delivery is temporarily unavailable. Please email hello@sounez.com directly.",
+      },
+      { status: 503 },
+    );
+  }
+
   console.log(
-    "[contact] Submission received (email not configured — logged only):",
+    "[contact] Submission logged locally (development only — email not configured):",
     JSON.stringify({
       name: parsed.data.name,
       email: parsed.data.email,
@@ -77,6 +88,9 @@ export async function POST(req: Request) {
     }),
   );
 
-  // Return success so the user gets a confirmation — the owner can check server logs
-  return NextResponse.json({ ok: true, id: `log-${Date.now()}` });
+  return NextResponse.json({
+    ok: true,
+    id: `log-${Date.now()}`,
+    message: "Logged locally in development. Email was not sent.",
+  });
 }

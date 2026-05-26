@@ -1,15 +1,10 @@
 import { BLOG_POSTS } from "@/data/blog";
+import { getContentDates, formatContentDateIso } from "@/lib/content-meta";
 import { getSiteUrl } from "@/lib/site-url";
 
 export type FaqItem = { question: string; answer: string };
 
-/**
- * Renders JSON-LD structured data for a blog post.
- * Supports BlogPosting + optional FAQPage schema.
- * Place this inside the page component (server component). Next.js hoists
- * <script> tags in the <head> automatically when rendered server-side.
- */
-export function BlogJsonLd({
+export async function BlogJsonLd({
   slug,
   title,
   description,
@@ -28,8 +23,9 @@ export function BlogJsonLd({
   const siteUrl = getSiteUrl();
   const pageUrl = `${siteUrl}/blog/${slug}`;
   const imageUrl = `${siteUrl}${post.image}`;
+  const dates = await getContentDates("blog", slug);
 
-  const blogPosting = {
+  const blogPosting: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: title,
@@ -48,8 +44,6 @@ export function BlogJsonLd({
         url: `${siteUrl}/logo.webp`,
       },
     },
-    datePublished: post.date,
-    dateModified: post.updatedAt ?? post.date,
     image: {
       "@type": "ImageObject",
       url: imageUrl,
@@ -69,6 +63,11 @@ export function BlogJsonLd({
       url: `${siteUrl}/blog`,
     },
   };
+
+  if (dates) {
+    blogPosting.datePublished = formatContentDateIso(dates.createdAt);
+    blogPosting.dateModified = formatContentDateIso(dates.updatedAt);
+  }
 
   const faqSchema =
     faqs && faqs.length > 0

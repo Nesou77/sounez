@@ -19,8 +19,8 @@ const FAQS: Record<string, { q: string; a: string }[]> = {
     { q: "Is my work saved anywhere?", a: "No. Nothing is stored. Copy or save what you need before you close the tab." },
   ],
   "utility-tools": [
-    { q: "Are these tools safe to use?", a: "Yes. Tools like the password generator and image compressor run entirely in your browser. Nothing is uploaded to any server." },
-    { q: "Is there a usage limit?", a: "No. Use them as much as you want." },
+    { q: "Are these tools safe to use?", a: "Many utility tools run in your browser. AI and PDF tools may securely process the content you submit — see each tool page for details." },
+    { q: "Is there a usage limit?", a: "Free to use with fair-use limits on server-backed AI tools." },
   ],
 };
 

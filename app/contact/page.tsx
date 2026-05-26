@@ -7,7 +7,7 @@ const pageUrl = `${getSiteUrl()}/contact`;
 export const metadata: Metadata = {
   title: "Contact Sounez | Feedback, Bug Reports and Tool Requests",
   description:
-    "Have a question, found a bug, or want to request a new tool? Send us a message and we will reply within 24 hours.",
+    "Have a question, found a bug, or want to request a new tool? Send us a message and we will respond when possible.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Contact Sounez",
@@ -22,7 +22,7 @@ const contactPageJsonLd = {
   "@type": "ContactPage",
   name: "Contact Sounez",
   url: pageUrl,
-  description: "Send a message to the Sounez team. We reply within 24 hours.",
+  description: "Send a message to the Sounez team.",
 };
 
 export default function ContactPage() {

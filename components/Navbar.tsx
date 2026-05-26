@@ -135,6 +135,7 @@ export function Navbar() {
             )}
           </div>
 
+          <Link href="/smart-packs" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted">Smart Packs</Link>
           <Link href="/blog" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted">Blog</Link>
           <Link href="/about" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted">About</Link>
           <Link href="/contact" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted">Contact</Link>
@@ -165,6 +166,7 @@ export function Navbar() {
               { href: "/", label: "Home" },
               { href: "/tools", label: "All Tools" },
               { href: "/categories", label: "Categories" },
+              { href: "/smart-packs", label: "Smart Packs" },
               { href: "/blog", label: "Blog" },
               { href: "/about", label: "About" },
               { href: "/contact", label: "Contact" },

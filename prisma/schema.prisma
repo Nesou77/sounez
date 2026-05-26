@@ -1,0 +1,49 @@
+// Local: DATABASE_URL="file:./dev.db"
+// Production: DATABASE_URL="postgresql://user:pass@host:5432/sounez"
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Comment {
+  id          String   @id @default(cuid())
+  contentType String
+  slug        String
+  authorName  String
+  authorEmail String?
+  body        String
+  status      String   @default("pending")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([contentType, slug])
+  @@index([status])
+}
+
+model ContentMeta {
+  id          String   @id @default(cuid())
+  contentType String
+  slug        String
+  title       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([contentType, slug])
+  @@index([contentType])
+}
+
+model Like {
+  id          String   @id @default(cuid())
+  contentType String
+  slug        String
+  visitorHash String
+  createdAt   DateTime @default(now())
+
+  @@unique([contentType, slug, visitorHash])
+  @@index([contentType, slug])
+}

@@ -1,15 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Heart, Share2, Link2, Check } from "lucide-react";
 import { toast } from "sonner";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { trackShare } from "@/lib/analytics";
-import { useBlogLike } from "./blog/BlogLikeController";
-
-const LIKES_KEY = (slug: string) => `sounez:likes:${slug}`;
-const LIKED_KEY = (slug: string) => `sounez:liked:${slug}`;
+import { parseEngagementSlug } from "@/lib/engagement-slug";
+import { useLikes } from "@/lib/use-likes";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -42,45 +40,8 @@ export function EngagementBar({
   title: string;
   className?: string;
 }) {
-  const blogLike = useBlogLike();
-  const isInBlogContext = blogLike !== null;
-
-  // Local state — only used on non-blog pages (tool pages, etc.)
-  const [localLikes, setLocalLikes] = useState(0);
-  const [localLiked, setLocalLiked] = useState(false);
-  const [localPulse, setLocalPulse] = useState(false);
-
-  useEffect(() => {
-    if (isInBlogContext) return;
-    try {
-      const sl = localStorage.getItem(LIKES_KEY(slug));
-      const sLiked = localStorage.getItem(LIKED_KEY(slug));
-      if (sl) setLocalLikes(parseInt(sl, 10) || 0);
-      if (sLiked === "1") setLocalLiked(true);
-    } catch {
-      // ignore
-    }
-  }, [slug, isInBlogContext]);
-
-  const localToggleLike = () => {
-    const next = !localLiked;
-    const nextCount = Math.max(0, localLikes + (next ? 1 : -1));
-    setLocalLiked(next);
-    setLocalLikes(nextCount);
-    setLocalPulse(true);
-    setTimeout(() => setLocalPulse(false), 400);
-    try {
-      localStorage.setItem(LIKES_KEY(slug), String(nextCount));
-      localStorage.setItem(LIKED_KEY(slug), next ? "1" : "0");
-    } catch {
-      // ignore
-    }
-  };
-
-  const likes = isInBlogContext ? blogLike.likeCount : localLikes;
-  const liked = isInBlogContext ? blogLike.liked : localLiked;
-  const pulse = isInBlogContext ? blogLike.pulse : localPulse;
-  const toggleLike = isInBlogContext ? blogLike.toggleLike : localToggleLike;
+  const { contentType, slug: itemSlug } = parseEngagementSlug(slug);
+  const { count, liked, pulse, toggleLike, loading } = useLikes(contentType, itemSlug);
 
   return (
     <div
@@ -91,11 +52,12 @@ export function EngagementBar({
     >
       <button
         type="button"
-        onClick={toggleLike}
+        onClick={() => void toggleLike()}
+        disabled={loading}
         aria-pressed={liked}
         aria-label={liked ? "Remove helpful vote" : "Mark this page as helpful"}
         className={cn(
-          "group inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition active:scale-95",
+          "group inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition active:scale-95 disabled:opacity-60",
           liked
             ? "border-[#ed4956]/50 bg-[#ed4956]/10 text-[#ed4956] shadow-[0_0_0_3px_rgba(237,73,86,0.08)]"
             : "border-border bg-background hover:border-[#ed4956]/50 hover:bg-[#ed4956]/5 hover:text-[#ed4956]",
@@ -110,7 +72,9 @@ export function EngagementBar({
           )}
           aria-hidden="true"
         />
-        <span className="tabular-nums">{likes > 0 ? likes : null}</span>
+        {count !== null && count > 0 && (
+          <span className="tabular-nums">{count}</span>
+        )}
         <span className="hidden sm:inline">{liked ? "Helpful ✓" : "Helpful"}</span>
       </button>
 
@@ -126,7 +90,6 @@ export function ShareButton({
 }: {
   title: string;
   className?: string;
-  /** Used for analytics only (e.g. `tool:qr-code-generator`, `blog:my-post`). */
   shareToolSlug?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -139,7 +102,7 @@ export function ShareButton({
   const shareContext = shareToolSlug
     ? {
         content_type: (shareToolSlug.startsWith("blog:") ? "blog" : "tool") as "tool" | "blog",
-        item_id: shareToolSlug.startsWith("blog:") ? shareToolSlug.slice(5) : shareToolSlug,
+        item_id: shareToolSlug.startsWith("blog:") ? shareToolSlug.slice(5) : shareToolSlug.replace(/^tool:/, ""),
       }
     : null;
 

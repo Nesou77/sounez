@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-const LAST_UPDATED = "May 16, 2026";
+const LAST_UPDATED = "May 26, 2026";
 
 export default function TermsOfServicePage() {
   return (
@@ -28,7 +28,7 @@ export default function TermsOfServicePage() {
         </div>
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Terms of Service</h1>
         <p className="mt-4 text-muted-foreground">
-          Last updated: <time dateTime="2026-05-16">{LAST_UPDATED}</time>
+          Last updated: <time dateTime="2026-05-26">{LAST_UPDATED}</time>
         </p>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
           Please read these terms before using Sounez. By accessing or using our website and tools,
@@ -106,7 +106,18 @@ export default function TermsOfServicePage() {
               </li>
               <li>
                 Transmitting harmful, offensive, or disruptive content through any feature of the
-                website, including the contact form.
+                website, including the contact form or comment fields.
+              </li>
+              <li>
+                Uploading or processing files you do not own or lack permission to use, including
+                copyrighted documents, images, or media.
+              </li>
+              <li>
+                Using AI-generated outputs (captions, notes, descriptions, resumes) dishonestly —
+                for example cheating, impersonation, or submitting work you did not create.
+              </li>
+              <li>
+                Posting spam, promotional links, or abusive material in comments.
               </li>
               <li>
                 Attempting to reverse-engineer, decompile, or extract source code from any part of
@@ -132,8 +143,13 @@ export default function TermsOfServicePage() {
               availability, accuracy, or fitness for any specific purpose.
             </p>
             <p>
-              You are solely responsible for how you use the output from our tools. Always verify
-              important results independently before relying on them.
+              You are solely responsible for how you use the output from our tools. AI-generated
+              content may be inaccurate — review and edit it before publishing, submitting, or
+              sharing. Always verify important results independently before relying on them.
+            </p>
+            <p>
+              Free tools are offered with fair-use limits. Server-backed features may be rate-limited
+              to keep the service available for everyone.
             </p>
             <p>
               We reserve the right to modify, suspend, or discontinue any tool at any time without
@@ -149,13 +165,28 @@ export default function TermsOfServicePage() {
           <h2 className="text-xl font-bold tracking-tight">5. Files and User-Submitted Content</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
-              Most Sounez tools process files and inputs entirely within your browser. In these
-              cases, your files are never sent to our servers and we have no access to them.
+              Many Sounez tools process files and inputs in your browser. For those tools, content
+              stays on your device unless you choose to share it elsewhere.
             </p>
             <p>
-              For tools that use server-side processing (such as AI-powered tools), your input is
-              transmitted securely and used only to generate your requested result. We do not retain
-              or reuse your input data beyond the immediate response.
+              AI, PDF, and other server-backed tools may securely process the content you submit to
+              generate results. We do not retain uploads beyond what is needed to complete the
+              request. See our{" "}
+              <Link href="/privacy-policy" className="font-medium text-primary hover:underline">
+                Privacy Policy
+              </Link>{" "}
+              for details.
+            </p>
+            <p>
+              Comments you submit may be stored for moderation. We may approve, reject, or remove
+              comments at our discretion. Optional email addresses in comments are not shown publicly.
+            </p>
+            <p>
+              For copyright concerns and takedown requests, see our{" "}
+              <Link href="/dmca" className="font-medium text-primary hover:underline">
+                DMCA / Copyright
+              </Link>{" "}
+              page.
             </p>
             <p>
               You are responsible for ensuring you have the right to use any files or content you

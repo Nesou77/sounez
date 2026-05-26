@@ -14,11 +14,11 @@ import { sortBlogPostsByPopularity } from "@/lib/popularity";
 const FAQS = [
   {
     q: "Is Sounez free to use?",
-    a: "Yes. Every tool on Sounez is completely free. No account, no trial, no catch.",
+    a: "Yes. Sounez is free to use with fair-use limits on AI and server-backed tools. No account is required for most tools.",
   },
   {
     q: "Do my files get uploaded to a server?",
-    a: "No. Tools like the Image Compressor and Password Generator run entirely in your browser. Nothing leaves your device.",
+    a: "Many tools run directly in your browser (for example QR codes, word counter, password generator). AI tools, PDF conversion, and image description send the content you submit to our servers securely for processing.",
   },
   {
     q: "Can I use Sounez tools for commercial work?",
@@ -63,9 +63,9 @@ export function HomeSections() {
       <section id="popular" className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <div className="mb-10 flex items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Most used</span>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Popular tools</h2>
-            <p className="mt-2 text-muted-foreground">The tools people open most. A good place to start.</p>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Featured</span>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Featured tools</h2>
+            <p className="mt-2 text-muted-foreground">Hand-picked tools to get started quickly.</p>
           </div>
           <Link href="/tools" className="hidden text-sm font-medium text-primary-label hover:underline sm:inline">
             View all →
@@ -94,7 +94,7 @@ export function HomeSections() {
             <div>
               <h3 className="text-sm font-semibold">Private by design</h3>
               <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                Most tools process your files locally in your browser. Nothing is uploaded or stored on any server.
+                Many tools run in your browser. Server-backed tools explain what is processed before you submit.
               </p>
             </div>
           </div>
@@ -112,7 +112,7 @@ export function HomeSections() {
             <div>
               <h3 className="text-sm font-semibold">Free for personal and commercial use</h3>
               <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                All tools are free with no usage limits. Output you create is yours to use however you like.
+                Free to use with fair-use limits on AI routes. Output you create is yours to use, subject to our terms.
               </p>
             </div>
           </div>
@@ -183,7 +183,7 @@ export function HomeSections() {
               </div>
               <div className="p-6">
                 <div className="text-xs font-medium text-muted-foreground">
-                  {p.date} · {p.readTime} read
+                  {p.readTime} read
                 </div>
                 <h3 className="mt-2 text-base font-semibold leading-snug tracking-tight transition group-hover:text-primary">
                   {p.title}

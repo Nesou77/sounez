@@ -65,12 +65,12 @@ export function QrCodeClient({ tool }: { tool: Tool }) {
   return (
     <ToolPageShell
       tool={tool}
-      intro="Paste any URL, text, Wi-Fi credentials, email or phone number and download a crisp PNG QR code. Free, no account needed, runs entirely in your browser."
+      intro="Paste any URL, text, Wi-Fi credentials, email or phone number and download a crisp PNG QR code. Free to use, no account required — generated in your browser."
       features={[
         { title: "Updates in real time", desc: "Type and watch the QR code change. No generate button needed." },
         { title: "Custom colors", desc: "Match your brand with custom foreground and background colors." },
         { title: "5 export sizes", desc: "From 128px to 512px. Pick a size for print or screen." },
-        { title: "Private", desc: "Nothing is uploaded. The QR code is generated entirely in your browser." },
+        { title: "Private", desc: "QR data is generated locally in your browser — not sent to Sounez servers." },
       ]}
       howTo={[
         "Type or paste your URL or text into the input. You can also click an example to try it.",
@@ -90,6 +90,16 @@ export function QrCodeClient({ tool }: { tool: Tool }) {
         { title: "Developers", desc: "Test deep links and URLs quickly on a physical device." },
         { title: "Educators", desc: "Share lesson materials or forms with a scannable code on slides." },
       ]}
+      examples={[
+        { title: "Restaurant menu", desc: "Encode https://yourmenu.com/table-12 so diners open the right page." },
+        { title: "Wi-Fi guest access", desc: "Use the Wi-Fi example format so guests connect without typing a password." },
+      ]}
+      mistakes={[
+        "Low contrast colors that phones struggle to scan.",
+        "Printing codes too small for the scanning distance.",
+      ]}
+      privacyNote="QR data is generated in your browser. Sounez does not receive the content you encode."
+      whenNotToUse="Avoid encoding sensitive passwords in public QR codes unless you understand the security trade-offs."
     >
       <div className="grid gap-6 sm:grid-cols-2 items-start">
         {/* Controls */}

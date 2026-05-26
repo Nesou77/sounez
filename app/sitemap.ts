@@ -2,91 +2,79 @@ import type { MetadataRoute } from "next";
 import { TOOLS, CATEGORIES } from "@/data/tools";
 import { BLOG_POSTS } from "@/data/blog";
 import { getSiteUrl } from "@/lib/site-url";
+import { prisma } from "@/lib/prisma";
 
-// Fallback date for static pages without a real updatedAt.
-// Update this when you make significant content changes to static pages.
-const STATIC_LAST_MODIFIED = new Date("2026-05-01");
+async function lastModified(contentType: string, slug: string, fallback: Date): Promise<Date> {
+  try {
+    const row = await prisma.contentMeta.findUnique({
+      where: { contentType_slug: { contentType, slug } },
+    });
+    return row?.updatedAt ?? fallback;
+  } catch {
+    return fallback;
+  }
+}
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getSiteUrl();
+  const fallback = new Date();
 
-  // ── 1. Static pages (8 pages) ─────────────────────────────────────────────
-  const staticEntries: MetadataRoute.Sitemap = [
-    {
-      url: base,
-      lastModified: STATIC_LAST_MODIFIED,
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${base}/tools`,
-      lastModified: STATIC_LAST_MODIFIED,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${base}/categories`,
-      lastModified: STATIC_LAST_MODIFIED,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${base}/blog`,
-      lastModified: STATIC_LAST_MODIFIED,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: `${base}/about`,
-      lastModified: STATIC_LAST_MODIFIED,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${base}/contact`,
-      lastModified: STATIC_LAST_MODIFIED,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${base}/privacy-policy`,
-      lastModified: STATIC_LAST_MODIFIED,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${base}/terms-of-service`,
-      lastModified: STATIC_LAST_MODIFIED,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
+  const staticSlugs = [
+    { path: "", slug: "home" },
+    { path: "/tools", slug: "tools" },
+    { path: "/categories", slug: "categories" },
+    { path: "/blog", slug: "blog" },
+    { path: "/smart-packs", slug: "smart-packs" },
+    { path: "/about", slug: "about" },
+    { path: "/contact", slug: "contact" },
+    { path: "/privacy-policy", slug: "privacy-policy" },
+    { path: "/cookie-policy", slug: "cookie-policy" },
+    { path: "/terms-of-service", slug: "terms-of-service" },
+    { path: "/dmca", slug: "dmca" },
   ];
 
-  // ── 2. Category pages (3 pages) ───────────────────────────────────────────
+  const staticEntries: MetadataRoute.Sitemap = await Promise.all(
+    staticSlugs.map(async ({ path, slug }) => ({
+      url: `${base}${path}`,
+      lastModified: await lastModified("page", slug, fallback),
+      changeFrequency: path === "" ? ("weekly" as const) : ("monthly" as const),
+      priority: path === "" ? 1.0 : 0.6,
+    })),
+  );
+
   const categoryEntries: MetadataRoute.Sitemap = CATEGORIES.map((c) => ({
     url: `${base}/categories/${c.slug}`,
-    lastModified: STATIC_LAST_MODIFIED,
+    lastModified: fallback,
     changeFrequency: "monthly" as const,
     priority: 0.75,
   }));
 
-  // ── 3. Tool pages — all under /tools/{slug} ───────────────────────────────
-  // Uses updatedAt from each tool for accurate lastModified.
-  // Falls back to STATIC_LAST_MODIFIED when updatedAt is not set.
-  const toolEntries: MetadataRoute.Sitemap = TOOLS.map((t) => ({
-    url: `${base}/tools/${t.slug}`,
-    lastModified: t.updatedAt ? new Date(t.updatedAt) : STATIC_LAST_MODIFIED,
-    changeFrequency: "monthly" as const,
-    priority: t.featured ? 0.9 : 0.75,
-  }));
+  const toolEntries: MetadataRoute.Sitemap = await Promise.all(
+    TOOLS.map(async (t) => ({
+      url: `${base}/tools/${t.slug}`,
+      lastModified: await lastModified("tool", t.slug, fallback),
+      changeFrequency: "monthly" as const,
+      priority: t.featured ? 0.9 : 0.75,
+    })),
+  );
 
-  // ── 4. Blog posts ─────────────────────────────────────────────────────────
-  const blogEntries: MetadataRoute.Sitemap = BLOG_POSTS.map((p) => ({
-    url: `${base}/blog/${p.slug}`,
-    lastModified: new Date(p.updatedAt ?? p.date),
-    changeFrequency: "monthly" as const,
-    priority: 0.65,
-  }));
+  const blogEntries: MetadataRoute.Sitemap = await Promise.all(
+    BLOG_POSTS.map(async (p) => ({
+      url: `${base}/blog/${p.slug}`,
+      lastModified: await lastModified("blog", p.slug, fallback),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    })),
+  );
 
-  return [...staticEntries, ...categoryEntries, ...toolEntries, ...blogEntries];
+  const packEntries: MetadataRoute.Sitemap = await Promise.all(
+    ["social-media-pack", "product-listing-pack", "seo-image-pack"].map(async (slug) => ({
+      url: `${base}/smart-packs/${slug}`,
+      lastModified: await lastModified("smart_pack", slug, fallback),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  );
+
+  return [...staticEntries, ...categoryEntries, ...toolEntries, ...blogEntries, ...packEntries];
 }

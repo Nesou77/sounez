@@ -149,7 +149,7 @@ export function ContactClient() {
         }),
       });
 
-      let data: { ok?: boolean; error?: string } = {};
+      let data: { ok?: boolean; error?: string; message?: string } = {};
       try {
         data = await res.json();
       } catch {
@@ -163,7 +163,11 @@ export function ContactClient() {
       }
 
       setSent(true);
-      toast.success("Message sent", { description: "We'll reply within 24 hours." });
+      const devNote =
+        data.message && typeof data.message === "string" ? data.message : undefined;
+      toast.success("Message received", {
+        description: devNote ?? "Thank you. We will respond when possible.",
+      });
       trackGenerateLead({
         form_name: "contact_form",
         lead_topic: form.topic,
@@ -194,7 +198,7 @@ export function ContactClient() {
     },
     {
       q: "How long does it take to get a reply?",
-      a: "We reply to most messages within 24 hours. Complex requests may take a little longer.",
+      a: "We read every message. Response time depends on volume; email delivery must be configured on our side.",
     },
   ];
 
@@ -255,7 +259,7 @@ export function ContactClient() {
         <div>
           <div className="text-sm font-semibold">Response time</div>
           <div className="text-sm text-muted-foreground">
-            Usually within 24 hours. Reach us directly at{" "}
+            We aim to respond as soon as we can. Reach us directly at{" "}
             <a href="mailto:hello@sounez.com" className="font-medium text-primary hover:underline">
               hello@sounez.com
             </a>
@@ -374,7 +378,7 @@ export function ContactClient() {
             <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
             <div>
               <div className="font-semibold">Thanks. Your message is on its way.</div>
-              <div className="text-muted-foreground">We&apos;ll get back to you within 24 hours.</div>
+              <div className="text-muted-foreground">Thank you. We received your message.</div>
             </div>
           </div>
         )}
