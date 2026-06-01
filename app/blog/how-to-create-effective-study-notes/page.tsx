@@ -41,7 +41,7 @@ const FAQS = [
   {
     question: "Is the Study Notes Generator free?",
     answer:
-      "Yes. The Sounez Study Notes Generator is completely free. No account needed.",
+      "Yes. The Sounez Study Notes Generator is free to use and does not require an account. Heavy automated use may be limited to keep the tool available.",
   },
 ];
 

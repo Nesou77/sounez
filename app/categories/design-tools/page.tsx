@@ -6,12 +6,12 @@ import { getSiteUrl } from "@/lib/site-url";
 const count = toolsByCategory("design-tools").length;
 
 export const metadata: Metadata = {
-  title: `Design Tools | ${count} Free Tools for Designers & Developers | Sounez`,
-  description: `Free design tools: color palette generator, CSS gradient generator, favicon generator, SVG blob generator, font pairing tool, box shadow generator, background pattern generator and more. ${count} tools, no account needed.`,
+  title: `Design Tools | ${count} Tools for Colors, CSS and Web Assets | Sounez`,
+  description: `Browse ${count} design tools for palettes, CSS gradients, favicons, SVG blobs, font pairings, shadows, background patterns, and placeholders.`,
   alternates: { canonical: getSiteUrl() + "/categories/design-tools" },
   openGraph: {
     title: "Design Tools | Sounez",
-    description: "Generate colors, gradients, favicons, blobs, font pairings and CSS patterns in seconds.",
+    description: "Practical web design tools for colors, CSS details, icons, typography, and mockups.",
   },
 };
 

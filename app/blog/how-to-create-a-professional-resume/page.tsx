@@ -114,7 +114,7 @@ export default function Post() {
             <strong>Clean font</strong>: Inter, Calibri or Georgia at 10-12pt. Your name at 16-18pt.
           </li>
           <li>
-            <strong>No photos, no graphics, no colour blocks</strong>: unless you&apos;re in a creative
+            <strong>No photos, no graphics, no color blocks</strong>: unless you&apos;re in a creative
             field where visual presentation is part of the job.
           </li>
           <li>

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Write Better Social Media Captions with AI",
     description:
-      "Platform-specific caption tips, tone examples and how to use AI to write captions that actually get engagement.",
+      "Platform-specific caption tips, tone examples, and a practical way to use AI as a first draft.",
   },
 };
 
@@ -21,17 +21,17 @@ const FAQS = [
   {
     question: "How long should an Instagram caption be?",
     answer:
-      "Research consistently shows that captions between 138 and 150 characters get the highest engagement on Instagram. Longer captions (up to 2,200 characters) work well for storytelling posts, but keep the first line punchy so it shows before the 'more' cut-off.",
+      "Short captions can work well for simple posts, while longer captions can work for storytelling or educational posts. Keep the first line clear because it appears before the 'more' cut-off.",
   },
   {
     question: "Do captions affect reach on TikTok?",
     answer:
-      "Yes. TikTok's algorithm reads captions to understand your content and match it to the right audience. A clear, keyword-rich caption helps the system categorize your video correctly.",
+      "Captions help describe the video topic and can support discovery. Write for viewers first, then include natural topic words where they fit.",
   },
   {
     question: "What tone works best on LinkedIn?",
     answer:
-      "Professional but human. Avoid corporate jargon. First-person stories, lessons learned and data-backed observations consistently outperform generic promotional posts.",
+      "Professional but human is usually a safe starting point. Avoid corporate jargon, explain the context, and write like a real person with a useful point to make.",
   },
   {
     question: "Can I use AI captions without editing them?",
@@ -41,7 +41,7 @@ const FAQS = [
   {
     question: "Is the AI Caption Generator free?",
     answer:
-      "Yes. The Sounez AI Caption Generator is completely free. No account, no usage limits.",
+      "Yes. The Sounez AI Caption Generator is free to use. Fair-use limits may apply to keep the tool available.",
   },
 ];
 
@@ -59,34 +59,32 @@ export default function Post() {
         slug="how-to-write-better-social-media-captions"
         ctaTools={["ai-caption-generator", "hashtag-generator", "bio-generator"]}
         title="How to Write Better Social Media Captions with AI"
-        excerpt="A caption is the difference between a scroll and a stop. Here&apos;s how to write captions that work on every platform, and how AI can do the heavy lifting."
+        excerpt="A practical guide to writing clearer captions for Instagram, TikTok, and LinkedIn, with AI as a first-draft helper."
       >
         <p>
-          Most creators spend 80% of their time on the visual and 30 seconds on the caption. That&apos;s
-          backwards. A great image with a weak caption gets scrolled past. A mediocre image with a
-          compelling caption gets saved, shared and commented on. Captions are the part of your post
-          that actually starts a conversation.
+          Many creators spend most of their time on the visual and leave the caption until the end.
+          That is understandable, but the caption often carries the context: what the viewer is seeing,
+          why it matters, and what to do next.
         </p>
         <p>
-          This guide covers what makes a caption work on each platform, the templates that consistently
-          perform, and how to use the{" "}
+          This guide covers what makes a caption clearer on each platform, reusable caption structures,
+          and how to use the{" "}
           <a href="/ai-caption-generator">AI Caption Generator</a> to produce three ready-to-post
-          options in seconds.
+          drafts you can edit before publishing.
         </p>
 
         <h2>Why captions matter more than most creators think</h2>
         <p>
-          Every major platform&apos;s algorithm measures engagement signals: comments, saves, shares, watch
-          time. Captions directly drive comments (by asking questions), saves (by providing value) and
-          shares (by being relatable or surprising). According to{" "}
+          Captions give viewers a reason to pause, respond, save, or click. They also help explain the
+          topic of a post when the visual alone is not enough. According to{" "}
           <ExternalLink
             href="https://business.instagram.com/blog/instagram-algorithm-explained"
             type="source"
           >
             Instagram&apos;s own guidance on content ranking
           </ExternalLink>
-          , posts that generate early engagement are shown to a wider audience. Your caption is the
-          trigger for that early engagement.
+          , Instagram considers signals such as user activity and how people interact with content.
+          A clear caption can support those interactions without pretending to control the algorithm.
         </p>
 
         <PullQuote>
@@ -138,19 +136,18 @@ export default function Post() {
 
         <h3>TikTok, short, punchy, keyword-rich</h3>
         <p>
-          TikTok captions are short (max 2,200 characters, but under 150 performs best) and serve
-          double duty: they hook viewers who read before watching, and they tell the algorithm what
-          your video is about.
+          TikTok captions are often short, but they still matter. They can clarify the video, add a
+          search-friendly phrase, or ask a simple question that fits the clip.
         </p>
         <ul>
           <li>&quot;POV: you finally found a caption tool that actually works ✍️ #contentcreator #fyp&quot;</li>
-          <li>&quot;The caption mistake killing your reach (and how to fix it) #tiktokgrowth #viral&quot;</li>
+          <li>&quot;The caption mistake that makes posts harder to understand (and how to fix it) #tiktokgrowth #contenttips&quot;</li>
         </ul>
 
         <h3>LinkedIn, professional but human</h3>
         <p>
-          LinkedIn&apos;s algorithm rewards dwell time and comments. Long-form captions with a clear
-          lesson, a personal story, or a contrarian take consistently outperform short ones.
+          LinkedIn captions can support more context than most social platforms. A clear lesson,
+          practical example, or concise story usually reads better than a generic promotional post.
         </p>
         <ul>
           <li>
@@ -187,12 +184,12 @@ export default function Post() {
         <h2>Common caption mistakes to avoid</h2>
         <ul>
           <li>
-            <strong>Starting with &quot;I&quot;</strong>: Instagram&apos;s algorithm reportedly deprioritizes posts
-            starting with &quot;I&quot;. Start with a hook instead.
+            <strong>Starting without context</strong>: If the first line does not say why the post matters,
+            many readers will move on.
           </li>
           <li>
-            <strong>No CTA</strong>: If you don&apos;t ask for engagement, you won&apos;t get it. End every
-            caption with a question or a clear action.
+            <strong>No next step</strong>: A question, save reminder, link note, or simple takeaway can help
+            readers understand what to do next.
           </li>
           <li>
             <strong>Hashtag stuffing</strong>: 30 random hashtags don&apos;t help. 5-10 targeted ones do.
@@ -243,13 +240,13 @@ export default function Post() {
         </p>
         <h3>Do captions affect reach on TikTok?</h3>
         <p>
-          Yes. TikTok&apos;s algorithm reads captions to understand your content and match it to the right
-          audience. A clear, keyword-rich caption helps the system categorize your video correctly.
+          Captions help describe the video topic and can support discovery. Write for viewers first,
+          then include natural topic words where they fit.
         </p>
         <h3>What tone works best on LinkedIn?</h3>
         <p>
-          Professional but human. Avoid corporate jargon. First-person stories, lessons learned and
-          data-backed observations consistently outperform generic promotional posts.
+          Professional but human is usually a safe starting point. Avoid corporate jargon, explain the
+          context, and write like a real person with a useful point to make.
         </p>
         <h3>Can I use AI captions without editing them?</h3>
         <p>
@@ -258,19 +255,19 @@ export default function Post() {
         </p>
         <h3>Is the AI Caption Generator free?</h3>
         <p>
-          Yes. The <a href="/ai-caption-generator">Sounez AI Caption Generator</a> is completely free.
-          No account, no usage limits.
+          Yes. The <a href="/ai-caption-generator">Sounez AI Caption Generator</a> is free to use.
+          Fair-use limits may apply to keep the tool available.
         </p>
 
         <h2>Conclusion: write less, say more</h2>
         <p>
-          The best captions are specific, human and end with a reason to engage. Use the templates
+          The best captions are specific, human, and clear about the point of the post. Use the templates
           above as a starting point, let the{" "}
           <a href="/ai-caption-generator">AI Caption Generator</a> handle the first draft, and spend
           your editing time on the hook and the CTA. That&apos;s where the engagement lives. Pair your
           captions with the right hashtags using the{" "}
           <a href="/hashtag-generator">Hashtag Generator</a> and you have a complete posting workflow
-          in under two minutes.
+          without starting from a blank box.
         </p>
       </BlogPostShell>
     </>

@@ -20,7 +20,7 @@ const FAQS = [
   { question: "Can I add multiple shadows to one element?", answer: "Yes. Separate multiple shadow values with commas. For example: box-shadow: 0 2px 8px rgba(0,0,0,0.1), 0 8px 32px rgba(0,0,0,0.08);" },
   { question: "What is an inset shadow?", answer: "An inset shadow appears inside the element rather than outside. It is useful for creating pressed button effects, inner glow effects and depth on input fields." },
   { question: "Does box-shadow affect layout?", answer: "No. box-shadow does not affect the layout or size of the element. It is purely visual and does not push other elements away." },
-  { question: "Is the Box Shadow Generator free?", answer: "Yes. The Sounez Box Shadow Generator is completely free. No account needed." },
+  { question: "Is the Box Shadow Generator free?", answer: "Yes. The Sounez Box Shadow Generator is free to use and does not require an account." },
 ];
 
 export default function Post() {
@@ -148,7 +148,7 @@ box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);`}</code>
         <h3>Does box-shadow affect layout?</h3>
         <p>No. box-shadow does not affect the layout or size of the element. It is purely visual.</p>
         <h3>Is the Box Shadow Generator free?</h3>
-        <p>Yes. The <a href="/box-shadow-generator">Sounez Box Shadow Generator</a> is completely free. No account needed.</p>
+        <p>Yes. The <a href="/box-shadow-generator">Sounez Box Shadow Generator</a> is free to use and does not require an account.</p>
 
         <h2>Conclusion: subtle depth, big impact</h2>
         <p>

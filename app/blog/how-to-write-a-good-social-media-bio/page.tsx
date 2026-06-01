@@ -40,7 +40,7 @@ const FAQS = [
   {
     question: "Is the Bio Generator free?",
     answer:
-      "Yes. The Sounez Bio Generator is completely free. No account needed.",
+      "Yes. The Sounez Bio Generator is free to use and does not require an account. Heavy automated use may be limited to keep the tool available.",
   },
 ];
 
@@ -115,7 +115,7 @@ export default function Post() {
         <h3>TikTok bio (80 characters max)</h3>
         <p>
           TikTok bios are even shorter. Lead with your niche and a hook. The link in bio does the
-          heavy lifting.
+          next step.
         </p>
         <ul>
           <li>&quot;Budget recipes for students 🍜 | New video daily&quot;</li>
@@ -229,8 +229,8 @@ export default function Post() {
         </p>
         <h3>Is the Bio Generator free?</h3>
         <p>
-          Yes. The <a href="/bio-generator">Sounez Bio Generator</a> is completely free. No account
-          needed.
+          Yes. The <a href="/bio-generator">Sounez Bio Generator</a> is free to use and does not
+          require an account. Heavy automated use may be limited to keep the tool available.
         </p>
 
         <h2>Conclusion: write it once, update it quarterly</h2>

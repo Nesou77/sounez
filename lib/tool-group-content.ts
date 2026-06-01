@@ -44,7 +44,7 @@ export const TOOL_GROUP_EDITORIAL: Record<ToolGroupSlug, ToolGroupEditorial> = {
   },
   "design-css": {
     extendedIntro:
-      "Pick colours, build gradients, and copy CSS for shadows and patterns. Output is ready for stylesheets, Tailwind arbitrary values, or design handoffs - test contrast for text on coloured backgrounds.",
+      "Pick colors, build gradients, and copy CSS for shadows and patterns. Output is ready for stylesheets, Tailwind arbitrary values, or design handoffs - test contrast for text on colored backgrounds.",
     tip: "Use one elevation scale for shadows across your app so cards feel consistent.",
   },
 };

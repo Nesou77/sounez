@@ -127,7 +127,7 @@ export default function Post() {
             Two colors, one transition.
           </li>
           <li>
-            <strong>Jumping across the color wheel</strong>: blue to orange creates a grey muddy
+            <strong>Jumping across the color wheel</strong>: blue to orange creates a gray, muddy
             middle. Stay within 60-90° of the color wheel for clean transitions.
           </li>
           <li>

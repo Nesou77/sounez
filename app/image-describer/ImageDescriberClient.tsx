@@ -206,7 +206,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
   return (
     <ToolPageShell
       tool={tool}
-      intro="Upload an image and generate alt text, captions, SEO keywords and social media captions automatically. Choose a tone to get results optimised for accessibility, SEO or social media."
+      intro="Upload an image and generate alt text, captions, SEO keywords and social media captions automatically. Choose a tone to get results optimized for accessibility, SEO or social media."
       features={[
         { title: "Alt Text Generator", desc: "Generate concise, descriptive alt text for screen readers and SEO." },
         { title: "Short Caption", desc: "Get a punchy one-line caption for social media or website thumbnails." },

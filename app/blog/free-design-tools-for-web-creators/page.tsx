@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 const FAQS = [
-  { question: "Are all these tools really free?", answer: "Yes. Every tool listed is 100% free, no account required, no usage limits." },
+  { question: "Are these tools free to use?", answer: "Yes. The listed tools are free to use, and most do not require an account. Browser and device limits can still affect large files or heavy use." },
   { question: "Do these tools upload my files?", answer: "No. All tools that handle files (like the Favicon Generator) process them locally in your browser. Nothing is uploaded to any server." },
   { question: "Can I use the generated assets commercially?", answer: "Yes. All generated assets, favicons, SVG blobs, CSS code, placeholders, are yours to use in any project, personal or commercial." },
   { question: "Do I need to install anything?", answer: "No. Every tool runs directly in your browser on desktop and mobile." },
@@ -155,8 +155,8 @@ export default function Post() {
         </ol>
 
         <h2>Frequently Asked Questions</h2>
-        <h3>Are all these tools really free?</h3>
-        <p>Yes. Every tool listed is 100% free, no account required, no usage limits.</p>
+        <h3>Are these tools free to use?</h3>
+        <p>Yes. The listed tools are free to use, and most do not require an account. Browser and device limits can still affect large files or heavy use.</p>
         <h3>Do these tools upload my files?</h3>
         <p>No. All tools that handle files process them locally in your browser. Nothing is uploaded to any server.</p>
         <h3>Can I use the generated assets commercially?</h3>

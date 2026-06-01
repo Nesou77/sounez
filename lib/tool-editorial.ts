@@ -56,7 +56,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     features: [
       { title: "On-device AI", desc: "Image bytes stay in your browser; models load from a CDN." },
       { title: "PNG output", desc: "Transparency preserved for design tools." },
-      { title: "Optional fill", desc: "Add white, black, or a custom colour behind the subject." },
+      { title: "Optional fill", desc: "Add white, black, or a custom color behind the subject." },
     ],
     howTo: ["Upload PNG, JPG, or WEBP (max 10 MB).", "Preview the image.", "Run removal and check edges.", "Download PNG or add a solid background."],
     examples: [
@@ -191,30 +191,30 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     relatedSlugs: ["ai-caption-generator", "youtube-tags-generator", "bio-generator"],
   },
   "color-palette-generator": {
-    intro: "Pick a base colour or upload an image and get a harmonious palette with hex codes you can paste into CSS or Figma.",
-    whatItDoes: "Calculates related colours (complementary, analogous, etc.) and shows swatches with codes.",
+    intro: "Pick a base color or upload an image and get a harmonious palette with hex codes you can paste into CSS or Figma.",
+    whatItDoes: "Calculates related colors (complementary, analogous, etc.) and shows swatches with codes.",
     whoFor: [
       { title: "Web developers", desc: "Ship a coherent UI without opening a design app." },
       { title: "Brand starters", desc: "Explore directions before hiring a designer." },
-      { title: "Students", desc: "Learn how colour relationships work with live examples." },
+      { title: "Students", desc: "Learn how color relationships work with live examples." },
     ],
     features: [
       { title: "Harmony modes", desc: "Switch schemes and compare quickly." },
       { title: "Copy hex", desc: "One click per swatch." },
-      { title: "Image extract", desc: "Pull colours from a reference photo." },
+      { title: "Image extract", desc: "Pull colors from a reference photo." },
     ],
-    howTo: ["Choose a starting colour or image.", "Switch harmony type.", "Copy hex values you like.", "Test contrast for text pairs."],
+    howTo: ["Choose a starting color or image.", "Switch harmony type.", "Copy hex values you like.", "Test contrast for text pairs."],
     examples: [
-      { title: "SaaS landing", desc: "Blue primary + neutral greys from complementary mode." },
+      { title: "SaaS landing", desc: "Blue primary + neutral grays from complementary mode." },
       { title: "Food blog", desc: "Warm palette extracted from a soup photo." },
     ],
-    mistakes: ["Using low-contrast text on accent colours.", "Too many equally loud colours on one screen.", "Skipping accessibility check for buttons."],
+    mistakes: ["Using low-contrast text on accent colors.", "Too many equally loud colors on one screen.", "Skipping accessibility check for buttons."],
     privacyNote: "Runs in your browser. Uploaded images for extraction are not sent to Sounez servers.",
     whenNotToUse: "Print projects still need CMYK review with a professional proof.",
     faqs: [
       { q: "Commercial use?", a: "Yes - the palette you build is yours." },
       { q: "Saved palettes?", a: "Copy codes to your project file." },
-      { q: "Can I pull colours from a photo?", a: "Yes - upload an image to extract a starting palette." },
+      { q: "Can I pull colors from a photo?", a: "Yes - upload an image to extract a starting palette." },
     ],
     proTips: ["Pick one dominant, one accent, one neutral.", "Test #fff and #000 text on each swatch."],
     relatedSlugs: ["css-gradient-generator", "box-shadow-generator", "font-pairing-tool"],
@@ -232,10 +232,10 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
       { title: "Linear & radial", desc: "Switch types without starting over." },
       { title: "Copy CSS", desc: "Includes vendor-prefixed fallbacks where useful." },
     ],
-    howTo: ["Add or move colour stops.", "Set angle or centre.", "Preview on the box.", "Copy CSS into your project."],
+    howTo: ["Add or move color stops.", "Set angle or center.", "Preview on the box.", "Copy CSS into your project."],
     examples: [
       { title: "Sunset hero", desc: "Orange -> pink -> purple at 135deg behind white headline." },
-      { title: "Subtle card", desc: "Light grey radial for depth on a white dashboard." },
+      { title: "Subtle card", desc: "Light gray radial for depth on a white dashboard." },
     ],
     mistakes: ["Banding on wide gradients - add a mid stop.", "Text contrast fails on busy gradients.", "Huge gradients on every section slowing perception."],
     privacyNote: "Entirely in-browser; nothing uploaded.",
@@ -258,21 +258,21 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     features: [
       { title: "Live preview", desc: "Updates as you type." },
-      { title: "Colours & size", desc: "Brand colours within readable contrast." },
+      { title: "Colors & size", desc: "Brand colors within readable contrast." },
       { title: "PNG download", desc: "512px option for print." },
     ],
-    howTo: ["Paste URL or text.", "Check preview scans on your phone.", "Adjust size and colours.", "Download PNG."],
+    howTo: ["Paste URL or text.", "Check preview scans on your phone.", "Adjust size and colors.", "Download PNG."],
     examples: [
       { title: "Wi-Fi", desc: "WIFI:T:WPA;S:Guest;P:password;; format for guest network." },
       { title: "Menu", desc: "https://yoursite.com/menu-table-4 for table tents." },
     ],
-    mistakes: ["Low contrast colours phones cannot read.", "Tiny print size.", "Encoding passwords in public QRs."],
+    mistakes: ["Low contrast colors phones cannot read.", "Tiny print size.", "Encoding passwords in public QRs."],
     privacyNote: "Generated locally - Sounez does not receive your QR content.",
     whenNotToUse: "Do not point public codes at staging logins or private docs.",
     faqs: [
       { q: "Do codes expire?", a: "The image is static; the destination must stay live." },
       { q: "Commercial use?", a: "Yes." },
-      { q: "Can I brand the QR colours?", a: "Yes - pick colours with enough contrast for phone cameras." },
+      { q: "Can I brand the QR colors?", a: "Yes - pick colors with enough contrast for phone cameras." },
     ],
     proTips: ["Test scan distance before printing 500 flyers.", "Use 512px for print."],
     relatedSlugs: ["word-counter", "password-generator", "favicon-generator"],
@@ -306,6 +306,35 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     proTips: ["Strip formatting in a plain editor first.", "Use reading time for video scripts."],
     relatedSlugs: ["text-case-converter", "ai-caption-generator", "study-notes-generator"],
   },
+  calculator: {
+    intro: "Run quick everyday calculations for percentages, totals, square roots, and simple arithmetic without opening a spreadsheet.",
+    whatItDoes: "Performs basic math in your browser and keeps a short on-page history so you can compare recent results during the same session.",
+    whoFor: [
+      { title: "Shoppers", desc: "Check discounts, tax estimates, and split totals before you buy." },
+      { title: "Students", desc: "Work through simple arithmetic while studying or checking notes." },
+      { title: "Freelancers", desc: "Estimate quick totals, percentages, and small invoice adjustments." },
+    ],
+    features: [
+      { title: "Keyboard support", desc: "Use number keys, operators, Enter, and Escape when you prefer typing." },
+      { title: "Recent history", desc: "Keep the last few calculations visible until you leave the page." },
+      { title: "Common functions", desc: "Includes percentages, sign switching, and square roots for everyday math." },
+    ],
+    howTo: ["Enter numbers with the buttons or keyboard.", "Choose an operation such as plus, minus, multiply, divide, percent, or square root.", "Press equals or Enter, then compare the result with the history if needed."],
+    examples: [
+      { title: "Sale price", desc: "Turn 25% into 0.25, subtract from the original price, and check the final amount." },
+      { title: "Shared bill", desc: "Add meal items, divide by the number of people, then round manually for tip or tax." },
+    ],
+    mistakes: ["Using it for tax, payroll, or legal calculations that need a formal record.", "Closing the tab before copying a result you still need.", "Forgetting that percentage buttons convert the displayed number into a decimal."],
+    privacyNote: "Calculations run in your browser. Sounez does not receive the numbers you enter.",
+    whenNotToUse: "Use a spreadsheet, accounting app, or professional calculator when you need formulas, audit history, exact financial records, or scientific notation.",
+    faqs: [
+      { q: "Is my calculation stored?", a: "No. The short history stays only in the open page and disappears when the session ends." },
+      { q: "Can I use the keyboard?", a: "Yes. Number keys, common operators, Enter, Escape, and Backspace are supported." },
+      { q: "Is this for advanced math?", a: "No. It is meant for everyday arithmetic, percentages, and quick checks." },
+    ],
+    proTips: ["Use a spreadsheet when you need to save or audit work.", "Round money manually based on the rules you need to follow."],
+    relatedSlugs: ["word-counter", "study-notes-generator", "password-generator"],
+  },
   "password-generator": {
     intro: "Create a strong random password with the length and symbols you need, then copy it into your manager.",
     whatItDoes: "Uses secure randomness in your browser to build a password string.",
@@ -326,7 +355,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     mistakes: ["Pasting into Slack.", "Generating once and reusing everywhere.", "Losing it because you did not save in a manager."],
     privacyNote: "Generated locally; Sounez never sees your password.",
-    whenNotToUse: "Not for memorised PINs you type often - consider a manager instead.",
+    whenNotToUse: "Not for memorized PINs you type often - consider a manager instead.",
     faqs: [
       { q: "How random is it?", a: "Uses the browser crypto API." },
       { q: "Stored?", a: "No." },
@@ -340,7 +369,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     whatItDoes: "Transforms the casing of your pasted string instantly.",
     whoFor: [
       { title: "Developers", desc: "Fix constants and CSS class names." },
-      { title: "Editors", desc: "Normalise headings from ALL CAPS drafts." },
+      { title: "Editors", desc: "Normalize headings from ALL CAPS drafts." },
       { title: "Data cleanup", desc: "Fix exported CSV labels." },
     ],
     features: [
@@ -450,35 +479,6 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     proTips: ["One clear outcome per bio.", "Put the link closest to the action you want."],
     relatedSlugs: ["hashtag-generator", "ai-caption-generator", "tiktok-money-calculator"],
-  },
-  calculator: {
-    intro: "A simple calculator in the browser for quick maths - no app install, no history saved on our side.",
-    whatItDoes: "Evaluates basic arithmetic with standard buttons.",
-    whoFor: [
-      { title: "Students", desc: "Check homework steps." },
-      { title: "Shoppers", desc: "Compare unit prices." },
-      { title: "Anyone at a desk", desc: "One-tab arithmetic." },
-    ],
-    features: [
-      { title: "Keyboard friendly", desc: "Click or type digits." },
-      { title: "Instant", desc: "No round trip to a server." },
-      { title: "Lightweight", desc: "Opens fast on mobile." },
-    ],
-    howTo: ["Click or type your expression.", "Press equals.", "Clear and start again."],
-    examples: [
-      { title: "Tip split", desc: "Bill divided by 4, plus the tip percentage." },
-      { title: "Margin", desc: "Selling price minus cost." },
-    ],
-    mistakes: ["Order of operations surprises - use parentheses mentally.", "Relying on browser calc for tax filings."],
-    privacyNote: "Runs locally; we do not log calculations.",
-    whenNotToUse: "Scientific or graphing needs require a specialised app.",
-    faqs: [
-      { q: "Saved history?", a: "No." },
-      { q: "Offline?", a: "Works once the page is loaded." },
-      { q: "Percentages and roots?", a: "Standard arithmetic including common percent operations on supported buttons." },
-    ],
-    proTips: ["Double-check financial decisions with a spreadsheet."],
-    relatedSlugs: ["word-counter", "tiktok-money-calculator", "study-notes-generator"],
   },
   "business-name-generator": {
     intro: "Describe your business and get name ideas you can check for domains and trademarks yourself.",
@@ -605,7 +605,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
       { title: "Archivers", desc: "Batch-friendly single files." },
     ],
     features: [
-      { title: "Quality control", desc: "Balance size and artefacts." },
+      { title: "Quality control", desc: "Balance size and artifacts." },
       { title: "Preview", desc: "Check before download." },
       { title: "Local", desc: "No upload to Sounez." },
     ],
@@ -620,7 +620,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     faqs: [
       { q: "Transparency?", a: "Lost in JPG - use PNG or WebP instead." },
       { q: "Batch?", a: "Convert one at a time on this page." },
-      { q: "Quality slider?", a: "Yes - lower quality means smaller files and more visible artefacts." },
+      { q: "Quality slider?", a: "Yes - lower quality means smaller files and more visible artifacts." },
     ],
     proTips: ["Use 85% for photos, higher for text-heavy images.", "Keep originals archived."],
     relatedSlugs: ["image-compressor", "image-describer", "background-remover"],
@@ -655,7 +655,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     relatedSlugs: ["image-compressor", "png-to-jpg-converter", "color-palette-generator"],
   },
   "svg-blob-generator": {
-    intro: "Tweak random seeds and colours to export an SVG blob shape for backgrounds and illustrations.",
+    intro: "Tweak random seeds and colors to export an SVG blob shape for backgrounds and illustrations.",
     whatItDoes: "Generates organic SVG paths you can download and drop into HTML or design tools.",
     whoFor: [
       { title: "Landing pages", desc: "Soft shapes behind hero text." },
@@ -663,11 +663,11 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
       { title: "Developers", desc: "Inline SVG with small file size." },
     ],
     features: [
-      { title: "Randomise", desc: "New shapes until one fits." },
+      { title: "Randomize", desc: "New shapes until one fits." },
       { title: "Colour control", desc: "Match brand hex codes." },
       { title: "SVG copy", desc: "Paste into code or Figma." },
     ],
-    howTo: ["Adjust complexity and colour.", "Randomise until you like it.", "Copy SVG or download."],
+    howTo: ["Adjust complexity and color.", "Randomize until you like it.", "Copy SVG or download."],
     examples: [
       { title: "SaaS hero", desc: "Purple blob at 20% opacity behind headline." },
       { title: "Newsletter header", desc: "Small blob beside logo." },
@@ -680,7 +680,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
       { q: "Animate?", a: "Add CSS yourself if needed." },
       { q: "What format do I get?", a: "SVG markup to paste inline or save as a file." },
     ],
-    proTips: ["Lower opacity for backgrounds.", "Pair with a solid fallback colour."],
+    proTips: ["Lower opacity for backgrounds.", "Pair with a solid fallback color."],
     relatedSlugs: ["background-pattern-generator", "css-gradient-generator", "color-palette-generator"],
   },
   "font-pairing-tool": {
@@ -713,7 +713,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     relatedSlugs: ["color-palette-generator", "css-gradient-generator", "box-shadow-generator"],
   },
   "image-placeholder-generator": {
-    intro: "Set width, height, colours, and label text to download a placeholder image for mockups.",
+    intro: "Set width, height, colors, and label text to download a placeholder image for mockups.",
     whatItDoes: "Renders a simple SVG or PNG placeholder with your dimensions.",
     whoFor: [
       { title: "Developers", desc: "Wireframes before real assets exist." },
@@ -722,12 +722,12 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     features: [
       { title: "Exact pixels", desc: "Match component sizes." },
-      { title: "Custom colours", desc: "Match wireframe palette." },
+      { title: "Custom colors", desc: "Match wireframe palette." },
       { title: "Label text", desc: "Show dimensions on the image." },
     ],
-    howTo: ["Enter width and height.", "Pick colours and label.", "Download SVG or PNG."],
+    howTo: ["Enter width and height.", "Pick colors and label.", "Download SVG or PNG."],
     examples: [
-      { title: "Card grid", desc: "400x300 grey blocks in a Figma handoff." },
+      { title: "Card grid", desc: "400x300 gray blocks in a Figma handoff." },
       { title: "Hero", desc: "1920x1080 labelled placeholder." },
     ],
     mistakes: ["Shipping placeholders to production.", "Wrong aspect ratio for real photos later."],
@@ -742,7 +742,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     relatedSlugs: ["image-compressor", "favicon-generator", "background-pattern-generator"],
   },
   "box-shadow-generator": {
-    intro: "Adjust blur, spread, and colour on a box, then copy the CSS `box-shadow` value.",
+    intro: "Adjust blur, spread, and color on a box, then copy the CSS `box-shadow` value.",
     whatItDoes: "Live-previews shadow layers and outputs CSS.",
     whoFor: [
       { title: "Front-end devs", desc: "Card elevation without guessing values." },
@@ -783,9 +783,9 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
       { title: "Colour control", desc: "Match light or dark UI." },
       { title: "Copy CSS", desc: "Paste into global or module CSS." },
     ],
-    howTo: ["Choose pattern.", "Set size and colour.", "Preview.", "Copy CSS."],
+    howTo: ["Choose pattern.", "Set size and color.", "Preview.", "Copy CSS."],
     examples: [
-      { title: "Footer", desc: "Light dot grid on grey background." },
+      { title: "Footer", desc: "Light dot grid on gray background." },
       { title: "Hero", desc: "Wide line pattern at low opacity." },
     ],
     mistakes: ["High contrast patterns behind text.", "Busy patterns on mobile.", "Animating patterns without need."],

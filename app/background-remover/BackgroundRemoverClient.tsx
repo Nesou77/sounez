@@ -64,7 +64,7 @@ const FAQS = [
   },
   {
     q: "Is my image sent to a server?",
-    a: "No. Your image is processed entirely in your browser using on-device AI (WebAssembly). It never leaves your device - no uploads, no server, no API key required.",
+    a: "No. Your image is processed in your browser using on-device AI (WebAssembly). Sounez does not receive the image file.",
   },
   {
     q: "What file formats are supported?",
@@ -96,7 +96,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
   const [bgColor, setBgColor] = useState<BgColor>("transparent");
   const [customColor, setCustomColor] = useState("#ffffff");
   const [errorMsg, setErrorMsg] = useState<string>("");
-  const [processingLabel, setProcessingLabel] = useState("Removing background…");
+  const [processingLabel, setProcessingLabel] = useState("Removing background...");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useToolView(tool);
@@ -147,7 +147,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
     setProcessingLabel("Loading AI model - this may take a moment on the first run…");
 
     try {
-      setProcessingLabel("Removing background - please wait…");
+      setProcessingLabel("Removing background - please wait...");
       const blob = await runOnDeviceRemoval(file);
       setResultUrl(URL.createObjectURL(blob));
       setStage("done");
@@ -233,7 +233,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       examples={[
         { title: "Marketplace listing", desc: "Product on a busy table -> transparent PNG on white for Amazon main image rules." },
         { title: "Profile photo", desc: "Selfie with cluttered room -> cutout for LinkedIn banner composite." },
-        { title: "Sticker asset", desc: "Logo PNG with grey backdrop -> transparent file for Slack or Discord emoji." },
+        { title: "Sticker asset", desc: "Logo PNG with gray backdrop -> transparent file for Slack or Discord emoji." },
       ]}
       mistakes={[
         "Expecting perfect hair on low-contrast backgrounds - fine strands may need touch-up.",

@@ -49,12 +49,12 @@ export const metadata: Metadata = {
     template: "%s | Sounez",
   },
   description:
-    "Free online tools for creators, designers and everyday productivity. QR codes, passwords, image compression, color palettes and more. No account needed.",
+    "Free online tools for creators, designers and everyday productivity. QR codes, passwords, image compression, color palettes and more. No account needed for most tools.",
   authors: [{ name: "Sounez" }],
   openGraph: {
     title: "Sounez | Free Online Tools",
     description:
-      "Free, fast tools for creators, designers and everyday productivity. No account needed.",
+      "Practical tools for creators, designers and everyday productivity. No account needed for most tools.",
     type: "website",
     siteName: "Sounez",
     locale: "en_US",

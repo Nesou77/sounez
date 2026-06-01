@@ -6,12 +6,12 @@ import { getSiteUrl } from "@/lib/site-url";
 const count = toolsByCategory("utility-tools").length;
 
 export const metadata: Metadata = {
-  title: `Utility Tools | ${count} Free Productivity Tools | Sounez`,
-  description: `Free utility tools: QR code generator, password generator, word counter, image compressor, calculator, resume generator, study notes generator and more. ${count} tools, no account needed.`,
+  title: `Utility Tools | ${count} Tools for Files, Text and Everyday Tasks | Sounez`,
+  description: `Browse ${count} utility tools for QR codes, passwords, word counts, image compression, calculators, resumes, study notes, and file conversion.`,
   alternates: { canonical: getSiteUrl() + "/categories/utility-tools" },
   openGraph: {
     title: "Utility Tools | Sounez",
-    description: "Everyday productivity tools. Fast, free and private.",
+    description: "Everyday tools for file, text, image, math, and study tasks with clear privacy notes.",
   },
 };
 

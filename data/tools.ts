@@ -173,14 +173,14 @@ export const TOOLS: Tool[] = [
   {
     slug: "calculator",
     name: "Calculator",
-    description: "A clean, fast calculator for everyday maths. Handles basic operations, percentages and square roots.",
+    description: "A clean, fast calculator for everyday math. Handles basic operations, percentages and square roots.",
     category: "utility-tools",
     emoji: "🧮",
     keywords: ["calculator", "online calculator", "free calculator", "percentage calculator"],
     seoTitle: "Free Online Calculator | Simple Calculator Tool | Sounez",
     seoDescription: "Use this free online calculator for quick addition, subtraction, multiplication, division and percentage calculations.",
     ogTitle: "Free Online Calculator | Sounez",
-    ogDescription: "A clean, fast calculator for everyday maths. Runs entirely in your browser.",
+    ogDescription: "A clean, fast calculator for everyday math. Runs entirely in your browser.",
   },
   {
     slug: "business-name-generator",
@@ -238,7 +238,7 @@ export const TOOLS: Tool[] = [
     emoji: "🖼️",
     keywords: ["png to jpg", "image converter", "convert png", "png jpg"],
     seoTitle: "PNG to JPG Converter, Free, Batch & Online | Sounez",
-    seoDescription: "Convert PNG to JPG free online, batch convert multiple files at once, adjust quality, and download as ZIP. Runs entirely in your browser. No uploads, no account.",
+    seoDescription: "Convert PNG to JPG online, batch convert multiple files at once, adjust quality, and download as ZIP. Runs entirely in your browser with no upload to Sounez.",
     ogTitle: "PNG to JPG Converter, Free Batch Conversion Online",
     ogDescription: "Convert one or many PNG files to JPG right in your browser. Batch processing, quality control, ZIP download. Your images never leave your device.",
   },
@@ -329,7 +329,7 @@ export const CATEGORIES = [
   {
     slug: "design-tools",
     name: "Design Tools",
-    description: "Pick colours, build gradients, export favicons, and copy CSS for shadows and patterns - without opening a full design suite.",
+    description: "Pick colors, build gradients, export favicons, and copy CSS for shadows and patterns - without opening a full design suite.",
     emoji: "🎨",
   },
   {

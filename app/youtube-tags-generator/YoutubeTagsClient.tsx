@@ -60,7 +60,7 @@ export function YoutubeTagsClient({ tool }: { tool: Tool }) {
         { title: "25 tags instantly", desc: "One keyword generates a full set of SEO-relevant tags." },
         { title: "Copy all at once", desc: "Paste the full comma-separated list straight into YouTube Studio." },
         { title: "Copy individual tags", desc: "Click any tag to copy just that one. Remove tags you don't need." },
-        { title: "Free", desc: "No signup, no limits." },
+        { title: "Free", desc: "No signup. Heavy automated use may be limited to keep the tool available." },
       ]}
       howTo={[
         "Enter your video's main keyword in the box, then press Enter or click Generate.",

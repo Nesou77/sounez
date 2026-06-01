@@ -40,7 +40,7 @@ const FAQS = [
   {
     question: "Is the Website Idea Generator free?",
     answer:
-      "Yes. The Sounez Website Idea Generator is completely free. No account needed.",
+      "Yes. The Sounez Website Idea Generator is free to use and does not require an account. Heavy automated use may be limited to keep the tool available.",
   },
 ];
 
@@ -279,7 +279,7 @@ export default function Post() {
           The fastest path to a successful website is finding a real problem, building the smallest
           possible solution, and getting it in front of real users before adding anything else. Use
           the <a href="/website-idea-generator">Website Idea Generator</a> to spark the process,
-          then validate your favourite idea with real audience research before writing a single line
+          then validate your favorite idea with real audience research before writing a single line
           of code. Once you have a concept, use the{" "}
           <a href="/business-name-generator">Business Name Generator</a> to find a name that fits.
         </p>

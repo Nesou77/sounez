@@ -184,7 +184,7 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
   return (
     <ToolPageShell
       tool={tool}
-      intro="A clean, fast calculator for everyday maths. Runs in your browser. No data is sent anywhere."
+      intro="A clean, fast calculator for everyday math. Runs in your browser. No data is sent anywhere."
       features={[
         {
           title: "Keyboard support",
@@ -196,7 +196,7 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
         },
         {
           title: "Percentage & square root",
-          desc: "Beyond basic maths without switching apps.",
+          desc: "Beyond basic math without switching apps.",
         },
       ]}
       howTo={[

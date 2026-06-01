@@ -357,7 +357,7 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
         },
         {
           q: "Can I compress PNG images?",
-          a: "Yes. PNG compression in this tool re-encodes the image with reduced colour data. For the smallest PNG file, try converting to WebP instead, which typically produces smaller files than PNG at the same quality.",
+          a: "Yes. PNG compression in this tool re-encodes the image with reduced color data. For the smallest PNG file, try converting to WebP instead, which typically produces smaller files than PNG at the same quality.",
         },
         {
           q: "What is WebP and should I use it?",

@@ -95,7 +95,7 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
       faqs={[
         { q: "Is this free?", a: "Yes. Free to use with fair-use rate limits. No account required." },
         { q: "Does it use AI?", a: "Yes. Your topic is sent securely to our server for AI caption generation (Google Gemini when configured)." },
-        { q: "Can I edit the captions?", a: "Copy and paste into your favourite editor to tweak them." },
+        { q: "Can I edit the captions?", a: "Copy and paste into your favorite editor to tweak them." },
       ]}
       examples={[
         { title: "Product launch", desc: "Topic: matte black water bottle on marble - get three Instagram captions with a professional tone." },

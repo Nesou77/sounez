@@ -166,7 +166,7 @@ export default function PrivacyPolicyPage() {
             <ul className="ml-5 list-disc space-y-1.5">
               <li>Remember your preferences and settings.</li>
               <li>Understand how visitors use the website (analytics).</li>
-              <li>Deliver and personalise advertisements (advertising cookies).</li>
+              <li>Deliver and personalize advertisements (advertising cookies).</li>
               <li>Measure the performance of ad campaigns.</li>
             </ul>
             <p>
@@ -209,7 +209,7 @@ export default function PrivacyPolicyPage() {
               site or other sites on the internet.
             </p>
             <p>
-              You can opt out of personalised advertising by visiting{" "}
+              You can opt out of personalized advertising by visiting{" "}
               <a
                 href="https://www.google.com/settings/ads"
                 target="_blank"
@@ -260,8 +260,8 @@ export default function PrivacyPolicyPage() {
               <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_personalization</code> -
               default to <strong className="text-foreground">denied</strong>. This means no
               cookies are set, no personal data is shared with Google for advertising or analytics
-              purposes, and only non-personalised ads may be shown until consent is updated. Google
-              may use cookieless pings and conversion modelling in this state, which do not involve
+              purposes, and only non-personalized ads may be shown until consent is updated. Google
+              may use cookieless pings and conversion modeling in this state, which do not involve
               personal data. You can manage your consent preferences at any time through your
               browser settings or via the opt-out links above.
             </p>

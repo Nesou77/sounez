@@ -22,7 +22,7 @@ const jsonLd = [
     browserRequirements: "Requires a modern browser with Canvas API support",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description:
-      "Convert one or many PNG images to JPG in your browser. Batch conversion, adjustable quality, and ZIP download, no uploads, no account required.",
+      "Convert PNG images to JPG in your browser. Batch conversion, adjustable quality, and ZIP download with no upload to Sounez.",
     featureList: [
       "Batch PNG to JPG conversion",
       "Adjustable output quality",
@@ -37,7 +37,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: "How to convert PNG to JPG online",
-    description: "Convert PNG images to JPG for free in your browser, no upload, no account needed.",
+    description: "Convert PNG images to JPG in your browser, with adjustable quality and no upload to Sounez.",
     totalTime: "PT1M",
     tool: [{ "@type": "HowToTool", name: "PNG to JPG Converter by Sounez", url: canonical }],
     step: [
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   ...toolMetadata(tool!, {
     title: "PNG to JPG Converter, Free, Batch & Online | Sounez",
     description:
-      "Convert PNG to JPG free online, batch convert multiple files at once, adjust quality, and download as ZIP. Runs entirely in your browser. No uploads, no account.",
+      "Convert PNG to JPG online, batch convert multiple files at once, adjust quality, and download as ZIP. Runs entirely in your browser with no upload to Sounez.",
   }),
   openGraph: {
     type: "website",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     url: canonical,
     title: "PNG to JPG Converter, Free Batch Conversion Online",
     description:
-      "Convert one or many PNG files to JPG right in your browser. Batch processing, quality control, ZIP download. Your images never leave your device.",
+      "Convert PNG files to JPG right in your browser. Batch processing, quality control, and ZIP download. Your images stay on your device.",
     images: [
       {
         url: `${siteUrl}/og/png-to-jpg-converter.webp`,
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     site: "@sounez",
     title: "PNG to JPG Converter, Free Batch Conversion",
     description:
-      "Batch convert PNG images to JPG online. Runs in your browser, nothing is uploaded. Free, no account needed.",
+      "Batch convert PNG images to JPG online. Runs in your browser, with no upload to Sounez.",
     images: [`${siteUrl}/og/png-to-jpg-converter.webp`],
   },
 };

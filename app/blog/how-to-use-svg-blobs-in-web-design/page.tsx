@@ -20,7 +20,7 @@ const FAQS = [
   { question: "Are SVG blobs good for performance?", answer: "Yes. SVG files are typically just a few hundred bytes. They scale to any size without quality loss and do not require HTTP requests for image files." },
   { question: "Can I animate SVG blobs?", answer: "Yes. SVG paths can be animated with CSS or JavaScript. Morphing between two blob shapes creates a fluid, organic animation effect." },
   { question: "Do SVG blobs work on all browsers?", answer: "Yes. SVG has been supported in all major browsers since 2011. There are no compatibility concerns for modern web projects." },
-  { question: "Is the SVG Blob Generator free?", answer: "Yes. The Sounez SVG Blob Generator is completely free. No account needed." },
+  { question: "Is the SVG Blob Generator free?", answer: "Yes. The Sounez SVG Blob Generator is free to use and does not require an account." },
 ];
 
 export default function Post() {
@@ -144,7 +144,7 @@ export default function Post() {
         <h3>Do SVG blobs work on all browsers?</h3>
         <p>Yes. SVG has been supported in all major browsers since 2011. There are no compatibility concerns for modern web projects.</p>
         <h3>Is the SVG Blob Generator free?</h3>
-        <p>Yes. The <a href="/svg-blob-generator">Sounez SVG Blob Generator</a> is completely free. No account needed.</p>
+        <p>Yes. The <a href="/svg-blob-generator">Sounez SVG Blob Generator</a> is free to use and does not require an account.</p>
 
         <h2>Conclusion: add organic life to your layouts</h2>
         <p>

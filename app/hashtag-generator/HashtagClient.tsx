@@ -78,7 +78,7 @@ export function HashtagClient({ tool }: { tool: Tool }) {
         { title: "Platform-specific sets", desc: "Switch between Instagram, TikTok and YouTube to get tags tailored to each platform's style." },
         { title: "Copy all at once", desc: "One click copies the full set as space-separated hashtags." },
         { title: "Copy or remove individual tags", desc: "Click any tag to copy just that one. Remove tags that don't fit." },
-        { title: "Free", desc: "No signup, no limits." },
+        { title: "Free", desc: "No signup. Heavy automated use may be limited to keep the tool available." },
       ]}
       howTo={[
         "Type your topic keyword, then select a platform.",

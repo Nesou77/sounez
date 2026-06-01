@@ -384,11 +384,11 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
   return (
     <ToolPageShell
       tool={tool}
-      intro="Convert one or many PNG files to JPG right in your browser, no uploads, no account, no limits. All processing runs locally on your device."
+      intro="Convert PNG files to JPG right in your browser. All processing runs locally on your device, with adjustable quality and ZIP download."
       features={[
         {
           title: "Batch conversion",
-          desc: "Drop dozens of PNGs at once and convert them all in parallel with a single click.",
+          desc: "Drop multiple PNGs at once and convert them in one batch.",
         },
         {
           title: "Quality control",
@@ -408,7 +408,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
         },
       ]}
       howTo={[
-        "Drop your PNG files (any amount) onto the upload area, or click to browse.",
+        "Drop your PNG files onto the upload area, or click to browse.",
         "Adjust the quality slider, lower means smaller files, higher means better quality.",
         "Click Convert All to process every image at once.",
         "Download individual JPGs or click Download ZIP for everything in one file.",
@@ -416,7 +416,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
       faqs={[
         {
           q: "Is there a limit on how many files I can convert?",
-          a: "No. You can convert as many PNG files as you like in one batch. Very large files or hundreds of images may be slow depending on your device.",
+          a: "There is no fixed account limit, but very large files or very large batches may be slow depending on your device.",
         },
         {
           q: "Will transparent areas be preserved?",
@@ -464,7 +464,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
             {totalItems > 0 ? "Drop more PNGs to add them" : "Drop your PNG files here"}
           </p>
           <p className="mt-0.5 text-sm text-muted-foreground">
-            {totalItems > 0 ? "or click to browse" : "Any number of files, or click to browse"}
+            {totalItems > 0 ? "or click to browse" : "Select one or more files, or click to browse"}
           </p>
         </div>
         <input
@@ -522,7 +522,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
                 <p className="mt-0.5 font-semibold">
                   {fmt(totalConvertedSize)}
                   {totalSavings !== null && (
-                    <span className="ml-1 text-xs font-medium text-emerald-600">−{totalSavings}%</span>
+                    <span className="ml-1 text-xs font-medium text-emerald-600">-{totalSavings}%</span>
                   )}
                 </p>
               </div>
@@ -538,7 +538,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isAnyConverting ? (
-                  <><Loader2 className="h-4 w-4 animate-spin" />Converting…</>
+                  <><Loader2 className="h-4 w-4 animate-spin" />Converting...</>
                 ) : (
                   <><ZapIcon className="h-4 w-4" />Convert {waitingItems.length > 1 ? `All ${waitingItems.length}` : "1"}</>
                 )}

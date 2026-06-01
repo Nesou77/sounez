@@ -51,7 +51,7 @@ export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
   },
   "design-tools": {
     extendedIntro:
-      "Design tools on Sounez focus on quick decisions: pick colours, build gradients, export favicons, or copy CSS for shadows and patterns. They suit landing pages, side projects, and handoffs - not full print production without a final proof.",
+      "Design tools on Sounez focus on quick decisions: pick colors, build gradients, export favicons, or copy CSS for shadows and patterns. They suit landing pages, side projects, and handoffs - not full print production without a final proof.",
     useCases: [
       {
         title: "New landing page",
@@ -67,14 +67,14 @@ export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
       },
     ],
     tips: [
-      "Test text contrast on every colour you use for buttons and links.",
+      "Test text contrast on every color you use for buttons and links.",
       "Font previews load from Google Fonts - self-host if your project requires it.",
       "Export SVG blobs at low opacity behind headlines so type stays readable.",
     ],
     faqs: [
       {
         q: "Can I use palettes and CSS commercially?",
-        a: "Yes. Generated colours and code are yours to use in client and personal work.",
+        a: "Yes. Generated colors and code are yours to use in client and personal work.",
       },
       {
         q: "Do design tools store my uploads?",

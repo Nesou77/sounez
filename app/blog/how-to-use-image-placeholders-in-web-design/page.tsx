@@ -20,7 +20,7 @@ const FAQS = [
   { question: "Why use a local placeholder generator instead of an external service?", answer: "External placeholder services like placehold.co or via.placeholder.com require an internet connection and add an external dependency. A local generator works offline and keeps your project self-contained." },
   { question: "What is the difference between SVG and PNG placeholders?", answer: "SVG placeholders are resolution-independent and extremely small (a few hundred bytes). PNG placeholders are raster images that look identical at their specified size but do not scale as cleanly." },
   { question: "Can I use placeholder images in production?", answer: "No. Placeholders are for development and design only. Replace them with real images before launching." },
-  { question: "Is the Image Placeholder Generator free?", answer: "Yes. The Sounez Image Placeholder Generator is completely free. No account needed." },
+  { question: "Is the Image Placeholder Generator free?", answer: "Yes. The Sounez Image Placeholder Generator is free to use and does not require an account." },
 ];
 
 export default function Post() {
@@ -144,7 +144,7 @@ export default function Post() {
         <h3>Can I use placeholder images in production?</h3>
         <p>No. Placeholders are for development and design only. Replace them with real images before launching.</p>
         <h3>Is the Image Placeholder Generator free?</h3>
-        <p>Yes. The <a href="/image-placeholder-generator">Sounez Image Placeholder Generator</a> is completely free. No account needed.</p>
+        <p>Yes. The <a href="/image-placeholder-generator">Sounez Image Placeholder Generator</a> is free to use and does not require an account.</p>
 
         <h2>Conclusion: keep your layouts honest</h2>
         <p>

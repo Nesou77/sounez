@@ -39,7 +39,7 @@ function buildPrompt(tone: Tone): string {
   const toneInstructions: Record<Tone, string> = {
     descriptive: "Provide a neutral, factual description. Focus on subjects, objects, setting, colors, and composition.",
     accessibility: "Write concise alt text for screen readers. Be specific, under 125 characters if possible. Most important content first.",
-    seo: "Generate SEO-optimised content with keywords a user might search for. Include descriptive terms for subject, setting, and context.",
+    seo: "Generate SEO-optimized content with keywords a user might search for. Include descriptive terms for subject, setting, and context.",
     social: "Write engaging social media content. Be conversational, use relevant emojis, include 3-5 hashtags at the end.",
   };
 

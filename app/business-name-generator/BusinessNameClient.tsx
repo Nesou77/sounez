@@ -84,7 +84,7 @@ export function BusinessNameClient({ tool }: { tool: Tool }) {
       howTo={[
         "Enter your industry and any keywords you like.",
         "Choose a name style.",
-        "Click Generate and copy your favourite name.",
+        "Click Generate and copy your favorite name.",
       ]}
       faqs={[
         { q: "Are these names trademarked?", a: "No check is done for trademarks. Always search your country's trademark register before using a name commercially." },

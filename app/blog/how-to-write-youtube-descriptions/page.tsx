@@ -5,19 +5,19 @@ import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 
 export const metadata: Metadata = {
-  title: "How to Write YouTube Descriptions That Actually Get Views (2026) | Sounez",
+  title: "How to Write Better YouTube Descriptions (2026) | Sounez",
   description:
-    "Most creators ignore the YouTube description box. Here's why that's a mistake, and a step-by-step guide to writing descriptions that rank and convert.",
+    "Learn how to write clearer YouTube descriptions with useful summaries, timestamps, links, hashtags, and natural keywords.",
   alternates: { canonical: getSiteUrl() + "/blog/how-to-write-youtube-descriptions" },
   openGraph: {
-    title: "How to Write YouTube Descriptions That Get Views",
-    description: "The description box is free SEO real estate. Here's how to use it.",
+    title: "How to Write Better YouTube Descriptions",
+    description: "Use summaries, timestamps, links, hashtags, and natural keywords to make descriptions more useful.",
   },
 };
 
 const FAQS = [
-  { question: "Do YouTube descriptions really affect rankings?", answer: "Yes. YouTube's algorithm uses the description to understand video content and match it to search queries. A keyword-rich, well-structured description consistently outperforms a blank or thin one." },
-  { question: "Should I use the same description template for every video?", answer: "Use the same structure, but write unique content for each video. Duplicate descriptions across videos can hurt your channel's SEO." },
+  { question: "Do YouTube descriptions affect discovery?", answer: "They can help YouTube and viewers understand the video topic. A clear description is more useful than a blank or copied one, but it does not guarantee rankings." },
+  { question: "Should I use the same description template for every video?", answer: "Use the same structure if it helps, but write unique summaries, timestamps, and links for each video." },
   { question: "How many hashtags should I use?", answer: "3-5 is the sweet spot. YouTube ignores descriptions with more than 15 hashtags entirely." },
   { question: "Where should I put my most important link?", answer: "In the first 200 characters, before the 'more' button. That's the only part most viewers see without clicking." },
 ];
@@ -27,36 +27,35 @@ export default function Post() {
     <>
       <BlogJsonLd
         slug="how-to-write-youtube-descriptions"
-        title="How to Write YouTube Descriptions That Actually Get Views"
-        description="Most creators ignore the YouTube description box. Here's why that's a mistake, and a step-by-step guide to writing descriptions that rank and convert."
+        title="How to Write Better YouTube Descriptions"
+        description="Learn how to write clearer YouTube descriptions with useful summaries, timestamps, links, hashtags, and natural keywords."
         articleSection="Creator Tools"
         faqs={FAQS}
       />
       <BlogPostShell
         slug="how-to-write-youtube-descriptions"
         ctaTools={["youtube-tags-generator", "word-counter", "hashtag-generator"]}
-        title="How to Write YouTube Descriptions That Actually Get Views"
-        excerpt="Most creators treat the description box as an afterthought. It's actually free SEO real estate that YouTube's algorithm reads closely. Here's how to write one that ranks."
+        title="How to Write Better YouTube Descriptions"
+        excerpt="Most creators treat the description box as an afterthought. Use it to summarize the video, add useful links, and help viewers navigate."
       >
         <p>
-          YouTube&apos;s algorithm reads your description. It uses it to understand what your video is
-          about, who to recommend it to, and how to rank it in search results. Most creators write two
-          sentences and call it done, or leave it blank entirely. That&apos;s leaving free discoverability
-          on the table.
+          A YouTube description helps viewers understand what the video covers before they watch. It
+          also gives YouTube more context about the topic, related resources, and chapter structure.
+          Many creators write two sentences and call it done, or leave it blank entirely.
         </p>
         <p>
-          A well-written description won&apos;t save a bad video. But a bad description will quietly
-          suppress a good one. Here&apos;s the system.
+          A well-written description will not save a weak video, but it can make a good video easier
+          to navigate, understand, and revisit.
         </p>
 
-        <h2>The structure of a high-performing YouTube description</h2>
+        <h2>The structure of a useful YouTube description</h2>
         <p>
           Think of your description in three zones:
         </p>
         <ul>
           <li>
             <strong>Above the fold (first 2-3 lines)</strong>: this is what viewers see before
-            clicking &quot;more&quot;. It must hook them and include your primary keyword naturally.
+            clicking &quot;more&quot;. It should explain the video clearly and include the main topic naturally.
           </li>
           <li>
             <strong>The body (lines 4-20)</strong>: expand on the video content, include secondary
@@ -86,8 +85,7 @@ export default function Post() {
           your first 10k followers.&quot;
         </p>
         <p>
-          Don&apos;t stuff keywords. Write naturally. YouTube&apos;s algorithm is sophisticated enough to
-          detect keyword stuffing and penalize it.
+          Do not stuff keywords. Write naturally for viewers first, then make sure the topic is clear.
         </p>
 
         <h2>Step 2: Add timestamps (chapters)</h2>
@@ -128,8 +126,7 @@ export default function Post() {
           <li>Link to any tools or resources mentioned in the video</li>
         </ul>
         <p>
-          Internal links keep viewers watching longer, which is one of the strongest signals YouTube
-          uses to rank and recommend videos.
+          Internal links can help viewers find the next useful video without leaving your channel.
         </p>
 
         <h2>Step 5: End with hashtags</h2>
@@ -142,7 +139,7 @@ export default function Post() {
         <h2>Description length: how long is long enough?</h2>
         <p>
           YouTube allows up to 5,000 characters. Aim for 300-500 words for most videos, enough to
-          give the algorithm plenty to work with, not so much that it feels like spam. Use the{" "}
+          give viewers enough context, not so much that it feels like spam. Use the{" "}
           <a href="/word-counter">Word Counter</a> to hit that range before publishing.
         </p>
 
@@ -164,16 +161,14 @@ export default function Post() {
         </ul>
 
         <h2>Frequently Asked Questions</h2>
-        <h3>Do YouTube descriptions really affect rankings?</h3>
+        <h3>Do YouTube descriptions affect discovery?</h3>
         <p>
-          Yes. YouTube&apos;s algorithm uses the description to understand video content and match it to
-          search queries. A keyword-rich, well-structured description consistently outperforms a blank
-          or thin one.
+          They can help YouTube and viewers understand the video topic. A clear description is more
+          useful than a blank or copied one, but it does not guarantee rankings.
         </p>
         <h3>Should I use the same description template for every video?</h3>
         <p>
-          Use the same structure, but write unique content for each video. Duplicate descriptions
-          across videos can hurt your channel&apos;s SEO.
+          Use the same structure if it helps, but write unique summaries, timestamps, and links for each video.
         </p>
         <h3>How many hashtags should I use?</h3>
         <p>

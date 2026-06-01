@@ -29,7 +29,7 @@ function fallbackCaptions(topic: string, platform: string, tone: string): string
     tiktok: {
       funny: [
         `POV: ${t} just changed everything 😂 #fyp #relatable`,
-        `Nobody told me ${t} would be this chaotic 🤣 #viral`,
+        `Nobody told me ${t} would be this chaotic 🤣 #relatable`,
         `${t} said hold my coffee ☕ #foryou #trending`,
       ],
       professional: [
@@ -39,7 +39,7 @@ function fallbackCaptions(topic: string, platform: string, tone: string): string
       ],
       inspirational: [
         `${t} is proof that consistency beats perfection ✨ #motivation #fyp`,
-        `Let ${t} be your reminder: you're closer than you think 🌟 #viral`,
+        `Let ${t} be your reminder: you're closer than you think 🌟 #motivation`,
         `The journey with ${t} is just beginning. Keep going 💪 #foryou`,
       ],
     },

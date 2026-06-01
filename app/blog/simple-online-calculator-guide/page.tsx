@@ -62,7 +62,7 @@ export default function Post() {
         excerpt="Percentages, discounts, square roots, basic arithmetic, this guide explains the calculations you actually need every day, with a free browser calculator to do them instantly."
       >
         <p>
-          You don&apos;t need a scientific calculator for most everyday maths. Whether you&apos;re splitting a
+          You don&apos;t need a scientific calculator for most everyday math. Whether you&apos;re splitting a
           bill, working out a discount, calculating a tip, or checking a measurement, a clean online
           calculator handles it in seconds. This guide explains the operations you&apos;ll use most, with
           worked examples, so you know exactly what you&apos;re calculating, not just what button to press.
@@ -113,7 +113,7 @@ export default function Post() {
         </p>
 
         <PullQuote>
-          The four basic operations cover 90% of everyday maths. Master them and everything else
+          The four basic operations cover most everyday math. Master them and everything else
           follows.
         </PullQuote>
 

@@ -22,7 +22,7 @@ const contactPageJsonLd = {
   "@type": "ContactPage",
   name: "Contact Sounez",
   url: pageUrl,
-  description: "Send a message to the Sounez team.",
+  description: "Send feedback, bug reports, tool requests, or partnership inquiries to Sounez.",
 };
 
 export default function ContactPage() {

@@ -89,7 +89,7 @@ export function BioClient({ tool }: { tool: Tool }) {
         { title: "Platform-specific length", desc: "160 characters for Instagram and Twitter/X. 300 for LinkedIn and general bios." },
         { title: "Multiple versions", desc: "Not happy with the first result? Click Generate again for a different take." },
         { title: "Character counter", desc: "See exactly how many characters the bio uses and whether it fits the platform limit." },
-        { title: "No signup needed", desc: "Completely free and anonymous." },
+        { title: "No signup needed", desc: "Free to use, with fair-use limits for heavy automated requests." },
       ]}
       howTo={[
         "Enter your name, role and a few interests.",
@@ -98,7 +98,7 @@ export function BioClient({ tool }: { tool: Tool }) {
       ]}
       faqs={[
         { q: "How long will my bio be?", a: "Instagram and Twitter bios are capped at 160 characters. LinkedIn and general bios can go up to 300 characters." },
-        { q: "Can I generate multiple versions?", a: "Yes. Click Generate as many times as you like to get different options from the same input." },
+        { q: "Can I generate multiple versions?", a: "Yes. Try a few versions, then edit the one that sounds most like you. Heavy automated use may be limited." },
         { q: "What if the bio is too long?", a: "The character counter will turn red if the bio exceeds the platform limit. Try a shorter role description or fewer interests." },
         { q: "Can I edit the bio after generating?", a: "Yes. Copy it into any text editor and change what you like. This tool only generates text." },
       ]}
