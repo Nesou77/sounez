@@ -169,6 +169,7 @@ export function StudyNotesClient({ tool }: { tool: Tool }) {
 
         <div className="flex gap-2">
           <button
+            type="button"
             onClick={generate}
             disabled={streaming}
             className="flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
@@ -178,6 +179,7 @@ export function StudyNotesClient({ tool }: { tool: Tool }) {
           </button>
           {streaming && (
             <button
+              type="button"
               onClick={stop}
               className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm font-semibold transition hover:bg-muted active:scale-95"
               title="Stop generation"
@@ -194,12 +196,14 @@ export function StudyNotesClient({ tool }: { tool: Tool }) {
             <p className="text-sm font-semibold">Your study notes</p>
             <div className="flex gap-2">
               <button
+                type="button"
                 onClick={copy}
                 className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95"
               >
                 <Copy className="h-3.5 w-3.5" /> Copy
               </button>
               <button
+                type="button"
                 onClick={download}
                 className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95"
               >

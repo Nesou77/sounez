@@ -103,6 +103,7 @@ export function CssGradientClient({ tool }: { tool: Tool }) {
         <div className="flex gap-2">
           {(["linear", "radial", "conic"] as GradientType[]).map((t) => (
             <button
+              type="button"
               key={t}
               onClick={() => setType(t)}
               className={`rounded-lg border px-3 py-1.5 text-xs font-semibold capitalize transition ${
@@ -121,6 +122,7 @@ export function CssGradientClient({ tool }: { tool: Tool }) {
         <div className="flex flex-wrap gap-2">
           {PRESETS.map((p) => (
             <button
+              type="button"
               key={p.name}
               onClick={() => applyPreset(p)}
               title={p.name}
@@ -160,12 +162,14 @@ export function CssGradientClient({ tool }: { tool: Tool }) {
 
       <div className="mt-3 flex flex-wrap gap-2">
         <button
+          type="button"
           onClick={copy}
           className="flex items-center gap-2 rounded-xl bg-gradient-brand px-4 py-2 text-sm font-semibold text-primary-foreground shadow-pop transition active:scale-95"
         >
           <Copy className="h-4 w-4" /> Copy CSS
         </button>
         <button
+          type="button"
           onClick={copyTailwind}
           className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-muted active:scale-95"
         >

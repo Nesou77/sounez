@@ -136,6 +136,7 @@ export function WebsiteIdeaClient({ tool }: { tool: Tool }) {
         </div>
 
         <button
+          type="button"
           onClick={generate}
           disabled={loading}
           className="flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
@@ -150,6 +151,7 @@ export function WebsiteIdeaClient({ tool }: { tool: Tool }) {
           <div className="mb-3 flex items-center justify-between gap-2">
             <p className="text-sm font-semibold">Your website ideas</p>
             <button
+              type="button"
               onClick={copyAll}
               className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95"
             >
@@ -166,6 +168,7 @@ export function WebsiteIdeaClient({ tool }: { tool: Tool }) {
                     <p className="text-xs text-primary font-medium mt-0.5">{idea.tagline}</p>
                   </div>
                   <button
+                    type="button"
                     onClick={() => copyIdea(idea)}
                     className="shrink-0 rounded-lg p-1.5 transition hover:bg-muted active:scale-95"
                     title="Copy idea"

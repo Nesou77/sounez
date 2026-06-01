@@ -174,13 +174,13 @@ export function SvgBlobClient({ tool }: { tool: Tool }) {
           )}
 
           <div className="flex flex-wrap gap-2 pt-1">
-            <button onClick={randomize} className="flex items-center gap-2 rounded-xl bg-gradient-brand px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95">
+            <button type="button" onClick={randomize} className="flex items-center gap-2 rounded-xl bg-gradient-brand px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95">
               <RefreshCw className="h-4 w-4" /> Randomize
             </button>
-            <button onClick={copySvg} className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95">
+            <button type="button" onClick={copySvg} className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95">
               <Copy className="h-4 w-4" /> Copy SVG
             </button>
-            <button onClick={downloadSvg} className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95">
+            <button type="button" onClick={downloadSvg} className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95">
               <Download className="h-4 w-4" /> Download .svg
             </button>
           </div>

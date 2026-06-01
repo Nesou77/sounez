@@ -91,10 +91,10 @@ export function PasswordGeneratorClient({ tool }: { tool: Tool }) {
           aria-label="Generated password"
           className="flex-1 bg-transparent font-mono text-sm outline-none"
         />
-        <button onClick={copy} className="rounded-lg p-2 transition hover:bg-muted active:scale-95" title="Copy password" aria-label="Copy password">
+        <button type="button" onClick={copy} className="rounded-lg p-2 transition hover:bg-muted active:scale-95" title="Copy password" aria-label="Copy password">
           <Copy className="h-4 w-4" />
         </button>
-        <button onClick={regen} className="rounded-lg p-2 hover:bg-muted active:scale-95" title="Regenerate password" aria-label="Regenerate password">
+        <button type="button" onClick={regen} className="rounded-lg p-2 hover:bg-muted active:scale-95" title="Regenerate password" aria-label="Regenerate password">
           <RefreshCw className="h-4 w-4" />
         </button>
       </div>
@@ -157,6 +157,7 @@ export function PasswordGeneratorClient({ tool }: { tool: Tool }) {
         </div>
 
         <button
+          type="button"
           onClick={regen}
           className="rounded-xl bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95"
         >

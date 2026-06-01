@@ -268,6 +268,7 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
             </div>
             {stage === "ready" && (
               <button
+                type="button"
                 onClick={reset}
                 className="rounded-lg p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
                 aria-label="Remove file"
@@ -332,6 +333,7 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
           {/* Convert button */}
           {stage === "ready" && (
             <button
+              type="button"
               onClick={convert}
               className="w-full rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
             >
@@ -358,12 +360,14 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
                 </div>
               </div>
               <button
+                type="button"
                 onClick={() => setStage("ready")}
                 className="w-full rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
               >
                 Try Again
               </button>
               <button
+                type="button"
                 onClick={reset}
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 text-sm font-medium hover:bg-muted"
               >
@@ -385,12 +389,14 @@ export function PdfToWordConverterClient({ tool }: { tool: Tool }) {
                 </div>
               </div>
               <button
+                type="button"
                 onClick={downloadFile}
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
               >
                 <Download className="h-4 w-4" /> Download DOCX
               </button>
               <button
+                type="button"
                 onClick={reset}
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 text-sm font-medium hover:bg-muted"
               >

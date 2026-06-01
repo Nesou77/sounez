@@ -140,6 +140,7 @@ export function FaviconClient({ tool }: { tool: Tool }) {
             <div className="flex gap-2">
               {(["text", "emoji", "image"] as Mode[]).map((m) => (
                 <button
+                  type="button"
                   key={m}
                   onClick={() => setMode(m)}
                   className={`rounded-lg border px-3 py-1.5 text-xs font-semibold capitalize transition ${
@@ -172,6 +173,7 @@ export function FaviconClient({ tool }: { tool: Tool }) {
             <div>
               <p className="mb-1.5 font-medium">Upload image</p>
               <button
+                type="button"
                 onClick={() => fileRef.current?.click()}
                 className="flex items-center gap-2 rounded-xl border border-dashed border-border bg-muted/30 px-4 py-3 text-xs font-medium transition hover:border-primary/50"
               >
@@ -201,6 +203,7 @@ export function FaviconClient({ tool }: { tool: Tool }) {
             <div className="flex gap-2">
               {(["square", "rounded", "circle"] as Shape[]).map((s) => (
                 <button
+                  type="button"
                   key={s}
                   onClick={() => setShape(s)}
                   className={`rounded-lg border px-3 py-1.5 text-xs font-semibold capitalize transition ${
@@ -221,6 +224,7 @@ export function FaviconClient({ tool }: { tool: Tool }) {
             <div className="flex flex-wrap gap-2">
               {SIZES.map((s) => (
                 <button
+                  type="button"
                   key={s}
                   onClick={() => setSize(s)}
                   className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${
@@ -253,12 +257,14 @@ export function FaviconClient({ tool }: { tool: Tool }) {
 
           <div className="flex flex-col gap-2 w-full">
             <button
+              type="button"
               onClick={download}
               className="flex items-center justify-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95"
             >
               <Download className="h-4 w-4" /> Download PNG
             </button>
             <button
+              type="button"
               onClick={copySnippet}
               className="flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95"
             >

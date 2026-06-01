@@ -122,6 +122,7 @@ export function QrCodeClient({ tool }: { tool: Tool }) {
             <div className="flex flex-wrap gap-1.5">
               {EXAMPLES.map((ex) => (
                 <button
+                  type="button"
                   key={ex.label}
                   onClick={() => setText(ex.value)}
                   className="rounded-lg border border-border bg-background px-2.5 py-1 text-xs font-medium transition hover:border-primary/50 hover:bg-muted"
@@ -162,6 +163,7 @@ export function QrCodeClient({ tool }: { tool: Tool }) {
             <div className="flex flex-wrap gap-2">
               {SIZES.map((s) => (
                 <button
+                  type="button"
                   key={s}
                   onClick={() => setSize(s)}
                   className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${
@@ -179,12 +181,14 @@ export function QrCodeClient({ tool }: { tool: Tool }) {
           {/* Download */}
           <div className="flex flex-wrap gap-2 pt-1">
             <button
+              type="button"
               onClick={download}
               className="flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95"
             >
               <Download className="h-4 w-4" /> Download PNG
             </button>
             <button
+              type="button"
               onClick={copyDataUrl}
               className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95"
             >

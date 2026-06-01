@@ -91,6 +91,7 @@ export function TiktokMoneyClient({ tool }: { tool: Tool }) {
       <div className="mb-5 flex gap-2">
         {(["tiktok", "instagram", "youtube"] as Platform[]).map((p) => (
           <button
+            type="button"
             key={p}
             onClick={() => { setPlatform(p); setEr(p === "youtube" ? 50 : 5); }}
             className={`rounded-lg border px-3 py-1.5 text-xs font-semibold capitalize transition ${
@@ -152,6 +153,7 @@ export function TiktokMoneyClient({ tool }: { tool: Tool }) {
           {platform === "youtube" ? `${er}k avg views` : `${er}% ER`}
         </div>
         <button
+          type="button"
           onClick={copyEstimate}
           className="mt-4 flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-muted active:scale-95 mx-auto"
         >

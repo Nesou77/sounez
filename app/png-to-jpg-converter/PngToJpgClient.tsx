@@ -533,6 +533,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
           <div className="flex flex-wrap items-center gap-2">
             {waitingItems.length > 0 && (
               <button
+                type="button"
                 onClick={convertAll}
                 disabled={convertingAll || isAnyConverting}
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
@@ -547,6 +548,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
 
             {doneItems.length > 0 && waitingItems.length === 0 && (
               <button
+                type="button"
                 onClick={reconvertAll}
                 disabled={isAnyConverting}
                 className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-medium transition hover:bg-muted disabled:opacity-60"
@@ -558,6 +560,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
 
             {doneItems.length > 0 && (
               <button
+                type="button"
                 onClick={downloadAll}
                 className="inline-flex items-center gap-2 rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition hover:-translate-y-0.5 active:scale-95"
               >
@@ -570,6 +573,7 @@ export function PngToJpgClient({ tool }: { tool: Tool }) {
             )}
 
             <button
+              type="button"
               onClick={clearAll}
               disabled={isAnyConverting}
               className="ml-auto inline-flex items-center gap-1.5 rounded-xl px-3 py-2.5 text-sm text-muted-foreground transition hover:bg-muted hover:text-foreground disabled:opacity-50"
@@ -657,6 +661,7 @@ function ImageCard({
 
         {/* Remove button */}
         <button
+          type="button"
           onClick={onRemove}
           className="absolute left-2 top-2 rounded-full bg-background/80 p-1 text-muted-foreground opacity-0 shadow transition hover:bg-background hover:text-foreground group-hover:opacity-100 focus-visible:opacity-100"
           aria-label={`Remove ${item.file.name}`}
@@ -687,6 +692,7 @@ function ImageCard({
 
         {item.status === "done" && (
           <button
+            type="button"
             onClick={onDownload}
             className="shrink-0 rounded-lg p-1.5 text-muted-foreground transition hover:bg-muted hover:text-foreground"
             aria-label={`Download ${item.resultFilename}`}
@@ -696,6 +702,7 @@ function ImageCard({
         )}
 
         <button
+          type="button"
           onClick={onRemove}
           className="shrink-0 rounded-lg p-1.5 text-muted-foreground transition hover:bg-destructive/10 hover:text-destructive"
           aria-label={`Remove ${item.file.name}`}

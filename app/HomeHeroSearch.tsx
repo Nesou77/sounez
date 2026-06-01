@@ -5,6 +5,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { SmartLink as Link } from "@/components/smart-link";
 import { Search } from "lucide-react";
 import { TOOLS, type Tool } from "@/data/tools";
@@ -22,6 +23,7 @@ export function HomeHeroSearch() {
   const [q, setQ] = useState("");
   const [activeIndex, setActiveIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   const filtered = useMemo(() => filterToolsByQuery(q), [q]);
 
@@ -53,7 +55,7 @@ export function HomeHeroSearch() {
       const selected = filtered[activeIndex];
       if (selected) {
         trackSelectContent({ content_type: "tool", item_id: selected.slug, search_term: q.trim() || undefined });
-        window.location.href = `/tools/${selected.slug}`;
+        router.push(`/tools/${selected.slug}`);
       }
     }
   }

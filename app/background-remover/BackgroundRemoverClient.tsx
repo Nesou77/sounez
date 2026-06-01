@@ -348,6 +348,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
             </div>
             {stage === "ready" && (
               <button
+                type="button"
                 onClick={reset}
                 className="ml-2 shrink-0 rounded-lg p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
                 aria-label="Remove image"
@@ -364,6 +365,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
               <div className="flex flex-wrap gap-2">
                 {(["transparent", "white", "black", "custom"] as BgColor[]).map((opt) => (
                   <button
+                    type="button"
                     key={opt}
                     onClick={() => setBgColor(opt)}
                     className={`rounded-lg border px-3 py-1.5 text-xs font-medium capitalize transition ${
@@ -391,6 +393,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
           {/* Remove button */}
           {stage === "ready" && (
             <button
+              type="button"
               onClick={removeBackground}
               className="w-full rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
             >
@@ -409,12 +412,14 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
                 </div>
               </div>
               <button
+                type="button"
                 onClick={() => setStage("ready")}
                 className="w-full rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
               >
                 Try Again
               </button>
               <button
+                type="button"
                 onClick={reset}
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 text-sm font-medium hover:bg-muted"
               >
@@ -427,12 +432,14 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
           {stage === "done" && (
             <div className="space-y-3">
               <button
+                type="button"
                 onClick={downloadResult}
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
               >
                 <Download className="h-4 w-4" /> Download PNG
               </button>
               <button
+                type="button"
                 onClick={reset}
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 text-sm font-medium hover:bg-muted"
               >

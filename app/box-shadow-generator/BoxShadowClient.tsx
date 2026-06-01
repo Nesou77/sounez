@@ -108,7 +108,7 @@ export function BoxShadowClient({ tool }: { tool: Tool }) {
             <p className="mb-2 font-medium">Presets</p>
             <div className="flex flex-wrap gap-2">
               {PRESETS.map((p) => (
-                <button key={p.label} onClick={() => applyPreset(p)} className="rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-semibold transition hover:border-primary/50 hover:bg-muted active:scale-95">
+                <button type="button" key={p.label} onClick={() => applyPreset(p)} className="rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-semibold transition hover:border-primary/50 hover:bg-muted active:scale-95">
                   {p.label}
                 </button>
               ))}
@@ -152,10 +152,10 @@ export function BoxShadowClient({ tool }: { tool: Tool }) {
         <div className="flex items-center justify-between mb-2">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">CSS output</p>
           <div className="flex gap-2">
-            <button onClick={reset} className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95">
+            <button type="button" onClick={reset} className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95">
               <RotateCcw className="h-3.5 w-3.5" /> Reset
             </button>
-            <button onClick={copyCss} className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95">
+            <button type="button" onClick={copyCss} className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95">
               <Copy className="h-3.5 w-3.5" /> Copy CSS
             </button>
           </div>

@@ -90,10 +90,11 @@ function CopyButton({ text, label, toolSlug, resultType }: { text: string; label
   };
 
   return (
-    <button
-      onClick={copy}
-      className="flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-primary/40 hover:text-primary"
-    >
+        <button
+          type="button"
+          onClick={copy}
+          className="flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-primary/40 hover:text-primary"
+        >
       {copied ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Copy className="h-3.5 w-3.5" />}
       {copied ? "Copied" : "Copy"}
     </button>
@@ -298,6 +299,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
               </div>
               {stage === "ready" && (
                 <button
+                  type="button"
                   onClick={reset}
                   className="flex items-center gap-1.5 self-start rounded-lg border border-border px-2.5 py-1.5 text-xs text-muted-foreground hover:bg-muted"
                 >
@@ -314,6 +316,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                 {TONES.map((t) => (
                   <button
+                    type="button"
                     key={t.value}
                     onClick={() => setTone(t.value)}
                     className={`rounded-xl border p-3 text-left text-xs transition ${
@@ -333,6 +336,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
           {/* Generate button */}
           {stage === "ready" && (
             <button
+              type="button"
               onClick={generate}
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
             >
@@ -359,12 +363,14 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
                 </div>
               </div>
               <button
+                type="button"
                 onClick={() => setStage("ready")}
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
               >
                 <Sparkles className="h-4 w-4" /> Try Again
               </button>
               <button
+                type="button"
                 onClick={reset}
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 text-sm font-medium hover:bg-muted"
               >
@@ -386,12 +392,14 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
 
               <div className="flex gap-3">
                 <button
+                  type="button"
                   onClick={() => { setStage("ready"); setResult(null); }}
                   className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 text-sm font-semibold hover:bg-muted"
                 >
                   <RotateCcw className="h-4 w-4" /> Regenerate
                 </button>
                 <button
+                  type="button"
                   onClick={reset}
                   className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 text-sm font-medium hover:bg-muted"
                 >

@@ -410,6 +410,7 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
         <Upload className="h-8 w-8 text-muted-foreground" aria-hidden="true" />
         <p className="mt-3 text-sm font-medium">Drag images here, or</p>
         <button
+          type="button"
           onClick={() => inputRef.current?.click()}
           className="mt-2 rounded-xl bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95"
         >
@@ -593,6 +594,7 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
                       </a>
                     )}
                     <button
+                      type="button"
                       onClick={() => removeItem(item.id)}
                       className="rounded-lg p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground transition"
                       title="Remove"
@@ -610,6 +612,7 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
           <div className="flex flex-wrap items-center gap-2">
             {hasIdle && (
               <button
+                type="button"
                 onClick={compressAll}
                 disabled={processing}
                 className="flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60"
@@ -620,6 +623,7 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
             )}
             {doneItems.length > 1 && (
               <button
+                type="button"
                 onClick={downloadZip}
                 className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95"
               >
@@ -645,6 +649,7 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
               </a>
             )}
             <button
+              type="button"
               onClick={clearAll}
               className="rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold text-muted-foreground transition hover:bg-muted active:scale-95"
             >

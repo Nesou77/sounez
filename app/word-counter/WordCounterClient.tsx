@@ -121,6 +121,7 @@ export function WordCounterClient({ tool }: { tool: Tool }) {
       {/* Actions */}
       <div className="mt-4 flex flex-wrap gap-2">
         <button
+          type="button"
           onClick={copyStats}
           disabled={stats.words === 0}
           className="flex items-center gap-1.5 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-muted active:scale-95 disabled:opacity-40"
@@ -128,6 +129,7 @@ export function WordCounterClient({ tool }: { tool: Tool }) {
           <Copy className="h-4 w-4" /> Copy stats
         </button>
         <button
+          type="button"
           onClick={clear}
           disabled={text.length === 0}
           className="flex items-center gap-1.5 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-muted active:scale-95 disabled:opacity-40"

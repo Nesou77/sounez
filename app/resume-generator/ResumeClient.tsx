@@ -186,6 +186,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
             <div className="mb-3 flex items-center justify-between">
               <h2 className="font-semibold text-base">Work experience</h2>
               <button
+                type="button"
                 onClick={() => setWork((p) => [...p, emptyWork()])}
                 className="flex items-center gap-1 rounded-lg border border-border bg-background px-2.5 py-1.5 text-xs font-medium transition hover:bg-muted"
               >
@@ -239,6 +240,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                   </div>
                   {work.length > 1 && (
                     <button
+                      type="button"
                       onClick={() => setWork((p) => p.filter((_, idx) => idx !== i))}
                       className="flex items-center gap-1 text-xs text-destructive hover:underline"
                     >
@@ -255,6 +257,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
             <div className="mb-3 flex items-center justify-between">
               <h2 className="font-semibold text-base">Education</h2>
               <button
+                type="button"
                 onClick={() => setEdu((p) => [...p, emptyEdu()])}
                 className="flex items-center gap-1 rounded-lg border border-border bg-background px-2.5 py-1.5 text-xs font-medium transition hover:bg-muted"
               >
@@ -298,6 +301,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                   </div>
                   {edu.length > 1 && (
                     <button
+                      type="button"
                       onClick={() => setEdu((p) => p.filter((_, idx) => idx !== i))}
                       className="flex items-center gap-1 text-xs text-destructive hover:underline"
                     >
@@ -325,6 +329,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
           {/* Actions */}
           <div className="flex flex-wrap gap-3 pt-2">
             <button
+              type="button"
               onClick={handlePrint}
               className="flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95"
             >
@@ -332,6 +337,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
               Download PDF
             </button>
             <button
+              type="button"
               onClick={handleCopyHtml}
               className="flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-semibold transition hover:bg-muted active:scale-95"
             >

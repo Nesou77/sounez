@@ -158,6 +158,7 @@ export function BioClient({ tool }: { tool: Tool }) {
           <div className="flex flex-wrap gap-2">
             {(Object.keys(PLATFORM_LABELS) as Platform[]).map((p) => (
               <button
+                type="button"
                 key={p}
                 onClick={() => setPlatform(p)}
                 className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${
@@ -173,6 +174,7 @@ export function BioClient({ tool }: { tool: Tool }) {
 
         <div className="flex flex-wrap gap-2">
           <button
+            type="button"
             onClick={generate}
             disabled={loading}
             className="flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
@@ -182,6 +184,7 @@ export function BioClient({ tool }: { tool: Tool }) {
           </button>
           {bio && (
             <button
+              type="button"
               onClick={generate}
               disabled={loading}
               className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm font-semibold transition hover:bg-muted disabled:opacity-60"
@@ -199,6 +202,7 @@ export function BioClient({ tool }: { tool: Tool }) {
             <div className="flex items-start gap-3">
               <p className="flex-1 text-sm leading-relaxed">{bio}</p>
               <button
+                type="button"
                 onClick={copy}
                 className="shrink-0 rounded-lg p-2 transition hover:bg-muted active:scale-95"
                 title="Copy bio"

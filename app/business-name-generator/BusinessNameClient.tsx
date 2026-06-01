@@ -137,6 +137,7 @@ export function BusinessNameClient({ tool }: { tool: Tool }) {
 
         <div className="flex gap-2">
           <button
+            type="button"
             onClick={generate}
             disabled={loading}
             className="flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
@@ -146,6 +147,7 @@ export function BusinessNameClient({ tool }: { tool: Tool }) {
           </button>
           {names.length > 0 && (
             <button
+              type="button"
               onClick={generate}
               disabled={loading}
               className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm font-semibold transition hover:bg-muted disabled:opacity-60"
@@ -162,6 +164,7 @@ export function BusinessNameClient({ tool }: { tool: Tool }) {
           <div className="mb-3 flex items-center justify-between gap-2">
             <p className="text-sm font-semibold">Generated names</p>
             <button
+              type="button"
               onClick={copyAll}
               className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95"
             >
@@ -174,6 +177,7 @@ export function BusinessNameClient({ tool }: { tool: Tool }) {
               <div key={i} className="flex items-center justify-between gap-2 rounded-xl border border-border bg-muted/40 px-4 py-3">
                 <span className="font-semibold">{name}</span>
                 <button
+                  type="button"
                   onClick={() => copy(name, i)}
                   className="shrink-0 rounded-lg p-1.5 transition hover:bg-muted active:scale-95"
                   title="Copy name"

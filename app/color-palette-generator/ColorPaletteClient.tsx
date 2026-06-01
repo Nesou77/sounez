@@ -119,6 +119,7 @@ export function ColorPaletteClient({ tool }: { tool: Tool }) {
             {/* Color swatch */}
             <div className="relative">
               <button
+                type="button"
                 onClick={() => copyHex(c)}
                 title={`Copy ${c.toUpperCase()}`}
                 aria-label={`Copy color ${c.toUpperCase()}`}
@@ -133,6 +134,7 @@ export function ColorPaletteClient({ tool }: { tool: Tool }) {
               </button>
               {/* Lock button, always visible when locked, shown on hover when unlocked */}
               <button
+                type="button"
                 onClick={() => toggleLock(i)}
                 title={locked[i] ? "Unlock color" : "Lock color"}
                 aria-label={locked[i] ? `Unlock color ${c.toUpperCase()}` : `Lock color ${c.toUpperCase()}`}
@@ -155,6 +157,7 @@ export function ColorPaletteClient({ tool }: { tool: Tool }) {
 
       {/* Primary action */}
       <button
+        type="button"
         onClick={generate}
         className="mt-5 flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition active:scale-95 hover:-translate-y-0.5"
       >
@@ -163,13 +166,13 @@ export function ColorPaletteClient({ tool }: { tool: Tool }) {
 
       {/* Export options */}
       <div className="mt-4 flex flex-wrap gap-2">
-        <button onClick={copyCssVars} className="flex items-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2 text-xs font-semibold transition hover:bg-muted active:scale-95">
+        <button type="button" onClick={copyCssVars} className="flex items-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2 text-xs font-semibold transition hover:bg-muted active:scale-95">
           <Copy className="h-3.5 w-3.5" /> Copy CSS vars
         </button>
-        <button onClick={copyJson} className="flex items-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2 text-xs font-semibold transition hover:bg-muted active:scale-95">
+        <button type="button" onClick={copyJson} className="flex items-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2 text-xs font-semibold transition hover:bg-muted active:scale-95">
           <Copy className="h-3.5 w-3.5" /> Copy JSON
         </button>
-        <button onClick={downloadSvg} className="flex items-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2 text-xs font-semibold transition hover:bg-muted active:scale-95">
+        <button type="button" onClick={downloadSvg} className="flex items-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2 text-xs font-semibold transition hover:bg-muted active:scale-95">
           <Download className="h-3.5 w-3.5" /> Download SVG
         </button>
       </div>

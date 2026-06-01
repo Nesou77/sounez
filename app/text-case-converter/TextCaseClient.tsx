@@ -44,7 +44,7 @@ export function TextCaseClient({ tool }: { tool: Tool }) {
                   toast.success(`Copied ${name}`);
                   trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "text_case" });
                   trackCopyResult({ tool_slug: tool.slug, result_type: `text_case_${name.toLowerCase().replace(/[^a-z0-9]/g, "_")}` });
-                }} className="text-xs font-medium text-primary transition hover:underline active:scale-95">Copy</button>
+                }} type="button" className="text-xs font-medium text-primary transition hover:underline active:scale-95">Copy</button>
               </div>
               <p className="mt-1 break-all text-sm">{out}</p>
             </div>

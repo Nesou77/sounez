@@ -112,6 +112,7 @@ font-family: ${pairing.bodyStack};`;
         <div className="flex flex-wrap gap-2">
           {STYLES.map((s) => (
             <button
+              type="button"
               key={s}
               onClick={() => changeStyle(s)}
               className={`rounded-lg border px-3 py-1.5 text-xs font-semibold capitalize transition ${
@@ -151,10 +152,10 @@ font-family: ${pairing.bodyStack};`;
         <div className="flex items-center justify-between mb-2">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">CSS snippet</p>
           <div className="flex gap-2">
-            <button onClick={generate} className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95">
+            <button type="button" onClick={generate} className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95">
               <RefreshCw className="h-3.5 w-3.5" /> Next pairing
             </button>
-            <button onClick={copyCss} className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95">
+            <button type="button" onClick={copyCss} className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95">
               <Copy className="h-3.5 w-3.5" /> Copy CSS
             </button>
           </div>

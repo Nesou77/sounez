@@ -155,6 +155,7 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
         </div>
 
         <button
+          type="button"
           onClick={generate}
           disabled={loading}
           className="flex items-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
@@ -169,6 +170,7 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
           <div className="mb-3 flex items-center justify-between gap-2">
             <p className="text-sm font-semibold">Your captions</p>
             <button
+              type="button"
               onClick={copyAll}
               className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium transition hover:bg-muted active:scale-95"
             >
@@ -181,6 +183,7 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
               <div key={i} className="flex items-start gap-3 rounded-xl border border-border bg-muted/40 p-4">
                 <p className="flex-1 text-sm leading-relaxed">{caption}</p>
                 <button
+                  type="button"
                   onClick={() => copy(caption, i)}
                   className="shrink-0 rounded-lg p-2 transition hover:bg-muted active:scale-95"
                   title="Copy caption"

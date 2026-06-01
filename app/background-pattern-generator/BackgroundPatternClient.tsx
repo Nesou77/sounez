@@ -137,6 +137,7 @@ export function BackgroundPatternClient({ tool }: { tool: Tool }) {
             <div className="grid grid-cols-3 gap-2">
               {PATTERNS.map((p) => (
                 <button
+                  type="button"
                   key={p}
                   onClick={() => setType(p)}
                   className={`rounded-lg border px-2 py-1.5 text-xs font-semibold transition ${
@@ -173,10 +174,10 @@ export function BackgroundPatternClient({ tool }: { tool: Tool }) {
           </div>
 
           <div className="flex flex-wrap gap-2 pt-1">
-            <button onClick={copyCss} className="flex items-center gap-2 rounded-xl bg-gradient-brand px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95">
+            <button type="button" onClick={copyCss} className="flex items-center gap-2 rounded-xl bg-gradient-brand px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95">
               <Copy className="h-4 w-4" /> Copy CSS
             </button>
-            <button onClick={downloadSvg} className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95">
+            <button type="button" onClick={downloadSvg} className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95">
               <Download className="h-4 w-4" /> Download SVG tile
             </button>
           </div>

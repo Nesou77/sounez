@@ -168,6 +168,7 @@ export function ImagePlaceholderClient({ tool }: { tool: Tool }) {
             <div className="flex gap-2">
               {(["svg", "png"] as Format[]).map((f) => (
                 <button
+                  type="button"
                   key={f}
                   onClick={() => setFormat(f)}
                   className={`rounded-lg border px-4 py-1.5 text-xs font-semibold uppercase transition ${
@@ -183,13 +184,13 @@ export function ImagePlaceholderClient({ tool }: { tool: Tool }) {
           </div>
 
           <div className="flex flex-wrap gap-2 pt-1">
-            <button onClick={download} className="flex items-center gap-2 rounded-xl bg-gradient-brand px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95">
+            <button type="button" onClick={download} className="flex items-center gap-2 rounded-xl bg-gradient-brand px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95">
               <Download className="h-4 w-4" /> Download {format.toUpperCase()}
             </button>
-            <button onClick={copySvg} className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95">
+            <button type="button" onClick={copySvg} className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95">
               <Copy className="h-4 w-4" /> Copy SVG
             </button>
-            <button onClick={copyDataUrl} className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95">
+            <button type="button" onClick={copyDataUrl} className="flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-semibold transition hover:bg-muted active:scale-95">
               <Copy className="h-4 w-4" /> Copy data URL
             </button>
           </div>

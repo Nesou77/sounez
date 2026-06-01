@@ -90,6 +90,7 @@ export function YoutubeTagsClient({ tool }: { tool: Tool }) {
           className="flex-1 rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
         />
         <button
+          type="button"
           onClick={make}
           className="rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:-translate-y-0.5 active:scale-95"
         >
@@ -102,6 +103,7 @@ export function YoutubeTagsClient({ tool }: { tool: Tool }) {
           <div className="mt-4 flex items-center justify-between gap-2">
             <p className="text-xs font-semibold text-muted-foreground">{tags.length} tags</p>
             <button
+              type="button"
               onClick={copyAll}
               className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-semibold transition hover:bg-muted active:scale-95"
             >
@@ -115,6 +117,7 @@ export function YoutubeTagsClient({ tool }: { tool: Tool }) {
                 className="group flex items-center gap-1 rounded-full bg-muted px-3 py-1 text-xs font-medium transition hover:bg-accent"
               >
                 <button
+                  type="button"
                   onClick={() => copyOne(t)}
                   title={`Copy: ${t}`}
                   aria-label={`Copy tag: ${t}`}
@@ -123,6 +126,7 @@ export function YoutubeTagsClient({ tool }: { tool: Tool }) {
                   {copiedTag === t ? "✓" : t}
                 </button>
                 <button
+                  type="button"
                   onClick={() => removeTag(t)}
                   title={`Remove tag: ${t}`}
                   aria-label={`Remove tag: ${t}`}
