@@ -4,7 +4,6 @@ import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Free Design Tools for Web Creators (2026) | Sounez",
