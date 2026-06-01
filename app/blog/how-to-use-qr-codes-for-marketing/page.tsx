@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: getSiteUrl() + "/blog/how-to-use-qr-codes-for-marketing" },
   openGraph: {
     title: "How to Use QR Codes for Marketing",
-    description: "QR codes are back. Here's how to use them without looking cheap.",
+    description: "Use QR codes with a clear destination, label, and placement so people know what they are scanning.",
   },
 };
 

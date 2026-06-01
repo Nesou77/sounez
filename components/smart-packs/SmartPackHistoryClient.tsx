@@ -90,7 +90,7 @@ export function SmartPackHistoryClient() {
         </select>
         {loading ? (
           <p className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Loader2 className="h-4 w-4 animate-spin" /> Loading…
+            <Loader2 className="h-4 w-4 animate-spin" /> Loading...
           </p>
         ) : items.length === 0 ? (
           <p className="text-sm text-muted-foreground">
@@ -136,7 +136,13 @@ export function SmartPackHistoryClient() {
             />
           </div>
         ) : (
-          <p className="text-sm text-muted-foreground">Select a saved pack to view or copy it again.</p>
+          <div className="rounded-2xl border border-dashed border-border bg-background/50 p-6 text-sm leading-relaxed text-muted-foreground">
+            <p className="font-medium text-foreground">Select a saved pack to view or copy it again.</p>
+            <p className="mt-2">
+              Saved drafts can be useful when you want to reuse a tone, compare versions, or finish editing
+              later. They still need a final human review before you publish or share them.
+            </p>
+          </div>
         )}
       </div>
     </div>

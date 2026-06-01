@@ -198,7 +198,7 @@ export function ContactClient() {
     },
     {
       q: "How long does it take to get a reply?",
-      a: "We read every message. Response time depends on volume; email delivery must be configured on our side.",
+      a: "Response time depends on message volume and email delivery. Bug reports with tool names and clear steps are easiest to investigate.",
     },
   ];
 
@@ -207,7 +207,7 @@ export function ContactClient() {
       <header className="text-center">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Get in touch</h1>
         <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-          Feedback, bugs, tool requests or partnership ideas. We read every message.
+          Feedback, bugs, tool requests, and partnership ideas all belong here.
         </p>
         <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
           For bugs, include the tool name, what you clicked, and what you expected. Screenshots help but are
@@ -346,7 +346,7 @@ export function ContactClient() {
             rows={6}
             value={form.message}
             onChange={(e) => update("message", e.target.value)}
-            placeholder="Tell us what's on your mind…"
+            placeholder="Tell us what happened, what you expected, or what you would like to see."
             maxLength={2000}
             className={inputCls(!!errors.message) + " resize-y"}
           />
@@ -367,7 +367,7 @@ export function ContactClient() {
           >
             {submitting ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin" /> Sending…
+                <Loader2 className="h-4 w-4 animate-spin" /> Sending...
               </>
             ) : (
               <>

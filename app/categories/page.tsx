@@ -36,6 +36,30 @@ export default function CategoriesPage() {
         </p>
       </header>
 
+      <section className="mb-10 grid gap-4 rounded-2xl border border-border bg-muted/30 p-5 md:grid-cols-3">
+        <div>
+          <h2 className="text-sm font-semibold">Creator Tools</h2>
+          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            Use these when the work is public-facing text: captions, bios, hashtags, video tags, business names,
+            or rough creator-rate planning.
+          </p>
+        </div>
+        <div>
+          <h2 className="text-sm font-semibold">Design Tools</h2>
+          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            Use these when you need a visual asset or CSS detail, such as palettes, gradients, favicons, shadows,
+            patterns, fonts, or placeholders.
+          </p>
+        </div>
+        <div>
+          <h2 className="text-sm font-semibold">Utility Tools</h2>
+          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            Use these for practical one-off jobs: compressing images, converting files, counting words, generating
+            passwords, making QR codes, or checking quick math.
+          </p>
+        </div>
+      </section>
+
       <div className="space-y-6">
         {CATEGORIES.map((c) => {
           const items = toolsByCategory(c.slug);

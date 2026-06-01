@@ -371,7 +371,7 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
       useCases={[
         {
           title: "Web developers",
-          desc: "Reduce image payloads before pushing to production. Faster pages rank better and load faster for users.",
+          desc: "Reduce image payloads before pushing to production. Smaller images can improve load time and user experience.",
         },
         {
           title: "Bloggers and writers",

@@ -86,7 +86,8 @@ export function CommentsSection({
         </h2>
       </div>
       <p className="mt-2 text-sm text-muted-foreground">
-        Comments are moderated before publication.
+        Comments are moderated before publication. Share practical feedback, corrections, or questions about
+        the page; promotional links and abusive comments are not approved.
       </p>
 
       <form
@@ -117,7 +118,7 @@ export function CommentsSection({
         <textarea
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          placeholder="Your comment *"
+          placeholder="Add a useful note, question, correction, or experience with this tool."
           required
           rows={4}
           maxLength={1000}
@@ -139,7 +140,7 @@ export function CommentsSection({
       <ul className="mt-6 space-y-3">
         {loading && (
           <li className="rounded-2xl border border-border bg-card px-5 py-6 text-center text-sm text-muted-foreground">
-            Loading comments…
+            Loading comments...
           </li>
         )}
         {!loading && comments.length === 0 && (

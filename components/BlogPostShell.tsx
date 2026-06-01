@@ -117,6 +117,27 @@ export function BlogPostShell({
             </p>
           </aside>
 
+          <aside className="my-8 grid gap-4 rounded-2xl border border-border bg-card p-5 sm:grid-cols-3">
+            <div>
+              <h2 className="text-sm font-semibold">What to take away</h2>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                Pull out the steps that match your current project instead of copying the whole workflow.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-sm font-semibold">What to verify</h2>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                Check platform rules, dates, prices, file limits, privacy needs, and any claim that could affect a user.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-sm font-semibold">What to save</h2>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                Keep your original files, notes, prompts, and final edits so you can update the work later.
+              </p>
+            </div>
+          </aside>
+
           <div
             className="prose prose-neutral max-w-none
             [&>h2]:mt-14 [&>h2]:mb-5 [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:tracking-tight [&>h2]:scroll-mt-20

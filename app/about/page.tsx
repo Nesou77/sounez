@@ -56,10 +56,10 @@ const offers = [
 ];
 
 const values = [
-  { Icon: Wand2, title: "Simplicity", text: "Each tool does one thing. No settings you'll never use, no menus to dig through." },
-  { Icon: Zap, title: "Speed", text: "Tools open right away and update in real time. No loading screens, no waiting." },
+  { Icon: Wand2, title: "Simplicity", text: "Each tool focuses on a clear task, with controls that match the job." },
+  { Icon: Zap, title: "Speed", text: "Most tools open quickly and update as you work, especially browser-only utilities." },
   { Icon: Heart, title: "Free to use", text: "No account for most tools. Fair-use limits on AI and server features, stated upfront." },
-  { Icon: Sparkles, title: "Honest", text: "We only build tools we'd actually use. If it's not useful, it doesn't ship." },
+  { Icon: Sparkles, title: "Honest", text: "Tool pages explain what the output is for, what to check, and when not to use it." },
 ];
 
 const toolCount = TOOLS.length;
@@ -98,9 +98,10 @@ export default function AboutPage() {
       <section className="mx-auto max-w-4xl px-4 sm:px-6">
         <div className="ring-gradient rounded-3xl border border-border bg-card p-8 shadow-soft sm:p-12">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Why Sounez exists</span>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight">Save people time with tools that feel effortless.</h2>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight">Save people time on small online tasks.</h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            The best tool is the one you barely notice. You open it, do the thing, and move on. No account to create, no tutorial to watch, no upgrade prompt. That&apos;s what every tool on Sounez is built to be.
+            The best utility gets out of the way. You open it, finish the task, check the result,
+            and move on. Sounez is built around that kind of plain, useful workflow.
           </p>
         </div>
       </section>
@@ -126,7 +127,7 @@ export default function AboutPage() {
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">
               I&apos;m a developer and creator with a background in web tools, design utilities and
               content workflows. Today Sounez has {toolCount} free tools and {guideCount} practical guides. I ship
-              new tools regularly and read every message that comes through the{" "}
+              new tools regularly and review messages that come through the{" "}
               <Link href="/contact" className="font-medium text-primary hover:underline">
                 contact form
               </Link>{" "}
@@ -219,7 +220,7 @@ export default function AboutPage() {
               <span className="text-xs font-semibold uppercase tracking-wider opacity-90">Why people use Sounez</span>
               <h2 className="mt-2 text-3xl font-bold tracking-tight">Built to be useful. Kept free on purpose.</h2>
               <p className="mt-3 text-sm leading-relaxed opacity-90">
-                Every tool on Sounez is built to be fast, private and genuinely helpful. That won&apos;t change.
+                Sounez is built around clear tools, practical guidance, and honest privacy notes.
               </p>
             </div>
             <ul className="space-y-3">

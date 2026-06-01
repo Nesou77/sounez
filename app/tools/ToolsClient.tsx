@@ -62,6 +62,32 @@ export function ToolsClient() {
       </div>
 
       {!isSearching && (
+        <section className="mb-12 grid gap-4 rounded-2xl border border-border bg-muted/30 p-5 md:grid-cols-3">
+          <div>
+            <h2 className="text-sm font-semibold">Searching works best by task</h2>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Try words like compress, caption, QR, PDF, password, resume, favicon, or palette when you
+              already know the job.
+            </p>
+          </div>
+          <div>
+            <h2 className="text-sm font-semibold">Use categories to explore</h2>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Creator tools help with publishing, design tools help with visuals, and utility tools cover files,
+              text, and everyday calculations.
+            </p>
+          </div>
+          <div>
+            <h2 className="text-sm font-semibold">Read the tool page first</h2>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Each page includes privacy notes, mistakes to avoid, examples, and situations where that tool is
+              not the right fit.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {!isSearching && (
         <nav aria-label="Tool categories" className="mb-12 flex flex-wrap gap-2">
           {CATEGORIES.map((category) => (
             <a

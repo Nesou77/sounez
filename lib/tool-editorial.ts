@@ -466,7 +466,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     ],
     howTo: ["Click or type your expression.", "Press equals.", "Clear and start again."],
     examples: [
-      { title: "Tip split", desc: "Bill ÷ 4 + percentage." },
+      { title: "Tip split", desc: "Bill divided by 4, plus the tip percentage." },
       { title: "Margin", desc: "Selling price minus cost." },
     ],
     mistakes: ["Order of operations surprises - use parentheses mentally.", "Relying on browser calc for tax filings."],
@@ -502,7 +502,7 @@ const EDITORIAL: Record<string, ToolEditorialContent> = {
     privacyNote: "Your brief is sent for AI processing and not stored.",
     whenNotToUse: "We do not provide legal clearance - verify trademarks.",
     faqs: [
-      { q: "Are names unique?", a: "No guarantee - you must research." },
+      { q: "Are names unique?", a: "No. Treat them as ideas and check domains, trademarks, and nearby competitors before using one." },
       { q: "Commercial use?", a: "Yes after you verify availability." },
       { q: "How many ideas per run?", a: "Several directions - shortlist and check domains before you commit." },
     ],

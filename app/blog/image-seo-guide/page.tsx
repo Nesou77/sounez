@@ -5,21 +5,21 @@ import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 
 export const metadata: Metadata = {
-  title: "Image SEO: The Complete Guide to Ranking Your Images on Google (2026) | Sounez",
+  title: "Image SEO Guide: Alt Text, File Names and Compression | Sounez",
   description:
-    "Alt text, file names, compression, structured data, everything that makes images rank in Google Image Search and improve your page's Core Web Vitals.",
+    "A practical image SEO guide covering alt text, file names, compression, captions, structured data, and page-speed checks.",
   alternates: { canonical: getSiteUrl() + "/blog/image-seo-guide" },
   openGraph: {
-    title: "Image SEO: The Complete Guide (2026)",
-    description: "Alt text, file names, compression, everything that makes images rank on Google.",
+    title: "Image SEO Guide",
+    description: "Alt text, file names, compression, captions, and other image SEO basics.",
   },
 };
 
 const FAQS = [
-  { question: "How long does it take for images to rank in Google Image Search?", answer: "Typically 2 to 8 weeks after Google crawls the page. New sites may take longer. Make sure your page is indexed first, images on non-indexed pages won't rank." },
-  { question: "Does image file size affect SEO?", answer: "Yes, indirectly. Large images slow page load, which hurts Core Web Vitals, which is a direct ranking factor. Compress every image before publishing." },
-  { question: "Should I use stock photos or original images?", answer: "Original images rank better. Google can't rank the same stock photo twice. Even a simple original graphic or screenshot outperforms a generic stock image for SEO." },
-  { question: "What's the most important image SEO factor?", answer: "Alt text and compression are the two highest-leverage factors for most sites. Start there before worrying about structured data." },
+  { question: "How long does it take for images to appear in Google Image Search?", answer: "It depends on when Google crawls and indexes the page. New sites often take longer, and no optimization can guarantee placement." },
+  { question: "Does image file size affect SEO?", answer: "Large images can slow a page and hurt user experience. Compression helps page speed, which supports SEO and Core Web Vitals." },
+  { question: "Should I use stock photos or original images?", answer: "Original images can be more useful because they show something specific to your page. Stock photos can still work when they are relevant and properly described." },
+  { question: "What's the most important image SEO factor?", answer: "Start with useful alt text, sensible file names, appropriate dimensions, and compression. Structured data is helpful after the basics are in place." },
 ];
 
 export default function Post() {
@@ -27,26 +27,25 @@ export default function Post() {
     <>
       <BlogJsonLd
         slug="image-seo-guide"
-        title="Image SEO: The Complete Guide to Ranking Your Images on Google"
-        description="Alt text, file names, compression, structured data, everything that makes images rank in Google Image Search and improve your page's Core Web Vitals."
+        title="Image SEO Guide: Alt Text, File Names and Compression"
+        description="A practical image SEO guide covering alt text, file names, compression, captions, structured data, and page-speed checks."
         articleSection="Productivity"
         faqs={FAQS}
       />
       <BlogPostShell
         slug="image-seo-guide"
         ctaTools={["image-compressor", "word-counter", "qr-code-generator"]}
-        title="Image SEO: The Complete Guide to Ranking Your Images on Google"
-        excerpt="Most websites treat images as decoration. Google treats them as content. Here's everything you need to know about alt text, file names, compression and structured data to rank in Google Image Search."
+        title="Image SEO Guide: Alt Text, File Names and Compression"
+        excerpt="Most websites treat images as decoration. Search engines and assistive technology need context. This guide covers alt text, file names, compression, captions, and structured data."
       >
         <p>
-          Google Image Search drives billions of visits every month. For blogs, e-commerce sites and
-          portfolios, it&apos;s a significant traffic source that most creators completely ignore. Getting
-          your images to rank isn&apos;t complicated, but it requires doing several small things right,
-          consistently.
+          Images can bring useful search traffic, but they also affect accessibility, page speed, and
+          how clearly a page communicates. For blogs, stores, and portfolios, image SEO starts with
+          doing several small things consistently.
         </p>
         <p>
-          This guide covers every factor that influences image ranking in 2026, from the basics (alt
-          text, file names) to the technical (Core Web Vitals, structured data).
+          This guide covers the practical pieces you can control: alt text, file names, dimensions,
+          compression, captions, and structured data.
         </p>
 
         <h2>Why image SEO matters more than ever</h2>
@@ -61,13 +60,13 @@ export default function Post() {
           <li>Google Lens results (visual search)</li>
         </ul>
         <p>
-          Each of these is a free traffic channel that requires zero additional content, just
-          properly optimized images you&apos;re already publishing.
+          Each of these can help people discover visual content when the image and surrounding page
+          are relevant, accessible, and well optimized.
         </p>
 
         <PullQuote>
-          A well-optimized image can rank in Google Image Search for years and drive consistent
-          traffic to your site.
+          A useful image with clear context has a better chance of being understood by people,
+          search engines, and assistive technology.
         </PullQuote>
 
         <h2>1. File names: your first keyword opportunity</h2>
@@ -106,14 +105,14 @@ export default function Post() {
           <li>Decorative images (dividers, backgrounds) should have empty alt: <code>alt=&quot;&quot;</code></li>
         </ul>
 
-        <h2>3. Image compression: the biggest SEO lever</h2>
+        <h2>3. Image compression: a practical page-speed win</h2>
         <p>
-          Page speed is a direct Google ranking factor via{" "}
+          Page speed matters for users and is part of Google&apos;s Core Web Vitals guidance via{" "}
           <a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">
             Core Web Vitals
           </a>
-          . Images are almost always the heaviest assets on a page. Compressing them is the
-          highest-leverage SEO improvement most sites can make.
+          . Images are often the heaviest assets on a page, so compression is one of the simplest
+          performance checks to add before publishing.
         </p>
         <p>
           Use the <a href="/image-compressor">Sounez Image Compressor</a>. It runs entirely in your
@@ -159,9 +158,8 @@ export default function Post() {
 
         <h2>8. Captions: underrated SEO signal</h2>
         <p>
-          Image captions are read more than body text, people scan pages and captions catch the eye.
-          They&apos;re also indexed by Google. Write descriptive captions that include your keyword
-          naturally. Keep them under 20 words using the{" "}
+          Captions help readers understand why an image is there. Write descriptive captions that
+          add context instead of repeating the headline. Keep them short with the{" "}
           <a href="/word-counter">Word Counter</a>.
         </p>
 
@@ -178,33 +176,33 @@ export default function Post() {
         </ol>
 
         <h2>Frequently Asked Questions</h2>
-        <h3>How long does it take for images to rank in Google Image Search?</h3>
+        <h3>How long does it take for images to appear in Google Image Search?</h3>
         <p>
-          Typically 2-8 weeks after Google crawls the page. New sites may take longer. Make sure your
-          page is indexed first, images on non-indexed pages won&apos;t rank.
+          It depends on when Google crawls and indexes the page. New sites often take longer, and no
+          optimization can guarantee placement.
         </p>
         <h3>Does image file size affect SEO?</h3>
         <p>
-          Yes, indirectly. Large images slow page load, which hurts Core Web Vitals, which is a
-          direct ranking factor. Compress every image before publishing.
+          Large images can slow a page and hurt user experience. Compression helps page speed, which
+          supports SEO and Core Web Vitals.
         </p>
         <h3>Should I use stock photos or original images?</h3>
         <p>
-          Original images rank better. Google can&apos;t rank the same stock photo twice. Even a simple
-          original graphic or screenshot outperforms a generic stock image for SEO.
+          Original images can be more useful because they show something specific to your page. Stock
+          photos can still work when they are relevant and properly described.
         </p>
         <h3>What&apos;s the most important image SEO factor?</h3>
         <p>
-          Alt text and compression are the two highest-leverage factors for most sites. Start there
-          before worrying about structured data.
+          Start with useful alt text, sensible file names, appropriate dimensions, and compression.
+          Structured data is helpful after the basics are in place.
         </p>
 
-        <h2>Conclusion: treat every image as a ranking opportunity</h2>
+        <h2>Conclusion: treat every image as part of the page</h2>
         <p>
-          Image SEO is one of the most underutilized traffic channels in 2026. Compress your images
-          with the <a href="/image-compressor">Image Compressor</a>, write real alt text, use
-          descriptive file names, and serve the right dimensions. Do this consistently and Google
-          Image Search becomes a reliable, compounding traffic source.
+          Image SEO works best when images serve the reader first. Compress your images with the{" "}
+          <a href="/image-compressor">Image Compressor</a>, write real alt text, use descriptive file
+          names, and serve the right dimensions. Those habits make pages clearer, faster, and easier
+          to understand.
         </p>
       </BlogPostShell>
     </>

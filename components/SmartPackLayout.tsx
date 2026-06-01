@@ -65,6 +65,25 @@ export function SmartPackLayout({ pack }: { pack: SmartPack }) {
         </ol>
       </section>
 
+      <section className="mt-10 grid gap-4 sm:grid-cols-2">
+        <div className="rounded-2xl border border-border bg-card p-5">
+          <h2 className="text-lg font-bold">What to include in your brief</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Add the audience, goal, format, tone, and any facts that cannot change. If the pack is for a
+            real offer, include the exact price, date, location, link, or product detail instead of asking
+            the tool to guess.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-border bg-card p-5">
+          <h2 className="text-lg font-bold">What to review afterward</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Check every generated field for accuracy, originality, and tone. Remove any claim you cannot prove,
+            rewrite anything that sounds too generic, and make sure the final text follows the platform or school
+            rules that apply to your use case.
+          </p>
+        </div>
+      </section>
+
       <section className="mt-10">
         <h2 className="text-lg font-bold">Example output</h2>
         <div className="mt-4 space-y-4">
@@ -124,6 +143,22 @@ export function SmartPackLayout({ pack }: { pack: SmartPack }) {
             .
           </p>
         )}
+      </section>
+
+      <section className="mt-10 rounded-2xl border border-border bg-muted/30 p-6">
+        <h2 className="text-lg font-bold">Privacy and saved results</h2>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          Smart Packs use AI processing on our servers. Successful generations may be saved to your browser-linked
+          history so you can reopen them later on this device. Avoid entering private customer records, passwords,
+          confidential client files, or content you are not allowed to process.
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          You can review saved results in{" "}
+          <Link href="/smart-packs/history" className="font-medium text-primary hover:underline">
+            Pack history
+          </Link>
+          , and you can delete individual saved packs when you no longer need them.
+        </p>
       </section>
 
       <div className="mt-12 flex flex-wrap gap-3">

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Sounez",
     description:
-      "Send feedback, report a bug, or request a new tool. We reply to every message.",
+      "Send feedback, report a bug, or request a new tool. We review incoming messages when support is available.",
     url: pageUrl,
   },
 };

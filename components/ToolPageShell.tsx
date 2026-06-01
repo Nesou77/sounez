@@ -219,6 +219,26 @@ export function ToolPageShell({
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{whenNotText}</p>
       </section>
 
+      <section className="my-12 grid gap-5 md:grid-cols-2">
+        <div className="rounded-2xl border border-border bg-card p-6">
+          <h2 className="text-lg font-bold">Before you copy or download</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Take a minute to check the output against your real goal. Look for spelling, broken links,
+            wrong numbers, missing context, low image quality, or text that sounds unlike you. If you are
+            using the result for school, client work, a listing, or a public post, keep the original file
+            or source text until you are sure the final version is right.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-border bg-card p-6">
+          <h2 className="text-lg font-bold">If the result looks off</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Try again with a smaller file, clearer input, fewer special characters, or a more specific brief.
+            For AI tools, include the audience, tone, and facts that must be preserved. For file tools, check
+            size limits, format support, and whether the source file is damaged or password-protected.
+          </p>
+        </div>
+      </section>
+
       <section className="my-12">
         <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
         <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card">

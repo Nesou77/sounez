@@ -137,7 +137,7 @@ font-family: ${pairing.bodyStack};`;
         <div>
           <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Body, {pairing.body}</p>
           <p style={{ fontFamily: pairing.bodyStack }} className="text-base leading-relaxed text-muted-foreground">
-            Good typography makes reading effortless. The right font pairing creates visual hierarchy and guides the reader through your content naturally.
+            Good typography makes reading easier. The right font pairing creates visual hierarchy and helps readers scan your content.
           </p>
         </div>
         <div style={{ fontFamily: pairing.bodyStack }} className="flex gap-3">

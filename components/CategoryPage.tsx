@@ -49,6 +49,33 @@ export function CategoryPage({ slug }: { slug: string }) {
         {items.map((t) => <ToolCard key={t.slug} tool={t} />)}
       </div>
 
+      <section className="my-10 rounded-2xl border border-border bg-card p-6">
+        <h2 className="text-xl font-bold">How to choose the right tool here</h2>
+        <div className="mt-4 grid gap-4 md:grid-cols-3">
+          <div>
+            <h3 className="text-sm font-semibold">Start with the task</h3>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              Pick the tool that matches the output you need today: a file, a code snippet, a draft, a count,
+              or a visual asset.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Check the input</h3>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              Before uploading or pasting, confirm whether the tool runs in your browser or uses a server-backed
+              feature such as AI or PDF conversion.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Review the result</h3>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              Treat generated copy, converted files, and visual exports as working drafts until you have checked
+              accuracy, formatting, and permissions.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {editorial && editorial.tips.length > 0 && (
         <section className="my-10">
           <h2 className="text-xl font-bold">Practical tips</h2>
@@ -83,7 +110,8 @@ export function CategoryPage({ slug }: { slug: string }) {
       </section>
 
       <section className="my-12">
-        <h2 className="text-2xl font-bold">More categories</h2>        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        <h2 className="text-2xl font-bold">More categories</h2>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2">
           {others.map((c) => {
             const OtherIcon = getCategoryIcon(c.slug);
             return (
