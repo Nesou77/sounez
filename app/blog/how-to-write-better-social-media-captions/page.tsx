@@ -69,7 +69,7 @@ export default function Post() {
         <p>
           This guide covers what makes a caption clearer on each platform, reusable caption structures,
           and how to use the{" "}
-          <a href="/ai-caption-generator">AI Caption Generator</a> to produce three ready-to-post
+          <a href="/tools/ai-caption-generator">AI Caption Generator</a> to produce three ready-to-post
           drafts you can edit before publishing.
         </p>
 
@@ -108,7 +108,7 @@ export default function Post() {
           </li>
           <li>
             <strong>Hashtags</strong>: placed at the end or in the first comment. Use the{" "}
-            <a href="/hashtag-generator">Hashtag Generator</a> to build a targeted set in seconds.
+            <a href="/tools/hashtag-generator">Hashtag Generator</a> to build a targeted set in seconds.
           </li>
         </ul>
 
@@ -206,7 +206,7 @@ export default function Post() {
 
         <h2>How to use the AI Caption Generator</h2>
         <p>
-          The <a href="/ai-caption-generator">AI Caption Generator</a> takes three inputs: your topic
+          The <a href="/tools/ai-caption-generator">AI Caption Generator</a> takes three inputs: your topic
           or photo description, your platform, and your preferred tone. It returns three ready-to-post
           captions you can copy, edit and publish.
         </p>
@@ -222,7 +222,7 @@ export default function Post() {
             different ones.
           </li>
           <li>
-            Add your own hashtags using the <a href="/hashtag-generator">Hashtag Generator</a> and
+            Add your own hashtags using the <a href="/tools/hashtag-generator">Hashtag Generator</a> and
             paste the final caption into your post.
           </li>
         </ol>
@@ -255,7 +255,7 @@ export default function Post() {
         </p>
         <h3>Is the AI Caption Generator free?</h3>
         <p>
-          Yes. The <a href="/ai-caption-generator">Sounez AI Caption Generator</a> is free to use.
+          Yes. The <a href="/tools/ai-caption-generator">Sounez AI Caption Generator</a> is free to use.
           Fair-use limits may apply to keep the tool available.
         </p>
 
@@ -263,10 +263,10 @@ export default function Post() {
         <p>
           The best captions are specific, human, and clear about the point of the post. Use the templates
           above as a starting point, let the{" "}
-          <a href="/ai-caption-generator">AI Caption Generator</a> handle the first draft, and spend
+          <a href="/tools/ai-caption-generator">AI Caption Generator</a> handle the first draft, and spend
           your editing time on the hook and the CTA. That&apos;s where the engagement lives. Pair your
           captions with the right hashtags using the{" "}
-          <a href="/hashtag-generator">Hashtag Generator</a> and you have a complete posting workflow
+          <a href="/tools/hashtag-generator">Hashtag Generator</a> and you have a complete posting workflow
           without starting from a blank box.
         </p>
       </BlogPostShell>

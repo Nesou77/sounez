@@ -36,9 +36,9 @@ export default function CookiePolicyPage() {
         <section className="rounded-2xl border border-border bg-card p-6">
           <h2 className="text-lg font-bold text-foreground">Your choice matters</h2>
           <p className="mt-2">
-            When you first visit Sounez, you can accept or reject non-essential cookies. Rejecting means we do
-            not load Google Analytics or AdSense scripts for your visit. Essential storage for your consent
-            choice still applies so we do not ask you on every page load.
+            When you first visit Sounez, you can accept or reject non-essential cookies. Rejecting keeps Google
+            consent signals denied, so analytics and personalized advertising storage are not granted. Essential
+            storage for your consent choice still applies so we do not ask you on every page load.
           </p>
           <p className="mt-2">
             You can change your mind anytime via{" "}
@@ -77,6 +77,8 @@ export default function CookiePolicyPage() {
         <section>
           <h2 className="text-lg font-bold text-foreground">Google AdSense cookies (optional)</h2>
           <p className="mt-2">
+            Sounez includes the Google AdSense script globally so Google can verify the site and serve ads.
+            Until you accept cookies, Google Consent Mode keeps advertising storage and personalization denied.
             If you accept cookies, Google AdSense may set cookies or use similar technologies to serve and
             measure ads on Sounez. Google may use cookies to show ads based on your prior visits to this site
             or other sites, depending on your settings and region.

@@ -70,7 +70,7 @@ export default function Post() {
         <p>
           This guide explains both formats, compares them directly, covers what happens to
           transparency during conversion, and shows you how to convert PNG to JPG safely using the{" "}
-          <a href="/png-to-jpg-converter">PNG to JPG Converter</a>, entirely in your browser.
+          <a href="/tools/png-to-jpg-converter">PNG to JPG Converter</a>, entirely in your browser.
         </p>
 
         <h2>What is PNG?</h2>
@@ -166,7 +166,7 @@ export default function Post() {
           every transparent pixel must be replaced with a solid color.
         </p>
         <p>
-          The <a href="/png-to-jpg-converter">PNG to JPG Converter</a> fills transparent areas with
+          The <a href="/tools/png-to-jpg-converter">PNG to JPG Converter</a> fills transparent areas with
           white, which is the standard behavior and works correctly for most images. If your PNG has
           a transparent background that you want to appear as a different color in the JPG, edit the
           background color in an image editor before converting.
@@ -211,12 +211,12 @@ export default function Post() {
 
         <h2>How to use the PNG to JPG Converter</h2>
         <p>
-          The <a href="/png-to-jpg-converter">PNG to JPG Converter</a> runs entirely in your browser
+          The <a href="/tools/png-to-jpg-converter">PNG to JPG Converter</a> runs entirely in your browser
           using the Canvas API. Your images are never uploaded to any server.
         </p>
         <ol>
           <li>
-            Open the <a href="/png-to-jpg-converter">PNG to JPG Converter</a>.
+            Open the <a href="/tools/png-to-jpg-converter">PNG to JPG Converter</a>.
           </li>
           <li>
             Drag and drop your PNG file onto the upload area, or click to browse and select it.
@@ -234,7 +234,7 @@ export default function Post() {
         </ol>
         <p>
           After converting, consider running the JPG through the{" "}
-          <a href="/image-compressor">Image Compressor</a> for additional size reduction without
+          <a href="/tools/image-compressor">Image Compressor</a> for additional size reduction without
           further quality loss.
         </p>
 
@@ -259,11 +259,11 @@ export default function Post() {
         <h3>What happens to transparent areas when converting PNG to JPG?</h3>
         <p>
           JPG does not support transparency. Transparent areas are filled with white by default in
-          the <a href="/png-to-jpg-converter">Sounez PNG to JPG Converter</a>.
+          the <a href="/tools/png-to-jpg-converter">Sounez PNG to JPG Converter</a>.
         </p>
         <h3>Is it safe to convert images in the browser?</h3>
         <p>
-          Yes. The <a href="/png-to-jpg-converter">Sounez PNG to JPG Converter</a> processes
+          Yes. The <a href="/tools/png-to-jpg-converter">Sounez PNG to JPG Converter</a> processes
           everything locally using the Canvas API. Your images never leave your device.
         </p>
         <h3>What quality setting should I use?</h3>
@@ -277,9 +277,9 @@ export default function Post() {
           PNG and JPG are both excellent formats, for different jobs. Use PNG for logos, icons and
           anything with transparency. Use JPG for photos and web images where file size matters. When
           you need to convert, the{" "}
-          <a href="/png-to-jpg-converter">PNG to JPG Converter</a> does it instantly in your browser
+          <a href="/tools/png-to-jpg-converter">PNG to JPG Converter</a> does it instantly in your browser
           with no upload required. For further size reduction after converting, run the result
-          through the <a href="/image-compressor">Image Compressor</a>. For a deeper dive into image
+          through the <a href="/tools/image-compressor">Image Compressor</a>. For a deeper dive into image
           optimization for SEO, read{" "}
           <a href="/blog/how-to-compress-images">how to compress images without losing quality</a>.
         </p>

@@ -142,10 +142,10 @@ export default function Post() {
 
         <h2>Build gradients without writing code</h2>
         <p>
-          Use the <a href="/css-gradient-generator">CSS Gradient Generator</a> to build any gradient
+          Use the <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> to build any gradient
           visually and copy the ready-to-use CSS. Adjust angle, colors, stops and opacity with a live
           preview. No design tool, no guesswork. Pair it with the{" "}
-          <a href="/color-palette-generator">Color Palette Generator</a> to pick colors that work
+          <a href="/tools/color-palette-generator">Color Palette Generator</a> to pick colors that work
           together before building the gradient.
         </p>
 
@@ -155,7 +155,7 @@ export default function Post() {
           compressed) adds HTTP requests and bytes. Always prefer CSS gradients for backgrounds,
           overlays and decorative elements. Only use images when the gradient is photographic or
           extremely complex. If you do need a gradient image, compress it with the{" "}
-          <a href="/image-compressor">Image Compressor</a> first.
+          <a href="/tools/image-compressor">Image Compressor</a> first.
         </p>
 
         <h2>Frequently Asked Questions</h2>
@@ -183,7 +183,7 @@ export default function Post() {
         <p>
           Pick one signature gradient for your brand, apply it consistently to your primary CTA and
           hero section, and leave everything else neutral. Open the{" "}
-          <a href="/css-gradient-generator">CSS Gradient Generator</a> now and build yours. It takes
+          <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> now and build yours. It takes
           under a minute and the CSS is ready to paste.
         </p>
       </BlogPostShell>

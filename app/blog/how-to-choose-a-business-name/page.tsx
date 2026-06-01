@@ -70,7 +70,7 @@ export default function Post() {
         <p>
           This guide covers the naming styles that work, examples by industry, what to check before
           committing, and how to use the{" "}
-          <a href="/business-name-generator">Business Name Generator</a> to get 6 ideas in seconds.
+          <a href="/tools/business-name-generator">Business Name Generator</a> to get 6 ideas in seconds.
         </p>
 
         <h2>What makes a strong business name</h2>
@@ -219,7 +219,7 @@ export default function Post() {
 
         <h2>How to use the Business Name Generator</h2>
         <p>
-          The <a href="/business-name-generator">Business Name Generator</a> takes your industry,
+          The <a href="/tools/business-name-generator">Business Name Generator</a> takes your industry,
           optional keywords and a naming style, and returns 6 creative, brandable name ideas.
         </p>
         <ol>
@@ -271,11 +271,11 @@ export default function Post() {
         <h2>Conclusion: generate fast, validate carefully</h2>
         <p>
           Don&apos;t spend weeks agonizing over a name. Use the{" "}
-          <a href="/business-name-generator">Business Name Generator</a> to produce a shortlist of 6
+          <a href="/tools/business-name-generator">Business Name Generator</a> to produce a shortlist of 6
           ideas in seconds, then run each one through the trademark and domain checks. The right name
           is usually one of the first few that feels right and passes the availability test. Once
           you&apos;ve got a name, use the{" "}
-          <a href="/website-idea-generator">Website Idea Generator</a> to start planning what to
+          <a href="/tools/website-idea-generator">Website Idea Generator</a> to start planning what to
           build with it.
         </p>
       </BlogPostShell>

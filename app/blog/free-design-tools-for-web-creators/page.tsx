@@ -66,7 +66,7 @@ export default function Post() {
         <h3>Favicon Generator</h3>
         <p>
           A favicon is the first visual element users see when they open your site in a tab. The{" "}
-          <a href="/favicon-generator">Favicon Generator</a> creates browser-ready PNG favicons from
+          <a href="/tools/favicon-generator">Favicon Generator</a> creates browser-ready PNG favicons from
           text, emoji or an uploaded image. Choose your background color, shape (square, rounded or
           circle) and export size. Download the PNG and copy the HTML snippet in one click.
         </p>
@@ -77,7 +77,7 @@ export default function Post() {
         <h3>SVG Blob Generator</h3>
         <p>
           Organic shapes break the rigid grid of most web layouts. The{" "}
-          <a href="/svg-blob-generator">SVG Blob Generator</a> creates smooth, random SVG blobs for
+          <a href="/tools/svg-blob-generator">SVG Blob Generator</a> creates smooth, random SVG blobs for
           hero sections, card backgrounds and decorative accents. Adjust points, randomness and color,
           then copy the SVG code or download the file. The output is a few hundred bytes, lighter
           than any image.
@@ -91,7 +91,7 @@ export default function Post() {
         <h3>Font Pairing Tool</h3>
         <p>
           Typography is the foundation of every web design. The{" "}
-          <a href="/font-pairing-tool">Font Pairing Tool</a> shows curated heading and body font
+          <a href="/tools/font-pairing-tool">Font Pairing Tool</a> shows curated heading and body font
           combinations with a live preview and a copy-ready CSS snippet. Choose from six design
           styles, Modern, Elegant, Startup, Editorial, Minimal and Playful, and cycle through
           pairings until you find the right one.
@@ -105,7 +105,7 @@ export default function Post() {
         <h3>Box Shadow Generator</h3>
         <p>
           Shadows add depth and hierarchy to UI elements. The{" "}
-          <a href="/box-shadow-generator">Box Shadow Generator</a> lets you design CSS box shadows
+          <a href="/tools/box-shadow-generator">Box Shadow Generator</a> lets you design CSS box shadows
           visually with sliders for offset, blur, spread, opacity and color. Start from a preset
           (Soft, Medium, Large, Sharp or Inner) and adjust until it looks right. Copy the CSS with
           one click.
@@ -117,7 +117,7 @@ export default function Post() {
         <h3>Background Pattern Generator</h3>
         <p>
           Flat backgrounds can feel empty. The{" "}
-          <a href="/background-pattern-generator">Background Pattern Generator</a> creates CSS
+          <a href="/tools/background-pattern-generator">Background Pattern Generator</a> creates CSS
           background patterns, dots, grids, diagonal lines, checkerboards, triangles and waves, 
           with zero file size. Adjust colors, size and opacity, then copy the CSS directly into your
           stylesheet.
@@ -131,7 +131,7 @@ export default function Post() {
         <h3>Image Placeholder Generator</h3>
         <p>
           Every project needs placeholders while real images are being sourced. The{" "}
-          <a href="/image-placeholder-generator">Image Placeholder Generator</a> creates custom SVG
+          <a href="/tools/image-placeholder-generator">Image Placeholder Generator</a> creates custom SVG
           or PNG placeholders with your dimensions, colors and label. No external service required, 
           everything is generated in your browser.
         </p>
@@ -144,14 +144,14 @@ export default function Post() {
           Here is how these tools fit into a typical web project:
         </p>
         <ol>
-          <li>Start with the <a href="/color-palette-generator">Color Palette Generator</a> to establish your brand colors.</li>
-          <li>Use the <a href="/font-pairing-tool">Font Pairing Tool</a> to choose your typography.</li>
-          <li>Generate a <a href="/css-gradient-generator">CSS gradient</a> for your hero section background.</li>
-          <li>Add texture with the <a href="/background-pattern-generator">Background Pattern Generator</a>.</li>
-          <li>Use the <a href="/svg-blob-generator">SVG Blob Generator</a> for organic decorative shapes.</li>
-          <li>Design card and button shadows with the <a href="/box-shadow-generator">Box Shadow Generator</a>.</li>
-          <li>Fill layout gaps with the <a href="/image-placeholder-generator">Image Placeholder Generator</a>.</li>
-          <li>Create your favicon with the <a href="/favicon-generator">Favicon Generator</a>.</li>
+          <li>Start with the <a href="/tools/color-palette-generator">Color Palette Generator</a> to establish your brand colors.</li>
+          <li>Use the <a href="/tools/font-pairing-tool">Font Pairing Tool</a> to choose your typography.</li>
+          <li>Generate a <a href="/tools/css-gradient-generator">CSS gradient</a> for your hero section background.</li>
+          <li>Add texture with the <a href="/tools/background-pattern-generator">Background Pattern Generator</a>.</li>
+          <li>Use the <a href="/tools/svg-blob-generator">SVG Blob Generator</a> for organic decorative shapes.</li>
+          <li>Design card and button shadows with the <a href="/tools/box-shadow-generator">Box Shadow Generator</a>.</li>
+          <li>Fill layout gaps with the <a href="/tools/image-placeholder-generator">Image Placeholder Generator</a>.</li>
+          <li>Create your favicon with the <a href="/tools/favicon-generator">Favicon Generator</a>.</li>
         </ol>
 
         <h2>Frequently Asked Questions</h2>

@@ -115,7 +115,7 @@ export default function Post() {
           performance checks to add before publishing.
         </p>
         <p>
-          Use the <a href="/image-compressor">Sounez Image Compressor</a>. It runs entirely in your
+          Use the <a href="/tools/image-compressor">Sounez Image Compressor</a>. It runs entirely in your
           browser, so files never leave your device. Aim for under 200 KB per image. Read the full
           guide on{" "}
           <a href="/blog/how-to-compress-images">compressing images without losing quality</a> for the
@@ -160,14 +160,14 @@ export default function Post() {
         <p>
           Captions help readers understand why an image is there. Write descriptive captions that
           add context instead of repeating the headline. Keep them short with the{" "}
-          <a href="/word-counter">Word Counter</a>.
+          <a href="/tools/word-counter">Word Counter</a>.
         </p>
 
         <h2>The image SEO checklist</h2>
         <ol>
           <li>Descriptive, keyword-rich file name (hyphens, lowercase)</li>
           <li>Meaningful alt text (under 125 characters)</li>
-          <li>Compressed to under 200 KB with the <a href="/image-compressor">Image Compressor</a></li>
+          <li>Compressed to under 200 KB with the <a href="/tools/image-compressor">Image Compressor</a></li>
           <li>Resized to actual display dimensions</li>
           <li>WebP format where possible</li>
           <li><code>loading=&quot;lazy&quot;</code> on below-fold images</li>
@@ -200,7 +200,7 @@ export default function Post() {
         <h2>Conclusion: treat every image as part of the page</h2>
         <p>
           Image SEO works best when images serve the reader first. Compress your images with the{" "}
-          <a href="/image-compressor">Image Compressor</a>, write real alt text, use descriptive file
+          <a href="/tools/image-compressor">Image Compressor</a>, write real alt text, use descriptive file
           names, and serve the right dimensions. Those habits make pages clearer, faster, and easier
           to understand.
         </p>

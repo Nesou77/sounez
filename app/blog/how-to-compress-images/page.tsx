@@ -81,7 +81,7 @@ export default function Post() {
         <p>
           Most free image compressors upload your files to their servers. That&apos;s a privacy risk for
           anything sensitive (product mockups, client work, unreleased designs). Use the{" "}
-          <a href="/image-compressor">Sounez Image Compressor</a> instead. It runs entirely in your
+          <a href="/tools/image-compressor">Sounez Image Compressor</a> instead. It runs entirely in your
           browser, so your files never leave your device. No account and no upload to Sounez.
         </p>
 
@@ -96,7 +96,7 @@ export default function Post() {
         <ol>
           <li>Resize to the actual display width (use the table above)</li>
           <li>Convert PNG to JPG unless you need transparency</li>
-          <li>Compress with the <a href="/image-compressor">Image Compressor</a></li>
+          <li>Compress with the <a href="/tools/image-compressor">Image Compressor</a></li>
           <li>Add descriptive, keyword-rich file names</li>
           <li>Write real alt text for accessibility and SEO</li>
           <li>Use <code>loading=&quot;lazy&quot;</code> on below-the-fold images</li>
@@ -106,7 +106,7 @@ export default function Post() {
         <h3>Will compression ruin image quality?</h3>
         <p>Not if you choose sensible settings and preview the result. For many web photos, 70-80% JPG quality is a good starting point.</p>
         <h3>Is browser-based compression safe?</h3>
-        <p>Yes. The <a href="/image-compressor">Sounez Image Compressor</a> processes everything locally in your browser. Nothing is uploaded, logged or stored.</p>
+        <p>Yes. The <a href="/tools/image-compressor">Sounez Image Compressor</a> processes everything locally in your browser. Nothing is uploaded, logged or stored.</p>
         <h3>Should I use WebP everywhere?</h3>
         <p>WebP is a good default for many web images in modern browsers. Keep PNG when you need transparency and JPG when a platform requires it.</p>
         <h3>Does image compression help SEO?</h3>
@@ -115,7 +115,7 @@ export default function Post() {
         <h2>Conclusion: compress every image before you publish</h2>
         <p>
           Make compression a non-negotiable step in your publishing workflow. Open the{" "}
-          <a href="/image-compressor">Image Compressor</a> now and run your next image through it.
+          <a href="/tools/image-compressor">Image Compressor</a> now and run your next image through it.
           You&apos;ll be surprised how much smaller it gets.
         </p>
       </BlogPostShell>

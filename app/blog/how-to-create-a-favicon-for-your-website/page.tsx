@@ -48,7 +48,7 @@ export default function Post() {
         <p>
           This guide covers what a favicon is, why it matters, the sizes you need, the PNG vs ICO
           debate, and how to create one using the{" "}
-          <a href="/favicon-generator">free Favicon Generator</a> in under two minutes.
+          <a href="/tools/favicon-generator">free Favicon Generator</a> in under two minutes.
         </p>
 
         <h2>What is a favicon?</h2>
@@ -86,7 +86,7 @@ export default function Post() {
         </ul>
         <p>
           At minimum, create a 32x32 PNG for browser tabs and a 180x180 PNG for Apple touch icons.
-          The <a href="/favicon-generator">Favicon Generator</a> lets you export any of these sizes
+          The <a href="/tools/favicon-generator">Favicon Generator</a> lets you export any of these sizes
           with one click.
         </p>
 
@@ -114,13 +114,13 @@ export default function Post() {
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />`}</code>
         </pre>
         <p>
-          The <a href="/favicon-generator">Favicon Generator</a> copies this snippet for you with
+          The <a href="/tools/favicon-generator">Favicon Generator</a> copies this snippet for you with
           one click.
         </p>
 
         <h2>How to use the Favicon Generator</h2>
         <ol>
-          <li>Open the <a href="/favicon-generator">Favicon Generator</a>.</li>
+          <li>Open the <a href="/tools/favicon-generator">Favicon Generator</a>.</li>
           <li>Choose a mode: Text (a letter or initials), Emoji, or Image upload.</li>
           <li>Set your background color, text/icon color, and shape (square, rounded or circle).</li>
           <li>Select the export size you need (32x32 for browser tabs, 180x180 for Apple touch).</li>
@@ -147,15 +147,15 @@ export default function Post() {
         <h3>Does the Favicon Generator upload my image?</h3>
         <p>No. Everything is processed locally in your browser using the Canvas API. Your image never leaves your device.</p>
         <h3>Can I use an emoji as a favicon?</h3>
-        <p>Yes. Emoji favicons are a popular modern technique. The <a href="/favicon-generator">Favicon Generator</a> supports emoji mode directly.</p>
+        <p>Yes. Emoji favicons are a popular modern technique. The <a href="/tools/favicon-generator">Favicon Generator</a> supports emoji mode directly.</p>
 
         <h2>Conclusion: two minutes, done</h2>
         <p>
           A favicon is one of the quickest wins in web development. Open the{" "}
-          <a href="/favicon-generator">Favicon Generator</a>, pick a letter or emoji, choose your
+          <a href="/tools/favicon-generator">Favicon Generator</a>, pick a letter or emoji, choose your
           brand color, download the PNG and paste the HTML snippet. Your site will look finished in
           every tab, bookmark and search result. Pair it with a consistent color palette from the{" "}
-          <a href="/color-palette-generator">Color Palette Generator</a> for a cohesive brand identity.
+          <a href="/tools/color-palette-generator">Color Palette Generator</a> for a cohesive brand identity.
         </p>
       </BlogPostShell>
     </>

@@ -53,12 +53,12 @@ export default function Post() {
         <h3>Writing and editing</h3>
         <p>
           Before you publish anything (a Slack message, a client proposal, a blog post), run it
-          through the <a href="/word-counter">Word Counter</a>. It shows word count, character count,
+          through the <a href="/tools/word-counter">Word Counter</a>. It shows word count, character count,
           reading time and sentence count at a glance. Knowing your reading time before you send a
           long email is a small thing that makes a big impression.
         </p>
         <p>
-          For formatting, the <a href="/text-case-converter">Text Case Converter</a> handles title
+          For formatting, the <a href="/tools/text-case-converter">Text Case Converter</a> handles title
           case, sentence case, UPPERCASE and camelCase in one click. Useful for document headings,
           code variable names, and fixing accidentally caps-locked copy.
         </p>
@@ -68,7 +68,7 @@ export default function Post() {
           Remote workers are a prime target for credential attacks. You&apos;re logging into company
           systems from home networks, coffee shops and co-working spaces. Every account needs a
           unique, strong password. Generate them with the{" "}
-          <a href="/password-generator">Password Generator</a> and store them in a manager like
+          <a href="/tools/password-generator">Password Generator</a> and store them in a manager like
           Bitwarden (free) or 1Password. Read our full guide on{" "}
           <a href="/blog/how-to-create-a-strong-password">creating strong passwords</a> for the
           complete system.
@@ -78,8 +78,8 @@ export default function Post() {
         <p>
           Remote workers communicate visually more than office workers (decks, async video
           thumbnails, Notion covers, social posts). The{" "}
-          <a href="/color-palette-generator">Color Palette Generator</a> and{" "}
-          <a href="/css-gradient-generator">CSS Gradient Generator</a> give you professional-looking
+          <a href="/tools/color-palette-generator">Color Palette Generator</a> and{" "}
+          <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> give you professional-looking
           visuals without opening Figma or Photoshop. Read{" "}
           <a href="/blog/best-color-palettes-for-design">the best color palettes for modern design</a>{" "}
           for the principles behind them.
@@ -87,7 +87,7 @@ export default function Post() {
 
         <h3>Sharing and bridging physical/digital</h3>
         <p>
-          The <a href="/qr-code-generator">QR Code Generator</a> is underrated for remote workers.
+          The <a href="/tools/qr-code-generator">QR Code Generator</a> is underrated for remote workers.
           Drop a QR code in a slide deck to link to a live doc, or put one on a printed handout for a
           hybrid meeting. Read{" "}
           <a href="/blog/how-to-use-qr-codes-for-marketing">how to use QR codes effectively</a> for
@@ -116,7 +116,7 @@ export default function Post() {
         <h2>Async communication tips that save hours</h2>
         <ul>
           <li>
-            Write shorter messages. Use the <a href="/word-counter">Word Counter</a> to keep Slack
+            Write shorter messages. Use the <a href="/tools/word-counter">Word Counter</a> to keep Slack
             messages under 100 words, long messages get skimmed or ignored.
           </li>
           <li>
@@ -128,7 +128,7 @@ export default function Post() {
           </li>
           <li>
             Compress images before sharing in docs or Notion. Heavy images slow down shared
-            workspaces. Use the <a href="/image-compressor">Image Compressor</a>.
+            workspaces. Use the <a href="/tools/image-compressor">Image Compressor</a>.
           </li>
         </ul>
 
@@ -140,7 +140,7 @@ export default function Post() {
           </a>{" "}
           recommends using a VPN on any network you don&apos;t control. Beyond that: enable 2FA on every
           work account, and never reuse passwords across work and personal accounts. The{" "}
-          <a href="/password-generator">Password Generator</a> makes unique passwords trivial to
+          <a href="/tools/password-generator">Password Generator</a> makes unique passwords trivial to
           create, there&apos;s no excuse for reuse.
         </p>
 
@@ -148,14 +148,14 @@ export default function Post() {
         <h3>What&apos;s the single most important free tool for remote workers?</h3>
         <p>
           A password manager (Bitwarden is free and excellent) paired with the{" "}
-          <a href="/password-generator">Password Generator</a>. Security is the foundation everything
+          <a href="/tools/password-generator">Password Generator</a>. Security is the foundation everything
           else sits on.
         </p>
         <h3>Are browser-based tools safe for work use?</h3>
         <p>
           Yes, for single-purpose utilities. Tools like the{" "}
-          <a href="/image-compressor">Image Compressor</a> and{" "}
-          <a href="/word-counter">Word Counter</a> process everything locally, nothing is sent to a
+          <a href="/tools/image-compressor">Image Compressor</a> and{" "}
+          <a href="/tools/word-counter">Word Counter</a> process everything locally, nothing is sent to a
           server.
         </p>
         <h3>How do I avoid tool overload?</h3>
@@ -168,9 +168,9 @@ export default function Post() {
         <p>
           The most productive remote workers aren&apos;t the ones with the most tools, they&apos;re the ones
           who&apos;ve cut the noise down to a focused few. Start with the{" "}
-          <a href="/word-counter">Word Counter</a>, the{" "}
-          <a href="/password-generator">Password Generator</a>, and the{" "}
-          <a href="/image-compressor">Image Compressor</a>. Browse{" "}
+          <a href="/tools/word-counter">Word Counter</a>, the{" "}
+          <a href="/tools/password-generator">Password Generator</a>, and the{" "}
+          <a href="/tools/image-compressor">Image Compressor</a>. Browse{" "}
           <a href="/categories/utility-tools">all utility tools</a> for the rest.
         </p>
       </BlogPostShell>

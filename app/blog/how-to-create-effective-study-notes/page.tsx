@@ -68,7 +68,7 @@ export default function Post() {
         </p>
         <p>
           This guide covers the note-taking methods that work, how to structure notes for review, and
-          how to use the <a href="/study-notes-generator">Study Notes Generator</a> to get a
+          how to use the <a href="/tools/study-notes-generator">Study Notes Generator</a> to get a
           structured starting point for any topic in seconds.
         </p>
 
@@ -143,7 +143,7 @@ export default function Post() {
         <p>
           Use headings (H1, H2, H3) and nested bullet points to mirror the structure of the source
           material. This is the format the{" "}
-          <a href="/study-notes-generator">Study Notes Generator</a> uses by default.
+          <a href="/tools/study-notes-generator">Study Notes Generator</a> uses by default.
         </p>
         <ul>
           <li>
@@ -194,7 +194,7 @@ export default function Post() {
 
         <h2>How to use the Study Notes Generator</h2>
         <p>
-          The <a href="/study-notes-generator">Study Notes Generator</a> takes a topic or a block of
+          The <a href="/tools/study-notes-generator">Study Notes Generator</a> takes a topic or a block of
           text and returns structured notes with headings, bullet points and a key terms section.
         </p>
         <ol>
@@ -247,7 +247,7 @@ export default function Post() {
         </p>
         <h3>Is the Study Notes Generator free?</h3>
         <p>
-          Yes. The <a href="/study-notes-generator">Sounez Study Notes Generator</a> is completely
+          Yes. The <a href="/tools/study-notes-generator">Sounez Study Notes Generator</a> is completely
           free. No account needed.
         </p>
 
@@ -255,7 +255,7 @@ export default function Post() {
         <p>
           The most common note-taking mistake is trying to capture everything. Instead, focus on
           structure: headings, key points, key terms. Use the{" "}
-          <a href="/study-notes-generator">Study Notes Generator</a> to get a structured first draft
+          <a href="/tools/study-notes-generator">Study Notes Generator</a> to get a structured first draft
           for any topic, then add your own examples and connections. Review on a spaced schedule and
           you&apos;ll retain far more than any amount of re-reading could achieve.
         </p>

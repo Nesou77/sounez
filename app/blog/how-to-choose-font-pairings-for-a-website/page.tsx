@@ -49,7 +49,7 @@ export default function Post() {
         <p>
           This guide covers the principles behind good font pairings, serif vs sans-serif combinations,
           practical examples, performance tips and how to use the{" "}
-          <a href="/font-pairing-tool">Font Pairing Tool</a> to find the right combination for your
+          <a href="/tools/font-pairing-tool">Font Pairing Tool</a> to find the right combination for your
           project.
         </p>
 
@@ -157,7 +157,7 @@ export default function Post() {
 
         <h2>How to use the Font Pairing Tool</h2>
         <ol>
-          <li>Open the <a href="/font-pairing-tool">Font Pairing Tool</a>.</li>
+          <li>Open the <a href="/tools/font-pairing-tool">Font Pairing Tool</a>.</li>
           <li>Choose a design style: Modern, Elegant, Startup, Editorial, Minimal or Playful.</li>
           <li>The tool shows a live preview with a heading sample, body text and UI elements.</li>
           <li>Click Next pairing to cycle through curated combinations for that style.</li>
@@ -180,10 +180,10 @@ export default function Post() {
         <h2>Conclusion: contrast, harmony, readability</h2>
         <p>
           The best font pairings are the ones you stop noticing because the content flows so naturally.
-          Use the <a href="/font-pairing-tool">Font Pairing Tool</a> to find a combination that fits
+          Use the <a href="/tools/font-pairing-tool">Font Pairing Tool</a> to find a combination that fits
           your project&apos;s style, copy the CSS, and load the fonts from Google Fonts. For the rest of
-          your design system, the <a href="/color-palette-generator">Color Palette Generator</a> and{" "}
-          <a href="/css-gradient-generator">CSS Gradient Generator</a> cover colors and backgrounds.
+          your design system, the <a href="/tools/color-palette-generator">Color Palette Generator</a> and{" "}
+          <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> cover colors and backgrounds.
         </p>
       </BlogPostShell>
     </>

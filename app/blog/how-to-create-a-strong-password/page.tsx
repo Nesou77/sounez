@@ -64,7 +64,7 @@ export default function Post() {
         <h2>Step 1: Use a generator for every account</h2>
         <p>
           Stop inventing passwords in your head. Create a unique password for every single account
-          with the <a href="/password-generator">Password Generator</a>. Aim for 20+ characters with
+          with the <a href="/tools/password-generator">Password Generator</a>. Aim for 20+ characters with
           mixed case, numbers and symbols. Generation takes one second; the security gain is permanent.
         </p>
 
@@ -93,7 +93,7 @@ export default function Post() {
           login), use a passphrase: 4-5 random words strung together. Something like{" "}
           <code>copper-violin-marshmallow-dolphin-72</code> is both extremely strong and weirdly easy
           to remember. Need to convert it to lowercase or title case? The{" "}
-          <a href="/text-case-converter">Text Case Converter</a> handles it instantly.
+          <a href="/tools/text-case-converter">Text Case Converter</a> handles it instantly.
         </p>
 
         <h2>Frequently Asked Questions</h2>
@@ -104,12 +104,12 @@ export default function Post() {
         <h3>What&apos;s the safest 2FA method?</h3>
         <p>Hardware keys (YubiKey) &gt; authenticator apps &gt; SMS. Avoid SMS where you can.</p>
         <h3>How often should I change my passwords?</h3>
-        <p>Modern advice: only when there&apos;s a breach. Forced rotation just makes people choose weaker passwords. Generate strong ones with the <a href="/password-generator">Password Generator</a> and leave them alone.</p>
+        <p>Modern advice: only when there&apos;s a breach. Forced rotation just makes people choose weaker passwords. Generate strong ones with the <a href="/tools/password-generator">Password Generator</a> and leave them alone.</p>
 
         <h2>Conclusion: three steps to never worry again</h2>
         <p>
           Generate, store, enable 2FA. That&apos;s the whole system. Open the{" "}
-          <a href="/password-generator">Password Generator</a> right now, install a password manager
+          <a href="/tools/password-generator">Password Generator</a> right now, install a password manager
           before you close this tab, and turn on 2FA on your email tonight.
         </p>
       </BlogPostShell>

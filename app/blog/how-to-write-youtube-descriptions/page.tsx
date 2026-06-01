@@ -102,7 +102,7 @@ export default function Post() {
         </ul>
         <p>
           Each chapter title is another keyword opportunity. Use the{" "}
-          <a href="/word-counter">Word Counter</a> to keep chapter titles tight, under 50 characters
+          <a href="/tools/word-counter">Word Counter</a> to keep chapter titles tight, under 50 characters
           is ideal.
         </p>
 
@@ -114,7 +114,7 @@ export default function Post() {
           content strategy&quot;.
         </p>
         <p>
-          Use the <a href="/youtube-tags-generator">YouTube Tags Generator</a> to discover related
+          Use the <a href="/tools/youtube-tags-generator">YouTube Tags Generator</a> to discover related
           keyword variations, many of them belong in your description, not just your tags.
         </p>
 
@@ -133,14 +133,14 @@ export default function Post() {
         <p>
           YouTube displays up to 3 hashtags above your video title, they come from the last hashtags
           in your description. Use 3-5 relevant hashtags at the very end. Generate the right mix with
-          the <a href="/hashtag-generator">Hashtag Generator</a>.
+          the <a href="/tools/hashtag-generator">Hashtag Generator</a>.
         </p>
 
         <h2>Description length: how long is long enough?</h2>
         <p>
           YouTube allows up to 5,000 characters. Aim for 300-500 words for most videos, enough to
           give viewers enough context, not so much that it feels like spam. Use the{" "}
-          <a href="/word-counter">Word Counter</a> to hit that range before publishing.
+          <a href="/tools/word-counter">Word Counter</a> to hit that range before publishing.
         </p>
 
         <h2>The description template</h2>
@@ -184,9 +184,9 @@ export default function Post() {
         <p>
           Your description is free SEO real estate that most creators waste. Spend 10 extra minutes
           on it per video, use the{" "}
-          <a href="/youtube-tags-generator">YouTube Tags Generator</a> for keyword ideas, the{" "}
-          <a href="/word-counter">Word Counter</a> to hit the right length, and the{" "}
-          <a href="/hashtag-generator">Hashtag Generator</a> for the footer. That&apos;s a 10-minute
+          <a href="/tools/youtube-tags-generator">YouTube Tags Generator</a> for keyword ideas, the{" "}
+          <a href="/tools/word-counter">Word Counter</a> to hit the right length, and the{" "}
+          <a href="/tools/hashtag-generator">Hashtag Generator</a> for the footer. That&apos;s a 10-minute
           investment that compounds for the life of the video.
         </p>
       </BlogPostShell>

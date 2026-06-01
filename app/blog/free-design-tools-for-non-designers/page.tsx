@@ -67,7 +67,7 @@ export default function Post() {
           across your website, social posts, and documents helps everything feel connected.
         </p>
         <p>
-          The <a href="/color-palette-generator">Color Palette Generator</a> creates harmonious
+          The <a href="/tools/color-palette-generator">Color Palette Generator</a> creates harmonious
           palettes from a single starting color. Pick your brand color, generate a palette, and use
           those exact hex codes everywhere. No more guessing which shade of blue to use.
         </p>
@@ -79,7 +79,7 @@ export default function Post() {
         <h2>2. CSS Gradient Generator: beautiful backgrounds without Photoshop</h2>
         <p>
           Gradients make hero sections, social cards and Notion covers look polished. The{" "}
-          <a href="/css-gradient-generator">CSS Gradient Generator</a> lets you build them visually
+          <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> lets you build them visually
           and copy the CSS, or just screenshot the preview for use in Canva or Google Slides.
         </p>
         <p>
@@ -92,7 +92,7 @@ export default function Post() {
         <p>
           A slow-loading website or heavy email attachment can undermine the professional impression
           you&apos;re trying to create. The{" "}
-          <a href="/image-compressor">Image Compressor</a> reduces file sizes while letting you preview
+          <a href="/tools/image-compressor">Image Compressor</a> reduces file sizes while letting you preview
           quality, and it runs entirely in your browser so nothing is uploaded to Sounez.
         </p>
         <p>
@@ -105,14 +105,14 @@ export default function Post() {
         <p>
           Business cards, flyers, packaging and presentations all benefit from a QR code that links
           to your website, portfolio or contact page. The{" "}
-          <a href="/qr-code-generator">QR Code Generator</a> creates clean, high-resolution codes in
+          <a href="/tools/qr-code-generator">QR Code Generator</a> creates clean, high-resolution codes in
           seconds, free, no watermark, ready for print.
         </p>
 
         <h2>5. Text Case Converter: fix formatting instantly</h2>
         <p>
           Inconsistent capitalization is one of the most common signs of amateur work. The{" "}
-          <a href="/text-case-converter">Text Case Converter</a> fixes it in one click, title case
+          <a href="/tools/text-case-converter">Text Case Converter</a> fixes it in one click, title case
           for headings, sentence case for body text, and everything in between.
         </p>
 
@@ -120,7 +120,7 @@ export default function Post() {
         <ul>
           <li>
             <strong>Colors</strong>: Pick 2-3 colors and use them everywhere. Generate your palette
-            with the <a href="/color-palette-generator">Color Palette Generator</a>.
+            with the <a href="/tools/color-palette-generator">Color Palette Generator</a>.
           </li>
           <li>
             <strong>Typography</strong>: Use one font for headings, one for body.{" "}
@@ -135,7 +135,7 @@ export default function Post() {
           </li>
           <li>
             <strong>Images</strong>: Compress everything with the{" "}
-            <a href="/image-compressor">Image Compressor</a> before publishing.
+            <a href="/tools/image-compressor">Image Compressor</a> before publishing.
           </li>
           <li>
             <strong>Consistency</strong>: Same colors, same fonts, same spacing, everywhere.
@@ -167,7 +167,7 @@ export default function Post() {
         <h3>What&apos;s the single most impactful design change a non-designer can make?</h3>
         <p>
           Pick a consistent color palette and reuse it across your site, posts, and documents. Start with the{" "}
-          <a href="/color-palette-generator">Color Palette Generator</a>.
+          <a href="/tools/color-palette-generator">Color Palette Generator</a>.
         </p>
         <h3>Can I use these tools for client work?</h3>
         <p>
@@ -177,9 +177,9 @@ export default function Post() {
         <h2>Conclusion: consistency is the skill</h2>
         <p>
           You don&apos;t need to become a designer. You need to be consistent. Pick a palette with the{" "}
-          <a href="/color-palette-generator">Color Palette Generator</a>, build a signature gradient
-          with the <a href="/css-gradient-generator">CSS Gradient Generator</a>, and compress every
-          image with the <a href="/image-compressor">Image Compressor</a>. That&apos;s the whole system.
+          <a href="/tools/color-palette-generator">Color Palette Generator</a>, build a signature gradient
+          with the <a href="/tools/css-gradient-generator">CSS Gradient Generator</a>, and compress every
+          image with the <a href="/tools/image-compressor">Image Compressor</a>. That&apos;s the whole system.
           Browse <a href="/categories/design-tools">all design tools</a> for more.
         </p>
       </BlogPostShell>

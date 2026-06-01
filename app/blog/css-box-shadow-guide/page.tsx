@@ -47,7 +47,7 @@ export default function Post() {
         <p>
           This guide covers the CSS <code>box-shadow</code> syntax, the difference between soft and
           strong shadows, practical UI examples, accessibility considerations and how to use the{" "}
-          <a href="/box-shadow-generator">Box Shadow Generator</a> to design shadows visually.
+          <a href="/tools/box-shadow-generator">Box Shadow Generator</a> to design shadows visually.
         </p>
 
         <h2>What is box-shadow in CSS?</h2>
@@ -130,7 +130,7 @@ box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);`}</code>
 
         <h2>How to use the Box Shadow Generator</h2>
         <ol>
-          <li>Open the <a href="/box-shadow-generator">Box Shadow Generator</a>.</li>
+          <li>Open the <a href="/tools/box-shadow-generator">Box Shadow Generator</a>.</li>
           <li>Start with a preset (Soft, Medium, Large, Sharp or Inner) to get a good starting point.</li>
           <li>Adjust the sliders: horizontal offset, vertical offset, blur radius, spread radius and opacity.</li>
           <li>Change the shadow color and background color to match your design.</li>
@@ -148,16 +148,16 @@ box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);`}</code>
         <h3>Does box-shadow affect layout?</h3>
         <p>No. box-shadow does not affect the layout or size of the element. It is purely visual.</p>
         <h3>Is the Box Shadow Generator free?</h3>
-        <p>Yes. The <a href="/box-shadow-generator">Sounez Box Shadow Generator</a> is free to use and does not require an account.</p>
+        <p>Yes. The <a href="/tools/box-shadow-generator">Sounez Box Shadow Generator</a> is free to use and does not require an account.</p>
 
         <h2>Conclusion: subtle depth, big impact</h2>
         <p>
           The best shadows are the ones users feel rather than see. They create depth and hierarchy
           without drawing attention to themselves. Open the{" "}
-          <a href="/box-shadow-generator">Box Shadow Generator</a>, start with the Soft preset, and
+          <a href="/tools/box-shadow-generator">Box Shadow Generator</a>, start with the Soft preset, and
           adjust until it feels right. For the full design toolkit, pair it with the{" "}
-          <a href="/css-gradient-generator">CSS Gradient Generator</a> and the{" "}
-          <a href="/color-palette-generator">Color Palette Generator</a>.
+          <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> and the{" "}
+          <a href="/tools/color-palette-generator">Color Palette Generator</a>.
         </p>
       </BlogPostShell>
     </>

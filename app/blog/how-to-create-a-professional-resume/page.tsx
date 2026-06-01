@@ -67,7 +67,7 @@ export default function Post() {
           guide their eye to the right information immediately, the content never gets read.
         </p>
         <p>
-          Use the <a href="/resume-generator">free Resume Generator</a> alongside this guide to build
+          Use the <a href="/tools/resume-generator">free Resume Generator</a> alongside this guide to build
           and export your resume as a PDF without creating an account.
         </p>
 
@@ -150,7 +150,7 @@ export default function Post() {
           design role at a product-led growth company.&quot;
         </p>
         <p>
-          Keep it under 60 words. Use the <a href="/word-counter">Word Counter</a> to check length.
+          Keep it under 60 words. Use the <a href="/tools/word-counter">Word Counter</a> to check length.
           Avoid clichés like &quot;passionate&quot;, &quot;results-driven&quot; or &quot;team player&quot;, they add no
           information.
         </p>
@@ -197,7 +197,7 @@ export default function Post() {
 
         <h2>How to export your resume as PDF</h2>
         <p>
-          The <a href="/resume-generator">Resume Generator</a> includes a live preview that updates
+          The <a href="/tools/resume-generator">Resume Generator</a> includes a live preview that updates
           as you type. When you&apos;re happy with the result:
         </p>
         <ol>
@@ -236,7 +236,7 @@ export default function Post() {
         </p>
         <h3>How do I export my resume as a PDF?</h3>
         <p>
-          Use the Download PDF button in the <a href="/resume-generator">Resume Generator</a>. In
+          Use the Download PDF button in the <a href="/tools/resume-generator">Resume Generator</a>. In
           the print dialog, set margins to None or Minimum and enable Background graphics. Save as
           PDF instead of printing.
         </p>
@@ -250,9 +250,9 @@ export default function Post() {
         <p>
           A professional resume doesn&apos;t need to be fancy. It needs to be clear, structured and full
           of achievements rather than responsibilities. Open the{" "}
-          <a href="/resume-generator">Resume Generator</a> now, fill in your details, and download a
+          <a href="/tools/resume-generator">Resume Generator</a> now, fill in your details, and download a
           clean PDF in under 10 minutes. For your LinkedIn profile, use the{" "}
-          <a href="/bio-generator">Bio Generator</a> to write a matching professional summary.
+          <a href="/tools/bio-generator">Bio Generator</a> to write a matching professional summary.
         </p>
       </BlogPostShell>
     </>
