@@ -103,6 +103,7 @@ export function HashtagClient({ tool }: { tool: Tool }) {
       <div className="mb-4 flex flex-wrap gap-2">
         {(["all", "instagram", "tiktok", "youtube"] as Platform[]).map((p) => (
           <button
+            type="button"
             key={p}
             onClick={() => setPlatform(p)}
             className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${
