@@ -9,9 +9,9 @@ import { trackToolComplete, trackCopyResult } from "@/lib/analytics";
 
 type Platform = "all" | "instagram" | "tiktok" | "youtube";
 
-const UNIVERSAL = ["tips", "daily", "love", "community", "life", "world", "vibes", "gram", "post", "pro", "viral", "trending", "fyp"];
+const UNIVERSAL = ["tips", "daily", "community", "ideas", "local", "helpful", "guide", "post", "creator", "smallbusiness", "behindthescenes", "learn"];
 const INSTAGRAM_MODS = ["official", "lover", "ofinstagram", "oftheday", "addict", "inspo", "style", "aesthetic"];
-const TIKTOK_MODS = ["foryou", "foryoupage", "fypシ", "duet", "stitchthis", "viral", "trending", "learnontiktok"];
+const TIKTOK_MODS = ["learnontiktok", "contenttips", "creatorcommunity", "smallbusinesscheck", "howto", "dailypractice", "behindthescenes", "quicktips"];
 const YOUTUBE_MODS = ["shorts", "youtubeshorts", "howto", "tutorial", "review", "unboxing", "vlog", "subscribe"];
 
 function makeTags(seed: string, platform: Platform): string[] {

@@ -79,7 +79,7 @@ export default function Post() {
         </p>
         <ul>
           <li>Splitting a restaurant bill between friends</li>
-          <li>Calculating a sale discount or VAT amount</li>
+          <li>Calculating a sale discount or sales tax amount</li>
           <li>Working out a tip percentage</li>
           <li>Checking a measurement conversion</li>
           <li>Estimating a monthly budget item</li>
@@ -90,26 +90,26 @@ export default function Post() {
 
         <h3>Addition (+)</h3>
         <p>
-          Adds two or more numbers together. Example: you buy three items costing £12, £8.50 and
-          £4.75. Total = 12 + 8.50 + 4.75 = <strong>£25.25</strong>.
+          Adds two or more numbers together. Example: you buy three items costing $12, $8.50 and
+          $4.75. Total = 12 + 8.50 + 4.75 = <strong>$25.25</strong>.
         </p>
 
         <h3>Subtraction (−)</h3>
         <p>
-          Finds the difference between two numbers. Example: your budget is £100 and you&apos;ve spent
-          £67.40. Remaining = 100 − 67.40 = <strong>£32.60</strong>.
+          Finds the difference between two numbers. Example: your budget is $100 and you&apos;ve spent
+          $67.40. Remaining = 100 - 67.40 = <strong>$32.60</strong>.
         </p>
 
         <h3>Multiplication (x)</h3>
         <p>
-          Multiplies two numbers. Example: you need 6 packs of tiles, each costing £14.99. Total =
-          6 x 14.99 = <strong>£89.94</strong>.
+          Multiplies two numbers. Example: you need 6 packs of tiles, each costing $14.99. Total =
+          6 x 14.99 = <strong>$89.94</strong>.
         </p>
 
         <h3>Division (÷)</h3>
         <p>
-          Splits a number into equal parts. Example: a £180 dinner bill split between 4 people = 180
-          ÷ 4 = <strong>£45 each</strong>.
+          Splits a number into equal parts. Example: a $180 dinner bill split between 4 people = 180
+          / 4 = <strong>$45 each</strong>.
         </p>
 
         <PullQuote>
@@ -124,9 +124,9 @@ export default function Post() {
           Formula: <code>number x percentage ÷ 100</code>
         </p>
         <ul>
-          <li>20% of £250 = 250 x 20 ÷ 100 = <strong>£50</strong></li>
-          <li>15% tip on a £60 meal = 60 x 15 ÷ 100 = <strong>£9</strong></li>
-          <li>7.5% VAT on £400 = 400 x 7.5 ÷ 100 = <strong>£30</strong></li>
+          <li>20% of $250 = 250 x 20 / 100 = <strong>$50</strong></li>
+          <li>15% tip on a $60 meal = 60 x 15 / 100 = <strong>$9</strong></li>
+          <li>7.5% sales tax on $400 = 400 x 7.5 / 100 = <strong>$30</strong></li>
         </ul>
         <p>
           On the <Link href="/tools/calculator">Calculator</Link>, type the number, press x, type the percentage,
@@ -135,8 +135,8 @@ export default function Post() {
 
         <h3>Calculating a discount</h3>
         <p>
-          A £120 jacket is 30% off. Discount = 120 x 30 ÷ 100 = £36. Sale price = 120 − 36 ={" "}
-          <strong>£84</strong>.
+          A $120 jacket is 30% off. Discount = 120 x 30 / 100 = $36. Sale price = 120 - 36 ={" "}
+          <strong>$84</strong>.
         </p>
 
         <h3>Finding what percentage one number is of another</h3>
@@ -162,7 +162,7 @@ export default function Post() {
             Sales went from 200 to 260. Increase = ((260 − 200) ÷ 200) x 100 = <strong>30%</strong>
           </li>
           <li>
-            Price dropped from £80 to £68. Decrease = ((80 − 68) ÷ 80) x 100 = <strong>15%</strong>
+            Price dropped from $80 to $68. Decrease = ((80 - 68) / 80) x 100 = <strong>15%</strong>
           </li>
         </ul>
 

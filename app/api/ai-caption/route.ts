@@ -28,17 +28,17 @@ function fallbackCaptions(topic: string, platform: string, tone: string): string
     },
     tiktok: {
       funny: [
-        `POV: ${t} just changed everything 😂 #fyp #relatable`,
-        `Nobody told me ${t} would be this chaotic 🤣 #relatable`,
-        `${t} said hold my coffee ☕ #foryou #trending`,
+        `POV: ${t} finally makes sense 😂 #relatable #contenttips`,
+        `The part of ${t} nobody mentions enough 🤣 #relatable`,
+        `${t} just gave us something to talk about ☕ #socialtips`,
       ],
       professional: [
         `3 things I learned from ${t} that changed how I work 💼 #tiktokbusiness`,
-        `${t}: here is what most people get wrong #learnontiktok #fyp`,
+        `${t}: here is what most people get wrong #learnontiktok #contenttips`,
         `The truth about ${t} nobody talks about 👇 #contentcreator`,
       ],
       inspirational: [
-        `${t} is proof that consistency beats perfection ✨ #motivation #fyp`,
+        `${t} is proof that consistency beats perfection ✨ #motivation #dailypractice`,
         `Let ${t} be your reminder: you're closer than you think 🌟 #motivation`,
         `The journey with ${t} is just beginning. Keep going 💪 #foryou`,
       ],

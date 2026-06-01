@@ -100,7 +100,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
         label: "Post brief",
         type: "textarea",
         required: true,
-        placeholder: "e.g. Instagram post for a cleaning company before Eid - 20% off deep clean, families in the city.",
+        placeholder: "e.g. Instagram post for a cleaning company offering 20% off deep cleaning before a family gathering, moving day, seasonal refresh, or weekend home reset.",
         helpText: "What is the post about, who is it for, and any offer or deadline?",
       },
       {
@@ -126,7 +126,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
         name: "audience",
         label: "Audience",
         type: "text",
-        placeholder: "e.g. Busy parents in Casablanca",
+        placeholder: "e.g. Busy parents, renters, or new homeowners in your local area",
       },
       {
         name: "goal",
@@ -138,7 +138,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
         name: "keywords",
         label: "Keywords (optional)",
         type: "text",
-        placeholder: "e.g. Eid cleaning, same-day service",
+        placeholder: "e.g. deep cleaning, move-out cleaning, weekend refresh",
       },
       ...commonToneLanguage,
       {
@@ -172,11 +172,11 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       "Copy into your scheduler or app.",
     ],
     exampleOutput: [
-      { label: "Brief", sample: "Cleaning company Eid promo - 20% off deep clean, Instagram, local families." },
+      { label: "Brief", sample: "Cleaning company promotion - 20% off deep cleaning before a family gathering or weekend home reset." },
       {
         label: "Caption (draft)",
         sample:
-          "Eid prep without the stress. Book a deep clean this week and save 20% - limited slots in your area. Message us or tap the link in bio.",
+          "Make the house feel guest-ready without losing your weekend. Book a deep clean this week and save 20% - limited openings in your area. Message us or tap the link in bio.",
       },
       { label: "First comment", sample: "Book here -> [your-link] - Offer ends Sunday." },
     ],
@@ -517,7 +517,7 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       },
       { name: "topic", label: "Topic", type: "text", required: true },
       { name: "subject", label: "Subject", type: "text", placeholder: "e.g. Biology, History" },
-      { name: "level", label: "Level", type: "text", placeholder: "e.g. High school, Year 2 university" },
+      { name: "level", label: "Level", type: "text", placeholder: "e.g. High school, college sophomore, adult learner" },
       { name: "studyGoal", label: "Study goal", type: "text", placeholder: "e.g. Final exam in two weeks" },
       ...commonToneLanguage,
       { name: "extraNotes", label: "Extra notes", type: "textarea" },

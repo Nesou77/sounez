@@ -150,7 +150,8 @@ export function SmartPacksIndex() {
       <section className="mt-16 rounded-2xl border border-primary/20 bg-primary/5 p-6">
         <h2 className="text-lg font-bold">Example workflow</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          A cleaning company wants an Instagram post before Eid with 20% off. They open the{" "}
+          A cleaning company wants an Instagram post for a 20% off deep-cleaning offer before a family
+          gathering, move-out date, or weekend home reset. They open the{" "}
           <Link href="/smart-packs/social-media-pack" className="font-medium text-primary hover:underline">
             Social Media Pack
           </Link>
