@@ -24,6 +24,15 @@ export type GeminiStreamOptions = {
   maxOutputTokens?: number;
 };
 
+export type GeminiVisionOptions = {
+  /** Text prompt describing what to do with the image. */
+  prompt: string;
+  imageBase64: string;
+  imageMimeType: string;
+  fallback: unknown;
+  maxOutputTokens?: number;
+};
+
 // ── Internal helpers ─────────────────────────────────────────────────────────
 
 const GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
@@ -130,6 +139,55 @@ export async function callGeminiJsonRequired<T>(options: Omit<GeminiJsonOptions,
   } catch (e) {
     console.error("[ai] callGeminiJsonRequired failed:", e);
     return null;
+  }
+}
+
+/**
+ * Call Gemini with a multimodal (image + text) request and return a parsed JSON response.
+ * Falls back to `options.fallback` if the API key is missing or the call fails.
+ * All API key access goes through env.geminiApiKey — never read process.env directly.
+ */
+export async function callGeminiVisionJson<T>(options: GeminiVisionOptions): Promise<T> {
+  const { prompt, imageBase64, imageMimeType, fallback, maxOutputTokens = 600 } = options;
+
+  if (!env.geminiApiKey) {
+    return fallback as T;
+  }
+
+  try {
+    const res = await fetch(geminiUrl(env.geminiModel, "generateContent"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [
+          {
+            role: "user",
+            parts: [
+              { inlineData: { mimeType: imageMimeType, data: imageBase64 } },
+              { text: prompt },
+            ],
+          },
+        ],
+        generationConfig: {
+          maxOutputTokens,
+          responseMimeType: "application/json",
+        },
+      }),
+    });
+
+    if (!res.ok) {
+      console.error(`[ai] Gemini vision error ${res.status}: ${await res.text()}`);
+      return fallback as T;
+    }
+
+    const data = await res.json();
+    const text: string = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+    if (!text) return fallback as T;
+
+    return safeParseJson<T>(text, fallback as T);
+  } catch (e) {
+    console.error("[ai] callGeminiVisionJson failed:", e);
+    return fallback as T;
   }
 }
 

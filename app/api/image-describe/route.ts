@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { env } from "@/lib/env";
+import { callGeminiVisionJson } from "@/lib/ai";
 import { checkRateLimit, getClientIp, AI_RATE_LIMIT } from "@/lib/rate-limit";
 
 type Tone = "descriptive" | "accessibility" | "seo" | "social";
@@ -33,8 +34,6 @@ function fallbackResult(tone: Tone): DescribeResult {
 
 // ── Gemini Vision ─────────────────────────────────────────────────────────────
 
-const GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
-
 function buildPrompt(tone: Tone): string {
   const toneInstructions: Record<Tone, string> = {
     descriptive: "Provide a neutral, factual description. Focus on subjects, objects, setting, colors, and composition.",
@@ -60,54 +59,21 @@ async function callGeminiVision(
   mimeType: string,
   tone: Tone,
 ): Promise<DescribeResult> {
-  const model = env.geminiModel;
-  const url = `${GEMINI_BASE}/${model}:generateContent?key=${env.geminiApiKey}`;
-
-  const body = {
-    contents: [
-      {
-        role: "user",
-        parts: [
-          { inlineData: { mimeType, data: base64Image } },
-          { text: buildPrompt(tone) },
-        ],
-      },
-    ],
-    generationConfig: {
-      maxOutputTokens: 600,
-      responseMimeType: "application/json",
-    },
-  };
-
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+  const fb = fallbackResult(tone);
+  const raw = await callGeminiVisionJson<Partial<DescribeResult>>({
+    prompt: buildPrompt(tone),
+    imageBase64: base64Image,
+    imageMimeType: mimeType,
+    fallback: fb,
+    maxOutputTokens: 600,
   });
-
-  if (!res.ok) {
-    console.error(`[image-describe] Gemini error ${res.status}: ${await res.text()}`);
-    return fallbackResult(tone);
-  }
-
-  const data = await res.json();
-  const text: string = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
-  if (!text) return fallbackResult(tone);
-
-  try {
-    const cleaned = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
-    const parsed = JSON.parse(cleaned) as Partial<DescribeResult>;
-    const fb = fallbackResult(tone);
-    return {
-      altText: parsed.altText?.trim() || fb.altText,
-      shortCaption: parsed.shortCaption?.trim() || fb.shortCaption,
-      detailedDescription: parsed.detailedDescription?.trim() || fb.detailedDescription,
-      seoKeywords: parsed.seoKeywords?.trim() || fb.seoKeywords,
-      socialCaption: parsed.socialCaption?.trim() || fb.socialCaption,
-    };
-  } catch {
-    return fallbackResult(tone);
-  }
+  return {
+    altText: raw.altText?.trim() || fb.altText,
+    shortCaption: raw.shortCaption?.trim() || fb.shortCaption,
+    detailedDescription: raw.detailedDescription?.trim() || fb.detailedDescription,
+    seoKeywords: raw.seoKeywords?.trim() || fb.seoKeywords,
+    socialCaption: raw.socialCaption?.trim() || fb.socialCaption,
+  };
 }
 
 // ── Route ─────────────────────────────────────────────────────────────────────
