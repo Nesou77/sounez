@@ -7,15 +7,10 @@ import {
   type ConsentChoice,
 } from "@/lib/cookie-consent";
 
-const GTM_INTERACTION_EVENTS: string[] = [
-  "scroll",
-  "click",
-  "touchstart",
-  "keydown",
-  "mousemove",
-];
-
-/** Loads GTM only after analytics consent, on first interaction or after 5 s. */
+/** Loads GTM only after analytics consent, using idle callback or timeout only.
+ *  No interaction-based triggers (click, keydown, touchstart, mousemove) to
+ *  avoid scroll/focus jumps caused by script injection during user interaction.
+ */
 export function GoogleTagManager() {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID?.trim();
 
@@ -24,12 +19,10 @@ export function GoogleTagManager() {
 
     let loaded = false;
     let timeoutId: number | undefined;
-    const PASSIVE: AddEventListenerOptions = { passive: true };
 
     function loadGTM() {
       if (loaded || !hasAnalyticsConsent()) return;
       loaded = true;
-      GTM_INTERACTION_EVENTS.forEach((e) => window.removeEventListener(e, loadGTM));
       if (timeoutId !== undefined) window.clearTimeout(timeoutId);
 
       window.dataLayer = window.dataLayer || [];
@@ -40,34 +33,39 @@ export function GoogleTagManager() {
       document.head.appendChild(s);
     }
 
-    function attachListeners() {
-      GTM_INTERACTION_EVENTS.forEach((e) => window.addEventListener(e, loadGTM, PASSIVE));
-      timeoutId = window.setTimeout(loadGTM, 5000);
+    function scheduleLoad() {
+      if (loaded) return;
+      // Prefer requestIdleCallback so GTM loads during browser idle time,
+      // never during an active user interaction (typing, clicking, scrolling).
+      if (typeof window.requestIdleCallback === "function") {
+        window.requestIdleCallback(() => loadGTM(), { timeout: 4000 });
+      } else {
+        timeoutId = window.setTimeout(loadGTM, 3500);
+      }
     }
 
-    function detachListeners() {
-      GTM_INTERACTION_EVENTS.forEach((e) => window.removeEventListener(e, loadGTM));
+    function cancelLoad() {
       if (timeoutId !== undefined) window.clearTimeout(timeoutId);
     }
 
     if (hasAnalyticsConsent()) {
-      attachListeners();
+      scheduleLoad();
     }
 
     const onConsent = (e: Event) => {
       const choice = (e as CustomEvent<{ choice: ConsentChoice }>).detail?.choice;
       if (choice === "accepted" && !loaded) {
-        attachListeners();
+        scheduleLoad();
       }
       if (choice === "rejected") {
-        detachListeners();
+        cancelLoad();
       }
     };
 
     window.addEventListener(CONSENT_CHANGED_EVENT, onConsent);
 
     return () => {
-      detachListeners();
+      cancelLoad();
       window.removeEventListener(CONSENT_CHANGED_EVENT, onConsent);
     };
   }, [gtmId]);

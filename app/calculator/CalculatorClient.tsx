@@ -137,6 +137,10 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      // Don't intercept keyboard events when the user is typing in an input or textarea
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+
       const map: Record<string, string> = {
         "0": "0",
         "1": "1",
@@ -234,6 +238,7 @@ export function CalculatorClient({ tool }: { tool: Tool }) {
         <div className="grid grid-cols-4 gap-2">
           {BUTTONS.flat().map((btn, i) => (
             <button
+              type="button"
               key={`${btn}-${i}`}
               onClick={() => handleInput(btn)}
               className={`h-14 ${btn === "0" ? "col-span-1" : ""} ${btnClass(btn)}`}
