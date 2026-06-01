@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "How to Write Better YouTube Descriptions (2026) | Sounez",
@@ -102,7 +103,7 @@ export default function Post() {
         </ul>
         <p>
           Each chapter title is another keyword opportunity. Use the{" "}
-          <a href="/tools/word-counter">Word Counter</a> to keep chapter titles tight, under 50 characters
+          <Link href="/tools/word-counter">Word Counter</Link> to keep chapter titles tight, under 50 characters
           is ideal.
         </p>
 
@@ -114,7 +115,7 @@ export default function Post() {
           content strategy&quot;.
         </p>
         <p>
-          Use the <a href="/tools/youtube-tags-generator">YouTube Tags Generator</a> to discover related
+          Use the <Link href="/tools/youtube-tags-generator">YouTube Tags Generator</Link> to discover related
           keyword variations, many of them belong in your description, not just your tags.
         </p>
 
@@ -133,14 +134,14 @@ export default function Post() {
         <p>
           YouTube displays up to 3 hashtags above your video title, they come from the last hashtags
           in your description. Use 3-5 relevant hashtags at the very end. Generate the right mix with
-          the <a href="/tools/hashtag-generator">Hashtag Generator</a>.
+          the <Link href="/tools/hashtag-generator">Hashtag Generator</Link>.
         </p>
 
         <h2>Description length: how long is long enough?</h2>
         <p>
           YouTube allows up to 5,000 characters. Aim for 300-500 words for most videos, enough to
           give viewers enough context, not so much that it feels like spam. Use the{" "}
-          <a href="/tools/word-counter">Word Counter</a> to hit that range before publishing.
+          <Link href="/tools/word-counter">Word Counter</Link> to hit that range before publishing.
         </p>
 
         <h2>The description template</h2>
@@ -184,9 +185,9 @@ export default function Post() {
         <p>
           Your description is free SEO real estate that most creators waste. Spend 10 extra minutes
           on it per video, use the{" "}
-          <a href="/tools/youtube-tags-generator">YouTube Tags Generator</a> for keyword ideas, the{" "}
-          <a href="/tools/word-counter">Word Counter</a> to hit the right length, and the{" "}
-          <a href="/tools/hashtag-generator">Hashtag Generator</a> for the footer. That&apos;s a 10-minute
+          <Link href="/tools/youtube-tags-generator">YouTube Tags Generator</Link> for keyword ideas, the{" "}
+          <Link href="/tools/word-counter">Word Counter</Link> to hit the right length, and the{" "}
+          <Link href="/tools/hashtag-generator">Hashtag Generator</Link> for the footer. That&apos;s a 10-minute
           investment that compounds for the life of the video.
         </p>
       </BlogPostShell>

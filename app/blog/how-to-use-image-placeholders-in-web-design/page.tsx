@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "How to Use Image Placeholders in Web Design (2026) | Sounez",
@@ -48,7 +49,7 @@ export default function Post() {
         <p>
           Image placeholders solve all of these problems. This guide covers what they are, when to
           use them, the right sizes for common web layouts, SVG vs PNG, and how to generate them
-          instantly with the <a href="/tools/image-placeholder-generator">Image Placeholder Generator</a>.
+          instantly with the <Link href="/tools/image-placeholder-generator">Image Placeholder Generator</Link>.
         </p>
 
         <h2>What is an image placeholder?</h2>
@@ -89,7 +90,7 @@ export default function Post() {
 
         <h2>SVG vs PNG placeholders</h2>
         <p>
-          The <a href="/tools/image-placeholder-generator">Image Placeholder Generator</a> supports both
+          The <Link href="/tools/image-placeholder-generator">Image Placeholder Generator</Link> supports both
           SVG and PNG output. Here is when to use each:
         </p>
         <ul>
@@ -110,7 +111,7 @@ export default function Post() {
 
         <h2>How to use the Image Placeholder Generator</h2>
         <ol>
-          <li>Open the <a href="/tools/image-placeholder-generator">Image Placeholder Generator</a>.</li>
+          <li>Open the <Link href="/tools/image-placeholder-generator">Image Placeholder Generator</Link>.</li>
           <li>Enter your desired width and height in pixels (up to 4000x4000).</li>
           <li>Choose a background color and text color.</li>
           <li>Optionally add a custom label. If left blank, the dimensions are shown automatically.</li>
@@ -144,16 +145,16 @@ export default function Post() {
         <h3>Can I use placeholder images in production?</h3>
         <p>No. Placeholders are for development and design only. Replace them with real images before launching.</p>
         <h3>Is the Image Placeholder Generator free?</h3>
-        <p>Yes. The <a href="/tools/image-placeholder-generator">Sounez Image Placeholder Generator</a> is free to use and does not require an account.</p>
+        <p>Yes. The <Link href="/tools/image-placeholder-generator">Sounez Image Placeholder Generator</Link> is free to use and does not require an account.</p>
 
         <h2>Conclusion: keep your layouts honest</h2>
         <p>
           Placeholders are a small but essential part of any web design workflow. They keep layouts
           intact, make presentations clearer and prevent the &quot;we&apos;ll add images later&quot; problem from
           derailing a project. Open the{" "}
-          <a href="/tools/image-placeholder-generator">Image Placeholder Generator</a>, enter your
+          <Link href="/tools/image-placeholder-generator">Image Placeholder Generator</Link>, enter your
           dimensions and download an SVG in seconds. When the real images arrive, compress them with
-          the <a href="/tools/image-compressor">Image Compressor</a> before replacing the placeholders.
+          the <Link href="/tools/image-compressor">Image Compressor</Link> before replacing the placeholders.
         </p>
       </BlogPostShell>
     </>

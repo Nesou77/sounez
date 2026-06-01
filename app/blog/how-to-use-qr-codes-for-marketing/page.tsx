@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "How to Use QR Codes for Marketing (Without Looking Cheap) | Sounez",
@@ -123,7 +124,7 @@ export default function Post() {
 
         <h2>Generate your QR code in seconds</h2>
         <p>
-          Use the <a href="/tools/qr-code-generator">Sounez QR Code Generator</a> to create codes for URLs,
+          Use the <Link href="/tools/qr-code-generator">Sounez QR Code Generator</Link> to create codes for URLs,
           plain text, email addresses, phone numbers, and Wi-Fi credentials. It&apos;s free, runs in your
           browser, and produces clean, high-resolution codes ready for print or digital use. No
           account, no watermark.
@@ -162,7 +163,7 @@ export default function Post() {
         <h2>Frequently Asked Questions</h2>
         <h3>Do QR codes expire?</h3>
         <p>
-          Static QR codes (like those from the <a href="/tools/qr-code-generator">Sounez generator</a>) never
+          Static QR codes (like those from the <Link href="/tools/qr-code-generator">Sounez generator</Link>) never
           expire, the code is just an encoded URL. Dynamic QR codes from third-party services may
           expire if you stop paying for the service.
         </p>
@@ -186,7 +187,7 @@ export default function Post() {
         <p>
           QR codes are a bridge, not a destination. Use them where a physical-to-digital jump makes
           sense, label them clearly, and make sure the destination is worth the scan. Generate yours
-          now with the <a href="/tools/qr-code-generator">QR Code Generator</a>, free, no signup, ready in
+          now with the <Link href="/tools/qr-code-generator">QR Code Generator</Link>, free, no signup, ready in
           seconds.
         </p>
       </BlogPostShell>

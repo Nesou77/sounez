@@ -4,6 +4,7 @@ import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { ExternalLink } from "@/components/ExternalLink";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "How to Choose Font Pairings for a Website (2026 Guide) | Sounez",
@@ -49,7 +50,7 @@ export default function Post() {
         <p>
           This guide covers the principles behind good font pairings, serif vs sans-serif combinations,
           practical examples, performance tips and how to use the{" "}
-          <a href="/tools/font-pairing-tool">Font Pairing Tool</a> to find the right combination for your
+          <Link href="/tools/font-pairing-tool">Font Pairing Tool</Link> to find the right combination for your
           project.
         </p>
 
@@ -157,7 +158,7 @@ export default function Post() {
 
         <h2>How to use the Font Pairing Tool</h2>
         <ol>
-          <li>Open the <a href="/tools/font-pairing-tool">Font Pairing Tool</a>.</li>
+          <li>Open the <Link href="/tools/font-pairing-tool">Font Pairing Tool</Link>.</li>
           <li>Choose a design style: Modern, Elegant, Startup, Editorial, Minimal or Playful.</li>
           <li>The tool shows a live preview with a heading sample, body text and UI elements.</li>
           <li>Click Next pairing to cycle through curated combinations for that style.</li>
@@ -180,10 +181,10 @@ export default function Post() {
         <h2>Conclusion: contrast, harmony, readability</h2>
         <p>
           The best font pairings are the ones you stop noticing because the content flows so naturally.
-          Use the <a href="/tools/font-pairing-tool">Font Pairing Tool</a> to find a combination that fits
+          Use the <Link href="/tools/font-pairing-tool">Font Pairing Tool</Link> to find a combination that fits
           your project&apos;s style, copy the CSS, and load the fonts from Google Fonts. For the rest of
-          your design system, the <a href="/tools/color-palette-generator">Color Palette Generator</a> and{" "}
-          <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> cover colors and backgrounds.
+          your design system, the <Link href="/tools/color-palette-generator">Color Palette Generator</Link> and{" "}
+          <Link href="/tools/css-gradient-generator">CSS Gradient Generator</Link> cover colors and backgrounds.
         </p>
       </BlogPostShell>
     </>

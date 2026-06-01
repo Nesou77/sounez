@@ -4,6 +4,7 @@ import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Free Design Tools for Web Creators (2026) | Sounez",
@@ -66,24 +67,24 @@ export default function Post() {
         <h3>Favicon Generator</h3>
         <p>
           A favicon is the first visual element users see when they open your site in a tab. The{" "}
-          <a href="/tools/favicon-generator">Favicon Generator</a> creates browser-ready PNG favicons from
+          <Link href="/tools/favicon-generator">Favicon Generator</Link> creates browser-ready PNG favicons from
           text, emoji or an uploaded image. Choose your background color, shape (square, rounded or
           circle) and export size. Download the PNG and copy the HTML snippet in one click.
         </p>
         <p>
-          Read the full guide: <a href="/blog/how-to-create-a-favicon-for-your-website">how to create a favicon for your website</a>.
+          Read the full guide: <Link href="/blog/how-to-create-a-favicon-for-your-website">how to create a favicon for your website</Link>.
         </p>
 
         <h3>SVG Blob Generator</h3>
         <p>
           Organic shapes break the rigid grid of most web layouts. The{" "}
-          <a href="/tools/svg-blob-generator">SVG Blob Generator</a> creates smooth, random SVG blobs for
+          <Link href="/tools/svg-blob-generator">SVG Blob Generator</Link> creates smooth, random SVG blobs for
           hero sections, card backgrounds and decorative accents. Adjust points, randomness and color,
           then copy the SVG code or download the file. The output is a few hundred bytes, lighter
           than any image.
         </p>
         <p>
-          Read the full guide: <a href="/blog/how-to-use-svg-blobs-in-web-design">how to use SVG blobs in modern web design</a>.
+          Read the full guide: <Link href="/blog/how-to-use-svg-blobs-in-web-design">how to use SVG blobs in modern web design</Link>.
         </p>
 
         <h2>Typography tools</h2>
@@ -91,13 +92,13 @@ export default function Post() {
         <h3>Font Pairing Tool</h3>
         <p>
           Typography is the foundation of every web design. The{" "}
-          <a href="/tools/font-pairing-tool">Font Pairing Tool</a> shows curated heading and body font
+          <Link href="/tools/font-pairing-tool">Font Pairing Tool</Link> shows curated heading and body font
           combinations with a live preview and a copy-ready CSS snippet. Choose from six design
           styles, Modern, Elegant, Startup, Editorial, Minimal and Playful, and cycle through
           pairings until you find the right one.
         </p>
         <p>
-          Read the full guide: <a href="/blog/how-to-choose-font-pairings-for-a-website">how to choose font pairings for a website</a>.
+          Read the full guide: <Link href="/blog/how-to-choose-font-pairings-for-a-website">how to choose font pairings for a website</Link>.
         </p>
 
         <h2>CSS design tools</h2>
@@ -105,25 +106,25 @@ export default function Post() {
         <h3>Box Shadow Generator</h3>
         <p>
           Shadows add depth and hierarchy to UI elements. The{" "}
-          <a href="/tools/box-shadow-generator">Box Shadow Generator</a> lets you design CSS box shadows
+          <Link href="/tools/box-shadow-generator">Box Shadow Generator</Link> lets you design CSS box shadows
           visually with sliders for offset, blur, spread, opacity and color. Start from a preset
           (Soft, Medium, Large, Sharp or Inner) and adjust until it looks right. Copy the CSS with
           one click.
         </p>
         <p>
-          Read the full guide: <a href="/blog/css-box-shadow-guide">CSS box shadow guide</a>.
+          Read the full guide: <Link href="/blog/css-box-shadow-guide">CSS box shadow guide</Link>.
         </p>
 
         <h3>Background Pattern Generator</h3>
         <p>
           Flat backgrounds can feel empty. The{" "}
-          <a href="/tools/background-pattern-generator">Background Pattern Generator</a> creates CSS
+          <Link href="/tools/background-pattern-generator">Background Pattern Generator</Link> creates CSS
           background patterns, dots, grids, diagonal lines, checkerboards, triangles and waves, 
           with zero file size. Adjust colors, size and opacity, then copy the CSS directly into your
           stylesheet.
         </p>
         <p>
-          Read the full guide: <a href="/blog/css-background-patterns-guide">CSS background patterns guide</a>.
+          Read the full guide: <Link href="/blog/css-background-patterns-guide">CSS background patterns guide</Link>.
         </p>
 
         <h2>Image and placeholder tools</h2>
@@ -131,12 +132,12 @@ export default function Post() {
         <h3>Image Placeholder Generator</h3>
         <p>
           Every project needs placeholders while real images are being sourced. The{" "}
-          <a href="/tools/image-placeholder-generator">Image Placeholder Generator</a> creates custom SVG
+          <Link href="/tools/image-placeholder-generator">Image Placeholder Generator</Link> creates custom SVG
           or PNG placeholders with your dimensions, colors and label. No external service required, 
           everything is generated in your browser.
         </p>
         <p>
-          Read the full guide: <a href="/blog/how-to-use-image-placeholders-in-web-design">how to use image placeholders in web design</a>.
+          Read the full guide: <Link href="/blog/how-to-use-image-placeholders-in-web-design">how to use image placeholders in web design</Link>.
         </p>
 
         <h2>Recommended workflow</h2>
@@ -144,14 +145,14 @@ export default function Post() {
           Here is how these tools fit into a typical web project:
         </p>
         <ol>
-          <li>Start with the <a href="/tools/color-palette-generator">Color Palette Generator</a> to establish your brand colors.</li>
-          <li>Use the <a href="/tools/font-pairing-tool">Font Pairing Tool</a> to choose your typography.</li>
-          <li>Generate a <a href="/tools/css-gradient-generator">CSS gradient</a> for your hero section background.</li>
-          <li>Add texture with the <a href="/tools/background-pattern-generator">Background Pattern Generator</a>.</li>
-          <li>Use the <a href="/tools/svg-blob-generator">SVG Blob Generator</a> for organic decorative shapes.</li>
-          <li>Design card and button shadows with the <a href="/tools/box-shadow-generator">Box Shadow Generator</a>.</li>
-          <li>Fill layout gaps with the <a href="/tools/image-placeholder-generator">Image Placeholder Generator</a>.</li>
-          <li>Create your favicon with the <a href="/tools/favicon-generator">Favicon Generator</a>.</li>
+          <li>Start with the <Link href="/tools/color-palette-generator">Color Palette Generator</Link> to establish your brand colors.</li>
+          <li>Use the <Link href="/tools/font-pairing-tool">Font Pairing Tool</Link> to choose your typography.</li>
+          <li>Generate a <Link href="/tools/css-gradient-generator">CSS gradient</Link> for your hero section background.</li>
+          <li>Add texture with the <Link href="/tools/background-pattern-generator">Background Pattern Generator</Link>.</li>
+          <li>Use the <Link href="/tools/svg-blob-generator">SVG Blob Generator</Link> for organic decorative shapes.</li>
+          <li>Design card and button shadows with the <Link href="/tools/box-shadow-generator">Box Shadow Generator</Link>.</li>
+          <li>Fill layout gaps with the <Link href="/tools/image-placeholder-generator">Image Placeholder Generator</Link>.</li>
+          <li>Create your favicon with the <Link href="/tools/favicon-generator">Favicon Generator</Link>.</li>
         </ol>
 
         <h2>Frequently Asked Questions</h2>

@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Free Design Tools for Non-Designers: Look Professional Without Hiring Anyone | Sounez",
@@ -67,52 +68,52 @@ export default function Post() {
           across your website, social posts, and documents helps everything feel connected.
         </p>
         <p>
-          The <a href="/tools/color-palette-generator">Color Palette Generator</a> creates harmonious
+          The <Link href="/tools/color-palette-generator">Color Palette Generator</Link> creates harmonious
           palettes from a single starting color. Pick your brand color, generate a palette, and use
           those exact hex codes everywhere. No more guessing which shade of blue to use.
         </p>
         <p>
-          Read <a href="/blog/best-color-palettes-for-design">the best color palettes for modern
-          design</a> for the principles behind palettes that work, even if you&apos;re not a designer.
+          Read <Link href="/blog/best-color-palettes-for-design">the best color palettes for modern
+          design</Link> for the principles behind palettes that work, even if you&apos;re not a designer.
         </p>
 
         <h2>2. CSS Gradient Generator: beautiful backgrounds without Photoshop</h2>
         <p>
           Gradients make hero sections, social cards and Notion covers look polished. The{" "}
-          <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> lets you build them visually
+          <Link href="/tools/css-gradient-generator">CSS Gradient Generator</Link> lets you build them visually
           and copy the CSS, or just screenshot the preview for use in Canva or Google Slides.
         </p>
         <p>
           The key to gradients that look professional: stay within 60-90° of the color wheel. Blue to
           violet works. Blue to orange creates a muddy middle. Read the{" "}
-          <a href="/blog/css-gradients-guide">complete CSS gradients guide</a> for more.
+          <Link href="/blog/css-gradients-guide">complete CSS gradients guide</Link> for more.
         </p>
 
         <h2>3. Image Compressor: fast pages, better impressions</h2>
         <p>
           A slow-loading website or heavy email attachment can undermine the professional impression
           you&apos;re trying to create. The{" "}
-          <a href="/tools/image-compressor">Image Compressor</a> reduces file sizes while letting you preview
+          <Link href="/tools/image-compressor">Image Compressor</Link> reduces file sizes while letting you preview
           quality, and it runs entirely in your browser so nothing is uploaded to Sounez.
         </p>
         <p>
           Compress images before you publish them, especially large photos from a camera or phone.
           Read the full guide on{" "}
-          <a href="/blog/how-to-compress-images">compressing images without losing quality</a>.
+          <Link href="/blog/how-to-compress-images">compressing images without losing quality</Link>.
         </p>
 
         <h2>4. QR Code Generator: bridge print and digital</h2>
         <p>
           Business cards, flyers, packaging and presentations all benefit from a QR code that links
           to your website, portfolio or contact page. The{" "}
-          <a href="/tools/qr-code-generator">QR Code Generator</a> creates clean, high-resolution codes in
+          <Link href="/tools/qr-code-generator">QR Code Generator</Link> creates clean, high-resolution codes in
           seconds, free, no watermark, ready for print.
         </p>
 
         <h2>5. Text Case Converter: fix formatting instantly</h2>
         <p>
           Inconsistent capitalization is one of the most common signs of amateur work. The{" "}
-          <a href="/tools/text-case-converter">Text Case Converter</a> fixes it in one click, title case
+          <Link href="/tools/text-case-converter">Text Case Converter</Link> fixes it in one click, title case
           for headings, sentence case for body text, and everything in between.
         </p>
 
@@ -120,7 +121,7 @@ export default function Post() {
         <ul>
           <li>
             <strong>Colors</strong>: Pick 2-3 colors and use them everywhere. Generate your palette
-            with the <a href="/tools/color-palette-generator">Color Palette Generator</a>.
+            with the <Link href="/tools/color-palette-generator">Color Palette Generator</Link>.
           </li>
           <li>
             <strong>Typography</strong>: Use one font for headings, one for body.{" "}
@@ -135,7 +136,7 @@ export default function Post() {
           </li>
           <li>
             <strong>Images</strong>: Compress everything with the{" "}
-            <a href="/tools/image-compressor">Image Compressor</a> before publishing.
+            <Link href="/tools/image-compressor">Image Compressor</Link> before publishing.
           </li>
           <li>
             <strong>Consistency</strong>: Same colors, same fonts, same spacing, everywhere.
@@ -167,7 +168,7 @@ export default function Post() {
         <h3>What&apos;s the single most impactful design change a non-designer can make?</h3>
         <p>
           Pick a consistent color palette and reuse it across your site, posts, and documents. Start with the{" "}
-          <a href="/tools/color-palette-generator">Color Palette Generator</a>.
+          <Link href="/tools/color-palette-generator">Color Palette Generator</Link>.
         </p>
         <h3>Can I use these tools for client work?</h3>
         <p>
@@ -177,10 +178,10 @@ export default function Post() {
         <h2>Conclusion: consistency is the skill</h2>
         <p>
           You don&apos;t need to become a designer. You need to be consistent. Pick a palette with the{" "}
-          <a href="/tools/color-palette-generator">Color Palette Generator</a>, build a signature gradient
-          with the <a href="/tools/css-gradient-generator">CSS Gradient Generator</a>, and compress every
-          image with the <a href="/tools/image-compressor">Image Compressor</a>. That&apos;s the whole system.
-          Browse <a href="/categories/design-tools">all design tools</a> for more.
+          <Link href="/tools/color-palette-generator">Color Palette Generator</Link>, build a signature gradient
+          with the <Link href="/tools/css-gradient-generator">CSS Gradient Generator</Link>, and compress every
+          image with the <Link href="/tools/image-compressor">Image Compressor</Link>. That&apos;s the whole system.
+          Browse <Link href="/categories/design-tools">all design tools</Link> for more.
         </p>
       </BlogPostShell>
     </>

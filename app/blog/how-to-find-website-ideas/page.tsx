@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "How to Find Website Ideas for Your Next Project (2026) | Sounez",
@@ -68,7 +69,7 @@ export default function Post() {
         <p>
           This guide covers the frameworks that consistently produce viable website ideas, the five
           main website types and their monetization models, and how to use the{" "}
-          <a href="/tools/website-idea-generator">Website Idea Generator</a> to get four fully-formed
+          <Link href="/tools/website-idea-generator">Website Idea Generator</Link> to get four fully-formed
           concepts in seconds.
         </p>
 
@@ -222,7 +223,7 @@ export default function Post() {
 
         <h2>How to use the Website Idea Generator</h2>
         <p>
-          The <a href="/tools/website-idea-generator">Website Idea Generator</a> takes your interests or
+          The <Link href="/tools/website-idea-generator">Website Idea Generator</Link> takes your interests or
           niche and a website type, and returns four fully-formed ideas, each with a name, tagline,
           description and three key features.
         </p>
@@ -240,7 +241,7 @@ export default function Post() {
           </li>
           <li>
             Copy any idea you want to explore further. Use the{" "}
-            <a href="/tools/business-name-generator">Business Name Generator</a> to develop the name, and
+            <Link href="/tools/business-name-generator">Business Name Generator</Link> to develop the name, and
             start planning your MVP.
           </li>
         </ol>
@@ -270,7 +271,7 @@ export default function Post() {
         </p>
         <h3>Is the Website Idea Generator free?</h3>
         <p>
-          Yes. The <a href="/tools/website-idea-generator">Sounez Website Idea Generator</a> is completely
+          Yes. The <Link href="/tools/website-idea-generator">Sounez Website Idea Generator</Link> is completely
           free. No account needed.
         </p>
 
@@ -278,10 +279,10 @@ export default function Post() {
         <p>
           The fastest path to a successful website is finding a real problem, building the smallest
           possible solution, and getting it in front of real users before adding anything else. Use
-          the <a href="/tools/website-idea-generator">Website Idea Generator</a> to spark the process,
+          the <Link href="/tools/website-idea-generator">Website Idea Generator</Link> to spark the process,
           then validate your favorite idea with real audience research before writing a single line
           of code. Once you have a concept, use the{" "}
-          <a href="/tools/business-name-generator">Business Name Generator</a> to find a name that fits.
+          <Link href="/tools/business-name-generator">Business Name Generator</Link> to find a name that fits.
         </p>
       </BlogPostShell>
     </>

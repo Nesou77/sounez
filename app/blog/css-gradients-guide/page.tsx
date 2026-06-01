@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "The Complete Guide to CSS Gradients in 2026 | Sounez",
@@ -142,10 +143,10 @@ export default function Post() {
 
         <h2>Build gradients without writing code</h2>
         <p>
-          Use the <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> to build any gradient
+          Use the <Link href="/tools/css-gradient-generator">CSS Gradient Generator</Link> to build any gradient
           visually and copy the ready-to-use CSS. Adjust angle, colors, stops and opacity with a live
           preview. No design tool, no guesswork. Pair it with the{" "}
-          <a href="/tools/color-palette-generator">Color Palette Generator</a> to pick colors that work
+          <Link href="/tools/color-palette-generator">Color Palette Generator</Link> to pick colors that work
           together before building the gradient.
         </p>
 
@@ -155,7 +156,7 @@ export default function Post() {
           compressed) adds HTTP requests and bytes. Always prefer CSS gradients for backgrounds,
           overlays and decorative elements. Only use images when the gradient is photographic or
           extremely complex. If you do need a gradient image, compress it with the{" "}
-          <a href="/tools/image-compressor">Image Compressor</a> first.
+          <Link href="/tools/image-compressor">Image Compressor</Link> first.
         </p>
 
         <h2>Frequently Asked Questions</h2>
@@ -183,7 +184,7 @@ export default function Post() {
         <p>
           Pick one signature gradient for your brand, apply it consistently to your primary CTA and
           hero section, and leave everything else neutral. Open the{" "}
-          <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> now and build yours. It takes
+          <Link href="/tools/css-gradient-generator">CSS Gradient Generator</Link> now and build yours. It takes
           under a minute and the CSS is ready to paste.
         </p>
       </BlogPostShell>

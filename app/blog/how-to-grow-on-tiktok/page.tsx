@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "How to Grow on TikTok in 2026: A Creator's Playbook | Sounez",
@@ -72,7 +73,7 @@ export default function Post() {
           <li><strong>A contrarian claim</strong>: &quot;Everyone&apos;s wrong about morning routines.&quot;</li>
         </ul>
         <p>
-          Match your hook length to your caption. Use the <a href="/tools/word-counter">Word Counter</a> to
+          Match your hook length to your caption. Use the <Link href="/tools/word-counter">Word Counter</Link> to
           keep captions tight when the video already carries the main idea.{" "}
           <a href="https://newsroom.tiktok.com/en-us/how-tiktok-recommends-videos-for-you" target="_blank" rel="noopener noreferrer">
             TikTok&apos;s own recommendation guide
@@ -88,9 +89,9 @@ export default function Post() {
           <li>1 trending tag, rides the daily algorithm wave</li>
         </ul>
         <p>
-          Save time with the <a href="/tools/hashtag-generator">Hashtag Generator</a>. It
-          builds starter sets you can trim before posting. <a href="/blog/best-free-tools-for-creators">Read our
-          creator toolkit</a> for more.
+          Save time with the <Link href="/tools/hashtag-generator">Hashtag Generator</Link>. It
+          builds starter sets you can trim before posting. <Link href="/blog/best-free-tools-for-creators">Read our
+          creator toolkit</Link> for more.
         </p>
 
         <BlogImage src="/blog/how-to-grow-on-tiktok-bg.webp" alt="A TikTok creator analytics dashboard showing follower growth and engagement" caption="Engagement beats raw follower count for brand deals." />
@@ -106,13 +107,13 @@ export default function Post() {
         <p>
           Once you&apos;ve got traction, brands will start sliding into your DMs. Most creators get
           underprice usage rights because they don&apos;t know their numbers. Run yours with the{" "}
-          <a href="/tools/tiktok-money-calculator">TikTok Money Calculator</a> to set realistic brand-deal
+          <Link href="/tools/tiktok-money-calculator">TikTok Money Calculator</Link> to set realistic brand-deal
           pricing. Treat the result as a negotiation starting point, not a rate card.        </p>
 
         <h2>6. Repurpose to YouTube Shorts and Instagram Reels</h2>
         <p>
           Same vertical video, two extra places to test your idea. Use the{" "}
-          <a href="/tools/youtube-tags-generator">YouTube Tags Generator</a> for starter tags when uploading.
+          <Link href="/tools/youtube-tags-generator">YouTube Tags Generator</Link> for starter tags when uploading.
           Instagram Reels also rewards clear topics and repeatable formats.
         </p>
 
@@ -120,7 +121,7 @@ export default function Post() {
         <p>
           TikTok can change ranking, features, or account access with little warning. Build a place
           people can find you outside the app: an email list, website, community, or store. A{" "}
-          <a href="/tools/qr-code-generator">QR code</a> can help when you promote the same link offline.
+          <Link href="/tools/qr-code-generator">QR code</Link> can help when you promote the same link offline.
         </p>
 
         <h2>The 30-day TikTok growth plan</h2>
@@ -137,19 +138,19 @@ export default function Post() {
         <h3>Should I follow trends?</h3>
         <p>Use trends only when they fit your niche and point of view. A trend works best when viewers still understand why it belongs on your account.</p>
         <h3>Do hashtags still matter in 2026?</h3>
-        <p>Yes. They help the algorithm categorize you, especially when your account is new. Use the <a href="/tools/hashtag-generator">Hashtag Generator</a> for the right mix.</p>
+        <p>Yes. They help the algorithm categorize you, especially when your account is new. Use the <Link href="/tools/hashtag-generator">Hashtag Generator</Link> for the right mix.</p>
         <h3>How long until I see growth?</h3>
         <p>There is no fixed timeline. Watch early signals like retention, saves, shares, comments, and profile visits before judging a new content direction.</p>
         <h3>How much can I earn from TikTok?</h3>
-        <p>Creator income varies by niche, country, audience quality, usage rights, and deliverables. Use the <a href="/tools/tiktok-money-calculator">TikTok Money Calculator</a> as a rough planning range, not a quote.</p>
+        <p>Creator income varies by niche, country, audience quality, usage rights, and deliverables. Use the <Link href="/tools/tiktok-money-calculator">TikTok Money Calculator</Link> as a rough planning range, not a quote.</p>
 
         <h2>Conclusion: niche down, hook hard, ship daily</h2>
         <p>
           TikTok growth in 2026 is easier to manage when you treat it like a repeatable editorial
           process. Define the account clearly, test hooks, post consistently, and reuse strong ideas.
-          Open the <a href="/tools/hashtag-generator">Hashtag Generator</a> and the{" "}
-          <a href="/tools/tiktok-money-calculator">TikTok Money Calculator</a> now and start your first
-          cycle. Browse <a href="/categories/creator-tools">all creator tools</a> for the rest of your
+          Open the <Link href="/tools/hashtag-generator">Hashtag Generator</Link> and the{" "}
+          <Link href="/tools/tiktok-money-calculator">TikTok Money Calculator</Link> now and start your first
+          cycle. Browse <Link href="/categories/creator-tools">all creator tools</Link> for the rest of your
           toolkit.
         </p>
       </BlogPostShell>

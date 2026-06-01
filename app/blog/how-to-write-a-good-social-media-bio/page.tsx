@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "How to Write a Good Social Media Bio (2026 Guide) | Sounez",
@@ -67,7 +68,7 @@ export default function Post() {
         </p>
         <p>
           This guide covers what a bio should communicate, platform-specific examples, and how to use
-          the <a href="/tools/bio-generator">Bio Generator</a> to create a polished bio in seconds.
+          the <Link href="/tools/bio-generator">Bio Generator</Link> to create a polished bio in seconds.
         </p>
 
         <h2>What a bio should communicate</h2>
@@ -190,7 +191,7 @@ export default function Post() {
 
         <h2>How to use the Bio Generator</h2>
         <p>
-          The <a href="/tools/bio-generator">Bio Generator</a> takes your name, role, interests and
+          The <Link href="/tools/bio-generator">Bio Generator</Link> takes your name, role, interests and
           platform, and returns a polished bio tailored to the character limits and tone of each
           platform.
         </p>
@@ -225,22 +226,22 @@ export default function Post() {
         <p>
           Absolutely. Your LinkedIn bio should be more formal than your Instagram bio. Tailor the
           tone and length to each platform&apos;s audience and culture. The{" "}
-          <a href="/tools/bio-generator">Bio Generator</a> handles this automatically.
+          <Link href="/tools/bio-generator">Bio Generator</Link> handles this automatically.
         </p>
         <h3>Is the Bio Generator free?</h3>
         <p>
-          Yes. The <a href="/tools/bio-generator">Sounez Bio Generator</a> is free to use and does not
+          Yes. The <Link href="/tools/bio-generator">Sounez Bio Generator</Link> is free to use and does not
           require an account. Heavy automated use may be limited to keep the tool available.
         </p>
 
         <h2>Conclusion: write it once, update it quarterly</h2>
         <p>
           A great bio takes 10 minutes to write and pays dividends for months. Use the{" "}
-          <a href="/tools/bio-generator">Bio Generator</a> to get a strong first draft, then personalize it
+          <Link href="/tools/bio-generator">Bio Generator</Link> to get a strong first draft, then personalize it
           with a specific detail that only you could write. Set a reminder to review it every quarter
          , your role, focus and CTA will change, and your bio should too. Once your bio is sorted,
           pair it with great captions using the{" "}
-          <a href="/tools/ai-caption-generator">AI Caption Generator</a>.
+          <Link href="/tools/ai-caption-generator">AI Caption Generator</Link>.
         </p>
       </BlogPostShell>
     </>

@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "How to Grow Instagram Organically in 2026 | Sounez",
@@ -72,9 +73,9 @@ export default function Post() {
         </ul>
         <p>
           Build your color palette with the{" "}
-          <a href="/tools/color-palette-generator">Color Palette Generator</a>. A consistent visual
+          <Link href="/tools/color-palette-generator">Color Palette Generator</Link>. A consistent visual
           identity makes your profile look intentional and professional at a glance. Read{" "}
-          <a href="/blog/best-color-palettes-for-design">the best color palettes for modern design</a>{" "}
+          <Link href="/blog/best-color-palettes-for-design">the best color palettes for modern design</Link>{" "}
           for the principles behind palettes that work.
         </p>
 
@@ -116,7 +117,7 @@ export default function Post() {
         </ul>
         <p>
           Generate the right mix instantly with the{" "}
-          <a href="/tools/hashtag-generator">Hashtag Generator</a>. It builds platform-ready sets that
+          <Link href="/tools/hashtag-generator">Hashtag Generator</Link>. It builds platform-ready sets that
           balance reach and relevance.
         </p>
 
@@ -124,10 +125,10 @@ export default function Post() {
         <p>
           Instagram compresses images on upload, sometimes aggressively. Start with the highest
           quality file you can, then compress it yourself first with the{" "}
-          <a href="/tools/image-compressor">Image Compressor</a>. Counterintuitively, a pre-compressed
+          <Link href="/tools/image-compressor">Image Compressor</Link>. Counterintuitively, a pre-compressed
           image often looks better after Instagram&apos;s second compression than an uncompressed one.
           Read the full guide on{" "}
-          <a href="/blog/how-to-compress-images">compressing images without losing quality</a>.
+          <Link href="/blog/how-to-compress-images">compressing images without losing quality</Link>.
         </p>
         <p>
           Optimal Instagram image dimensions in 2026:
@@ -173,7 +174,7 @@ export default function Post() {
         <h3>Do hashtags still matter in 2026?</h3>
         <p>
           Yes, but for categorization more than distribution. Use the{" "}
-          <a href="/tools/hashtag-generator">Hashtag Generator</a> to find relevant, non-oversaturated tags.
+          <Link href="/tools/hashtag-generator">Hashtag Generator</Link> to find relevant, non-oversaturated tags.
         </p>
         <h3>Should I use Instagram Stories every day?</h3>
         <p>
@@ -189,8 +190,8 @@ export default function Post() {
         <h2>Conclusion: consistency beats virality</h2>
         <p>
           Organic Instagram growth in 2026 is a long game. Pick a niche, build a visual identity with
-          the <a href="/tools/color-palette-generator">Color Palette Generator</a>, use smart hashtags from
-          the <a href="/tools/hashtag-generator">Hashtag Generator</a>, and post consistently. The accounts
+          the <Link href="/tools/color-palette-generator">Color Palette Generator</Link>, use smart hashtags from
+          the <Link href="/tools/hashtag-generator">Hashtag Generator</Link>, and post consistently. The accounts
           that win aren&apos;t the ones that go viral once, they&apos;re the ones that show up every week.
         </p>
       </BlogPostShell>

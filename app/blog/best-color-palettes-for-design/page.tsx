@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "The Best Color Palettes for Modern Design (2026) | Sounez",
@@ -54,7 +55,7 @@ export default function Post() {
         <p>
           This proportion gives the eye a place to rest. Designs that fail usually invert it:
           accent everywhere, no quiet space. Build a palette that respects these ratios with the{" "}
-          <a href="/tools/color-palette-generator">Color Palette Generator</a>.
+          <Link href="/tools/color-palette-generator">Color Palette Generator</Link>.
         </p>
 
         <h2>Start with one hero color, build everything from it</h2>
@@ -69,7 +70,7 @@ export default function Post() {
         <p>
           One signature gradient on your hero section beats a rainbow everywhere. Modern gradients
           work best when they stay close in hue (for example blue to violet) rather than jumping across the
-          wheel. Build yours with the <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> and
+          wheel. Build yours with the <Link href="/tools/css-gradient-generator">CSS Gradient Generator</Link> and
           save them as design tokens, never re-invent the gradient on every page.
         </p>
 
@@ -95,11 +96,11 @@ export default function Post() {
         <h2>The pre-launch color checklist</h2>
         <ol>
           <li>Pick one hero color, the rest follows</li>
-          <li>Build tints and shades with the <a href="/tools/color-palette-generator">Palette Generator</a></li>
+          <li>Build tints and shades with the <Link href="/tools/color-palette-generator">Palette Generator</Link></li>
           <li>Test every text/background combination for WCAG AA</li>
           <li>Define semantic tokens (no raw hex in components)</li>
-          <li>Pick one signature gradient with the <a href="/tools/css-gradient-generator">CSS Gradient Generator</a></li>
-          <li>Compress your hero images with the <a href="/tools/image-compressor">Image Compressor</a> so colors load fast</li>
+          <li>Pick one signature gradient with the <Link href="/tools/css-gradient-generator">CSS Gradient Generator</Link></li>
+          <li>Compress your hero images with the <Link href="/tools/image-compressor">Image Compressor</Link> so colors load fast</li>
         </ol>
 
         <h2>Frequently Asked Questions</h2>
@@ -113,7 +114,7 @@ export default function Post() {
         <h2>Conclusion: restraint wins</h2>
         <p>
           Pick fewer colors and use them with intent. Build a system, not a mood board. Open the{" "}
-          <a href="/tools/color-palette-generator">Color Palette Generator</a> and start with one hero color
+          <Link href="/tools/color-palette-generator">Color Palette Generator</Link> and start with one hero color
           right now, the rest of your design system will fall into place.
         </p>
       </BlogPostShell>

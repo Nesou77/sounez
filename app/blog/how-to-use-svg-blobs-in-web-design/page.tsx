@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "How to Use SVG Blobs in Modern Web Design (2026) | Sounez",
@@ -47,7 +48,7 @@ export default function Post() {
         <p>
           This guide covers what SVG blobs are, why designers use them, the best use cases, their
           performance advantages, and how to generate them with the{" "}
-          <a href="/tools/svg-blob-generator">free SVG Blob Generator</a>.
+          <Link href="/tools/svg-blob-generator">free SVG Blob Generator</Link>.
         </p>
 
         <h2>What is an SVG blob?</h2>
@@ -84,7 +85,7 @@ export default function Post() {
         <p>
           Place a large, semi-transparent blob behind your hero headline to add visual interest without
           distracting from the text. Use a color that complements your brand palette, the{" "}
-          <a href="/tools/color-palette-generator">Color Palette Generator</a> can help you find the right
+          <Link href="/tools/color-palette-generator">Color Palette Generator</Link> can help you find the right
           shade.
         </p>
 
@@ -125,7 +126,7 @@ export default function Post() {
 
         <h2>How to use the SVG Blob Generator</h2>
         <ol>
-          <li>Open the <a href="/tools/svg-blob-generator">SVG Blob Generator</a>.</li>
+          <li>Open the <Link href="/tools/svg-blob-generator">SVG Blob Generator</Link>.</li>
           <li>Adjust the Points slider (5-16) to control how many anchor points the blob has. More points create more complex shapes.</li>
           <li>Adjust Randomness to control how irregular the shape is. Higher values create more organic, unpredictable blobs.</li>
           <li>Set your fill color. Enable the gradient toggle for a two-color gradient fill.</li>
@@ -144,17 +145,17 @@ export default function Post() {
         <h3>Do SVG blobs work on all browsers?</h3>
         <p>Yes. SVG has been supported in all major browsers since 2011. There are no compatibility concerns for modern web projects.</p>
         <h3>Is the SVG Blob Generator free?</h3>
-        <p>Yes. The <a href="/tools/svg-blob-generator">Sounez SVG Blob Generator</a> is free to use and does not require an account.</p>
+        <p>Yes. The <Link href="/tools/svg-blob-generator">Sounez SVG Blob Generator</Link> is free to use and does not require an account.</p>
 
         <h2>Conclusion: add organic life to your layouts</h2>
         <p>
           SVG blobs are one of the easiest ways to make a web design feel more human and less
           template-like. They are lightweight, scalable and free to generate. Open the{" "}
-          <a href="/tools/svg-blob-generator">SVG Blob Generator</a>, pick a color that matches your brand,
+          <Link href="/tools/svg-blob-generator">SVG Blob Generator</Link>, pick a color that matches your brand,
           and drop the result into your hero section. Pair it with a gradient from the{" "}
-          <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> for a cohesive visual style.
+          <Link href="/tools/css-gradient-generator">CSS Gradient Generator</Link> for a cohesive visual style.
           For more design inspiration, read{" "}
-          <a href="/blog/free-design-tools-for-web-creators">free design tools for web creators</a>.
+          <Link href="/blog/free-design-tools-for-web-creators">free design tools for web creators</Link>.
         </p>
       </BlogPostShell>
     </>

@@ -3,6 +3,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Best Free Productivity Tools for Remote Workers in 2026 | Sounez",
@@ -53,12 +54,12 @@ export default function Post() {
         <h3>Writing and editing</h3>
         <p>
           Before you publish anything (a Slack message, a client proposal, a blog post), run it
-          through the <a href="/tools/word-counter">Word Counter</a>. It shows word count, character count,
+          through the <Link href="/tools/word-counter">Word Counter</Link>. It shows word count, character count,
           reading time and sentence count at a glance. Knowing your reading time before you send a
           long email is a small thing that makes a big impression.
         </p>
         <p>
-          For formatting, the <a href="/tools/text-case-converter">Text Case Converter</a> handles title
+          For formatting, the <Link href="/tools/text-case-converter">Text Case Converter</Link> handles title
           case, sentence case, UPPERCASE and camelCase in one click. Useful for document headings,
           code variable names, and fixing accidentally caps-locked copy.
         </p>
@@ -68,9 +69,9 @@ export default function Post() {
           Remote workers are a prime target for credential attacks. You&apos;re logging into company
           systems from home networks, coffee shops and co-working spaces. Every account needs a
           unique, strong password. Generate them with the{" "}
-          <a href="/tools/password-generator">Password Generator</a> and store them in a manager like
+          <Link href="/tools/password-generator">Password Generator</Link> and store them in a manager like
           Bitwarden (free) or 1Password. Read our full guide on{" "}
-          <a href="/blog/how-to-create-a-strong-password">creating strong passwords</a> for the
+          <Link href="/blog/how-to-create-a-strong-password">creating strong passwords</Link> for the
           complete system.
         </p>
 
@@ -78,19 +79,19 @@ export default function Post() {
         <p>
           Remote workers communicate visually more than office workers (decks, async video
           thumbnails, Notion covers, social posts). The{" "}
-          <a href="/tools/color-palette-generator">Color Palette Generator</a> and{" "}
-          <a href="/tools/css-gradient-generator">CSS Gradient Generator</a> give you professional-looking
+          <Link href="/tools/color-palette-generator">Color Palette Generator</Link> and{" "}
+          <Link href="/tools/css-gradient-generator">CSS Gradient Generator</Link> give you professional-looking
           visuals without opening Figma or Photoshop. Read{" "}
-          <a href="/blog/best-color-palettes-for-design">the best color palettes for modern design</a>{" "}
+          <Link href="/blog/best-color-palettes-for-design">the best color palettes for modern design</Link>{" "}
           for the principles behind them.
         </p>
 
         <h3>Sharing and bridging physical/digital</h3>
         <p>
-          The <a href="/tools/qr-code-generator">QR Code Generator</a> is underrated for remote workers.
+          The <Link href="/tools/qr-code-generator">QR Code Generator</Link> is underrated for remote workers.
           Drop a QR code in a slide deck to link to a live doc, or put one on a printed handout for a
           hybrid meeting. Read{" "}
-          <a href="/blog/how-to-use-qr-codes-for-marketing">how to use QR codes effectively</a> for
+          <Link href="/blog/how-to-use-qr-codes-for-marketing">how to use QR codes effectively</Link> for
           more ideas.
         </p>
 
@@ -116,7 +117,7 @@ export default function Post() {
         <h2>Async communication tips that save hours</h2>
         <ul>
           <li>
-            Write shorter messages. Use the <a href="/tools/word-counter">Word Counter</a> to keep Slack
+            Write shorter messages. Use the <Link href="/tools/word-counter">Word Counter</Link> to keep Slack
             messages under 100 words, long messages get skimmed or ignored.
           </li>
           <li>
@@ -128,7 +129,7 @@ export default function Post() {
           </li>
           <li>
             Compress images before sharing in docs or Notion. Heavy images slow down shared
-            workspaces. Use the <a href="/tools/image-compressor">Image Compressor</a>.
+            workspaces. Use the <Link href="/tools/image-compressor">Image Compressor</Link>.
           </li>
         </ul>
 
@@ -140,7 +141,7 @@ export default function Post() {
           </a>{" "}
           recommends using a VPN on any network you don&apos;t control. Beyond that: enable 2FA on every
           work account, and never reuse passwords across work and personal accounts. The{" "}
-          <a href="/tools/password-generator">Password Generator</a> makes unique passwords trivial to
+          <Link href="/tools/password-generator">Password Generator</Link> makes unique passwords trivial to
           create, there&apos;s no excuse for reuse.
         </p>
 
@@ -148,14 +149,14 @@ export default function Post() {
         <h3>What&apos;s the single most important free tool for remote workers?</h3>
         <p>
           A password manager (Bitwarden is free and excellent) paired with the{" "}
-          <a href="/tools/password-generator">Password Generator</a>. Security is the foundation everything
+          <Link href="/tools/password-generator">Password Generator</Link>. Security is the foundation everything
           else sits on.
         </p>
         <h3>Are browser-based tools safe for work use?</h3>
         <p>
           Yes, for single-purpose utilities. Tools like the{" "}
-          <a href="/tools/image-compressor">Image Compressor</a> and{" "}
-          <a href="/tools/word-counter">Word Counter</a> process everything locally, nothing is sent to a
+          <Link href="/tools/image-compressor">Image Compressor</Link> and{" "}
+          <Link href="/tools/word-counter">Word Counter</Link> process everything locally, nothing is sent to a
           server.
         </p>
         <h3>How do I avoid tool overload?</h3>
@@ -168,10 +169,10 @@ export default function Post() {
         <p>
           The most productive remote workers aren&apos;t the ones with the most tools, they&apos;re the ones
           who&apos;ve cut the noise down to a focused few. Start with the{" "}
-          <a href="/tools/word-counter">Word Counter</a>, the{" "}
-          <a href="/tools/password-generator">Password Generator</a>, and the{" "}
-          <a href="/tools/image-compressor">Image Compressor</a>. Browse{" "}
-          <a href="/categories/utility-tools">all utility tools</a> for the rest.
+          <Link href="/tools/word-counter">Word Counter</Link>, the{" "}
+          <Link href="/tools/password-generator">Password Generator</Link>, and the{" "}
+          <Link href="/tools/image-compressor">Image Compressor</Link>. Browse{" "}
+          <Link href="/categories/utility-tools">all utility tools</Link> for the rest.
         </p>
       </BlogPostShell>
     </>
