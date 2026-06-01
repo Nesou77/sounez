@@ -22,26 +22,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getSiteUrl();
   const fallback = new Date();
 
-  const staticSlugs = [
-    { path: "", slug: "home" },
-    { path: "/tools", slug: "tools" },
-    { path: "/categories", slug: "categories" },
-    { path: "/blog", slug: "blog" },
-    { path: "/smart-packs", slug: "smart-packs" },
-    { path: "/about", slug: "about" },
-    { path: "/contact", slug: "contact" },
-    { path: "/privacy-policy", slug: "privacy-policy" },
-    { path: "/cookie-policy", slug: "cookie-policy" },
-    { path: "/terms-of-service", slug: "terms-of-service" },
-    { path: "/dmca", slug: "dmca" },
+  const staticPages = [
+    { path: "",                  slug: "home",            changeFreq: "weekly"  as const, priority: 1.0 },
+    { path: "/tools",            slug: "tools",           changeFreq: "weekly"  as const, priority: 0.9 },
+    { path: "/smart-packs",      slug: "smart-packs",     changeFreq: "weekly"  as const, priority: 0.9 },
+    { path: "/blog",             slug: "blog",            changeFreq: "weekly"  as const, priority: 0.85 },
+    { path: "/categories",       slug: "categories",      changeFreq: "monthly" as const, priority: 0.8 },
+    { path: "/about",            slug: "about",           changeFreq: "monthly" as const, priority: 0.5 },
+    { path: "/contact",          slug: "contact",         changeFreq: "monthly" as const, priority: 0.5 },
+    { path: "/privacy-policy",   slug: "privacy-policy",  changeFreq: "monthly" as const, priority: 0.3 },
+    { path: "/cookie-policy",    slug: "cookie-policy",   changeFreq: "monthly" as const, priority: 0.3 },
+    { path: "/terms-of-service", slug: "terms-of-service",changeFreq: "monthly" as const, priority: 0.3 },
+    { path: "/dmca",             slug: "dmca",            changeFreq: "monthly" as const, priority: 0.3 },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = await Promise.all(
-    staticSlugs.map(async ({ path, slug }) => ({
+    staticPages.map(async ({ path, slug, changeFreq, priority }) => ({
       url: `${base}${path}`,
       lastModified: await lastModified("page", slug, fallback),
-      changeFrequency: path === "" ? ("weekly" as const) : ("monthly" as const),
-      priority: path === "" ? 1.0 : 0.6,
+      changeFrequency: changeFreq,
+      priority,
     })),
   );
 

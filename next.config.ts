@@ -52,6 +52,7 @@ const LEGACY_TOOL_SLUGS = [
 ];
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [390, 414, 640, 750, 828, 1080, 1200, 1920],
@@ -139,7 +140,7 @@ const nextConfig: NextConfig = {
       },
       {
         // Cache static assets for 1 year — safe because filenames are content-hashed
-        source: "/(.*\\.(?:webp|png|svg|ico|jpg|woff2))",
+        source: "/(.*\\.(?:avif|webp|png|svg|ico|jpg|woff2))",
         headers: [
           {
             key: "Cache-Control",

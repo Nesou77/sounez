@@ -1,7 +1,12 @@
 "use client";
 
-import { CommentsSection } from "@/components/CommentsSection";
+import dynamic from "next/dynamic";
 import { EngagementBar } from "@/components/EngagementBar";
+
+const CommentsSection = dynamic(
+  () => import("@/components/CommentsSection").then((m) => m.CommentsSection),
+  { ssr: false },
+);
 
 export function BlogEngagement({ slug, title }: { slug: string; title: string }) {
   return (

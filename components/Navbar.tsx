@@ -41,6 +41,7 @@ export function Navbar() {
           className="rounded-md p-2 hover:bg-muted lg:hidden"
           onClick={() => setMobile(!mobile)}
           aria-expanded={mobile}
+          aria-controls="mobile-navigation"
           aria-label={mobile ? "Close menu" : "Open menu"}
         >
           {mobile ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
