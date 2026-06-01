@@ -4,7 +4,6 @@ import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "10 Best Free Online Tools for Creators in 2026 | Sounez",
