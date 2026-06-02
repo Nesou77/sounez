@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { MessageCircle, Send } from "lucide-react";
 import { toast } from "sonner";
 import type { ContentType } from "@/lib/content-types";
@@ -37,7 +37,10 @@ export function CommentsSection({
     }
   }, [contentType, slug]);
 
+  const hasFetched = useRef(false);
   useEffect(() => {
+    if (hasFetched.current) return;
+    hasFetched.current = true;
     void loadComments();
   }, [loadComments]);
 

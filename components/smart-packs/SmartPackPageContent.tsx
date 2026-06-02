@@ -109,7 +109,7 @@ export function SmartPackPageContent({ pack }: { pack: SmartPackDefinition }) {
             <div className="mt-4 divide-y divide-border rounded-2xl border border-border bg-card">
               {pack.faqs.map((f) => (
                 <details key={f.q} className="group p-5">
-                  <summary className="cursor-pointer list-none font-semibold marker:hidden">{f.q}</summary>
+                  <summary tabIndex={-1} className="cursor-pointer list-none font-semibold marker:hidden">{f.q}</summary>
                   <p className="mt-2 text-sm text-muted-foreground">{f.a}</p>
                 </details>
               ))}

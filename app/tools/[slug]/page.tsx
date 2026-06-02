@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { toolBySlug, TOOLS } from "@/data/tools";
 import { toolMetadata } from "@/lib/tool-metadata";
 import { ToolJsonLd } from "@/components/ToolJsonLd";
+import { getContentDates, formatContentDate } from "@/lib/content-meta";
 import { ToolClientRenderer } from "./ToolClientRenderer";
 
 export function generateStaticParams() {
@@ -46,10 +47,24 @@ export default async function Page({
   const tool = toolBySlug(slug);
   if (!tool) notFound();
 
+  const rawDates = await getContentDates("tool", slug);
+  const dates = rawDates
+    ? {
+        createdDisplay: formatContentDate(rawDates.createdAt),
+        createdIso: rawDates.createdAt.toISOString(),
+        ...(rawDates.updatedAt.getTime() > rawDates.createdAt.getTime()
+          ? {
+              updatedDisplay: formatContentDate(rawDates.updatedAt),
+              updatedIso: rawDates.updatedAt.toISOString(),
+            }
+          : {}),
+      }
+    : null;
+
   return (
     <>
       <ToolJsonLd tool={tool} />
-      <ToolClientRenderer slug={slug} tool={tool} />
+      <ToolClientRenderer slug={slug} tool={tool} dates={dates} />
     </>
   );
 }

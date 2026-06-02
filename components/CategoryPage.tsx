@@ -102,7 +102,7 @@ export function CategoryPage({ slug }: { slug: string }) {
         <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card">
           {faqs.map((f) => (
             <details key={f.q} className="group p-5">
-              <summary className="cursor-pointer list-none font-semibold marker:hidden">{f.q}</summary>
+              <summary tabIndex={-1} className="cursor-pointer list-none font-semibold marker:hidden">{f.q}</summary>
               <p className="mt-2 text-sm text-muted-foreground">{f.a}</p>
             </details>
           ))}

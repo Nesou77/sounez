@@ -68,9 +68,8 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
-  /* Disable smooth scroll when focus moves programmatically to prevent jump-to-footer */
-  html:focus-within { scroll-behavior: auto; }
+  /* Smooth scroll only when nothing is focused, so typing never triggers animated scroll jumps */
+  html:not(:focus-within) { scroll-behavior: smooth; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);

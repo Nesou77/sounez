@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { ContentType } from "@/lib/content-types";
 
 export function useLikes(contentType: ContentType, slug: string) {
@@ -27,7 +27,10 @@ export function useLikes(contentType: ContentType, slug: string) {
     }
   }, [contentType, slug]);
 
+  const hasFetched = useRef(false);
   useEffect(() => {
+    if (hasFetched.current) return;
+    hasFetched.current = true;
     void refresh();
   }, [refresh]);
 

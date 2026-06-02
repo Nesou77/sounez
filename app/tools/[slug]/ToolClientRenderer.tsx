@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
 import type { Tool } from "@/data/tools";
+import { ToolDatesProvider, type ToolDatesValue } from "@/components/ToolDatesProvider";
 
 const Skeleton = () => (
   <div className="space-y-4 p-6">
@@ -127,8 +128,20 @@ const REGISTRY: Record<string, ComponentType<{ tool: Tool }>> = {
   ),
 };
 
-export function ToolClientRenderer({ slug, tool }: { slug: string; tool: Tool }) {
+export function ToolClientRenderer({
+  slug,
+  tool,
+  dates,
+}: {
+  slug: string;
+  tool: Tool;
+  dates?: ToolDatesValue;
+}) {
   const Component = REGISTRY[slug];
   if (!Component) return null;
-  return <Component tool={tool} />;
+  return (
+    <ToolDatesProvider dates={dates ?? null}>
+      <Component tool={tool} />
+    </ToolDatesProvider>
+  );
 }
