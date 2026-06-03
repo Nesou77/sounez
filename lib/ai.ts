@@ -143,6 +143,61 @@ export async function callGeminiJsonRequired<T>(options: Omit<GeminiJsonOptions,
 }
 
 /**
+ * Like callGeminiVisionJson but returns null when the API key is missing or the call fails.
+ * Use when the caller must not substitute fallback data for a failed AI vision call.
+ */
+export async function callGeminiVisionJsonRequired<T>(
+  options: Omit<GeminiVisionOptions, "fallback">,
+): Promise<T | null> {
+  const { prompt, imageBase64, imageMimeType, maxOutputTokens = 600 } = options;
+
+  if (!env.geminiApiKey) {
+    return null;
+  }
+
+  try {
+    const res = await fetch(geminiUrl(env.geminiModel, "generateContent"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [
+          {
+            role: "user",
+            parts: [
+              { inlineData: { mimeType: imageMimeType, data: imageBase64 } },
+              { text: prompt },
+            ],
+          },
+        ],
+        generationConfig: {
+          maxOutputTokens,
+          responseMimeType: "application/json",
+        },
+      }),
+    });
+
+    if (!res.ok) {
+      console.error(`[ai] Gemini vision error ${res.status}: ${await res.text()}`);
+      return null;
+    }
+
+    const data = await res.json();
+    const text: string = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+    if (!text) return null;
+
+    try {
+      const cleaned = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+      return JSON.parse(cleaned) as T;
+    } catch {
+      return null;
+    }
+  } catch (e) {
+    console.error("[ai] callGeminiVisionJsonRequired failed:", e);
+    return null;
+  }
+}
+
+/**
  * Call Gemini with a multimodal (image + text) request and return a parsed JSON response.
  * Falls back to `options.fallback` if the API key is missing or the call fails.
  * All API key access goes through env.geminiApiKey — never read process.env directly.

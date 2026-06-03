@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Upload,
   X,
@@ -12,17 +12,27 @@ import {
   ImageIcon,
   Sparkles,
   AlertCircle,
+  Download,
 } from "lucide-react";
 import { toast } from "sonner";
 import { ToolPageShell } from "@/components/ToolPageShell";
 import type { Tool } from "@/data/tools";
 import { useToolView } from "@/lib/use-tool-view";
-import { trackCopyResult } from "@/lib/analytics";
+import { trackCopyResult, trackDownloadResult, trackToolComplete } from "@/lib/analytics";
 
 const MAX_FILE_SIZE_MB = 10;
 const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024;
 const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/webp", "image/gif"];
 const ACCEPTED_EXT = [".png", ".jpg", ".jpeg", ".webp", ".gif"];
+const ALT_TEXT_RECOMMENDED_MAX = 125;
+
+const LOADING_MESSAGES = [
+  "Uploading image…",
+  "Analysing content…",
+  "Identifying objects and text…",
+  "Generating descriptions…",
+  "Almost there…",
+];
 
 type Stage = "idle" | "ready" | "generating" | "done" | "error";
 
@@ -90,11 +100,12 @@ function CopyButton({ text, label, toolSlug, resultType }: { text: string; label
   };
 
   return (
-        <button
-          type="button"
-          onClick={copy}
-          className="flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-primary/40 hover:text-primary"
-        >
+    <button
+      type="button"
+      onClick={copy}
+      aria-label={`Copy ${label}`}
+      className="flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-primary/40 hover:text-primary"
+    >
       {copied ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Copy className="h-3.5 w-3.5" />}
       {copied ? "Copied" : "Copy"}
     </button>
@@ -106,11 +117,15 @@ function ResultCard({
   value,
   toolSlug,
   resultType,
+  hint,
+  warning,
 }: {
   label: string;
   value: string;
   toolSlug: string;
   resultType: string;
+  hint?: string;
+  warning?: string;
 }) {
   return (
     <div className="rounded-xl border border-border bg-card p-4">
@@ -119,6 +134,11 @@ function ResultCard({
         {value && <CopyButton text={value} label={label} toolSlug={toolSlug} resultType={resultType} />}
       </div>
       <p className="text-sm leading-relaxed">{value || <span className="text-muted-foreground italic">-</span>}</p>
+      {warning ? (
+        <p className="mt-1.5 text-xs text-amber-600 dark:text-amber-400">{warning}</p>
+      ) : hint ? (
+        <p className="mt-1.5 text-xs text-muted-foreground/70">{hint}</p>
+      ) : null}
     </div>
   );
 }
@@ -131,11 +151,25 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
   const [tone, setTone] = useState<Tone>("descriptive");
   const [result, setResult] = useState<DescribeResult | null>(null);
   const [errorMsg, setErrorMsg] = useState<string>("");
+  const [imageDimensions, setImageDimensions] = useState<{ w: number; h: number } | null>(null);
+  const [loadingMsgIdx, setLoadingMsgIdx] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useToolView(tool);
 
-  const accept = (f: File) => {
+  // Cycle through loading messages while generating
+  useEffect(() => {
+    if (stage !== "generating") {
+      setLoadingMsgIdx(0);
+      return;
+    }
+    const id = setInterval(() => {
+      setLoadingMsgIdx((i) => Math.min(i + 1, LOADING_MESSAGES.length - 1));
+    }, 2500);
+    return () => clearInterval(id);
+  }, [stage]);
+
+  const accept = useCallback((f: File) => {
     if (!isAccepted(f)) {
       toast.error("Please upload a PNG, JPG, JPEG, WEBP or GIF image.");
       return;
@@ -148,7 +182,37 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
     const url = URL.createObjectURL(f);
     setPreview(url);
     setStage("ready");
-  };
+    setImageDimensions(null);
+  }, []);
+
+  // Detect image dimensions once the preview URL is ready
+  useEffect(() => {
+    if (!preview) return;
+    const img = new window.Image();
+    img.onload = () => setImageDimensions({ w: img.naturalWidth, h: img.naturalHeight });
+    img.src = preview;
+  }, [preview]);
+
+  // Global paste handler — accepts images pasted from clipboard when idle
+  useEffect(() => {
+    const handler = (e: ClipboardEvent) => {
+      if (stage !== "idle") return;
+      const items = e.clipboardData?.items;
+      if (!items) return;
+      for (const item of Array.from(items)) {
+        if (item.kind === "file" && item.type.startsWith("image/")) {
+          const f = item.getAsFile();
+          if (f) {
+            accept(f);
+            toast.success("Image pasted from clipboard");
+          }
+          break;
+        }
+      }
+    };
+    window.addEventListener("paste", handler);
+    return () => window.removeEventListener("paste", handler);
+  }, [stage, accept]);
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -156,12 +220,15 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
     e.target.value = "";
   };
 
-  const onDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    setDragging(false);
-    const f = e.dataTransfer.files[0];
-    if (f) accept(f);
-  }, []);
+  const onDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      setDragging(false);
+      const f = e.dataTransfer.files[0];
+      if (f) accept(f);
+    },
+    [accept],
+  );
 
   const reset = () => {
     if (preview) URL.revokeObjectURL(preview);
@@ -170,6 +237,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
     setStage("idle");
     setResult(null);
     setErrorMsg("");
+    setImageDimensions(null);
   };
 
   const generate = async () => {
@@ -198,11 +266,47 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
 
       setResult(data as DescribeResult);
       setStage("done");
+      trackToolComplete({ tool_slug: tool.slug });
     } catch {
       setErrorMsg("Network error. Please check your connection and try again.");
       setStage("error");
     }
   };
+
+  const allResultsText = useMemo(() => {
+    if (!result) return "";
+    return [
+      `Alt Text:\n${result.altText}`,
+      `Short Caption:\n${result.shortCaption}`,
+      `Detailed Description:\n${result.detailedDescription}`,
+      `SEO Keywords:\n${result.seoKeywords}`,
+      `Social Media Caption:\n${result.socialCaption}`,
+    ].join("\n\n");
+  }, [result]);
+
+  const copyAll = () => {
+    navigator.clipboard.writeText(allResultsText);
+    toast.success("All results copied");
+    trackCopyResult({ tool_slug: tool.slug, result_type: "all_results" });
+  };
+
+  const downloadTxt = () => {
+    const blob = new Blob([allResultsText], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${file?.name.replace(/\.[^.]+$/, "") ?? "image"}-descriptions.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+    trackDownloadResult({ tool_slug: tool.slug, result_type: "text_file", file_type: "txt" });
+  };
+
+  const altTextLen = result?.altText.length ?? 0;
+  const altTextWarning =
+    altTextLen > ALT_TEXT_RECOMMENDED_MAX
+      ? `${altTextLen} characters — over the recommended ${ALT_TEXT_RECOMMENDED_MAX}-character limit for screen readers.`
+      : undefined;
+  const altTextHint = altTextLen > 0 && !altTextWarning ? `${altTextLen} characters` : undefined;
 
   return (
     <ToolPageShell
@@ -217,11 +321,11 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
         { title: "Tone Selector", desc: "Switch between descriptive, accessibility, SEO-focused and social media tones." },
       ]}
       howTo={[
-        "Click the upload area or drag and drop your image onto the page.",
+        "Click the upload area, drag and drop your image, or paste from clipboard (Ctrl+V / Cmd+V).",
         "Choose a tone that matches your use case: accessibility, SEO, social media or neutral.",
         "Click Generate Description to start AI analysis.",
-        "Review the results - alt text, caption, keywords and social media copy.",
-        "Click Copy next to any result to copy it to your clipboard.",
+        "Review the results — alt text, caption, keywords and social media copy.",
+        "Click Copy next to any result, or use Copy All to grab everything at once.",
       ]}
       faqs={FAQS}
       useCases={[
@@ -252,10 +356,19 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
       {/* Upload zone */}
       {stage === "idle" && (
         <div
+          role="button"
+          tabIndex={0}
+          aria-label="Upload image — click, drag and drop, or paste from clipboard"
           onDrop={onDrop}
           onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
           onDragLeave={() => setDragging(false)}
           onClick={() => inputRef.current?.click()}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              inputRef.current?.click();
+            }
+          }}
           className={`flex cursor-pointer flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed p-12 text-center transition-colors ${
             dragging
               ? "border-primary bg-primary/5"
@@ -275,7 +388,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
           <div>
             <p className="text-base font-semibold">Drop your image here, or click to browse</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              PNG, JPG, JPEG, WEBP, GIF - maximum {MAX_FILE_SIZE_MB} MB
+              PNG, JPG, JPEG, WEBP, GIF · up to {MAX_FILE_SIZE_MB} MB · or paste from clipboard
             </p>
           </div>
         </div>
@@ -295,7 +408,14 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
             <div className="flex min-w-0 flex-1 flex-col justify-between">
               <div className="min-w-0">
                 <p className="truncate font-semibold">{file.name}</p>
-                <p className="text-sm text-muted-foreground">{fmtSize(file.size)}</p>
+                <p className="text-sm text-muted-foreground">
+                  {fmtSize(file.size)}
+                  {imageDimensions && (
+                    <span className="ml-2 opacity-60">
+                      {imageDimensions.w} × {imageDimensions.h}
+                    </span>
+                  )}
+                </p>
               </div>
               {stage === "ready" && (
                 <button
@@ -319,6 +439,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
                     type="button"
                     key={t.value}
                     onClick={() => setTone(t.value)}
+                    aria-pressed={tone === t.value}
                     className={`rounded-xl border p-3 text-left text-xs transition ${
                       tone === t.value
                         ? "border-primary bg-primary/10"
@@ -348,7 +469,7 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
           {stage === "generating" && (
             <div className="flex items-center justify-center gap-3 rounded-xl border border-border bg-card py-8 text-sm text-muted-foreground">
               <Loader2 className="h-5 w-5 animate-spin text-primary" />
-              <span>Analysing image with AI…</span>
+              <span>{LOADING_MESSAGES[loadingMsgIdx]}</span>
             </div>
           )}
 
@@ -383,11 +504,36 @@ export function ImageDescriberClient({ tool }: { tool: Tool }) {
           {stage === "done" && result && (
             <div className="space-y-4">
               <div className="space-y-3">
-                <ResultCard label="Alt Text" value={result.altText} toolSlug={tool.slug} resultType="alt_text" />
+                <ResultCard
+                  label="Alt Text"
+                  value={result.altText}
+                  toolSlug={tool.slug}
+                  resultType="alt_text"
+                  hint={altTextHint}
+                  warning={altTextWarning}
+                />
                 <ResultCard label="Short Caption" value={result.shortCaption} toolSlug={tool.slug} resultType="short_caption" />
                 <ResultCard label="Detailed Description" value={result.detailedDescription} toolSlug={tool.slug} resultType="detailed_description" />
                 <ResultCard label="SEO Keywords" value={result.seoKeywords} toolSlug={tool.slug} resultType="seo_keywords" />
                 <ResultCard label="Social Media Caption" value={result.socialCaption} toolSlug={tool.slug} resultType="social_caption" />
+              </div>
+
+              {/* Bulk actions */}
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={copyAll}
+                  className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-card py-2.5 text-xs font-semibold hover:bg-muted"
+                >
+                  <Copy className="h-3.5 w-3.5" /> Copy All
+                </button>
+                <button
+                  type="button"
+                  onClick={downloadTxt}
+                  className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-card py-2.5 text-xs font-semibold hover:bg-muted"
+                >
+                  <Download className="h-3.5 w-3.5" /> Download .txt
+                </button>
               </div>
 
               <div className="flex gap-3">
