@@ -27,11 +27,6 @@ const BG_REMOVAL_CDN =
   process.env.NEXT_PUBLIC_BG_REMOVAL_CDN ??
   "https://staticimgly.com/@imgly/background-removal-data/1.7.0/dist/";
 
-// Images larger than this dimension are downscaled before processing to reduce
-// memory usage and speed up the AI inference. The output quality stays good up
-// to this resolution; very large images gain little from higher resolution here.
-const MAX_PROCESS_DIMENSION = 1800;
-
 const MAX_FILE_SIZE_MB = 10;
 const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024;
 const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/webp"];
@@ -39,6 +34,43 @@ const ACCEPTED_EXT = [".png", ".jpg", ".jpeg", ".webp"];
 
 type Stage = "idle" | "ready" | "processing" | "done" | "error";
 type BgColor = "transparent" | "white" | "black" | "custom";
+type ProcessingMode = "fast" | "balanced" | "quality";
+
+type ModelId = "isnet_quint8" | "isnet_fp16" | "isnet";
+
+type ModeConfig = {
+  label: string;
+  desc: string;
+  maxDimension: number;
+  model: ModelId;
+  quality: number;
+};
+
+const PROCESSING_MODES: Record<ProcessingMode, ModeConfig> = {
+  fast: {
+    label: "Fast",
+    desc: "Quick results, good for most images",
+    maxDimension: 1024,
+    model: "isnet_quint8",
+    quality: 0.85,
+  },
+  balanced: {
+    label: "Balanced",
+    desc: "Better edges, slightly slower",
+    maxDimension: 1400,
+    model: "isnet_fp16",
+    quality: 0.9,
+  },
+  quality: {
+    label: "High quality",
+    desc: "Sharpest edges, takes the longest",
+    maxDimension: 1800,
+    model: "isnet_fp16",
+    quality: 1,
+  },
+};
+
+const DEFAULT_MODE: ProcessingMode = "balanced";
 
 function isAcceptedImage(file: File) {
   return ACCEPTED_TYPES.includes(file.type) || ACCEPTED_EXT.some((e) => file.name.toLowerCase().endsWith(e));
@@ -65,10 +97,10 @@ function classifyError(e: unknown): string {
   return "Background removal failed. For best results, use a photo with a clear subject against a plain, contrasting background.";
 }
 
-// Resize source image so its longest side ≤ MAX_PROCESS_DIMENSION before
-// sending to the AI. Skips resize when not needed. Preserves PNG format for
-// images that may contain transparency; converts everything else to JPEG.
-async function resizeIfNeeded(source: File): Promise<Blob> {
+// Resize source image so its longest side ≤ maxDimension before sending to
+// the AI. Skips resize when not needed. Preserves PNG format for images that
+// may contain transparency; converts everything else to JPEG.
+async function resizeIfNeeded(source: File, maxDimension: number): Promise<Blob> {
   return new Promise((resolve) => {
     const tempUrl = URL.createObjectURL(source);
     const img = new window.Image();
@@ -77,12 +109,12 @@ async function resizeIfNeeded(source: File): Promise<Blob> {
       URL.revokeObjectURL(tempUrl);
       const { naturalWidth: w, naturalHeight: h } = img;
 
-      if (w <= MAX_PROCESS_DIMENSION && h <= MAX_PROCESS_DIMENSION) {
+      if (w <= maxDimension && h <= maxDimension) {
         resolve(source);
         return;
       }
 
-      const scale = MAX_PROCESS_DIMENSION / Math.max(w, h);
+      const scale = maxDimension / Math.max(w, h);
       const canvas = document.createElement("canvas");
       canvas.width = Math.round(w * scale);
       canvas.height = Math.round(h * scale);
@@ -171,6 +203,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
   const [bgColor, setBgColor] = useState<BgColor>("transparent");
   const [customColor, setCustomColor] = useState("#ffffff");
   const [errorMsg, setErrorMsg] = useState<string>("");
+  const [processingMode, setProcessingMode] = useState<ProcessingMode>(DEFAULT_MODE);
   const [imageDimensions, setImageDimensions] = useState<{ w: number; h: number } | null>(null);
   const [progress, setProgress] = useState(0);
   const [processingStep, setProcessingStep] = useState(PROCESSING_STEPS[0].text);
@@ -193,15 +226,51 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
     img.src = preview;
   }, [preview]);
 
-  // Kick off a background import of the JS module once the user has selected
-  // an image. The module (~1.1 MB) will be cached so the import inside
-  // removeBackground() resolves instantly, removing one serial step from the
-  // critical path when the user actually clicks the button.
+  // After the user selects an image, preload the JS module and then run a
+  // silent warm-up pass on a 4×4 canvas so the ONNX model for the selected
+  // mode is fetched from the CDN and cached before the user clicks the button.
+  // Everything runs in the background and never blocks the UI. Failures are
+  // silently swallowed — this is purely a speed optimisation.
   useEffect(() => {
     if (stage !== "ready") return;
-    const id = setTimeout(() => { void import("@imgly/background-removal"); }, 600);
-    return () => clearTimeout(id);
-  }, [stage]);
+
+    const mode = PROCESSING_MODES[processingMode];
+    let cancelled = false;
+
+    const id = setTimeout(async () => {
+      if (cancelled) return;
+      try {
+        const { removeBackground } = await import("@imgly/background-removal");
+        if (cancelled) return;
+
+        // Tiny opaque canvas — enough to initialise the WASM runtime and
+        // trigger the model file download without meaningful CPU cost.
+        const canvas = document.createElement("canvas");
+        canvas.width = 4;
+        canvas.height = 4;
+        const ctx = canvas.getContext("2d");
+        if (!ctx || cancelled) return;
+        ctx.fillStyle = "#808080";
+        ctx.fillRect(0, 0, 4, 4);
+
+        const blob = await new Promise<Blob | null>((r) => canvas.toBlob(r, "image/png"));
+        if (!blob || cancelled) return;
+
+        await removeBackground(blob, {
+          publicPath: BG_REMOVAL_CDN,
+          model: mode.model,
+          output: { format: "image/png", quality: 0.5 },
+        });
+      } catch {
+        // Warm-up is best-effort — ignore all errors.
+      }
+    }, 600);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(id);
+    };
+  }, [stage, processingMode]);
 
   // Cycle through the human-readable step labels during processing.
   useEffect(() => {
@@ -289,8 +358,10 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
     setResultUrl(null);
 
     try {
+      const mode = PROCESSING_MODES[processingMode];
+
       // Downscale large images before AI processing for speed and memory.
-      const processBlob = await resizeIfNeeded(file);
+      const processBlob = await resizeIfNeeded(file, mode.maxDimension);
 
       // The dynamic import is typically cached from the preload effect above.
       let removeBg: (src: Blob, opts: Record<string, unknown>) => Promise<Blob>;
@@ -304,8 +375,8 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
 
       const blob = await removeBg(processBlob, {
         publicPath: BG_REMOVAL_CDN,
-        model: "isnet_fp16",
-        output: { format: "image/png", quality: 1 },
+        model: mode.model,
+        output: { format: "image/png", quality: mode.quality },
       });
 
       const url = URL.createObjectURL(blob);
@@ -540,6 +611,33 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
               </button>
             )}
           </div>
+
+          {/* Processing mode selector — only when ready */}
+          {stage === "ready" && (
+            <div className="space-y-2 rounded-xl border border-border bg-card p-4">
+              <p className="text-sm font-semibold">Processing mode</p>
+              <div className="flex flex-wrap gap-2">
+                {(Object.keys(PROCESSING_MODES) as ProcessingMode[]).map((m) => (
+                  <button
+                    type="button"
+                    key={m}
+                    onClick={() => setProcessingMode(m)}
+                    aria-pressed={processingMode === m}
+                    className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition ${
+                      processingMode === m
+                        ? "border-primary bg-primary/10 text-primary"
+                        : "border-border bg-card text-muted-foreground hover:border-primary/40"
+                    }`}
+                  >
+                    {PROCESSING_MODES[m].label}
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground">
+                {PROCESSING_MODES[processingMode].desc}
+              </p>
+            </div>
+          )}
 
           {/* Background color option — visible when ready or done */}
           {(stage === "ready" || stage === "done") && (
