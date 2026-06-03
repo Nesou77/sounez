@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   Upload,
   X,
@@ -27,18 +27,10 @@ const BG_REMOVAL_CDN =
   process.env.NEXT_PUBLIC_BG_REMOVAL_CDN ??
   "https://staticimgly.com/@imgly/background-removal-data/1.7.0/dist/";
 
-async function runOnDeviceRemoval(file: File): Promise<Blob> {
-  // Dynamic import keeps the library (~1.1 MB JS) out of the main bundle.
-  // The actual WASM + model files are fetched from CDN only when needed.
-  const { removeBackground } = await import("@imgly/background-removal");
-  return removeBackground(file, {
-    publicPath: BG_REMOVAL_CDN,
-    // isnet_fp16: high-quality ISNet model (16-bit float) - valid for ≥ v1.4.
-    // Equivalent to "medium" preset in ≥ v1.5 but explicit about the model file.
-    model: "isnet_fp16",
-    output: { format: "image/png", quality: 1 },
-  });
-}
+// Images larger than this dimension are downscaled before processing to reduce
+// memory usage and speed up the AI inference. The output quality stays good up
+// to this resolution; very large images gain little from higher resolution here.
+const MAX_PROCESS_DIMENSION = 1800;
 
 const MAX_FILE_SIZE_MB = 10;
 const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024;
@@ -57,6 +49,85 @@ function fmtSize(bytes: number) {
   return `${(bytes / 1024 / 1024).toFixed(2)} MB`;
 }
 
+// Map low-level errors to actionable user-facing messages while logging the
+// technical detail separately so it appears in the browser/server console.
+function classifyError(e: unknown): string {
+  const msg = (e instanceof Error ? e.message : String(e)).toLowerCase();
+  if (msg.includes("webassembly") || msg.includes("wasm")) {
+    return "Your browser does not support WebAssembly, which is required for on-device AI processing. Try a modern browser like Chrome or Firefox.";
+  }
+  if (msg.includes("fetch") || msg.includes("network") || msg.includes("cdn") || msg.includes("load")) {
+    return "Could not load the AI model. Check your internet connection and try again — model files are downloaded from a CDN on first use.";
+  }
+  if (msg.includes("memory") || msg.includes("allocation") || msg.includes("out of")) {
+    return "The image may be too large to process in your browser. Try a smaller image.";
+  }
+  return "Background removal failed. For best results, use a photo with a clear subject against a plain, contrasting background.";
+}
+
+// Resize source image so its longest side ≤ MAX_PROCESS_DIMENSION before
+// sending to the AI. Skips resize when not needed. Preserves PNG format for
+// images that may contain transparency; converts everything else to JPEG.
+async function resizeIfNeeded(source: File): Promise<Blob> {
+  return new Promise((resolve) => {
+    const tempUrl = URL.createObjectURL(source);
+    const img = new window.Image();
+
+    img.onload = () => {
+      URL.revokeObjectURL(tempUrl);
+      const { naturalWidth: w, naturalHeight: h } = img;
+
+      if (w <= MAX_PROCESS_DIMENSION && h <= MAX_PROCESS_DIMENSION) {
+        resolve(source);
+        return;
+      }
+
+      const scale = MAX_PROCESS_DIMENSION / Math.max(w, h);
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(w * scale);
+      canvas.height = Math.round(h * scale);
+      const ctx = canvas.getContext("2d");
+      if (!ctx) { resolve(source); return; }
+
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      // Keep PNG for sources that may have alpha; use JPEG otherwise (smaller).
+      const mimeType = source.type === "image/png" ? "image/png" : "image/jpeg";
+      canvas.toBlob((blob) => resolve(blob ?? source), mimeType, 0.92);
+    };
+
+    img.onerror = () => { URL.revokeObjectURL(tempUrl); resolve(source); };
+    img.src = tempUrl;
+  });
+}
+
+// ── Processing UX constants ───────────────────────────────────────────────────
+
+// Step labels shown inside the result panel while the AI runs.
+// Timings are tuned to feel honest: early steps appear quickly, later ones
+// acknowledge that the model download and inference take real time.
+const PROCESSING_STEPS: { at: number; text: string }[] = [
+  { at: 0,     text: "Preparing your image…" },
+  { at: 900,   text: "Loading AI model… first run may take a little longer" },
+  { at: 5000,  text: "Removing background…" },
+  { at: 10000, text: "Cleaning edges…" },
+  { at: 16000, text: "Almost done…" },
+];
+
+// Simulated progress percentages. Progress intentionally stalls below 90%
+// until the real result arrives, at which point it jumps to 100%.
+const PROGRESS_STEPS: { at: number; value: number }[] = [
+  { at: 0,     value: 8  },
+  { at: 1500,  value: 22 },
+  { at: 4500,  value: 42 },
+  { at: 8000,  value: 58 },
+  { at: 13000, value: 72 },
+  { at: 20000, value: 82 },
+  { at: 28000, value: 86 },
+];
+
 const FAQS = [
   {
     q: "How does AI background removal work?",
@@ -65,6 +136,10 @@ const FAQS = [
   {
     q: "Is my image sent to a server?",
     a: "No. Your image is processed in your browser using on-device AI (WebAssembly). Sounez does not receive the image file.",
+  },
+  {
+    q: "Why does the first run take longer?",
+    a: "The AI model files (~40 MB) are downloaded from a CDN the first time you use the tool and then cached in your browser. Subsequent runs on the same device are significantly faster.",
   },
   {
     q: "What file formats are supported?",
@@ -96,12 +171,72 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
   const [bgColor, setBgColor] = useState<BgColor>("transparent");
   const [customColor, setCustomColor] = useState("#ffffff");
   const [errorMsg, setErrorMsg] = useState<string>("");
-  const [processingLabel, setProcessingLabel] = useState("Removing background...");
+  const [imageDimensions, setImageDimensions] = useState<{ w: number; h: number } | null>(null);
+  const [progress, setProgress] = useState(0);
+  const [processingStep, setProcessingStep] = useState(PROCESSING_STEPS[0].text);
+  const [slowWarning, setSlowWarning] = useState(false);
+
+  // Track object URLs in refs so they can be revoked without stale-closure issues.
+  const previewUrlRef = useRef<string | null>(null);
+  const resultBlobRef = useRef<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useToolView(tool);
 
-  const accept = (f: File) => {
+  // ── Side-effects ─────────────────────────────────────────────────────────────
+
+  // Detect image dimensions as soon as a preview URL is created.
+  useEffect(() => {
+    if (!preview) { setImageDimensions(null); return; }
+    const img = new window.Image();
+    img.onload = () => setImageDimensions({ w: img.naturalWidth, h: img.naturalHeight });
+    img.src = preview;
+  }, [preview]);
+
+  // Kick off a background import of the JS module once the user has selected
+  // an image. The module (~1.1 MB) will be cached so the import inside
+  // removeBackground() resolves instantly, removing one serial step from the
+  // critical path when the user actually clicks the button.
+  useEffect(() => {
+    if (stage !== "ready") return;
+    const id = setTimeout(() => { void import("@imgly/background-removal"); }, 600);
+    return () => clearTimeout(id);
+  }, [stage]);
+
+  // Cycle through the human-readable step labels during processing.
+  useEffect(() => {
+    if (stage !== "processing") {
+      setProcessingStep(PROCESSING_STEPS[0].text);
+      return;
+    }
+    setProcessingStep(PROCESSING_STEPS[0].text);
+    const timers = PROCESSING_STEPS.slice(1).map(({ at, text }) =>
+      setTimeout(() => setProcessingStep(text), at),
+    );
+    return () => timers.forEach(clearTimeout);
+  }, [stage]);
+
+  // Advance the simulated progress bar while processing. The bar deliberately
+  // stays below 90% until the real result arrives so it never lies to the user.
+  useEffect(() => {
+    if (stage !== "processing") { setProgress(0); return; }
+    setProgress(PROGRESS_STEPS[0].value);
+    const timers = PROGRESS_STEPS.slice(1).map(({ at, value }) =>
+      setTimeout(() => setProgress(value), at),
+    );
+    return () => timers.forEach(clearTimeout);
+  }, [stage]);
+
+  // After 10 seconds, tell the user that the wait is normal.
+  useEffect(() => {
+    if (stage !== "processing") { setSlowWarning(false); return; }
+    const id = setTimeout(() => setSlowWarning(true), 10_000);
+    return () => clearTimeout(id);
+  }, [stage]);
+
+  // ── Handlers ─────────────────────────────────────────────────────────────────
+
+  const accept = useCallback((f: File) => {
     if (!isAcceptedImage(f)) {
       toast.error("Please upload a PNG, JPG, JPEG or WEBP image.");
       return;
@@ -110,11 +245,16 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       toast.error(`File too large. Maximum size is ${MAX_FILE_SIZE_MB} MB.`);
       return;
     }
-    setFile(f);
+    // Revoke any previous preview URL to avoid memory leaks.
+    if (previewUrlRef.current) URL.revokeObjectURL(previewUrlRef.current);
+
     const url = URL.createObjectURL(f);
+    previewUrlRef.current = url;
+    setFile(f);
     setPreview(url);
     setStage("ready");
-  };
+    setErrorMsg("");
+  }, []);
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -127,36 +267,55 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
     setDragging(false);
     const f = e.dataTransfer.files[0];
     if (f) accept(f);
-  }, []);
+  }, [accept]);
 
-  const reset = () => {
-    if (preview) URL.revokeObjectURL(preview);
-    if (resultUrl) URL.revokeObjectURL(resultUrl);
+  const reset = useCallback(() => {
+    if (previewUrlRef.current) { URL.revokeObjectURL(previewUrlRef.current); previewUrlRef.current = null; }
+    if (resultBlobRef.current) { URL.revokeObjectURL(resultBlobRef.current); resultBlobRef.current = null; }
     setFile(null);
     setPreview(null);
     setResultUrl(null);
     setStage("idle");
     setErrorMsg("");
-  };
+    setImageDimensions(null);
+  }, []);
 
   const removeBackground = async () => {
-    if (!file) return;
+    if (!file || stage === "processing") return;
     setStage("processing");
-    setResultUrl(null);
     setErrorMsg("");
-    setProcessingLabel("Loading AI model - this may take a moment on the first run…");
+    // Revoke any previous result URL before creating a new one.
+    if (resultBlobRef.current) { URL.revokeObjectURL(resultBlobRef.current); resultBlobRef.current = null; }
+    setResultUrl(null);
 
     try {
-      setProcessingLabel("Removing background - please wait...");
-      const blob = await runOnDeviceRemoval(file);
-      setResultUrl(URL.createObjectURL(blob));
+      // Downscale large images before AI processing for speed and memory.
+      const processBlob = await resizeIfNeeded(file);
+
+      // The dynamic import is typically cached from the preload effect above.
+      let removeBg: (src: Blob, opts: Record<string, unknown>) => Promise<Blob>;
+      try {
+        const mod = await import("@imgly/background-removal");
+        removeBg = mod.removeBackground as typeof removeBg;
+      } catch (e) {
+        console.error("[bg-remove] Failed to import module:", e);
+        throw new Error("fetch failed: could not load background removal library");
+      }
+
+      const blob = await removeBg(processBlob, {
+        publicPath: BG_REMOVAL_CDN,
+        model: "isnet_fp16",
+        output: { format: "image/png", quality: 1 },
+      });
+
+      const url = URL.createObjectURL(blob);
+      resultBlobRef.current = url;
+      setResultUrl(url);
+      setProgress(100);
       setStage("done");
     } catch (e) {
-      console.error("[bg-remove] on-device AI failed:", e);
-      setErrorMsg(
-        "We couldn't remove the background from this image. " +
-          "Try a different photo - use a high-contrast image with a clear subject on a plain background.",
-      );
+      console.error("[bg-remove] Processing failed:", e);
+      setErrorMsg(classifyError(e));
       setStage("error");
     }
   };
@@ -177,17 +336,20 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
         ctx.drawImage(img, 0, 0);
         canvas.toBlob((blob) => {
           if (!blob) return;
+          const dlUrl = URL.createObjectURL(blob);
           const a = document.createElement("a");
-          a.href = URL.createObjectURL(blob);
-          a.download = "background-removed.png";
+          a.href = dlUrl;
+          a.download = `${file?.name.replace(/\.[^.]+$/, "") ?? "background-removed"}.png`;
           a.click();
+          // Revoke after a short delay to let the browser initiate the download.
+          setTimeout(() => URL.revokeObjectURL(dlUrl), 60_000);
         }, "image/png");
       };
       img.src = resultUrl;
     } else {
       const a = document.createElement("a");
       a.href = resultUrl;
-      a.download = "background-removed.png";
+      a.download = `${file?.name.replace(/\.[^.]+$/, "") ?? "background-removed"}.png`;
       a.click();
     }
   };
@@ -197,6 +359,8 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
     : bgColor === "white" ? "#ffffff"
     : bgColor === "black" ? "#000000"
     : customColor;
+
+  const isProcessing = stage === "processing";
 
   return (
     <ToolPageShell
@@ -246,10 +410,16 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       {/* Upload zone */}
       {stage === "idle" && (
         <div
+          role="button"
+          tabIndex={0}
+          aria-label="Upload image — click or drag and drop"
           onDrop={onDrop}
           onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
           onDragLeave={() => setDragging(false)}
           onClick={() => inputRef.current?.click()}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); inputRef.current?.click(); }
+          }}
           className={`flex cursor-pointer flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed p-12 text-center transition-colors ${
             dragging
               ? "border-primary bg-primary/5"
@@ -269,7 +439,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
           <div>
             <p className="text-base font-semibold">Drop your image here, or click to browse</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              PNG, JPG, JPEG, WEBP - maximum {MAX_FILE_SIZE_MB} MB
+              PNG, JPG, JPEG, WEBP — maximum {MAX_FILE_SIZE_MB} MB
             </p>
           </div>
         </div>
@@ -278,7 +448,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       {/* Ready / processing / done */}
       {stage !== "idle" && file && (
         <div className="space-y-5">
-          {/* Image preview */}
+          {/* Before / after preview */}
           <div className="grid gap-4 sm:grid-cols-2">
             {/* Original */}
             <div className="space-y-2">
@@ -286,11 +456,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
               <div className="overflow-hidden rounded-xl border border-border">
                 {preview && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={preview}
-                    alt="Original"
-                    className="h-48 w-full object-contain"
-                  />
+                  <img src={preview} alt="Original" className="h-48 w-full object-contain" />
                 )}
               </div>
             </div>
@@ -315,20 +481,32 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
                     <span className="text-xs">Result will appear here</span>
                   </div>
                 )}
+
                 {stage === "processing" && (
-                  <div className="flex flex-col items-center justify-center gap-2">
-                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                    <span className="px-4 text-center text-xs text-muted-foreground">{processingLabel}</span>
+                  <div className="flex w-full flex-col items-center justify-center gap-3 px-6 py-4">
+                    <Loader2 className="h-7 w-7 animate-spin text-primary" />
+                    <span className="text-center text-xs text-muted-foreground">{processingStep}</span>
+                    {/* Progress bar */}
+                    <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
+                      <div
+                        className="h-1.5 rounded-full bg-primary transition-all duration-700 ease-out"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
+                    <span className="text-xs tabular-nums text-muted-foreground/70">{progress}%</span>
+                    {slowWarning && (
+                      <p className="text-center text-xs text-muted-foreground/60">
+                        Still working — large images or first-time model loading can take longer.
+                      </p>
+                    )}
                   </div>
                 )}
+
                 {stage === "done" && resultUrl && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={resultUrl}
-                    alt="Background removed"
-                    className="h-full w-full object-contain"
-                  />
+                  <img src={resultUrl} alt="Background removed" className="h-full w-full object-contain" />
                 )}
+
                 {stage === "error" && (
                   <div className="flex flex-col items-center gap-2 text-muted-foreground">
                     <AlertCircle className="h-8 w-8 text-destructive" />
@@ -341,10 +519,15 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
 
           {/* File info */}
           <div className="flex items-center justify-between rounded-xl border border-border bg-muted/40 px-4 py-3">
-            <div className="flex items-center gap-2 min-w-0">
+            <div className="flex min-w-0 items-center gap-2">
               <ImageIcon className="h-4 w-4 shrink-0 text-primary" />
               <span className="truncate text-sm font-medium">{file.name}</span>
-              <span className="text-xs text-muted-foreground">{fmtSize(file.size)}</span>
+              <span className="shrink-0 text-xs text-muted-foreground">
+                {fmtSize(file.size)}
+                {imageDimensions && (
+                  <span className="ml-1.5 opacity-70">{imageDimensions.w}&thinsp;×&thinsp;{imageDimensions.h}</span>
+                )}
+              </span>
             </div>
             {stage === "ready" && (
               <button
@@ -358,7 +541,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
             )}
           </div>
 
-          {/* Background color option */}
+          {/* Background color option — visible when ready or done */}
           {(stage === "ready" || stage === "done") && (
             <div className="space-y-2 rounded-xl border border-border bg-card p-4">
               <p className="text-sm font-semibold">Background fill</p>
@@ -368,6 +551,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
                     type="button"
                     key={opt}
                     onClick={() => setBgColor(opt)}
+                    aria-pressed={bgColor === opt}
                     className={`rounded-lg border px-3 py-1.5 text-xs font-medium capitalize transition ${
                       bgColor === opt
                         ? "border-primary bg-primary/10 text-primary"
@@ -390,18 +574,26 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
             </div>
           )}
 
-          {/* Remove button */}
+          {/* Remove button — only in ready stage */}
           {stage === "ready" && (
             <button
               type="button"
               onClick={removeBackground}
-              className="w-full rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95"
+              disabled={isProcessing}
+              className="w-full rounded-xl bg-gradient-brand py-3 text-sm font-semibold text-primary-foreground shadow-pop transition hover:opacity-90 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60 disabled:active:scale-100"
             >
               Remove Background
             </button>
           )}
 
-          {/* Error */}
+          {/* Processing hint below the preview panels */}
+          {stage === "processing" && (
+            <div className="rounded-xl border border-border bg-card px-4 py-3 text-xs text-muted-foreground">
+              Processing on your device — the AI model may take a moment to load for the first time.
+            </div>
+          )}
+
+          {/* Error state */}
           {stage === "error" && (
             <div className="space-y-3">
               <div className="flex items-start gap-3 rounded-xl border border-destructive/40 bg-destructive/5 p-4">
@@ -428,7 +620,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
             </div>
           )}
 
-          {/* Done */}
+          {/* Done state */}
           {stage === "done" && (
             <div className="space-y-3">
               <button
@@ -454,7 +646,7 @@ export function BackgroundRemoverClient({ tool }: { tool: Tool }) {
       <div className="mt-6 flex items-start gap-2 rounded-xl border border-border bg-muted/40 px-4 py-3 text-xs text-muted-foreground">
         <Shield className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
         <span>
-          Your image is processed entirely in your browser using on-device AI - it never leaves your device.
+          Your image is processed entirely in your browser using on-device AI — it never leaves your device.
         </span>
       </div>
     </ToolPageShell>
