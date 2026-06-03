@@ -120,7 +120,7 @@ export async function POST(req: Request) {
       prompt: buildPrompt(tone),
       imageBase64: base64,
       imageMimeType: mimeType,
-      maxOutputTokens: 700,
+      maxOutputTokens: 1200,
     });
 
     if (!raw) {

@@ -84,6 +84,46 @@ function extractResponseText(data: unknown): string {
   return "";
 }
 
+function extractFinishReason(data: unknown): string {
+  return (
+    (data as { candidates?: Array<{ finishReason?: string }> })
+      ?.candidates?.[0]?.finishReason ?? "UNKNOWN"
+  );
+}
+
+// gemini-2.5-* are thinking models; disable thinking for simple structured tasks
+// so responses are faster, cheaper, and don't require multi-part parsing.
+function isThinkingModel(model: string): boolean {
+  return /gemini-2\.5/i.test(model);
+}
+
+function buildVisionBody(
+  imageBase64: string,
+  imageMimeType: string,
+  prompt: string,
+  maxOutputTokens: number,
+  model: string,
+) {
+  return {
+    contents: [
+      {
+        role: "user",
+        parts: [
+          // Official REST v1beta field names are snake_case for inline image data
+          { inline_data: { mime_type: imageMimeType, data: imageBase64 } },
+          { text: prompt },
+        ],
+      },
+    ],
+    generationConfig: {
+      maxOutputTokens,
+      responseMimeType: "application/json",
+      // Disable thinking tokens for this simple structured-output task
+      ...(isThinkingModel(model) ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
+    },
+  };
+}
+
 // ── Public API ───────────────────────────────────────────────────────────────
 
 /**
@@ -166,46 +206,46 @@ export async function callGeminiJsonRequired<T>(options: Omit<GeminiJsonOptions,
 export async function callGeminiVisionJsonRequired<T>(
   options: Omit<GeminiVisionOptions, "fallback">,
 ): Promise<T | null> {
-  const { prompt, imageBase64, imageMimeType, maxOutputTokens = 600 } = options;
+  const { prompt, imageBase64, imageMimeType, maxOutputTokens = 1200 } = options;
 
   if (!env.geminiApiKey) {
     return null;
   }
 
+  const model = env.geminiModel;
+
   try {
-    const res = await fetch(geminiUrl(env.geminiModel, "generateContent"), {
+    const res = await fetch(geminiUrl(model, "generateContent"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [
-          {
-            role: "user",
-            parts: [
-              { inlineData: { mimeType: imageMimeType, data: imageBase64 } },
-              { text: prompt },
-            ],
-          },
-        ],
-        generationConfig: {
-          maxOutputTokens,
-          responseMimeType: "application/json",
-        },
-      }),
+      body: JSON.stringify(buildVisionBody(imageBase64, imageMimeType, prompt, maxOutputTokens, model)),
     });
 
     if (!res.ok) {
-      console.error(`[ai] Gemini vision error ${res.status}: ${await res.text()}`);
+      const errorBody = await res.text();
+      console.error(`[ai] Gemini vision HTTP ${res.status}: ${errorBody}`);
       return null;
     }
 
     const data = await res.json();
+
+    const finishReason = extractFinishReason(data);
+    if (finishReason !== "STOP") {
+      console.error(`[ai] Gemini vision finishReason=${finishReason} — response may be incomplete`);
+    }
+
     const text = extractResponseText(data);
-    if (!text) return null;
+    if (!text) {
+      console.error("[ai] Gemini vision: no text in response:", JSON.stringify(data).slice(0, 600));
+      return null;
+    }
+    console.log(`[ai] Gemini vision raw text (first 300): ${text.slice(0, 300)}`);
 
     try {
       const cleaned = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
       return JSON.parse(cleaned) as T;
-    } catch {
+    } catch (e) {
+      console.error("[ai] Gemini vision JSON parse failed:", e, "| text:", text.slice(0, 500));
       return null;
     }
   } catch (e) {
@@ -220,41 +260,32 @@ export async function callGeminiVisionJsonRequired<T>(
  * All API key access goes through env.geminiApiKey — never read process.env directly.
  */
 export async function callGeminiVisionJson<T>(options: GeminiVisionOptions): Promise<T> {
-  const { prompt, imageBase64, imageMimeType, fallback, maxOutputTokens = 600 } = options;
+  const { prompt, imageBase64, imageMimeType, fallback, maxOutputTokens = 1200 } = options;
 
   if (!env.geminiApiKey) {
     return fallback as T;
   }
 
+  const model = env.geminiModel;
+
   try {
-    const res = await fetch(geminiUrl(env.geminiModel, "generateContent"), {
+    const res = await fetch(geminiUrl(model, "generateContent"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [
-          {
-            role: "user",
-            parts: [
-              { inlineData: { mimeType: imageMimeType, data: imageBase64 } },
-              { text: prompt },
-            ],
-          },
-        ],
-        generationConfig: {
-          maxOutputTokens,
-          responseMimeType: "application/json",
-        },
-      }),
+      body: JSON.stringify(buildVisionBody(imageBase64, imageMimeType, prompt, maxOutputTokens, model)),
     });
 
     if (!res.ok) {
-      console.error(`[ai] Gemini vision error ${res.status}: ${await res.text()}`);
+      console.error(`[ai] Gemini vision HTTP ${res.status}: ${await res.text()}`);
       return fallback as T;
     }
 
     const data = await res.json();
     const text = extractResponseText(data);
-    if (!text) return fallback as T;
+    if (!text) {
+      console.error("[ai] Gemini vision: no text in response:", JSON.stringify(data).slice(0, 600));
+      return fallback as T;
+    }
 
     return safeParseJson<T>(text, fallback as T);
   } catch (e) {
