@@ -67,6 +67,23 @@ function safeParseJson<T>(text: string, fallback: T): T {
   }
 }
 
+// Thinking models (e.g. gemini-2.5-flash) return an internal reasoning part
+// first (thought: true) followed by the actual response part. Walk in reverse
+// so we always get the real output regardless of how many thought parts exist.
+function extractResponseText(data: unknown): string {
+  type Part = { text?: string; thought?: boolean };
+  const parts: Part[] =
+    (data as { candidates?: Array<{ content?: { parts?: Part[] } }> })
+      ?.candidates?.[0]?.content?.parts ?? [];
+  for (let i = parts.length - 1; i >= 0; i--) {
+    const p = parts[i];
+    if (!p.thought && typeof p.text === "string" && p.text.length > 0) {
+      return p.text;
+    }
+  }
+  return "";
+}
+
 // ── Public API ───────────────────────────────────────────────────────────────
 
 /**
@@ -93,7 +110,7 @@ export async function callGeminiJson<T>(options: GeminiJsonOptions): Promise<T> 
     }
 
     const data = await res.json();
-    const text: string = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+    const text = extractResponseText(data);
     if (!text) return fallback as T;
 
     return safeParseJson<T>(text, fallback as T);
@@ -127,7 +144,7 @@ export async function callGeminiJsonRequired<T>(options: Omit<GeminiJsonOptions,
     }
 
     const data = await res.json();
-    const text: string = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+    const text = extractResponseText(data);
     if (!text) return null;
 
     try {
@@ -182,7 +199,7 @@ export async function callGeminiVisionJsonRequired<T>(
     }
 
     const data = await res.json();
-    const text: string = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+    const text = extractResponseText(data);
     if (!text) return null;
 
     try {
@@ -236,7 +253,7 @@ export async function callGeminiVisionJson<T>(options: GeminiVisionOptions): Pro
     }
 
     const data = await res.json();
-    const text: string = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+    const text = extractResponseText(data);
     if (!text) return fallback as T;
 
     return safeParseJson<T>(text, fallback as T);
