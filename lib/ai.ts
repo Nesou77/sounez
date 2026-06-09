@@ -10,6 +10,12 @@ import { env } from "@/lib/env";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
+export type AnthropicJsonOptions = {
+  systemPrompt: string;
+  userPrompt: string;
+  maxOutputTokens?: number;
+};
+
 export type GeminiJsonOptions = {
   systemPrompt: string;
   userPrompt: string;
@@ -35,6 +41,7 @@ export type GeminiVisionOptions = {
 
 // ── Internal helpers ─────────────────────────────────────────────────────────
 
+const ANTHROPIC_MESSAGES = "https://api.anthropic.com/v1/messages";
 const GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 
 function geminiUrl(model: string, method: "generateContent" | "streamGenerateContent"): string {
@@ -125,6 +132,50 @@ function buildVisionBody(
 }
 
 // ── Public API ───────────────────────────────────────────────────────────────
+
+/**
+ * Call Anthropic Claude and return a parsed JSON response.
+ * Returns null if the API key is missing or the call fails.
+ */
+export async function callAnthropicJson<T>(options: AnthropicJsonOptions): Promise<T | null> {
+  const { systemPrompt, userPrompt, maxOutputTokens = 800 } = options;
+
+  if (!env.anthropicApiKey) {
+    return null;
+  }
+
+  try {
+    const res = await fetch(ANTHROPIC_MESSAGES, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": env.anthropicApiKey,
+        "anthropic-version": "2023-06-01",
+      },
+      body: JSON.stringify({
+        model: env.anthropicModel,
+        max_tokens: maxOutputTokens,
+        system: systemPrompt,
+        messages: [{ role: "user", content: userPrompt }],
+      }),
+    });
+
+    if (!res.ok) {
+      console.error(`[ai] Anthropic error ${res.status}: ${await res.text()}`);
+      return null;
+    }
+
+    const data = await res.json();
+    const text: string = (data as { content?: Array<{ type: string; text?: string }> })
+      ?.content?.[0]?.text ?? "";
+    if (!text) return null;
+
+    return safeParseJson<T>(text, null as T);
+  } catch (e) {
+    console.error("[ai] callAnthropicJson failed:", e);
+    return null;
+  }
+}
 
 /**
  * Call Gemini and return a parsed JSON response.

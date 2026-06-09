@@ -85,7 +85,7 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
       features={[
         { title: "3 captions per click", desc: "Get variety so you can pick the one that fits." },
         { title: "Platform-aware", desc: "Tone and length adapt to Instagram, TikTok or LinkedIn." },
-        { title: "Fallback mode", desc: "Works even without an API key using smart templates." },
+        { title: "AI-powered", desc: "Claude and Gemini generate unique captions tailored to your topic." },
       ]}
       howTo={[
         "Describe your photo or topic in the box.",
@@ -94,7 +94,7 @@ export function AiCaptionClient({ tool }: { tool: Tool }) {
       ]}
       faqs={[
         { q: "Is this free?", a: "Yes. Free to use with fair-use rate limits. No account required." },
-        { q: "Does it use AI?", a: "Yes. Your topic is sent securely to our server for AI caption generation (Google Gemini when configured)." },
+        { q: "Does it use AI?", a: "Yes. Your topic is sent securely to our server where Claude (Anthropic) or Gemini generates the captions." },
         { q: "Can I edit the captions?", a: "Copy and paste into your favorite editor to tweak them." },
       ]}
       examples={[

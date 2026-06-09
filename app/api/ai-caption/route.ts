@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { callGeminiJson } from "@/lib/ai";
+import { callAnthropicJson, callGeminiJson } from "@/lib/ai";
 import { checkRateLimit, getClientIp, AI_RATE_LIMIT } from "@/lib/rate-limit";
 import { validateCaptionInput } from "@/lib/validation";
 
@@ -107,16 +107,26 @@ Requirements:
 - Include relevant emojis where appropriate.
 - For Instagram/TikTok add 2-3 relevant hashtags at the end.`;
 
-  const result = await callGeminiJson<{ captions?: string[] }>({
-    systemPrompt,
-    userPrompt,
-    fallback: { captions: fallback },
-    maxOutputTokens: 500,
-  });
+  // Try Anthropic first, then Gemini, then fall back to templates.
+  let aiResult: { captions?: string[] } | null =
+    await callAnthropicJson<{ captions?: string[] }>({
+      systemPrompt,
+      userPrompt,
+      maxOutputTokens: 500,
+    });
+
+  if (!aiResult || !Array.isArray(aiResult.captions) || aiResult.captions.length === 0) {
+    aiResult = await callGeminiJson<{ captions?: string[] }>({
+      systemPrompt,
+      userPrompt,
+      fallback: { captions: fallback },
+      maxOutputTokens: 500,
+    });
+  }
 
   const captions =
-    Array.isArray(result?.captions) && result.captions.length > 0
-      ? result.captions
+    Array.isArray(aiResult?.captions) && aiResult.captions.length > 0
+      ? aiResult.captions
       : fallback;
 
   return NextResponse.json({ captions });

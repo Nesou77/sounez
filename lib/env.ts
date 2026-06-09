@@ -28,6 +28,16 @@ export const env = {
     return process.env.GEMINI_MODEL?.trim() || "gemini-2.5-flash";
   },
 
+  /** Anthropic API key - server-side only. Never expose to client. */
+  get anthropicApiKey(): string | undefined {
+    return process.env.ANTHROPIC_API_KEY;
+  },
+
+  /** Anthropic model name with safe fallback. */
+  get anthropicModel(): string {
+    return process.env.ANTHROPIC_MODEL?.trim() || "claude-haiku-4-5";
+  },
+
   /** Google AdSense publisher ID (NEXT_PUBLIC - safe for client). */
   get adsensePubId(): string | undefined {
     const v = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID;
