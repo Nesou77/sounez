@@ -231,7 +231,16 @@ const LANG_LEVELS = ["Native", "Fluent", "Professional", "Intermediate", "Basic"
 const EMP_TYPES = ["Full-time", "Part-time", "Freelance", "Internship", "Contract"];
 const TONES = ["Professional", "Student", "Technical", "Creative"];
 const LENGTHS = ["One page", "Detailed"];
-// VARIANTS used for layout rendering only — template labels are inline in the select
+const TEMPLATES = [
+  { id: "Executive", label: "Executive",    desc: "Professional, optional photo",   accent: "#0f172a" },
+  { id: "Classic",   label: "Classic",      desc: "ATS-friendly, no photo",         accent: "#6b7280" },
+  { id: "Compact",   label: "Compact",      desc: "Tight spacing, one-pager",       accent: "#9ca3af" },
+  { id: "Modern",    label: "Modern",       desc: "Clean layout, optional photo",   accent: "#2563eb" },
+  { id: "Creative",  label: "Creative",     desc: "Bold headings, optional photo",  accent: "#111827" },
+  { id: "Student",   label: "Student",      desc: "Education & projects first",     accent: "#7c3aed" },
+  { id: "TwoColumn", label: "Two-Column",   desc: "Sidebar layout, photo support",  accent: "#0d9488" },
+  { id: "Minimal",   label: "Minimal 2026", desc: "Ultra-clean, modern design",     accent: "#4f46e5" },
+];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Reusable field wrapper
@@ -451,6 +460,15 @@ function SectionHeading({ label, variant }: { label: string; variant: string }) 
   if (variant === "Student") {
     return <h2 className="text-xs font-bold uppercase tracking-wider text-gray-600 border-l-2 border-gray-400 pl-2 mb-2">{label}</h2>;
   }
+  if (variant === "Executive") {
+    return <h2 className="text-[10px] font-bold uppercase tracking-widest text-slate-900 border-b border-slate-300 pb-0.5 mb-2">{label}</h2>;
+  }
+  if (variant === "TwoColumn") {
+    return <h2 className="text-[10px] font-bold uppercase tracking-widest text-teal-700 border-b border-teal-200 pb-0.5 mb-2">{label}</h2>;
+  }
+  if (variant === "Minimal") {
+    return <h2 className="text-xs font-semibold uppercase tracking-widest text-indigo-600 mb-2">{label}</h2>;
+  }
   return <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{label}</h2>;
 }
 
@@ -594,14 +612,15 @@ export function ResumeClient({ tool }: { tool: Tool }) {
           display: block !important; position: fixed; inset: 0;
           z-index: 9999; background: white; color: black;
           font-family: Inter, sans-serif; font-size: 11pt;
+          -webkit-print-color-adjust: exact; print-color-adjust: exact;
         }
         #resume-print-target h2 { page-break-after: avoid; }
         #resume-print-target > div > div { page-break-inside: avoid; }
-        #resume-print-target a { color: #1d4ed8; text-decoration: none; }
-        #resume-print-target * { background: white !important; color: black !important; border-color: #ddd !important; box-shadow: none !important; }
+        #resume-print-target a { color: #1d4ed8 !important; text-decoration: none; }
+        #resume-print-target *:not(img) { background: white !important; color: black !important; border-color: #ddd !important; box-shadow: none !important; }
         #resume-print-target h1 { color: black !important; }
-        #resume-print-target .skill-tag { border: 1px solid #ccc !important; background: #f9f9f9 !important; color: black !important; }
-        #resume-print-target img { display: block; }
+        #resume-print-target .skill-tag { border: 1px solid #ccc !important; background: #f9f9f9 !important; color: #333 !important; }
+        #resume-print-target img { display: block !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       }
     `;
     document.head.appendChild(style);
@@ -610,14 +629,61 @@ export function ResumeClient({ tool }: { tool: Tool }) {
 
   const handlePrint = () => {
     if (!previewRef.current) return;
-    const printDiv = document.createElement("div");
-    printDiv.id = "resume-print-target";
-    printDiv.style.display = "none";
-    printDiv.innerHTML = previewRef.current.innerHTML;
-    document.body.appendChild(printDiv);
-    window.print();
-    document.body.removeChild(printDiv);
-    toast.success("Print dialog opened", { description: "Set margins to None for best results." });
+    const content = previewRef.current.innerHTML;
+
+    const styleLinks = Array.from(document.querySelectorAll('link[rel="stylesheet"]'))
+      .map((el) => `<link rel="stylesheet" href="${(el as HTMLLinkElement).href}">`)
+      .join("\n");
+    const styleTags = Array.from(document.querySelectorAll("style"))
+      .filter((el) => el.id !== "resume-print-css")
+      .map((el) => el.outerHTML)
+      .join("\n");
+
+    const printWindow = window.open("", "_blank", "width=10,height=10");
+    if (!printWindow) {
+      // Fallback when pop-ups are blocked
+      const printDiv = document.createElement("div");
+      printDiv.id = "resume-print-target";
+      printDiv.style.display = "none";
+      printDiv.innerHTML = content;
+      document.body.appendChild(printDiv);
+      window.print();
+      document.body.removeChild(printDiv);
+      toast.success("Print dialog opened", { description: "Set margins to None for best results." });
+      trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "resume_pdf" });
+      trackDownloadResult({ tool_slug: tool.slug, result_type: "resume", file_type: "pdf" });
+      return;
+    }
+
+    printWindow.document.write(`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  ${styleLinks}
+  ${styleTags}
+  <style>
+    @page { size: A4; margin: 14mm 16mm; }
+    body { margin: 0; font-family: Inter, sans-serif; font-size: 11pt; background: white; color: black; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    a { color: #1d4ed8; text-decoration: none; }
+    * { box-shadow: none !important; }
+    .skill-tag { border: 1px solid #ccc !important; background: #f9f9f9 !important; color: #333 !important; }
+    img { display: block; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  </style>
+</head>
+<body>${content}</body>
+</html>`);
+
+    printWindow.document.close();
+    printWindow.focus();
+    setTimeout(() => {
+      if (!printWindow.closed) {
+        printWindow.print();
+        setTimeout(() => { if (!printWindow.closed) printWindow.close(); }, 500);
+      }
+    }, 600);
+
+    toast.success("Print dialog opened", { description: "Choose 'Save as PDF' and set margins to None." });
     trackToolComplete({ tool_slug: tool.slug, tool_name: tool.name, tool_category: tool.category, output_type: "resume_pdf" });
     trackDownloadResult({ tool_slug: tool.slug, result_type: "resume", file_type: "pdf" });
   };
@@ -677,7 +743,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
   const hasGroupedSkills = !!(state.skillGroups.technical || state.skillGroups.tools || state.skillGroups.soft || state.skillGroups.industry);
   const variant = state.layoutVariant;
   const sc = variant === "Compact" ? "mb-2" : "mb-4"; // section spacing
-  const showPhoto = state.includePhoto && !!state.photoDataUrl && (variant === "Modern" || variant === "Creative");
+  const showPhoto = state.includePhoto && !!state.photoDataUrl && (variant === "Modern" || variant === "Creative" || variant === "Executive" || variant === "TwoColumn");
 
   // ── Preview section render helpers ───────────────────────────────────────
 
@@ -1010,42 +1076,6 @@ export function ResumeClient({ tool }: { tool: Tool }) {
         {/* ════════════════════════════════════════════════════════ FORM ══ */}
         <div className="space-y-6 text-sm">
 
-          {/* ── Personal info ─────────────────────────────────────────── */}
-          <section>
-            <h2 className="mb-3 font-semibold text-base">Personal info</h2>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <Field id="r-name" label="Full name">
-                <input id="r-name" type="text" value={state.fullName} onChange={(e) => set("fullName", e.target.value)} placeholder="Alex Morgan" className={inputCls} />
-              </Field>
-              <Field id="r-headline" label="Professional title" optional>
-                <input id="r-headline" type="text" value={state.headline} onChange={(e) => set("headline", e.target.value)} placeholder="Frontend Developer" className={inputCls} />
-              </Field>
-              <Field id="r-email" label="Email">
-                <input id="r-email" type="email" value={state.email} onChange={(e) => set("email", e.target.value)} placeholder="alex@example.com" className={inputCls} />
-              </Field>
-              <Field id="r-phone" label="Phone">
-                <input id="r-phone" type="text" value={state.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+1 555 000 0000" className={inputCls} />
-              </Field>
-              <Field id="r-location" label="City / country">
-                <input id="r-location" type="text" value={state.location} onChange={(e) => set("location", e.target.value)} placeholder="San Francisco, CA" className={inputCls} />
-              </Field>
-              <Field id="r-workauth" label="Work authorization" optional>
-                <input id="r-workauth" type="text" value={state.workAuth} onChange={(e) => set("workAuth", e.target.value)} placeholder="Authorized to work in the US" className={inputCls} />
-              </Field>
-              <Field id="r-linkedin" label="LinkedIn" optional>
-                <input id="r-linkedin" type="url" value={state.linkedin} onChange={(e) => set("linkedin", e.target.value)} placeholder="https://linkedin.com/in/you" className={inputCls} />
-              </Field>
-              <Field id="r-website" label="Portfolio / website" optional>
-                <input id="r-website" type="url" value={state.website} onChange={(e) => set("website", e.target.value)} placeholder="https://yoursite.com" className={inputCls} />
-              </Field>
-              <div className="sm:col-span-2">
-                <Field id="r-github" label="GitHub" optional>
-                  <input id="r-github" type="url" value={state.github} onChange={(e) => set("github", e.target.value)} placeholder="https://github.com/you" className={inputCls} />
-                </Field>
-              </div>
-            </div>
-          </section>
-
           {/* ── Resume settings ───────────────────────────────────────── */}
           <section>
             <h2 className="mb-3 font-semibold text-base">Resume settings</h2>
@@ -1081,13 +1111,24 @@ export function ResumeClient({ tool }: { tool: Tool }) {
               </Field>
               <div className="sm:col-span-2">
                 <Field id="r-variant" label="Template">
-                  <select id="r-variant" value={state.layoutVariant} onChange={(e) => set("layoutVariant", e.target.value)} className={selectCls}>
-                    <option value="Classic">Classic — ATS-friendly, single column, no photo</option>
-                    <option value="Compact">Compact — tight spacing, good for one-pagers</option>
-                    <option value="Modern">Modern — clean layout, optional photo</option>
-                    <option value="Creative">Creative — bolder headings, optional photo</option>
-                    <option value="Student">Student — education and projects first</option>
-                  </select>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-1">
+                    {TEMPLATES.map((tpl) => (
+                      <button
+                        key={tpl.id}
+                        type="button"
+                        onClick={() => set("layoutVariant", tpl.id)}
+                        className={`relative rounded-xl border-2 p-3 text-left transition ${
+                          state.layoutVariant === tpl.id
+                            ? "border-primary bg-primary/5"
+                            : "border-border bg-background hover:border-primary/40 hover:bg-muted/40"
+                        }`}
+                      >
+                        <div className="h-1.5 w-8 rounded-full mb-2" style={{ background: tpl.accent }} />
+                        <div className="text-xs font-semibold text-foreground leading-tight">{tpl.label}</div>
+                        <div className="text-[10px] text-muted-foreground mt-0.5 leading-snug">{tpl.desc}</div>
+                      </button>
+                    ))}
+                  </div>
                 </Field>
               </div>
 
@@ -1112,7 +1153,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                     )}
                   </div>
                   <p className="text-xs text-muted-foreground mb-3">
-                    Most ATS systems and recruiters in the US and UK do not expect a photo. Use one only if it is standard in your region or industry (e.g. parts of Europe, creative roles). Shown only in Modern and Creative templates.
+                    Most ATS systems and recruiters in the US and UK do not expect a photo. Use one only if it is standard in your region or industry (e.g. parts of Europe, creative roles). Shown in Modern, Creative, Executive, and Two-Column templates.
                   </p>
                   {state.includePhoto && (
                     <div className="flex items-center gap-3 flex-wrap">
@@ -1132,6 +1173,42 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                     </div>
                   )}
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── Personal info ─────────────────────────────────────────── */}
+          <section>
+            <h2 className="mb-3 font-semibold text-base">Personal info</h2>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <Field id="r-name" label="Full name">
+                <input id="r-name" type="text" value={state.fullName} onChange={(e) => set("fullName", e.target.value)} placeholder="Alex Morgan" className={inputCls} />
+              </Field>
+              <Field id="r-headline" label="Professional title" optional>
+                <input id="r-headline" type="text" value={state.headline} onChange={(e) => set("headline", e.target.value)} placeholder="Frontend Developer" className={inputCls} />
+              </Field>
+              <Field id="r-email" label="Email">
+                <input id="r-email" type="email" value={state.email} onChange={(e) => set("email", e.target.value)} placeholder="alex@example.com" className={inputCls} />
+              </Field>
+              <Field id="r-phone" label="Phone">
+                <input id="r-phone" type="text" value={state.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+1 555 000 0000" className={inputCls} />
+              </Field>
+              <Field id="r-location" label="City / country">
+                <input id="r-location" type="text" value={state.location} onChange={(e) => set("location", e.target.value)} placeholder="San Francisco, CA" className={inputCls} />
+              </Field>
+              <Field id="r-workauth" label="Work authorization" optional>
+                <input id="r-workauth" type="text" value={state.workAuth} onChange={(e) => set("workAuth", e.target.value)} placeholder="Authorized to work in the US" className={inputCls} />
+              </Field>
+              <Field id="r-linkedin" label="LinkedIn" optional>
+                <input id="r-linkedin" type="url" value={state.linkedin} onChange={(e) => set("linkedin", e.target.value)} placeholder="https://linkedin.com/in/you" className={inputCls} />
+              </Field>
+              <Field id="r-website" label="Portfolio / website" optional>
+                <input id="r-website" type="url" value={state.website} onChange={(e) => set("website", e.target.value)} placeholder="https://yoursite.com" className={inputCls} />
+              </Field>
+              <div className="sm:col-span-2">
+                <Field id="r-github" label="GitHub" optional>
+                  <input id="r-github" type="url" value={state.github} onChange={(e) => set("github", e.target.value)} placeholder="https://github.com/you" className={inputCls} />
+                </Field>
               </div>
             </div>
           </section>
@@ -1698,70 +1775,137 @@ export function ResumeClient({ tool }: { tool: Tool }) {
           </div>
           <div
             ref={previewRef}
-            className={`rounded-2xl border border-border bg-white shadow-soft text-[#111] text-sm leading-relaxed min-h-[600px] ${variant === "Compact" ? "p-5" : "p-8"}`}
+            className={`rounded-2xl border border-border bg-white shadow-soft text-[#111] text-sm leading-relaxed min-h-[600px] ${variant === "TwoColumn" ? "p-0 overflow-hidden" : variant === "Compact" ? "p-5" : "p-8"}`}
             style={{ fontFamily: "Inter, sans-serif" }}
           >
-            {/* ── Header ──────────────────────────────────────────────── */}
-            <div className={`border-b border-gray-200 ${variant === "Compact" ? "pb-2 mb-2" : "pb-4 mb-4"} ${showPhoto ? "flex items-start gap-4" : ""}`}>
-              <div className={showPhoto ? "flex-1 min-w-0" : ""}>
-                <h1 className={`font-bold text-gray-900 ${variant === "Compact" ? "text-xl" : "text-2xl"}`}>
-                  {state.fullName || "Your Name"}
-                </h1>
-                {(state.headline || state.targetRole) && (
-                  <p className={`text-sm mt-0.5 ${variant === "Modern" ? "text-blue-700" : variant === "Creative" ? "text-gray-600 font-medium" : "text-gray-600"}`}>
-                    {state.headline || state.targetRole}
-                  </p>
-                )}
-                <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-gray-500">
-                  {state.email && <span>{state.email}</span>}
-                  {state.phone && <span>{state.phone}</span>}
-                  {state.location && <span>{state.location}</span>}
-                  {state.workAuth && <span>{state.workAuth}</span>}
-                  {state.linkedin && <a href={state.linkedin} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{state.linkedin.replace(/^https?:\/\//, "")}</a>}
-                  {state.website && <a href={state.website} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{state.website.replace(/^https?:\/\//, "")}</a>}
-                  {state.github && <a href={state.github} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{state.github.replace(/^https?:\/\//, "")}</a>}
+            {variant === "TwoColumn" ? (
+              /* ── Two-Column Layout ──────────────────────────────────── */
+              <div className="flex min-h-[600px]">
+                <div className="w-[35%] flex-shrink-0 border-r border-gray-200 p-6">
+                  {showPhoto && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={state.photoDataUrl} alt="Profile" className="w-24 h-24 rounded-full object-cover border-2 border-teal-200 mx-auto block mb-4" />
+                  )}
+                  <div className="mb-4">
+                    <h1 className="font-bold text-gray-900 text-xl leading-tight">{state.fullName || "Your Name"}</h1>
+                    {(state.headline || state.targetRole) && (
+                      <p className="text-xs text-teal-700 font-semibold mt-1 uppercase tracking-wide leading-snug">{state.headline || state.targetRole}</p>
+                    )}
+                  </div>
+                  <div className="mb-5 space-y-1 text-xs text-gray-600">
+                    {state.email && <div><span className="font-medium text-gray-500">Email </span>{state.email}</div>}
+                    {state.phone && <div><span className="font-medium text-gray-500">Phone </span>{state.phone}</div>}
+                    {state.location && <div><span className="font-medium text-gray-500">Location </span>{state.location}</div>}
+                    {state.workAuth && <div><span className="font-medium text-gray-500">Auth </span>{state.workAuth}</div>}
+                    {state.linkedin && <div><a href={state.linkedin} className="text-teal-600 hover:underline break-all" target="_blank" rel="noopener noreferrer">{state.linkedin.replace(/^https?:\/\//, "")}</a></div>}
+                    {state.github && <div><a href={state.github} className="text-teal-600 hover:underline break-all" target="_blank" rel="noopener noreferrer">{state.github.replace(/^https?:\/\//, "")}</a></div>}
+                    {state.website && <div><a href={state.website} className="text-teal-600 hover:underline break-all" target="_blank" rel="noopener noreferrer">{state.website.replace(/^https?:\/\//, "")}</a></div>}
+                  </div>
+                  {renderSkills()}
+                  {renderEducation()}
+                  {renderLanguages()}
+                  {renderCerts()}
+                </div>
+                <div className="flex-1 p-6">
+                  {renderSummary()}
+                  {renderExperience()}
+                  {renderProjects()}
+                  {renderVolunteer()}
+                  {renderAwards()}
+                  {renderPublications()}
+                  {renderReferences()}
+                  {renderCustom()}
                 </div>
               </div>
-              {showPhoto && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={state.photoDataUrl}
-                  alt="Profile"
-                  className={`flex-shrink-0 object-cover border border-gray-200 ${variant === "Creative" ? "w-20 h-20 rounded-lg" : "w-20 h-20 rounded-full"}`}
-                />
-              )}
-            </div>
-
-            {/* ── Sections (order depends on template) ────────────────── */}
-            {variant === "Student" ? (
-              <>
-                {renderEducation()}
-                {renderSummary()}
-                {renderProjects()}
-                {renderSkills()}
-                {renderExperience()}
-                {renderCerts()}
-                {renderLanguages()}
-                {renderVolunteer()}
-                {renderAwards()}
-                {renderPublications()}
-                {renderReferences()}
-                {renderCustom()}
-              </>
             ) : (
               <>
-                {renderSummary()}
-                {renderSkills()}
-                {renderExperience()}
-                {renderProjects()}
-                {renderEducation()}
-                {renderCerts()}
-                {renderLanguages()}
-                {renderVolunteer()}
-                {renderAwards()}
-                {renderPublications()}
-                {renderReferences()}
-                {renderCustom()}
+                {/* ── Header ────────────────────────────────────────────── */}
+                {variant === "Executive" ? (
+                  <div className={`border-b-4 border-slate-900 pb-5 mb-5 ${showPhoto ? "flex items-start gap-5" : ""}`}>
+                    <div className={showPhoto ? "flex-1 min-w-0" : ""}>
+                      <h1 className="font-bold text-slate-900 text-2xl tracking-tight">{state.fullName || "Your Name"}</h1>
+                      {(state.headline || state.targetRole) && (
+                        <p className="text-xs text-slate-500 font-semibold mt-1 uppercase tracking-widest">{state.headline || state.targetRole}</p>
+                      )}
+                      <div className="mt-2 flex flex-wrap gap-x-4 gap-y-0.5 text-xs text-slate-500">
+                        {state.email && <span>{state.email}</span>}
+                        {state.phone && <span>{state.phone}</span>}
+                        {state.location && <span>{state.location}</span>}
+                        {state.workAuth && <span>{state.workAuth}</span>}
+                        {state.linkedin && <a href={state.linkedin} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{state.linkedin.replace(/^https?:\/\//, "")}</a>}
+                        {state.website && <a href={state.website} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{state.website.replace(/^https?:\/\//, "")}</a>}
+                        {state.github && <a href={state.github} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{state.github.replace(/^https?:\/\//, "")}</a>}
+                      </div>
+                    </div>
+                    {showPhoto && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={state.photoDataUrl} alt="Profile" className="flex-shrink-0 w-24 h-24 rounded-full object-cover border-2 border-slate-300" />
+                    )}
+                  </div>
+                ) : (
+                  <div className={`${variant === "Minimal" ? "border-b-2 border-indigo-400" : "border-b border-gray-200"} ${variant === "Compact" ? "pb-2 mb-2" : "pb-4 mb-4"} ${showPhoto ? "flex items-start gap-4" : ""}`}>
+                    <div className={showPhoto ? "flex-1 min-w-0" : ""}>
+                      <h1 className={`font-bold text-gray-900 ${variant === "Compact" ? "text-xl" : "text-2xl"}`}>
+                        {state.fullName || "Your Name"}
+                      </h1>
+                      {(state.headline || state.targetRole) && (
+                        <p className={`text-sm mt-0.5 ${variant === "Modern" ? "text-blue-700" : variant === "Creative" ? "text-gray-600 font-medium" : variant === "Minimal" ? "text-indigo-600 font-medium" : "text-gray-600"}`}>
+                          {state.headline || state.targetRole}
+                        </p>
+                      )}
+                      <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-gray-500">
+                        {state.email && <span>{state.email}</span>}
+                        {state.phone && <span>{state.phone}</span>}
+                        {state.location && <span>{state.location}</span>}
+                        {state.workAuth && <span>{state.workAuth}</span>}
+                        {state.linkedin && <a href={state.linkedin} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{state.linkedin.replace(/^https?:\/\//, "")}</a>}
+                        {state.website && <a href={state.website} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{state.website.replace(/^https?:\/\//, "")}</a>}
+                        {state.github && <a href={state.github} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{state.github.replace(/^https?:\/\//, "")}</a>}
+                      </div>
+                    </div>
+                    {showPhoto && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={state.photoDataUrl}
+                        alt="Profile"
+                        className={`flex-shrink-0 object-cover border border-gray-200 ${variant === "Creative" ? "w-20 h-20 rounded-lg" : "w-20 h-20 rounded-full"}`}
+                      />
+                    )}
+                  </div>
+                )}
+
+                {/* ── Sections (order depends on template) ──────────────── */}
+                {variant === "Student" ? (
+                  <>
+                    {renderEducation()}
+                    {renderSummary()}
+                    {renderProjects()}
+                    {renderSkills()}
+                    {renderExperience()}
+                    {renderCerts()}
+                    {renderLanguages()}
+                    {renderVolunteer()}
+                    {renderAwards()}
+                    {renderPublications()}
+                    {renderReferences()}
+                    {renderCustom()}
+                  </>
+                ) : (
+                  <>
+                    {renderSummary()}
+                    {renderSkills()}
+                    {renderExperience()}
+                    {renderProjects()}
+                    {renderEducation()}
+                    {renderCerts()}
+                    {renderLanguages()}
+                    {renderVolunteer()}
+                    {renderAwards()}
+                    {renderPublications()}
+                    {renderReferences()}
+                    {renderCustom()}
+                  </>
+                )}
               </>
             )}
           </div>
