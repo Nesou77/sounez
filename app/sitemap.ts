@@ -75,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${base}/smart-packs/${p.slug}`,
       lastModified: await lastModified("smart_pack", p.slug, fallback),
       changeFrequency: "monthly" as const,
-      priority: 0.75,
+      priority: 0.8,
     })),
   );
 
