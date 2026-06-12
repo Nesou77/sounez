@@ -6,7 +6,7 @@ import { ExternalLink } from "@/components/ExternalLink";
 import Link from "next/link";
 
 export const metadata = blogMetadata("png-vs-jpg-and-how-to-convert-images", {
-  title: "PNG vs JPG: Differences and How to Convert Images (2026) | Sounez",
+  title: "PNG vs JPG: Differences and How to Convert Images | Sounez",
   description:
     "Learn the difference between PNG and JPG images and how to convert PNG files to JPG safely in your browser. No upload required.",
     ogTitle: "PNG vs JPG: Differences and How to Convert Images",

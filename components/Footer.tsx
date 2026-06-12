@@ -54,15 +54,7 @@ export function Footer() {
       <section className="border-b border-border">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_1fr_1fr]">
           <div>
-            <p className="text-sm font-semibold">Publisher content first</p>
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-              Sounez pages are built around original explanations, working tools, practical examples,
-              FAQs, related guides, and clear privacy notes. Advertising supports the site, but it should
-              never replace the page content or block the task you came to complete.
-            </p>
-          </div>
-          <div>
-            <p className="text-sm font-semibold">Responsible use</p>
+            <p className="text-sm font-semibold">Use outputs carefully</p>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
               Generated text, converted files, image descriptions, and estimates are drafts. Review facts,
               rights, accessibility text, platform rules, and sensitive data before you publish, submit,
@@ -70,10 +62,17 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <p className="text-sm font-semibold">Helpful policy pages</p>
+            <p className="text-sm font-semibold">Privacy basics</p>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-              The site includes public pages for contact, privacy, cookies, terms, and copyright. They explain
-              who runs Sounez, how tools handle inputs, how ads and cookies work, and how to report a problem.
+              Many tools run in your browser. AI and PDF tools may use a server step and explain that on the
+              tool page. Avoid uploading files you are not allowed to process.
+            </p>
+          </div>
+          <div>
+            <p className="text-sm font-semibold">Need help?</p>
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              Use the FAQ for common questions, the contact page for bug reports or corrections, and the DMCA
+              page for copyright concerns.
             </p>
           </div>
         </div>

@@ -6,7 +6,7 @@ import { ExternalLink } from "@/components/ExternalLink";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-write-better-social-media-captions", {
-  title: "How to Write Better Social Media Captions with AI (2026) | Sounez",
+  title: "How to Write Better Social Media Captions with AI | Sounez",
   description:
     "Learn how to create better captions for Instagram, TikTok and LinkedIn using simple prompts, tone selection and AI caption examples.",
     ogTitle: "How to Write Better Social Media Captions with AI",

@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-use-svg-blobs-in-web-design", {
-  title: "How to Use SVG Blobs in Modern Web Design (2026) | Sounez",
+  title: "How to Use SVG Blobs in Modern Web Design | Sounez",
   description:
     "Learn how SVG blobs can improve hero sections, cards and backgrounds with lightweight organic shapes. Includes a free SVG blob generator.",
     ogTitle: "How to Use SVG Blobs in Modern Web Design",

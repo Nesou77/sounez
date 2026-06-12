@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("css-background-patterns-guide", {
-  title: "CSS Background Patterns Guide for Web Design (2026) | Sounez",
+  title: "CSS Background Patterns Guide for Web Design | Sounez",
   description:
     "Learn how to create lightweight CSS and SVG background patterns for websites and landing pages. Dots, grids, lines and more.",
     ogTitle: "CSS Background Patterns Guide for Web Design",

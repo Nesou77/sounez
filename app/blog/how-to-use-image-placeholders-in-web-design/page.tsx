@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-use-image-placeholders-in-web-design", {
-  title: "How to Use Image Placeholders in Web Design (2026) | Sounez",
+  title: "How to Use Image Placeholders in Web Design | Sounez",
   description:
     "Learn how image placeholders help with wireframes, mockups, frontend development and layout planning. Includes a free placeholder generator.",
     ogTitle: "How to Use Image Placeholders in Web Design",

@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
 export const metadata = blogMetadata("how-to-remove-image-backgrounds-online", {
-  title: "How to Remove Image Backgrounds Online for Free (2026) | Sounez",
+  title: "How to Remove Image Backgrounds Online for Free | Sounez",
   description:
     "Remove image backgrounds online for product photos, profile pictures, social posts, and design projects without using complex design software.",
     ogTitle: "How to Remove Image Backgrounds Online for Free",

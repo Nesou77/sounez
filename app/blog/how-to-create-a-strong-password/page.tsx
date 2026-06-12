@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-create-a-strong-password", {
-  title: "How to Create a Strong Password You'll Actually Remember (2026) | Sounez",
+  title: "How to Create a Strong Password You'll Actually Remember | Sounez",
   description:
     "Stop reusing passwords. A simple, modern system for strong, memorable credentials, plus 2FA, password managers and the best free generator.",
     ogTitle: "How to Create a Strong Password",
@@ -52,7 +52,7 @@ export default function Post() {
         <h2>How attackers actually crack passwords</h2>
         <p>
           Understanding attack methods helps you understand why certain password advice matters more
-          than other advice. The most common attacks in 2026 are:
+          than other advice. The most common attacks are:
         </p>
         <ul>
           <li>

@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("best-color-palettes-for-design", {
-  title: "The Best Color Palettes for Modern Design (2026) | Sounez",
+  title: "The Best Color Palettes for Modern Design | Sounez",
   description:
     "The principles behind color palettes that just work, for landing pages, apps and brands. Curated palettes, color theory and free tools to build your own.",
     ogTitle: "Best Color Palettes for Modern Design",
@@ -109,7 +109,7 @@ export default function Post() {
           the mid-range as your brand accent.
         </p>
 
-        <h2>Five palette directions that work in 2026</h2>
+        <h2>Five palette directions that work</h2>
         <ul>
           <li>
             <strong>Monochrome + one accent</strong> (Linear, Vercel style): A gray or off-white base

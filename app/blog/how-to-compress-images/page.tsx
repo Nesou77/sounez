@@ -5,9 +5,9 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-compress-images", {
-  title: "How to Compress Images Without Losing Quality (2026 Guide) | Sounez",
+  title: "How to Compress Images Without Losing Quality Guide | Sounez",
   description:
-    "A practical 2026 guide to compressing images for the web. Compare JPG, PNG, WebP, image dimensions, and browser-based privacy.",
+    "A practical guide to compressing images for the web. Compare JPG, PNG, WebP, image dimensions, and browser-based privacy.",
     ogTitle: "How to Compress Images Without Losing Quality",
     ogDescription: "Smaller files can make pages faster. Learn formats, dimensions, and safe browser-based compression.",
 });
@@ -27,7 +27,7 @@ export default function Post() {
       <BlogJsonLd
         slug="how-to-compress-images"
         title="How to Compress Images Without Losing Quality"
-        description="A practical 2026 guide to compressing images for the web. Compare JPG, PNG, WebP, image dimensions, and browser-based privacy."
+        description="A practical guide to compressing images for the web. Compare JPG, PNG, WebP, image dimensions, and browser-based privacy."
         articleSection="Productivity"
         faqs={FAQS}
       />
@@ -44,7 +44,7 @@ export default function Post() {
           dimensions the page actually needs.
         </p>
         <p>
-          This guide covers the formats that matter in 2026, the right dimensions for the web, and how
+          This guide covers the formats that matter, the right dimensions for the web, and how
           to compress safely without uploading your files to sketchy third-party servers.
         </p>
 

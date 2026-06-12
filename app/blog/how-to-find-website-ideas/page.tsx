@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-find-website-ideas", {
-  title: "How to Find Website Ideas for Your Next Project (2026) | Sounez",
+  title: "How to Find Website Ideas for Your Next Project | Sounez",
   description:
     "Discover practical methods to generate website ideas for blogs, SaaS products, communities, ecommerce and online tools. Includes a free website idea generator.",
     ogTitle: "How to Find Website Ideas for Your Next Project",

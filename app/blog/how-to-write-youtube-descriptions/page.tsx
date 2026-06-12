@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-write-youtube-descriptions", {
-  title: "How to Write Better YouTube Descriptions (2026) | Sounez",
+  title: "How to Write Better YouTube Descriptions | Sounez",
   description:
     "Learn how to write clearer YouTube descriptions with useful summaries, timestamps, links, hashtags, and natural keywords.",
     ogTitle: "How to Write Better YouTube Descriptions",
@@ -79,8 +79,8 @@ export default function Post() {
             YouTube&apos;s Creator Academy
           </a>
           , a good description helps both viewers and YouTube understand your video&apos;s content. If your
-          video is &quot;how to grow on TikTok in 2026&quot;, your description should open with something like:
-          &quot;In this video, I break down exactly how to grow on TikTok in 2026, from niche selection to
+          video is &quot;how to grow on TikTok&quot;, your description should open with something like:
+          &quot;In this video, I break down exactly how to grow on TikTok, from niche selection to
           your first 10k followers.&quot;
         </p>
         <p>
@@ -140,7 +140,7 @@ export default function Post() {
           <strong>Strong description (same video):</strong>
         </p>
         <p>
-          &quot;In this video I break down exactly how to grow on TikTok in 2026 — from choosing a niche
+          &quot;In this video I break down exactly how to grow on TikTok — from choosing a niche
           that compounds to writing hooks that stop the scroll in the first second.
         </p>
         <p>
@@ -152,7 +152,7 @@ export default function Post() {
           17:00 Recap and next steps
         </p>
         <p>
-          This strategy covers TikTok algorithm 2026, growing TikTok followers organically, and
+          This strategy covers TikTok algorithm growing TikTok followers organically, and
           TikTok content strategy for beginners. No paid promotion, no follow/unfollow tricks.
         </p>
         <p>

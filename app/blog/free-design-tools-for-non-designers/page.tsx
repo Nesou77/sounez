@@ -44,7 +44,7 @@ export default function Post() {
           focused tools that make their work look intentional.
         </p>
         <p>
-          Here&apos;s a free toolkit for common non-designer jobs in 2026.
+          Here&apos;s a free toolkit for common non-designer jobs.
         </p>
 
         <h2>The non-designer&apos;s design problem</h2>

@@ -7,8 +7,7 @@ import { sortToolsByPopularity } from "@/lib/popularity";
 import { blogPostsForTool } from "@/data/blog";
 import { ToolCard } from "./ToolCard";
 import { SmartLink as Link } from "@/components/smart-link";
-import { getToolIcon } from "@/lib/tool-icons";
-import { ArrowRight, Lightbulb, Sparkles, BookOpen, Layers } from "lucide-react";
+import { Lightbulb, Sparkles, BookOpen, Layers } from "lucide-react";
 import Image from "next/image";
 import { getToolEditorial } from "@/lib/tool-editorial";
 import { smartPackForTool } from "@/lib/tool-smart-pack-links";
@@ -40,10 +39,7 @@ export const ToolPageSections = memo(function ToolPageSections({ tool }: { tool:
   const related = [
     ...fromEditorial,
     ...sameCat.filter((t) => !fromEditorial.some((r) => r.slug === t.slug)),
-  ].slice(0, 6);
-  const moreTools = sortToolsByPopularity(
-    TOOLS.filter((t) => t.slug !== tool.slug && !related.includes(t)),
-  ).slice(0, 6);
+  ].slice(0, 3);
   const featuredPosts = blogPostsForTool(tool.slug);
   const smartPack = smartPackForTool(tool.slug);
 
@@ -138,58 +134,6 @@ export const ToolPageSections = memo(function ToolPageSections({ tool }: { tool:
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{whenNotText}</p>
       </section>
 
-      <section className="my-12 grid gap-5 md:grid-cols-2">
-        <div className="rounded-2xl border border-border bg-card p-6">
-          <h2 className="text-lg font-bold">Before you copy or download</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Take a minute to check the output against your real goal. Look for spelling, broken links,
-            wrong numbers, missing context, low image quality, or text that sounds unlike you. If you are
-            using the result for school, client work, a listing, or a public post, keep the original file
-            or source text until you are sure the final version is right.
-          </p>
-        </div>
-        <div className="rounded-2xl border border-border bg-card p-6">
-          <h2 className="text-lg font-bold">If the result looks off</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Try again with a smaller file, clearer input, fewer special characters, or a more specific brief.
-            For AI tools, include the audience, tone, and facts that must be preserved. For file tools, check
-            size limits, format support, and whether the source file is damaged or password-protected.
-          </p>
-        </div>
-      </section>
-
-      <section className="my-12 rounded-2xl border border-border bg-card p-6">
-        <h2 className="text-xl font-bold">Content quality and responsible use</h2>
-        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          This page is written to help you complete one real task, not to send you through a chain of
-          empty pages. Use the tool above, read the examples and limits, then decide whether the output
-          is good enough for your specific project.
-        </p>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
-          <div>
-            <h3 className="text-sm font-semibold">Check accuracy</h3>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Confirm names, numbers, links, dates, spelling, formatting, and any claim that another
-              person may rely on.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold">Respect rights</h3>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Only upload files, images, documents, or text you created, own, or have permission to
-              process with an online tool.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold">Avoid sensitive data</h3>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Do not paste passwords, private customer records, ID documents, confidential contracts,
-              or anything your school, employer, or client would not allow.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="my-12">
         <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
         <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card">
@@ -225,13 +169,15 @@ export const ToolPageSections = memo(function ToolPageSections({ tool }: { tool:
         </section>
       )}
 
+      {related.length > 0 && (
       <section className="my-12">
         <h2 className="text-2xl font-bold">Related tools</h2>
-        <p className="mt-1 text-sm text-muted-foreground">Other tools that work well alongside {tool.name}.</p>
+        <p className="mt-1 text-sm text-muted-foreground">A few tools that naturally pair with {tool.name}.</p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((t) => <ToolCard key={t.slug} tool={t} />)}
         </div>
       </section>
+      )}
 
       <section className="my-12 rounded-3xl border border-border bg-gradient-soft p-6 sm:p-8">
         <h2 className="flex items-center gap-2 text-2xl font-bold">
@@ -254,68 +200,6 @@ export const ToolPageSections = memo(function ToolPageSections({ tool }: { tool:
               </div>
             </Link>
           ))}
-        </div>
-      </section>
-
-      <section className="my-12">
-        <h2 className="text-2xl font-bold">Explore more tools</h2>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {moreTools.map((t) => {
-            const I = getToolIcon(t.slug);
-            return (
-              <Link key={t.slug} href={`/tools/${t.slug}`} className="group flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-soft">
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-gradient-soft text-primary ring-1 ring-primary/10" aria-hidden="true">
-                  <I className="h-4 w-4" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="truncate text-sm font-semibold">{t.name}</div>
-                  <div className="truncate text-xs text-muted-foreground">{t.description}</div>
-                </div>
-                <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-primary" aria-hidden="true" />
-              </Link>
-            );
-          })}
-        </div>
-        <div className="mt-6 text-sm text-muted-foreground">
-          See <Link href="/tools" className="font-medium text-primary hover:underline">all {TOOLS.length} tools</Link>, try a{" "}
-          <Link href="/smart-packs" className="font-medium text-primary hover:underline">Smart Pack</Link>, or browse{" "}
-          <Link href="/categories" className="font-medium text-primary hover:underline">categories</Link>.
-        </div>
-      </section>
-
-      <section className="my-8 rounded-2xl border border-border bg-muted/20 p-6">
-        <h2 className="text-lg font-bold">Community standards</h2>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          The comment section below is for practical, on-topic feedback about this tool. Comments are
-          reviewed before they appear publicly. We do not approve promotional links, off-topic
-          discussions, hate speech, adult content, illegal activity, or anything that could mislead
-          other users. By posting you agree to the{" "}
-          <Link href="/terms-of-service" className="font-medium text-primary hover:underline">
-            Terms of Service
-          </Link>
-          . Repeated violations result in permanent removal. To report a problem with a specific
-          comment, use the flag icon on that comment.
-        </p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/70">What we approve</h3>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Genuine questions, corrections, use-case tips, and experience with the tool on this page.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/70">What we remove</h3>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Spam, ads, links to unrelated sites, abusive language, personal data, and prohibited content.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/70">Moderation</h3>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              All comments are held for review. Flagged content is prioritised; auto-filtering rejects
-              clearly prohibited submissions before review.
-            </p>
-          </div>
         </div>
       </section>
 

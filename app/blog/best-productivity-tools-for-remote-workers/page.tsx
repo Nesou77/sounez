@@ -5,10 +5,10 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("best-productivity-tools-for-remote-workers", {
-  title: "Best Free Productivity Tools for Remote Workers in 2026 | Sounez",
+  title: "Best Free Productivity Tools for Remote Workers | Sounez",
   description:
-    "Work from anywhere without paying for a bloated app stack. The best free browser-based productivity tools for remote workers in 2026.",
-    ogTitle: "Best Free Productivity Tools for Remote Workers in 2026",
+    "Work from anywhere without paying for a bloated app stack. The best free browser-based productivity tools for remote workers.",
+    ogTitle: "Best Free Productivity Tools for Remote Workers",
     ogDescription: "Free tools that cover everything a remote worker needs. No subscriptions.",
 });
 
@@ -25,15 +25,15 @@ export default function Post() {
     <>
       <BlogJsonLd
         slug="best-productivity-tools-for-remote-workers"
-        title="The Best Free Productivity Tools for Remote Workers in 2026"
-        description="Work from anywhere without paying for a bloated app stack. The best free browser-based productivity tools for remote workers in 2026."
+        title="The Best Free Productivity Tools for Remote Workers"
+        description="Work from anywhere without paying for a bloated app stack. The best free browser-based productivity tools for remote workers."
         articleSection="Productivity"
         faqs={FAQS}
       />
       <BlogPostShell
         slug="best-productivity-tools-for-remote-workers"
         ctaTools={["word-counter", "password-generator", "text-case-converter"]}
-        title="The Best Free Productivity Tools for Remote Workers in 2026"
+        title="The Best Free Productivity Tools for Remote Workers"
         excerpt="Work from anywhere without paying for a bloated app stack. These free, browser-based tools cover writing, security, design and communication, no subscriptions required."
       >
         <p>
@@ -43,8 +43,8 @@ export default function Post() {
           that mostly gets in the way.
         </p>
         <p>
-          The best remote workers we know use a lean, mostly free stack. Here&apos;s what it looks like in
-          2026.
+          The best remote workers we know use a lean, mostly free stack. Here&apos;s what it looks like
+          when every tool has to justify its place.
         </p>
 
         <h2>The remote worker&apos;s free toolkit</h2>

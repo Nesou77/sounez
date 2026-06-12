@@ -5,15 +5,15 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("css-gradients-guide", {
-  title: "The Complete Guide to CSS Gradients in 2026 | Sounez",
+  title: "The Complete Guide to CSS Gradients | Sounez",
   description:
     "Linear, radial, conic, everything you need to build beautiful CSS gradients with clean, modern code. Includes examples, tips and a free generator.",
-    ogTitle: "The Complete Guide to CSS Gradients in 2026",
+    ogTitle: "The Complete Guide to CSS Gradients",
     ogDescription: "Linear, radial, conic, build beautiful gradients with clean CSS.",
 });
 
 const FAQS = [
-  { question: "Are CSS gradients supported in all browsers?", answer: "Linear and radial gradients have had universal support since 2013. Conic gradients are supported in all modern browsers (Chrome 69+, Firefox 83+, Safari 12.1+). No prefixes needed in 2026." },
+  { question: "Are CSS gradients supported in all browsers?", answer: "Linear and radial gradients have had universal support since 2013. Conic gradients are supported in all modern browsers (Chrome 69+, Firefox 83+, Safari 12.1+). No prefixes needed." },
   { question: "Can I animate CSS gradients?", answer: "Not directly with transition, browsers can't interpolate between gradient values. The workaround is to animate background-position on an oversized gradient, or use @keyframes with opacity transitions between layered gradients." },
   { question: "What's the difference between a gradient and a mesh gradient?", answer: "A mesh gradient has multiple color points that blend in 2D space. Pure CSS mesh gradients aren't possible yet; they require SVG or canvas. For most UI use cases, a well-crafted radial gradient achieves a similar effect." },
   { question: "How do I apply a gradient to text in CSS?", answer: "Set background to your gradient, then add background-clip: text and -webkit-background-clip: text, and set color to transparent. The gradient shows through the text shape. Use sparingly — one gradient headline per page maximum." },
@@ -26,7 +26,7 @@ export default function Post() {
     <>
       <BlogJsonLd
         slug="css-gradients-guide"
-        title="The Complete Guide to CSS Gradients in 2026"
+        title="The Complete Guide to CSS Gradients"
         description="Linear, radial, conic, everything you need to build beautiful CSS gradients with clean, modern code. Includes examples, tips and a free generator."
         articleSection="Design Tools"
         faqs={FAQS}
@@ -34,13 +34,13 @@ export default function Post() {
       <BlogPostShell
         slug="css-gradients-guide"
         ctaTools={["css-gradient-generator", "color-palette-generator", "image-compressor"]}
-        title="The Complete Guide to CSS Gradients in 2026"
+        title="The Complete Guide to CSS Gradients"
         excerpt="Linear, radial, conic, everything you need to build beautiful gradients with clean, modern CSS. No design tool required."
       >
         <p>
           CSS gradients have come a long way. What used to require Photoshop exports and heavy image
           files is now a single line of CSS that renders crisply at any resolution, loads instantly,
-          and scales to any screen size. In 2026, there&apos;s no reason to use a gradient image when CSS
+          and scales to any screen size., there&apos;s no reason to use a gradient image when CSS
           can do it better.
         </p>
         <p>
@@ -115,7 +115,7 @@ background: conic-gradient(#6366f1 65%, #e2e8f0 65%);`}</code></pre>
 
         <PullQuote>
           A CSS gradient loads in zero milliseconds and scales to any resolution. There&apos;s no reason to
-          use a gradient image in 2026.
+          use a gradient image.
         </PullQuote>
 
         <h2>Gradient patterns that work in real products</h2>
@@ -228,7 +228,7 @@ background: conic-gradient(#6366f1 65%, #e2e8f0 65%);`}</code></pre>
         <p>
           Linear and radial gradients have had universal support since 2013. Conic gradients are
           supported in all modern browsers (Chrome 69+, Firefox 83+, Safari 12.1+). No prefixes
-          needed in 2026.
+          needed.
         </p>
         <h3>Can I animate CSS gradients?</h3>
         <p>

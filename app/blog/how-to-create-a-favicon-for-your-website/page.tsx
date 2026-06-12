@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-create-a-favicon-for-your-website", {
-  title: "How to Create a Favicon for Your Website (2026 Guide) | Sounez",
+  title: "How to Create a Favicon for Your Website Guide | Sounez",
   description:
     "Learn what a favicon is, why it matters for branding, recommended favicon sizes and how to create one free in your browser.",
     ogTitle: "How to Create a Favicon for Your Website",
@@ -100,7 +100,7 @@ export default function Post() {
           automated tools that request it by default.
         </p>
         <p>
-          The recommended approach in 2026: provide a PNG favicon via the HTML link tag, and
+          The recommended approach: provide a PNG favicon via the HTML link tag, and
           optionally place a 32x32 ICO at <code>/favicon.ico</code> as a fallback.
         </p>
 

@@ -7,7 +7,7 @@ import Link from "next/link";
 export const metadata = blogMetadata("how-to-use-qr-codes-for-marketing", {
   title: "How to Use QR Codes for Marketing (Without Looking Cheap) | Sounez",
   description:
-    "QR codes are everywhere again in 2026. Here's how to use them in print, packaging, events and social media in a way that actually converts.",
+    "QR codes are everywhere again. Here's how to use them in print, packaging, events and social media in a way that actually converts.",
     ogTitle: "How to Use QR Codes for Marketing",
     ogDescription: "Use QR codes with a clear destination, label, and placement so people know what they are scanning.",
 });
@@ -27,7 +27,7 @@ export default function Post() {
       <BlogJsonLd
         slug="how-to-use-qr-codes-for-marketing"
         title="How to Use QR Codes for Marketing (Without Looking Cheap)"
-        description="QR codes are everywhere again in 2026. Here's how to use them in print, packaging, events and social media in a way that actually converts."
+        description="QR codes are everywhere again. Here's how to use them in print, packaging, events and social media in a way that actually converts."
         articleSection="Creator Tools"
         faqs={FAQS}
       />
@@ -44,7 +44,7 @@ export default function Post() {
           physical world to your digital one.
         </p>
         <p>
-          In 2026, a well-placed QR code is a legitimate marketing tool. A poorly placed one still
+         , a well-placed QR code is a legitimate marketing tool. A poorly placed one still
           looks cheap. Here&apos;s the difference.
         </p>
 

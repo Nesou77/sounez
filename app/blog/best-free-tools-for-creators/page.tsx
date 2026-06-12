@@ -5,10 +5,10 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
 export const metadata = blogMetadata("best-free-tools-for-creators", {
-  title: "10 Best Free Online Tools for Creators in 2026 | Sounez",
+  title: "10 Best Free Online Tools for Creators | Sounez",
   description:
-    "Free online tools for creators in 2026, including YouTube tags, hashtags, image compression, QR codes, passwords, and design helpers.",
-    ogTitle: "10 Best Free Online Tools for Creators in 2026",
+    "Free online tools for creators, including YouTube tags, hashtags, image compression, QR codes, passwords, and design helpers.",
+    ogTitle: "10 Best Free Online Tools for Creators",
     ogDescription: "The free toolkit every modern creator needs. Fast, focused, browser-based.",
 });
 
@@ -25,19 +25,19 @@ export default function Post() {
     <>
       <BlogJsonLd
         slug="best-free-tools-for-creators"
-        title="10 Best Free Online Tools for Creators in 2026"
-        description="Free online tools for creators in 2026, including YouTube tags, hashtags, image compression, QR codes, passwords, and design helpers."
+        title="10 Best Free Online Tools for Creators"
+        description="Free online tools for creators, including YouTube tags, hashtags, image compression, QR codes, passwords, and design helpers."
         articleSection="Creator Tools"
         faqs={FAQS}
       />
       <BlogPostShell
         slug="best-free-tools-for-creators"
         ctaTools={["youtube-tags-generator", "hashtag-generator", "color-palette-generator"]}
-        title="10 Best Free Online Tools for Creators in 2026"
+        title="10 Best Free Online Tools for Creators"
         excerpt="A practical creator toolkit for publishing, design, file cleanup, account security, and everyday content tasks."
       >
         <p>
-          If you create content in 2026 (videos, posts, blogs, designs), your toolkit matters as much as
+          If you create content (videos, posts, blogs, designs), your toolkit matters as much as
           your ideas. The right free tool can save hours every week. The wrong one can quietly drain
           your energy and your bandwidth. After testing dozens, here are the ten we keep coming back to.
         </p>
@@ -50,7 +50,7 @@ export default function Post() {
 
         <BlogImage src="/blog/best-free-tools-for-creators-bg.webp" alt="A neatly organized creator toolbox of app icons" caption="A focused toolkit beats a bloated one, every time." />
 
-        <h2>Why free tools beat paid bloat in 2026</h2>
+        <h2>Why free tools beat paid bloat</h2>
         <p>
           Most creators do not need a 12-app subscription stack for every task. A focused browser tool
           is often enough for tagging a video, checking a caption length, compressing a thumbnail, or

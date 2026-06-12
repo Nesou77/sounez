@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
 export const metadata = blogMetadata("free-design-tools-for-web-creators", {
-  title: "Free Design Tools for Web Creators (2026) | Sounez",
+  title: "Free Design Tools for Web Creators | Sounez",
   description:
     "Explore free tools for favicons, SVG blobs, font pairings, placeholders, CSS shadows and background patterns. No installs, no accounts.",
     ogTitle: "Free Design Tools for Web Creators",
