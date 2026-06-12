@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { MessageCircle, Send } from "lucide-react";
+import { Flag, MessageCircle, Send } from "lucide-react";
 import { toast } from "sonner";
 import type { ContentType } from "@/lib/content-types";
 import type { PublicComment } from "@/lib/comment-validation";
@@ -19,7 +19,9 @@ export function CommentsSection({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [body, setBody] = useState("");
+  const [tosAgreed, setTosAgreed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [reportedIds, setReportedIds] = useState<Set<string>>(new Set());
 
   const loadComments = useCallback(async () => {
     try {
@@ -44,10 +46,14 @@ export function CommentsSection({
     void loadComments();
   }, [loadComments]);
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (body.trim().length < 3) {
       toast.error("Comment is too short.");
+      return;
+    }
+    if (!tosAgreed) {
+      toast.error("Please agree to the community guidelines before submitting.");
       return;
     }
     setSubmitting(true);
@@ -61,6 +67,7 @@ export function CommentsSection({
           authorName: name.trim(),
           authorEmail: email.trim() || undefined,
           body: body.trim(),
+          tosAgreed: true,
         }),
       });
       const data = (await res.json()) as { ok?: boolean; error?: string; message?: string };
@@ -69,6 +76,7 @@ export function CommentsSection({
         return;
       }
       setBody("");
+      setTosAgreed(false);
       toast.success(data.message ?? "Comment submitted for moderation.");
     } catch {
       toast.error("Could not submit comment.");
@@ -76,6 +84,19 @@ export function CommentsSection({
       setSubmitting(false);
     }
   };
+
+  const reportComment = async (id: string) => {
+    if (reportedIds.has(id)) return;
+    try {
+      await fetch(`/api/comments/${id}/report`, { method: "POST" });
+      setReportedIds((prev) => new Set(prev).add(id));
+      toast.success("Comment reported. Our team will review it.");
+    } catch {
+      toast.error("Could not submit report.");
+    }
+  };
+
+  const canSubmit = !submitting && name.trim().length >= 1 && body.trim().length >= 3 && tosAgreed;
 
   return (
     <section className="my-12" aria-labelledby={`comments-heading-${slug}`}>
@@ -127,11 +148,27 @@ export function CommentsSection({
           maxLength={1000}
           className="mt-3 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-primary"
         />
+        <label className="mt-3 flex cursor-pointer items-start gap-2.5 text-xs text-muted-foreground">
+          <input
+            type="checkbox"
+            checked={tosAgreed}
+            onChange={(e) => setTosAgreed(e.target.checked)}
+            className="mt-0.5 h-4 w-4 shrink-0 accent-primary"
+            required
+          />
+          <span>
+            I agree to the{" "}
+            <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
+              community guidelines
+            </a>
+            . My comment is my own, does not contain prohibited content, and I understand it will be reviewed before appearing publicly.
+          </span>
+        </label>
         <div className="mt-3 flex items-center justify-between gap-3">
           <span className="text-xs text-muted-foreground">{body.length}/1000</span>
           <button
             type="submit"
-            disabled={submitting || name.trim().length < 1 || body.trim().length < 3}
+            disabled={!canSubmit}
             className="inline-flex items-center gap-2 rounded-xl bg-gradient-brand px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:-translate-y-0.5 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <Send className="h-4 w-4" aria-hidden="true" />
@@ -166,12 +203,24 @@ export function CommentsSection({
                 </div>
                 <div className="text-sm font-semibold">{c.authorName}</div>
               </div>
-              <time
-                className="text-xs text-muted-foreground"
-                dateTime={c.createdAt}
-              >
-                {formatTimeAgo(new Date(c.createdAt).getTime())}
-              </time>
+              <div className="flex items-center gap-3">
+                <time
+                  className="text-xs text-muted-foreground"
+                  dateTime={c.createdAt}
+                >
+                  {formatTimeAgo(new Date(c.createdAt).getTime())}
+                </time>
+                <button
+                  type="button"
+                  onClick={() => void reportComment(c.id)}
+                  disabled={reportedIds.has(c.id)}
+                  title={reportedIds.has(c.id) ? "Reported" : "Report this comment"}
+                  aria-label={reportedIds.has(c.id) ? "Comment reported" : "Report this comment"}
+                  className="rounded p-1 text-muted-foreground/50 transition hover:text-destructive disabled:opacity-40"
+                >
+                  <Flag className="h-3.5 w-3.5" aria-hidden="true" />
+                </button>
+              </div>
             </div>
             <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-foreground/85">
               {c.body}

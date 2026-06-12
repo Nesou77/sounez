@@ -3,6 +3,9 @@ import { CONTENT_TYPES } from "@/lib/content-types";
 
 const URL_REGEX = /https?:\/\/|www\./gi;
 
+// Disallow names that are clearly keyword-stuffed spam (e.g. "Buy Cheap Viagra Now")
+const SPAM_NAME_REGEX = /\b(buy|cheap|free|discount|promo|click\s*here|visit\s*my)\b/i;
+
 export const commentBodySchema = z.object({
   contentType: z.enum(CONTENT_TYPES),
   slug: z
@@ -11,12 +14,22 @@ export const commentBodySchema = z.object({
     .min(1)
     .max(120)
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
-  authorName: z.string().trim().min(1, "Name is required").max(80),
+  authorName: z
+    .string()
+    .trim()
+    .min(1, "Name is required")
+    .max(80)
+    .refine((v) => !SPAM_NAME_REGEX.test(v), {
+      message: "Please use your real name.",
+    }),
   authorEmail: z
     .union([z.string().trim().email().max(255), z.literal("")])
     .optional()
     .transform((v) => (v && v.length > 0 ? v : undefined)),
   body: z.string().trim().min(3, "Comment is too short").max(1000, "Comment is too long"),
+  tosAgreed: z.literal(true, {
+    errorMap: () => ({ message: "You must agree to the community guidelines." }),
+  }),
 });
 
 export type CommentBodyInput = z.infer<typeof commentBodySchema>;

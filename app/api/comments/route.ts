@@ -6,6 +6,7 @@ import {
   rejectSpamUrls,
   toPublicComment,
 } from "@/lib/comment-validation";
+import { moderateContent, buildModerationInput } from "@/lib/content-moderation";
 import { isContentType } from "@/lib/content-types";
 
 const COMMENT_RATE = { limit: 8, windowMs: 60 * 1000 };
@@ -73,7 +74,19 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: spam }, { status: 400 });
   }
 
+  // Automated content moderation
+  const modInput = buildModerationInput(parsed.data.authorName, parsed.data.body);
+  const modResult = moderateContent(modInput);
+
+  if (modResult.action === "reject") {
+    return NextResponse.json(
+      { ok: false, error: "Your comment could not be posted because it appears to violate our community guidelines." },
+      { status: 400 },
+    );
+  }
+
   const email = parsed.data.authorEmail?.trim() || null;
+  const moderationFlag = modResult.action === "flag" ? modResult.flag : null;
 
   try {
     const comment = await prisma.comment.create({
@@ -84,6 +97,7 @@ export async function POST(req: Request) {
         authorEmail: email,
         body: parsed.data.body,
         status: "pending",
+        moderationFlag,
       },
       select: { id: true },
     });
