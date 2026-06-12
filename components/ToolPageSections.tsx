@@ -158,6 +158,38 @@ export const ToolPageSections = memo(function ToolPageSections({ tool }: { tool:
         </div>
       </section>
 
+      <section className="my-12 rounded-2xl border border-border bg-card p-6">
+        <h2 className="text-xl font-bold">Content quality and responsible use</h2>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+          This page is written to help you complete one real task, not to send you through a chain of
+          empty pages. Use the tool above, read the examples and limits, then decide whether the output
+          is good enough for your specific project.
+        </p>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          <div>
+            <h3 className="text-sm font-semibold">Check accuracy</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Confirm names, numbers, links, dates, spelling, formatting, and any claim that another
+              person may rely on.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Respect rights</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Only upload files, images, documents, or text you created, own, or have permission to
+              process with an online tool.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Avoid sensitive data</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Do not paste passwords, private customer records, ID documents, confidential contracts,
+              or anything your school, employer, or client would not allow.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="my-12">
         <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
         <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card">

@@ -124,6 +124,97 @@ export default function Post() {
           <Link href="/tools/qr-code-generator">QR code</Link> can help when you promote the same link offline.
         </p>
 
+        <h2>Understanding TikTok analytics: what to watch</h2>
+        <p>
+          TikTok provides a reasonable analytics dashboard once you switch to a Creator or Business
+          account. The metrics that actually matter for growth:
+        </p>
+        <ul>
+          <li>
+            <strong>Average watch time</strong>: The single most important metric. If your average
+            watch time is under 30% of your video length, the hook or pacing is the problem.
+          </li>
+          <li>
+            <strong>Completion rate</strong>: The percentage of viewers who watch the full video.
+            Aim for 50%+ on videos under 30 seconds. Even 25-30% on a 60-second video is strong.
+          </li>
+          <li>
+            <strong>Shares and saves</strong>: These signal that your content is genuinely useful or
+            entertaining enough to reference later. High save rates often correlate with tutorial and
+            educational content.
+          </li>
+          <li>
+            <strong>Profile visits and follows</strong>: High profile visit rate relative to views
+            means your niche is clear and your account description is compelling.
+          </li>
+          <li>
+            <strong>Traffic source: For You</strong>: The percentage of views coming from the
+            algorithm feed (vs followers, search, or profile). A high &quot;For You&quot; percentage means
+            the algorithm is actively distributing your content.
+          </li>
+        </ul>
+        <p>
+          Avoid obsessing over follower count in the early months. Watch time, completion rate and
+          shares are the real indicators of growth health.
+        </p>
+
+        <h2>Content formats that work on TikTok in 2026</h2>
+        <p>
+          The algorithm doesn&apos;t favor any single format, but some consistently outperform because
+          of how they drive watch time:
+        </p>
+        <ul>
+          <li>
+            <strong>Step-by-step tutorials</strong>: Viewers stay to see the end result. The implied
+            promise of the final step drives completion rate.
+          </li>
+          <li>
+            <strong>Before and after</strong>: Instant visual hook, clear payoff structure.
+          </li>
+          <li>
+            <strong>Reaction and commentary</strong>: Low production cost, high topicality. Works
+            best when you have a defined point of view.
+          </li>
+          <li>
+            <strong>Series content</strong>: Episodes that require following to see the next part.
+            Extremely effective at driving profile follows.
+          </li>
+          <li>
+            <strong>POV and storytelling</strong>: First-person narrative that puts the viewer in
+            the situation. High completion when the premise is instantly clear.
+          </li>
+        </ul>
+        <p>
+          When testing a new format, give it at least 5 videos before drawing conclusions. Single
+          video performance is too noisy to guide strategy.
+        </p>
+
+        <h2>Captions, sounds and the details that move the needle</h2>
+        <p>
+          Every piece of your video is a signal to the algorithm and the viewer:
+        </p>
+        <ul>
+          <li>
+            <strong>Caption</strong>: Reinforce the hook, not repeat it. If your visual hook is
+            &quot;I tried this for 30 days&quot;, your caption could add context: &quot;Day 1 was embarrassing.&quot;
+            Keep captions tight. Use the <Link href="/tools/word-counter">Word Counter</Link> to check length.
+          </li>
+          <li>
+            <strong>Sounds</strong>: Trending audio can boost distribution in the short term. For
+            educational content, original audio or clear voiceover often outperforms trending sounds
+            because it doesn&apos;t compete with the spoken content.
+          </li>
+          <li>
+            <strong>Text overlays</strong>: Captions and on-screen text keep hearing-impaired viewers
+            engaged and also help non-native speakers. Many people watch without sound.
+          </li>
+          <li>
+            <strong>Thumbnail / cover frame</strong>: Even though TikTok auto-plays, a strong cover
+            frame matters for profile visits and search results. Pick a frame with clear text or a
+            compelling expression.
+          </li>
+        </ul>
+
         <h2>The 30-day TikTok growth plan</h2>
         <ol>
           <li><strong>Week 1</strong>: Pick your niche. Study 30 top accounts in it. Write 20 video ideas.</li>

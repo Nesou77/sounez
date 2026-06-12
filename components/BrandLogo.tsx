@@ -47,7 +47,7 @@ export function BrandLogo({ variant = "navbar" }: BrandLogoProps) {
       className="flex min-h-0 shrink-0 items-center outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md"
     >
       <Image
-        src="/logo.webp"
+        src="/logo-footer.webp"
         alt="Sounez"
         /**
          * Footer logo: displayed at ~280-380px CSS wide.

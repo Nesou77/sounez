@@ -124,6 +124,76 @@ export default function Post() {
           <li>SVG shapes can be animated with CSS transitions, adding motion without JavaScript overhead.</li>
         </ul>
 
+        <h2>Combining blobs with gradients and color</h2>
+        <p>
+          SVG blobs gain another dimension when paired with gradient fills. Instead of a flat color,
+          a two-stop gradient fill makes the blob feel more three-dimensional and alive. Good
+          combinations to try:
+        </p>
+        <ul>
+          <li><strong>Analogous gradient</strong>: Blue to violet, or green to teal. Feels cohesive and modern.</li>
+          <li><strong>Brand primary to lighter tint</strong>: Creates a soft glow effect on hero backgrounds.</li>
+          <li><strong>Semi-transparent fills</strong>: Set the fill opacity to 0.3-0.6 and layer multiple blobs for a depth effect.</li>
+        </ul>
+        <p>
+          Use the{" "}
+          <Link href="/tools/color-palette-generator">Color Palette Generator</Link> to find palette
+          colors that work together, then apply them as gradient stops in the{" "}
+          <Link href="/tools/svg-blob-generator">SVG Blob Generator</Link>.
+        </p>
+
+        <h2>CSS techniques for blob layouts</h2>
+        <p>
+          Once you have an SVG blob, here are the most practical ways to use it in a CSS layout:
+        </p>
+        <ul>
+          <li>
+            <strong>Absolute positioning behind hero text</strong>: Place the blob as an absolutely
+            positioned element behind your headline with a high negative z-index or a lower z-index
+            than the text container. This is the most common hero section technique.
+          </li>
+          <li>
+            <strong>clip-path masking on images</strong>: Use a blob SVG as a <code>clip-path</code>{" "}
+            source to crop a photo into an organic shape. Great for team photos, testimonial avatars
+            and portfolio thumbnails.
+          </li>
+          <li>
+            <strong>CSS background-image</strong>: Reference the saved SVG as a background image
+            with <code>background-size: cover</code>. The blob tiles and scales like any background
+            image without quality loss.
+          </li>
+          <li>
+            <strong>Inline SVG for animations</strong>: Embed the SVG directly in your HTML and target
+            it with CSS animations. The <code>@keyframes</code> approach can morph between two blob
+            path values for a fluid, breathing effect.
+          </li>
+        </ul>
+
+        <h2>Avoiding common blob design mistakes</h2>
+        <ul>
+          <li>
+            <strong>Too many points</strong>: A blob with 14+ points can look jagged rather than
+            organic. Keep it at 5-9 points for the most natural shapes.
+          </li>
+          <li>
+            <strong>Too symmetric</strong>: A blob that looks nearly circular defeats the purpose.
+            Push the randomness slider higher to get more distinctly organic shapes.
+          </li>
+          <li>
+            <strong>Full opacity on backgrounds</strong>: A fully opaque blob competes with content
+            for attention. Set opacity to 0.15-0.4 for subtle backgrounds and save full opacity for
+            intentional graphic elements.
+          </li>
+          <li>
+            <strong>No contrast consideration</strong>: If you place text on or near a blob, check
+            that the contrast between the text and the blob color is WCAG AA compliant.
+          </li>
+          <li>
+            <strong>Using raster images instead of SVG</strong>: Exporting a blob as PNG immediately
+            removes the key performance and scalability benefits. Always use SVG for blobs.
+          </li>
+        </ul>
+
         <h2>How to use the SVG Blob Generator</h2>
         <ol>
           <li>Open the <Link href="/tools/svg-blob-generator">SVG Blob Generator</Link>.</li>

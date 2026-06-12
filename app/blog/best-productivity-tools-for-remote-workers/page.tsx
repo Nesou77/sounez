@@ -20,6 +20,8 @@ const FAQS = [
   { question: "What's the single most important free tool for remote workers?", answer: "A password manager (Bitwarden is free and excellent) paired with the Password Generator. Security is the foundation everything else sits on." },
   { question: "Are browser-based tools safe for work use?", answer: "Yes, for single-purpose utilities. Tools like the Image Compressor and Word Counter process everything locally, nothing is sent to a server." },
   { question: "How do I avoid tool overload?", answer: "Audit your tools every quarter. If you haven't opened something in 30 days, cancel it. Replace paid single-purpose tools with free browser alternatives wherever possible." },
+  { question: "What free tools replace common paid subscriptions?", answer: "Word Counter replaces paid word-count plugins. Image Compressor replaces paid image optimization services. QR Code Generator replaces paid QR tools. Password Generator replaces paid single-purpose generators. These savings add up." },
+  { question: "How do I stay productive when working from home?", answer: "Separate work and personal accounts completely. Use a password manager to manage the different credentials. Keep a tight daily routine with clear start and end times. Compress images and files before sharing to avoid friction in async workflows." },
 ];
 
 export default function Post() {
@@ -145,6 +147,46 @@ export default function Post() {
           create, there&apos;s no excuse for reuse.
         </p>
 
+        <h2>File management habits for remote workers</h2>
+        <p>
+          File handling is a constant source of friction in distributed teams. A few habits that help:
+        </p>
+        <ul>
+          <li>
+            <strong>Compress before sharing</strong>: Large image files bloat shared drives and slow
+            download times for colleagues in different locations. Compress with the{" "}
+            <Link href="/tools/image-compressor">Image Compressor</Link> before uploading to Notion, Google Drive
+            or Slack. Read{" "}
+            <Link href="/blog/how-to-compress-images">how to compress images without losing quality</Link>.
+          </li>
+          <li>
+            <strong>Use the right format</strong>: PNG files with unnecessary transparency can be 3-4x
+            larger than equivalent JPGs. Convert when format is not essential. The{" "}
+            <Link href="/blog/png-vs-jpg-and-how-to-convert-images">PNG vs JPG guide</Link> explains when each matters.
+          </li>
+          <li>
+            <strong>Name files descriptively</strong>: <code>proposal-v3-final-ACTUALLY-FINAL.pdf</code>{" "}
+            causes suffering for everyone. Use date-prefixed names like{" "}
+            <code>2026-06-12-client-proposal.pdf</code> that sort correctly in any file system.
+          </li>
+        </ul>
+
+        <h2>What free tools can replace paid subscriptions</h2>
+        <p>
+          Here are common paid tools remote workers subscribe to that have free alternatives:
+        </p>
+        <ul>
+          <li><strong>Paid word count tool → </strong><Link href="/tools/word-counter">Word Counter</Link> (free, instant, no account)</li>
+          <li><strong>Paid image compression → </strong><Link href="/tools/image-compressor">Image Compressor</Link> (free, local processing, private)</li>
+          <li><strong>Paid QR generator → </strong><Link href="/tools/qr-code-generator">QR Code Generator</Link> (free, multiple formats)</li>
+          <li><strong>Paid password generator → </strong><Link href="/tools/password-generator">Password Generator</Link> (free, secure, configurable)</li>
+          <li><strong>Paid resume builder → </strong><Link href="/tools/resume-generator">Resume Generator</Link> (free, professional output)</li>
+        </ul>
+        <p>
+          These savings add up. A remote worker who replaces five $5-10/month single-purpose tools with
+          free browser alternatives saves $300-600 per year on utilities they open once a week.
+        </p>
+
         <h2>Frequently Asked Questions</h2>
         <h3>What&apos;s the single most important free tool for remote workers?</h3>
         <p>
@@ -163,6 +205,16 @@ export default function Post() {
         <p>
           Audit your tools every quarter. If you haven&apos;t opened something in 30 days, cancel it.
           Replace paid single-purpose tools with free browser alternatives wherever possible.
+        </p>
+        <h3>What free tools replace common paid subscriptions?</h3>
+        <p>
+          The <Link href="/tools/word-counter">Word Counter</Link>, <Link href="/tools/image-compressor">Image Compressor</Link>,{" "}
+          <Link href="/tools/qr-code-generator">QR Code Generator</Link> and <Link href="/tools/password-generator">Password Generator</Link>{" "}
+          each replace paid single-purpose tools. Switching five of these to free browser alternatives can save $300-600 per year.
+        </p>
+        <h3>How do I stay productive when working from home?</h3>
+        <p>
+          Separate work and personal accounts completely. Use a password manager to manage different credentials. Compress images and files before sharing to reduce friction in async workflows. Keep a tight daily routine with clear start and end times.
         </p>
 
         <h2>Conclusion: lean beats loaded</h2>

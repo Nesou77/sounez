@@ -60,6 +60,40 @@ export default function CategoriesPage() {
         </div>
       </section>
 
+      <section className="mb-10 rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight">How these categories add value</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Categories are not just navigation shortcuts. They group tools by the kind of decision a visitor
+              needs to make: publishing text, preparing design assets, or completing a practical file or utility
+              task. Each category page adds use cases, privacy expectations, tips, and questions that apply to
+              the full group.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <div>
+              <h3 className="text-sm font-semibold">Find the right page</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                Start with a category when you know the problem but not the exact tool name.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold">Understand limits</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                Read group notes before uploading files, using AI, or relying on generated output.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold">Keep moving</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                Related tools and guides help turn one result into a finished workflow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div className="space-y-6">
         {CATEGORIES.map((c) => {
           const items = toolsByCategory(c.slug);

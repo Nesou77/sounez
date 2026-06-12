@@ -88,6 +88,41 @@ export function ToolsClient() {
       )}
 
       {!isSearching && (
+        <section className="mb-12 rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+          <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div>
+              <h2 className="text-xl font-bold">What makes these pages useful</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                The tools directory is organised as a practical reference, not a page of copied descriptions.
+                Every tool links to a dedicated page with usage steps, examples, limits, privacy notes, related
+                guides, and comments when feedback is available.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              <div>
+                <h3 className="text-sm font-semibold">Original context</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Each category explains how the tools fit real creator, design, or utility workflows.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold">Visible limits</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Tool pages say when a result needs review, when a file should not be uploaded, and what can fail.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold">Next-step links</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Related tools and guides help visitors finish the full task instead of stopping at one output.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {!isSearching && (
         <nav aria-label="Tool categories" className="mb-12 flex flex-wrap gap-2">
           {CATEGORIES.map((category) => (
             <a

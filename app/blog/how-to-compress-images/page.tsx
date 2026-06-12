@@ -20,6 +20,8 @@ const FAQS = [
   { question: "Is browser-based compression safe?", answer: "Yes. The Sounez Image Compressor processes everything locally in your browser. Nothing is uploaded, logged or stored." },
   { question: "Should I use WebP everywhere?", answer: "WebP is a good default for many web images in modern browsers. Keep PNG when you need transparency and JPG when a platform requires it." },
   { question: "Does image compression help SEO?", answer: "It can. Smaller image files often improve load time and Core Web Vitals, which supports a better search and user experience." },
+  { question: "What is the difference between lossy and lossless compression?", answer: "Lossy compression (JPG, WebP at quality < 100) permanently removes some image data to achieve smaller files. Lossless compression (PNG, WebP at 100%) reduces file size without removing any data, so quality is preserved exactly. Lossy is almost always better for web photos." },
+  { question: "How do I know if my image is too large?", answer: "Check the file size before upload. For most web images, anything over 500 KB should be compressed. Images over 1 MB on a blog or landing page are almost always a problem for load time." },
 ];
 
 export default function Post() {
@@ -93,6 +95,53 @@ export default function Post() {
           good at the size where it appears.
         </p>
 
+        <h2>How to handle specific image types</h2>
+        <p>
+          Different image categories have different compression goals:
+        </p>
+        <ul>
+          <li>
+            <strong>Blog hero images</strong>: High visual quality matters here since it is the first
+            impression. Target 150-250 KB. Use WebP at 80-85% quality or JPG at 75-80%.
+          </li>
+          <li>
+            <strong>Product photos</strong>: Shoppers zoom in, so preserve detail. Use JPG at 80-85%
+            or WebP. Keep at 100-200 KB per image. Consider separate compressed thumbnails for
+            listing pages and higher-quality versions for product detail pages.
+          </li>
+          <li>
+            <strong>Thumbnails and avatars</strong>: These display small, so aggressive compression
+            is fine. Target 15-40 KB. WebP at 70% quality is excellent here.
+          </li>
+          <li>
+            <strong>Logos and icons</strong>: Use SVG whenever possible — infinitely scalable, zero
+            quality loss, tiny file size. Reserve PNG only when SVG is not an option.
+          </li>
+          <li>
+            <strong>Social media preview images (Open Graph)</strong>: These are served by Facebook,
+            LinkedIn and Twitter, which re-compress them anyway. 100-200 KB at 80% quality is more
+            than sufficient.
+          </li>
+          <li>
+            <strong>Screenshot documentation</strong>: PNG is often better here to preserve text
+            legibility. Compress losslessly using a PNG optimizer.
+          </li>
+        </ul>
+
+        <h2>Batch compressing multiple images</h2>
+        <p>
+          If you are publishing a post with 5-10 images, compress them one by one with the{" "}
+          <Link href="/tools/image-compressor">Image Compressor</Link> before uploading. A practical
+          workflow for batch work:
+        </p>
+        <ol>
+          <li>Export all images from your camera or design tool at the target dimensions.</li>
+          <li>Rename files with descriptive, keyword-rich names before compressing (filenames are SEO signals).</li>
+          <li>Open the Image Compressor in a browser tab and drag in each image in turn.</li>
+          <li>Download the compressed version. Replace the original in your upload folder.</li>
+          <li>Add alt text to each image in your CMS before publishing.</li>
+        </ol>
+
         <h2>A complete pre-publish image checklist</h2>
         <ol>
           <li>Resize to the actual display width (use the table above)</li>
@@ -112,6 +161,11 @@ export default function Post() {
         <p>WebP is a good default for many web images in modern browsers. Keep PNG when you need transparency and JPG when a platform requires it.</p>
         <h3>Does image compression help SEO?</h3>
         <p>It can. Smaller image files often improve load time and Core Web Vitals, which supports a better search and user experience.</p>
+
+        <h3>What is the difference between lossy and lossless compression?</h3>
+        <p>Lossy compression (JPG, WebP at quality below 100) permanently removes some image data to achieve smaller files. Lossless compression (PNG, WebP at 100%) reduces file size without removing any data. Lossy is almost always better for web photos since the removed data is rarely visible at 75-85% quality.</p>
+        <h3>How do I know if my image is too large?</h3>
+        <p>Check the file size before upload. For most web images, anything over 500 KB should be compressed. Images over 1 MB on a blog or landing page almost always hurt load time noticeably. Open the <Link href="/tools/image-compressor">Image Compressor</Link> before any upload.</p>
 
         <h2>Conclusion: compress every image before you publish</h2>
         <p>

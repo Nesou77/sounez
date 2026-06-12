@@ -109,6 +109,52 @@ export default function Post() {
           is typically under 500 bytes. The equivalent PNG would be several kilobytes.
         </p>
 
+        <h2>Placeholder naming conventions for team projects</h2>
+        <p>
+          When working with a team or handing off a project to a developer, consistent placeholder
+          naming prevents confusion. A naming system to consider:
+        </p>
+        <ul>
+          <li><code>hero-placeholder-1600x900.svg</code> for main hero images</li>
+          <li><code>card-placeholder-600x400.svg</code> for card thumbnails</li>
+          <li><code>avatar-placeholder-128x128.svg</code> for user avatars</li>
+          <li><code>product-placeholder-800x800.svg</code> for product images</li>
+        </ul>
+        <p>
+          Adding dimensions to the filename makes it immediately clear what size the real image
+          should be when it arrives. It also prevents accidentally replacing the wrong placeholder.
+        </p>
+
+        <h2>When to replace placeholders</h2>
+        <p>
+          Placeholder management is one of the most common sources of unfinished-looking launches.
+          A clear process prevents placeholders from slipping into production:
+        </p>
+        <ol>
+          <li>
+            <strong>Create a placeholder inventory</strong>: List every placeholder by component and
+            expected image type before development begins.
+          </li>
+          <li>
+            <strong>Assign ownership</strong>: For each placeholder, note who is responsible for
+            providing the real image and by when.
+          </li>
+          <li>
+            <strong>Add a visual warning in development</strong>: Some teams add a bright border or
+            label to all placeholder images in the development environment so they are impossible
+            to miss during reviews.
+          </li>
+          <li>
+            <strong>Check before deploy</strong>: Do a final search for placeholder filenames in your
+            codebase before any production deployment.
+          </li>
+        </ol>
+        <p>
+          When real images do arrive, run them through the <Link href="/tools/image-compressor">Image Compressor</Link>{" "}
+          before replacing the placeholder. Uncompressed real images often arrive much larger than
+          the placeholder they are replacing, which can silently hurt page load time.
+        </p>
+
         <h2>How to use the Image Placeholder Generator</h2>
         <ol>
           <li>Open the <Link href="/tools/image-placeholder-generator">Image Placeholder Generator</Link>.</li>

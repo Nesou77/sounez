@@ -44,6 +44,25 @@ const TRUST_NOTES = [
   },
 ];
 
+const EDITORIAL_STANDARDS = [
+  {
+    title: "Original guidance on every main page",
+    text: "Tool pages include examples, common mistakes, privacy notes, and a short explanation of when the tool is not the right choice.",
+  },
+  {
+    title: "Useful output over empty pages",
+    text: "Pages are built around a working tool, supporting guides, and related workflows instead of placeholder text or copied material.",
+  },
+  {
+    title: "Human review stays part of the workflow",
+    text: "AI drafts, converted files, and generated assets are presented as starting points that should be checked before publication.",
+  },
+  {
+    title: "Clear site ownership and policies",
+    text: "The About, Contact, Privacy Policy, Terms, and DMCA pages explain who runs Sounez and how content, files, cookies, and ads are handled.",
+  },
+];
+
 export function HomeSections() {
   const latestPosts = sortBlogPostsByPopularity(BLOG_POSTS).slice(0, 3);
 
@@ -149,6 +168,33 @@ export function HomeSections() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Editorial standards</span>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Built to avoid thin content</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Sounez is not a collection of empty landing pages. Each section is written around a real task:
+              what the tool does, how to use it, what can go wrong, what privacy tradeoffs exist, and which
+              guide or related tool helps with the next step.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Ads may support the site, but the publisher content comes first. Tool forms, explanations,
+              examples, guides, and policy pages are kept visible so visitors can understand the page before
+              they interact with ads or generated output.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {EDITORIAL_STANDARDS.map((item) => (
+              <div key={item.title} className="rounded-2xl border border-border bg-card p-5 shadow-soft">
+                <h3 className="text-sm font-semibold">{item.title}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{item.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

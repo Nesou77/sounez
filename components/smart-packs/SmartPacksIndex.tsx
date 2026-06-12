@@ -126,6 +126,35 @@ export function SmartPacksIndex() {
         </div>
       </section>
 
+      <section className="mt-12 rounded-2xl border border-border bg-muted/30 p-6 sm:p-8">
+        <h2 className="text-xl font-bold">How Sounez keeps Smart Packs useful</h2>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+          Each pack is built around a specific workflow instead of a vague prompt box. The page explains who
+          the pack helps, what fields it generates, what mistakes to avoid, what to check before publishing,
+          and which individual tools can refine the result afterward.
+        </p>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          <div>
+            <h3 className="text-sm font-semibold">No automatic publishing</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Sounez never posts to social media, shops, schools, or client accounts for you.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Drafts need review</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Check claims, links, names, image details, platform rules, and rights before using output.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Private data stays out</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Do not enter passwords, ID numbers, private customer records, or confidential client work.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section id="all-packs" className="mt-16">
         <h2 className="text-2xl font-bold">Available Smart Packs</h2>
         <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

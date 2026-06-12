@@ -74,6 +74,39 @@ export default function BlogPage() {
         </div>
       </section>
 
+      <section className="mx-auto mb-10 max-w-4xl rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+        <div className="grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-start">
+          <div>
+            <h2 className="text-xl font-bold">How guides are maintained</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Sounez guides are written to support the tools on this site, so they focus on concrete
+              decisions: which format to choose, what to check before publishing, how to avoid common
+              mistakes, and when a free browser tool is enough for the job.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <div>
+              <h3 className="text-sm font-semibold">Practical examples</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                Articles use realistic creator, student, design, and small-business situations.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold">Tool-aware advice</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                Recommendations point to related Sounez tools only when they help complete the task.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold">Review before use</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                Guides remind readers to verify facts, rights, formatting, and platform rules.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <nav aria-label="Guide category links" className="mb-10 flex flex-wrap justify-center gap-2">
         {CATEGORIES.map((c) => (
           <Link

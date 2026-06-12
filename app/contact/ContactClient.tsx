@@ -388,6 +388,35 @@ export function ContactClient() {
         )}
       </form>
 
+      <section className="mt-12 rounded-3xl border border-border bg-muted/30 p-6 sm:p-8">
+        <h2 className="text-2xl font-bold tracking-tight">How messages help improve Sounez</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          Contact messages are used to improve real pages and tools: fixing broken states, clarifying privacy
+          notes, adding missing examples, correcting confusing wording, and deciding which tool requests are
+          worth building. We do not publish your name, email, or message on the site.
+        </p>
+        <div className="mt-5 grid gap-4 sm:grid-cols-3">
+          <div>
+            <h3 className="text-sm font-semibold">Bug reports</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Include the page URL, input type, browser, and exact result you saw so we can reproduce the issue.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Content corrections</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Tell us which guide, tool note, FAQ, or policy text needs an update and what should be clearer.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Policy concerns</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              For copyright issues use the DMCA page; for privacy questions include only the minimum details needed.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Quick help FAQ */}
       <section className="mt-16">
         <h2 className="text-2xl font-bold tracking-tight">Common questions</h2>

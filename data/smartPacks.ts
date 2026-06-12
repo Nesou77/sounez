@@ -186,9 +186,10 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       "Skipping mobile preview for line breaks.",
     ],
     faqs: [
-      { q: "Does this auto-post?", a: "No. You copy the pack and publish yourself." },
-      { q: "Is the output stored?", a: "Successful generations may be saved with a session identifier so you can reopen them on this device. See our Privacy Policy." },
-      { q: "Can I use Arabic or French?", a: "Yes - pick the language in the form." },
+      { q: "Does the Social Media Pack post to my accounts automatically?", a: "No. Sounez never posts to social networks on your behalf. You generate the pack, edit the fields for accuracy, then copy the caption, hashtags, and CTA into your own app or scheduler before publishing." },
+      { q: "Is my generated content stored?", a: "Successful generations may be saved with a session identifier so you can reopen them from this browser. Other devices will not see the same list. See the Privacy Policy for full details on storage and deletion." },
+      { q: "Can I generate packs in Arabic or French?", a: "Yes. Select Arabic, French, Spanish, or English in the language dropdown before generating. All output fields — caption, hashtags, CTA, and platform variations — will be produced in your chosen language." },
+      { q: "What should I check before posting?", a: "Review all prices, dates, links, phone numbers, and discount offers for accuracy. Check that the caption matches your actual image or offer. Confirm any hashtags are still active and relevant — some are periodically banned or shadowbanned on Instagram and TikTok." },
     ],
     relatedTools: [
       { href: "/tools/ai-caption-generator", label: "AI Caption Generator" },
@@ -296,9 +297,10 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       "Announcing on social before the listing URL works.",
     ],
     faqs: [
-      { q: "Does Sounez connect to my shop?", a: "No. You copy fields into your admin." },
-      { q: "Are SEO fields guaranteed to rank?", a: "No. They are drafts - test in your marketplace." },
-      { q: "Can I regenerate?", a: "Yes. Try a different tone or clearer benefits." },
+      { q: "Does Sounez connect to my Shopify or Etsy shop?", a: "No. Sounez does not connect to any marketplace or shop platform. You copy each generated field — title, description, bullets, meta copy — manually into your shop admin and edit to match your brand voice before saving." },
+      { q: "Are the SEO meta fields guaranteed to rank?", a: "No. The generated meta title and description are starting drafts based on your inputs. Search ranking depends on many factors including competition, domain authority, and how well the keywords match real buyer search intent. Treat the output as an optimized starting point and refine it over time." },
+      { q: "Can I regenerate if the first result is too generic?", a: "Yes. If the first result is too broad, add more specific details to your brief — exact dimensions, main material, unique selling point, and target buyer. Changing the tone setting (professional vs. friendly) also produces noticeably different copy." },
+      { q: "What information produces the best listing copy?", a: "Specific facts: exact dimensions, materials, care instructions, shipping time, and what problem the product solves for the buyer. Generic phrases like 'high quality' or 'great value' produce weak output. Include your main differentiator and target buyer in the brief for the strongest results." },
     ],
     relatedTools: [
       { href: "/tools/image-compressor", label: "Image Compressor" },
@@ -387,9 +389,10 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       "Skipping alt text after cropping.",
     ],
     faqs: [
-      { q: "Do you upload my image?", a: "No image file is required for this pack - text brief only." },
-      { q: "Is alt text enough for SEO?", a: "It helps. Filename, compression, and page copy matter too." },
-      { q: "WebP or JPG?", a: "The pack suggests a format; use Image Compressor to apply it." },
+      { q: "Do I need to upload an image file for this pack?", a: "No. This pack works entirely from a text description of your image — what it shows and where it appears on the page. No image file is uploaded, sent to any server, or stored. You apply the generated filename and alt text manually when you upload or rename the image." },
+      { q: "Is alt text enough for image SEO?", a: "Alt text is one part of image SEO. The filename, surrounding page copy, image compression (which affects page speed), and topic relevance all contribute. The SEO Image Pack generates all of these in one structured output so you can address every factor at once." },
+      { q: "Should I use WebP or JPG for my images?", a: "The pack recommends a format based on your image type. WebP typically produces smaller file sizes for photos and is supported in all modern browsers. Use the Image Compressor on Sounez to convert and compress your image to the recommended format before uploading." },
+      { q: "How do I use the generated alt text?", a: "Copy the alt text to your image's alt attribute in HTML, or paste it into your CMS's alt text field. Always verify it accurately describes what is actually visible in the image — AI descriptions can miss context or make assumptions. Edit for accuracy before publishing." },
     ],
     relatedTools: [
       { href: "/tools/image-compressor", label: "Image Compressor" },
@@ -466,9 +469,10 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       "Using every post idea in one week without a plan.",
     ],
     faqs: [
-      { q: "Are name ideas trademark-cleared?", a: "No. You must research availability." },
-      { q: "Professional advice?", a: "No. Output is marketing copy, not legal or financial advice." },
-      { q: "Link to QR tool?", a: "Generate a QR to your site after it is live." },
+      { q: "Are the generated business names trademark-cleared?", a: "No. Generated names are brainstorming ideas only. Before using any name commercially, check domain availability on a registrar, search your country's trademark database (e.g. USPTO for the US, IPO for the UK), and look for existing businesses with the same or similar names." },
+      { q: "Does the pack provide legal or financial business advice?", a: "No. The pack generates marketing copy, pitch text, and social bios — not legal, financial, or business registration advice. For company formation, contracts, tax obligations, or regulated claims, consult a qualified professional in your jurisdiction." },
+      { q: "Can I generate a QR code to share my new website?", a: "Yes — after your site is live, use the free QR Code Generator on Sounez to create a scannable code pointing to your URL. Useful for printed materials, business cards, or in-person events during a launch." },
+      { q: "How many name ideas will I get per run?", a: "Several naming directions per generation — enough to compare and shortlist. Run the pack multiple times with slightly different briefs or style settings (modern vs. playful, for example) to explore different angles before committing to one name." },
     ],
     relatedTools: [
       { href: "/tools/business-name-generator", label: "Business Name Generator" },
@@ -544,9 +548,10 @@ export const SMART_PACKS: SmartPackDefinition[] = [
       "Pasting entire copyrighted chapters into the brief.",
     ],
     faqs: [
-      { q: "Can I submit this as homework?", a: "No. Use it to study, then write answers in your own words." },
-      { q: "Are facts always correct?", a: "No. AI can err - verify with official materials." },
-      { q: "Stored on server?", a: "Prompts may be stored per our Privacy Policy; use History on this device." },
+      { q: "Can I submit the generated notes as my own homework or assignment?", a: "No. The pack is designed to help you study a topic, not to produce work you submit as your own. Use the notes to understand the material, then write your assignments and exam answers in your own words. Submitting AI-generated content as your own work violates academic integrity policies at most schools." },
+      { q: "Are the generated facts always accurate?", a: "No. AI can produce plausible-sounding but incorrect information, especially for specific dates, scientific formulas, historical events, or nuanced arguments. Always verify the generated content against your textbook, lecture notes, or a verified academic source before relying on it." },
+      { q: "Is my study brief stored on Sounez servers?", a: "Prompts may be temporarily stored with a session identifier so you can revisit the result from this browser. See the Privacy Policy for full details on data retention and deletion. Do not include exam questions from a live assessment, personal data, or long copyrighted passages in your brief." },
+      { q: "What level setting should I choose?", a: "Match the level to your course year and the depth you need. Beginner produces simple overviews with plain language, while advanced generates more detailed explanations with technical terms and nuance. Start with your current course level and adjust if the output is too basic or too detailed." },
     ],
     relatedTools: [
       { href: "/tools/study-notes-generator", label: "Study Notes Generator" },

@@ -129,6 +129,58 @@ export default function Post() {
           <li>Click Copy HTML snippet and paste it into your site&apos;s <code>&lt;head&gt;</code>.</li>
         </ol>
 
+        <h2>Favicon design best practices</h2>
+        <p>
+          Designing for 32x32 pixels is an entirely different discipline from regular graphic design.
+          Every pixel is visible at that scale. Here is how to approach it:
+        </p>
+        <ul>
+          <li>
+            <strong>Use a single letter or monogram</strong>: The first letter of your brand name, set
+            in a bold font, is one of the most reliable favicon approaches. It reads clearly at any size
+            and instantly identifies the brand. Pick a font weight that fills the space well.
+          </li>
+          <li>
+            <strong>Use a simplified icon or symbol</strong>: If your logo has a distinctive mark or
+            symbol, isolate it and remove all detail that won&apos;t be visible at small sizes. Thin lines,
+            fine gradients and small text all disappear at 32x32.
+          </li>
+          <li>
+            <strong>Use an emoji</strong>: Emoji favicons are a fast, modern alternative. They render
+            crisply at all sizes and communicate personality without graphic design effort. Many
+            successful SaaS products and personal sites use emoji favicons.
+          </li>
+          <li>
+            <strong>Background matters</strong>: A colored background behind your letter or icon helps
+            it stand out in a browser tab against both light and dark browser chrome. Rounded corners
+            and circle shapes feel modern and integrate well with tab designs.
+          </li>
+          <li>
+            <strong>Test in a real browser tab</strong>: The <Link href="/tools/favicon-generator">Favicon Generator</Link>{" "}
+            shows a real-time preview, but always test the downloaded file in an actual browser tab
+            before publishing. The tiny scale reveals issues that are invisible in the generator preview.
+          </li>
+        </ul>
+
+        <h2>Progressive Web App (PWA) icons</h2>
+        <p>
+          If your site is or will become a Progressive Web App — a site that can be installed on a
+          device like a native app — you need additional icon sizes declared in your web app manifest:
+        </p>
+        <pre className="overflow-x-auto rounded-xl bg-muted/60 p-4 text-xs leading-relaxed">
+          <code>{`{
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}`}</code>
+        </pre>
+        <p>
+          Generate both sizes with the <Link href="/tools/favicon-generator">Favicon Generator</Link> and
+          reference them in your <code>manifest.json</code>. The 512x512 version is also used by
+          Android home screens and Google Search on mobile.
+        </p>
+
         <h2>Common favicon mistakes to avoid</h2>
         <ul>
           <li><strong>Too much detail</strong>: At 16x16px, complex logos become unreadable. Use a single letter, symbol or simple shape.</li>

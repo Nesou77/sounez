@@ -138,6 +138,16 @@ export function BlogPostShell({
             </div>
           </aside>
 
+          <aside className="my-8 rounded-2xl border border-border bg-muted/30 p-5">
+            <h2 className="text-base font-bold">Editorial note</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Sounez guides are written to add context around practical tools, not to copy generic advice from
+              other sites. When a guide mentions a tool, the goal is to help you understand the decision behind
+              the workflow: what input to use, what output to question, what privacy tradeoff matters, and what
+              a finished result should be checked against.
+            </p>
+          </aside>
+
           <div
             className="prose prose-neutral max-w-none
             [&>h2]:mt-14 [&>h2]:mb-5 [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:tracking-tight [&>h2]:scroll-mt-20

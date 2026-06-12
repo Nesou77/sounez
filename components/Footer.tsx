@@ -51,6 +51,33 @@ export function Footer() {
   const popular = FEATURED_TOOLS;
   return (
     <footer className="mt-24 border-t border-border bg-gradient-to-b from-background to-muted/40">
+      <section className="border-b border-border">
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_1fr_1fr]">
+          <div>
+            <p className="text-sm font-semibold">Publisher content first</p>
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              Sounez pages are built around original explanations, working tools, practical examples,
+              FAQs, related guides, and clear privacy notes. Advertising supports the site, but it should
+              never replace the page content or block the task you came to complete.
+            </p>
+          </div>
+          <div>
+            <p className="text-sm font-semibold">Responsible use</p>
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              Generated text, converted files, image descriptions, and estimates are drafts. Review facts,
+              rights, accessibility text, platform rules, and sensitive data before you publish, submit,
+              print, or send anything.
+            </p>
+          </div>
+          <div>
+            <p className="text-sm font-semibold">Helpful policy pages</p>
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              The site includes public pages for contact, privacy, cookies, terms, and copyright. They explain
+              who runs Sounez, how tools handle inputs, how ads and cookies work, and how to report a problem.
+            </p>
+          </div>
+        </div>
+      </section>
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-12">
         <div className="md:col-span-4">
           <BrandLogo variant="footer" />

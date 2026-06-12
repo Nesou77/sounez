@@ -104,6 +104,36 @@ export function SmartPackPageContent({ pack }: { pack: SmartPackDefinition }) {
             </ul>
           </section>
 
+          <section className="rounded-2xl border border-border bg-card p-5">
+            <h2 className="text-lg font-bold">Content standards for this pack</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Smart Packs are designed to create useful drafts from your own brief. Do not use them to
+              mislead readers, impersonate someone, submit school work dishonestly, copy another creator,
+              or make claims you cannot verify. Keep the parts that match your real offer or lesson, and
+              delete anything that sounds invented, exaggerated, or unrelated.
+            </p>
+            <div className="mt-4 grid gap-4 sm:grid-cols-3">
+              <div>
+                <h3 className="text-sm font-semibold">Make it specific</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Add your audience, product facts, lesson source, location, or platform before generation.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold">Make it truthful</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Remove guarantees, prices, dates, or results that are not backed by your real information.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold">Make it yours</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Edit the tone, examples, and final wording so the result does not read like a template.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section>
             <h2 className="text-lg font-bold">Questions</h2>
             <div className="mt-4 divide-y divide-border rounded-2xl border border-border bg-card">
