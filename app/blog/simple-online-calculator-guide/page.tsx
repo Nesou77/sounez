@@ -1,5 +1,4 @@
-﻿import { getSiteUrl } from "@/lib/site-url";
-import { blogMetadata } from "@/lib/blog-metadata";
+﻿import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -22,7 +21,7 @@ const FAQS = [
   {
     question: "What is a square root?",
     answer:
-      "The square root of a number is the value that, when multiplied by itself, gives the original number. The square root of 25 is 5, because 5 × 5 = 25. Use the √ button on the calculator.",
+      "The square root of a number is the value that, when multiplied by itself, gives the original number. The square root of 25 is 5, because 5 × 5 = 25. Use the v button on the calculator.",
   },
   {
     question: "Does the calculator save my calculations?",
@@ -123,10 +122,10 @@ export default function Post() {
           $4.75. Total = 12 + 8.50 + 4.75 = <strong>$25.25</strong>.
         </p>
 
-        <h3>Subtraction (−)</h3>
+        <h3>Subtraction (-)</h3>
         <p>
           Finds the difference between two numbers. Example: your budget is $100 and you&apos;ve spent
-          $67.40. Remaining = 100 − 67.40 = <strong>$32.60</strong>.
+          $67.40. Remaining = 100 - 67.40 = <strong>$32.60</strong>.
         </p>
 
         <h3>Multiplication (×)</h3>
@@ -182,13 +181,13 @@ export default function Post() {
 
         <h3>Percentage increase and decrease</h3>
         <p>
-          Increase: <code>((new − old) ÷ old) x 100</code>
+          Increase: <code>((new - old) ÷ old) x 100</code>
           <br />
-          Decrease: <code>((old − new) ÷ old) x 100</code>
+          Decrease: <code>((old - new) ÷ old) x 100</code>
         </p>
         <ul>
           <li>
-            Sales went from 200 to 260. Increase = ((260 − 200) ÷ 200) x 100 = <strong>30%</strong>
+            Sales went from 200 to 260. Increase = ((260 - 200) ÷ 200) x 100 = <strong>30%</strong>
           </li>
           <li>
             Price dropped from $80 to $68. Decrease = ((80 - 68) / 80) x 100 = <strong>15%</strong>
@@ -202,12 +201,12 @@ export default function Post() {
           and in some financial calculations.
         </p>
         <ul>
-          <li>√25 = 5 (because 5 x 5 = 25)</li>
-          <li>√144 = 12 (because 12 x 12 = 144)</li>
-          <li>√2 ≈ 1.414 (irrational, the calculator shows the decimal approximation)</li>
+          <li>v25 = 5 (because 5 x 5 = 25)</li>
+          <li>v144 = 12 (because 12 x 12 = 144)</li>
+          <li>v2 ˜ 1.414 (irrational, the calculator shows the decimal approximation)</li>
         </ul>
         <p>
-          Practical example: you want to tile a square room with an area of 36 m². Each side = √36 ={" "}
+          Practical example: you want to tile a square room with an area of 36 m². Each side = v36 ={" "}
           <strong>6 metres</strong>.
         </p>
 
@@ -218,10 +217,10 @@ export default function Post() {
             install, no account.
           </li>
           <li>
-            Click number buttons or type directly from your keyboard. Supported keys: 0-9, +, −, ×
+            Click number buttons or type directly from your keyboard. Supported keys: 0-9, +, -, ×
             (*), ÷ (/), %, Enter (=), Escape (clear).
           </li>
-          <li>Use the % button for percentage calculations and √ for square roots.</li>
+          <li>Use the % button for percentage calculations and v for square roots.</li>
           <li>
             The ± button toggles between positive and negative numbers, useful for calculating
             losses or negative balances.
@@ -258,7 +257,7 @@ export default function Post() {
           <li>Monthly rate: 5 ÷ 100 ÷ 12 = <strong>0.004167</strong></li>
           <li>Total payments: 30 × 12 = <strong>360</strong></li>
           <li>
-            Use the formula: M = P × [r(1+r)^n] / [(1+r)^n − 1]. For a quick estimate, most
+            Use the formula: M = P × [r(1+r)^n] / [(1+r)^n - 1]. For a quick estimate, most
             people use an online mortgage calculator, but knowing this formula helps you sanity-check
             any result you see.
           </li>
@@ -274,7 +273,7 @@ export default function Post() {
         </p>
         <ol>
           <li>Hourly rate needed: 60000 ÷ 1500 = <strong>$40/hr</strong></li>
-          <li>To account for 30% taxes: 40 ÷ (1 − 0.30) = 40 ÷ 0.70 = <strong>~$57/hr</strong> gross</li>
+          <li>To account for 30% taxes: 40 ÷ (1 - 0.30) = 40 ÷ 0.70 = <strong>~$57/hr</strong> gross</li>
           <li>Daily rate at 7 hours: 57 × 7 = <strong>~$400/day</strong></li>
         </ol>
 
@@ -309,7 +308,7 @@ export default function Post() {
         <h3>What is a square root?</h3>
         <p>
           The square root of a number is the value that, when multiplied by itself, gives the
-          original number. The square root of 25 is 5, because 5 × 5 = 25. Use the √ button on the
+          original number. The square root of 25 is 5, because 5 × 5 = 25. Use the v button on the
           calculator.
         </p>
         <h3>Does the calculator save my calculations?</h3>

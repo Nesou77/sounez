@@ -1,5 +1,4 @@
-﻿import { getSiteUrl } from "@/lib/site-url";
-import { blogMetadata } from "@/lib/blog-metadata";
+﻿import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -59,7 +58,7 @@ export default function Post() {
       >
         <p>
           Your social media bio has one job: convince a stranger to follow you in under five seconds.
-          Most bios fail because they&apos;re either too vague (&quot;lover of life ✨&quot;), too formal (&quot;Senior
+          Most bios fail because they&apos;re either too vague (&quot;lover of life ?&quot;), too formal (&quot;Senior
           Marketing Executive at XYZ Corp&quot;), or just a list of job titles with no personality.
         </p>
         <p>
@@ -96,12 +95,12 @@ export default function Post() {
         </p>
         <ul>
           <li>
-            <strong>Creator:</strong> &quot;📸 Travel photographer | Southeast Asia &amp; beyond | New reel
-            every Friday | 👇 Free preset pack&quot;
+            <strong>Creator:</strong> &quot;?? Travel photographer | Southeast Asia &amp; beyond | New reel
+            every Friday | ?? Free preset pack&quot;
           </li>
           <li>
-            <strong>Business:</strong> &quot;🌿 Organic skincare | Cruelty-free | Ships worldwide | Shop
-            below 👇&quot;
+            <strong>Business:</strong> &quot;?? Organic skincare | Cruelty-free | Ships worldwide | Shop
+            below ??&quot;
           </li>
           <li>
             <strong>Personal brand:</strong> &quot;UX designer helping startups ship faster | Figma tips
@@ -115,9 +114,9 @@ export default function Post() {
           next step.
         </p>
         <ul>
-          <li>&quot;Budget recipes for students 🍜 | New video daily&quot;</li>
-          <li>&quot;Coding tutorials for beginners 💻 | Free resources below&quot;</li>
-          <li>&quot;Honest product reviews | No sponsorships 🚫&quot;</li>
+          <li>&quot;Budget recipes for students ?? | New video daily&quot;</li>
+          <li>&quot;Coding tutorials for beginners ?? | Free resources below&quot;</li>
+          <li>&quot;Honest product reviews | No sponsorships ??&quot;</li>
         </ul>
 
         <h3>LinkedIn bio (300 characters for the preview)</h3>

@@ -283,6 +283,42 @@ export const ToolPageSections = memo(function ToolPageSections({ tool }: { tool:
         </div>
       </section>
 
+      <section className="my-8 rounded-2xl border border-border bg-muted/20 p-6">
+        <h2 className="text-lg font-bold">Community standards</h2>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          The comment section below is for practical, on-topic feedback about this tool. Comments are
+          reviewed before they appear publicly. We do not approve promotional links, off-topic
+          discussions, hate speech, adult content, illegal activity, or anything that could mislead
+          other users. By posting you agree to the{" "}
+          <Link href="/terms-of-service" className="font-medium text-primary hover:underline">
+            Terms of Service
+          </Link>
+          . Repeated violations result in permanent removal. To report a problem with a specific
+          comment, use the flag icon on that comment.
+        </p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/70">What we approve</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Genuine questions, corrections, use-case tips, and experience with the tool on this page.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/70">What we remove</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Spam, ads, links to unrelated sites, abusive language, personal data, and prohibited content.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-foreground/70">Moderation</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              All comments are held for review. Flagged content is prioritised; auto-filtering rejects
+              clearly prohibited submissions before review.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <CommentsSection contentType="tool" slug={tool.slug} />
     </>
   );

@@ -1,5 +1,4 @@
-﻿import { getSiteUrl } from "@/lib/site-url";
-import { blogMetadata } from "@/lib/blog-metadata";
+﻿import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -197,7 +196,7 @@ export default function Post() {
         <ul>
           <li><strong>Using personal information</strong>: Name, birthday, pet&apos;s name, city. All guessable from your social profiles.</li>
           <li><strong>Keyboard patterns</strong>: <code>qwerty</code>, <code>123456</code>, <code>asdfgh</code>. These are in every dictionary attack list.</li>
-          <li><strong>Incremental updates</strong>: <code>Password1</code> → <code>Password2</code>. Attackers know about this pattern.</li>
+          <li><strong>Incremental updates</strong>: <code>Password1</code> ? <code>Password2</code>. Attackers know about this pattern.</li>
           <li><strong>Sharing passwords</strong>: Use your password manager&apos;s secure sharing feature instead. It lets you share without revealing the actual password.</li>
           <li><strong>Saving passwords in plain text</strong>: Notes apps, spreadsheets, sticky notes. Use a password manager.</li>
         </ul>

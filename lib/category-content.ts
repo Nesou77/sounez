@@ -2,6 +2,7 @@
 
 export type CategoryEditorial = {
   extendedIntro: string;
+  contentPolicy: string;
   useCases: { title: string; desc: string }[];
   tips: string[];
   faqs: { q: string; a: string }[];
@@ -10,7 +11,9 @@ export type CategoryEditorial = {
 export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
   "creator-tools": {
     extendedIntro:
-      "These tools help with the text and numbers around publishing: captions, hashtags, channel tags, bios, and rough sponsored-post estimates. They are starting points - you should edit anything before it goes live and follow each platform's rules for ads and disclosures.",
+      "These tools help with the text and numbers around publishing: captions, hashtags, channel tags, bios, and rough sponsored-post estimates. They are starting points — you should edit anything before it goes live and follow each platform's rules for ads and disclosures. AI-assisted tools (captions, bios, business names, website ideas) process your brief on Sounez servers and return generated drafts; none of the text is stored after the response or used to train models. Browser-only tools (the hashtag and YouTube tag generators) never send your input anywhere.",
+    contentPolicy:
+      "Creator tools generate text drafts from the input you provide. You are responsible for verifying accuracy, removing misleading claims, and complying with the advertising and disclosure rules of the platform you publish on. Do not use these tools to generate content that impersonates real people, makes false health or financial claims, targets minors inappropriately, or violates intellectual property rights. Generated content that appears to involve prohibited topics is blocked automatically; repeated misuse may result in access restriction.",
     useCases: [
       {
         title: "Upload day",
@@ -51,7 +54,9 @@ export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
   },
   "design-tools": {
     extendedIntro:
-      "Design tools on Sounez focus on quick decisions: pick colors, build gradients, export favicons, or copy CSS for shadows and patterns. They suit landing pages, side projects, and handoffs - not full print production without a final proof.",
+      "Design tools on Sounez focus on quick decisions: pick colors, build gradients, export favicons, or copy CSS for shadows and patterns. They suit landing pages, side projects, and handoffs — not full print production without a final proof. Every design tool on this list runs entirely in your browser using standard Web APIs. No image, color value, or CSS snippet is sent to Sounez servers. Your work stays on your device until you choose to download or copy it.",
+    contentPolicy:
+      "Design tools generate visual assets and CSS code from the settings you configure in your browser. There is no user-submitted text input that requires moderation. Generated output — palettes, gradients, favicons, SVG shapes, and CSS declarations — is yours to use in any personal or commercial project without attribution. You are responsible for ensuring that uploaded reference images (for color extraction or favicon generation) are either your own work or licensed for the intended use.",
     useCases: [
       {
         title: "New landing page",
@@ -92,7 +97,9 @@ export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
   },
   "utility-tools": {
     extendedIntro:
-      "Utilities cover everyday file and text jobs: compress images, convert PDFs, count words, make QR codes, and similar tasks. Some run entirely in your tab; others need a short server step. Each tool page states which applies before you upload anything sensitive.",
+      "Utilities cover everyday file and text jobs: compress images, convert PDFs, count words, make QR codes, and similar tasks. Some run entirely in your tab; others need a short server step. Each tool page states clearly which applies — read it before uploading anything sensitive. Browser tools keep files on your device and never send bytes to Sounez servers. Server tools (PDF conversion, AI study notes) transmit only the content needed to complete the request and delete it after the response is returned.",
+    contentPolicy:
+      "Utility tools process files and text you provide to complete a specific task. Only upload or paste content you own or have permission to process through a third-party web service. Do not upload files containing: personal data belonging to others without consent, copyrighted material you are not licensed to convert, documents marked confidential by your employer, or content that violates applicable law. The PDF-to-Word converter and study-notes generator use server-side processing; see their individual privacy notes for retention details. Image and text tools run locally and have no server-side content policy implications.",
     useCases: [
       {
         title: "Before publishing a post",

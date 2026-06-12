@@ -8,6 +8,80 @@ import { sortBlogPostsByPopularity } from "@/lib/popularity";
 import { SMART_PACKS } from "@/lib/smart-packs-data";
 import { getCategoryIcon } from "@/lib/tool-icons";
 
+const USE_CASES = [
+  {
+    who: "Content creators",
+    jobs: [
+      "Write three caption options for an Instagram reel in under a minute.",
+      "Generate 25 YouTube tags from a video topic without guessing.",
+      "Refresh a social media bio when your offer changes.",
+      "Check what a sponsored post might pay based on follower count.",
+    ],
+  },
+  {
+    who: "Designers and developers",
+    jobs: [
+      "Build a five-color palette from a base hex and copy CSS in one click.",
+      "Preview and copy a CSS gradient without typing stop values manually.",
+      "Export a favicon pack from a letter, emoji, or uploaded logo.",
+      "Generate a CSS box shadow or background pattern and paste the code.",
+    ],
+  },
+  {
+    who: "Students and office workers",
+    jobs: [
+      "Turn a lecture topic into structured revision notes with key terms.",
+      "Convert a received PDF into an editable Word file to annotate.",
+      "Count words and check reading time before submitting an essay.",
+      "Build a clean one-page resume and print it to PDF without Word.",
+    ],
+  },
+  {
+    who: "Shop owners and small businesses",
+    jobs: [
+      "Remove a product background and get a clean PNG for a marketplace.",
+      "Generate a QR code for a table menu, Wi-Fi, or promotional flyer.",
+      "Compress product images before uploading to keep page speed fast.",
+      "Generate business name ideas and check domain availability next.",
+    ],
+  },
+];
+
+const HOME_FAQS = [
+  {
+    q: "Do I need an account to use Sounez?",
+    a: "No. Most tools work without any sign-up. Open the page, use the tool, and close it. Fair-use rate limits apply on AI-powered features like captions, study notes, and Smart Packs to keep the service available for everyone.",
+  },
+  {
+    q: "Are the tools actually free?",
+    a: "Yes. Sounez is ad-supported using Google AdSense, which allows all core tools to remain free. There are no paid tiers, no credits, and no subscription required for normal individual use.",
+  },
+  {
+    q: "Which tools upload files to a server?",
+    a: "Browser-only tools — image compressor, PNG to JPG, background remover, QR code generator, word counter, calculator, password generator, text case converter, color palette, CSS gradient, favicon, SVG blob, box shadow, background pattern, image placeholder, and font pairing — never send data to Sounez servers. Server-backed tools — PDF to Word converter, AI caption, bio, business name, website idea, study notes, and image describer — explain exactly what is processed and for how long on each tool page.",
+  },
+  {
+    q: "What is a Smart Pack?",
+    a: "A Smart Pack is a structured AI workflow that takes one brief and returns several related text fields at once — for example, a caption, first comment, hashtags, alt text, and posting note from a single social media description. It saves time when multiple pieces of content need to match each other.",
+  },
+  {
+    q: "Can I use generated content commercially?",
+    a: "Yes, after reviewing and editing it. You are responsible for verifying that AI-generated text is accurate, does not infringe on any rights, and complies with the platform or legal context in which you publish it. Design outputs such as palettes, gradients, and CSS code are yours to use in any project.",
+  },
+  {
+    q: "How is my privacy protected?",
+    a: "Browser tools process everything locally; no data leaves your device. Server tools receive only the content needed to complete the request and do not store it beyond the response. See the Privacy Policy for the full breakdown, and the Cookie Policy for how advertising and analytics storage is handled.",
+  },
+  {
+    q: "What happens to comments I post on tool pages?",
+    a: "Comments go into a moderation queue and are reviewed before appearing publicly. Automated filters block clearly prohibited content before it reaches the queue. Moderated comments that are approved appear on the tool page and are visible to all visitors. You can report any approved comment with the flag icon.",
+  },
+  {
+    q: "Are AI outputs always accurate?",
+    a: "No. AI tools can produce plausible-sounding but incorrect information, especially for specific facts, dates, prices, and claims. Always read generated text before publishing, and verify any fact that another person or system will rely on.",
+  },
+];
+
 const HOW_IT_WORKS = [
   {
     step: "1",
@@ -238,6 +312,32 @@ export function HomeSections() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <div className="mb-8 text-center">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Use cases</span>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">What people use Sounez for</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Every tool on Sounez is built for one clear job. Here are the most common situations where visitors
+            open a tool or Smart Pack.
+          </p>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {USE_CASES.map((group) => (
+            <div key={group.who} className="rounded-2xl border border-border bg-card p-5 shadow-soft">
+              <h3 className="text-sm font-bold text-primary">{group.who}</h3>
+              <ul className="mt-3 space-y-2">
+                {group.jobs.map((job) => (
+                  <li key={job} className="flex gap-2 text-xs leading-relaxed text-muted-foreground">
+                    <span className="mt-0.5 text-primary shrink-0">›</span>
+                    {job}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
         <div className="mb-8 text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">Trust and privacy</span>
@@ -256,6 +356,27 @@ export function HomeSections() {
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{text}</p>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+        <div className="mb-8 text-center">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary-label">FAQ</span>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight">Common questions</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Answers to the most frequent questions about how Sounez tools work, what data they handle,
+            and how to get the most out of them.
+          </p>
+        </div>
+        <div className="divide-y divide-border rounded-2xl border border-border bg-card">
+          {HOME_FAQS.map((faq) => (
+            <details key={faq.q} className="group p-5">
+              <summary tabIndex={-1} className="cursor-pointer list-none font-semibold marker:hidden">
+                {faq.q}
+              </summary>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{faq.a}</p>
+            </details>
           ))}
         </div>
       </section>

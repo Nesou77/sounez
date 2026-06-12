@@ -1,5 +1,4 @@
-﻿import { getSiteUrl } from "@/lib/site-url";
-import { blogMetadata } from "@/lib/blog-metadata";
+﻿import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -14,10 +13,12 @@ export const metadata = blogMetadata("image-seo-guide", {
 });
 
 const FAQS = [
-  { question: "How long does it take for images to appear in Google Image Search?", answer: "It depends on when Google crawls and indexes the page. New sites often take longer, and no optimization can guarantee placement." },
-  { question: "Does image file size affect SEO?", answer: "Large images can slow a page and hurt user experience. Compression helps page speed, which supports SEO and Core Web Vitals." },
-  { question: "Should I use stock photos or original images?", answer: "Original images can be more useful because they show something specific to your page. Stock photos can still work when they are relevant and properly described." },
-  { question: "What's the most important image SEO factor?", answer: "Start with useful alt text, sensible file names, appropriate dimensions, and compression. Structured data is helpful after the basics are in place." },
+  { question: "How long does it take for images to appear in Google Image Search?", answer: "It depends on when Google crawls and indexes the page. New sites often take longer, and no optimization can guarantee placement. Submitting a sitemap that includes image URLs can help Google discover them faster." },
+  { question: "Does image file size affect SEO?", answer: "Large images can slow a page and hurt user experience. Compression helps page speed, which is a factor in Core Web Vitals and contributes to a better search ranking signal overall." },
+  { question: "Should I use stock photos or original images?", answer: "Original images are better for SEO because they are unique to your page and cannot be found elsewhere on the web. Stock photos can still work when they are relevant and properly described, but they add less signal than original photography or custom graphics." },
+  { question: "What's the most important image SEO factor?", answer: "Start with useful alt text, sensible file names, appropriate dimensions, and compression. These four basics cover the majority of image SEO for most sites. Structured data is valuable but only after the fundamentals are in place." },
+  { question: "What is an image sitemap and do I need one?", answer: "An image sitemap is an XML sitemap that lists image URLs on your site, helping Google discover images that might not be found through regular page crawling. Most CMS platforms generate this automatically. If you host images on a CDN or use JavaScript-rendered images, an image sitemap is especially useful." },
+  { question: "Does adding loading='lazy' hurt my LCP score?", answer: "It can if applied to your above-the-fold hero image. The Largest Contentful Paint (LCP) element is usually the hero image, and lazy loading it delays its render. Always use loading='eager' or omit the loading attribute entirely on your hero image. Apply loading='lazy' only to images below the fold." },
 ];
 
 export default function Post() {
@@ -134,9 +135,15 @@ export default function Post() {
 
         <h2>5. Modern formats: WebP and AVIF</h2>
         <p>
-          WebP is 25-35% smaller than JPG at the same quality and is supported in every modern
-          browser. AVIF is even smaller but has patchier support. Use WebP as your default in 2026, 
-          the file size savings directly improve your Core Web Vitals score.
+          WebP is 25–35% smaller than JPG at equivalent quality and is supported in every modern
+          browser. AVIF compresses even further but has slightly patchier support on older devices.
+          Use WebP as your default export format in 2026. The file size savings directly improve
+          your Core Web Vitals score, particularly Largest Contentful Paint (LCP) for hero images.
+        </p>
+        <p>
+          When to keep PNG or JPG: use PNG for images that need transparency when WebP is not
+          supported by your CMS or upload pipeline. Use JPG only when a platform explicitly requires
+          it. In every other case, WebP is the better choice for web publishing.
         </p>
 
         <h2>6. Lazy loading: don&apos;t load what isn&apos;t visible</h2>
@@ -177,22 +184,39 @@ export default function Post() {
         <h3>How long does it take for images to appear in Google Image Search?</h3>
         <p>
           It depends on when Google crawls and indexes the page. New sites often take longer, and no
-          optimization can guarantee placement.
+          optimization can guarantee placement. Submitting a sitemap that includes image URLs can
+          help Google discover them faster.
         </p>
         <h3>Does image file size affect SEO?</h3>
         <p>
           Large images can slow a page and hurt user experience. Compression helps page speed, which
-          supports SEO and Core Web Vitals.
+          is a factor in Core Web Vitals and contributes to a better search ranking signal overall.
         </p>
         <h3>Should I use stock photos or original images?</h3>
         <p>
-          Original images can be more useful because they show something specific to your page. Stock
-          photos can still work when they are relevant and properly described.
+          Original images are better for SEO because they are unique to your page and cannot be
+          found elsewhere. Stock photos can still work when they are relevant and properly described,
+          but they add less signal than original photography or custom graphics.
         </p>
         <h3>What&apos;s the most important image SEO factor?</h3>
         <p>
           Start with useful alt text, sensible file names, appropriate dimensions, and compression.
-          Structured data is helpful after the basics are in place.
+          These four basics cover the majority of image SEO for most sites. Structured data is
+          valuable but only after the fundamentals are in place.
+        </p>
+        <h3>What is an image sitemap and do I need one?</h3>
+        <p>
+          An image sitemap lists image URLs on your site, helping Google discover images that might
+          not be found through regular crawling. Most CMS platforms generate this automatically. If
+          you host images on a CDN or use JavaScript-rendered images, an image sitemap is especially
+          useful.
+        </p>
+        <h3>Does adding loading=&quot;lazy&quot; hurt my LCP score?</h3>
+        <p>
+          It can if applied to your above-the-fold hero image. The Largest Contentful Paint element
+          is usually the hero image, and lazy loading it delays its render. Always use{" "}
+          <code>loading=&quot;eager&quot;</code> or omit the attribute entirely on your hero image. Apply{" "}
+          <code>loading=&quot;lazy&quot;</code> only to images below the fold.
         </p>
 
         <h2>Conclusion: treat every image as part of the page</h2>

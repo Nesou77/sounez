@@ -134,6 +134,49 @@ export function SmartPackPageContent({ pack }: { pack: SmartPackDefinition }) {
             </div>
           </section>
 
+          <section className="rounded-2xl border border-border bg-muted/20 p-5">
+            <h2 className="text-lg font-bold">Content policy and responsible use</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Smart Packs process the brief you submit on Sounez servers and return a structured draft.
+              Your brief is not stored after the response is returned and is not used to train models.
+              The outputs are drafts — you own them and are fully responsible for what you publish.
+            </p>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div>
+                <h3 className="text-sm font-semibold">Prohibited inputs</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-relaxed text-muted-foreground">
+                  <li>Content involving minors in sexual or harmful contexts</li>
+                  <li>Instructions for violence, weapons, or illegal activity</li>
+                  <li>Fraudulent claims, fake credentials, or impersonation</li>
+                  <li>Personal data you do not own or have permission to process</li>
+                  <li>Copyrighted material you are not licensed to reproduce</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold">Your responsibilities</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-relaxed text-muted-foreground">
+                  <li>Verify every factual claim before publishing</li>
+                  <li>Comply with platform rules and local advertising laws</li>
+                  <li>Disclose AI assistance where required (e.g. sponsored posts)</li>
+                  <li>Do not use outputs to mislead customers or examiners</li>
+                  <li>Review generated content for accuracy before any commercial use</li>
+                </ul>
+              </div>
+            </div>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Requests that appear to violate these rules are automatically blocked. Continued misuse
+              may result in rate-limiting or permanent access restriction. See our{" "}
+              <a href="/terms-of-service" className="font-medium text-primary hover:underline">
+                Terms of Service
+              </a>{" "}
+              and{" "}
+              <a href="/privacy-policy" className="font-medium text-primary hover:underline">
+                Privacy Policy
+              </a>{" "}
+              for full details.
+            </p>
+          </section>
+
           <section>
             <h2 className="text-lg font-bold">Questions</h2>
             <div className="mt-4 divide-y divide-border rounded-2xl border border-border bg-card">

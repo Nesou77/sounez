@@ -1,5 +1,4 @@
-﻿import { getSiteUrl } from "@/lib/site-url";
-import { blogMetadata } from "@/lib/blog-metadata";
+﻿import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";

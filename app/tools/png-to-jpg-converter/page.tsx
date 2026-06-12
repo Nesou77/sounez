@@ -30,7 +30,7 @@ const jsonLd = [
       "Client-side, files never leave your device",
       "Transparent backgrounds filled with white automatically",
     ],
-    screenshot: `${siteUrl}/og/png-to-jpg-converter.webp`,
+    screenshot: `${siteUrl}/logo.webp`,
     provider: { "@type": "Organization", name: "Sounez", url: siteUrl },
   },
   {
@@ -65,9 +65,9 @@ export const metadata: Metadata = {
       "Convert PNG files to JPG right in your browser. Batch processing, quality control, and ZIP download. Your images stay on your device.",
     images: [
       {
-        url: `${siteUrl}/og/png-to-jpg-converter.webp`,
-        width: 1200,
-        height: 630,
+        url: `${siteUrl}/logo.webp`,
+        width: 560,
+        height: 140,
         alt: "PNG to JPG Converter, Sounez",
         type: "image/webp",
       },
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     title: "PNG to JPG Converter, Free Batch Conversion",
     description:
       "Batch convert PNG images to JPG online. Runs in your browser, with no upload to Sounez.",
-    images: [`${siteUrl}/og/png-to-jpg-converter.webp`],
+    images: [`${siteUrl}/logo.webp`],
   },
 };
 

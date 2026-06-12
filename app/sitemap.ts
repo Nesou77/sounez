@@ -28,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/smart-packs",      slug: "smart-packs",     changeFreq: "weekly"  as const, priority: 0.9 },
     { path: "/blog",             slug: "blog",            changeFreq: "weekly"  as const, priority: 0.85 },
     { path: "/categories",       slug: "categories",      changeFreq: "monthly" as const, priority: 0.8 },
+    { path: "/faq",              slug: "faq",             changeFreq: "monthly" as const, priority: 0.7 },
     { path: "/about",            slug: "about",           changeFreq: "monthly" as const, priority: 0.5 },
     { path: "/contact",          slug: "contact",         changeFreq: "monthly" as const, priority: 0.5 },
     { path: "/privacy-policy",   slug: "privacy-policy",  changeFreq: "monthly" as const, priority: 0.3 },

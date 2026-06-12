@@ -1,5 +1,4 @@
-﻿import { getSiteUrl } from "@/lib/site-url";
-import { blogMetadata } from "@/lib/blog-metadata";
+﻿import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -14,10 +13,12 @@ export const metadata = blogMetadata("how-to-grow-instagram-organically", {
 });
 
 const FAQS = [
-  { question: "How long does organic Instagram growth take?", answer: "With consistent posting and a sharp niche, most accounts see meaningful growth (500-1k followers) within 60-90 days. Viral moments can accelerate this, but don't plan around them." },
-  { question: "Do hashtags still matter in 2026?", answer: "Yes, but for categorization more than distribution. Use the Hashtag Generator to find relevant, non-oversaturated tags." },
-  { question: "Should I use Instagram Stories every day?", answer: "Yes. Stories keep you at the top of your followers' feeds and signal activity to the algorithm. They don't need to be polished; behind-the-scenes content works well." },
-  { question: "Is it worth buying followers?", answer: "No. Bought followers don't engage, which tanks your engagement rate and tells the algorithm your content isn't worth pushing. It's actively harmful to organic growth." },
+  { question: "How long does organic Instagram growth take?", answer: "With consistent posting and a sharp niche, most accounts see meaningful growth (500-1k followers) within 60-90 days. Viral moments can accelerate this, but don't plan around them. Sustainable growth compounds over months, not days." },
+  { question: "Do hashtags still matter in 2026?", answer: "Yes, but for categorization more than distribution. The algorithm uses them primarily to understand what your post is about. Use the Hashtag Generator to find relevant, non-oversaturated tags — 5 to 10 focused tags outperform 30 generic ones." },
+  { question: "Should I use Instagram Stories every day?", answer: "Yes. Stories keep you at the top of your followers' feeds and signal active presence to the algorithm. They don't need to be polished — behind-the-scenes content, polls, and quick reactions all work well and take minutes to post." },
+  { question: "Is it worth buying followers?", answer: "No. Bought followers don't engage, which tanks your engagement rate and tells the algorithm your content isn't worth pushing. It's actively harmful to organic reach and can result in account action from Instagram." },
+  { question: "What content type gets the most reach on Instagram in 2026?", answer: "Reels consistently get the broadest initial reach because Instagram pushes them to non-followers through the Explore and Reels feeds. Carousels get the most saves and repeat views. A mix of both tends to outperform either alone." },
+  { question: "How do I know if my Instagram strategy is working?", answer: "Track three metrics weekly: reach (how many unique accounts saw your posts), saves per post (the strongest engagement signal), and follower growth rate. If reach is growing but saves are low, focus on creating more bookmark-worthy content. If saves are high but reach is flat, focus on Reels to expand distribution." },
 ];
 
 export default function Post() {
@@ -53,6 +54,15 @@ export default function Post() {
           content they&apos;ll engage with. If your content earns saves, shares and comments, the algorithm
           will push it to new audiences for free. The creators who say &quot;organic doesn&apos;t work
           anymore&quot; are usually posting content that doesn&apos;t earn engagement.
+        </p>
+        <p>
+          According to{" "}
+          <a href="https://help.instagram.com/313829416281232" target="_blank" rel="noopener noreferrer">
+            Instagram&apos;s guidance on how Reels are ranked
+          </a>
+          , the platform prioritizes content based on predicted interest, including how likely a
+          viewer is to like, comment, save, or share. That means the quality of engagement matters
+          more than the quantity of posts.
         </p>
 
         <PullQuote>
@@ -144,6 +154,42 @@ export default function Post() {
           comment in the first hour after posting. Early engagement signals to the algorithm that your
           content is worth pushing.
         </p>
+        <p>
+          Batch your content creation rather than posting day-by-day. Spend two hours on a Sunday
+          creating and scheduling four posts for the week. This prevents the inconsistency that kills
+          most accounts — the pattern of posting daily for a week, then going quiet for two weeks
+          because life got busy.
+        </p>
+
+        <h2>How to read your Instagram analytics</h2>
+        <p>
+          You do not need complex analytics tools to understand what is working. Instagram&apos;s built-in
+          Insights (available on Professional and Creator accounts) shows you the metrics that matter:
+        </p>
+        <ul>
+          <li>
+            <strong>Reach</strong>: how many unique accounts saw your post. Growing reach means the
+            algorithm is pushing your content to new people.
+          </li>
+          <li>
+            <strong>Saves</strong>: the strongest engagement signal. A high save rate means people
+            found your content valuable enough to bookmark. Track saves per post, not just total saves.
+          </li>
+          <li>
+            <strong>Profile visits from a post</strong>: shows whether your content is driving
+            interest in you as a creator. High profile visits from a Reel suggest it reached
+            non-followers who wanted to see more.
+          </li>
+          <li>
+            <strong>Follows from a post</strong>: directly measures whether a piece of content is
+            converting new viewers into followers. Sort your posts by this metric to identify which
+            content types bring in the most new followers.
+          </li>
+        </ul>
+        <p>
+          Review these metrics weekly, not daily. Daily numbers are noisy. The trend over 4-8 weeks
+          tells you what to do more of.
+        </p>
 
         <h2>The 90-day organic growth plan</h2>
         <ol>
@@ -166,22 +212,36 @@ export default function Post() {
         <p>
           With consistent posting and a sharp niche, most accounts see meaningful growth (500-1k
           followers) within 60-90 days. Viral moments can accelerate this, but don&apos;t plan around
-          them.
+          them. Sustainable growth compounds over months, not days.
         </p>
         <h3>Do hashtags still matter in 2026?</h3>
         <p>
           Yes, but for categorization more than distribution. Use the{" "}
-          <Link href="/tools/hashtag-generator">Hashtag Generator</Link> to find relevant, non-oversaturated tags.
+          <Link href="/tools/hashtag-generator">Hashtag Generator</Link> to find relevant, non-oversaturated
+          tags. Five to ten focused tags outperform thirty generic ones.
         </p>
         <h3>Should I use Instagram Stories every day?</h3>
         <p>
-          Yes. Stories keep you at the top of your followers&apos; feeds and signal activity to the
-          algorithm. They don&apos;t need to be polished; behind-the-scenes content works well.
+          Yes. Stories keep you at the top of your followers&apos; feeds and signal active presence to the
+          algorithm. They don&apos;t need to be polished — polls, quick reactions, and behind-the-scenes
+          clips all work well and take minutes to post.
         </p>
         <h3>Is it worth buying followers?</h3>
         <p>
           No. Bought followers don&apos;t engage, which tanks your engagement rate and tells the algorithm
-          your content isn&apos;t worth pushing. It&apos;s actively harmful to organic growth.
+          your content isn&apos;t worth pushing. It is actively harmful to organic reach.
+        </p>
+        <h3>What content type gets the most reach on Instagram in 2026?</h3>
+        <p>
+          Reels consistently get the broadest initial reach because Instagram pushes them to
+          non-followers through the Explore and Reels feeds. Carousels get the most saves and
+          repeat views. A mix of both tends to outperform either alone.
+        </p>
+        <h3>How do I know if my Instagram strategy is working?</h3>
+        <p>
+          Track reach, saves per post, and follower growth rate weekly. If reach is growing but saves
+          are low, focus on more bookmark-worthy content. If saves are high but reach is flat, focus
+          on Reels to expand distribution to non-followers.
         </p>
 
         <h2>Conclusion: consistency beats virality</h2>

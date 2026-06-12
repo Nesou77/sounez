@@ -9,6 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/admin/", "/api/", "/smart-packs/history"],
       },
       // Block AI training crawlers — content is protected under copyright.
       // These bots scrape for model training rather than indexing for search.

@@ -19,9 +19,7 @@ export function toolMetadata(
   const title = overrides?.title ?? tool.name;
   const description = overrides?.description ?? tool.description;
 
-  // Use a tool-specific OG image when available, fall back to the site-wide image.
-  // Tool OG images live at /og/{slug}.webp — missing files gracefully fall back.
-  const ogImage = `${siteUrl}/og/${tool.slug}.webp`;
+  const ogImage = `${siteUrl}/logo.webp`;
 
   return {
     title,
@@ -36,8 +34,8 @@ export function toolMetadata(
       images: [
         {
           url: ogImage,
-          width: 1200,
-          height: 630,
+          width: 560,
+          height: 140,
           alt: `${tool.name} – Sounez`,
         },
       ],

@@ -119,6 +119,91 @@ export default function CategoriesPage() {
           );
         })}
       </div>
+
+      <section className="mt-14 rounded-2xl border border-border bg-muted/20 p-6 sm:p-8">
+        <h2 className="text-xl font-bold">What to expect on each category page</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          Every category page adds context that does not fit on individual tool pages — things that apply
+          to the whole group rather than a single job. Here is what each one includes:
+        </p>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <h3 className="text-sm font-semibold">Extended intro</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              A paragraph that explains how the category&apos;s tools are grouped, which run in the browser,
+              and which use a server — so you know before you open anything.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Common situations</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Three real scenarios where visitors reach for the category, written as starting points
+              rather than feature lists.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Practical tips</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Specific advice that applies across the group — format quirks, accuracy limits, upload
+              rules — that would be repetitive to include on every individual tool page.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Content policy</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              A plain-language summary of what inputs are not allowed and what you are responsible for
+              verifying before using generated output.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="text-xl font-bold">Questions about categories</h2>
+        <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card">
+          {[
+            {
+              q: "Why are there only three categories?",
+              a: "Three categories keep navigation simple for first-time visitors. Creator Tools covers publishing text and numbers, Design Tools covers visual assets and CSS, and Utility Tools covers file conversion, analysis, and everyday utilities. If you already know the tool name, the tools directory has a finer breakdown with search and filtering.",
+            },
+            {
+              q: "Do all tools in a category behave the same way?",
+              a: "No. Within each category, some tools run entirely in your browser (no data leaves your device) while others use a server-side step for AI generation or file conversion. Each tool page and category page states clearly which applies.",
+            },
+            {
+              q: "Can I browse by task instead of category?",
+              a: "Yes. The tools directory lists every tool with its description. Smart Packs group related tools by workflow — for example, a full social media pack or a study-session pack — rather than by technical category.",
+            },
+            {
+              q: "Where can I report a problem with a tool in a category?",
+              a: "Use the flag icon on a comment, the contact page for general feedback, or the DMCA page for copyright concerns. Each category page also has a comment section on individual tool pages for tool-specific questions.",
+            },
+            {
+              q: "Are categories used by Google AdSense or for targeting?",
+              a: "Categories determine which page a tool appears on, not advertising targeting. Sounez uses Google AdSense to display contextual ads based on page content; the category label is part of that page context but is not a separate targeting segment we create or sell.",
+            },
+          ].map((faq) => (
+            <details key={faq.q} className="group p-5">
+              <summary tabIndex={-1} className="cursor-pointer list-none font-semibold marker:hidden">
+                {faq.q}
+              </summary>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-10 rounded-2xl border border-primary/20 bg-primary/5 p-6">
+        <h2 className="font-bold">Looking for a multi-step workflow?</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Smart Packs take one brief and return several related outputs — captions, listing copy, study
+          notes, or image SEO fields — step by step. They save time when several pieces of a job must
+          match each other.{" "}
+          <Link href="/smart-packs" className="font-medium text-primary hover:underline">
+            Browse Smart Packs
+          </Link>
+        </p>
+      </section>
     </div>
   );
 }

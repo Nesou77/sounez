@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: "/smart-packs", label: "Smart Packs" },
   { href: "/tools", label: "Tools" },
   { href: "/blog", label: "Guides" },
+  { href: "/faq", label: "FAQ" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

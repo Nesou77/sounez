@@ -87,20 +87,86 @@ export default function DmcaPage() {
         </section>
 
         <section>
+          <h2 className="text-lg font-bold text-foreground">What happens after you file</h2>
+          <p className="mt-2">
+            We review every notice for completeness. An incomplete submission (missing URL, missing authorization
+            statement, or unidentifiable work) will receive a reply asking for the missing information before any
+            action is taken.
+          </p>
+          <p className="mt-2">
+            Once we have a complete notice, we aim to take one of the following actions within a reasonable time:
+          </p>
+          <ul className="mt-3 list-disc space-y-2 pl-5">
+            <li>Remove or disable access to the identified material if the notice is valid on its face.</li>
+            <li>Forward relevant contact details to the poster where legally required or appropriate.</li>
+            <li>Request clarification if the identified content could not be located at the URL provided.</li>
+            <li>Decline the notice and explain why if the claim appears clearly unfounded (e.g. the URL points to a tool interface, not user content).</li>
+          </ul>
+          <p className="mt-3">
+            We do not guarantee a specific turnaround time. High submission volume, technical complexity, or
+            requests requiring legal review may extend the processing period.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-bold text-foreground">AI-generated content and copyright</h2>
+          <p className="mt-2">
+            Some tools on Sounez use AI to generate text, descriptions, or other outputs from a brief you
+            provide. Generated output is based on your input and the model&apos;s training; it may resemble
+            existing published work by coincidence rather than by copying.
+          </p>
+          <p className="mt-2">
+            If you believe a piece of AI output infringes your copyright, explain in your notice how the
+            generated text reproduces substantial protected expression from a specific work you own, and include
+            the URL of the Sounez page where the output appeared (if it is publicly visible). Claims based solely
+            on thematic similarity or general style are not sufficient for a DMCA notice.
+          </p>
+          <p className="mt-2">
+            We do not store generated outputs beyond the immediate session, so we cannot retrieve past results.
+            If you wish to dispute a specific published piece (for example, a user comment or blog excerpt), follow
+            the standard notice process above.
+          </p>
+        </section>
+
+        <section>
           <h2 className="text-lg font-bold text-foreground">Counter-notification</h2>
           <p className="mt-2">
-            If you believe content was removed by mistake, you may reply with a counter-notification that meets
-            applicable legal requirements. We will review counter-notifications in line with the DMCA and our
-            ability to verify the dispute.
+            If you believe content was removed by mistake, or that the original notice was based on a
+            misidentification or misrepresentation of rights, you may submit a counter-notification. A valid
+            counter-notification must include:
+          </p>
+          <ul className="mt-3 list-disc space-y-2 pl-5">
+            <li>Your name, address, telephone number, and email address.</li>
+            <li>Identification of the material that was removed and the URL where it appeared before removal.</li>
+            <li>A statement under penalty of perjury that you have a good-faith belief that the material was removed by mistake or misidentification.</li>
+            <li>A statement that you consent to the jurisdiction of the Federal District Court for your district (or, if outside the US, any judicial district in which Sounez may be found).</li>
+            <li>Your physical or electronic signature.</li>
+          </ul>
+          <p className="mt-3">
+            We may forward counter-notifications to the original complainant. If no legal action is filed within
+            ten business days of our receiving a complete counter-notification, we will consider reinstating the
+            material. We are not obligated to reinstate material and may exercise editorial discretion independently
+            of the DMCA counter-notification process.
           </p>
         </section>
 
         <section>
           <h2 className="text-lg font-bold text-foreground">Repeat infringers</h2>
           <p className="mt-2">
-            We may restrict access for users who repeatedly infringe copyright after valid notices. Because most
-            tools do not require an account, restriction may apply at the IP or session level where technically
-            feasible.
+            Sounez maintains a policy of limiting or terminating the access of users who repeatedly infringe
+            copyright after receiving valid notices. This policy applies regardless of whether the infringing
+            activity involves tool use, uploaded files, user comments, or blog submissions.
+          </p>
+          <p className="mt-2">
+            Because most Sounez tools do not require account creation, enforcement may operate at the IP address,
+            browser-session, or device level where technically feasible. We evaluate repeat infringement patterns
+            on a case-by-case basis and reserve the right to block or restrict access without prior notice when
+            infringement is clear and ongoing.
+          </p>
+          <p className="mt-2">
+            Submitting a knowingly false or materially incomplete DMCA notice or counter-notification may expose
+            the filer to liability under applicable law. We report clearly abusive or bad-faith notices where
+            legally appropriate.
           </p>
         </section>
 

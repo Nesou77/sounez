@@ -1,5 +1,4 @@
-﻿import { getSiteUrl } from "@/lib/site-url";
-import { blogMetadata } from "@/lib/blog-metadata";
+﻿import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
@@ -173,11 +172,11 @@ export default function Post() {
           Here are common paid tools remote workers subscribe to that have free alternatives:
         </p>
         <ul>
-          <li><strong>Paid word count tool → </strong><Link href="/tools/word-counter">Word Counter</Link> (free, instant, no account)</li>
-          <li><strong>Paid image compression → </strong><Link href="/tools/image-compressor">Image Compressor</Link> (free, local processing, private)</li>
-          <li><strong>Paid QR generator → </strong><Link href="/tools/qr-code-generator">QR Code Generator</Link> (free, multiple formats)</li>
-          <li><strong>Paid password generator → </strong><Link href="/tools/password-generator">Password Generator</Link> (free, secure, configurable)</li>
-          <li><strong>Paid resume builder → </strong><Link href="/tools/resume-generator">Resume Generator</Link> (free, professional output)</li>
+          <li><strong>Paid word count tool ? </strong><Link href="/tools/word-counter">Word Counter</Link> (free, instant, no account)</li>
+          <li><strong>Paid image compression ? </strong><Link href="/tools/image-compressor">Image Compressor</Link> (free, local processing, private)</li>
+          <li><strong>Paid QR generator ? </strong><Link href="/tools/qr-code-generator">QR Code Generator</Link> (free, multiple formats)</li>
+          <li><strong>Paid password generator ? </strong><Link href="/tools/password-generator">Password Generator</Link> (free, secure, configurable)</li>
+          <li><strong>Paid resume builder ? </strong><Link href="/tools/resume-generator">Resume Generator</Link> (free, professional output)</li>
         </ul>
         <p>
           These savings add up. A remote worker who replaces five $5-10/month single-purpose tools with

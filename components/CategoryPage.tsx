@@ -49,6 +49,24 @@ export function CategoryPage({ slug }: { slug: string }) {
         {items.map((t) => <ToolCard key={t.slug} tool={t} />)}
       </div>
 
+      {editorial?.contentPolicy && (
+        <section className="my-10 rounded-2xl border border-border bg-muted/20 p-6">
+          <h2 className="text-lg font-bold">Content policy</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{editorial.contentPolicy}</p>
+          <p className="mt-3 text-xs text-muted-foreground">
+            See our{" "}
+            <Link href="/terms-of-service" className="font-medium text-primary hover:underline">
+              Terms of Service
+            </Link>{" "}
+            and{" "}
+            <Link href="/privacy-policy" className="font-medium text-primary hover:underline">
+              Privacy Policy
+            </Link>{" "}
+            for full details.
+          </p>
+        </section>
+      )}
+
       <section className="my-10 rounded-2xl border border-border bg-card p-6">
         <h2 className="text-xl font-bold">How to choose the right tool here</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-3">
