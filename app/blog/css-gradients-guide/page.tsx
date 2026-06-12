@@ -17,6 +17,9 @@ const FAQS = [
   { question: "Are CSS gradients supported in all browsers?", answer: "Linear and radial gradients have had universal support since 2013. Conic gradients are supported in all modern browsers (Chrome 69+, Firefox 83+, Safari 12.1+). No prefixes needed in 2026." },
   { question: "Can I animate CSS gradients?", answer: "Not directly with transition, browsers can't interpolate between gradient values. The workaround is to animate background-position on an oversized gradient, or use @keyframes with opacity transitions between layered gradients." },
   { question: "What's the difference between a gradient and a mesh gradient?", answer: "A mesh gradient has multiple color points that blend in 2D space. Pure CSS mesh gradients aren't possible yet; they require SVG or canvas. For most UI use cases, a well-crafted radial gradient achieves a similar effect." },
+  { question: "How do I apply a gradient to text in CSS?", answer: "Set background to your gradient, then add background-clip: text and -webkit-background-clip: text, and set color to transparent. The gradient shows through the text shape. Use sparingly — one gradient headline per page maximum." },
+  { question: "How many color stops should a gradient have?", answer: "Two stops is almost always enough for a clean result. Three stops work well for more complex transitions like sunrise effects (dark, mid, light). More than three usually creates a muddy, cluttered look unless you're building a deliberate rainbow or spectrum effect." },
+  { question: "Should gradients be different in dark mode?", answer: "Yes. A vibrant blue-to-violet gradient that looks polished on white can look garish on a dark background. In dark mode, reduce opacity (use rgba or a semi-transparent overlay) or shift to darker, more muted tones. Always test both modes before shipping." },
 ];
 
 export default function Post() {
@@ -51,39 +54,65 @@ export default function Post() {
 
         <h3>1. Linear gradients</h3>
         <p>
-          The most common type. Color transitions along a straight line at any angle.
+          The most common type. Color transitions along a straight line at any angle. The
+          direction can be expressed as a keyword or a degree value.
         </p>
-        <ul>
-          <li><code>background: linear-gradient(135deg, #6366f1, #8b5cf6);</code></li>
-          <li>Direction can be an angle (<code>135deg</code>) or a keyword (<code>to right</code>, <code>to bottom right</code>)</li>
-          <li>Add multiple color stops for more complex transitions</li>
-        </ul>
+        <pre><code>{`/* Two-color diagonal */
+background: linear-gradient(135deg, #6366f1, #8b5cf6);
+
+/* Three stops: add a midpoint color */
+background: linear-gradient(to right, #0ea5e9, #6366f1, #8b5cf6);
+
+/* Using percentage stops to control where color changes */
+background: linear-gradient(to bottom, #ffffff 0%, #f1f5f9 60%, #e2e8f0 100%);`}</code></pre>
+        <p>
+          The angle <code>0deg</code> points up, <code>90deg</code> points right, and
+          <code>135deg</code> points diagonally down-right. Keyword equivalents like{" "}
+          <code>to right</code> or <code>to bottom right</code> are more readable and mean the
+          same thing.
+        </p>
 
         <h3>2. Radial gradients</h3>
         <p>
-          Color radiates outward from a center point, great for spotlight effects and glows.
+          Color radiates outward from a center point. Great for spotlight effects, depth on card
+          backgrounds, and soft glows behind hero content.
         </p>
-        <ul>
-          <li><code>background: radial-gradient(circle at center, #6366f1, transparent);</code></li>
-          <li>Shape can be <code>circle</code> or <code>ellipse</code></li>
-          <li>Position the center with <code>at x y</code>, useful for off-center glows</li>
-        </ul>
+        <pre><code>{`/* Centered circle glow */
+background: radial-gradient(circle at center, #6366f1 0%, transparent 70%);
+
+/* Off-center ellipse for dramatic lighting */
+background: radial-gradient(ellipse at 30% 40%, #0ea5e9, #1e293b);
+
+/* Subtle card depth — very low opacity center */
+background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15), transparent 70%);`}</code></pre>
+        <p>
+          Positioning the center with <code>at x y</code> lets you push the glow to a corner or
+          edge, which works well for dark-mode cards and hero sections where you want depth without
+          a heavy background image.
+        </p>
 
         <h3>3. Conic gradients</h3>
         <p>
-          Color transitions around a center point, like a pie chart or color wheel. Newer and
-          underused.
+          Color transitions around a center point like a clock face. Newer and underused, but
+          excellent for progress rings, pie-chart-style data visualization, and abstract decorative
+          elements.
         </p>
-        <ul>
-          <li><code>background: conic-gradient(from 0deg, #6366f1, #8b5cf6, #6366f1);</code></li>
-          <li>Great for progress indicators, pie charts, and abstract backgrounds</li>
-          <li>
-            Supported in all modern browsers since 2021. Check the latest support table on{" "}
-            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient" target="_blank" rel="noopener noreferrer">
-              MDN Web Docs
-            </a>
-          </li>
-        </ul>
+        <pre><code>{`/* Basic color wheel sweep */
+background: conic-gradient(from 0deg, #6366f1, #8b5cf6, #ec4899, #6366f1);
+
+/* Two-color pie segment (50% each) */
+background: conic-gradient(#6366f1 180deg, #e2e8f0 180deg);
+
+/* Progress ring at 65% */
+background: conic-gradient(#6366f1 65%, #e2e8f0 65%);`}</code></pre>
+        <p>
+          The progress ring pattern is particularly practical: set <code>border-radius: 50%</code>{" "}
+          and a fixed width and height to turn any element into a circular progress indicator with
+          no SVG or JavaScript. Check the latest support details on{" "}
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient" target="_blank" rel="noopener noreferrer">
+            MDN Web Docs
+          </a>.
+        </p>
 
         <PullQuote>
           A CSS gradient loads in zero milliseconds and scales to any resolution. There&apos;s no reason to
@@ -95,28 +124,67 @@ export default function Post() {
         <h3>The hero background gradient</h3>
         <p>
           A subtle, large radial gradient behind your hero section adds depth without distraction.
-          Keep it low opacity (10-20%) and use your brand color.
+          Keep it low opacity (10–20%) and use your brand color so it feels intentional rather than
+          decorative. Pair it with a white or near-white background so text contrast is never at risk.
         </p>
+        <pre><code>{`/* Hero section with radial glow */
+.hero {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99,102,241,0.18), transparent),
+    #ffffff;
+}`}</code></pre>
 
         <h3>The brand gradient on CTAs</h3>
         <p>
-          A diagonal linear gradient on your primary button makes it feel premium and distinct. Use
-          two adjacent hues (blue to violet, orange to pink) for the most natural result.
+          A diagonal linear gradient on your primary button makes it feel premium and distinct. The
+          key is choosing two adjacent hues — blue to violet, orange to pink — rather than jumping
+          across the color wheel, which creates a muddy middle.
         </p>
+        <pre><code>{`/* Primary CTA button */
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #ffffff;
+  border: none;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}`}</code></pre>
 
         <h3>The text gradient</h3>
         <p>
-          Apply a gradient to text with <code>background-clip: text</code> and{" "}
-          <code>-webkit-background-clip: text</code>. Use sparingly, one gradient headline per page
-          maximum.
+          Apply a gradient to text with <code>background-clip: text</code>. This technique works
+          in all modern browsers and creates a striking headline effect. Use it on one heading per
+          page maximum — applied everywhere it loses its impact entirely.
         </p>
+        <pre><code>{`/* Gradient headline text */
+.gradient-heading {
+  background: linear-gradient(135deg, #6366f1, #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block; /* Required for background-clip to work on inline elements */
+}`}</code></pre>
 
         <h3>The card border gradient</h3>
         <p>
-          Use a gradient on a pseudo-element (<code>::before</code>) with{" "}
-          <code>mask-composite: exclude</code> to create a gradient border. More complex but
-          impressive.
+          Use a gradient on a pseudo-element to create a glowing border effect. The technique uses{" "}
+          <code>::before</code> with <code>mask-composite: exclude</code> to reveal only the border
+          area of the gradient.
         </p>
+        <pre><code>{`/* Gradient border using ::before */
+.gradient-card {
+  position: relative;
+  border-radius: 1rem;
+  background: #ffffff;
+}
+.gradient-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  z-index: -1;
+}`}</code></pre>
 
         <h2>Common mistakes to avoid</h2>
         <ul>
@@ -175,6 +243,24 @@ export default function Post() {
           surface than a directional transition. Pure CSS mesh gradients aren&apos;t possible yet; they
           require SVG or canvas. For most UI use cases, a well-crafted radial gradient achieves a
           similar effect.
+        </p>
+        <h3>How do I apply a gradient to text in CSS?</h3>
+        <p>
+          Set <code>background</code> to your gradient, add <code>-webkit-background-clip: text</code>{" "}
+          and <code>background-clip: text</code>, then set <code>color: transparent</code>. The
+          gradient shows through the text shape. Use it on one headline per page for maximum impact.
+        </p>
+        <h3>How many color stops should a gradient have?</h3>
+        <p>
+          Two stops is almost always enough for a clean result. Three stops work well for more
+          complex transitions. More than three usually creates a muddy, cluttered look unless you
+          are deliberately building a spectrum effect.
+        </p>
+        <h3>Should gradients be different in dark mode?</h3>
+        <p>
+          Yes. A vibrant gradient that looks polished on white can look garish on a dark background.
+          In dark mode, reduce opacity using <code>rgba</code> values, or shift to darker, more muted
+          tones. Always test both modes before shipping.
         </p>
 
         <h2>Conclusion: one gradient, used with intent</h2>

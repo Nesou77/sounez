@@ -14,10 +14,12 @@ export const metadata = blogMetadata("how-to-write-youtube-descriptions", {
 });
 
 const FAQS = [
-  { question: "Do YouTube descriptions affect discovery?", answer: "They can help YouTube and viewers understand the video topic. A clear description is more useful than a blank or copied one, but it does not guarantee rankings." },
-  { question: "Should I use the same description template for every video?", answer: "Use the same structure if it helps, but write unique summaries, timestamps, and links for each video." },
-  { question: "How many hashtags should I use?", answer: "3-5 is the sweet spot. YouTube ignores descriptions with more than 15 hashtags entirely." },
-  { question: "Where should I put my most important link?", answer: "In the first 200 characters, before the 'more' button. That's the only part most viewers see without clicking." },
+  { question: "Do YouTube descriptions affect discovery?", answer: "They help YouTube and viewers understand the video topic. A clear description with natural keywords and accurate timestamps gives YouTube more context to index the video correctly, but it does not override watch time and click-through rate as ranking signals." },
+  { question: "Should I use the same description template for every video?", answer: "Use the same structure if it helps your workflow, but write unique summaries, timestamps, and links for each video. Identical or near-identical descriptions across many videos can appear low-quality to both viewers and YouTube." },
+  { question: "How many hashtags should I use?", answer: "3-5 is the sweet spot. YouTube displays the first 3 hashtags above the video title. YouTube ignores descriptions with more than 15 hashtags entirely, so adding 30 hashtags actually removes all hashtag benefits." },
+  { question: "Where should I put my most important link?", answer: "In the first 200 characters, before the 'more' button. That is the only part most viewers see without expanding. Put your newsletter, product page, or most relevant resource there — not your generic homepage." },
+  { question: "How long should a YouTube description be?", answer: "300 to 500 words is a good target for most videos. That is enough to give context, add timestamps, include secondary keywords, and link to related content without feeling like spam. YouTube allows up to 5,000 characters." },
+  { question: "Should I include a transcript in my description?", answer: "A partial transcript or summary of key points can help with accessibility and keyword coverage. Full transcripts are better uploaded as a dedicated caption file through YouTube Studio, which also improves closed caption quality." },
 ];
 
 export default function Post() {
@@ -112,8 +114,59 @@ export default function Post() {
           content strategy&quot;.
         </p>
         <p>
+          The goal is not keyword density — it is giving YouTube and viewers enough context to
+          understand the full scope of the video. Think about the questions someone might search
+          after watching: if your video is about growing on TikTok, they might also search for
+          how to write TikTok captions or how to use trending audio. Mentioning those topics
+          naturally in your description creates a thematic connection.
+        </p>
+        <p>
           Use the <Link href="/tools/youtube-tags-generator">YouTube Tags Generator</Link> to discover related
-          keyword variations, many of them belong in your description, not just your tags.
+          keyword variations — many of them belong in your description, not just your tags field.
+        </p>
+
+        <h2>Before and after: a real description example</h2>
+        <p>
+          The difference between a weak and strong description is usually just specificity and
+          structure, not length.
+        </p>
+        <p>
+          <strong>Weak description:</strong>
+        </p>
+        <p>
+          &quot;In this video I talk about TikTok growth. Hope you enjoy! Subscribe for more content.
+          #tiktok #growth&quot;
+        </p>
+        <p>
+          <strong>Strong description (same video):</strong>
+        </p>
+        <p>
+          &quot;In this video I break down exactly how to grow on TikTok in 2026 — from choosing a niche
+          that compounds to writing hooks that stop the scroll in the first second.
+        </p>
+        <p>
+          0:00 Introduction<br />
+          1:30 Why most creators plateau at 1k followers<br />
+          4:45 The niche selection framework I use<br />
+          8:20 Writing hooks that actually work<br />
+          13:10 Posting cadence and consistency strategy<br />
+          17:00 Recap and next steps
+        </p>
+        <p>
+          This strategy covers TikTok algorithm 2026, growing TikTok followers organically, and
+          TikTok content strategy for beginners. No paid promotion, no follow/unfollow tricks.
+        </p>
+        <p>
+          Related videos: [link] | [link]<br />
+          Free caption templates: [link]
+        </p>
+        <p>
+          #tiktokgrowth #tiktok2026 #contentcreator&quot;
+        </p>
+        <p>
+          The second description is more specific, more useful to viewers who want to navigate, and
+          more informative for YouTube&apos;s understanding of the video. It takes about 8 extra minutes
+          to write and pays dividends for the life of the video.
         </p>
 
         <h2>Step 4: Add links that keep viewers in your ecosystem</h2>
@@ -161,21 +214,37 @@ export default function Post() {
         <h2>Frequently Asked Questions</h2>
         <h3>Do YouTube descriptions affect discovery?</h3>
         <p>
-          They can help YouTube and viewers understand the video topic. A clear description is more
-          useful than a blank or copied one, but it does not guarantee rankings.
+          They help YouTube and viewers understand the video topic. A clear description with
+          natural keywords and accurate timestamps gives YouTube more context, but it does not
+          override watch time and click-through rate as ranking signals.
         </p>
         <h3>Should I use the same description template for every video?</h3>
         <p>
-          Use the same structure if it helps, but write unique summaries, timestamps, and links for each video.
+          Use the same structure if it helps your workflow, but write unique summaries, timestamps,
+          and links for each video. Identical descriptions across many videos appear low-quality to
+          both viewers and YouTube.
         </p>
         <h3>How many hashtags should I use?</h3>
         <p>
-          3-5 is the sweet spot. YouTube ignores descriptions with more than 15 hashtags entirely.
+          3-5 is the sweet spot. YouTube displays the first 3 hashtags above your video title.
+          YouTube ignores descriptions with more than 15 hashtags entirely, so adding 30 removes
+          all hashtag benefits.
         </p>
         <h3>Where should I put my most important link?</h3>
         <p>
-          In the first 200 characters, before the &quot;more&quot; button. That&apos;s the only part most viewers
-          see without clicking.
+          In the first 200 characters, before the &quot;more&quot; button. That is the only part most viewers
+          see without expanding. Put your newsletter, product page, or most relevant resource there.
+        </p>
+        <h3>How long should a YouTube description be?</h3>
+        <p>
+          300 to 500 words is a good target for most videos. Enough context, timestamps, and links
+          without feeling like spam. YouTube allows up to 5,000 characters.
+        </p>
+        <h3>Should I include a transcript in my description?</h3>
+        <p>
+          A partial summary of key points helps with keyword coverage. Full transcripts are better
+          uploaded as a caption file through YouTube Studio, which also improves closed caption
+          quality for all viewers.
         </p>
 
         <h2>Conclusion: treat the description box like a landing page</h2>
