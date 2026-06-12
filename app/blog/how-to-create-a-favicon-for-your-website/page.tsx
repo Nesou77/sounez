@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-create-a-favicon-for-your-website", {
   title: "How to Create a Favicon for Your Website (2026 Guide) | Sounez",
   description:
     "Learn what a favicon is, why it matters for branding, recommended favicon sizes and how to create one free in your browser.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-create-a-favicon-for-your-website" },
-  openGraph: {
-    title: "How to Create a Favicon for Your Website",
-    description: "Favicon sizes, PNG vs ICO, common mistakes and a free browser-based favicon generator.",
-  },
-};
+    ogTitle: "How to Create a Favicon for Your Website",
+    ogDescription: "Favicon sizes, PNG vs ICO, common mistakes and a free browser-based favicon generator.",
+});
 
 const FAQS = [
   { question: "What is a favicon?", answer: "A favicon is the small icon shown in browser tabs, bookmarks, search results and home screen shortcuts. It is typically 16x16 or 32x32 pixels." },

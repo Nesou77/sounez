@@ -1,22 +1,18 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { ExternalLink } from "@/components/ExternalLink";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-write-better-social-media-captions", {
   title: "How to Write Better Social Media Captions with AI (2026) | Sounez",
   description:
     "Learn how to create better captions for Instagram, TikTok and LinkedIn using simple prompts, tone selection and AI caption examples.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-write-better-social-media-captions" },
-  openGraph: {
-    title: "How to Write Better Social Media Captions with AI",
-    description:
-      "Platform-specific caption tips, tone examples, and a practical way to use AI as a first draft.",
-  },
-};
+    ogTitle: "How to Write Better Social Media Captions with AI",
+    ogDescription: "Platform-specific caption tips, tone examples, and a practical way to use AI as a first draft.",
+});
 
 const FAQS = [
   {

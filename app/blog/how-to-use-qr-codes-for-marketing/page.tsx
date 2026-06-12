@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-use-qr-codes-for-marketing", {
   title: "How to Use QR Codes for Marketing (Without Looking Cheap) | Sounez",
   description:
     "QR codes are everywhere again in 2026. Here's how to use them in print, packaging, events and social media in a way that actually converts.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-use-qr-codes-for-marketing" },
-  openGraph: {
-    title: "How to Use QR Codes for Marketing",
-    description: "Use QR codes with a clear destination, label, and placement so people know what they are scanning.",
-  },
-};
+    ogTitle: "How to Use QR Codes for Marketing",
+    ogDescription: "Use QR codes with a clear destination, label, and placement so people know what they are scanning.",
+});
 
 const FAQS = [
   { question: "Do QR codes expire?", answer: "Static QR codes never expire, the code is just an encoded URL. Dynamic QR codes from third-party services may expire if you stop paying for the service." },

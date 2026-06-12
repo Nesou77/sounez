@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("image-seo-guide", {
   title: "Image SEO Guide: Alt Text, File Names and Compression | Sounez",
   description:
     "A practical image SEO guide covering alt text, file names, compression, captions, structured data, and page-speed checks.",
-  alternates: { canonical: getSiteUrl() + "/blog/image-seo-guide" },
-  openGraph: {
-    title: "Image SEO Guide",
-    description: "Alt text, file names, compression, captions, and other image SEO basics.",
-  },
-};
+    ogTitle: "Image SEO Guide",
+    ogDescription: "Alt text, file names, compression, captions, and other image SEO basics.",
+});
 
 const FAQS = [
   { question: "How long does it take for images to appear in Google Image Search?", answer: "It depends on when Google crawls and indexes the page. New sites often take longer, and no optimization can guarantee placement." },

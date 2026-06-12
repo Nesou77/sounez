@@ -1,22 +1,18 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { ExternalLink } from "@/components/ExternalLink";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-choose-a-business-name", {
   title: "How to Choose a Business Name for Your Brand (2026 Guide) | Sounez",
   description:
     "Learn how to choose a business name that is simple, memorable and suitable for your brand or startup. Includes naming styles, examples and a free generator.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-choose-a-business-name" },
-  openGraph: {
-    title: "How to Choose a Business Name for Your Brand",
-    description:
-      "Naming styles, trademark checks, domain tips and a free business name generator.",
-  },
-};
+    ogTitle: "How to Choose a Business Name for Your Brand",
+    ogDescription: "Naming styles, trademark checks, domain tips and a free business name generator.",
+});
 
 const FAQS = [
   {

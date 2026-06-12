@@ -57,7 +57,7 @@ export function BlogPostShell({
                 <User className="h-3.5 w-3.5" aria-hidden="true" /> by Nesou
               </span>
             </div>
-            <ContentDates contentType="blog" slug={slug} className="mt-2 text-xs text-muted-foreground" />
+            <ContentDates contentType="blog" slug={slug} className="mt-2 text-xs text-muted-foreground" staticFallback={post?.publishedAt} />
             <h1 className="animate-slide-up mt-3 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
               {title}
             </h1>

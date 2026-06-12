@@ -23,7 +23,7 @@ export async function BlogJsonLd({
   const siteUrl = getSiteUrl();
   const pageUrl = `${siteUrl}/blog/${slug}`;
   const imageUrl = `${siteUrl}${post.image}`;
-  const dates = await getContentDates("blog", slug);
+  const dates = await getContentDates("blog", slug, post.publishedAt);
 
   const blogPosting: Record<string, unknown> = {
     "@context": "https://schema.org",

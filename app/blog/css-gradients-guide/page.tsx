@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("css-gradients-guide", {
   title: "The Complete Guide to CSS Gradients in 2026 | Sounez",
   description:
     "Linear, radial, conic, everything you need to build beautiful CSS gradients with clean, modern code. Includes examples, tips and a free generator.",
-  alternates: { canonical: getSiteUrl() + "/blog/css-gradients-guide" },
-  openGraph: {
-    title: "The Complete Guide to CSS Gradients in 2026",
-    description: "Linear, radial, conic, build beautiful gradients with clean CSS.",
-  },
-};
+    ogTitle: "The Complete Guide to CSS Gradients in 2026",
+    ogDescription: "Linear, radial, conic, build beautiful gradients with clean CSS.",
+});
 
 const FAQS = [
   { question: "Are CSS gradients supported in all browsers?", answer: "Linear and radial gradients have had universal support since 2013. Conic gradients are supported in all modern browsers (Chrome 69+, Firefox 83+, Safari 12.1+). No prefixes needed in 2026." },

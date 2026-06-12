@@ -1,19 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-grow-on-tiktok", {
   title: "How to Grow on TikTok in 2026: A Creator's Playbook | Sounez",
-  description: "A practical TikTok growth guide for 2026: niche, hooks, hashtags, posting schedule, repurposing, and monetization checks.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-grow-on-tiktok" },
-  openGraph: {
-    title: "How to Grow on TikTok in 2026",
-    description: "A clear framework for planning TikTok content, improving hooks, and checking creator deal estimates.",
-  },
-};
+  description:
+    "A practical TikTok growth guide for 2026: niche, hooks, hashtags, posting schedule, repurposing, and monetization checks.",
+    ogTitle: "How to Grow on TikTok in 2026",
+    ogDescription: "A clear framework for planning TikTok content, improving hooks, and checking creator deal estimates.",
+});
 
 const FAQS = [
   { question: "How often should I post on TikTok?", answer: "Pick a schedule you can maintain. Many creators start with 4-7 videos per week, then adjust based on watch time, completion rate, and production quality." },

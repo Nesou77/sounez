@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("css-background-patterns-guide", {
   title: "CSS Background Patterns Guide for Web Design (2026) | Sounez",
   description:
     "Learn how to create lightweight CSS and SVG background patterns for websites and landing pages. Dots, grids, lines and more.",
-  alternates: { canonical: getSiteUrl() + "/blog/css-background-patterns-guide" },
-  openGraph: {
-    title: "CSS Background Patterns Guide for Web Design",
-    description: "CSS gradient patterns, SVG basics, best use cases and a free pattern generator.",
-  },
-};
+    ogTitle: "CSS Background Patterns Guide for Web Design",
+    ogDescription: "CSS gradient patterns, SVG basics, best use cases and a free pattern generator.",
+});
 
 const FAQS = [
   { question: "Are CSS patterns better than image patterns?", answer: "For simple patterns like dots, grids and lines, CSS is almost always better. CSS patterns are resolution-independent, load instantly and can be changed with a single line of code. Image patterns require HTTP requests and fixed resolutions." },

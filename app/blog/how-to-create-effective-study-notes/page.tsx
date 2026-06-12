@@ -1,22 +1,18 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { ExternalLink } from "@/components/ExternalLink";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-create-effective-study-notes", {
   title: "How to Create Effective Study Notes (2026 Guide) | Sounez",
   description:
     "Learn how to turn lessons, topics and long text into clear study notes, summaries, bullet points and key terms. Includes a free AI study notes generator.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-create-effective-study-notes" },
-  openGraph: {
-    title: "How to Create Effective Study Notes",
-    description:
-      "Note-taking methods, review strategies and a free AI tool to generate structured study notes from any topic.",
-  },
-};
+    ogTitle: "How to Create Effective Study Notes",
+    ogDescription: "Note-taking methods, review strategies and a free AI tool to generate structured study notes from any topic.",
+});
 
 const FAQS = [
   {

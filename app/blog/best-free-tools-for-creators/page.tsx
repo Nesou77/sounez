@@ -1,19 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("best-free-tools-for-creators", {
   title: "10 Best Free Online Tools for Creators in 2026 | Sounez",
-  description: "Free online tools for creators in 2026, including YouTube tags, hashtags, image compression, QR codes, passwords, and design helpers.",
-  alternates: { canonical: getSiteUrl() + "/blog/best-free-tools-for-creators" },
-  openGraph: {
-    title: "10 Best Free Online Tools for Creators in 2026",
-    description: "The free toolkit every modern creator needs. Fast, focused, browser-based.",
-  },
-};
+  description:
+    "Free online tools for creators in 2026, including YouTube tags, hashtags, image compression, QR codes, passwords, and design helpers.",
+    ogTitle: "10 Best Free Online Tools for Creators in 2026",
+    ogDescription: "The free toolkit every modern creator needs. Fast, focused, browser-based.",
+});
 
 const FAQS = [
   { question: "Are these tools free to use?", answer: "Yes. The listed tools are free to use, and most do not require an account. Browser, device, and fair-use limits may still apply." },

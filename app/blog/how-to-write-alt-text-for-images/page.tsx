@@ -1,21 +1,16 @@
-import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-write-alt-text-for-images", {
   title: "How to Write Alt Text for Images: SEO and Accessibility Guide | Sounez",
   description:
     "Learn how to write clear, useful alt text for SEO, accessibility, blog posts, product images, and social media content.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-write-alt-text-for-images" },
-  openGraph: {
-    title: "How to Write Alt Text for Images: SEO and Accessibility Guide",
-    description:
-      "Learn how to write clear, useful alt text for SEO, accessibility, blog posts, product images, and social media content.",
-  },
-};
+    ogTitle: "How to Write Alt Text for Images: SEO and Accessibility Guide",
+});
 
 const FAQS = [
   {

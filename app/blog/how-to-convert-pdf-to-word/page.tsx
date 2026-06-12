@@ -1,21 +1,16 @@
-import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-convert-pdf-to-word", {
   title: "How to Convert PDF to Word Without Losing Formatting | Sounez",
   description:
     "Learn how to convert PDF files into editable Word documents while keeping your layout, text, images, and formatting as clean as possible.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-convert-pdf-to-word" },
-  openGraph: {
-    title: "How to Convert PDF to Word Without Losing Formatting",
-    description:
-      "Learn how to convert PDF files into editable Word documents while keeping your layout, text, images, and formatting as clean as possible.",
-  },
-};
+    ogTitle: "How to Convert PDF to Word Without Losing Formatting",
+});
 
 const FAQS = [
   {

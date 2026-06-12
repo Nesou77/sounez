@@ -1,5 +1,6 @@
 import { Calendar, Clock } from "lucide-react";
 import { formatContentDate, getContentDates } from "@/lib/content-meta";
+import { BLOG_POSTS } from "@/data/blog";
 
 export async function BlogPostDate({
   slug,
@@ -8,7 +9,8 @@ export async function BlogPostDate({
   slug: string;
   readTime: string;
 }) {
-  const dates = await getContentDates("blog", slug);
+  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const dates = await getContentDates("blog", slug, post?.publishedAt);
 
   return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium text-muted-foreground">

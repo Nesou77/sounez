@@ -1,21 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-find-website-ideas", {
   title: "How to Find Website Ideas for Your Next Project (2026) | Sounez",
   description:
     "Discover practical methods to generate website ideas for blogs, SaaS products, communities, ecommerce and online tools. Includes a free website idea generator.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-find-website-ideas" },
-  openGraph: {
-    title: "How to Find Website Ideas for Your Next Project",
-    description:
-      "Audience-first ideation, website type frameworks, monetization examples and a free idea generator.",
-  },
-};
+    ogTitle: "How to Find Website Ideas for Your Next Project",
+    ogDescription: "Audience-first ideation, website type frameworks, monetization examples and a free idea generator.",
+});
 
 const FAQS = [
   {

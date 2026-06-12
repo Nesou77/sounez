@@ -1,23 +1,16 @@
-import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-remove-image-backgrounds-online", {
   title: "How to Remove Image Backgrounds Online for Free (2026) | Sounez",
   description:
     "Remove image backgrounds online for product photos, profile pictures, social posts, and design projects without using complex design software.",
-  alternates: {
-    canonical: getSiteUrl() + "/blog/how-to-remove-image-backgrounds-online",
-  },
-  openGraph: {
-    title: "How to Remove Image Backgrounds Online for Free",
-    description:
-      "Remove image backgrounds online for product photos, profile pictures, social posts, and design projects without using complex design software.",
-  },
-};
+    ogTitle: "How to Remove Image Backgrounds Online for Free",
+});
 
 const FAQS = [
   {

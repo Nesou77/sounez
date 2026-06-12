@@ -376,9 +376,11 @@ export default function TermsOfServicePage() {
           <h2 className="text-xl font-bold tracking-tight">13. Governing Law</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
-              These terms shall be governed by and construed in accordance with applicable laws.
-              Any disputes arising from these terms or your use of the website shall be resolved
-              through good-faith negotiation in the first instance.
+              These terms are governed by and construed in accordance with the laws of France,
+              without regard to its conflict-of-law provisions. Any disputes arising from these
+              terms or your use of the website shall be resolved through good-faith negotiation in
+              the first instance. If negotiation fails, disputes shall be subject to the exclusive
+              jurisdiction of the courts of France.
             </p>
           </div>
         </section>

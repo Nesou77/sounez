@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("best-productivity-tools-for-remote-workers", {
   title: "Best Free Productivity Tools for Remote Workers in 2026 | Sounez",
   description:
     "Work from anywhere without paying for a bloated app stack. The best free browser-based productivity tools for remote workers in 2026.",
-  alternates: { canonical: getSiteUrl() + "/blog/best-productivity-tools-for-remote-workers" },
-  openGraph: {
-    title: "Best Free Productivity Tools for Remote Workers in 2026",
-    description: "Free tools that cover everything a remote worker needs. No subscriptions.",
-  },
-};
+    ogTitle: "Best Free Productivity Tools for Remote Workers in 2026",
+    ogDescription: "Free tools that cover everything a remote worker needs. No subscriptions.",
+});
 
 const FAQS = [
   { question: "What's the single most important free tool for remote workers?", answer: "A password manager (Bitwarden is free and excellent) paired with the Password Generator. Security is the foundation everything else sits on." },

@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("css-box-shadow-guide", {
   title: "CSS Box Shadow Guide: How to Create Better Shadows (2026) | Sounez",
   description:
     "Learn how CSS box-shadow works and how to create soft, modern shadows for cards, buttons and UI elements. Includes a free visual shadow generator.",
-  alternates: { canonical: getSiteUrl() + "/blog/css-box-shadow-guide" },
-  openGraph: {
-    title: "CSS Box Shadow Guide: How to Create Better Shadows",
-    description: "Box-shadow syntax, soft vs strong shadows, UI examples and a free visual generator.",
-  },
-};
+    ogTitle: "CSS Box Shadow Guide: How to Create Better Shadows",
+    ogDescription: "Box-shadow syntax, soft vs strong shadows, UI examples and a free visual generator.",
+});
 
 const FAQS = [
   { question: "What is the CSS box-shadow property?", answer: "box-shadow adds one or more shadow effects around an element's frame. It accepts horizontal offset, vertical offset, blur radius, spread radius, color and an optional inset keyword." },

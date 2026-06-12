@@ -1,21 +1,18 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { ExternalLink } from "@/components/ExternalLink";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-choose-font-pairings-for-a-website", {
   title: "How to Choose Font Pairings for a Website (2026 Guide) | Sounez",
   description:
     "Learn how to combine heading and body fonts for readable, professional and beautiful website typography. With examples and a free font pairing tool.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-choose-font-pairings-for-a-website" },
-  openGraph: {
-    title: "How to Choose Font Pairings for a Website",
-    description: "Font pairing principles, serif vs sans-serif combinations, examples and performance tips.",
-  },
-};
+    ogTitle: "How to Choose Font Pairings for a Website",
+    ogDescription: "Font pairing principles, serif vs sans-serif combinations, examples and performance tips.",
+});
 
 const FAQS = [
   { question: "What makes a good font pairing?", answer: "A good pairing creates contrast between the heading and body font while maintaining visual harmony. The most reliable approach is to pair a distinctive heading font with a highly readable body font." },

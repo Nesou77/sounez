@@ -4,6 +4,8 @@ import { getSiteUrl } from "@/lib/site-url";
 
 const pageUrl = `${getSiteUrl()}/dmca`;
 
+const LAST_UPDATED = "May 26, 2026";
+
 export const metadata: Metadata = {
   title: "DMCA / Copyright | Sounez",
   description: "Copyright policy and takedown process for Sounez.",
@@ -15,6 +17,9 @@ export default function DmcaPage() {
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
       <header className="mb-10">
         <h1 className="text-4xl font-bold tracking-tight">DMCA / Copyright</h1>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Last updated: <time dateTime="2026-05-26">{LAST_UPDATED}</time>
+        </p>
         <p className="mt-4 leading-relaxed text-muted-foreground">
           Sounez respects intellectual property. Our tools let you process files and text you provide - you are
           responsible for having the right to use that material. This page explains what we expect from visitors

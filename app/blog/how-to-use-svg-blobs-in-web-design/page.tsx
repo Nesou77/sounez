@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-use-svg-blobs-in-web-design", {
   title: "How to Use SVG Blobs in Modern Web Design (2026) | Sounez",
   description:
     "Learn how SVG blobs can improve hero sections, cards and backgrounds with lightweight organic shapes. Includes a free SVG blob generator.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-use-svg-blobs-in-web-design" },
-  openGraph: {
-    title: "How to Use SVG Blobs in Modern Web Design",
-    description: "Best use cases for SVG blobs, performance benefits and a free generator.",
-  },
-};
+    ogTitle: "How to Use SVG Blobs in Modern Web Design",
+    ogDescription: "Best use cases for SVG blobs, performance benefits and a free generator.",
+});
 
 const FAQS = [
   { question: "What is an SVG blob?", answer: "An SVG blob is an organic, irregular shape generated as an SVG path. It mimics natural, fluid forms rather than geometric shapes like circles or rectangles." },

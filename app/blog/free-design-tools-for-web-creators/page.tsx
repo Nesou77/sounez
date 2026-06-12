@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("free-design-tools-for-web-creators", {
   title: "Free Design Tools for Web Creators (2026) | Sounez",
   description:
     "Explore free tools for favicons, SVG blobs, font pairings, placeholders, CSS shadows and background patterns. No installs, no accounts.",
-  alternates: { canonical: getSiteUrl() + "/blog/free-design-tools-for-web-creators" },
-  openGraph: {
-    title: "Free Design Tools for Web Creators",
-    description: "Six free browser-based design tools for favicons, blobs, fonts, placeholders, shadows and patterns.",
-  },
-};
+    ogTitle: "Free Design Tools for Web Creators",
+    ogDescription: "Six free browser-based design tools for favicons, blobs, fonts, placeholders, shadows and patterns.",
+});
 
 const FAQS = [
   { question: "Are these tools free to use?", answer: "Yes. The listed tools are free to use, and most do not require an account. Browser and device limits can still affect large files or heavy use." },

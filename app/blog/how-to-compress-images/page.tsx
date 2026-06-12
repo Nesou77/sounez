@@ -1,19 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-compress-images", {
   title: "How to Compress Images Without Losing Quality (2026 Guide) | Sounez",
-  description: "A practical 2026 guide to compressing images for the web. Compare JPG, PNG, WebP, image dimensions, and browser-based privacy.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-compress-images" },
-  openGraph: {
-    title: "How to Compress Images Without Losing Quality",
-    description: "Smaller files can make pages faster. Learn formats, dimensions, and safe browser-based compression.",
-  },
-};
+  description:
+    "A practical 2026 guide to compressing images for the web. Compare JPG, PNG, WebP, image dimensions, and browser-based privacy.",
+    ogTitle: "How to Compress Images Without Losing Quality",
+    ogDescription: "Smaller files can make pages faster. Learn formats, dimensions, and safe browser-based compression.",
+});
 
 const FAQS = [
   { question: "Will compression ruin image quality?", answer: "Not if you choose sensible settings and preview the result. For many web photos, 70-80% JPG quality is a good starting point." },

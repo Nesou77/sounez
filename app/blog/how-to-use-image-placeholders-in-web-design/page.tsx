@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-use-image-placeholders-in-web-design", {
   title: "How to Use Image Placeholders in Web Design (2026) | Sounez",
   description:
     "Learn how image placeholders help with wireframes, mockups, frontend development and layout planning. Includes a free placeholder generator.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-use-image-placeholders-in-web-design" },
-  openGraph: {
-    title: "How to Use Image Placeholders in Web Design",
-    description: "When to use placeholders, SVG vs PNG, common sizes and a free browser-based generator.",
-  },
-};
+    ogTitle: "How to Use Image Placeholders in Web Design",
+    ogDescription: "When to use placeholders, SVG vs PNG, common sizes and a free browser-based generator.",
+});
 
 const FAQS = [
   { question: "What is an image placeholder?", answer: "An image placeholder is a temporary image used during design or development to represent a real image that has not been added yet. It typically shows the dimensions and sometimes a label." },

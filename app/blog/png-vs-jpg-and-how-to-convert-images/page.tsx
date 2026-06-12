@@ -1,22 +1,18 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { ExternalLink } from "@/components/ExternalLink";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("png-vs-jpg-and-how-to-convert-images", {
   title: "PNG vs JPG: Differences and How to Convert Images (2026) | Sounez",
   description:
     "Learn the difference between PNG and JPG images and how to convert PNG files to JPG safely in your browser. No upload required.",
-  alternates: { canonical: getSiteUrl() + "/blog/png-vs-jpg-and-how-to-convert-images" },
-  openGraph: {
-    title: "PNG vs JPG: Differences and How to Convert Images",
-    description:
-      "When to use PNG, when to use JPG, what happens to transparency, and how to convert safely in your browser.",
-  },
-};
+    ogTitle: "PNG vs JPG: Differences and How to Convert Images",
+    ogDescription: "When to use PNG, when to use JPG, what happens to transparency, and how to convert safely in your browser.",
+});
 
 const FAQS = [
   {

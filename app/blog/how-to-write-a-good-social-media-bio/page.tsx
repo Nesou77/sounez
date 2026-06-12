@@ -1,21 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-write-a-good-social-media-bio", {
   title: "How to Write a Good Social Media Bio (2026 Guide) | Sounez",
   description:
     "Learn how to write short, clear and professional bios for Instagram, TikTok, LinkedIn and personal websites. With examples and a free bio generator.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-write-a-good-social-media-bio" },
-  openGraph: {
-    title: "How to Write a Good Social Media Bio",
-    description:
-      "Platform-specific bio examples, character limits, and how to write a bio that makes people follow you.",
-  },
-};
+    ogTitle: "How to Write a Good Social Media Bio",
+    ogDescription: "Platform-specific bio examples, character limits, and how to write a bio that makes people follow you.",
+});
 
 const FAQS = [
   {

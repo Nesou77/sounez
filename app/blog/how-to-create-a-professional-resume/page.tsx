@@ -1,21 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-create-a-professional-resume", {
   title: "How to Create a Professional Resume Online (2026 Guide) | Sounez",
   description:
     "Learn how to structure a clean resume with personal information, summary, experience, education and skills. Export as PDF for free.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-create-a-professional-resume" },
-  openGraph: {
-    title: "How to Create a Professional Resume Online",
-    description:
-      "Resume structure, writing tips, layout advice and a free browser-based resume builder.",
-  },
-};
+    ogTitle: "How to Create a Professional Resume Online",
+    ogDescription: "Resume structure, writing tips, layout advice and a free browser-based resume builder.",
+});
 
 const FAQS = [
   {

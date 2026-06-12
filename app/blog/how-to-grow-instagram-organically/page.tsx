@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-grow-instagram-organically", {
   title: "How to Grow Instagram Organically in 2026 | Sounez",
   description:
     "No paid ads, no follow-unfollow tricks. A real strategy for building an engaged Instagram audience in 2026: niche, content, hashtags and consistency.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-grow-instagram-organically" },
-  openGraph: {
-    title: "How to Grow Instagram Organically in 2026",
-    description: "A real strategy for building an engaged Instagram audience. No ads required.",
-  },
-};
+    ogTitle: "How to Grow Instagram Organically in 2026",
+    ogDescription: "A real strategy for building an engaged Instagram audience. No ads required.",
+});
 
 const FAQS = [
   { question: "How long does organic Instagram growth take?", answer: "With consistent posting and a sharp niche, most accounts see meaningful growth (500-1k followers) within 60-90 days. Viral moments can accelerate this, but don't plan around them." },

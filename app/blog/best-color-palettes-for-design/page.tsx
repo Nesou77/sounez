@@ -1,19 +1,17 @@
-import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("best-color-palettes-for-design", {
   title: "The Best Color Palettes for Modern Design (2026) | Sounez",
-  description: "The principles behind color palettes that just work, for landing pages, apps and brands. Curated palettes, color theory and free tools to build your own.",
-  alternates: { canonical: getSiteUrl() + "/blog/best-color-palettes-for-design" },
-  openGraph: {
-    title: "Best Color Palettes for Modern Design",
-    description: "Palettes that just work, and the principles behind them.",
-  },
-};
+  description:
+    "The principles behind color palettes that just work, for landing pages, apps and brands. Curated palettes, color theory and free tools to build your own.",
+    ogTitle: "Best Color Palettes for Modern Design",
+    ogDescription: "Palettes that just work, and the principles behind them.",
+});
 
 const FAQS = [
   { question: "How many colors should a brand have?", answer: "One primary, one accent, plus 5-7 neutrals (background, surface, border, text variants). That's it. More and you'll lose consistency." },

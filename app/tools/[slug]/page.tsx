@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { toolBySlug, TOOLS } from "@/data/tools";
 import { toolMetadata } from "@/lib/tool-metadata";
 import { ToolJsonLd } from "@/components/ToolJsonLd";
+import { getToolEditorial } from "@/lib/tool-editorial";
 import { getContentDates, formatContentDate } from "@/lib/content-meta";
 import { ToolClientRenderer } from "./ToolClientRenderer";
 
@@ -47,6 +48,8 @@ export default async function Page({
   const tool = toolBySlug(slug);
   if (!tool) notFound();
 
+  const editorial = getToolEditorial(slug);
+
   const rawDates = await getContentDates("tool", slug);
   const dates = rawDates
     ? {
@@ -63,7 +66,7 @@ export default async function Page({
 
   return (
     <>
-      <ToolJsonLd tool={tool} />
+      <ToolJsonLd tool={tool} faqs={editorial.faqs} />
       <ToolClientRenderer slug={slug} tool={tool} dates={dates} />
     </>
   );

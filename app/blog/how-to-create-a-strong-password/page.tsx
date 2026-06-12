@@ -1,19 +1,17 @@
-import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { BlogImage, PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-create-a-strong-password", {
   title: "How to Create a Strong Password You'll Actually Remember (2026) | Sounez",
-  description: "Stop reusing passwords. A simple, modern system for strong, memorable credentials, plus 2FA, password managers and the best free generator.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-create-a-strong-password" },
-  openGraph: {
-    title: "How to Create a Strong Password",
-    description: "A simple system for strong, memorable, never-reused passwords.",
-  },
-};
+  description:
+    "Stop reusing passwords. A simple, modern system for strong, memorable credentials, plus 2FA, password managers and the best free generator.",
+    ogTitle: "How to Create a Strong Password",
+    ogDescription: "A simple system for strong, memorable, never-reused passwords.",
+});
 
 const FAQS = [
   { question: "How long should a password be?", answer: "Aim for 16+ characters with mixed case, numbers and symbols, generated, not invented. For the few you memorize (master passwords), use 20+ character passphrases." },

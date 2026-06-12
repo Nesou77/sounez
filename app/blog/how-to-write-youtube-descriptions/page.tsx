@@ -1,20 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("how-to-write-youtube-descriptions", {
   title: "How to Write Better YouTube Descriptions (2026) | Sounez",
   description:
     "Learn how to write clearer YouTube descriptions with useful summaries, timestamps, links, hashtags, and natural keywords.",
-  alternates: { canonical: getSiteUrl() + "/blog/how-to-write-youtube-descriptions" },
-  openGraph: {
-    title: "How to Write Better YouTube Descriptions",
-    description: "Use summaries, timestamps, links, hashtags, and natural keywords to make descriptions more useful.",
-  },
-};
+    ogTitle: "How to Write Better YouTube Descriptions",
+    ogDescription: "Use summaries, timestamps, links, hashtags, and natural keywords to make descriptions more useful.",
+});
 
 const FAQS = [
   { question: "Do YouTube descriptions affect discovery?", answer: "They can help YouTube and viewers understand the video topic. A clear description is more useful than a blank or copied one, but it does not guarantee rankings." },

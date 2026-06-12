@@ -1,21 +1,17 @@
-﻿import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/site-url";
+﻿import { getSiteUrl } from "@/lib/site-url";
+import { blogMetadata } from "@/lib/blog-metadata";
 import { BlogPostShell } from "@/components/BlogPostShell";
 import { PullQuote } from "@/components/BlogVisual";
 import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
-export const metadata: Metadata = {
+export const metadata = blogMetadata("simple-online-calculator-guide", {
   title: "Simple Online Calculator Guide for Everyday Math | Sounez",
   description:
     "Use this guide to understand quick everyday calculations such as percentages, square roots and basic arithmetic. Includes a free online calculator.",
-  alternates: { canonical: getSiteUrl() + "/blog/simple-online-calculator-guide" },
-  openGraph: {
-    title: "Simple Online Calculator Guide for Everyday Math",
-    description:
-      "Percentages, square roots, basic arithmetic, explained clearly with a free browser calculator.",
-  },
-};
+    ogTitle: "Simple Online Calculator Guide for Everyday Math",
+    ogDescription: "Percentages, square roots, basic arithmetic, explained clearly with a free browser calculator.",
+});
 
 const FAQS = [
   {
