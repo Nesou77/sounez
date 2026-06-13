@@ -7,7 +7,7 @@ import Link from "next/link";
 export const metadata = blogMetadata("how-to-grow-on-tiktok", {
   title: "How to Grow on TikTok: A Creator's Playbook | Sounez",
   description:
-    "A practical TikTok growth guide for : niche, hooks, hashtags, posting schedule, repurposing, and monetization checks.",
+    "A practical TikTok growth guide covering niche selection, hooks, hashtags, posting schedule, repurposing, and monetization checks.",
     ogTitle: "How to Grow on TikTok",
     ogDescription: "A clear framework for planning TikTok content, improving hooks, and checking creator deal estimates.",
 });

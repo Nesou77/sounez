@@ -51,11 +51,15 @@ const packsText = read("data/smartPacks.ts");
 const sitemapText = read("app/sitemap.ts");
 const robotsText = read("app/robots.ts");
 
-const toolSlugs = matchesAll(toolsText, /slug:\s*"([^"]+)"/g);
-const blogSlugs = matchesAll(blogText, /slug:\s*"([^"]+)"/g);
-const packSlugs = matchesAll(packsText, /slug:\s*"([^"]+)"/g);
+// Use more specific regexes to correctly separate tool slugs from category slugs.
+// Tool entries use: slug: "name", name: "...", description: "...", category: "...",
+// Category entries use: slug: "creator-tools", name: "...", description: "..."
 const categorySlugs = matchesAll(toolsText, /slug:\s*"([^"]+)"\s*,\s*name:\s*"[^"]+"\s*,\s*description:/g)
   .filter((slug) => slug.endsWith("-tools"));
+const toolSlugs = matchesAll(toolsText, /slug:\s*"([^"]+)"/g)
+  .filter((slug) => !categorySlugs.includes(slug));
+const blogSlugs = matchesAll(blogText, /slug:\s*"([^"]+)"/g);
+const packSlugs = matchesAll(packsText, /slug:\s*"([^"]+)"/g);
 
 const routes = new Set([
   "/",

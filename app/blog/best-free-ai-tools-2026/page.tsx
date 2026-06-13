@@ -63,13 +63,13 @@ export default function Post() {
         title="Best Free AI Tools for Creators, Students and Small Businesses"
         excerpt="Discover free AI tools that help with captions, bios, study notes, business names, website ideas, and image descriptions - all in your browser, no signup."
       >
-        <h2>Introduction</h2>
+        <h2>Why focused AI tools beat all-in-one suites for everyday tasks</h2>
         <p>
-          AI moved from novelty to daily utility faster than most of us expected., the question
+          AI moved from novelty to daily utility faster than most of us expected. The question
           is not whether to use AI, but which tools actually save time without adding friction. Paid
           suites with dozens of features sound impressive until you realize you only needed one output:
-          a caption, a bio, a study summary, or a shortlist of business names. That&apos;s where focused,
-          focused tools can be easier to use than bloated subscriptions.
+          a caption, a bio, a study summary, or a shortlist of business names. That&apos;s where focused
+          tools are easier to use than bloated subscriptions.
         </p>
         <p>
           This guide focuses on six browser-based AI tools on Sounez that solve real tasks for

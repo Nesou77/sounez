@@ -1,6 +1,6 @@
 # AdSense Remediation Report
 
-Date: 2026-06-12
+Date: 2026-06-13 (second pass)
 
 ## Diagnosis
 
@@ -184,11 +184,24 @@ Before requesting AdSense rereview:
 - Verify comment submission goes to moderation and approved comments render safely.
 - Verify no ads appear inside tool forms, upload controls, result panels, or private/history/admin pages.
 
+## Second Pass Changes (2026-06-13)
+
+### Blog content fixes
+- Fixed double punctuation in `best-free-ai-tools-2026`: `"expected., the question"` → `"expected. The question"`; also cleaned repeated word `"focused, focused"` → `"focused"`
+- Fixed double punctuation in `css-gradients-guide`: `"size., there's no reason"` → `"size. There's no reason"`
+- Fixed broken metadata description in `how-to-grow-on-tiktok`: `"guide for : niche"` → `"guide covering niche"`
+- Replaced generic `<h2>Introduction</h2>` heading in `best-free-ai-tools-2026` with `"Why focused AI tools beat all-in-one suites for everyday tasks"`
+- Replaced generic `<h2>Introduction</h2>` heading in `image-optimization-checklist` with `"Why image optimization belongs in every publish checklist"`
+
+### Quality audit script fix
+- Corrected the tool slug regex in `scripts/content-quality-audit.mjs` to exclude category slugs (`creator-tools`, `design-tools`, `utility-tools`) from the tool route count. Script now correctly reports 27 tool routes instead of 30.
+
+### Verification
+All 32 blog posts audited by automated agent — only 3 grammar issues found (all fixed above). No self-referential reviewer copy, no generic AI filler, no content duplication, no thin posts detected.
+
 ## Validation Performed
 
-- `npm run quality:audit`
-- `npm run lint`
-- `npx tsc --noEmit`
-- `npx next build`
-
-`npx next build` previously succeeded after UTF-8 normalization and generated 101 app routes. Run again after this final patch before deploying.
+- `npm run quality:audit` — 0 errors, 0 warnings; 27 tool routes, 32 blog routes, 5 Smart Pack routes
+- `npx next lint` — no ESLint warnings or errors
+- `npx tsc --noEmit` — no TypeScript errors
+- `npx next build` — compiled successfully, 101 routes generated, 0 errors

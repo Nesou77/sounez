@@ -1,6 +1,6 @@
 # AdSense Content Audit
 
-Date: 2026-06-12
+Date: 2026-06-13 (updated pass)
 
 Scope: Sounez public App Router routes, dynamic tool routes, static blog routes, Smart Pack routes, trust/legal pages, sitemap, robots, metadata helpers, comments, and shared templates.
 
@@ -152,6 +152,19 @@ Noindex / not public inventory:
 - User-specific Smart Pack history was removed from global footer navigation.
 - Tool and blog templates are less cluttered and less repetitive.
 - Comments are supplementary, moderated, and not treated as primary publisher content.
+
+## Pass 2 Findings (2026-06-13)
+
+Additional issues identified and resolved in a second remediation pass:
+
+- Three grammar/punctuation errors found across all 32 blog posts:
+  - `best-free-ai-tools-2026`: double punctuation `expected., the` → `expected. The`; also `focused, focused` → `focused`
+  - `css-gradients-guide`: `size., there's` → `size. There's`
+  - `how-to-grow-on-tiktok`: metadata description `guide for : niche` → `guide covering niche`
+- Two generic `<h2>Introduction</h2>` headings replaced with specific, descriptive headings:
+  - `best-free-ai-tools-2026`: → "Why focused AI tools beat all-in-one suites for everyday tasks"
+  - `image-optimization-checklist`: → "Why image optimization belongs in every publish checklist"
+- Quality audit script bug: category slugs (creator-tools, design-tools, utility-tools) were being counted as tool routes, inflating the "Tool routes" count from 27 to 30. Fixed by filtering category slugs from the tool slug set. Script now correctly reports 27 tool routes.
 
 ## Remaining Manual Checks
 

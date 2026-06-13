@@ -40,7 +40,7 @@ export default function Post() {
         <p>
           CSS gradients have come a long way. What used to require Photoshop exports and heavy image
           files is now a single line of CSS that renders crisply at any resolution, loads instantly,
-          and scales to any screen size., there&apos;s no reason to use a gradient image when CSS
+          and scales to any screen size. There&apos;s no reason to use a gradient image when CSS
           can do it better.
         </p>
         <p>

@@ -1,5 +1,7 @@
 # AdSense Rereview Checklist
 
+Last updated: 2026-06-13
+
 Use this checklist only after deploying the production build.
 
 ## Deployment
@@ -88,10 +90,12 @@ Use this checklist only after deploying the production build.
 
 ## Final Checks
 
-- [ ] Run `npm run quality:audit`.
-- [ ] Run `npm run lint`.
-- [ ] Run `npx tsc --noEmit`.
+- [ ] Run `npm run quality:audit` — expect 0 errors, 0 warnings, 27 tool routes, 32 blog routes.
+- [ ] Run `npm run lint` — expect no ESLint warnings or errors.
+- [ ] Run `npx tsc --noEmit` — expect no TypeScript errors.
 - [ ] Run `npm run build` after closing other Node processes if Prisma DLL locking occurs.
 - [ ] Run `npx next build` as a Next.js-only validation if Prisma generation is already current.
+- [ ] Confirm blog posts in `app/blog/` do not contain `<h2>Introduction</h2>` as a generic heading.
+- [ ] Confirm no self-referential reviewer-facing copy exists on any indexable page.
 - [ ] Check live pages on desktop and mobile.
 - [ ] Request AdSense rereview only after the live site reflects these fixes.

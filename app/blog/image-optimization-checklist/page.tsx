@@ -55,7 +55,7 @@ export default function Post() {
         title="Image Optimization Checklist: Compress, Convert, Rename and Describe Images"
         excerpt="A complete image optimization checklist covering compression, file formats, filenames, alt text, captions, and background cleanup."
       >
-        <h2>Introduction</h2>
+        <h2>Why image optimization belongs in every publish checklist</h2>
         <p>
           Publishing a blog post, product page, or portfolio without optimizing images is like shipping a
           package with extra weight you pay for on every delivery. Unoptimized photos slow your site,
