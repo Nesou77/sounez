@@ -201,3 +201,11 @@ form .google-auto-placed,
 .ad-free-zone .google-auto-placed {
   display: none !important;
 }
+
+/* Cookie consent banner fade-in.
+   animation-fill-mode:both keeps opacity:0 before the delay fires, which
+   prevents the banner from being registered as an LCP candidate while hidden. */
+@keyframes cookieBannerIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

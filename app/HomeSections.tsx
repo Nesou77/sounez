@@ -166,7 +166,7 @@ export function HomeSections() {
               <Layers className="h-5 w-5 text-primary" aria-hidden="true" />
               <h3 className="mt-3 text-lg font-bold">{pack.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{pack.shortDescription}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary-label">
                 Open pack <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden="true" />
               </span>
             </Link>
@@ -218,7 +218,7 @@ export function HomeSections() {
                 </div>
                 <h3 className="mt-4 text-lg font-bold">{category.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{category.description}</p>
-                <span className="mt-4 inline-flex text-sm font-semibold text-primary">
+                <span className="mt-4 inline-flex text-sm font-semibold text-primary-label">
                   Browse {count} tool{count === 1 ? "" : "s"}
                 </span>
               </Link>
@@ -323,7 +323,7 @@ export function HomeSections() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {USE_CASES.map((group) => (
             <div key={group.who} className="rounded-2xl border border-border bg-card p-5 shadow-soft">
-              <h3 className="text-sm font-bold text-primary">{group.who}</h3>
+              <h3 className="text-sm font-bold text-primary-label">{group.who}</h3>
               <ul className="mt-3 space-y-2">
                 {group.jobs.map((job) => (
                   <li key={job} className="flex gap-2 text-xs leading-relaxed text-muted-foreground">

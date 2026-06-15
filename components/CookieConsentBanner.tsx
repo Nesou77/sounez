@@ -10,22 +10,25 @@ import {
   type ConsentChoice,
 } from "@/lib/cookie-consent";
 
+// Applied when the banner appears naturally on first load.
+// animation-fill-mode:both keeps opacity:0 before the 2 s delay fires, so the
+// banner element is in the DOM (no layout shift) but invisible to LCP measurement.
+const DEFERRED_STYLE: React.CSSProperties = {
+  animationName: "cookieBannerIn",
+  animationDuration: "0.35s",
+  animationDelay: "2s",
+  animationTimingFunction: "ease",
+  animationFillMode: "both",
+};
+
 export function CookieConsentBanner() {
-  /**
-   * Three-state machine:
-   *   "pending"  - not yet checked localStorage (SSR + first client tick)
-   *   "hidden"   - user already decided, or we're waiting for LCP to finish
-   *   "visible"  - show the banner
-   */
-  const [state, setState] = useState<"pending" | "hidden" | "visible">("pending");
+  // "visible"   – show with CSS delay (natural first load)
+  // "immediate" – show at once (user reopened settings)
+  // "hidden"    – user already decided, or still checking storage
+  // "pending"   – SSR / first client tick before effect runs
+  const [state, setState] = useState<"pending" | "hidden" | "visible" | "immediate">("pending");
 
   useEffect(() => {
-    let timer: ReturnType<typeof setTimeout> | undefined;
-
-    const showDeferred = () => {
-      timer = setTimeout(() => setState("visible"), 1500);
-    };
-
     const init = () => {
       try {
         let stored = getStoredConsent();
@@ -50,28 +53,27 @@ export function CookieConsentBanner() {
           setState("hidden");
           return;
         }
-        if (typeof window.requestIdleCallback === "function") {
-          window.requestIdleCallback(showDeferred, { timeout: 3000 });
-        } else {
-          showDeferred();
-        }
+        // No prior consent: add element to DOM immediately; CSS handles the
+        // visual delay so the banner never competes with the page LCP element.
+        setState("visible");
       } catch {
-        showDeferred();
+        setState("visible");
       }
     };
 
     init();
 
-    const onOpenSettings = () => setState("visible");
+    // When the user explicitly reopens cookie settings (e.g. from the footer),
+    // show the banner at once without any animation delay.
+    const onOpenSettings = () => setState("immediate");
     window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, onOpenSettings);
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, onOpenSettings);
     };
   }, []);
 
-  if (state !== "visible") return null;
+  if (state === "pending" || state === "hidden") return null;
 
   const persist = (choice: ConsentChoice) => {
     try {
@@ -93,6 +95,7 @@ export function CookieConsentBanner() {
       role="dialog"
       aria-label="Cookie consent"
       aria-modal="false"
+      style={state === "visible" ? DEFERRED_STYLE : undefined}
       className="fixed bottom-0 left-0 right-0 z-[60] border-t border-border bg-card/95 px-4 py-4 shadow-pop backdrop-blur-md sm:bottom-4 sm:left-4 sm:right-auto sm:max-w-md sm:rounded-2xl sm:border"
     >
       <p className="text-sm leading-relaxed text-foreground">
