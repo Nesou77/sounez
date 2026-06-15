@@ -69,6 +69,16 @@ export async function BlogJsonLd({
     blogPosting.dateModified = formatContentDateIso(dates.updatedAt);
   }
 
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog` },
+      { "@type": "ListItem", position: 3, name: title, item: pageUrl },
+    ],
+  };
+
   const faqSchema =
     faqs && faqs.length > 0
       ? {
@@ -90,6 +100,10 @@ export async function BlogJsonLd({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPosting) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
       {faqSchema && (
         <script

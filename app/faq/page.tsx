@@ -86,7 +86,7 @@ const faqGroups = [
     ],
   },
   {
-    title: "Content quality and responsible use",
+    title: "Responsible use",
     items: [
       {
         q: "Why do tool pages include long explanations?",

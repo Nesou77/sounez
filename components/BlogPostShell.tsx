@@ -10,7 +10,7 @@ import { BlogLikeController } from "./blog/BlogLikeController";
 import { AuthorCard } from "./AuthorCard";
 import { BLOG_POSTS } from "@/data/blog";
 import { TOOLS } from "@/data/tools";
-import { sortBlogPostsByPopularity, sortToolsByPopularity } from "@/lib/popularity";
+import { sortBlogPostsByPopularity } from "@/lib/popularity";
 import { getToolIcon } from "@/lib/tool-icons";
 
 export function BlogPostShell({
@@ -27,12 +27,23 @@ export function BlogPostShell({
   ctaTools?: string[];
 }) {
   const post = BLOG_POSTS.find((p) => p.slug === slug)!;
-  const others = sortBlogPostsByPopularity(BLOG_POSTS.filter((p) => p.slug !== slug)).slice(0, 3);
+  const postTags = new Set(post.tags ?? []);
+  const relatedByTag = BLOG_POSTS.filter((p) => p.slug !== slug)
+    .map((p) => ({
+      post: p,
+      score: (p.tags ?? []).filter((tag) => postTags.has(tag)).length,
+    }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || a.post.title.localeCompare(b.post.title))
+    .map((item) => item.post);
+  const fallbackPosts = sortBlogPostsByPopularity(
+    BLOG_POSTS.filter((p) => p.slug !== slug && !relatedByTag.includes(p)),
+  );
+  const others = [...relatedByTag, ...fallbackPosts].slice(0, 3);
   const featuredTools = (ctaTools ?? [])
     .map((s) => TOOLS.find((t) => t.slug === s))
     .filter((t): t is NonNullable<typeof t> => Boolean(t));
   const primaryTools = featuredTools.slice(0, 3);
-  const sidebarTools = sortToolsByPopularity(TOOLS.filter((t) => !primaryTools.includes(t))).slice(0, 5);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -176,12 +187,13 @@ export function BlogPostShell({
 
         <aside className="hidden lg:block">
           <div className="sticky top-24 space-y-6">
+            {primaryTools.length > 0 && (
             <div className="rounded-2xl border border-border bg-card p-5">
               <div className="flex items-center gap-2 text-sm font-semibold">
-                <Wrench className="h-4 w-4 text-primary" /> Popular tools
+                <Wrench className="h-4 w-4 text-primary" /> Tools in this guide
               </div>
               <ul className="mt-3 space-y-1.5">
-                {sidebarTools.map((t) => {
+                {primaryTools.map((t) => {
                   const I = getToolIcon(t.slug);
                   return (
                     <li key={t.slug}>
@@ -198,9 +210,10 @@ export function BlogPostShell({
                 See all tools <ArrowRight className="h-3 w-3" />
               </Link>
             </div>
+            )}
 
             <div className="rounded-2xl border border-border bg-gradient-soft p-5">
-              <div className="text-sm font-semibold">More guides</div>
+              <div className="text-sm font-semibold">Related guides</div>
               <ul className="mt-3 space-y-2">
                 {others.map((p) => (
                   <li key={p.slug}>

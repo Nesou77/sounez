@@ -1,6 +1,6 @@
 # AdSense Content Audit
 
-Date: 2026-06-13 (updated pass)
+Date: 2026-06-15 (updated pass)
 
 Scope: Sounez public App Router routes, dynamic tool routes, static blog routes, Smart Pack routes, trust/legal pages, sitemap, robots, metadata helpers, comments, and shared templates.
 
@@ -172,3 +172,14 @@ Additional issues identified and resolved in a second remediation pass:
 - Verify platform-specific social media articles against current official platform guidance before rereview.
 - Confirm production `NEXT_PUBLIC_SITE_URL`, AdSense publisher ID, and `ads.txt`.
 - Confirm no ad slots are placed inside forms, upload controls, result panels, or dead-end pages.
+
+## Pass 3 Findings (2026-06-15)
+
+- Added centralized noindex/ad eligibility policy in `lib/route-policy.ts`.
+- Updated AdSense loading so admin, API, Smart Pack history, legal, and policy pages do not load ad code.
+- Updated robots generation to read from the shared noindex path policy.
+- Refined blog related links: article sidebars now show only explicit `ctaTools`, and related guides are selected by shared tags before fallback posts.
+- Added/kept breadcrumb structured data for tool and blog pages; visible breadcrumbs are present on tool, blog, category, and Smart Pack pages.
+- Replaced `next lint` with `eslint .` for Next.js 15 and ignored generated build output.
+- Expanded `scripts/content-quality-audit.mjs` to detect obsolete lint setup, reviewer-facing phrases, repeated boilerplate headings, generic blog introductions, noindex routes in sitemap, current-date sitemap fallbacks, duplicate metadata candidates, broken internal route references, owner-input placeholders, and future publication dates.
+- Validation on 2026-06-15: `npm run quality:audit` completed with 0 errors and 0 warnings; `npm run lint` completed with no warnings; `npm run build` completed successfully.

@@ -29,27 +29,13 @@ function matchesAll(text, regex) {
   return [...text.matchAll(regex)].map((m) => m[1]);
 }
 
-function extractObjectsArray(text, name) {
-  const marker = `export const ${name}`;
-  const start = text.indexOf(marker);
-  if (start === -1) return [];
-  const arrayStart = text.indexOf("[", start);
-  if (arrayStart === -1) return [];
-  let depth = 0;
-  for (let i = arrayStart; i < text.length; i += 1) {
-    const ch = text[i];
-    if (ch === "[") depth += 1;
-    if (ch === "]") depth -= 1;
-    if (depth === 0) return text.slice(arrayStart, i + 1);
-  }
-  return [];
-}
-
 const toolsText = read("data/tools.ts");
 const blogText = read("data/blog.ts");
 const packsText = read("data/smartPacks.ts");
 const sitemapText = read("app/sitemap.ts");
 const robotsText = read("app/robots.ts");
+const routePolicyText = read("lib/route-policy.ts");
+const packageText = read("package.json");
 
 // Use more specific regexes to correctly separate tool slugs from category slugs.
 // Tool entries use: slug: "name", name: "...", description: "...", category: "...",
@@ -94,8 +80,20 @@ for (const route of noindexRoutes) {
   }
 }
 for (const route of ["/admin/", "/api/", "/smart-packs/history"]) {
-  if (!robotsText.includes(route)) {
+  const routeWithoutTrailingSlash = route.replace(/\/$/, "");
+  if (!robotsText.includes(route) && !routePolicyText.includes(routeWithoutTrailingSlash)) {
     add("warn", `robots.ts does not explicitly disallow ${route}`, "app/robots.ts");
+  }
+}
+if (packageText.includes('"lint": "next lint"')) {
+  add("error", "package.json still uses removed Next.js lint command; use eslint with the flat config.", "package.json");
+}
+for (const phrase of ["Built to avoid thin content", "not thin content", "low value content"]) {
+  for (const file of walk("app", (item) => item.endsWith(".tsx")).concat(walk("components", (item) => item.endsWith(".tsx")))) {
+    const rel = path.relative(root, file).replaceAll("\\", "/");
+    if (fs.readFileSync(file, "utf8").toLowerCase().includes(phrase.toLowerCase())) {
+      add("error", `Reviewer-facing phrase found: "${phrase}"`, rel);
+    }
   }
 }
 
@@ -124,11 +122,8 @@ for (const post of blogText.matchAll(/slug:\s*"([^"]+)"[\s\S]*?publishedAt:\s*"(
   if (published > today) add("error", `Blog post ${slug} has future publishedAt ${published}`, "data/blog.ts");
 }
 
-for (const slug of toolSlugs) {
-  if (!fs.existsSync(path.join(root, "app/tools/[slug]/ToolClientRenderer.tsx"))) {
-    add("error", "Dynamic tool renderer file is missing.", "app/tools/[slug]/ToolClientRenderer.tsx");
-    break;
-  }
+if (toolSlugs.length > 0 && !fs.existsSync(path.join(root, "app/tools/[slug]/ToolClientRenderer.tsx"))) {
+  add("error", "Dynamic tool renderer file is missing.", "app/tools/[slug]/ToolClientRenderer.tsx");
 }
 
 const tsxFiles = walk("app", (file) => file.endsWith(".tsx")).concat(
@@ -145,6 +140,15 @@ for (const file of tsxFiles) {
     /<BlogPostShell|<CategoryPage|<ContactClient|<HomeHero|<ToolsClient|<SmartPacksIndex|<PngToJpgClient/.test(text);
   if (rel.endsWith("/page.tsx") && !rel.includes("[slug]") && !rel.startsWith("app/api/") && h1Count === 0 && !rendersKnownPageShell) {
     add("warn", "Static page file has no visible <h1> in the file; verify it is rendered by an imported component.", rel);
+  }
+  if (rel.startsWith("app/blog/") && /<h2>\s*Introduction\s*<\/h2>/i.test(text)) {
+    add("warn", "Blog post uses generic <h2>Introduction</h2>; replace with a specific heading.", rel);
+  }
+  if (/Before you use this guide|What to take away|What to verify|What to save|Editorial note/.test(text)) {
+    add("warn", "Repeated blog boilerplate phrase found.", rel);
+  }
+  if (/Before you copy or download|If the result looks off|Content quality and responsible use|Community standards/.test(text)) {
+    add("warn", "Repeated tool boilerplate phrase found.", rel);
   }
   for (const href of text.matchAll(/href=["'](\/[^"'#?]+)["']/g)) {
     internalLinks.add(href[1].replace(/\/$/, "") || "/");

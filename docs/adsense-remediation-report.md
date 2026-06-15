@@ -1,6 +1,6 @@
 # AdSense Remediation Report
 
-Date: 2026-06-13 (second pass)
+Date: 2026-06-15 (third pass)
 
 ## Diagnosis
 
@@ -148,10 +148,10 @@ Key files:
 
 ## Unresolved Items
 
-- `npm run build` may still fail on some Windows sessions if Prisma cannot rename `node_modules/.prisma/client/query_engine-windows.dll.node` because another Node process is holding the DLL. Running `npx next build` validates the Next.js app successfully.
 - The exact public author/business identity remains "Nesou" because no fuller verified identity was provided.
 - Some platform-specific social media articles still require manual review against current official platform behavior before resubmitting to AdSense.
 - Functional browser testing of all 30 tools was not fully automated in this pass.
+- `npm install` reports 3 dependency audit vulnerabilities (2 moderate, 1 high). They were not auto-fixed during content remediation.
 
 ## Owner Input Required
 
@@ -199,9 +199,27 @@ Before requesting AdSense rereview:
 ### Verification
 All 32 blog posts audited by automated agent — only 3 grammar issues found (all fixed above). No self-referential reviewer copy, no generic AI filler, no content duplication, no thin posts detected.
 
+## Third Pass Changes (2026-06-15)
+
+### Route policy and ads
+- Added `lib/route-policy.ts` to centralize noindex and ad-excluded paths.
+- Updated `app/robots.ts` to use the shared noindex path policy.
+- Updated `components/AdSenseScript.tsx` so ad code does not load on admin, API, Smart Pack history, legal, or policy pages.
+
+### Blog linking and structured data
+- Updated `components/BlogPostShell.tsx` so article sidebars show only tools explicitly passed through `ctaTools`.
+- Related articles are now selected by shared tags before fallback posts, reducing unrelated cross-linking.
+- Preserved breadcrumb JSON-LD additions in `components/BlogJsonLd.tsx` and `components/ToolJsonLd.tsx`.
+
+### Validation tooling
+- Replaced `next lint` with `eslint .` in `package.json` for Next.js 15.
+- Added generated-output ignores to `eslint.config.mjs`.
+- Expanded `scripts/content-quality-audit.mjs` to catch obsolete lint setup, reviewer-facing "thin content" phrases, repeated boilerplate headings, generic blog introductions, noindex routes in the sitemap, duplicate metadata candidates, owner-input placeholders, broken internal route references, and future publication dates.
+- Renamed the FAQ group "Content quality and responsible use" to "Responsible use" so it no longer resembles the removed repeated tool-page boilerplate heading.
+
 ## Validation Performed
 
+- `npm install` — completed; dependencies were already up to date; npm reported 3 audit vulnerabilities (2 moderate, 1 high).
 - `npm run quality:audit` — 0 errors, 0 warnings; 27 tool routes, 32 blog routes, 5 Smart Pack routes
-- `npx next lint` — no ESLint warnings or errors
-- `npx tsc --noEmit` — no TypeScript errors
-- `npx next build` — compiled successfully, 101 routes generated, 0 errors
+- `npm run lint` — no ESLint warnings or errors
+- `npm run build` — compiled successfully, generated Prisma client, and generated 101 routes. Prisma emitted a deprecation warning for `package.json#prisma`, but the build passed.

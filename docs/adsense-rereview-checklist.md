@@ -1,6 +1,6 @@
 # AdSense Rereview Checklist
 
-Last updated: 2026-06-13
+Last updated: 2026-06-15
 
 Use this checklist only after deploying the production build.
 
@@ -75,6 +75,7 @@ Use this checklist only after deploying the production build.
 - [ ] Confirm AdSense verification code remains present if the publisher ID is valid.
 - [ ] Confirm ads are visually distinguishable from navigation, tool controls, upload buttons, and download buttons.
 - [ ] Confirm no ad appears inside a form, upload zone, result panel, or "dead end" screen.
+- [ ] Confirm ads do not load on `/admin/*`, `/api/*`, `/smart-packs/history`, legal, or policy pages.
 - [ ] Confirm the site remains usable if ads do not load.
 - [ ] Confirm mobile pages are not dominated by ad space above the main content.
 - [ ] Confirm cookie consent appears and can be changed from the footer.
@@ -95,6 +96,7 @@ Use this checklist only after deploying the production build.
 - [ ] Run `npx tsc --noEmit` — expect no TypeScript errors.
 - [ ] Run `npm run build` after closing other Node processes if Prisma DLL locking occurs.
 - [ ] Run `npx next build` as a Next.js-only validation if Prisma generation is already current.
+- [ ] Review `npm install` / `npm audit` output and decide whether dependency vulnerability updates are needed before deployment.
 - [ ] Confirm blog posts in `app/blog/` do not contain `<h2>Introduction</h2>` as a generic heading.
 - [ ] Confirm no self-referential reviewer-facing copy exists on any indexable page.
 - [ ] Check live pages on desktop and mobile.
