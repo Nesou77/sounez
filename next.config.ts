@@ -125,11 +125,40 @@ const nextConfig: NextConfig = {
     return config;
   },
   async redirects() {
-    return LEGACY_TOOL_SLUGS.map((slug) => ({
-      source: `/${slug}`,
-      destination: `/tools/${slug}`,
-      permanent: true,
-    }));
+    return [
+      ...LEGACY_TOOL_SLUGS.map((slug) => ({
+        source: `/${slug}`,
+        destination: `/tools/${slug}`,
+        permanent: true,
+      })),
+      // Canonical host enforcement: www.sounez.com is the only canonical
+      // host. Any request to the apex domain (sounez.com) — on any
+      // protocol — is sent straight to the HTTPS www origin in a single
+      // hop, never through an intermediate non-canonical URL.
+      // ":path*" preserves the full path, query string and trailing
+      // slash exactly as requested.
+      // statusCode: 301 (rather than `permanent: true`, which Next.js
+      // maps to 308) to match the required permanent-redirect semantics.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "sounez.com" }],
+        destination: "https://www.sounez.com/:path*",
+        statusCode: 301,
+      },
+      // Defense in depth: if a plain-HTTP request to the www host ever
+      // reaches the app (e.g. on a host that doesn't terminate/upgrade
+      // TLS at the edge the way Vercel does for the apex rule above),
+      // upgrade it to HTTPS in one hop too.
+      {
+        source: "/:path*",
+        has: [
+          { type: "host", value: "www.sounez.com" },
+          { type: "header", key: "x-forwarded-proto", value: "http" },
+        ],
+        destination: "https://www.sounez.com/:path*",
+        statusCode: 301,
+      },
+    ];
   },
 
   async headers() {
