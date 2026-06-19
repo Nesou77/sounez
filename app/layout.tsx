@@ -91,8 +91,16 @@ export default function RootLayout({
             />
           </>
         ) : null}
-        {/* Google Consent Mode v2 - inline so it runs before GTM without Next.js beforeInteractive overhead */}
+        {/* Google Consent Mode v2 — runs before GTM so defaults are in place when the container loads */}
         <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});` }} />
+        {/* GTM head snippet — always in HTML so Google can detect the tag; hostname guard blocks non-production URLs */}
+        {process.env.NEXT_PUBLIC_GTM_ID?.trim() ? (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){if(window.location.hostname!=='www.sounez.com')return;(window.dataLayer=window.dataLayer||[]).push({'gtm.start':new Date().getTime(),event:'gtm.js'});var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtm.js?id=${process.env.NEXT_PUBLIC_GTM_ID!.trim()}';document.head.appendChild(s);})();`,
+            }}
+          />
+        ) : null}
         <AdSenseScript />
       </head>
       <body>
