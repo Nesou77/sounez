@@ -176,7 +176,7 @@ export default function FaqPage() {
             <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card">
               {group.items.map((item) => (
                 <details key={item.q} className="group p-5">
-                  <summary tabIndex={-1} className="cursor-pointer list-none font-semibold marker:hidden">
+                  <summary className="cursor-pointer list-none font-semibold marker:hidden">
                     {item.q}
                   </summary>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.a}</p>

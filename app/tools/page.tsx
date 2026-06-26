@@ -100,7 +100,7 @@ export default function ToolsPage() {
           <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card">
             {TOOLS_FAQS.map((faq) => (
               <details key={faq.q} className="group p-5">
-                <summary tabIndex={-1} className="cursor-pointer list-none font-semibold marker:hidden">
+                <summary className="cursor-pointer list-none font-semibold marker:hidden">
                   {faq.q}
                 </summary>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{faq.a}</p>

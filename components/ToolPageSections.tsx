@@ -139,7 +139,7 @@ export const ToolPageSections = memo(function ToolPageSections({ tool }: { tool:
         <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card">
           {faqsList.map((f) => (
             <details key={f.q} className="group p-5">
-              <summary tabIndex={-1} className="cursor-pointer list-none font-semibold marker:hidden">
+              <summary className="cursor-pointer list-none font-semibold marker:hidden">
                 {f.q}
               </summary>
               <p className="mt-2 text-sm text-muted-foreground">{f.a}</p>

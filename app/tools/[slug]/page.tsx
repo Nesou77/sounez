@@ -6,6 +6,7 @@ import { ToolJsonLd } from "@/components/ToolJsonLd";
 import { getToolEditorial } from "@/lib/tool-editorial";
 import { getContentDates, formatContentDate } from "@/lib/content-meta";
 import { ToolClientRenderer } from "./ToolClientRenderer";
+import { ToolPageSections } from "@/components/ToolPageSections";
 
 export function generateStaticParams() {
   return TOOLS.map((t) => ({ slug: t.slug }));
@@ -68,6 +69,9 @@ export default async function Page({
     <>
       <ToolJsonLd tool={tool} faqs={editorial.faqs} />
       <ToolClientRenderer slug={slug} tool={tool} dates={dates} />
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <ToolPageSections tool={tool} />
+      </div>
     </>
   );
 }

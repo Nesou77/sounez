@@ -8,7 +8,6 @@ import { getToolIcon } from "@/lib/tool-icons";
 import { AlertTriangle } from "lucide-react";
 import { getToolDisclaimer } from "@/lib/tool-disclaimers";
 import { getToolEditorial } from "@/lib/tool-editorial";
-import { ToolPageSections } from "./ToolPageSections";
 import { useToolDates } from "./ToolDatesProvider";
 
 const EngagementBar = dynamic(
@@ -110,7 +109,6 @@ export const ToolPageShell = memo(function ToolPageShell({
         {children}
       </section>
 
-      <ToolPageSections tool={tool} />
     </article>
   );
 });

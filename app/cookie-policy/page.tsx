@@ -77,11 +77,12 @@ export default function CookiePolicyPage() {
         <section>
           <h2 className="text-lg font-bold text-foreground">Google AdSense cookies (optional)</h2>
           <p className="mt-2">
-            Sounez includes the Google AdSense script globally so Google can verify the site and serve ads.
-            Until you accept cookies, Google Consent Mode keeps advertising storage and personalization denied.
-            If you accept cookies, Google AdSense may set cookies or use similar technologies to serve and
-            measure ads on Sounez. Google may use cookies to show ads based on your prior visits to this site
-            or other sites, depending on your settings and region.
+            Sounez includes the Google AdSense script on most pages (excluding admin, API, and legal
+            pages such as this one) so Google can verify the site and serve ads. Until you accept
+            cookies, Google Consent Mode keeps advertising storage and personalization denied. If you
+            accept cookies, Google AdSense may set cookies or use similar technologies to serve and
+            measure ads on Sounez. Google may use cookies to show ads based on your prior visits to
+            this site or other sites, depending on your settings and region.
           </p>
           <p className="mt-2">
             Learn more in{" "}

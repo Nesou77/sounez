@@ -178,7 +178,7 @@ export default function PrivacyPolicyPage() {
               To change your cookie choices on Sounez, use{" "}
               <strong className="text-foreground">Cookie settings</strong> in the site footer at any
               time. Your choice is stored in your browser&apos;s local storage under the key{" "}
-              <code className="rounded bg-muted px-1 py-0.5 text-xs">sounez_cookie_consent</code>.
+              <code className="rounded bg-muted px-1 py-0.5 text-xs">sounez_cookie_consent_v1</code>.
               Smart Pack history uses an httpOnly cookie named{" "}
               <code className="rounded bg-muted px-1 py-0.5 text-xs">sounez_sp_visitor</code> so we
               can show only your saved generations on this browser.
@@ -262,8 +262,9 @@ export default function PrivacyPolicyPage() {
               cookies are set, no personal data is shared with Google for advertising or analytics
               purposes, and only non-personalized ads may be shown until consent is updated. Google
               may use cookieless pings and conversion modeling in this state, which do not involve
-              personal data. You can manage your consent preferences at any time through your
-              browser settings or via the opt-out links above.
+              personal data. You can manage your consent preferences at any time using{" "}
+              <strong className="text-foreground">Cookie settings</strong> in the site footer,
+              through your browser settings, or via the opt-out links above.
             </p>
           </div>
         </section>
