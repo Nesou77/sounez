@@ -241,7 +241,7 @@ export default function Post() {
         <ul>
           <li>You need multi-turn conversation — iterating on the same draft several times</li>
           <li>The task requires reasoning across a long document you paste in full</li>
-          <li>You need to combine tasks in a single prompt ("write a caption, then turn it into a hook, then suggest five hashtags based on the hook")</li>
+          <li>You need to combine tasks in a single prompt (&ldquo;write a caption, then turn it into a hook, then suggest five hashtags based on the hook&rdquo;)</li>
           <li>You are building a custom workflow, script, or code output</li>
           <li>You need consistent outputs across a large batch with a specific system prompt</li>
         </ul>

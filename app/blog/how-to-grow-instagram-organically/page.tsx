@@ -63,7 +63,7 @@ export default function Post() {
         </p>
         <p>
           The other lesson: your profile bio is the first thing a new visitor reads, and most people
-          underestimate how much it matters. A vague bio ("creator, maker, digital nomad") loses people
+          underestimate how much it matters. A vague bio (&ldquo;creator, maker, digital nomad&rdquo;) loses people
           in three seconds. A specific bio that says exactly what you do and who you do it for earns
           follows. I use the <Link href="/tools/bio-generator">Bio Generator</Link> as a starting point
           whenever I am updating the Sounez bio for a new platform — it produces platform-aware drafts

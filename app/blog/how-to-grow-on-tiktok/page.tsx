@@ -51,8 +51,8 @@ export default function Post() {
           When I started distributing Sounez content on short-form video, the first instinct was to
           show the tools — screen recordings, feature walkthroughs, demo outputs. Those videos got
           almost no traction. The ones that did land were framed around the problem, not the product.
-          "Here is how I generate 20 YouTube tags in 10 seconds" outperformed "Here is the YouTube
-          Tags Generator" every time.
+          &ldquo;Here is how I generate 20 YouTube tags in 10 seconds&rdquo; outperformed &ldquo;Here is the YouTube
+          Tags Generator&rdquo; every time.
         </p>
         <p>
           The second lesson was about hooks. I tested a lot of opening lines before finding what
