@@ -161,6 +161,14 @@ export default function AboutPage() {
               >
                 Say hello
               </Link>
+              <a
+                href="https://github.com/Nesou77"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-primary/40"
+              >
+                GitHub
+              </a>
             </div>
           </div>
         </div>

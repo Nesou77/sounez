@@ -50,35 +50,19 @@ const USE_CASES = [
 const HOME_FAQS = [
   {
     q: "Do I need an account to use Sounez?",
-    a: "No. Most tools work without any sign-up. Open the page, use the tool, and close it. Fair-use rate limits apply on AI-powered features like captions, study notes, and Smart Packs to keep the service available for everyone.",
+    a: "No. Most tools work without sign-up. Open a page, use the tool, and close it when you are done.",
   },
   {
-    q: "Are the tools actually free?",
-    a: "Yes. Sounez is ad-supported using Google AdSense, which allows all core tools to remain free. There are no paid tiers, no credits, and no subscription required for normal individual use.",
-  },
-  {
-    q: "Which tools upload files to a server?",
-    a: "Browser-only tools — image compressor, PNG to JPG, background remover, QR code generator, word counter, calculator, password generator, text case converter, color palette, CSS gradient, favicon, SVG blob, box shadow, background pattern, image placeholder, and font pairing — never send data to Sounez servers. Server-backed tools — PDF to Word converter, AI caption, bio, business name, website idea, study notes, and image describer — explain exactly what is processed and for how long on each tool page.",
+    q: "Are the tools free?",
+    a: "Yes. Sounez is free for normal use. Advertising helps keep core tools available without a subscription.",
   },
   {
     q: "What is a Smart Pack?",
-    a: "A Smart Pack is a structured AI workflow that takes one brief and returns several related text fields at once — for example, a caption, first comment, hashtags, alt text, and posting note from a single social media description. It saves time when multiple pieces of content need to match each other.",
+    a: "A Smart Pack turns one brief into several related drafts — for example a caption, hashtags, and alt text from a single post idea.",
   },
   {
-    q: "Can I use generated content commercially?",
-    a: "Yes, after reviewing and editing it. You are responsible for verifying that AI-generated text is accurate, does not infringe on any rights, and complies with the platform or legal context in which you publish it. Design outputs such as palettes, gradients, and CSS code are yours to use in any project.",
-  },
-  {
-    q: "How is my privacy protected?",
-    a: "Browser tools process everything locally; no data leaves your device. Server tools receive only the content needed to complete the request and do not store it beyond the response. See the Privacy Policy for the full breakdown, and the Cookie Policy for how advertising and analytics storage is handled.",
-  },
-  {
-    q: "What happens to comments I post on tool pages?",
-    a: "Comments go into a moderation queue and are reviewed before appearing publicly. Automated filters block clearly prohibited content before it reaches the queue. Moderated comments that are approved appear on the tool page and are visible to all visitors. You can report any approved comment with the flag icon.",
-  },
-  {
-    q: "Are AI outputs always accurate?",
-    a: "No. AI tools can produce plausible-sounding but incorrect information, especially for specific facts, dates, prices, and claims. Always read generated text before publishing, and verify any fact that another person or system will rely on.",
+    q: "Which tools send data to a server?",
+    a: "Many design and utility tools run entirely in your browser. AI and PDF tools explain on each page when a server step is used.",
   },
 ];
 
@@ -378,6 +362,13 @@ export function HomeSections() {
             </details>
           ))}
         </div>
+        <p className="mt-5 text-center text-sm text-muted-foreground">
+          More answers about privacy, cookies, AI output, and responsible use on the{" "}
+          <Link href="/faq" className="font-medium text-primary hover:underline">
+            full FAQ page
+          </Link>
+          .
+        </p>
       </section>
 
       <section className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">

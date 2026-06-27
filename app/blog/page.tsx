@@ -44,7 +44,10 @@ export default function BlogPage() {
         <h2 className="text-lg font-semibold text-center">What we write about</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground text-center">
           Guides are written for people who use Sounez tools in real workflows - not generic listicles.
-          Each article links to the tool it mentions so you can follow along.
+          Each article links to the tool it mentions so you can follow along and apply the advice right away.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground text-center">
+          The topics range from practical design choices and image workflows to social strategy, productivity habits, and study techniques. They are meant to be useful on the day you need them, not just searchable later.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-border bg-card p-4">

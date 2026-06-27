@@ -131,6 +131,13 @@ const nextConfig: NextConfig = {
         destination: `/tools/${slug}`,
         permanent: true,
       })),
+      // Merged blog post: free-design-tools-for-non-designers was absorbed into
+      // free-design-tools-for-web-creators (which now covers all 11 tools).
+      {
+        source: "/blog/free-design-tools-for-non-designers",
+        destination: "/blog/free-design-tools-for-web-creators",
+        permanent: true,
+      },
       // Canonical host enforcement: www.sounez.com is the only canonical
       // host. Any request to the apex domain (sounez.com) — on any
       // protocol — is sent straight to the HTTPS www origin in a single

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import dynamic from "next/dynamic";
 import "./globals.css";
@@ -85,6 +86,7 @@ export default function RootLayout({
             <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossOrigin="anonymous" />
             <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
             <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+            {/* Site ownership verification for AdSense (works without loading ad scripts or cookie consent) */}
             <meta
               name="google-adsense-account"
               content={process.env.NEXT_PUBLIC_ADSENSE_PUB_ID}
@@ -92,14 +94,14 @@ export default function RootLayout({
           </>
         ) : null}
         {/* Google Consent Mode v2 — runs before GTM so defaults are in place when the container loads */}
-        <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});` }} />
+        <Script id="google-consent-default" strategy="beforeInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});`}
+        </Script>
         {/* GTM head snippet — always in HTML so Google can detect the tag; hostname guard blocks non-production URLs */}
         {process.env.NEXT_PUBLIC_GTM_ID?.trim() ? (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(function(){if(window.location.hostname!=='www.sounez.com')return;(window.dataLayer=window.dataLayer||[]).push({'gtm.start':new Date().getTime(),event:'gtm.js'});var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtm.js?id=${process.env.NEXT_PUBLIC_GTM_ID!.trim()}';document.head.appendChild(s);})();`,
-            }}
-          />
+          <Script id="google-gtm-head" strategy="afterInteractive">
+            {`(function(){if(window.location.hostname!=='www.sounez.com')return;(window.dataLayer=window.dataLayer||[]).push({'gtm.start':new Date().getTime(),event:'gtm.js'});var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtm.js?id=${process.env.NEXT_PUBLIC_GTM_ID!.trim()}';document.head.appendChild(s);})();`}
+          </Script>
         ) : null}
         <AdSenseScript />
       </head>

@@ -179,8 +179,8 @@ export default function CategoriesPage() {
               a: "Use the flag icon on a comment, the contact page for general feedback, or the DMCA page for copyright concerns. Each category page also has a comment section on individual tool pages for tool-specific questions.",
             },
             {
-              q: "Are categories used by Google AdSense or for targeting?",
-              a: "Categories determine which page a tool appears on, not advertising targeting. Sounez uses Google AdSense to display contextual ads based on page content; the category label is part of that page context but is not a separate targeting segment we create or sell.",
+              q: "How do I know whether a tool runs locally or on a server?",
+              a: "Open the tool page and read the privacy note near the top of the content section. Browser-only tools never upload your files; server-backed tools explain what is processed and for how long.",
             },
           ].map((faq) => (
             <details key={faq.q} className="group p-5">

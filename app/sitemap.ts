@@ -40,6 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/cookie-policy",    slug: "cookie-policy",    date: "2026-05-26", changeFreq: "monthly" as const, priority: 0.3 },
     { path: "/terms-of-service", slug: "terms-of-service", date: "2026-05-26", changeFreq: "monthly" as const, priority: 0.3 },
     { path: "/dmca",             slug: "dmca",             date: "2026-05-26", changeFreq: "monthly" as const, priority: 0.3 },
+    { path: "/editorial-policy", slug: "editorial-policy", date: "2026-06-27", changeFreq: "yearly"  as const, priority: 0.3 },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = await Promise.all(

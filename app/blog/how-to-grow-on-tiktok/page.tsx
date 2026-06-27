@@ -46,6 +46,29 @@ export default function Post() {
           testing a niche, improving your first few seconds, and learning from the numbers you can see.
         </p>
 
+        <h2>What I found when experimenting with TikTok for Sounez</h2>
+        <p>
+          When I started distributing Sounez content on short-form video, the first instinct was to
+          show the tools — screen recordings, feature walkthroughs, demo outputs. Those videos got
+          almost no traction. The ones that did land were framed around the problem, not the product.
+          "Here is how I generate 20 YouTube tags in 10 seconds" outperformed "Here is the YouTube
+          Tags Generator" every time.
+        </p>
+        <p>
+          The second lesson was about hooks. I tested a lot of opening lines before finding what
+          worked for a tool-based account: starting mid-task (already in the tool, already generating
+          output) performed better than any intro slide or talking-head opener. Viewers decide in the
+          first second whether a video is for them. A tool doing something interesting in frame makes
+          that decision easy.
+        </p>
+        <p>
+          The niche clarity lesson was the most important: &quot;free browser tools&quot; is not a TikTok
+          niche. &quot;Free tools that save creators an hour a week&quot; is — it is specific, it names an
+          audience (creators), and it promises something concrete (an hour). That single reframe
+          changed which videos resonated and why. If you are building a brand account, spend time on
+          your niche sentence before you spend time on production.
+        </p>
+
         <h2>1. Pick a tight niche (and stay there for at least 30 videos)</h2>
         <p>
           Strong accounts usually pick a sharp angle and stick to it. &quot;Productivity for ADHD

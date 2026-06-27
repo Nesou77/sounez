@@ -8,9 +8,9 @@ import { ArrowRight, HelpCircle } from "lucide-react";
 const pageUrl = `${getSiteUrl()}/faq`;
 
 export const metadata: Metadata = {
-  title: "Sounez FAQ | Tools, Smart Packs, Privacy, Ads and Content Quality",
+  title: "Sounez FAQ | Tools, Smart Packs, Privacy and Responsible Use",
   description:
-    "Answers about Sounez tools, Smart Packs, privacy, cookies, generated content, AdSense-supported pages, and responsible use.",
+    "Answers about Sounez tools, Smart Packs, privacy, cookies, generated content, and responsible use.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Sounez FAQ",
@@ -89,8 +89,8 @@ const faqGroups = [
     title: "Responsible use",
     items: [
       {
-        q: "Why do tool pages include long explanations?",
-        a: "A tool page should provide value even before someone uses the form. Sounez pages explain what a tool does, who it helps, how to use it, common mistakes, privacy limits, examples, related tools, and frequently asked questions.",
+        q: "Why do tool pages include guides and examples?",
+        a: "Each tool page explains what the tool does, who it helps, how to use it, common mistakes, privacy limits, and related next steps. That context helps you decide whether the tool fits your task before you upload a file or paste sensitive text.",
       },
       {
         q: "Can I upload copyrighted files?",

@@ -20,6 +20,8 @@ export type SmartPackDefinition = {
   relatedTools: { href: string; label: string }[];
   relatedPack?: { href: string; label: string };
   safetyNote: string;
+  briefGuidance: string;
+  reviewChecklist: string[];
   seo: {
     title: string;
     description: string;
@@ -200,6 +202,14 @@ export const SMART_PACKS: SmartPackDefinition[] = [
     relatedPack: { href: "/smart-packs/product-listing-pack", label: "Product Listing Pack" },
     safetyNote:
       "Your brief is sent to our AI provider to generate the pack. Do not include passwords or private customer data. Review all copy before publishing.",
+    briefGuidance:
+      "Describe the post topic, audience, offer or event, and the action you want readers to take. Mention the platform if tone matters — a LinkedIn update reads differently from a TikTok caption. Include exact prices, dates, and links when they must appear in the final copy.",
+    reviewChecklist: [
+      "Confirm prices, dates, links, and phone numbers match your real offer.",
+      "Check that the caption fits the image or video you plan to publish.",
+      "Remove hashtags that look banned, irrelevant, or off-brand for your niche.",
+      "Read the caption aloud and rewrite anything that sounds generic or unlike your voice.",
+    ],
     seo: {
       title: "Social Media Pack | Sounez Smart Packs",
       description:
@@ -309,6 +319,14 @@ export const SMART_PACKS: SmartPackDefinition[] = [
     ],
     relatedPack: { href: "/smart-packs/seo-image-pack", label: "SEO Image Pack" },
     safetyNote: "Listing briefs are processed by AI on our servers. Verify specs and claims before publishing.",
+    briefGuidance:
+      "Include the product name, category, materials, dimensions, shipping time, returns policy, and the main problem it solves for the buyer. Name your marketplace when character limits matter — Etsy titles behave differently from Amazon-style bullets.",
+    reviewChecklist: [
+      "Verify every size, material, warranty, and shipping claim against the real product.",
+      "Rewrite supplier copy in your own words instead of pasting generated text unchanged.",
+      "Check SEO fields against marketplace character limits before saving the listing.",
+      "Make sure alt text describes the actual photo, not keyword lists.",
+    ],
     seo: {
       title: "Product Listing Pack | Sounez Smart Packs",
       description:
@@ -401,6 +419,14 @@ export const SMART_PACKS: SmartPackDefinition[] = [
     ],
     relatedPack: { href: "/smart-packs/social-media-pack", label: "Social Media Pack" },
     safetyNote: "Text briefs are processed by AI. No image files are stored from this form.",
+    briefGuidance:
+      "Describe what the image shows, where it will appear on the page, and the search phrase or product name you want to support. Include brand voice, location, or audience when the alt text needs context beyond the visible subject.",
+    reviewChecklist: [
+      "Read alt text once without seeing the image — it should still make sense.",
+      "Remove keyword stuffing and keep filenames readable for humans.",
+      "Check caption and on-page copy against the actual photo subject.",
+      "Confirm meta description length fits your CMS or theme limits.",
+    ],
     seo: {
       title: "SEO Image Pack | Sounez Smart Packs",
       description:
@@ -482,6 +508,14 @@ export const SMART_PACKS: SmartPackDefinition[] = [
     ],
     relatedPack: { href: "/smart-packs/social-media-pack", label: "Social Media Pack" },
     safetyNote: "Briefs are processed by AI. Do not submit confidential client data without permission.",
+    briefGuidance:
+      "Explain the business idea, target customer, location, price range, and what makes the offer different. If you need names or taglines, say whether you prefer short, descriptive, or playful wording and note any words to avoid.",
+    reviewChecklist: [
+      "Search trademark registers and social handles before using a generated business name.",
+      "Make sure bios and taglines match what you actually sell today.",
+      "Edit launch copy so claims, prices, and locations are truthful.",
+      "Remove any name or slogan that is too similar to an existing brand in your market.",
+    ],
     seo: {
       title: "Business Launch Pack | Sounez Smart Packs",
       description:
@@ -562,6 +596,14 @@ export const SMART_PACKS: SmartPackDefinition[] = [
     studyDisclaimer:
       "Use this pack for learning and revision. Do not use it to cheat, impersonate someone, or submit work you did not create.",
     safetyNote: "Study briefs are processed by AI. Follow your school's academic integrity rules.",
+    briefGuidance:
+      "State the topic, course level, source material, and what you need most — summary, flashcards, quiz questions, or a revision plan. Paste key terms or headings from your notes when you want the pack to stay close to your syllabus.",
+    reviewChecklist: [
+      "Verify facts, dates, formulas, and definitions against your textbook or lecture notes.",
+      "Rewrite flashcards in your own words if your school requires original study material.",
+      "Remove quiz answers that look plausible but are not supported by your source.",
+      "Use the pack as revision support, not as a substitute for doing assigned work.",
+    ],
     seo: {
       title: "Student Study Pack | Sounez Smart Packs",
       description:

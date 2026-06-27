@@ -32,14 +32,6 @@ const websiteJsonLd = {
   url: siteUrl,
   description:
     "Free online tools for creators, designers and everyday productivity. No signup needed.",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${siteUrl}/tools?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
 };
 
 const organizationJsonLd = {

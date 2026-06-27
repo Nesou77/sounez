@@ -44,8 +44,30 @@ export default function Post() {
           identity, smart hashtags, and content that earns saves.
         </p>
         <p>
-          This guide is for creators, small businesses and personal brands who want real followers, 
+          This guide is for creators, small businesses and personal brands who want real followers,
           people who actually care about what you post.
+        </p>
+
+        <h2>What I learned building Sounez&apos;s social presence from scratch</h2>
+        <p>
+          When I launched Sounez, I had the same question every new account owner has: how do you get
+          anyone to notice you when you are starting from zero? I tested the obvious approaches — posting
+          daily, using 30 hashtags, leaving generic comments on large accounts. None of them produced
+          meaningful results.
+        </p>
+        <p>
+          What did work: creating content that solved a specific problem clearly and consistently. For
+          Sounez, that meant showing how each tool works in a real workflow, not just linking to it.
+          Content that teaches something — even a 3-slide carousel or a 45-second Reel — earns saves
+          from people who want to come back to it. And saves are what the algorithm actually rewards.
+        </p>
+        <p>
+          The other lesson: your profile bio is the first thing a new visitor reads, and most people
+          underestimate how much it matters. A vague bio ("creator, maker, digital nomad") loses people
+          in three seconds. A specific bio that says exactly what you do and who you do it for earns
+          follows. I use the <Link href="/tools/bio-generator">Bio Generator</Link> as a starting point
+          whenever I am updating the Sounez bio for a new platform — it produces platform-aware drafts
+          in seconds that I then personalize with a specific detail only I can add.
         </p>
 
         <h2>Why organic growth still works</h2>

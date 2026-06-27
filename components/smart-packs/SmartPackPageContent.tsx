@@ -60,18 +60,8 @@ export function SmartPackPageContent({ pack }: { pack: SmartPackDefinition }) {
 
           <section className="rounded-2xl border border-border bg-muted/30 p-5">
             <h2 className="text-lg font-bold">How to write a useful brief</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Give the pack enough real context to work with: who the content is for, what you are
-              trying to make happen, the tone you want, and any details that must be exact. For a
-              promotion, include the offer and deadline. For a product, include size, material,
-              delivery notes, and what makes it different. For study work, include your level and
-              the source you are reviewing.
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Avoid private customer data, passwords, ID numbers, unreleased client material, or
-              anything you do not have permission to process. The generated pack is a draft; edit
-              the final wording before you publish, submit, or send it.
-            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{pack.briefGuidance}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{pack.safetyNote}</p>
           </section>
 
           <section>
@@ -97,84 +87,34 @@ export function SmartPackPageContent({ pack }: { pack: SmartPackDefinition }) {
           <section>
             <h2 className="text-lg font-bold">Before you copy the result</h2>
             <ul className="mt-3 list-disc space-y-2 pl-6 text-sm text-muted-foreground">
-              <li>Check every claim, price, date, name, link, and specification.</li>
-              <li>Read the copy aloud once. If it sounds stiff, shorten the sentence and use your own phrasing.</li>
-              <li>Remove anything that does not match the real image, product, lesson, or offer.</li>
-              <li>Keep a copy of the final version in your own notes or publishing tool.</li>
+              {pack.reviewChecklist.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
           </section>
 
-          <section className="rounded-2xl border border-border bg-card p-5">
-            <h2 className="text-lg font-bold">Content standards for this pack</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Smart Packs are designed to create useful drafts from your own brief. Do not use them to
-              mislead readers, impersonate someone, submit school work dishonestly, copy another creator,
-              or make claims you cannot verify. Keep the parts that match your real offer or lesson, and
-              delete anything that sounds invented, exaggerated, or unrelated.
-            </p>
-            <div className="mt-4 grid gap-4 sm:grid-cols-3">
-              <div>
-                <h3 className="text-sm font-semibold">Make it specific</h3>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                  Add your audience, product facts, lesson source, location, or platform before generation.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold">Make it truthful</h3>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                  Remove guarantees, prices, dates, or results that are not backed by your real information.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold">Make it yours</h3>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                  Edit the tone, examples, and final wording so the result does not read like a template.
-                </p>
-              </div>
-            </div>
-          </section>
-
           <section className="rounded-2xl border border-border bg-muted/20 p-5">
-            <h2 className="text-lg font-bold">Content policy and responsible use</h2>
+            <h2 className="text-lg font-bold">Privacy and responsible use</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Smart Packs process the brief you submit on Sounez servers and return a structured draft.
-              Your brief is not stored after the response is returned and is not used to train models.
-              The outputs are drafts — you own them and are fully responsible for what you publish.
-            </p>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              <div>
-                <h3 className="text-sm font-semibold">Prohibited inputs</h3>
-                <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-relaxed text-muted-foreground">
-                  <li>Content involving minors in sexual or harmful contexts</li>
-                  <li>Instructions for violence, weapons, or illegal activity</li>
-                  <li>Fraudulent claims, fake credentials, or impersonation</li>
-                  <li>Personal data you do not own or have permission to process</li>
-                  <li>Copyrighted material you are not licensed to reproduce</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold">Your responsibilities</h3>
-                <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-relaxed text-muted-foreground">
-                  <li>Verify every factual claim before publishing</li>
-                  <li>Comply with platform rules and local advertising laws</li>
-                  <li>Disclose AI assistance where required (e.g. sponsored posts)</li>
-                  <li>Do not use outputs to mislead customers or examiners</li>
-                  <li>Review generated content for accuracy before any commercial use</li>
-                </ul>
-              </div>
-            </div>
-            <p className="mt-4 text-xs text-muted-foreground">
-              Requests that appear to violate these rules are automatically blocked. Continued misuse
-              may result in rate-limiting or permanent access restriction. See our{" "}
-              <a href="/terms-of-service" className="font-medium text-primary hover:underline">
+              Your brief is not stored after the response is returned. You are responsible for verifying
+              the final output before you publish, submit, or send it. See our{" "}
+              <Link href="/terms-of-service" className="font-medium text-primary hover:underline">
                 Terms of Service
-              </a>{" "}
-              and{" "}
-              <a href="/privacy-policy" className="font-medium text-primary hover:underline">
+              </Link>
+              ,{" "}
+              <Link href="/privacy-policy" className="font-medium text-primary hover:underline">
                 Privacy Policy
-              </a>{" "}
-              for full details.
+              </Link>
+              , and{" "}
+              <Link href="/faq" className="font-medium text-primary hover:underline">
+                FAQ
+              </Link>{" "}
+              for full rules.
             </p>
+            {pack.studyDisclaimer ? (
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{pack.studyDisclaimer}</p>
+            ) : null}
           </section>
 
           <section>

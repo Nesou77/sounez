@@ -38,6 +38,15 @@ export function AuthorCard({ compact = false }: { compact?: boolean }) {
           <Link href="/about" className="font-medium text-primary hover:underline">
             About Sounez
           </Link>
+          {" · "}
+          <a
+            href="https://github.com/Nesou77"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-primary hover:underline"
+          >
+            GitHub
+          </a>
         </p>
       </div>
     </div>

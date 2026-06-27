@@ -222,6 +222,75 @@ export default function Post() {
           <li><strong>Creators with a website or shop:</strong> QR Code Generator, Favicon Generator, Color Palette Generator, Image Compressor, CSS Gradient Generator</li>
         </ul>
 
+        <h2>How Sounez tools compare to the alternatives</h2>
+        <p>
+          Many categories in this list have well-known competitors. Here is an honest comparison so
+          you can decide which option fits your workflow — and when to reach for something else.
+        </p>
+
+        <h3>YouTube Tags: Sounez vs. RapidTags vs. TubeBuddy</h3>
+        <p>
+          <strong>RapidTags</strong> generates tags quickly for free but limits daily searches and
+          shows ads heavily on the free tier. <strong>TubeBuddy</strong> integrates directly into
+          the YouTube Studio interface and adds tag ranking data — it is the better option if you
+          are managing a channel professionally and need in-dashboard analytics. The{" "}
+          <Link href="/tools/youtube-tags-generator">Sounez Tags Generator</Link> has no daily cap,
+          no account, and requires no browser extension — a good first tool for smaller channels
+          that do not yet need the full TubeBuddy feature set.
+        </p>
+
+        <h3>Hashtag research: Sounez vs. Flick vs. Later</h3>
+        <p>
+          <strong>Flick</strong> and <strong>Later</strong> offer hashtag analytics tied to your
+          actual Instagram performance — you can see which tags drove reach. That data is genuinely
+          valuable if you are analyzing results month over month. The{" "}
+          <Link href="/tools/hashtag-generator">Sounez Hashtag Generator</Link> does not have
+          analytics, but it is free, instant, and works across platforms — useful when you need a
+          first draft in 30 seconds without logging into a scheduling tool.
+        </p>
+
+        <h3>Image compression: Sounez vs. Squoosh vs. TinyPNG</h3>
+        <p>
+          <strong>Squoosh</strong> (by Google) is the gold standard for single-image compression
+          with a very detailed before/after quality preview and deep codec control — it is what we
+          reach for when quality precision matters. <strong>TinyPNG</strong> uploads your file to
+          a server but is extremely simple to use and handles PNG alpha channels well. The{" "}
+          <Link href="/tools/image-compressor">Sounez Image Compressor</Link> sits between the two:
+          fully local (nothing leaves your browser), supports WebP output, and handles batches of
+          up to 20 files — the right choice when privacy or volume matters more than pixel-level
+          quality control.
+        </p>
+
+        <h3>Color palettes: Sounez vs. Coolors vs. Adobe Color</h3>
+        <p>
+          <strong>Coolors</strong> is excellent for exploring palettes interactively with
+          spacebar-driven randomization and a large saved-palette community. <strong>Adobe Color</strong>{" "}
+          integrates directly into the Creative Cloud ecosystem and supports accessibility contrast
+          checking. The <Link href="/tools/color-palette-generator">Sounez Color Palette Generator</Link>{" "}
+          does not have a community or CC integration, but it is the fastest path from a single hex
+          code to a ready palette without an account or app, and it adds photo-extraction for
+          matching an existing brand.
+        </p>
+
+        <h3>QR codes: Sounez vs. QR Code Generator (qr-code-generator.com) vs. Canva</h3>
+        <p>
+          Third-party QR services like qr-code-generator.com add dynamic QR codes (editable after
+          printing) on paid tiers — worth paying for if you are printing at scale and need to change
+          the destination URL later. <strong>Canva</strong> generates QR codes with easy drag-and-drop
+          integration into designs. The <Link href="/tools/qr-code-generator">Sounez QR Code Generator</Link>{" "}
+          creates static QR codes with no watermark and no account — sufficient for most creator
+          use cases like business cards, event slides, and media kits.
+        </p>
+
+        <h3>When to pay for a tool</h3>
+        <p>
+          The free tools above are sufficient for most individual creators. Consider a paid tool
+          when you need: analytics tied to your platform account (TubeBuddy, Flick), team
+          collaboration (Canva Pro, Figma), dynamic/editable QR codes (paid QR services), or
+          Adobe Creative Cloud integration (Adobe Color). Free browser tools have no analytics
+          and no account layer — that is also why they are faster and more private.
+        </p>
+
         <h2>How to combine these tools into a creator workflow</h2>
         <p>
           The tools are most useful when they support a consistent publishing routine. Here is a
