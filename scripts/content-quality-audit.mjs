@@ -59,6 +59,7 @@ const routes = new Set([
   "/cookie-policy",
   "/terms-of-service",
   "/dmca",
+  "/editorial-policy",
   "/smart-packs",
   ...toolSlugs.map((s) => `/tools/${s}`),
   ...blogSlugs.map((s) => `/blog/${s}`),
