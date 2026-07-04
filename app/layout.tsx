@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import dynamic from "next/dynamic";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -9,11 +8,6 @@ import { Toaster } from "@/components/ui/sonner";
 import { GoogleTagManager } from "@/components/GoogleTagManager";
 import { AdSenseScript } from "@/components/AdSenseScript";
 import { getSiteUrl } from "@/lib/site-url";
-
-// Lazy load CookieConsentBanner to improve initial page load
-const CookieConsentBanner = dynamic(() => import("@/components/CookieConsentBanner").then(mod => ({ default: mod.CookieConsentBanner })), {
-  loading: () => null,
-});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -80,23 +74,34 @@ export default function RootLayout({
 {process.env.NEXT_PUBLIC_GTM_ID?.trim() ? (
           <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         ) : null}
+        {/* AdSense site-ownership verification. This meta tag is safe to keep published at all
+            times: it only lets Google confirm domain ownership and does not load any script,
+            set any cookie, or require consent. */}
         {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ? (
+          <meta
+            name="google-adsense-account"
+            content={process.env.NEXT_PUBLIC_ADSENSE_PUB_ID}
+          />
+        ) : null}
+        {/* Preconnect to the ad network only once ads are actually enabled — otherwise this would
+            open a connection to Google's ad servers before the owner (or a consent banner) has
+            approved that. Gated the same way as the ad script itself in AdSenseScript.tsx. */}
+        {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID && process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true" ? (
           <>
             <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
             <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossOrigin="anonymous" />
             <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
             <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
-            {/* Site ownership verification for AdSense (works without loading ad scripts or cookie consent) */}
-            <meta
-              name="google-adsense-account"
-              content={process.env.NEXT_PUBLIC_ADSENSE_PUB_ID}
-            />
           </>
         ) : null}
-        {/* Google Consent Mode v2 — runs before GTM so defaults are in place when the container loads */}
-        <Script id="google-consent-default" strategy="beforeInteractive">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});`}
-        </Script>
+        {/*
+          NEXT_PUBLIC_ADSENSE_ENABLED gates all ad loading (see AdSenseScript.tsx) so the site
+          stays cookie-free and ad-free until the owner explicitly turns ads on post-approval.
+          TODO(owner): before setting NEXT_PUBLIC_ADSENSE_ENABLED=true for EEA/UK/Switzerland
+          traffic, add a Google-certified Consent Management Platform (or the AdSense-provided
+          GDPR message) so consent is collected before any ad request or consent-mode signal is
+          sent. Nothing in this codebase currently implements that consent flow.
+        */}
         {/* GTM head snippet — always in HTML so Google can detect the tag; hostname guard blocks non-production URLs */}
         {process.env.NEXT_PUBLIC_GTM_ID?.trim() ? (
           <Script id="google-gtm-head" strategy="afterInteractive">
@@ -121,7 +126,6 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
-        <CookieConsentBanner />
         <Toaster
           position="bottom-right"
           richColors

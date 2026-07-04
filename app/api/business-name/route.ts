@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { callGeminiJson } from "@/lib/ai";
 import { checkRateLimit, getClientIp, AI_RATE_LIMIT } from "@/lib/rate-limit";
 import { validateBusinessNameInput } from "@/lib/validation";
+import { checkGenerationSafety } from "@/lib/ai-safety";
 
 // ── Improved fallback ────────────────────────────────────────────────────────
 
@@ -48,6 +49,11 @@ export async function POST(req: Request) {
   }
   const { industry, keywords, style } = validation.value;
 
+  const inputSafety = checkGenerationSafety([industry, keywords].join("\n"));
+  if (!inputSafety.allowed) {
+    return NextResponse.json({ error: inputSafety.reason, names: [] }, { status: 400 });
+  }
+
   const fallback = fallbackNames(industry, keywords, style);
 
   const systemPrompt = `You are a creative branding assistant for a free online tool website.
@@ -77,6 +83,11 @@ Requirements:
     Array.isArray(result?.names) && result.names.length > 0
       ? result.names.slice(0, 6)
       : fallback;
+
+  const outputSafety = checkGenerationSafety(names.join("\n"));
+  if (!outputSafety.allowed) {
+    return NextResponse.json({ error: outputSafety.reason, names: [] }, { status: 400 });
+  }
 
   return NextResponse.json({ names });
 }

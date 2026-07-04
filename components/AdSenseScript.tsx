@@ -1,35 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { CONSENT_CHANGED_EVENT, hasAdConsent } from "@/lib/cookie-consent";
 import { isAdEligiblePath } from "@/lib/route-policy";
 
 /**
  * Global AdSense Auto Ads snippet.
- * Google Consent Mode defaults to denied in layout.tsx before this script loads.
- * Private, legal, admin, API, and user-specific pages do not load ad code.
- * AdSense script loading is delayed until the user grants ad consent.
+ *
+ * Ads are opt-in via NEXT_PUBLIC_ADSENSE_ENABLED so the site stays ad-free (and
+ * cookie-free) until the owner explicitly turns ads on after AdSense approval.
+ * Low-value, admin, API, and legal/contact routes never load ad code — see
+ * lib/route-policy.ts.
+ *
+ * TODO(owner): before setting NEXT_PUBLIC_ADSENSE_ENABLED=true for EEA/UK/Switzerland
+ * traffic, add a Google-certified Consent Management Platform (or the AdSense-provided
+ * GDPR message) so consent is collected before this script runs. This component does
+ * not implement that consent flow.
  */
 export function AdSenseScript() {
   const pathname = usePathname();
-  const [hasConsent, setHasConsent] = useState(false);
   const pubId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID?.trim();
+  const adsEnabled = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
 
-  useEffect(() => {
-    setHasConsent(hasAdConsent());
-
-    const onConsentChanged = () => setHasConsent(hasAdConsent());
-    window.addEventListener(CONSENT_CHANGED_EVENT, onConsentChanged);
-
-    return () => {
-      window.removeEventListener(CONSENT_CHANGED_EVENT, onConsentChanged);
-    };
-  }, []);
-
-  if (!pubId) return null;
+  if (!pubId || !adsEnabled) return null;
   if (!isAdEligiblePath(pathname)) return null;
-  if (!hasConsent) return null;
 
   return (
     <script

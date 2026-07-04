@@ -117,12 +117,12 @@ export default function Post() {
         </p>
         <ul>
           <li>
-            <strong>Funny:</strong> &quot;The least glamorous part of adulthood? Searching &apos;how to fix this&apos; at 2 a.m. ??
+            <strong>Funny:</strong> &quot;The least glamorous part of adulthood? Searching &apos;how to fix this&apos; at 2 a.m.
             Save this for when you need it. #relatable #adulting&quot;
           </li>
           <li>
             <strong>Inspirational:</strong> &quot;Six months ago I had zero followers. Today I hit 10k.
-            Here&apos;s the one thing that changed everything ?&quot;
+            Here&apos;s the one thing that changed everything...&quot;
           </li>
           <li>
             <strong>Professional:</strong> &quot;Three things I learned from launching my first product.
@@ -136,7 +136,7 @@ export default function Post() {
           search-friendly phrase, or ask a simple question that fits the clip.
         </p>
         <ul>
-          <li>&quot;POV: you finally found a caption workflow you can finish before posting ?? #contentcreator #contenttips&quot;</li>
+          <li>&quot;POV: you finally found a caption workflow you can finish before posting #contentcreator #contenttips&quot;</li>
           <li>&quot;The caption mistake that makes posts harder to understand (and how to fix it) #tiktokgrowth #contenttips&quot;</li>
         </ul>
 

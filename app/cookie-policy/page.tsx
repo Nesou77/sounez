@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import { SmartLink as Link } from "@/components/smart-link";
-import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { getSiteUrl } from "@/lib/site-url";
 
 const pageUrl = `${getSiteUrl()}/cookie-policy`;
 
 export const metadata: Metadata = {
   title: "Cookie Policy | Sounez",
-  description: "How Sounez uses cookies, local storage, analytics, and Google AdSense.",
+  description: "How Sounez currently handles cookies and local storage, and what changes when advertising or analytics are enabled.",
   alternates: { canonical: pageUrl },
 };
 
-const LAST_UPDATED = "May 26, 2026";
+const LAST_UPDATED = "July 4, 2026";
 
 export default function CookiePolicyPage() {
   return (
@@ -19,12 +18,11 @@ export default function CookiePolicyPage() {
       <header className="mb-10">
         <h1 className="text-4xl font-bold tracking-tight">Cookie Policy</h1>
         <p className="mt-4 text-muted-foreground">
-          Last updated: <time dateTime="2026-05-26">{LAST_UPDATED}</time>
+          Last updated: <time dateTime="2026-07-04">{LAST_UPDATED}</time>
         </p>
         <p className="mt-4 leading-relaxed text-muted-foreground">
-          Sounez uses a small amount of storage in your browser so the site can remember your cookie choice,
-          optional analytics, and ads. This page explains what that means in plain language. For broader data
-          practices, see our{" "}
+          This page explains what Sounez currently stores in your browser, and what will change if
+          advertising or analytics are enabled in the future. For broader data practices, see our{" "}
           <Link href="/privacy-policy" className="font-medium text-primary hover:underline">
             Privacy Policy
           </Link>
@@ -34,103 +32,64 @@ export default function CookiePolicyPage() {
 
       <div className="space-y-10 text-sm leading-relaxed text-muted-foreground">
         <section className="rounded-2xl border border-border bg-card p-6">
-          <h2 className="text-lg font-bold text-foreground">Your choice matters</h2>
+          <h2 className="text-lg font-bold text-foreground">Current status: no non-essential cookies</h2>
           <p className="mt-2">
-            When you first visit Sounez, you can accept or reject non-essential cookies. Rejecting keeps Google
-            consent signals denied, so analytics and personalized advertising storage are not granted. Essential
-            storage for your consent choice still applies so we do not ask you on every page load.
-          </p>
-          <p className="mt-2">
-            You can change your mind anytime via{" "}
-            <CookieSettingsButton className="font-medium text-primary hover:underline" /> in the footer.
+            Sounez does not currently set advertising or analytics cookies, and no cookie consent
+            banner is shown, because there is nothing non-essential to consent to yet. Google
+            AdSense, Google Analytics, Google Tag Manager, and any other tracking or advertising
+            script are all disabled by default and only load if the site owner explicitly turns
+            them on in the deployment configuration.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-foreground">Essential storage (always used)</h2>
+          <h2 className="text-lg font-bold text-foreground">Functional local storage (always used)</h2>
           <p className="mt-2">
-            We use local storage for your cookie consent choice (
-            <code className="rounded bg-muted px-1">sounez_cookie_consent_v1</code>
-            ). Without this, the banner would appear on every visit.
+            A small amount of local storage is used for the site to function, independent of any
+            advertising or analytics choice:
           </p>
-          <p className="mt-2">
-            If you mark a page as helpful on a tool or blog post, we store a simple flag in local storage so
-            your vote is not counted twice from the same browser. That data is not used to profile you for
-            advertising on its own.
-          </p>
+          <ul className="mt-2 list-disc space-y-2 pl-5">
+            <li>
+              If you mark a tool or blog post as helpful, a flag is stored in local storage so your
+              vote is not counted twice from the same browser. This is not used to profile you for
+              advertising.
+            </li>
+            <li>
+              Smart Pack history uses a first-party session identifier so you can see your own saved
+              generations on this browser. It is not used for advertising or cross-site tracking.
+            </li>
+          </ul>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-foreground">Analytics cookies (optional)</h2>
+          <h2 className="text-lg font-bold text-foreground">If advertising or analytics are enabled later</h2>
           <p className="mt-2">
-            If you accept cookies, Google Tag Manager may load Google Analytics. That helps us see which pages
-            are useful (for example, which tools get opened) so we can improve the site. We do not use analytics
-            to sell your personal data.
+            If Sounez enables Google AdSense or an analytics tool in the future, this policy will be
+            updated first, and a proper consent solution will be added before any non-essential
+            cookie is set for visitors in the EEA, UK, or Switzerland. That includes a
+            Google-certified Consent Management Platform (CMP) or the AdSense-provided GDPR message,
+            shown before any ad request or tracking script runs, with clear accept/reject controls.
           </p>
           <p className="mt-2">
-            You can opt out via <CookieSettingsButton className="font-medium text-primary hover:underline" /> or
-            your browser&apos;s block-third-party-cookies setting. Some browsers also offer a global analytics
-            opt-out extension from Google.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-bold text-foreground">Google AdSense cookies (optional)</h2>
-          <p className="mt-2">
-            Sounez includes the Google AdSense script on most pages (excluding admin, API, and legal
-            pages such as this one) so Google can verify the site and serve ads. Until you accept
-            cookies, Google Consent Mode keeps advertising storage and personalization denied. If you
-            accept cookies, Google AdSense may set cookies or use similar technologies to serve and
-            measure ads on Sounez. Google may use cookies to show ads based on your prior visits to
-            this site or other sites, depending on your settings and region.
-          </p>
-          <p className="mt-2">
-            Learn more in{" "}
-            <a
-              href="https://policies.google.com/technologies/partner-sites"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-primary hover:underline"
-            >
-              How Google uses data on partner sites
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://adssettings.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-primary hover:underline"
-            >
-              Google Ads Settings
-            </a>
-            .
+            Until that consent solution is live, advertising and analytics scripts remain disabled
+            in code regardless of region, not just hidden behind a banner.
           </p>
         </section>
 
         <section>
           <h2 className="text-lg font-bold text-foreground">Tool data is separate from cookies</h2>
           <p className="mt-2">
-            Many Sounez tools process your text or files without using advertising cookies. For example, the
-            image compressor runs in your browser. AI and PDF tools may send content to our servers for
-            processing - that is described on each tool page, not via AdSense cookies.
+            Many Sounez tools process your text or files without using any cookies at all. For
+            example, the image compressor runs in your browser. AI and PDF tools may send content to
+            our servers for processing — that is described on each tool page.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-foreground">Common examples</h2>
+          <h2 className="text-lg font-bold text-foreground">How to clear local storage</h2>
           <ul className="mt-2 list-disc space-y-2 pl-5">
-            <li>Rejecting optional cookies does not stop browser-only tools from working.</li>
-            <li>Clearing site data may reset cookie consent, helpful votes, and local tool preferences.</li>
-            <li>Private browsing usually forgets Sounez storage when the private window closes.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-bold text-foreground">How to clear or block cookies</h2>
-          <ul className="mt-2 list-disc space-y-2 pl-5">
-            <li>Open <CookieSettingsButton className="font-medium text-primary hover:underline" /> and reject non-essential cookies.</li>
-            <li>Clear site data for sounez.com in your browser settings.</li>
-            <li>Use private browsing if you do not want storage to persist between sessions.</li>
+            <li>Clear site data for sounez.com in your browser settings at any time.</li>
+            <li>Use private browsing if you do not want local storage to persist between sessions.</li>
           </ul>
         </section>
 

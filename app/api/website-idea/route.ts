@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { callGeminiJson } from "@/lib/ai";
 import { checkRateLimit, getClientIp, AI_RATE_LIMIT } from "@/lib/rate-limit";
 import { validateWebsiteIdeaInput } from "@/lib/validation";
+import { checkGenerationSafety, collectSafetyText } from "@/lib/ai-safety";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -77,6 +78,11 @@ export async function POST(req: Request) {
   }
   const { interests, type } = validation.value;
 
+  const inputSafety = checkGenerationSafety(interests);
+  if (!inputSafety.allowed) {
+    return NextResponse.json({ error: inputSafety.reason, ideas: [] }, { status: 400 });
+  }
+
   const fallback = fallbackIdeas(interests, type);
 
   const systemPrompt = `You are a creative product ideation assistant for a free online tool website.
@@ -104,6 +110,11 @@ Requirements:
     Array.isArray(result?.ideas) && result.ideas.length > 0
       ? result.ideas.slice(0, 4)
       : fallback;
+
+  const outputSafety = checkGenerationSafety(ideas.map((idea) => collectSafetyText(idea)).join("\n"));
+  if (!outputSafety.allowed) {
+    return NextResponse.json({ error: outputSafety.reason, ideas: [] }, { status: 400 });
+  }
 
   return NextResponse.json({ ideas });
 }

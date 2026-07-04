@@ -157,8 +157,8 @@ export default function Post() {
 
         <h2>What happens to transparency when converting PNG to JPG</h2>
         <p>
-          This is the most important thing to understand before converting. JPG has no alpha channel
-         , it cannot represent transparent pixels. When you convert a PNG with transparency to JPG,
+          This is the most important thing to understand before converting. JPG has no alpha channel,
+          so it cannot represent transparent pixels. When you convert a PNG with transparency to JPG,
           every transparent pixel must be replaced with a solid color.
         </p>
         <p>

@@ -138,6 +138,12 @@ const nextConfig: NextConfig = {
         destination: "/blog/free-design-tools-for-web-creators",
         permanent: true,
       },
+      // Common short-form URL alias for the terms page.
+      {
+        source: "/terms",
+        destination: "/terms-of-service",
+        permanent: true,
+      },
       // Canonical host enforcement: www.sounez.com is the only canonical
       // host. Any request to the apex domain (sounez.com) — on any
       // protocol — is sent straight to the HTTPS www origin in a single

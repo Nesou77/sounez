@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { callAnthropicJson, callGeminiJson } from "@/lib/ai";
 import { checkRateLimit, getClientIp, AI_RATE_LIMIT } from "@/lib/rate-limit";
 import { validateCaptionInput } from "@/lib/validation";
+import { checkGenerationSafety } from "@/lib/ai-safety";
 
 // ── Improved fallbacks ───────────────────────────────────────────────────────
 
@@ -90,6 +91,11 @@ export async function POST(req: Request) {
   }
   const { topic, platform, tone } = validation.value;
 
+  const inputSafety = checkGenerationSafety(topic);
+  if (!inputSafety.allowed) {
+    return NextResponse.json({ error: inputSafety.reason, captions: [] }, { status: 400 });
+  }
+
   const fallback = fallbackCaptions(topic, platform, tone);
 
   const systemPrompt = `You are an expert social media copywriter for a free online caption generator.
@@ -144,6 +150,11 @@ Quality rules:
     Array.isArray(aiResult?.captions) && aiResult.captions.length > 0
       ? aiResult.captions
       : fallback;
+
+  const outputSafety = checkGenerationSafety(captions.join("\n"));
+  if (!outputSafety.allowed) {
+    return NextResponse.json({ error: outputSafety.reason, captions: [] }, { status: 400 });
+  }
 
   return NextResponse.json({ captions });
 }

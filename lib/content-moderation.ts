@@ -6,6 +6,8 @@
  *   - "reject" → block submission entirely (prohibited content)
  */
 
+import { GENERATION_BLOCKED_PATTERNS, type SafetyCategory } from "@/lib/ai-safety";
+
 export type ModerationAction = "allow" | "flag" | "reject";
 
 export type ModerationResult =
@@ -13,18 +15,24 @@ export type ModerationResult =
   | { action: "flag"; flag: string }
   | { action: "reject"; flag: string };
 
-// Hard blocks — content that violates AdSense policies and applicable law
-const REJECT_PATTERNS: [RegExp, string][] = [
-  [/\b(child\s*porn|underage\s*sex|minor\s*sex|loli(?:con)?|pedo(?:phile|sexual)?)\b/i, "csam"],
-  [
-    /\b(buy|sell|order|get)\s+(cocaine|heroin|fentanyl|meth(?:amphetamine)?|mdma|crack)\b/i,
-    "illegal_drug_trade",
-  ],
-  [/\b(bomb\s*making|how\s*to\s*make\s*(?:a\s*)?bomb|mass\s*shoot(?:ing)?|terrorist\s*attack)\b/i, "violence"],
-  [/\b(fake\s*(id|passport|diploma|degree|certificate|social\s*security))\b/i, "fraud"],
-  [/\b(doxx(?:ing)?|dox\b|personal\s*information\s*of)\b/i, "doxxing"],
-  [/\b(rape|sexual\s*assault)\s+(tips|how\s*to|guide)\b/i, "sexual_violence"],
+// Hard blocks — content that violates AdSense policies and applicable law.
+// Reuses the regex definitions from the AI generation safety list (lib/ai-safety.ts)
+// so the underlying patterns stay in one place, but only for the categories that were
+// already hard-rejected for comments. Categories like hate speech/slurs stay soft-flagged
+// below (FLAG_PATTERNS) rather than hard-rejected, since slur detection has a higher
+// false-positive rate in ordinary conversation (quotes, reclaimed usage, discussion of
+// the word itself) than in an AI generation request.
+const COMMENT_HARD_REJECT_CATEGORIES: SafetyCategory[] = [
+  "csam",
+  "illegal_drug_trade",
+  "violence",
+  "fraud",
+  "doxxing",
+  "sexual_violence",
 ];
+const REJECT_PATTERNS: [RegExp, string][] = GENERATION_BLOCKED_PATTERNS.filter(([, category]) =>
+  COMMENT_HARD_REJECT_CATEGORIES.includes(category),
+);
 
 // Soft flags — suspicious but not automatically rejected; sent to priority review queue
 const FLAG_PATTERNS: [RegExp, string][] = [

@@ -137,7 +137,7 @@ export default function Post() {
             Instagram&apos;s own guidance
           </a>
           , hashtags help categorize your content and connect it with people interested in that topic.
-         , the algorithm uses them primarily for categorization, not distribution. That means:
+          The algorithm uses them primarily for categorization, not distribution. That means:
         </p>
         <ul>
           <li>Use 5-10 highly relevant hashtags, not 30 generic ones</li>

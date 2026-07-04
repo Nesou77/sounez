@@ -46,20 +46,18 @@ export default function PrivacyPolicyPage() {
               Sounez is designed to be used without creating an account. We do not ask you for
               personal information to use the tools.
             </p>
-            <p>We may collect the following types of information automatically:</p>
+            <p>
+              Sounez does not currently run analytics or advertising scripts, so we do not
+              automatically collect usage data (pages visited, time on page, referring URLs) for
+              those purposes. Two categories of information may still exist:
+            </p>
             <ul className="ml-5 list-disc space-y-1.5">
               <li>
-                <strong className="text-foreground">Usage data.</strong> Pages visited, tools used,
-                time spent on pages, and referring URLs.
-              </li>
-              <li>
-                <strong className="text-foreground">Device and browser data.</strong> Browser type,
-                operating system, screen resolution, and language preferences.
-              </li>
-              <li>
-                <strong className="text-foreground">Approximate location.</strong> Your IP address
-                is used to determine approximate geographic location (country or region level) for
-                analytics purposes. We do not store or log full IP addresses.
+                <strong className="text-foreground">Standard server logs.</strong> Like any website,
+                our hosting provider may briefly log technical request data (IP address, browser
+                type, requested URL) for security, abuse prevention, and reliability. This is
+                infrastructure-level logging, not analytics or advertising tracking, and is not used
+                to build a profile of you.
               </li>
               <li>
                 <strong className="text-foreground">Contact form data.</strong> If you reach out via
@@ -67,6 +65,14 @@ export default function PrivacyPolicyPage() {
                 respond to your inquiry.
               </li>
             </ul>
+            <p>
+              If Sounez enables analytics or advertising in the future, this section will be updated
+              to name the specific data collected before that change goes live — see{" "}
+              <Link href="/cookie-policy" className="font-medium text-primary hover:underline">
+                Cookie Policy
+              </Link>{" "}
+              for the current status.
+            </p>
           </div>
         </section>
 
@@ -129,10 +135,8 @@ export default function PrivacyPolicyPage() {
             </p>
             <ul className="ml-5 list-disc space-y-1.5">
               <li>
-                <strong className="text-foreground">Analytics data</strong> is retained in
-                aggregated form by our analytics provider (Google Analytics). Individual session data
-                is subject to Google&apos;s own retention settings, which we have configured to the
-                shortest available period.
+                <strong className="text-foreground">Server logs</strong> are retained by our hosting
+                provider only for the short period needed for security and reliability purposes.
               </li>
               <li>
                 <strong className="text-foreground">Contact form submissions</strong> are retained
@@ -160,33 +164,26 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-bold tracking-tight">4. Cookies</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
-              Cookies are small text files stored on your device by your browser. Sounez and its
-              third-party partners use cookies to:
-            </p>
-            <ul className="ml-5 list-disc space-y-1.5">
-              <li>Remember your preferences and settings.</li>
-              <li>Understand how visitors use the website (analytics).</li>
-              <li>Deliver and personalize advertisements (advertising cookies).</li>
-              <li>Measure the performance of ad campaigns.</li>
-            </ul>
-            <p>
-              You can disable or delete cookies at any time through your browser settings. Disabling
-              cookies may affect some features of the site. Instructions for managing cookies are
-              available in your browser&apos;s help documentation.
+              Sounez does not currently set non-essential cookies. No advertising or analytics
+              cookies are placed by this site, and no cookie consent banner is shown, because there
+              is nothing non-essential to consent to yet.
             </p>
             <p>
-              To change your cookie choices on Sounez, use{" "}
-              <strong className="text-foreground">Cookie settings</strong> in the site footer at any
-              time. Your choice is stored in your browser&apos;s local storage under the key{" "}
-              <code className="rounded bg-muted px-1 py-0.5 text-xs">sounez_cookie_consent_v1</code>.
-              Smart Pack history uses an httpOnly cookie named{" "}
-              <code className="rounded bg-muted px-1 py-0.5 text-xs">sounez_sp_visitor</code> so we
-              can show only your saved generations on this browser.
+              A small amount of local storage is used for the site to function (for example,
+              remembering that you already marked a post as helpful, or showing your own Smart Pack
+              history on this browser). This is described in full in the{" "}
+              <Link href="/cookie-policy" className="font-medium text-primary hover:underline">
+                Cookie Policy
+              </Link>
+              . You can clear this at any time through your browser settings.
             </p>
             <p>
-              Third parties, including Google, may place and read cookies on your browser, or use web
-              beacons or IP addresses, to collect information as a result of ad serving on this
-              website.
+              If Sounez enables advertising or analytics cookies in the future, this policy and the{" "}
+              <Link href="/cookie-policy" className="font-medium text-primary hover:underline">
+                Cookie Policy
+              </Link>{" "}
+              will be updated first, and a consent mechanism will be added before those cookies are
+              set for any visitor.
             </p>
           </div>
         </section>
@@ -198,18 +195,21 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-bold tracking-tight">5. Google AdSense and Advertising</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
-              Sounez uses <strong className="text-foreground">Google AdSense</strong> to display
-              advertisements. Ads help keep the service free. Google AdSense may use cookies and
-              web beacons to collect data about your visits to this and other websites in order to
-              show relevant ads.
+              Sounez intends to use <strong className="text-foreground">Google AdSense</strong> to
+              help keep the service free, but ad serving is currently disabled. A site-ownership
+              verification tag may be present in the page source so Google can confirm domain
+              ownership during the AdSense review process — this tag does not load ads, set cookies,
+              or collect data on its own.
             </p>
             <p>
-              This includes the use of the <strong className="text-foreground">DoubleClick cookie</strong>,
-              which enables Google and its partners to serve ads based on your prior visits to our
-              site or other sites on the internet.
+              When ads are enabled, Google AdSense may use cookies and similar technologies to serve
+              and measure ads, including cookies that help show ads based on prior visits to this or
+              other sites. Before that happens, this policy will be updated with the specific
+              vendors and cookie types in use, and a consent mechanism will be added for visitors in
+              the EEA, UK, and Switzerland.
             </p>
             <p>
-              You can opt out of personalized advertising by visiting{" "}
+              You can review or opt out of personalized advertising at any time via{" "}
               <a
                 href="https://www.google.com/settings/ads"
                 target="_blank"
@@ -217,8 +217,8 @@ export default function PrivacyPolicyPage() {
                 className="font-medium text-primary hover:underline"
               >
                 Google Ads Settings
-              </a>
-              . You can also opt out of third-party vendor cookies via{" "}
+              </a>{" "}
+              and{" "}
               <a
                 href="https://www.aboutads.info/choices/"
                 target="_blank"
@@ -227,44 +227,16 @@ export default function PrivacyPolicyPage() {
               >
                 aboutads.info
               </a>
-              .
-            </p>
-            <p>
-              For more information on how Google uses data when you visit sites that use Google
-              services, visit{" "}
+              . For more on how Google uses data on partner sites, see{" "}
               <a
                 href="https://policies.google.com/technologies/partner-sites"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium text-primary hover:underline"
               >
-                How Google uses data when you use our partners&apos; sites or apps
+                Google&apos;s partner sites policy
               </a>
-              . Interest-based ads may show an AdChoices icon; see the{" "}
-              <a
-                href="https://youradchoices.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-primary hover:underline"
-              >
-                Digital Advertising Alliance
-              </a>{" "}
-              for industry opt-out options.
-            </p>
-            <p>
-              <strong className="text-foreground">Google Consent Mode v2.</strong> Sounez
-              implements Google Consent Mode v2. When you first visit the site, all consent signals
-              - including <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_storage</code>,{" "}
-              <code className="rounded bg-muted px-1 py-0.5 text-xs">analytics_storage</code>,{" "}
-              <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_user_data</code>, and{" "}
-              <code className="rounded bg-muted px-1 py-0.5 text-xs">ad_personalization</code> -
-              default to <strong className="text-foreground">denied</strong>. This means no
-              cookies are set, no personal data is shared with Google for advertising or analytics
-              purposes, and only non-personalized ads may be shown until consent is updated. Google
-              may use cookieless pings and conversion modeling in this state, which do not involve
-              personal data. You can manage your consent preferences at any time using{" "}
-              <strong className="text-foreground">Cookie settings</strong> in the site footer,
-              through your browser settings, or via the opt-out links above.
+              .
             </p>
           </div>
         </section>
@@ -276,15 +248,9 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-bold tracking-tight">6. Third-Party Advertising</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
-              In addition to Google AdSense, we may work with other advertising networks. These
-              companies may use information about your visits to this and other websites to provide
-              relevant ads.
-            </p>
-            <p>
-              Third-party ad servers may use cookies, JavaScript, or web beacons in their ads and
-              links that appear on Sounez. Sounez has no access to or control over the cookies used
-              by third-party advertisers. You should review the privacy policies of those networks
-              for more information.
+              Sounez does not currently work with any advertising network. If that changes, this
+              section will list the specific networks in use and how their cookies or tracking
+              technologies work, before they are enabled on the site.
             </p>
           </div>
         </section>
@@ -296,27 +262,10 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-bold tracking-tight">7. Analytics</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
-              We use Google Analytics via Google Tag Manager to understand how visitors use Sounez.
-              These services may collect:
-            </p>
-            <ul className="ml-5 list-disc space-y-1.5">
-              <li>Pages visited and time spent on each page.</li>
-              <li>The source of your visit (search engine, direct, referral).</li>
-              <li>Approximate geographic location (country or region).</li>
-              <li>Device type, browser, and operating system.</li>
-            </ul>
-            <p>
-              Analytics data is used solely to improve the website and our tools. You can opt out of
-              Google Analytics tracking by installing the{" "}
-              <a
-                href="https://tools.google.com/dlpage/gaoptout"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-primary hover:underline"
-              >
-                Google Analytics Opt-out Browser Add-on
-              </a>
-              .
+              Sounez does not currently run Google Analytics, Google Tag Manager, or any other
+              analytics service. The site&apos;s codebase supports adding Google Tag Manager in the
+              future, but it stays inactive unless the site owner explicitly configures it, and this
+              policy will be updated first if that happens.
             </p>
           </div>
         </section>

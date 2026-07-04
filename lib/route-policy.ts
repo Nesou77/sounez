@@ -8,6 +8,9 @@ export const AD_EXCLUDED_PATHS = [
   "/cookie-policy",
   "/terms-of-service",
   "/dmca",
+  // Contact has a form with a submit button — keep ads off it to avoid accidental clicks
+  // and to keep a low-content, high-intent page ad-free.
+  "/contact",
 ] as const;
 
 function normalizePath(pathname: string): string {

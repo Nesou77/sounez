@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { callGeminiJson } from "@/lib/ai";
 import { checkRateLimit, getClientIp, AI_RATE_LIMIT } from "@/lib/rate-limit";
 import { validateBioInput } from "@/lib/validation";
+import { checkGenerationSafety } from "@/lib/ai-safety";
 
 // ── Improved fallback ────────────────────────────────────────────────────────
 
@@ -48,6 +49,11 @@ export async function POST(req: Request) {
   }
   const { name, role, interests, platform } = validation.value;
 
+  const inputSafety = checkGenerationSafety([name, role, interests].join("\n"));
+  if (!inputSafety.allowed) {
+    return NextResponse.json({ error: inputSafety.reason, bio: "" }, { status: 400 });
+  }
+
   const maxChars = platform === "instagram" || platform === "twitter" ? 160 : 300;
   const fallback = fallbackBio(name, role, interests, platform);
 
@@ -79,6 +85,11 @@ Requirements:
     typeof result?.bio === "string" && result.bio.trim()
       ? result.bio.trim().slice(0, maxChars)
       : fallback;
+
+  const outputSafety = checkGenerationSafety(bio);
+  if (!outputSafety.allowed) {
+    return NextResponse.json({ error: outputSafety.reason, bio: "" }, { status: 400 });
+  }
 
   return NextResponse.json({ bio });
 }

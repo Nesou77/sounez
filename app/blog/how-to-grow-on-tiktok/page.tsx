@@ -26,7 +26,7 @@ export default function Post() {
       <BlogJsonLd
         slug="how-to-grow-on-tiktok"
         title="How to Grow on TikTok: A Creator's Playbook"
-        description="A practical TikTok growth guide for : niche, hooks, hashtags, posting schedule, repurposing, and monetization checks."
+        description="A practical TikTok growth guide covering niche selection, hooks, hashtags, posting schedule, repurposing, and monetization checks."
         articleSection="Creator Tools"
         faqs={FAQS}
       />

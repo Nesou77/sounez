@@ -44,7 +44,7 @@ export default function Post() {
           physical world to your digital one.
         </p>
         <p>
-         , a well-placed QR code is a legitimate marketing tool. A poorly placed one still
+          Done right, a well-placed QR code is a legitimate marketing tool. A poorly placed one still
           looks cheap. Here&apos;s the difference.
         </p>
 

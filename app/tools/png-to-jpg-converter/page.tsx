@@ -4,6 +4,7 @@ import { PngToJpgClient } from "@/app/png-to-jpg-converter/PngToJpgClient";
 import { toolBySlug } from "@/data/tools";
 import { toolMetadata } from "@/lib/tool-metadata";
 import { getSiteUrl } from "@/lib/site-url";
+import { ToolPageSections } from "@/components/ToolPageSections";
 
 const tool = toolBySlug("png-to-jpg-converter");
 if (!tool) notFound();
@@ -94,6 +95,9 @@ export default function Page() {
         />
       ))}
       <PngToJpgClient tool={tool!} />
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <ToolPageSections tool={tool!} />
+      </div>
     </>
   );
 }
