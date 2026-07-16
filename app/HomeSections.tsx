@@ -31,7 +31,7 @@ const USE_CASES = [
     who: "Students and office workers",
     jobs: [
       "Turn a lecture topic into structured revision notes with key terms.",
-      "Convert a received PDF into an editable Word file to annotate.",
+      "Fix inconsistent capitalization in a pasted assignment with one click.",
       "Count words and check reading time before submitting an essay.",
       "Build a clean one-page resume and print it to PDF without Word.",
     ],
@@ -62,7 +62,7 @@ const HOME_FAQS = [
   },
   {
     q: "Which tools send data to a server?",
-    a: "Many design and utility tools run entirely in your browser. AI and PDF tools explain on each page when a server step is used.",
+    a: "Many design and utility tools run entirely in your browser. AI-backed tools explain on each page when a server step is used.",
   },
 ];
 
@@ -88,7 +88,7 @@ const TRUST_NOTES = [
   {
     Icon: Shield,
     title: "Clear privacy notes",
-    text: "Browser-only tools say so. AI and PDF tools explain when content is processed on a server.",
+    text: "Browser-only tools say so. AI-backed tools explain when content is processed on a server.",
   },
   {
     Icon: FileCheck,

@@ -113,11 +113,7 @@ const REGISTRY: Record<string, ComponentType<{ tool: Tool }>> = {
     () => import("@/app/background-pattern-generator/BackgroundPatternClient").then((m) => ({ default: m.BackgroundPatternClient })),
     { loading: Skeleton },
   ),
-  // ── New tools (3) ────────────────────────────────────────────────────────
-  "pdf-to-word-converter": dynamic(
-    () => import("@/app/pdf-to-word-converter/PdfToWordConverterClient").then((m) => ({ default: m.PdfToWordConverterClient })),
-    { loading: Skeleton },
-  ),
+  // ── New tools (2) ────────────────────────────────────────────────────────
   "background-remover": dynamic(
     () => import("@/app/background-remover/BackgroundRemoverClient").then((m) => ({ default: m.BackgroundRemoverClient })),
     { loading: Skeleton },

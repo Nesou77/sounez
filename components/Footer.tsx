@@ -63,7 +63,7 @@ export function Footer() {
           <div>
             <p className="text-sm font-semibold">Privacy basics</p>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-              Many tools run in your browser. AI and PDF tools may use a server step and explain that on the
+              Many tools run in your browser. AI-backed tools may use a server step and explain that on the
               tool page. Avoid uploading files you are not allowed to process.
             </p>
           </div>
@@ -80,7 +80,7 @@ export function Footer() {
         <div className="md:col-span-4">
           <BrandLogo variant="footer" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Free tools and Smart Pack workflows for captions, images, PDFs, and small design jobs. Each tool page
+            Free tools and Smart Pack workflows for captions, images, QR codes, and small design jobs. Each tool page
             explains who it helps, how to use it, what to check, and how your data is handled.
           </p>
           <p className="mt-3 max-w-xs text-xs leading-relaxed text-muted-foreground">

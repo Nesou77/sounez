@@ -80,7 +80,7 @@ export default function CookiePolicyPage() {
           <h2 className="text-lg font-bold text-foreground">Tool data is separate from cookies</h2>
           <p className="mt-2">
             Many Sounez tools process your text or files without using any cookies at all. For
-            example, the image compressor runs in your browser. AI and PDF tools may send content to
+            example, the image compressor runs in your browser. AI-backed tools may send content to
             our servers for processing — that is described on each tool page.
           </p>
         </section>

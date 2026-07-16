@@ -194,7 +194,7 @@ export default function TermsOfServicePage() {
               stays on your device unless you choose to share it elsewhere.
             </p>
             <p>
-              AI, PDF, and other server-backed tools may securely process the content you submit to
+              AI and other server-backed tools may securely process the content you submit to
               generate results. We do not retain uploads beyond what is needed to complete the
               request. See our{" "}
               <Link href="/privacy-policy" className="font-medium text-primary hover:underline">

@@ -26,7 +26,7 @@ export default function CategoriesPage() {
       <header className="mb-10 max-w-2xl">
         <h1 className="text-4xl font-bold sm:text-5xl">Categories</h1>
         <p className="mt-3 text-muted-foreground leading-relaxed">
-          Three broad groups of tools. For a finer breakdown (AI writing, image, PDF, SEO, etc.), see the{" "}
+          Three broad groups of tools. For a finer breakdown (AI writing, image, design, SEO, etc.), see the{" "}
           <Link href="/tools" className="font-medium text-primary hover:underline">tools directory</Link> or{" "}
           <Link href="/smart-packs" className="font-medium text-primary hover:underline">Smart Packs</Link>.
         </p>

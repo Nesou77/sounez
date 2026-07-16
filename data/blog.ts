@@ -16,20 +16,6 @@
 
 const BLOG_POSTS_RAW: BlogPost[] = [
   {
-    slug: "how-to-convert-pdf-to-word",
-    title: "How to Convert PDF to Word Without Losing Formatting",
-    metaTitle: "How to Convert PDF to Word Without Losing Formatting",
-    metaDescription:
-      "Learn how to convert PDF files into editable Word documents while keeping your layout, text, images, and formatting as clean as possible.",
-    excerpt:
-      "Learn how to convert PDF files into editable Word documents while keeping your layout, text, images, and formatting as clean as possible.",
-    readTime: "6 min",
-    image: "/blog/how-to-convert-pdf-to-word.webp",
-    publishedAt: "2025-03-10",
-    targetKeyword: "convert PDF to Word",
-    tags: ["PDF", "Word", "productivity"],
-  },
-  {
     slug: "how-to-remove-image-backgrounds-online",
     title: "How to Remove Image Backgrounds Online for Free",
     metaTitle: "How to Remove Image Backgrounds Online for Free",
@@ -119,7 +105,6 @@ export const BLOG_POSTS = [...BLOG_POSTS_RAW].sort((a, b) => a.title.localeCompa
 
 /** Map from tool slug -> related blog post slugs (most relevant first) */
 export const TOOL_BLOG_MAP: Record<string, string[]> = {
-  "pdf-to-word-converter":        ["how-to-convert-pdf-to-word", "best-productivity-tools-for-remote-workers", "best-free-tools-for-creators"],
   "background-remover":           ["how-to-remove-image-backgrounds-online", "image-optimization-checklist", "png-vs-jpg-and-how-to-convert-images"],
   "image-describer":              ["how-to-write-alt-text-for-images", "image-optimization-checklist", "image-seo-guide"],
   "youtube-tags-generator":       ["how-to-write-youtube-descriptions", "best-free-tools-for-creators", "how-to-grow-on-tiktok"],
@@ -128,9 +113,9 @@ export const TOOL_BLOG_MAP: Record<string, string[]> = {
   "color-palette-generator":      ["best-color-palettes-for-design", "free-design-tools-for-web-creators", "css-gradients-guide"],
   "css-gradient-generator":       ["css-gradients-guide", "best-color-palettes-for-design", "free-design-tools-for-web-creators"],
   "qr-code-generator":            ["how-to-use-qr-codes-for-marketing", "best-free-tools-for-creators", "best-productivity-tools-for-remote-workers"],
-  "word-counter":                 ["how-to-write-youtube-descriptions", "how-to-convert-pdf-to-word", "best-productivity-tools-for-remote-workers"],
+  "word-counter":                 ["how-to-write-youtube-descriptions", "best-productivity-tools-for-remote-workers", "best-free-tools-for-creators"],
   "password-generator":           ["how-to-create-a-strong-password", "best-productivity-tools-for-remote-workers", "best-free-tools-for-creators"],
-  "text-case-converter":          ["how-to-convert-pdf-to-word", "best-productivity-tools-for-remote-workers", "how-to-write-youtube-descriptions"],
+  "text-case-converter":          ["best-productivity-tools-for-remote-workers", "how-to-write-youtube-descriptions", "best-free-tools-for-creators"],
   "image-compressor":             ["image-optimization-checklist", "how-to-compress-images", "image-seo-guide"],
   "ai-caption-generator":         ["how-to-write-better-social-media-captions", "best-free-ai-tools-2026", "how-to-grow-instagram-organically"],
   "bio-generator":                ["how-to-write-a-good-social-media-bio", "best-free-ai-tools-2026", "how-to-write-better-social-media-captions"],

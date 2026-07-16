@@ -17,11 +17,6 @@ export const TOOL_GROUP_EDITORIAL: Record<ToolGroupSlug, ToolGroupEditorial> = {
       "Prepare photos for the web and for shops: smaller files, correct format, cutouts, favicons, and wireframe placeholders. Most image tools run in your browser; check the privacy note if a tool mentions server processing.",
     tip: "Compress and rename files before upload - it is faster than fixing a slow live page later.",
   },
-  pdf: {
-    extendedIntro:
-      "Convert PDFs you are allowed to process into editable Word files. Scanned documents may need OCR; complex magazine layouts often need manual cleanup in Word after conversion.",
-    tip: "Unlock password-protected PDFs before uploading - the converter cannot open locked files.",
-  },
   "qr-utility": {
     extendedIntro:
       "Small helpers you open once and close: QR codes, word counts, passwords, case conversion, and a simple calculator. Most run locally in your tab with no account.",

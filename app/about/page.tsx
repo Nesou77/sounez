@@ -52,7 +52,7 @@ const aboutPageJsonLd = {
 const offers = [
   { Icon: Rocket, title: "For creators", text: "Hashtag generators, YouTube tag tools, captions, bios, and rough sponsorship calculators. Built for people who publish often and need clean drafts.", href: "/tools#creator-tools", cta: "Browse creator tools" },
   { Icon: Brush, title: "For designers", text: "Color palettes, CSS gradients, favicons, shadows, patterns, and font helpers. Open one, copy what you need, and keep working.", href: "/tools#design-tools", cta: "Browse design tools" },
-  { Icon: Wrench, title: "For everyday tasks", text: "QR codes, password generators, word counters, image compressors, PDF conversion, and other small jobs that should not need a full app.", href: "/tools#utility-tools", cta: "Browse utility tools" },
+  { Icon: Wrench, title: "For everyday tasks", text: "QR codes, password generators, word counters, image compressors, and other small jobs that should not need a full app.", href: "/tools#utility-tools", cta: "Browse utility tools" },
 ];
 
 const values = [

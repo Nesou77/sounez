@@ -14,11 +14,6 @@ export const TOOL_GROUPS = [
     description: "Compress, convert, remove backgrounds, and prepare images for web and shops.",
   },
   {
-    slug: "pdf",
-    name: "PDF Tools",
-    description: "Turn PDFs into editable documents when you have permission to process them.",
-  },
-  {
     slug: "qr-utility",
     name: "QR & Utility Tools",
     description: "QR codes, passwords, counters, and small helpers you open in a tab and close.",
@@ -57,7 +52,6 @@ const TOOL_TO_GROUP: Record<string, ToolGroupSlug> = {
   "png-to-jpg-converter": "image",
   "image-placeholder-generator": "image",
   "favicon-generator": "image",
-  "pdf-to-word-converter": "pdf",
   "qr-code-generator": "qr-utility",
   "word-counter": "qr-utility",
   "password-generator": "qr-utility",

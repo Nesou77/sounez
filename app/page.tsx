@@ -8,12 +8,12 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   title: "Sounez | Smart Packs & Free Tools for Creators and Small Business",
   description:
-    "Create captions, optimize images, generate QR codes, convert PDFs, and run Smart Pack workflows. Free tools with clear privacy notes - no account for most features.",
+    "Create captions, optimize images, generate QR codes, build resumes, and run Smart Pack workflows. Free tools with clear privacy notes - no account for most features.",
   alternates: { canonical: siteUrl },
   openGraph: {
     title: "Sounez | Smart Packs & Free Tools",
     description:
-      "Smart Packs plus free tools for images, writing, PDFs, QR codes, and SEO.",
+      "Smart Packs plus free tools for images, writing, QR codes, and SEO.",
     url: siteUrl,
     type: "website",
   },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sounez | Smart Packs & Free Tools",
     description:
-      "Smart Packs and free tools for captions, images, QR codes, PDFs, and everyday productivity.",
+      "Smart Packs and free tools for captions, images, QR codes, passwords, and everyday productivity.",
   },
 };
 

@@ -69,7 +69,7 @@ const faqGroups = [
     items: [
       {
         q: "How does Sounez handle files and input?",
-        a: "Browser-only tools keep your files or text in your tab. AI and PDF tools may send content to a server or provider to complete the request. Tool pages and the Privacy Policy explain which applies.",
+        a: "Browser-only tools keep your files or text in your tab. AI-backed tools may send content to a server or provider to complete the request. Tool pages and the Privacy Policy explain which applies.",
       },
       {
         q: "Does Sounez use cookies?",

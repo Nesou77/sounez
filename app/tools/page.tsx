@@ -21,7 +21,7 @@ const TOOLS_FAQS = [
   },
   {
     q: "Which tools process files on a server, and which stay in my browser?",
-    a: "Browser-only tools — image compressor, PNG to JPG converter, background remover, QR code generator, word counter, calculator, password generator, text case converter, color palette, CSS gradient, favicon generator, SVG blob, box shadow, background pattern, image placeholder, and font pairing — never send your data to any server. AI-backed and file-conversion tools (PDF to Word, AI caption, bio, business name, website idea, study notes, and image describer) use a server for processing and each page explains exactly what is handled and for how long.",
+    a: "Browser-only tools — image compressor, PNG to JPG converter, background remover, QR code generator, word counter, calculator, password generator, text case converter, color palette, CSS gradient, favicon generator, SVG blob, box shadow, background pattern, image placeholder, and font pairing — never send your data to any server. AI-backed tools (AI caption, bio, business name, website idea, study notes, and image describer) use a server for processing and each page explains exactly what is handled and for how long.",
   },
   {
     q: "Can I use tool output in commercial projects?",
@@ -33,7 +33,7 @@ const TOOLS_FAQS = [
   },
   {
     q: "Are there limits on how often I can use a tool?",
-    a: "Browser tools have no server-side limits — use them as often as you need. AI and PDF tools have fair-use limits on processing frequency and file size to keep the service stable. Individual pages list specific limits where they apply.",
+    a: "Browser tools have no server-side limits — use them as often as you need. AI tools have fair-use limits on processing frequency and file size to keep the service stable. Individual pages list specific limits where they apply.",
   },
   {
     q: "How is my privacy protected when using these tools?",

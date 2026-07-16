@@ -81,7 +81,7 @@ export function CategoryPage({ slug }: { slug: string }) {
             <h3 className="text-sm font-semibold">Check the input</h3>
             <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
               Before uploading or pasting, confirm whether the tool runs in your browser or uses a server-backed
-              feature such as AI or PDF conversion.
+              feature such as AI processing.
             </p>
           </div>
           <div>

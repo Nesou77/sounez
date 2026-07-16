@@ -1,7 +1,5 @@
 /** Visible safety notes for sensitive tool categories. */
 export const TOOL_DISCLAIMERS: Record<string, string> = {
-  "pdf-to-word-converter":
-    "Only convert documents you own or have permission to process.",
   "image-compressor":
     "Only upload images you own or have the right to use.",
   "png-to-jpg-converter":

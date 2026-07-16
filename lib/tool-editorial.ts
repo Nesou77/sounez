@@ -16,35 +16,6 @@ export type ToolEditorialContent = {
 };
 
 const EDITORIAL: Record<string, ToolEditorialContent> = {
-  "pdf-to-word-converter": {
-    intro: "Upload a PDF and download an editable Word file when you need to fix typos, reuse text, or hand a document to someone who only works in DOCX.",
-    whatItDoes: "Sends your PDF to our conversion service and returns a DOCX you can open in Word, Google Docs, or LibreOffice.",
-    whoFor: [
-      { title: "Office staff", desc: "Turn a received PDF report into something you can edit and send back." },
-      { title: "Students", desc: "Quote from a scanned handout after OCR, with manual cleanup." },
-      { title: "Freelancers", desc: "Start from a client PDF instead of retyping pages." },
-    ],
-    features: [
-      { title: "Drag-and-drop", desc: "One file at a time, up to 20 MB, with clear errors if something is wrong." },
-      { title: "Layout options", desc: "Choose whether to preserve layout, pull images, or run OCR on scans." },
-      { title: "No account", desc: "Convert when you need it - fair-use limits apply on the server." },
-    ],
-    howTo: ["Drop your PDF on the upload area.", "Pick options that match the file (OCR for scans).", "Start conversion and wait for the DOCX.", "Download and proofread in Word."],
-    examples: [
-      { title: "Typed contract", desc: "12-page text PDF -> DOCX with headings you can redline." },
-      { title: "Scanned form", desc: "Phone photo PDF with OCR -> editable text to fill gaps." },
-    ],
-    mistakes: ["Expecting perfect tables from magazine layouts.", "Uploading password-locked PDFs.", "Skipping proofread on OCR output."],
-    privacyNote: "Your PDF is processed on our servers and removed after conversion. Only upload documents you are permitted to process through a third-party service.",
-    whenNotToUse: "Do not upload confidential or classified files unless your organisation allows third-party conversion. For highly sensitive legal or medical documents, use an offline conversion tool instead.",
-    faqs: [
-      { q: "Is my file stored after conversion?", a: "No. Your PDF is used only to produce the DOCX output, then permanently deleted from the server. It is not retained, indexed, or used for any other purpose." },
-      { q: "Will formatting match exactly?", a: "Simple layouts with standard paragraphs and headings convert well. Complex designs with multi-column layouts, tables, or embedded charts may need manual touch-up in Word after conversion." },
-      { q: "What do I get after conversion?", a: "A DOCX file you can open in Microsoft Word, Google Docs, or LibreOffice. The file is fully editable and ready to modify." },
-    ],
-    proTips: ["Split huge PDFs by chapter for cleaner output.", "Enable OCR only when the PDF is image-based."],
-    relatedSlugs: ["word-counter", "text-case-converter", "image-compressor"],
-  },
   "background-remover": {
     intro: "Cut out a person, product, or object and download a PNG with a transparent background — all processing stays on your device, so nothing is uploaded.",
     whatItDoes: "Runs an on-device AI model in your browser to separate the subject from the background, producing a clean transparent PNG you can use in design tools or on the web.",

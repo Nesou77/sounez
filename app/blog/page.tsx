@@ -71,7 +71,7 @@ export default function BlogPage() {
           <div className="rounded-xl border border-border bg-card p-4">
             <h3 className="text-sm font-semibold">Work &amp; study</h3>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              PDF conversion, study notes, resumes, passwords, and everyday productivity.
+              Study notes, resumes, passwords, and everyday productivity.
             </p>
           </div>
         </div>

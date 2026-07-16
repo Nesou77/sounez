@@ -97,17 +97,13 @@ export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
   },
   "utility-tools": {
     extendedIntro:
-      "Utilities cover everyday file and text jobs: compress images, convert PDFs, count words, make QR codes, and similar tasks. Some run entirely in your tab; others need a short server step. Each tool page states clearly which applies — read it before uploading anything sensitive. Browser tools keep files on your device and never send bytes to Sounez servers. Server tools (PDF conversion, AI study notes) transmit only the content needed to complete the request and delete it after the response is returned.",
+      "Utilities cover everyday file and text jobs: compress images, count words, make QR codes, and similar tasks. Some run entirely in your tab; others need a short server step. Each tool page states clearly which applies — read it before uploading anything sensitive. Browser tools keep files on your device and never send bytes to Sounez servers. Server tools (AI study notes) transmit only the content needed to complete the request and delete it after the response is returned.",
     contentPolicy:
-      "Utility tools process files and text you provide to complete a specific task. Only upload or paste content you own or have permission to process through a third-party web service. Do not upload files containing: personal data belonging to others without consent, copyrighted material you are not licensed to convert, documents marked confidential by your employer, or content that violates applicable law. The PDF-to-Word converter and study-notes generator use server-side processing; see their individual privacy notes for retention details. Image and text tools run locally and have no server-side content policy implications.",
+      "Utility tools process files and text you provide to complete a specific task. Only upload or paste content you own or have permission to process through a third-party web service. Do not upload files containing: personal data belonging to others without consent, copyrighted material you are not licensed to convert, documents marked confidential by your employer, or content that violates applicable law. The study-notes generator uses server-side processing; see its individual privacy notes for retention details. Image and text tools run locally and have no server-side content policy implications.",
     useCases: [
       {
         title: "Before publishing a post",
         desc: "Compress hero images and confirm word count fits the platform limit.",
-      },
-      {
-        title: "Office handoff",
-        desc: "Convert a received PDF to DOCX, then proofread tables and headings in Word.",
       },
       {
         title: "Event or shop setup",
@@ -116,17 +112,16 @@ export const CATEGORY_EDITORIAL: Record<string, CategoryEditorial> = {
     ],
     tips: [
       "Keep originals when converting PNG to JPG - transparency does not survive JPEG.",
-      "Enable OCR on PDF conversion only when the file is a scan, not typed text.",
       "Store passwords in a manager, not in chat or email.",
     ],
     faqs: [
       {
         q: "Are utility tools safe for confidential files?",
-        a: "Only upload documents you may process. PDF and AI tools use our servers; browser tools keep files on your device.",
+        a: "Only upload documents you may process. AI tools use our servers; browser tools keep files on your device.",
       },
       {
         q: "Is there a file size limit?",
-        a: "Yes on server tools (for example PDFs up to 20 MB). Browser tools depend on your device memory.",
+        a: "Server tools have limits depending on the task. Browser tools depend on your device memory.",
       },
       {
         q: "Do I need an account?",

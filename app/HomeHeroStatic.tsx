@@ -17,7 +17,7 @@ export function HomeHeroStatic() {
           Useful tools for everyday online work
         </h1>
         <p className="animate-slide-up delay-75 mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Sounez helps you write captions, optimize images, generate QR codes, prepare PDFs, and build
+          Sounez helps you write captions, optimize images, generate QR codes, build resumes, and create
           content packs from simple ideas. No account needed for most tools.
         </p>
         <p className="animate-slide-up delay-100 mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">

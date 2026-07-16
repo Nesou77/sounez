@@ -16,17 +16,6 @@ export type Tool = {
 
 export const TOOLS: Tool[] = [
   {
-    slug: "pdf-to-word-converter",
-    name: "PDF to Word Converter",
-    description: "Turn a PDF into an editable Word file when you have permission to process it. Upload, convert, download DOCX.",
-    category: "utility-tools",
-    emoji: "📄",
-    keywords: ["pdf to word", "pdf to docx", "pdf converter", "convert pdf to word", "online pdf converter", "editable word document"],
-    featured: true,
-    seoTitle: "PDF to Word Converter - Convert PDF to Editable DOCX Online",
-    seoDescription: "Convert PDF files into editable Word documents online with a simple and secure PDF to DOCX converter.",
-  },
-  {
     slug: "background-remover",
     name: "Background Remover AI",
     description: "Remove image backgrounds automatically with AI. Upload a photo and get a clean transparent PNG ready for design, products and social media.",
@@ -335,7 +324,7 @@ export const CATEGORIES = [
   {
     slug: "utility-tools",
     name: "Utility Tools",
-    description: "Compress images, convert PDFs, count words, make QR codes, and handle other one-off jobs. Privacy notes vary by tool.",
+    description: "Compress images, count words, make QR codes, and handle other one-off jobs. Privacy notes vary by tool.",
     emoji: "🛠️",
   },
 ] as const;

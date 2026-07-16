@@ -31,13 +31,14 @@ export default function DmcaPage() {
         <section>
           <h2 className="text-lg font-bold text-foreground">What you may upload or convert</h2>
           <p className="mt-2">
-            Only use Sounez with content you own, created yourself, or have permission to use. That includes PDFs
-            you convert, photos you describe or compress, and text you send to AI tools. Do not use our tools to
+            Only use Sounez with content you own, created yourself, or have permission to use. That includes
+            photos you describe or compress, and text you send to AI tools. Do not use our tools to
             copy, scrape, or redistribute someone else&apos;s work without authorization.
           </p>
           <p className="mt-2">
-            Examples that are not allowed: converting a paid ebook you did not purchase, removing backgrounds from
-            stock photos you have not licensed, or generating descriptions for images you do not have rights to publish.
+            Examples that are not allowed: using AI tools to rewrite and republish someone else&apos;s copyrighted
+            article as your own, removing backgrounds from stock photos you have not licensed, or generating
+            descriptions for images you do not have rights to publish.
           </p>
         </section>
 

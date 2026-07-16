@@ -421,7 +421,7 @@ export default function PrivacyPolicyPage() {
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               If you compress an image with a browser-only tool, the file is processed on your
-              device. If you convert a PDF or use an AI writing tool, the content may be sent to
+              device. If you use an AI writing tool, the content may be sent to
               our server or AI provider to complete the request. Each tool page includes a shorter
               note so you do not have to read this whole policy every time.
             </p>

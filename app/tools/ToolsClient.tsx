@@ -66,7 +66,7 @@ export function ToolsClient() {
           <div>
             <h2 className="text-sm font-semibold">Searching works best by task</h2>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Try words like compress, caption, QR, PDF, password, resume, favicon, or palette when you
+              Try words like compress, caption, QR, password, resume, favicon, or palette when you
               already know the job.
             </p>
           </div>
