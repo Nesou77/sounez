@@ -178,12 +178,14 @@ export default function PrivacyPolicyPage() {
               . You can clear this at any time through your browser settings.
             </p>
             <p>
-              If Sounez enables advertising or analytics cookies in the future, this policy and the{" "}
+              A cookie consent banner is already built into the site (it appears automatically once
+              advertising or analytics is enabled in configuration, and can be reopened anytime via
+              &quot;Cookie preferences&quot; in the footer). If Sounez enables advertising or
+              analytics cookies in the future, this policy and the{" "}
               <Link href="/cookie-policy" className="font-medium text-primary hover:underline">
                 Cookie Policy
               </Link>{" "}
-              will be updated first, and a consent mechanism will be added before those cookies are
-              set for any visitor.
+              will also be updated to name the specific vendors and cookie types in use.
             </p>
           </div>
         </section>

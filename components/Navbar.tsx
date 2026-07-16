@@ -1,7 +1,7 @@
 "use client";
 
 import { SmartLink as Link } from "@/components/smart-link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 
@@ -17,6 +17,19 @@ const NAV_LINKS = [
 
 export function Navbar() {
   const [mobile, setMobile] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!mobile) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobile(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [mobile]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
@@ -38,6 +51,7 @@ export function Navbar() {
         </nav>
 
         <button
+          ref={toggleRef}
           type="button"
           className="rounded-md p-2 hover:bg-muted lg:hidden"
           onClick={() => setMobile(!mobile)}

@@ -34,8 +34,8 @@ export function toolMetadata(
       images: [
         {
           url: ogImage,
-          width: 560,
-          height: 140,
+          width: 2288,
+          height: 925,
           alt: `${tool.name} – Sounez`,
         },
       ],

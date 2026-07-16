@@ -1787,7 +1787,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                     <img src={state.photoDataUrl} alt="Profile" className="w-24 h-24 rounded-full object-cover border-2 border-teal-200 mx-auto block mb-4" />
                   )}
                   <div className="mb-4">
-                    <h1 className="font-bold text-gray-900 text-xl leading-tight">{state.fullName || "Your Name"}</h1>
+                    <p className="font-bold text-gray-900 text-xl leading-tight">{state.fullName || "Your Name"}</p>
                     {(state.headline || state.targetRole) && (
                       <p className="text-xs text-teal-700 font-semibold mt-1 uppercase tracking-wide leading-snug">{state.headline || state.targetRole}</p>
                     )}
@@ -1823,7 +1823,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                 {variant === "Executive" ? (
                   <div className={`border-b-4 border-slate-900 pb-5 mb-5 ${showPhoto ? "flex items-start gap-5" : ""}`}>
                     <div className={showPhoto ? "flex-1 min-w-0" : ""}>
-                      <h1 className="font-bold text-slate-900 text-2xl tracking-tight">{state.fullName || "Your Name"}</h1>
+                      <p className="font-bold text-slate-900 text-2xl tracking-tight">{state.fullName || "Your Name"}</p>
                       {(state.headline || state.targetRole) && (
                         <p className="text-xs text-slate-500 font-semibold mt-1 uppercase tracking-widest">{state.headline || state.targetRole}</p>
                       )}
@@ -1845,9 +1845,9 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                 ) : (
                   <div className={`${variant === "Minimal" ? "border-b-2 border-indigo-400" : "border-b border-gray-200"} ${variant === "Compact" ? "pb-2 mb-2" : "pb-4 mb-4"} ${showPhoto ? "flex items-start gap-4" : ""}`}>
                     <div className={showPhoto ? "flex-1 min-w-0" : ""}>
-                      <h1 className={`font-bold text-gray-900 ${variant === "Compact" ? "text-xl" : "text-2xl"}`}>
+                      <p className={`font-bold text-gray-900 ${variant === "Compact" ? "text-xl" : "text-2xl"}`}>
                         {state.fullName || "Your Name"}
-                      </h1>
+                      </p>
                       {(state.headline || state.targetRole) && (
                         <p className={`text-sm mt-0.5 ${variant === "Modern" ? "text-blue-700" : variant === "Creative" ? "text-gray-600 font-medium" : variant === "Minimal" ? "text-indigo-600 font-medium" : "text-gray-600"}`}>
                           {state.headline || state.targetRole}

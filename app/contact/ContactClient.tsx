@@ -47,10 +47,10 @@ function SocialIconEl({ type }: { type: SocialIconType }) {
 const TOPICS = ["Feedback", "Bug report", "Tool request", "Partnership", "Other"] as const;
 type Topic = (typeof TOPICS)[number];
 
-type FormState = { name: string; email: string; topic: Topic; message: string };
+export type FormState = { name: string; email: string; topic: Topic; message: string };
 type Errors = Partial<Record<keyof FormState, string>>;
 
-function validate(f: FormState): Errors {
+export function validate(f: FormState): Errors {
   const e: Errors = {};
   if (!f.name.trim()) e.name = "Please enter your name.";
   else if (f.name.trim().length > 100) e.name = "Name must be under 100 characters.";
@@ -82,13 +82,18 @@ function Field({
   htmlFor?: string;
   children: React.ReactNode;
 }) {
+  const errorId = htmlFor ? `${htmlFor}-error` : undefined;
   return (
     <div>
       <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium">
         {label}
       </label>
       {children}
-      {error && <p className="mt-1.5 text-xs font-medium text-destructive">{error}</p>}
+      {error && (
+        <p id={errorId} role="alert" className="mt-1.5 text-xs font-medium text-destructive">
+          {error}
+        </p>
+      )}
     </div>
   );
 }
@@ -302,6 +307,8 @@ export function ContactClient() {
               onChange={(e) => update("name", e.target.value)}
               placeholder="Jane Doe"
               maxLength={100}
+              aria-invalid={!!errors.name}
+              aria-describedby={errors.name ? "name-error" : undefined}
               className={inputCls(!!errors.name)}
             />
           </Field>
@@ -313,6 +320,8 @@ export function ContactClient() {
               onChange={(e) => update("email", e.target.value)}
               placeholder="you@example.com"
               maxLength={255}
+              aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? "email-error" : undefined}
               className={inputCls(!!errors.email)}
             />
           </Field>
@@ -348,6 +357,8 @@ export function ContactClient() {
             onChange={(e) => update("message", e.target.value)}
             placeholder="Tell us what happened, what you expected, or what you would like to see."
             maxLength={2000}
+            aria-invalid={!!errors.message}
+            aria-describedby={errors.message ? "message-error" : undefined}
             className={inputCls(!!errors.message) + " resize-y"}
           />
           <div className="mt-1 flex justify-end text-xs text-muted-foreground">

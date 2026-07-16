@@ -8,6 +8,7 @@ import { BlogEngagement } from "./BlogEngagement";
 import { EngagementBar } from "./EngagementBar";
 import { BlogLikeController } from "./blog/BlogLikeController";
 import { AuthorCard } from "./AuthorCard";
+import { AdSlot } from "./AdSlot";
 import { BLOG_POSTS } from "@/data/blog";
 import { TOOLS } from "@/data/tools";
 import { sortBlogPostsByPopularity } from "@/lib/popularity";
@@ -129,6 +130,8 @@ export function BlogPostShell({
           </div>
 
           <BlogEngagement slug={slug} title={title} />
+
+          <AdSlot slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_BLOG_INARTICLE} name="blog-in-article" />
 
           <div className="my-8">
             <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Written by</p>

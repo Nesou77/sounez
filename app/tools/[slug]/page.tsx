@@ -19,7 +19,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const tool = toolBySlug(slug);
-  if (!tool) return {};
+  if (!tool) return { title: "Tool not found", robots: { index: false, follow: true } };
 
   const base = toolMetadata(tool, {
     title: tool.seoTitle,

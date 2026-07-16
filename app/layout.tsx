@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { GoogleTagManager } from "@/components/GoogleTagManager";
+import { GtmLoader } from "@/components/GtmLoader";
 import { AdSenseScript } from "@/components/AdSenseScript";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { getSiteUrl } from "@/lib/site-url";
 
 const inter = Inter({
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     siteName: "Sounez",
     locale: "en_US",
     url: siteUrl,
-    images: [{ url: `${siteUrl}/logo.webp`, width: 560, height: 140, alt: "Sounez", type: "image/webp" }],
+    images: [{ url: `${siteUrl}/logo.webp`, width: 2288, height: 925, alt: "Sounez", type: "image/webp" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -97,17 +98,14 @@ export default function RootLayout({
         {/*
           NEXT_PUBLIC_ADSENSE_ENABLED gates all ad loading (see AdSenseScript.tsx) so the site
           stays cookie-free and ad-free until the owner explicitly turns ads on post-approval.
-          TODO(owner): before setting NEXT_PUBLIC_ADSENSE_ENABLED=true for EEA/UK/Switzerland
-          traffic, add a Google-certified Consent Management Platform (or the AdSense-provided
-          GDPR message) so consent is collected before any ad request or consent-mode signal is
-          sent. Nothing in this codebase currently implements that consent flow.
+          Both the ad script (AdSenseScript.tsx) and the GTM script (GtmLoader.tsx) additionally
+          wait for CookieConsentBanner's stored consent (see lib/consent.ts) before mounting, so
+          no ad request or analytics tag fires before a visitor has chosen. This still requires
+          the owner to confirm the banner's copy/behavior satisfies their specific target regions'
+          legal requirements before enabling ads for EEA/UK/Switzerland traffic — see
+          ADSENSE_READINESS.md.
         */}
-        {/* GTM head snippet — always in HTML so Google can detect the tag; hostname guard blocks non-production URLs */}
-        {process.env.NEXT_PUBLIC_GTM_ID?.trim() ? (
-          <Script id="google-gtm-head" strategy="afterInteractive">
-            {`(function(){if(window.location.hostname!=='www.sounez.com')return;(window.dataLayer=window.dataLayer||[]).push({'gtm.start':new Date().getTime(),event:'gtm.js'});var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtm.js?id=${process.env.NEXT_PUBLIC_GTM_ID!.trim()}';document.head.appendChild(s);})();`}
-          </Script>
-        ) : null}
+        <GtmLoader />
         <AdSenseScript />
       </head>
       <body>
@@ -140,6 +138,7 @@ export default function RootLayout({
             },
           }}
         />
+        <CookieConsentBanner />
       </body>
     </html>
   );

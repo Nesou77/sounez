@@ -43,6 +43,18 @@ export default function CookiePolicyPage() {
         </section>
 
         <section>
+          <h2 className="text-lg font-bold text-foreground">The consent banner, when it applies</h2>
+          <p className="mt-2">
+            A cookie consent banner is already built into the site and will appear automatically
+            the moment advertising or analytics is turned on in configuration — it does not require
+            a separate deployment. When it appears, it lets you Accept all, Reject non-essential, or
+            Customize analytics and advertising separately, and no advertising or analytics script
+            runs until you choose. You can reopen it at any time afterward using the &quot;Cookie
+            preferences&quot; link in the footer.
+          </p>
+        </section>
+
+        <section>
           <h2 className="text-lg font-bold text-foreground">Functional local storage (always used)</h2>
           <p className="mt-2">
             A small amount of local storage is used for the site to function, independent of any

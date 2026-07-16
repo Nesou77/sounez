@@ -3,6 +3,9 @@ import { z } from "zod";
 import { parseRecipientEmails } from "@/lib/email/validate-email";
 import { sendContactEmail } from "@/lib/email/send-contact";
 import { verifyContactRecaptchaV3 } from "@/lib/recaptcha";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
+
+const CONTACT_RATE_LIMIT = { limit: 5, windowMs: 60 * 1000 }; // 5 submissions / min / IP
 
 const BODY_SCHEMA = z.object({
   name: z.string().trim().min(1).max(100),
@@ -14,6 +17,15 @@ const BODY_SCHEMA = z.object({
 });
 
 export async function POST(req: Request) {
+  const ip = getClientIp(req);
+  const limited = checkRateLimit(`contact:${ip}`, CONTACT_RATE_LIMIT);
+  if (!limited.allowed) {
+    return NextResponse.json(
+      { ok: false, error: "Too many messages sent. Please wait a minute and try again." },
+      { status: 429 },
+    );
+  }
+
   let json: unknown;
   try {
     json = await req.json();

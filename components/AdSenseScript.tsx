@@ -1,7 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import Script from "next/script";
 import { isAdEligiblePath } from "@/lib/route-policy";
+import { CONSENT_CHANGE_EVENT, hasConsent, nonEssentialScriptsConfigured } from "@/lib/consent";
 
 /**
  * Global AdSense Auto Ads snippet.
@@ -11,21 +14,35 @@ import { isAdEligiblePath } from "@/lib/route-policy";
  * Low-value, admin, API, and legal/contact routes never load ad code — see
  * lib/route-policy.ts.
  *
- * TODO(owner): before setting NEXT_PUBLIC_ADSENSE_ENABLED=true for EEA/UK/Switzerland
- * traffic, add a Google-certified Consent Management Platform (or the AdSense-provided
- * GDPR message) so consent is collected before this script runs. This component does
- * not implement that consent flow.
+ * Once ads ARE enabled, the script additionally waits for advertising consent
+ * from CookieConsentBanner (see lib/consent.ts) before it ever mounts, so no ad
+ * request is made before a visitor has chosen. If NEXT_PUBLIC_ADSENSE_ENABLED is
+ * true but analytics/advertising aren't both configured (see
+ * nonEssentialScriptsConfigured), consent is treated as not required — this only
+ * matters once the owner actually flips the flag on.
  */
 export function AdSenseScript() {
   const pathname = usePathname();
   const pubId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID?.trim();
   const adsEnabled = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
+  const [consented, setConsented] = useState(false);
+
+  useEffect(() => {
+    if (!adsEnabled) return;
+    setConsented(hasConsent("advertising"));
+    const onChange = () => setConsented(hasConsent("advertising"));
+    window.addEventListener(CONSENT_CHANGE_EVENT, onChange);
+    return () => window.removeEventListener(CONSENT_CHANGE_EVENT, onChange);
+  }, [adsEnabled]);
 
   if (!pubId || !adsEnabled) return null;
   if (!isAdEligiblePath(pathname)) return null;
+  if (nonEssentialScriptsConfigured() && !consented) return null;
 
   return (
-    <script
+    <Script
+      id="adsbygoogle-loader"
+      strategy="afterInteractive"
       async
       src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${pubId}`}
       crossOrigin="anonymous"

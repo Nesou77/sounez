@@ -1,11 +1,20 @@
 // Server Component — renders the GTM <noscript> fallback for the <body> opening.
-// The GTM <script> is injected in <head> via layout.tsx.
+// The GTM <script> is injected by GtmLoader.tsx, which gates on analytics consent.
+//
+// This <noscript> fallback is intentionally gated only by whether GTM is configured,
+// not by consent: it exists solely for visitors with JavaScript disabled, who by
+// definition cannot interact with the (JS-based) consent banner either. Full consent
+// coverage for no-JS visitors would require moving consent storage server-side (a
+// cookie read in this component) instead of localStorage — see CRAWLER_CHECKLIST.md /
+// ADSENSE_READINESS.md for why that tradeoff (forcing dynamic rendering sitewide) was
+// not made in this pass. GTM itself is not configured on this site (NEXT_PUBLIC_GTM_ID
+// is unset by default), so in practice this renders nothing today either way.
 export function GoogleTagManager() {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID?.trim();
   if (!gtmId) return null;
 
   // Skip on Vercel preview/development deployments (belt-and-suspenders alongside the
-  // runtime hostname guard in the head script).
+  // runtime hostname guard in GtmLoader.tsx).
   if (process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production") return null;
 
   return (

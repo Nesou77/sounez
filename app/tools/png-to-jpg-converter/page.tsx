@@ -67,8 +67,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: `${siteUrl}/logo.webp`,
-        width: 560,
-        height: 140,
+        width: 2288,
+        height: 925,
         alt: "PNG to JPG Converter, Sounez",
         type: "image/webp",
       },
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@sounez",
+    site: "@souneztools",
     title: "PNG to JPG Converter, Free Batch Conversion",
     description:
       "Batch convert PNG images to JPG online. Runs in your browser, with no upload to Sounez.",

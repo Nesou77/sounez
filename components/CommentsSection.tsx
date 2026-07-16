@@ -126,6 +126,7 @@ export function CommentsSection({
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Your name *"
+            aria-label="Your name"
             required
             maxLength={80}
             className="rounded-xl border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-primary"
@@ -135,6 +136,7 @@ export function CommentsSection({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email (optional, not shown publicly)"
+            aria-label="Email (optional, not shown publicly)"
             maxLength={255}
             className="rounded-xl border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-primary"
           />
@@ -143,6 +145,7 @@ export function CommentsSection({
           value={body}
           onChange={(e) => setBody(e.target.value)}
           placeholder="Add a useful note, question, correction, or experience with this tool."
+          aria-label="Comment"
           required
           rows={4}
           maxLength={1000}

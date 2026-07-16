@@ -2,6 +2,7 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { Twitter, Instagram, Facebook, Youtube } from "lucide-react";
 import { FEATURED_TOOLS, CATEGORIES } from "@/data/tools";
 import { BrandLogo } from "@/components/BrandLogo";
+import { CookiePreferencesButton } from "@/components/CookiePreferencesButton";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -188,6 +189,8 @@ export function Footer() {
           <Link href="/privacy-policy" className="underline underline-offset-2 hover:text-foreground">
             Privacy Policy
           </Link>
+          {" "}
+          <CookiePreferencesButton />
         </p>
       </div>
     </footer>
