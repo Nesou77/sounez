@@ -6,7 +6,7 @@ import { ExternalLink } from "@/components/ExternalLink";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-create-effective-study-notes", {
-  title: "How to Create Effective Study Notes Guide | Sounez",
+  title: "How to Create Effective Study Notes Guide",
   description:
     "Learn how to turn lessons, topics and long text into clear study notes, summaries, bullet points and key terms. Includes a free AI study notes generator.",
     ogTitle: "How to Create Effective Study Notes",

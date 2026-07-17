@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("image-seo-guide", {
-  title: "Image SEO Guide: Alt Text, File Names and Compression | Sounez",
+  title: "Image SEO Guide: Alt Text & Compression",
   description:
     "A practical image SEO guide covering alt text, file names, compression, captions, structured data, and page-speed checks.",
     ogTitle: "Image SEO Guide",

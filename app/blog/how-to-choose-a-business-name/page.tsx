@@ -6,7 +6,7 @@ import { ExternalLink } from "@/components/ExternalLink";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-choose-a-business-name", {
-  title: "How to Choose a Business Name for Your Brand Guide | Sounez",
+  title: "How to Choose a Business Name for Your Brand Guide",
   description:
     "Learn how to choose a business name that is simple, memorable and suitable for your brand or startup. Includes naming styles, examples and a free generator.",
     ogTitle: "How to Choose a Business Name for Your Brand",

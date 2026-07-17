@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-compress-images", {
-  title: "How to Compress Images Without Losing Quality Guide | Sounez",
+  title: "How to Compress Images Without Losing Quality Guide",
   description:
     "A practical guide to compressing images for the web. Compare JPG, PNG, WebP, image dimensions, and browser-based privacy.",
     ogTitle: "How to Compress Images Without Losing Quality",

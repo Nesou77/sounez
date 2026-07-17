@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
 export const metadata = blogMetadata("best-free-tools-for-creators", {
-  title: "10 Best Free Online Tools for Creators | Sounez",
+  title: "10 Best Free Online Tools for Creators",
   description:
     "Free online tools for creators, including YouTube tags, hashtags, image compression, QR codes, passwords, and design helpers.",
     ogTitle: "10 Best Free Online Tools for Creators",

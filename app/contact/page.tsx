@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { ContactClient } from "./ContactClient";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
 
 const pageUrl = `${getSiteUrl()}/contact`;
 
 export const metadata: Metadata = {
-  title: "Contact Sounez | Feedback, Bug Reports and Tool Requests",
+  title: "Contact Sounez | Feedback and Bug Reports",
   description:
     "Have a question, found a bug, or want to request a new tool? Send us a message and we will respond when possible.",
   alternates: { canonical: pageUrl },
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
     description:
       "Send feedback, report a bug, or request a new tool. We review incoming messages when support is available.",
     url: pageUrl,
+    type: "website",
+    ...siteOpenGraphDefaults(),
   },
 };
 

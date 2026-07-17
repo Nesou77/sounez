@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-grow-on-tiktok", {
-  title: "How to Grow on TikTok: A Creator's Playbook | Sounez",
+  title: "How to Grow on TikTok: A Creator's Playbook",
   description:
     "A practical TikTok growth guide covering niche selection, hooks, hashtags, posting schedule, repurposing, and monetization checks.",
     ogTitle: "How to Grow on TikTok",

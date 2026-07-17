@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-create-a-strong-password", {
-  title: "How to Create a Strong Password You'll Actually Remember | Sounez",
+  title: "How to Create a Strong Password",
   description:
     "Stop reusing passwords. A simple, modern system for strong, memorable credentials, plus 2FA, password managers and the best free generator.",
     ogTitle: "How to Create a Strong Password",

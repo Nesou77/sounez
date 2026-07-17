@@ -5,7 +5,7 @@ import { getSiteUrl } from "@/lib/site-url";
 const pageUrl = `${getSiteUrl()}/cookie-policy`;
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | Sounez",
+  title: "Cookie Policy",
   description: "How Sounez currently handles cookies and local storage, and what changes when advertising or analytics are enabled.",
   alternates: { canonical: pageUrl },
 };

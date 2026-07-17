@@ -6,7 +6,7 @@ import { ExternalLink } from "@/components/ExternalLink";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-choose-font-pairings-for-a-website", {
-  title: "How to Choose Font Pairings for a Website Guide | Sounez",
+  title: "How to Choose Font Pairings for a Website Guide",
   description:
     "Learn how to combine heading and body fonts for readable, professional and beautiful website typography. With examples and a free font pairing tool.",
     ogTitle: "How to Choose Font Pairings for a Website",

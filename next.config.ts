@@ -1,8 +1,38 @@
 import type { NextConfig } from "next";
 
+// Content-Security-Policy — mitigates XSS by restricting which origins can
+// supply scripts/styles/frames/connections. Origins beyond 'self' are limited
+// to what this site actually loads: Google Tag Manager, Google AdSense/Ads
+// (gated off by default — see components/AdSenseScript.tsx — and only
+// relevant once NEXT_PUBLIC_ADSENSE_ENABLED=true), and reCAPTCHA (only used
+// if RECAPTCHA keys are configured). 'unsafe-inline' on script-src is needed
+// for this app's own inline JSON-LD <script> tags (e.g. app/page.tsx,
+// components/BlogJsonLd.tsx) and Next.js's inline hydration bootstrap script
+// — switching to a nonce-based policy would require middleware to mint a
+// per-request nonce, a larger change out of scope here.
+// TODO(owner): if ads are enabled and any ad creative fails to render, check
+// the browser console for a CSP violation and add the missing origin below —
+// Google's ad-serving domains are broader than this starting allowlist covers.
+const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.google.com https://www.gstatic.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data:",
+  "connect-src 'self' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net",
+  "frame-src https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://td.doubleclick.net",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  "upgrade-insecure-requests",
+].join("; ");
+
 const securityHeaders = [
   // Prevent clickjacking
   { key: "X-Frame-Options", value: "DENY" },
+  // Mitigate XSS — see CONTENT_SECURITY_POLICY comment above for scope/rationale
+  { key: "Content-Security-Policy", value: CONTENT_SECURITY_POLICY },
   // Prevent MIME-type sniffing
   { key: "X-Content-Type-Options", value: "nosniff" },
   // Control referrer information

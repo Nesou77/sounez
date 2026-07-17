@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("best-productivity-tools-for-remote-workers", {
-  title: "Best Free Productivity Tools for Remote Workers | Sounez",
+  title: "Best Free Productivity Tools for Remote Workers",
   description:
     "Work from anywhere without paying for a bloated app stack. The best free browser-based productivity tools for remote workers.",
     ogTitle: "Best Free Productivity Tools for Remote Workers",

@@ -2,15 +2,21 @@ import type { Metadata } from "next";
 import { TOOLS } from "@/data/tools";
 import { ToolsClient } from "./ToolsClient";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
 import { SmartLink as Link } from "@/components/smart-link";
 
+const toolsUrl = `${getSiteUrl()}/tools`;
+
 export const metadata: Metadata = {
-  title: "Tools | Free Creator, Design and Utility Tools | Sounez",
+  title: "Tools | Free Creator, Design and Utility Tools",
   description: `Browse all ${TOOLS.length} free online tools on Sounez. Filter by category and search tools for creators, designers and productivity.`,
-  alternates: { canonical: getSiteUrl() + "/tools" },
+  alternates: { canonical: toolsUrl },
   openGraph: {
     title: "Tools | Sounez",
     description: "Browse free Sounez tools grouped by creator, design and utility categories.",
+    url: toolsUrl,
+    type: "website",
+    ...siteOpenGraphDefaults(),
   },
 };
 

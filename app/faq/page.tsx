@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SmartLink as Link } from "@/components/smart-link";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
 import { CATEGORIES, FEATURED_TOOLS } from "@/data/tools";
 import { SMART_PACKS } from "@/data/smartPacks";
 import { ArrowRight, HelpCircle } from "lucide-react";
@@ -8,7 +9,7 @@ import { ArrowRight, HelpCircle } from "lucide-react";
 const pageUrl = `${getSiteUrl()}/faq`;
 
 export const metadata: Metadata = {
-  title: "Sounez FAQ | Tools, Smart Packs, Privacy and Responsible Use",
+  title: "Sounez FAQ | Tools, Privacy and Responsible Use",
   description:
     "Answers about Sounez tools, Smart Packs, privacy, cookies, generated content, and responsible use.",
   alternates: { canonical: pageUrl },
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
       "Answers about Sounez tools, Smart Packs, privacy, cookies, generated content, and responsible use.",
     url: pageUrl,
     type: "website",
+    ...siteOpenGraphDefaults(),
   },
 };
 

@@ -527,6 +527,8 @@ export function ImageCompressorClient({ tool }: { tool: Tool }) {
                   <img
                     src={item.previewUrl}
                     alt={item.file.name}
+                    width={48}
+                    height={48}
                     className="h-12 w-12 shrink-0 rounded-lg object-cover"
                   />
 

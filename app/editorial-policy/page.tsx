@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { SmartLink as Link } from "@/components/smart-link";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
 
 const siteUrl = getSiteUrl();
 const pageUrl = `${siteUrl}/editorial-policy`;
 
 export const metadata: Metadata = {
-  title: "Editorial Policy | Sounez",
+  title: "Editorial Policy",
   description:
     "How Sounez creates, reviews, and maintains its guides and tool documentation. Covers authorship, AI use, advertising disclosure, and corrections.",
   alternates: { canonical: pageUrl },
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
     description:
       "How Sounez creates, reviews, and maintains its guides and tool documentation.",
     url: pageUrl,
+    type: "website",
+    ...siteOpenGraphDefaults(),
   },
 };
 

@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
 export const metadata = blogMetadata("simple-online-calculator-guide", {
-  title: "Simple Online Calculator Guide for Everyday Math | Sounez",
+  title: "Simple Online Calculator Guide for Everyday Math",
   description:
     "Use this guide to understand quick everyday calculations such as percentages, square roots and basic arithmetic. Includes a free online calculator.",
     ogTitle: "Simple Online Calculator Guide for Everyday Math",

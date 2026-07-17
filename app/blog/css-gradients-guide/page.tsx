@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("css-gradients-guide", {
-  title: "The Complete Guide to CSS Gradients | Sounez",
+  title: "The Complete Guide to CSS Gradients",
   description:
     "Linear, radial, conic, everything you need to build beautiful CSS gradients with clean, modern code. Includes examples, tips and a free generator.",
     ogTitle: "The Complete Guide to CSS Gradients",

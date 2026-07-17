@@ -6,7 +6,7 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { ExternalLink } from "@/components/ExternalLink";
 
 export const metadata = blogMetadata("best-free-ai-tools-2026", {
-  title: "Best Free AI Tools for Creators, Students and Small Businesses | Sounez",
+  title: "Best Free AI Tools for Creators and Students",
   description:
     "Discover free AI tools that help with captions, bios, study notes, business names, website ideas, image descriptions, and content creation.",
     ogTitle: "Best Free AI Tools for Creators, Students and Small Businesses",

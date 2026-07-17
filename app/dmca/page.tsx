@@ -7,7 +7,7 @@ const pageUrl = `${getSiteUrl()}/dmca`;
 const LAST_UPDATED = "May 26, 2026";
 
 export const metadata: Metadata = {
-  title: "DMCA / Copyright | Sounez",
+  title: "DMCA / Copyright",
   description: "Copyright policy and takedown process for Sounez.",
   alternates: { canonical: pageUrl },
 };

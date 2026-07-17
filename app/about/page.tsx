@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SmartLink as Link } from "@/components/smart-link";
 import { Sparkles, Zap, Heart, Wand2, Rocket, Brush, Wrench, CheckCircle2, ArrowRight } from "lucide-react";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
 import { TOOLS } from "@/data/tools";
 import { BLOG_POSTS } from "@/data/blog";
 
@@ -9,9 +10,9 @@ const siteUrl = getSiteUrl();
 const aboutUrl = `${siteUrl}/about`;
 
 export const metadata: Metadata = {
-  title: "About Sounez | Free Browser-Based Tools Built for Real Use",
+  title: "About Sounez | Free Browser-Based Tools",
   description:
-    "Sounez is a collection of free online tools for creators, designers, developers and students. No account needed, no installs. Built by Nesou with privacy and simplicity in mind.",
+    "Sounez is a collection of free online tools for creators, designers, developers and students. No account needed, no installs.",
   alternates: { canonical: aboutUrl },
   openGraph: {
     title: "About Sounez",
@@ -19,12 +20,7 @@ export const metadata: Metadata = {
       "Free online tools for creators, designers, developers and students. No account, no install.",
     url: aboutUrl,
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About Sounez",
-    description:
-      "Free online tools for creators, designers, developers and students. No account, no install.",
+    ...siteOpenGraphDefaults(),
   },
 };
 

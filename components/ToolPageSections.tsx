@@ -89,9 +89,10 @@ export const ToolPageSections = memo(function ToolPageSections({ tool }: { tool:
       </section>
 
       <section className="my-12">
-        <h2 className="flex items-center gap-2 text-2xl font-bold">
-          <Layers className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" /> Who it is for
-        </h2>
+        <div className="flex items-center gap-2">
+          <Layers className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" />
+          <h2 className="text-2xl font-bold">Who it is for</h2>
+        </div>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {whoForList.map((u) => (
             <div key={u.title} className="rounded-2xl border border-border bg-gradient-soft p-5">
@@ -103,9 +104,10 @@ export const ToolPageSections = memo(function ToolPageSections({ tool }: { tool:
       </section>
 
       <section className="my-12">
-        <h2 className="flex items-center gap-2 text-2xl font-bold">
-          <Lightbulb className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" /> Pro tips
-        </h2>
+        <div className="flex items-center gap-2">
+          <Lightbulb className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" />
+          <h2 className="text-2xl font-bold">Pro tips</h2>
+        </div>
         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
           {proTipsList.map((t, i) => (
             <li key={i} className="flex gap-3 rounded-xl border border-border bg-card p-4 text-sm">
@@ -150,9 +152,10 @@ export const ToolPageSections = memo(function ToolPageSections({ tool }: { tool:
 
       {smartPack && (
         <section className="my-12 rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-          <h2 className="flex items-center gap-2 text-xl font-bold">
-            <Layers className="h-5 w-5 text-primary" aria-hidden="true" /> Need several assets at once?
-          </h2>
+          <div className="flex items-center gap-2">
+            <Layers className="h-5 w-5 text-primary" aria-hidden="true" />
+            <h2 className="text-xl font-bold">Need several assets at once?</h2>
+          </div>
           <p className="mt-2 text-sm text-muted-foreground">
             Try the{" "}
             <Link href={smartPack.href} className="font-medium text-primary hover:underline">
@@ -180,9 +183,10 @@ export const ToolPageSections = memo(function ToolPageSections({ tool }: { tool:
       )}
 
       <section className="my-12 rounded-3xl border border-border bg-gradient-soft p-6 sm:p-8">
-        <h2 className="flex items-center gap-2 text-2xl font-bold">
-          <BookOpen className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" /> Read next on the blog
-        </h2>
+        <div className="flex items-center gap-2">
+          <BookOpen className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" />
+          <h2 className="text-2xl font-bold">Read next on the blog</h2>
+        </div>
         <p className="mt-1 text-sm text-muted-foreground">Practical guides and how-tos from the Sounez blog.</p>
         <div className="mt-5 grid gap-4 sm:grid-cols-3">
           {featuredPosts.map((p) => (

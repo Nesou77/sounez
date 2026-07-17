@@ -5,9 +5,9 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
 export const metadata = blogMetadata("free-design-tools-for-web-creators", {
-  title: "Free Design Tools for Non-Designers and Web Creators | Sounez",
+  title: "Free Design Tools for Web Creators",
   description:
-    "A complete browser-based design toolkit: color palettes, CSS gradients, favicons, font pairings, box shadows, image compression and more. No installs, no accounts.",
+    "A complete browser-based design toolkit: color palettes, CSS gradients, favicons, font pairings and more. No installs, no accounts.",
   ogTitle: "Free Design Tools for Non-Designers and Web Creators",
   ogDescription: "11 free browser tools covering color, typography, CSS, images and web assets. No Figma account required.",
 });

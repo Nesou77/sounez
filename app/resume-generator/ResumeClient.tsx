@@ -1159,7 +1159,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                     <div className="flex items-center gap-3 flex-wrap">
                       {state.photoDataUrl ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={state.photoDataUrl} alt="Profile preview" className="h-16 w-16 rounded-full object-cover border border-border flex-shrink-0" />
+                        <img src={state.photoDataUrl} alt="Profile preview" width={64} height={64} className="h-16 w-16 rounded-full object-cover border border-border flex-shrink-0" />
                       ) : (
                         <div className="h-16 w-16 rounded-full bg-muted flex items-center justify-center border border-border flex-shrink-0">
                           <ImageIcon className="h-6 w-6 text-muted-foreground" />
@@ -1695,10 +1695,10 @@ export function ResumeClient({ tool }: { tool: Tool }) {
           {kwTotal > 0 && (
             <section className="rounded-xl border border-border bg-muted/30 p-4">
               <div className="flex items-center justify-between mb-2">
-                <h2 className="font-semibold text-sm flex items-center gap-1.5">
-                  <Search className="h-3.5 w-3.5" />
-                  Keyword match
-                </h2>
+                <span className="flex items-center gap-1.5">
+                  <Search className="h-3.5 w-3.5" aria-hidden="true" />
+                  <h2 className="font-semibold text-sm">Keyword match</h2>
+                </span>
                 <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${kwAnalysis.matched.length / kwTotal >= 0.8 ? "bg-green-100 text-green-700" : kwAnalysis.matched.length / kwTotal >= 0.5 ? "bg-yellow-100 text-yellow-700" : "bg-orange-100 text-orange-700"}`}>
                   {kwAnalysis.matched.length} / {kwTotal} found
                 </span>
@@ -1784,7 +1784,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                 <div className="w-[35%] flex-shrink-0 border-r border-gray-200 p-6">
                   {showPhoto && (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={state.photoDataUrl} alt="Profile" className="w-24 h-24 rounded-full object-cover border-2 border-teal-200 mx-auto block mb-4" />
+                    <img src={state.photoDataUrl} alt="Profile" width={96} height={96} className="w-24 h-24 rounded-full object-cover border-2 border-teal-200 mx-auto block mb-4" />
                   )}
                   <div className="mb-4">
                     <p className="font-bold text-gray-900 text-xl leading-tight">{state.fullName || "Your Name"}</p>
@@ -1839,7 +1839,7 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                     </div>
                     {showPhoto && (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={state.photoDataUrl} alt="Profile" className="flex-shrink-0 w-24 h-24 rounded-full object-cover border-2 border-slate-300" />
+                      <img src={state.photoDataUrl} alt="Profile" width={96} height={96} className="flex-shrink-0 w-24 h-24 rounded-full object-cover border-2 border-slate-300" />
                     )}
                   </div>
                 ) : (
@@ -1868,6 +1868,8 @@ export function ResumeClient({ tool }: { tool: Tool }) {
                       <img
                         src={state.photoDataUrl}
                         alt="Profile"
+                        width={80}
+                        height={80}
                         className={`flex-shrink-0 object-cover border border-gray-200 ${variant === "Creative" ? "w-20 h-20 rounded-lg" : "w-20 h-20 rounded-full"}`}
                       />
                     )}

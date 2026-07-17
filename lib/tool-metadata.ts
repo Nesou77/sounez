@@ -6,6 +6,7 @@
 import type { Metadata } from "next";
 import type { Tool } from "@/data/tools";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteTwitterDefaults } from "@/lib/site-metadata-defaults";
 
 export function toolMetadata(
   tool: Tool,
@@ -31,6 +32,7 @@ export function toolMetadata(
       url: canonical,
       type: "website",
       siteName: "Sounez",
+      locale: "en_US",
       images: [
         {
           url: ogImage,
@@ -44,7 +46,7 @@ export function toolMetadata(
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
+      ...siteTwitterDefaults(),
     },
   };
 }

@@ -2,18 +2,21 @@ import type { Metadata } from "next";
 import { SmartLink as Link } from "@/components/smart-link";
 import { FileText, Mail } from "lucide-react";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
 
 const pageUrl = `${getSiteUrl()}/terms-of-service`;
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Sounez",
+  title: "Terms of Service",
   description:
-    "Read the Terms of Service for Sounez. These terms explain how you may use our free online tools, what is prohibited, and how we handle intellectual property and liability.",
+    "Read the Terms of Service for Sounez: how you may use our free tools, what is prohibited, and how we handle intellectual property and liability.",
   alternates: { canonical: pageUrl },
   openGraph: {
     title: "Terms of Service | Sounez",
     description: "The terms that govern your use of Sounez and its free online tools.",
     url: pageUrl,
+    type: "website",
+    ...siteOpenGraphDefaults(),
   },
 };
 

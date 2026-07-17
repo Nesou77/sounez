@@ -52,7 +52,7 @@ const jsonLd = [
 
 export const metadata: Metadata = {
   ...toolMetadata(tool!, {
-    title: "PNG to JPG Converter, Free, Batch & Online | Sounez",
+    title: "PNG to JPG Converter, Free, Batch & Online",
     description:
       "Convert PNG to JPG online, batch convert multiple files at once, adjust quality, and download as ZIP. Runs entirely in your browser with no upload to Sounez.",
   }),

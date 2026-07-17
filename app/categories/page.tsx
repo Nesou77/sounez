@@ -4,14 +4,20 @@ import { CATEGORIES, toolsByCategory } from "@/data/tools";
 import { ArrowRight } from "lucide-react";
 import { getCategoryIcon } from "@/lib/tool-icons";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
+
+const categoriesUrl = `${getSiteUrl()}/categories`;
 
 export const metadata: Metadata = {
-  title: "Tool Categories | Sounez",
+  title: "Tool Categories",
   description: "Browse Sounez tools by category: Creator Tools, Design Tools and Utility Tools.",
-  alternates: { canonical: getSiteUrl() + "/categories" },
+  alternates: { canonical: categoriesUrl },
   openGraph: {
     title: "Tool Categories | Sounez",
     description: "Find the right tool for the job, organized by category.",
+    url: categoriesUrl,
+    type: "website",
+    ...siteOpenGraphDefaults(),
   },
 };
 

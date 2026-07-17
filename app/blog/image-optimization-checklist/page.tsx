@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
 export const metadata = blogMetadata("image-optimization-checklist", {
-  title: "Image Optimization Checklist: Compress, Convert, Rename and Describe Images | Sounez",
+  title: "Image Optimization Checklist",
   description:
     "A complete image optimization checklist covering compression, file formats, filenames, alt text, captions, and background cleanup.",
     ogTitle: "Image Optimization Checklist: Compress, Convert, Rename and Describe Images",

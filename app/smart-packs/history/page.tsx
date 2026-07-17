@@ -4,7 +4,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { SmartPackHistoryClient } from "@/components/smart-packs/SmartPackHistoryClient";
 
 export const metadata: Metadata = {
-  title: "Smart Pack History | Sounez",
+  title: "Smart Pack History",
   description: "View recent Smart Pack generations saved on this device.",
   alternates: { canonical: `${getSiteUrl()}/smart-packs/history` },
   robots: { index: false, follow: false },

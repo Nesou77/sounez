@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-use-qr-codes-for-marketing", {
-  title: "How to Use QR Codes for Marketing (Without Looking Cheap) | Sounez",
+  title: "How to Use QR Codes for Marketing",
   description:
     "QR codes are everywhere again. Here's how to use them in print, packaging, events and social media in a way that actually converts.",
     ogTitle: "How to Use QR Codes for Marketing",

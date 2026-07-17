@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { SmartLink as Link } from "@/components/smart-link";
 import { Shield, Mail } from "lucide-react";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
 
 const pageUrl = `${getSiteUrl()}/privacy-policy`;
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Sounez",
+  title: "Privacy Policy",
   description:
     "Read the Sounez privacy policy. Learn what data is collected, how your files are handled, how cookies work, and what rights you have as a visitor.",
   alternates: { canonical: pageUrl },
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
     title: "Privacy Policy | Sounez",
     description: "How Sounez handles your data, files, cookies and advertising.",
     url: pageUrl,
+    type: "website",
+    ...siteOpenGraphDefaults(),
   },
 };
 

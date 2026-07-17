@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-grow-instagram-organically", {
-  title: "How to Grow Instagram Organically | Sounez",
+  title: "How to Grow Instagram Organically",
   description:
     "No paid ads, no follow-unfollow tricks. A real strategy for building an engaged Instagram audience: niche, content, hashtags and consistency.",
     ogTitle: "How to Grow Instagram Organically",

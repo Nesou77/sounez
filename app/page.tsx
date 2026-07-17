@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
 import { HomeHero } from "./HomeHero";
 import { HomeSections } from "./HomeSections";
 
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  title: "Sounez | Smart Packs & Free Tools for Creators and Small Business",
+  title: "Sounez | Smart Packs & Free Tools for Creators",
   description:
-    "Create captions, optimize images, generate QR codes, build resumes, and run Smart Pack workflows. Free tools with clear privacy notes - no account for most features.",
+    "Create captions, optimize images, generate QR codes, and run Smart Pack workflows. Free tools with clear privacy notes - no account for most features.",
   alternates: { canonical: siteUrl },
   openGraph: {
     title: "Sounez | Smart Packs & Free Tools",
@@ -16,12 +17,7 @@ export const metadata: Metadata = {
       "Smart Packs plus free tools for images, writing, QR codes, and SEO.",
     url: siteUrl,
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Sounez | Smart Packs & Free Tools",
-    description:
-      "Smart Packs and free tools for captions, images, QR codes, passwords, and everyday productivity.",
+    ...siteOpenGraphDefaults(),
   },
 };
 

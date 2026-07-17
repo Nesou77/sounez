@@ -89,9 +89,10 @@ export function SmartPacksIndex() {
       </section>
 
       <section className="mt-12">
-        <h2 className="flex items-center gap-2 text-xl font-bold">
-          <Sparkles className="h-5 w-5 text-primary" aria-hidden="true" /> How it works
-        </h2>
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-5 w-5 text-primary" aria-hidden="true" />
+          <h2 className="text-xl font-bold">How it works</h2>
+        </div>
         <ol className="mt-4 grid gap-4 sm:grid-cols-3">
           {[
             { t: "Choose a pack", d: "Pick Social Media, Product Listing, SEO Image, Business Launch, or Student Study." },

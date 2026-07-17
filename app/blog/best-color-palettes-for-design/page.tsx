@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("best-color-palettes-for-design", {
-  title: "The Best Color Palettes for Modern Design | Sounez",
+  title: "The Best Color Palettes for Modern Design",
   description:
     "The principles behind color palettes that just work, for landing pages, apps and brands. Curated palettes, color theory and free tools to build your own.",
     ogTitle: "Best Color Palettes for Modern Design",

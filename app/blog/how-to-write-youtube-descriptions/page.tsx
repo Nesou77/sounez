@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-write-youtube-descriptions", {
-  title: "How to Write Better YouTube Descriptions | Sounez",
+  title: "How to Write Better YouTube Descriptions",
   description:
     "Learn how to write clearer YouTube descriptions with useful summaries, timestamps, links, hashtags, and natural keywords.",
     ogTitle: "How to Write Better YouTube Descriptions",

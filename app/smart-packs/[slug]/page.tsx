@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SMART_PACKS, smartPackBySlug } from "@/data/smartPacks";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
 import { SmartPackPageContent } from "@/components/smart-packs/SmartPackPageContent";
 import { SmartPackJsonLd } from "@/components/smart-packs/SmartPackJsonLd";
 
@@ -16,7 +17,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const pack = smartPackBySlug(slug);
-  if (!pack) return {};
+  if (!pack) return { title: "Smart Pack not found", robots: { index: false, follow: true } };
   const url = `${getSiteUrl()}/smart-packs/${slug}`;
   return {
     title: pack.seo.title,
@@ -27,6 +28,7 @@ export async function generateMetadata({
       description: pack.seo.ogDescription ?? pack.seo.description,
       url,
       type: "website",
+      ...siteOpenGraphDefaults(),
     },
   };
 }

@@ -122,9 +122,10 @@ export function SmartPackLayout({ pack }: { pack: SmartPack }) {
       )}
 
       <section className="mt-10 rounded-2xl border border-border bg-card p-6">
-        <h2 className="flex items-center gap-2 text-lg font-bold">
-          <Wrench className="h-5 w-5 text-primary" aria-hidden="true" /> Tools for this pack
-        </h2>
+        <div className="flex items-center gap-2">
+          <Wrench className="h-5 w-5 text-primary" aria-hidden="true" />
+          <h2 className="text-lg font-bold">Tools for this pack</h2>
+        </div>
         <ul className="mt-4 space-y-2">
           {pack.relatedTools.map((t) => (
             <li key={t.href}>

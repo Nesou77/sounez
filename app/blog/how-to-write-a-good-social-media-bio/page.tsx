@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("how-to-write-a-good-social-media-bio", {
-  title: "How to Write a Good Social Media Bio Guide | Sounez",
+  title: "How to Write a Good Social Media Bio Guide",
   description:
     "Learn how to write short, clear and professional bios for Instagram, TikTok, LinkedIn and personal websites. With examples and a free bio generator.",
     ogTitle: "How to Write a Good Social Media Bio",

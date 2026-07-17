@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import Link from "next/link";
 
 export const metadata = blogMetadata("css-box-shadow-guide", {
-  title: "CSS Box Shadow Guide: How to Create Better Shadows | Sounez",
+  title: "CSS Box Shadow Guide: How to Create Better Shadows",
   description:
     "Learn how CSS box-shadow works and how to create soft, modern shadows for cards, buttons and UI elements. Includes a free visual shadow generator.",
     ogTitle: "CSS Box Shadow Guide: How to Create Better Shadows",

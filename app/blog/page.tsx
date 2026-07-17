@@ -4,17 +4,23 @@ import Image from "next/image";
 import { BLOG_POSTS } from "@/data/blog";
 import { CATEGORIES } from "@/data/tools";
 import { getSiteUrl } from "@/lib/site-url";
+import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
 import { sortBlogPostsByPopularity } from "@/lib/popularity";
 
+const blogUrl = `${getSiteUrl()}/blog`;
+
 export const metadata: Metadata = {
-  title: "Sounez Guides | Practical Tool Guides for Creators and Makers",
+  title: "Sounez Guides | Practical Tool Guides",
   description:
     "Hands-on guides covering social media growth, design workflows, image optimization, productivity tools and more - written for people who make things online.",
-  alternates: { canonical: getSiteUrl() + "/blog" },
+  alternates: { canonical: blogUrl },
   openGraph: {
     title: "Sounez Guides | Practical Tool Guides",
     description:
       "Hands-on guides covering social media growth, design workflows, image optimization, productivity tools and more.",
+    url: blogUrl,
+    type: "website",
+    ...siteOpenGraphDefaults(),
   },
 };
 

@@ -5,7 +5,7 @@ import { BlogJsonLd } from "@/components/BlogJsonLd";
 import { SmartLink as Link } from "@/components/smart-link";
 
 export const metadata = blogMetadata("how-to-write-alt-text-for-images", {
-  title: "How to Write Alt Text for Images: SEO and Accessibility Guide | Sounez",
+  title: "How to Write Alt Text for Images",
   description:
     "Learn how to write clear, useful alt text for SEO, accessibility, blog posts, product images, and social media content.",
     ogTitle: "How to Write Alt Text for Images: SEO and Accessibility Guide",
