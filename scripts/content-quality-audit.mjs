@@ -67,7 +67,7 @@ const routes = new Set([
   ...categorySlugs.map((s) => `/categories/${s}`),
 ]);
 
-const noindexRoutes = new Set(["/admin/comments", "/smart-packs/history"]);
+const noindexRoutes = new Set(["/admin/comments"]);
 
 if (sitemapText.includes("new Date()")) {
   add("error", "sitemap.ts uses new Date(); lastModified should be stable unless content changed.", "app/sitemap.ts");
@@ -80,7 +80,7 @@ for (const route of noindexRoutes) {
     add("error", `Noindex/private route appears in sitemap: ${route}`, "app/sitemap.ts");
   }
 }
-for (const route of ["/admin/", "/api/", "/smart-packs/history"]) {
+for (const route of ["/admin/", "/api/"]) {
   const routeWithoutTrailingSlash = route.replace(/\/$/, "");
   if (!robotsText.includes(route) && !routePolicyText.includes(routeWithoutTrailingSlash)) {
     add("warn", `robots.ts does not explicitly disallow ${route}`, "app/robots.ts");

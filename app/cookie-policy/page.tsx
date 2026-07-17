@@ -66,10 +66,6 @@ export default function CookiePolicyPage() {
               vote is not counted twice from the same browser. This is not used to profile you for
               advertising.
             </li>
-            <li>
-              Smart Pack history uses a first-party session identifier so you can see your own saved
-              generations on this browser. It is not used for advertising or cross-site tracking.
-            </li>
           </ul>
         </section>
 

@@ -46,7 +46,7 @@ describe("app/sitemap", () => {
   it("never includes noindexed/private routes", async () => {
     const entries = await sitemap();
     const urls = entries.map((e) => e.url);
-    for (const forbidden of ["/admin", "/api/", "/smart-packs/history"]) {
+    for (const forbidden of ["/admin", "/api/"]) {
       expect(urls.some((u) => u.includes(forbidden))).toBe(false);
     }
   });

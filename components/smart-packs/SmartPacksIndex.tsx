@@ -227,9 +227,6 @@ export function SmartPacksIndex() {
         >
           Start with Social Media Pack
         </Link>
-        <Link href="/smart-packs/history" className="inline-flex items-center rounded-xl border border-border px-6 py-3 text-sm font-semibold hover:bg-muted">
-          Pack history
-        </Link>
       </div>
     </div>
   );

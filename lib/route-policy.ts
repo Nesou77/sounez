@@ -1,9 +1,8 @@
-export const NOINDEX_PATHS = ["/admin", "/api", "/smart-packs/history"] as const;
+export const NOINDEX_PATHS = ["/admin", "/api"] as const;
 
 export const AD_EXCLUDED_PATHS = [
   "/admin",
   "/api",
-  "/smart-packs/history",
   "/privacy-policy",
   "/cookie-policy",
   "/terms-of-service",

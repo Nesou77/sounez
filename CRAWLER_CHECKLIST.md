@@ -26,7 +26,7 @@ Every path above must return `200` with no login prompt, no Cloudflare/WAF chall
 
 ## 3. Googlebot specifically is not blocked
 
-- Open `https://www.sounez.com/robots.txt` in a browser and confirm the `User-agent: *` block **allows** `/` and only disallows `/admin/`, `/api/`, and `/smart-packs/history/` (see `app/robots.ts` / `lib/route-policy.ts` for the source of truth).
+- Open `https://www.sounez.com/robots.txt` in a browser and confirm the `User-agent: *` block **allows** `/` and only disallows `/admin/` and `/api/` (see `app/robots.ts` / `lib/route-policy.ts` for the source of truth).
 - In **Google Search Console** → URL Inspection, test `/`, `/tools`, one tool page, `/blog`, one article, and `/about`. Each should report "URL is on Google" or "Crawled — currently not indexed" (not "Blocked by robots.txt" or "Blocked due to unauthorized request").
 - If the site sits behind a WAF/CDN (Cloudflare, etc.) with bot-fight-mode or "Under Attack Mode" enabled, that can block Googlebot even when `robots.txt` allows it — this is a hosting-dashboard setting, not something in this repo, so check it directly in that provider's dashboard and allowlist Googlebot's published IP ranges or user-agent if a bot-management rule is active.
 - This site does **not** use any bot-blocking middleware (`middleware.ts` does not exist in this repo) and does not gate any public route behind authentication.
@@ -38,7 +38,7 @@ curl -s https://www.sounez.com/sitemap.xml | head -20
 curl -s https://www.sounez.com/sitemap.xml | grep -c '<loc>'
 ```
 
-Expect a 200 response with valid XML and roughly ~76-80 `<loc>` entries (exact count moves as tools/posts are added — cross-check against `npm run quality:audit`'s reported route count, which read 77 known public routes at the time of this audit). Confirm `/admin`, `/api`, and `/smart-packs/history` do **not** appear anywhere in the output — `app/sitemap.ts` excludes them programmatically via `lib/route-policy.ts`, but re-verify on the live file since this is generated at request time.
+Expect a 200 response with valid XML and roughly ~76-80 `<loc>` entries (exact count moves as tools/posts are added — cross-check against `npm run quality:audit`'s reported route count, which read 77 known public routes at the time of this audit). Confirm `/admin` and `/api` do **not** appear anywhere in the output — `app/sitemap.ts` excludes them programmatically via `lib/route-policy.ts`, but re-verify on the live file since this is generated at request time.
 
 Also submit the sitemap in Google Search Console (Sitemaps → enter `sitemap.xml` → Submit) if it hasn't already been submitted.
 
@@ -70,7 +70,7 @@ for path in / /tools /blog /about /contact /privacy-policy /terms-of-service /fa
 done
 ```
 
-None of the public pages above should print a `noindex` directive. This site's indexation policy is centralized in `lib/route-policy.ts` (`NOINDEX_PATHS = ["/admin", "/api", "/smart-packs/history"]`) — only those three should ever carry `noindex`, and only `/admin` currently sets it via an explicit `<meta name="robots">` (`app/admin/layout.tsx`); the others rely on `robots.txt` disallow plus not being linked anywhere public. If you ever see `noindex` on a tool, blog, or trust page, check whether that route's parent layout was accidentally nested under `app/admin/` or copied its metadata.
+None of the public pages above should print a `noindex` directive. This site's indexation policy is centralized in `lib/route-policy.ts` (`NOINDEX_PATHS = ["/admin", "/api"]`) — only `/admin` currently sets it via an explicit `<meta name="robots">` (`app/admin/layout.tsx`); `/api` relies on `robots.txt` disallow plus not being linked anywhere public. If you ever see `noindex` on a tool, blog, or trust page, check whether that route's parent layout was accidentally nested under `app/admin/` or copied its metadata.
 
 ## 8. The site works without authentication
 

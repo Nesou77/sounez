@@ -152,12 +152,6 @@ export function SmartPackPageContent({ pack }: { pack: SmartPackDefinition }) {
               </Link>
             </p>
           )}
-          <Link
-            href="/smart-packs/history"
-            className="block text-center text-sm font-medium text-primary hover:underline"
-          >
-            View your pack history on this device
-          </Link>
         </aside>
       </div>
     </article>

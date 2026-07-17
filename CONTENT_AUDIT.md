@@ -37,7 +37,6 @@ This audit reflects the site as of this pass. It does **not** invent content-qua
 | Page | Purpose | Status |
 |---|---|---|
 | `/admin/comments` | Comment moderation UI | Correctly noindexed (`app/admin/layout.tsx`), token-protected server-side, excluded from sitemap. KEEP as-is. |
-| `/smart-packs/history` | Per-browser saved Smart Pack results | Correctly noindexed, excluded from sitemap and footer nav. KEEP as-is. |
 | `/api/*` | Route handlers, not pages | No metadata surface; correctly disallowed in `robots.ts`. KEEP as-is. |
 | `/ads.txt`, `/robots.txt`, `/sitemap.xml` | Machine-readable files | Verified present and correctly generated. KEEP as-is. |
 

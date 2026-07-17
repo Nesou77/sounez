@@ -114,15 +114,9 @@ export default function PrivacyPolicyPage() {
             <p>
               <strong className="text-foreground">Smart Packs</strong> send your brief and form
               fields to our AI provider to build a structured pack (captions, listing copy, study
-              notes, etc.). Successful generations may be stored in our database with the pack type,
-              language, tone, input, output, and an anonymous session identifier (
-              <code className="rounded bg-muted px-1">sounez_sp_visitor</code> cookie). We do not
-              publish your prompts or results. Other visitors cannot access your history. You may
-              delete individual saved packs from{" "}
-              <Link href="/smart-packs/history" className="font-medium text-primary hover:underline">
-                Smart Pack history
-              </Link>{" "}
-              on this device, or contact us to request removal.
+              notes, etc.). The result is returned directly to your browser and is not stored in
+              our database or linked to a cookie or session identifier. We do not publish your
+              prompts or results, and once the response is returned we do not retain a copy.
             </p>
           </div>
         </section>
@@ -152,9 +146,8 @@ export default function PrivacyPolicyPage() {
                 through your browser settings.
               </li>
               <li>
-                <strong className="text-foreground">Smart Pack generations</strong> are kept until
-                you delete them from your history on this device or until we run routine database
-                maintenance. Timestamps shown in history are real database dates.
+                <strong className="text-foreground">Smart Pack generations</strong> are not stored
+                after the result is returned to your browser.
               </li>
             </ul>
           </div>
@@ -173,8 +166,8 @@ export default function PrivacyPolicyPage() {
             </p>
             <p>
               A small amount of local storage is used for the site to function (for example,
-              remembering that you already marked a post as helpful, or showing your own Smart Pack
-              history on this browser). This is described in full in the{" "}
+              remembering that you already marked a post as helpful). This is described in full in
+              the{" "}
               <Link href="/cookie-policy" className="font-medium text-primary hover:underline">
                 Cookie Policy
               </Link>
