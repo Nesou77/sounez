@@ -31,7 +31,7 @@ export default function CookiePolicyPage() {
       </header>
 
       <div className="space-y-10 text-sm leading-relaxed text-muted-foreground">
-        <section className="rounded-2xl border border-border bg-card p-6">
+        <section id="current-status" className="rounded-2xl border border-border bg-card p-6">
           <h2 className="text-lg font-bold text-foreground">Current status: no non-essential cookies</h2>
           <p className="mt-2">
             Sounez does not currently set advertising or analytics cookies, and no cookie consent

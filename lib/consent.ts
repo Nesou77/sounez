@@ -9,6 +9,8 @@
  * themselves client-rendered (see AdSenseScript.tsx, GtmLoader.tsx).
  */
 
+import { env } from "@/lib/env";
+
 const STORAGE_KEY = "sounez_consent_v1";
 export const CONSENT_CHANGE_EVENT = "sounez:consent-change";
 export const OPEN_CONSENT_PREFS_EVENT = "sounez:open-cookie-prefs";
@@ -27,9 +29,8 @@ type StoredConsent = ConsentState & { decidedAt: string };
  * by AdSenseScript.tsx and the GTM loader so the banner never appears while the
  * site is genuinely cookie-free. */
 export function nonEssentialScriptsConfigured(): boolean {
-  const adsEnabled = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
   const gtmConfigured = Boolean(process.env.NEXT_PUBLIC_GTM_ID?.trim());
-  return adsEnabled || gtmConfigured;
+  return env.adsenseEnabled || gtmConfigured;
 }
 
 export function getStoredConsent(): StoredConsent | null {

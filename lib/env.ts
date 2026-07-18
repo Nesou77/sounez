@@ -2,14 +2,7 @@
  * Centralised environment variable access.
  * - Server-only vars (GEMINI_API_KEY) are never exposed to the client.
  * - NEXT_PUBLIC_ vars are safe to read on both sides.
- * - Logs warnings in production when optional vars are missing.
  */
-
-function warnMissing(name: string) {
-  if (process.env.NODE_ENV === "production") {
-    console.warn(`[sounez] Missing env var: ${name}`);
-  }
-}
 
 export const env = {
   /** Canonical site URL. Used in sitemap, JSON-LD, etc. */
@@ -38,10 +31,18 @@ export const env = {
     return process.env.ANTHROPIC_MODEL?.trim() || "claude-haiku-4-5";
   },
 
-  /** Google AdSense publisher ID (NEXT_PUBLIC - safe for client). */
+  /**
+   * Google AdSense publisher ID (NEXT_PUBLIC - safe for client). Single source of
+   * truth, read by AdSenseScript.tsx, AdSlot.tsx, and app/ads.txt/route.ts.
+   * Intentionally does NOT warn when unset: being unset is the expected, correct
+   * state until the site owner has a real ca-pub-... ID after AdSense approval.
+   */
   get adsensePubId(): string | undefined {
-    const v = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID;
-    if (!v) warnMissing("NEXT_PUBLIC_ADSENSE_PUB_ID");
-    return v;
+    return process.env.NEXT_PUBLIC_ADSENSE_PUB_ID?.trim() || undefined;
+  },
+
+  /** Whether AdSense ad scripts are allowed to load at all (still gated by consent). */
+  get adsenseEnabled(): boolean {
+    return process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
   },
 } as const;

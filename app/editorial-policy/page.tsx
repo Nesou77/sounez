@@ -104,9 +104,11 @@ export default function EditorialPolicyPage() {
         <section>
           <h2 className="text-xl font-bold">Advertising and commercial relationships</h2>
           <p className="mt-3 text-muted-foreground">
-            Sounez is supported by advertising through Google AdSense. Ads are served automatically
-            based on content and user signals and are visually distinct from editorial content.
-            Advertisers do not influence editorial decisions, tool recommendations, or guide content.
+            Sounez does not currently display advertising. We may use Google AdSense or other
+            advertising services in the future to help support the cost of running the site. If and
+            when ads are enabled, they will be served automatically based on content and user
+            signals, and kept visually distinct from editorial content. Advertisers do not and will
+            not influence editorial decisions, tool recommendations, or guide content.
           </p>
           <p className="mt-3 text-muted-foreground">
             Sounez does not accept sponsored content, paid reviews, or affiliate commissions for

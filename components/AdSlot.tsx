@@ -4,6 +4,7 @@ import { useEffect, useId, useState } from "react";
 import { usePathname } from "next/navigation";
 import { isAdEligiblePath } from "@/lib/route-policy";
 import { CONSENT_CHANGE_EVENT, hasConsent, nonEssentialScriptsConfigured } from "@/lib/consent";
+import { env } from "@/lib/env";
 
 declare global {
   interface Window {
@@ -40,8 +41,8 @@ type AdSlotProps = {
  */
 export function AdSlot({ slot, name, minHeightPx = 280, className = "" }: AdSlotProps) {
   const pathname = usePathname();
-  const pubId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID?.trim();
-  const adsEnabled = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
+  const pubId = env.adsensePubId;
+  const adsEnabled = env.adsenseEnabled;
   const uid = useId();
   const [consented, setConsented] = useState(false);
   const [pushed, setPushed] = useState(false);
@@ -54,11 +55,16 @@ export function AdSlot({ slot, name, minHeightPx = 280, className = "" }: AdSlot
     return () => window.removeEventListener(CONSENT_CHANGE_EVENT, onChange);
   }, [adsEnabled]);
 
+  // Belt-and-suspenders: never load a live ad on a Vercel preview/dev deployment even if
+  // NEXT_PUBLIC_ADSENSE_ENABLED leaks into a non-production environment.
+  const isProductionEnv = !process.env.VERCEL_ENV || process.env.VERCEL_ENV === "production";
+
   const eligible =
     !!pubId &&
     !!slot &&
     adsEnabled &&
     isAdEligiblePath(pathname) &&
+    isProductionEnv &&
     (!nonEssentialScriptsConfigured() || consented);
 
   useEffect(() => {

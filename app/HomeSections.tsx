@@ -54,7 +54,7 @@ const HOME_FAQS = [
   },
   {
     q: "Are the tools free?",
-    a: "Yes. Sounez is free for normal use. Advertising helps keep core tools available without a subscription.",
+    a: "Yes. Sounez is free for normal use, with no subscription. The site does not currently display advertising; we may add Google AdSense or similar in the future to help cover costs.",
   },
   {
     q: "What is a Smart Pack?",
@@ -97,8 +97,8 @@ const TRUST_NOTES = [
   },
   {
     Icon: CheckCircle2,
-    title: "Ads kept out of the work area",
-    text: "Sounez uses advertising to support free tools, while forms, buttons, uploads, and result areas stay focused on the task.",
+    title: "No ads today, none in the work area later",
+    text: "Sounez does not currently show ads. If advertising is added in the future to help support free tools, it will stay clear of forms, buttons, uploads, and result areas.",
   },
 ];
 

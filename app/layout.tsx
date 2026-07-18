@@ -9,6 +9,7 @@ import { GtmLoader } from "@/components/GtmLoader";
 import { AdSenseScript } from "@/components/AdSenseScript";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { getSiteUrl } from "@/lib/site-url";
+import { env } from "@/lib/env";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -78,16 +79,16 @@ export default function RootLayout({
         {/* AdSense site-ownership verification. This meta tag is safe to keep published at all
             times: it only lets Google confirm domain ownership and does not load any script,
             set any cookie, or require consent. */}
-        {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ? (
+        {env.adsensePubId ? (
           <meta
             name="google-adsense-account"
-            content={process.env.NEXT_PUBLIC_ADSENSE_PUB_ID}
+            content={env.adsensePubId}
           />
         ) : null}
         {/* Preconnect to the ad network only once ads are actually enabled — otherwise this would
             open a connection to Google's ad servers before the owner (or a consent banner) has
             approved that. Gated the same way as the ad script itself in AdSenseScript.tsx. */}
-        {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID && process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true" ? (
+        {env.adsensePubId && env.adsenseEnabled ? (
           <>
             <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
             <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossOrigin="anonymous" />

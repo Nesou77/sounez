@@ -3,6 +3,7 @@ import { Twitter, Instagram, Facebook, Youtube } from "lucide-react";
 import { FEATURED_TOOLS, CATEGORIES } from "@/data/tools";
 import { BrandLogo } from "@/components/BrandLogo";
 import { CookiePreferencesButton } from "@/components/CookiePreferencesButton";
+import { env } from "@/lib/env";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -183,7 +184,7 @@ export function Footer() {
       <div className="border-t border-border px-4 py-6 text-center text-xs text-muted-foreground">
         <p>&copy; {new Date().getFullYear()} Sounez. Built by Nesou for makers everywhere.</p>
         <p className="mt-1">
-          {process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true"
+          {env.adsenseEnabled
             ? "Sounez is supported by advertising. Ads are served by Google AdSense."
             : "Sounez does not currently show ads or use non-essential cookies."}{" "}
           <Link href="/privacy-policy" className="underline underline-offset-2 hover:text-foreground">

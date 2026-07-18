@@ -272,14 +272,73 @@ export default function PrivacyPolicyPage() {
 
         {/* 8 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">8. How We Use Your Information</h2>
+          <h2 className="text-xl font-bold tracking-tight">8. Third-Party Services</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>Sounez relies on a small number of third-party services to operate:</p>
+            <ul className="ml-5 list-disc space-y-1.5">
+              <li>
+                <strong className="text-foreground">Hosting and infrastructure</strong> to serve the
+                website and log requests as described in Section 1.
+              </li>
+              <li>
+                <strong className="text-foreground">Email delivery</strong>, used only to send and
+                receive messages submitted through the contact form.
+              </li>
+              <li>
+                <strong className="text-foreground">Spam and bot protection</strong> (Google
+                reCAPTCHA), used on the contact form where configured, to reduce automated abuse.
+                Google&apos;s own{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary hover:underline"
+                >
+                  Privacy Policy
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://policies.google.com/terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary hover:underline"
+                >
+                  Terms of Service
+                </a>{" "}
+                apply to reCAPTCHA.
+              </li>
+              <li>
+                <strong className="text-foreground">AI processing</strong>, used only by the
+                AI-powered tools and Smart Packs described in Section 2, to generate the result you
+                requested.
+              </li>
+              <li>
+                <strong className="text-foreground">Google AdSense</strong>, described separately in
+                Section 5 - not active today.
+              </li>
+            </ul>
+            <p>
+              Each of these providers processes only the data needed to perform its function and is
+              not used to build an advertising profile of you while advertising remains disabled.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 9 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">9. How We Use Your Information</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>The information we collect is used to:</p>
             <ul className="ml-5 list-disc space-y-1.5">
               <li>Operate, maintain, and improve Sounez and its tools.</li>
               <li>Understand usage patterns and improve the experience for visitors.</li>
               <li>Respond to contact form submissions and support requests.</li>
-              <li>Display relevant advertisements to support the free service.</li>
+              <li>
+                Display advertisements to support the free service, if and once advertising is
+                enabled (see Section 5) - this does not happen today.
+              </li>
               <li>Detect and prevent abuse, fraud, or security issues.</li>
             </ul>
             <p>
@@ -293,7 +352,7 @@ export default function PrivacyPolicyPage() {
 
         {/* 9 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">9. Your Rights</h2>
+          <h2 className="text-xl font-bold tracking-tight">10. Your Rights</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               Depending on where you are located, you may have certain rights regarding your
@@ -322,7 +381,7 @@ export default function PrivacyPolicyPage() {
 
         {/* 10 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">10. Data Security</h2>
+          <h2 className="text-xl font-bold tracking-tight">11. Data Security</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               We take reasonable technical and organisational steps to protect the information we
@@ -341,7 +400,7 @@ export default function PrivacyPolicyPage() {
 
         {/* 11 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">11. External Links</h2>
+          <h2 className="text-xl font-bold tracking-tight">12. External Links</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               Sounez may contain links to external websites. We are not responsible for the privacy
@@ -355,7 +414,7 @@ export default function PrivacyPolicyPage() {
 
         {/* 12 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">12. Children&apos;s Privacy</h2>
+          <h2 className="text-xl font-bold tracking-tight">13. Children&apos;s Privacy</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               Sounez is not directed at children under the age of 13. We do not knowingly collect
@@ -367,9 +426,31 @@ export default function PrivacyPolicyPage() {
 
         <hr className="border-border" />
 
-        {/* 13 */}
+        {/* 14 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">13. Your Consent</h2>
+          <h2 className="text-xl font-bold tracking-tight">14. International Users</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              Sounez is accessible worldwide. Our hosting provider and the third-party services
+              listed in Section 8 (email delivery, spam protection, and AI processing for AI-powered
+              tools) may store or process data in countries other than your own, including the
+              United States. By using the site, you understand your information may be transferred
+              to, stored, and processed in a country with different data protection laws than your
+              country of residence.
+            </p>
+            <p>
+              If Sounez enables Google AdSense or another advertising network in the future (see
+              Section 5), those vendors may also process data outside your country, and this policy
+              will be updated to reflect that before ads are enabled.
+            </p>
+          </div>
+        </section>
+
+        <hr className="border-border" />
+
+        {/* 15 */}
+        <section>
+          <h2 className="text-xl font-bold tracking-tight">15. Your Consent</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               By using Sounez, you consent to this Privacy Policy. If you do not agree with any
@@ -386,7 +467,7 @@ export default function PrivacyPolicyPage() {
 
         {/* 14 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">14. Changes to This Policy</h2>
+          <h2 className="text-xl font-bold tracking-tight">16. Changes to This Policy</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               We may update this Privacy Policy from time to time. Changes will be posted on this
@@ -400,7 +481,7 @@ export default function PrivacyPolicyPage() {
 
         {/* 15 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">15. Comments and engagement</h2>
+          <h2 className="text-xl font-bold tracking-tight">17. Comments and engagement</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               If you submit a comment, we store your display name, comment text, optional email (not shown
@@ -415,7 +496,7 @@ export default function PrivacyPolicyPage() {
 
         {/* 16 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">16. Quick Privacy Examples</h2>
+          <h2 className="text-xl font-bold tracking-tight">18. Quick Privacy Examples</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               If you compress an image with a browser-only tool, the file is processed on your
@@ -435,7 +516,7 @@ export default function PrivacyPolicyPage() {
 
         {/* 17 */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">17. Contact Us</h2>
+          <h2 className="text-xl font-bold tracking-tight">19. Contact Us</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
               If you have questions about this Privacy Policy or how we handle your data, please get

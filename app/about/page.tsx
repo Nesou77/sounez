@@ -134,11 +134,17 @@ export default function AboutPage() {
               >
                 hello@sounez.com
               </a>
-              .
+              . If you spot an error, an outdated guide, or a broken tool, that same contact form
+              is the fastest way to report it - see the{" "}
+              <Link href="/editorial-policy" className="font-medium text-primary hover:underline">
+                Editorial Policy
+              </Link>{" "}
+              for how content gets researched, reviewed, and corrected.
             </p>
             <p className="mt-3 text-sm text-muted-foreground">
-              Sounez is operated by Nesou as an independent publisher. Advertising on the site is
-              served by Google AdSense; see our{" "}
+              Sounez is operated by Nesou as an independent publisher. The site does not currently
+              display advertising. Google AdSense or other advertising services may be added in the
+              future to help cover hosting and development costs; see our{" "}
               <Link href="/privacy-policy" className="font-medium text-primary hover:underline">
                 Privacy Policy
               </Link>{" "}

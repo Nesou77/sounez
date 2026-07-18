@@ -37,7 +37,7 @@ const faqGroups = [
       },
       {
         q: "Are the tools free?",
-        a: "Yes. Sounez is free for normal personal, educational, and commercial use. Advertising may support the site, but tool pages are designed so the actual publisher content and working controls remain the focus.",
+        a: "Yes. Sounez is free for normal personal, educational, and commercial use. The site does not currently display advertising; if that changes in the future, tool pages are designed so the actual publisher content and working controls remain the focus, not the ads.",
       },
       {
         q: "Which tools run in my browser?",
@@ -78,12 +78,12 @@ const faqGroups = [
         a: "Yes, but optional cookies depend on your consent. Essential storage remembers your cookie choice and some local preferences. Analytics and advertising cookies are described in the Cookie Policy and Privacy Policy.",
       },
       {
-        q: "Why are there ads?",
-        a: "Ads help keep the tools free. Ads should not hide content, imitate buttons, or force accidental clicks. Sounez separates tool controls and publisher content from advertising-supported areas.",
+        q: "Does Sounez show ads?",
+        a: "Not currently. Sounez does not display advertising today. We may use Google AdSense or other advertising services in the future to help support the site - if that happens, ads will never hide content, imitate buttons, or sit next to upload, convert, or download controls.",
       },
       {
         q: "Where can I change cookie settings?",
-        a: "Use the Cookie settings link in the footer. You can also clear site data in your browser if you want to reset local preferences, saved helpful votes, or Smart Pack session data.",
+        a: "Use the “Cookie preferences” link in the footer. You can also clear site data in your browser if you want to reset local preferences, saved helpful votes, or Smart Pack session data.",
       },
     ],
   },

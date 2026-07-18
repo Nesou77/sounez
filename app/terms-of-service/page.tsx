@@ -325,14 +325,18 @@ export default function TermsOfServicePage() {
           <h2 className="text-xl font-bold tracking-tight">10. Advertising</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
-              Sounez displays advertisements served by Google AdSense and potentially other
-              third-party advertising networks. These ads help us keep the service free for
-              everyone.
+              Sounez does not currently display advertising. We may use Google AdSense or other
+              third-party advertising networks in the future to help keep the service free for
+              everyone; see the{" "}
+              <Link href="/privacy-policy" className="font-medium text-primary hover:underline">
+                Privacy Policy
+              </Link>{" "}
+              for how that would be disclosed.
             </p>
             <p>
-              We are not responsible for the content of advertisements displayed on the website.
-              Please review the advertiser&apos;s own terms and privacy policy before engaging with
-              any ad.
+              If and when advertising is enabled, we will not be responsible for the content of
+              advertisements displayed on the website. Review the advertiser&apos;s own terms and
+              privacy policy before engaging with any ad.
             </p>
           </div>
         </section>

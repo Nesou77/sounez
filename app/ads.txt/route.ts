@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
+import { env } from "@/lib/env";
 
-/** Serve ads.txt from NEXT_PUBLIC_ADSENSE_PUB_ID - no hardcoded publisher IDs. */
+/** Serve ads.txt from the centralized NEXT_PUBLIC_ADSENSE_PUB_ID config - no hardcoded publisher IDs. */
 export function GET() {
-  const raw = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID?.trim();
+  const raw = env.adsensePubId;
   if (!raw) {
     return new NextResponse(
       "# Configure NEXT_PUBLIC_ADSENSE_PUB_ID to publish ads.txt\n",
