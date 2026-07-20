@@ -36,6 +36,7 @@ const sitemapText = read("app/sitemap.ts");
 const robotsText = read("app/robots.ts");
 const routePolicyText = read("lib/route-policy.ts");
 const packageText = read("package.json");
+const toolEditorialText = read("lib/tool-editorial.ts");
 
 // Use more specific regexes to correctly separate tool slugs from category slugs.
 // Tool entries use: slug: "name", name: "...", description: "...", category: "...",
@@ -46,6 +47,24 @@ const toolSlugs = matchesAll(toolsText, /slug:\s*"([^"]+)"/g)
   .filter((slug) => !categorySlugs.includes(slug));
 const blogSlugs = matchesAll(blogText, /slug:\s*"([^"]+)"/g);
 const packSlugs = matchesAll(packsText, /slug:\s*"([^"]+)"/g);
+
+// Every tool must have a hand-written entry in the EDITORIAL map (lib/tool-editorial.ts).
+// A tool slug missing from this map silently falls back to defaultEditorial() at render
+// time - generic "Quick tasks" / "Mobile users" filler instead of real, tool-specific
+// content. That's a thin-content risk a human reviewer (or Google) could flag, so it's
+// treated as a hard error here, not a warning.
+// Keys are usually quoted ("background-remover") but plain identifiers without a
+// hyphen (calculator) are written unquoted - match both forms.
+const editorialSlugs = new Set(matchesAll(toolEditorialText, /^ {2}"?([a-zA-Z][a-zA-Z0-9-]*)"?:\s*\{/gm));
+for (const slug of toolSlugs) {
+  if (!editorialSlugs.has(slug)) {
+    add(
+      "error",
+      `Tool "${slug}" has no entry in the EDITORIAL map and will render the generic defaultEditorial() fallback instead of custom content.`,
+      "lib/tool-editorial.ts",
+    );
+  }
+}
 
 const routes = new Set([
   "/",

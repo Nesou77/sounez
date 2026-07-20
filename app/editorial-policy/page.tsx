@@ -112,10 +112,12 @@ export default function EditorialPolicyPage() {
           </p>
           <p className="mt-3 text-muted-foreground">
             Sounez does not accept sponsored content, paid reviews, or affiliate commissions for
-            tool recommendations. When a guide compares Sounez tools to third-party alternatives
-            (such as Squoosh, TinyPNG, Coolors, or TubeBuddy), those comparisons reflect honest
-            editorial assessment. We name third-party tools when they serve a use case better,
-            because accurate guidance is more valuable than self-promotion.
+            tool recommendations. Where a guide discusses when a paid or third-party alternative
+            might suit a reader better than a free Sounez tool, that reflects honest editorial
+            assessment, not self-promotion. We generally avoid citing specific competitor pricing
+            or feature details in guides, since those change often and are hard to keep accurate
+            over time — the goal is a fair comparison a reader can act on, not a claim we cannot
+            stand behind later.
           </p>
           <p className="mt-3 text-muted-foreground">
             If Sounez ever introduces affiliate relationships or sponsored content, this policy
