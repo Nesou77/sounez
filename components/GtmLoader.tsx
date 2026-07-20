@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 import { CONSENT_CHANGE_EVENT, hasConsent, nonEssentialScriptsConfigured } from "@/lib/consent";
+import { env } from "@/lib/env";
 
-const gtmId = process.env.NEXT_PUBLIC_GTM_ID?.trim();
+const gtmId = env.gtmId;
 
 /**
  * Injects the GTM container script only after analytics consent is granted

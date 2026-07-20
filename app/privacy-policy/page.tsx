@@ -3,6 +3,7 @@ import { SmartLink as Link } from "@/components/smart-link";
 import { Shield, Mail } from "lucide-react";
 import { getSiteUrl } from "@/lib/site-url";
 import { siteOpenGraphDefaults } from "@/lib/site-metadata-defaults";
+import { env } from "@/lib/env";
 
 const pageUrl = `${getSiteUrl()}/privacy-policy`;
 
@@ -23,6 +24,8 @@ export const metadata: Metadata = {
 const LAST_UPDATED = "May 26, 2026";
 
 export default function PrivacyPolicyPage() {
+  const analyticsActive = Boolean(env.gtmId);
+
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
       <header className="mb-12 text-center">
@@ -50,9 +53,22 @@ export default function PrivacyPolicyPage() {
               personal information to use the tools.
             </p>
             <p>
-              Sounez does not currently run analytics or advertising scripts, so we do not
-              automatically collect usage data (pages visited, time on page, referring URLs) for
-              those purposes. Two categories of information may still exist:
+              {analyticsActive ? (
+                <>
+                  Sounez uses Google Tag Manager to load analytics, and does so only after you
+                  grant analytics consent through the cookie banner described in Section 4 — no
+                  usage data (pages visited, time on page, referring URLs) is collected before you
+                  choose, or if you decline. Advertising scripts remain disabled site-wide (see
+                  Section 5). Two categories of information may still exist regardless of your
+                  consent choice:
+                </>
+              ) : (
+                <>
+                  Sounez does not currently run analytics or advertising scripts, so we do not
+                  automatically collect usage data (pages visited, time on page, referring URLs)
+                  for those purposes. Two categories of information may still exist:
+                </>
+              )}
             </p>
             <ul className="ml-5 list-disc space-y-1.5">
               <li>
@@ -160,9 +176,22 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-bold tracking-tight">4. Cookies</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
-              Sounez does not currently set non-essential cookies. No advertising or analytics
-              cookies are placed by this site, and no cookie consent banner is shown, because there
-              is nothing non-essential to consent to yet.
+              {analyticsActive ? (
+                <>
+                  A cookie consent banner appears for first-time visitors, letting you accept
+                  all, reject non-essential cookies, or customize analytics and advertising
+                  choices separately. Advertising cookies remain off site-wide until AdSense is
+                  enabled (see Section 5). If you grant analytics consent, Google Tag Manager may
+                  set cookies to measure aggregate site usage; if you decline or have not yet
+                  chosen, no analytics cookie is set.
+                </>
+              ) : (
+                <>
+                  Sounez does not currently set non-essential cookies. No advertising or analytics
+                  cookies are placed by this site, and no cookie consent banner is shown, because
+                  there is nothing non-essential to consent to yet.
+                </>
+              )}
             </p>
             <p>
               A small amount of local storage is used for the site to function (for example,
@@ -174,14 +203,15 @@ export default function PrivacyPolicyPage() {
               . You can clear this at any time through your browser settings.
             </p>
             <p>
-              A cookie consent banner is already built into the site (it appears automatically once
+              A cookie consent banner is built into the site (it appears automatically once
               advertising or analytics is enabled in configuration, and can be reopened anytime via
-              &quot;Cookie preferences&quot; in the footer). If Sounez enables advertising or
-              analytics cookies in the future, this policy and the{" "}
+              &quot;Cookie preferences&quot; in the footer). If Sounez enables advertising cookies
+              in the future, this policy and the{" "}
               <Link href="/cookie-policy" className="font-medium text-primary hover:underline">
                 Cookie Policy
               </Link>{" "}
-              will also be updated to name the specific vendors and cookie types in use.
+              will also be updated to name the specific advertising vendors and cookie types in
+              use.
             </p>
           </div>
         </section>
@@ -260,10 +290,23 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-bold tracking-tight">7. Analytics</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
             <p>
-              Sounez does not currently run Google Analytics, Google Tag Manager, or any other
-              analytics service. The site&apos;s codebase supports adding Google Tag Manager in the
-              future, but it stays inactive unless the site owner explicitly configures it, and this
-              policy will be updated first if that happens.
+              {analyticsActive ? (
+                <>
+                  Sounez uses Google Tag Manager (GTM) to load analytics tags. GTM only loads
+                  after you grant analytics consent through the cookie banner (see Section 4) — it
+                  does not run for visitors who decline or have not yet made a choice. GTM measures
+                  aggregate usage such as pages visited, time on page, and referring URLs; it does
+                  not collect the file contents or text you enter into tools, which are described
+                  separately in Section 2.
+                </>
+              ) : (
+                <>
+                  Sounez does not currently run Google Analytics, Google Tag Manager, or any other
+                  analytics service. The site&apos;s codebase supports adding Google Tag Manager in
+                  the future, but it stays inactive unless the site owner explicitly configures it,
+                  and this policy will be updated first if that happens.
+                </>
+              )}
             </p>
           </div>
         </section>
@@ -280,6 +323,12 @@ export default function PrivacyPolicyPage() {
                 <strong className="text-foreground">Hosting and infrastructure</strong> to serve the
                 website and log requests as described in Section 1.
               </li>
+              {analyticsActive ? (
+                <li>
+                  <strong className="text-foreground">Analytics</strong> (Google Tag Manager),
+                  described in Section 7 - only loads after you grant analytics consent.
+                </li>
+              ) : null}
               <li>
                 <strong className="text-foreground">Email delivery</strong>, used only to send and
                 receive messages submitted through the contact form.

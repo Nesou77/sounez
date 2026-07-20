@@ -129,9 +129,9 @@ export function BlogPostShell({
             {children}
           </div>
 
-          <BlogEngagement slug={slug} title={title} />
-
           <AdSlot slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_BLOG_INARTICLE} name="blog-in-article" />
+
+          <BlogEngagement slug={slug} title={title} />
 
           <div className="my-8">
             <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Written by</p>

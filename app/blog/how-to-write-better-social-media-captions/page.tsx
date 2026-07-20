@@ -230,9 +230,9 @@ export default function Post() {
         <h2>Frequently Asked Questions</h2>
         <h3>How long should an Instagram caption be?</h3>
         <p>
-          Research consistently shows that captions between 138 and 150 characters get the highest
-          engagement on Instagram. Longer captions work well for storytelling posts, but keep the
-          first line punchy so it shows before the &quot;more&quot; cut-off.
+          Short captions can work well for simple posts, while longer captions can work for
+          storytelling or educational posts. Keep the first line clear because it appears before
+          the &quot;more&quot; cut-off.
         </p>
         <h3>Do captions affect reach on TikTok?</h3>
         <p>

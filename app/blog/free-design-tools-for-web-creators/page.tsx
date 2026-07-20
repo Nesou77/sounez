@@ -171,8 +171,8 @@ export default function Post() {
           so nothing is uploaded anywhere.
         </p>
         <p>
-          Set quality to 80–85% for photos, 70–75% for screenshots. For output format, WebP is
-          typically 25–34% smaller than JPEG at equivalent quality. Read the full guide on{" "}
+          Set quality to 80–85% for photos, 70–75% for screenshots. For output format, WebP typically
+          produces a noticeably smaller file than JPEG at equivalent quality. Read the full guide on{" "}
           <Link href="/blog/how-to-compress-images">compressing images without losing quality</Link>.
         </p>
 
@@ -247,7 +247,7 @@ export default function Post() {
         </p>
         <ul>
           <li><strong>Faster</strong>: no app to open, no canvas to set up, no export workflow</li>
-          <li><strong>Cheaper</strong>: free vs. $12–45/month for a Figma subscription</li>
+          <li><strong>Cheaper</strong>: free vs. a recurring subscription for Figma&apos;s paid plans</li>
           <li><strong>Shareable</strong>: send a teammate a URL, not a Figma component</li>
           <li><strong>Platform-independent</strong>: works on any device or operating system</li>
         </ul>

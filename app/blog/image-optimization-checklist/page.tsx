@@ -89,8 +89,8 @@ export default function Post() {
             transparent background.
           </li>
           <li>
-            <strong>WebP</strong>: default for modern sites when your CMS or build step supports it, often
-            25-35% smaller than JPG at the same visual quality.
+            <strong>WebP</strong>: default for modern sites when your CMS or build step supports it,
+            typically producing a noticeably smaller file than JPG at the same visual quality.
           </li>
         </ul>
         <p>

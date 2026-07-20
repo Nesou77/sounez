@@ -29,8 +29,7 @@ type StoredConsent = ConsentState & { decidedAt: string };
  * by AdSenseScript.tsx and the GTM loader so the banner never appears while the
  * site is genuinely cookie-free. */
 export function nonEssentialScriptsConfigured(): boolean {
-  const gtmConfigured = Boolean(process.env.NEXT_PUBLIC_GTM_ID?.trim());
-  return env.adsenseEnabled || gtmConfigured;
+  return env.adsenseEnabled || Boolean(env.gtmId);
 }
 
 export function getStoredConsent(): StoredConsent | null {

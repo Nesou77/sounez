@@ -135,8 +135,9 @@ export default function Post() {
 
         <h2>5. Modern formats: WebP and AVIF</h2>
         <p>
-          WebP is 25–35% smaller than JPG at equivalent quality and is supported in every modern
-          browser. AVIF compresses even further but has slightly patchier support on older devices.
+          WebP typically produces a noticeably smaller file than JPG at equivalent quality and is
+          supported in every modern browser. AVIF compresses even further but has slightly patchier
+          support on older devices.
           Use WebP as your default export format. The file size savings directly improve
           your Core Web Vitals score, particularly Largest Contentful Paint (LCP) for hero images.
         </p>

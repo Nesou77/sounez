@@ -186,7 +186,9 @@ export function Footer() {
         <p className="mt-1">
           {env.adsenseEnabled
             ? "Sounez is supported by advertising. Ads are served by Google AdSense."
-            : "Sounez does not currently show ads or use non-essential cookies."}{" "}
+            : env.gtmId
+              ? "Sounez does not currently show ads. Analytics cookies may be used with your consent."
+              : "Sounez does not currently show ads or use non-essential cookies."}{" "}
           <Link href="/privacy-policy" className="underline underline-offset-2 hover:text-foreground">
             Privacy Policy
           </Link>

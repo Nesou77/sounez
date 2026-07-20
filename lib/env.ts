@@ -45,4 +45,14 @@ export const env = {
   get adsenseEnabled(): boolean {
     return process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
   },
+
+  /**
+   * Google Tag Manager container ID (NEXT_PUBLIC - safe for client). Single source of
+   * truth, read by GtmLoader.tsx, GoogleTagManager.tsx, lib/consent.ts, and the
+   * Privacy/Cookie Policy pages so their "is analytics currently active" language
+   * can never drift from what's actually configured in this deployment.
+   */
+  get gtmId(): string | undefined {
+    return process.env.NEXT_PUBLIC_GTM_ID?.trim() || undefined;
+  },
 } as const;
